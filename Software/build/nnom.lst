@@ -1,0 +1,2348 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"nnom.c"
+  14              		.text
+  15              		.section	.text.find_last,"ax",%progbits
+  16              		.align	1
+  17              		.syntax unified
+  18              		.thumb
+  19              		.thumb_func
+  21              	find_last:
+  22              		@ args = 0, pretend = 0, frame = 0
+  23              		@ frame_needed = 0, uses_anonymous_args = 0
+  24              		@ link register save eliminated.
+  25 0000 40B1     		cbz	r0, .L4
+  26 0002 436A     		ldr	r3, [r0, #36]
+  27 0004 1B68     		ldr	r3, [r3]
+  28 0006 33B1     		cbz	r3, .L5
+  29              	.L3:
+  30 0008 5869     		ldr	r0, [r3, #20]
+  31 000a 436A     		ldr	r3, [r0, #36]
+  32 000c 1B68     		ldr	r3, [r3]
+  33 000e 002B     		cmp	r3, #0
+  34 0010 FAD1     		bne	.L3
+  35 0012 7047     		bx	lr
+  36              	.L4:
+  37 0014 7047     		bx	lr
+  38              	.L5:
+  39 0016 7047     		bx	lr
+  41              		.section	.text.model_active,"ax",%progbits
+  42              		.align	1
+  43              		.syntax unified
+  44              		.thumb
+  45              		.thumb_func
+  47              	model_active:
+  48              		@ args = 0, pretend = 0, frame = 0
+  49              		@ frame_needed = 0, uses_anonymous_args = 0
+  50              		@ link register save eliminated.
+  51 0000 4861     		str	r0, [r1, #20]
+  52 0002 0846     		mov	r0, r1
+  53 0004 7047     		bx	lr
+  55              		.section	.text.io_list_delete,"ax",%progbits
+  56              		.align	1
+  57              		.syntax unified
+  58              		.thumb
+  59              		.thumb_func
+  61              	io_list_delete:
+  62              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 2
+
+
+  63              		@ frame_needed = 0, uses_anonymous_args = 0
+  64              		@ link register save eliminated.
+  65 0000 0246     		mov	r2, r0
+  66 0002 40B1     		cbz	r0, .L8
+  67              	.L12:
+  68 0004 1346     		mov	r3, r2
+  69 0006 9268     		ldr	r2, [r2, #8]
+  70 0008 5B68     		ldr	r3, [r3, #4]
+  71 000a 13B1     		cbz	r3, .L10
+  72              	.L11:
+  73 000c 5B68     		ldr	r3, [r3, #4]
+  74 000e 002B     		cmp	r3, #0
+  75 0010 FCD1     		bne	.L11
+  76              	.L10:
+  77 0012 002A     		cmp	r2, #0
+  78 0014 F6D1     		bne	.L12
+  79              	.L8:
+  80 0016 7047     		bx	lr
+  82              		.section	.text.release_input_mem,"ax",%progbits
+  83              		.align	1
+  84              		.syntax unified
+  85              		.thumb
+  86              		.thumb_func
+  88              	release_input_mem:
+  89              		@ args = 0, pretend = 0, frame = 0
+  90              		@ frame_needed = 0, uses_anonymous_args = 0
+  91              		@ link register save eliminated.
+  92 0000 026A     		ldr	r2, [r0, #32]
+  93 0002 72B1     		cbz	r2, .L15
+  94 0004 0020     		movs	r0, #0
+  95 0006 02E0     		b	.L19
+  96              	.L17:
+  97 0008 4872     		strb	r0, [r1, #9]
+  98              	.L18:
+  99 000a 9268     		ldr	r2, [r2, #8]
+ 100 000c 4AB1     		cbz	r2, .L15
+ 101              	.L19:
+ 102 000e 1169     		ldr	r1, [r2, #16]
+ 103 0010 0B7A     		ldrb	r3, [r1, #8]	@ zero_extendqisi2
+ 104 0012 002B     		cmp	r3, #0
+ 105 0014 F8D0     		beq	.L17
+ 106 0016 013B     		subs	r3, r3, #1
+ 107 0018 DBB2     		uxtb	r3, r3
+ 108 001a 0B72     		strb	r3, [r1, #8]
+ 109 001c 002B     		cmp	r3, #0
+ 110 001e F4D1     		bne	.L18
+ 111 0020 F2E7     		b	.L17
+ 112              	.L15:
+ 113 0022 7047     		bx	lr
+ 115              		.section	.rodata.model_add.str1.4,"aMS",%progbits,1
+ 116              		.align	2
+ 117              	.LC0:
+ 118 0000 4572726F 		.ascii	"Error: added a NULL layer, could be no memory while"
+ 118      723A2061 
+ 118      64646564 
+ 118      2061204E 
+ 118      554C4C20 
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 3
+
+
+ 119 0033 20637265 		.ascii	" creating layer.\000"
+ 119      6174696E 
+ 119      67206C61 
+ 119      7965722E 
+ 119      00
+ 120              		.section	.text.model_add,"ax",%progbits
+ 121              		.align	1
+ 122              		.syntax unified
+ 123              		.thumb
+ 124              		.thumb_func
+ 126              	model_add:
+ 127              		@ args = 0, pretend = 0, frame = 0
+ 128              		@ frame_needed = 0, uses_anonymous_args = 0
+ 129 0000 38B5     		push	{r3, r4, r5, lr}
+ 130 0002 61B1     		cbz	r1, .L26
+ 131 0004 0446     		mov	r4, r0
+ 132 0006 0D46     		mov	r5, r1
+ 133 0008 0068     		ldr	r0, [r0]
+ 134 000a FFF7FEFF 		bl	find_last
+ 135 000e 60B1     		cbz	r0, .L27
+ 136 0010 416A     		ldr	r1, [r0, #36]
+ 137 0012 2A6A     		ldr	r2, [r5, #32]
+ 138 0014 0A60     		str	r2, [r1]
+ 139 0016 436A     		ldr	r3, [r0, #36]
+ 140 0018 1360     		str	r3, [r2]
+ 141 001a 0020     		movs	r0, #0
+ 142              	.L23:
+ 143 001c 38BD     		pop	{r3, r4, r5, pc}
+ 144              	.L26:
+ 145 001e 0448     		ldr	r0, .L28
+ 146 0020 FFF7FEFF 		bl	puts
+ 147 0024 6FF00600 		mvn	r0, #6
+ 148 0028 F8E7     		b	.L23
+ 149              	.L27:
+ 150 002a 2560     		str	r5, [r4]
+ 151 002c F6E7     		b	.L23
+ 152              	.L29:
+ 153 002e 00BF     		.align	2
+ 154              	.L28:
+ 155 0030 00000000 		.word	.LC0
+ 157              		.section	.rodata.allocate_block.str1.4,"aMS",%progbits,1
+ 158              		.align	2
+ 159              	.LC1:
+ 160 0000 0A455252 		.ascii	"\012ERROR! No enough memory block for parallel buff"
+ 160      4F522120 
+ 160      4E6F2065 
+ 160      6E6F7567 
+ 160      68206D65 
+ 161 0030 6572732C 		.ascii	"ers, please increase the 'NNOM_BLOCK_NUM' in 'nnom_"
+ 161      20706C65 
+ 161      61736520 
+ 161      696E6372 
+ 161      65617365 
+ 162 0063 706F7274 		.ascii	"port.h'\000"
+ 162      2E682700 
+ 163              		.section	.text.allocate_block,"ax",%progbits
+ 164              		.align	1
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 4
+
+
+ 165              		.syntax unified
+ 166              		.thumb
+ 167              		.thumb_func
+ 169              	allocate_block:
+ 170              		@ args = 0, pretend = 0, frame = 0
+ 171              		@ frame_needed = 0, uses_anonymous_args = 0
+ 172 0000 08B5     		push	{r3, lr}
+ 173 0002 0246     		mov	r2, r0
+ 174 0004 0023     		movs	r3, #0
+ 175              	.L32:
+ 176 0006 117A     		ldrb	r1, [r2, #8]	@ zero_extendqisi2
+ 177 0008 41B1     		cbz	r1, .L31
+ 178 000a 0133     		adds	r3, r3, #1
+ 179 000c 0C32     		adds	r2, r2, #12
+ 180 000e 082B     		cmp	r3, #8
+ 181 0010 F9D1     		bne	.L32
+ 182 0012 0548     		ldr	r0, .L38
+ 183 0014 FFF7FEFF 		bl	puts
+ 184 0018 0020     		movs	r0, #0
+ 185 001a 03E0     		b	.L30
+ 186              	.L31:
+ 187 001c 03EB4303 		add	r3, r3, r3, lsl #1
+ 188 0020 00EB8300 		add	r0, r0, r3, lsl #2
+ 189              	.L30:
+ 190 0024 08BD     		pop	{r3, pc}
+ 191              	.L39:
+ 192 0026 00BF     		.align	2
+ 193              	.L38:
+ 194 0028 00000000 		.word	.LC1
+ 196              		.section	.text.io_mem_size,"ax",%progbits
+ 197              		.align	1
+ 198              		.syntax unified
+ 199              		.thumb
+ 200              		.thumb_func
+ 202              	io_mem_size:
+ 203              		@ args = 0, pretend = 0, frame = 0
+ 204              		@ frame_needed = 0, uses_anonymous_args = 0
+ 205 0000 38B5     		push	{r3, r4, r5, lr}
+ 206 0002 50B1     		cbz	r0, .L43
+ 207 0004 0446     		mov	r4, r0
+ 208 0006 0025     		movs	r5, #0
+ 209              	.L42:
+ 210 0008 E068     		ldr	r0, [r4, #12]
+ 211 000a FFF7FEFF 		bl	tensor_size
+ 212 000e 0544     		add	r5, r5, r0
+ 213 0010 A468     		ldr	r4, [r4, #8]
+ 214 0012 002C     		cmp	r4, #0
+ 215 0014 F8D1     		bne	.L42
+ 216              	.L40:
+ 217 0016 2846     		mov	r0, r5
+ 218 0018 38BD     		pop	{r3, r4, r5, pc}
+ 219              	.L43:
+ 220 001a 0025     		movs	r5, #0
+ 221 001c FBE7     		b	.L40
+ 223              		.section	.rodata.print_memory_block_info.str1.4,"aMS",%progbits,1
+ 224              		.align	2
+ 225              	.LC2:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 5
+
+
+ 226 0000 20202000 		.ascii	"   \000"
+ 227              		.align	2
+ 228              	.LC3:
+ 229 0004 25642000 		.ascii	"%d \000"
+ 230              		.align	2
+ 231              	.LC4:
+ 232 0008 2D2000   		.ascii	"- \000"
+ 233              		.section	.text.print_memory_block_info,"ax",%progbits
+ 234              		.align	1
+ 235              		.syntax unified
+ 236              		.thumb
+ 237              		.thumb_func
+ 239              	print_memory_block_info:
+ 240              		@ args = 0, pretend = 0, frame = 0
+ 241              		@ frame_needed = 0, uses_anonymous_args = 0
+ 242 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 243 0004 0546     		mov	r5, r0
+ 244 0006 1148     		ldr	r0, .L55
+ 245 0008 FFF7FEFF 		bl	printf
+ 246 000c 0024     		movs	r4, #0
+ 247 000e 4FF02008 		mov	r8, #32
+ 248 0012 0F4F     		ldr	r7, .L55+4
+ 249 0014 0F4E     		ldr	r6, .L55+8
+ 250 0016 0AE0     		b	.L50
+ 251              	.L54:
+ 252 0018 4046     		mov	r0, r8
+ 253 001a FFF7FEFF 		bl	putchar
+ 254 001e 09E0     		b	.L47
+ 255              	.L48:
+ 256 0020 3846     		mov	r0, r7
+ 257 0022 FFF7FEFF 		bl	printf
+ 258              	.L49:
+ 259 0026 0134     		adds	r4, r4, #1
+ 260 0028 0C35     		adds	r5, r5, #12
+ 261 002a 082C     		cmp	r4, #8
+ 262 002c 09D0     		beq	.L53
+ 263              	.L50:
+ 264 002e 14F0030F 		tst	r4, #3
+ 265 0032 F1D0     		beq	.L54
+ 266              	.L47:
+ 267 0034 297A     		ldrb	r1, [r5, #8]	@ zero_extendqisi2
+ 268 0036 0029     		cmp	r1, #0
+ 269 0038 F2D0     		beq	.L48
+ 270 003a 3046     		mov	r0, r6
+ 271 003c FFF7FEFF 		bl	printf
+ 272 0040 F1E7     		b	.L49
+ 273              	.L53:
+ 274 0042 0A20     		movs	r0, #10
+ 275 0044 FFF7FEFF 		bl	putchar
+ 276 0048 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 277              	.L56:
+ 278              		.align	2
+ 279              	.L55:
+ 280 004c 00000000 		.word	.LC2
+ 281 0050 08000000 		.word	.LC4
+ 282 0054 04000000 		.word	.LC3
+ 284              		.section	.text.release_comp_mem,"ax",%progbits
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 6
+
+
+ 285              		.align	1
+ 286              		.syntax unified
+ 287              		.thumb
+ 288              		.thumb_func
+ 290              	release_comp_mem:
+ 291              		@ args = 0, pretend = 0, frame = 0
+ 292              		@ frame_needed = 0, uses_anonymous_args = 0
+ 293              		@ link register save eliminated.
+ 294 0000 0369     		ldr	r3, [r0, #16]
+ 295 0002 33B1     		cbz	r3, .L57
+ 296 0004 1A68     		ldr	r2, [r3]
+ 297 0006 137A     		ldrb	r3, [r2, #8]	@ zero_extendqisi2
+ 298 0008 23B1     		cbz	r3, .L59
+ 299 000a 013B     		subs	r3, r3, #1
+ 300 000c DBB2     		uxtb	r3, r3
+ 301 000e 1372     		strb	r3, [r2, #8]
+ 302 0010 03B1     		cbz	r3, .L59
+ 303              	.L57:
+ 304 0012 7047     		bx	lr
+ 305              	.L59:
+ 306 0014 0023     		movs	r3, #0
+ 307 0016 5372     		strb	r3, [r2, #9]
+ 308 0018 FBE7     		b	.L57
+ 310              		.section	.text.nnom_set_static_buf,"ax",%progbits
+ 311              		.align	1
+ 312              		.global	nnom_set_static_buf
+ 313              		.syntax unified
+ 314              		.thumb
+ 315              		.thumb_func
+ 317              	nnom_set_static_buf:
+ 318              		@ args = 0, pretend = 0, frame = 0
+ 319              		@ frame_needed = 0, uses_anonymous_args = 0
+ 320              		@ link register save eliminated.
+ 321 0000 034B     		ldr	r3, .L61
+ 322 0002 1860     		str	r0, [r3]
+ 323 0004 034B     		ldr	r3, .L61+4
+ 324 0006 1960     		str	r1, [r3]
+ 325 0008 034B     		ldr	r3, .L61+8
+ 326 000a 0022     		movs	r2, #0
+ 327 000c 1A60     		str	r2, [r3]
+ 328 000e 7047     		bx	lr
+ 329              	.L62:
+ 330              		.align	2
+ 331              	.L61:
+ 332 0010 00000000 		.word	nnom_static_buf
+ 333 0014 00000000 		.word	nnom_static_buf_size
+ 334 0018 00000000 		.word	nnom_static_buf_curr
+ 336              		.section	.text.nnom_free,"ax",%progbits
+ 337              		.align	1
+ 338              		.global	nnom_free
+ 339              		.syntax unified
+ 340              		.thumb
+ 341              		.thumb_func
+ 343              	nnom_free:
+ 344              		@ args = 0, pretend = 0, frame = 0
+ 345              		@ frame_needed = 0, uses_anonymous_args = 0
+ 346              		@ link register save eliminated.
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 7
+
+
+ 347 0000 7047     		bx	lr
+ 349              		.section	.text.nnom_mem_stat,"ax",%progbits
+ 350              		.align	1
+ 351              		.global	nnom_mem_stat
+ 352              		.syntax unified
+ 353              		.thumb
+ 354              		.thumb_func
+ 356              	nnom_mem_stat:
+ 357              		@ args = 0, pretend = 0, frame = 0
+ 358              		@ frame_needed = 0, uses_anonymous_args = 0
+ 359              		@ link register save eliminated.
+ 360 0000 014B     		ldr	r3, .L65
+ 361 0002 1868     		ldr	r0, [r3]
+ 362 0004 7047     		bx	lr
+ 363              	.L66:
+ 364 0006 00BF     		.align	2
+ 365              	.L65:
+ 366 0008 00000000 		.word	nnom_memory_taken
+ 368              		.section	.text.nnom_alignto,"ax",%progbits
+ 369              		.align	1
+ 370              		.global	nnom_alignto
+ 371              		.syntax unified
+ 372              		.thumb
+ 373              		.thumb_func
+ 375              	nnom_alignto:
+ 376              		@ args = 0, pretend = 0, frame = 0
+ 377              		@ frame_needed = 0, uses_anonymous_args = 0
+ 378              		@ link register save eliminated.
+ 379 0000 B0FBF1F3 		udiv	r3, r0, r1
+ 380 0004 01FB1303 		mls	r3, r1, r3, r0
+ 381 0008 0BB1     		cbz	r3, .L67
+ 382 000a 0844     		add	r0, r0, r1
+ 383 000c C01A     		subs	r0, r0, r3
+ 384              	.L67:
+ 385 000e 7047     		bx	lr
+ 387              		.section	.rodata.nnom_malloc.str1.4,"aMS",%progbits,1
+ 388              		.align	2
+ 389              	.LC5:
+ 390 0000 506C6561 		.ascii	"Please set static memory using 'nnom_set_static_buf"
+ 390      73652073 
+ 390      65742073 
+ 390      74617469 
+ 390      63206D65 
+ 391 0033 28292720 		.ascii	"()' before calling model created.\000"
+ 391      6265666F 
+ 391      72652063 
+ 391      616C6C69 
+ 391      6E67206D 
+ 392 0055 000000   		.align	2
+ 393              	.LC6:
+ 394 0058 4E6F206D 		.ascii	"No memory! Static buffer size(%d) not big enough, p"
+ 394      656D6F72 
+ 394      79212053 
+ 394      74617469 
+ 394      63206275 
+ 395 008b 6C656173 		.ascii	"lease increase buffer size!\000"
+ 395      6520696E 
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 8
+
+
+ 395      63726561 
+ 395      73652062 
+ 395      75666665 
+ 396              		.section	.text.nnom_malloc,"ax",%progbits
+ 397              		.align	1
+ 398              		.global	nnom_malloc
+ 399              		.syntax unified
+ 400              		.thumb
+ 401              		.thumb_func
+ 403              	nnom_malloc:
+ 404              		@ args = 0, pretend = 0, frame = 0
+ 405              		@ frame_needed = 0, uses_anonymous_args = 0
+ 406 0000 08B5     		push	{r3, lr}
+ 407 0002 0421     		movs	r1, #4
+ 408 0004 FFF7FEFF 		bl	nnom_alignto
+ 409 0008 0B4B     		ldr	r3, .L75
+ 410 000a 1A68     		ldr	r2, [r3]
+ 411 000c 1318     		adds	r3, r2, r0
+ 412 000e 0B49     		ldr	r1, .L75+4
+ 413 0010 0968     		ldr	r1, [r1]
+ 414 0012 8B42     		cmp	r3, r1
+ 415 0014 05D2     		bcs	.L71
+ 416 0016 0A49     		ldr	r1, .L75+8
+ 417 0018 0868     		ldr	r0, [r1]
+ 418 001a 1044     		add	r0, r0, r2
+ 419 001c 064A     		ldr	r2, .L75
+ 420 001e 1360     		str	r3, [r2]
+ 421              	.L70:
+ 422 0020 08BD     		pop	{r3, pc}
+ 423              	.L71:
+ 424 0022 21B9     		cbnz	r1, .L73
+ 425 0024 0748     		ldr	r0, .L75+12
+ 426 0026 FFF7FEFF 		bl	printf
+ 427 002a 0020     		movs	r0, #0
+ 428 002c F8E7     		b	.L70
+ 429              	.L73:
+ 430 002e 0648     		ldr	r0, .L75+16
+ 431 0030 FFF7FEFF 		bl	printf
+ 432 0034 0020     		movs	r0, #0
+ 433 0036 F3E7     		b	.L70
+ 434              	.L76:
+ 435              		.align	2
+ 436              	.L75:
+ 437 0038 00000000 		.word	nnom_static_buf_curr
+ 438 003c 00000000 		.word	nnom_static_buf_size
+ 439 0040 00000000 		.word	nnom_static_buf
+ 440 0044 00000000 		.word	.LC5
+ 441 0048 58000000 		.word	.LC6
+ 443              		.section	.text.nnom_mem,"ax",%progbits
+ 444              		.align	1
+ 445              		.global	nnom_mem
+ 446              		.syntax unified
+ 447              		.thumb
+ 448              		.thumb_func
+ 450              	nnom_mem:
+ 451              		@ args = 0, pretend = 0, frame = 0
+ 452              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 9
+
+
+ 453 0000 38B5     		push	{r3, r4, r5, lr}
+ 454 0002 0421     		movs	r1, #4
+ 455 0004 FFF7FEFF 		bl	nnom_alignto
+ 456 0008 0446     		mov	r4, r0
+ 457 000a FFF7FEFF 		bl	nnom_malloc
+ 458 000e 0546     		mov	r5, r0
+ 459 0010 38B1     		cbz	r0, .L77
+ 460 0012 054A     		ldr	r2, .L80
+ 461 0014 1368     		ldr	r3, [r2]
+ 462 0016 2344     		add	r3, r3, r4
+ 463 0018 1360     		str	r3, [r2]
+ 464 001a 2246     		mov	r2, r4
+ 465 001c 0021     		movs	r1, #0
+ 466 001e FFF7FEFF 		bl	memset
+ 467              	.L77:
+ 468 0022 2846     		mov	r0, r5
+ 469 0024 38BD     		pop	{r3, r4, r5, pc}
+ 470              	.L81:
+ 471 0026 00BF     		.align	2
+ 472              	.L80:
+ 473 0028 00000000 		.word	nnom_memory_taken
+ 475              		.section	.text.model_hook,"ax",%progbits
+ 476              		.align	1
+ 477              		.syntax unified
+ 478              		.thumb
+ 479              		.thumb_func
+ 481              	model_hook:
+ 482              		@ args = 0, pretend = 0, frame = 0
+ 483              		@ frame_needed = 0, uses_anonymous_args = 0
+ 484 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 485 0002 0F46     		mov	r7, r1
+ 486 0004 31B3     		cbz	r1, .L88
+ 487 0006 0646     		mov	r6, r0
+ 488 0008 00B3     		cbz	r0, .L83
+ 489 000a 4B6A     		ldr	r3, [r1, #36]
+ 490 000c 03B3     		cbz	r3, .L89
+ 491 000e 1C46     		mov	r4, r3
+ 492 0010 1B68     		ldr	r3, [r3]
+ 493 0012 43B1     		cbz	r3, .L84
+ 494              	.L85:
+ 495 0014 2546     		mov	r5, r4
+ 496 0016 6468     		ldr	r4, [r4, #4]
+ 497 0018 002C     		cmp	r4, #0
+ 498 001a FBD1     		bne	.L85
+ 499 001c 0820     		movs	r0, #8
+ 500 001e FFF7FEFF 		bl	nnom_mem
+ 501 0022 0446     		mov	r4, r0
+ 502 0024 6860     		str	r0, [r5, #4]
+ 503              	.L84:
+ 504 0026 306A     		ldr	r0, [r6, #32]
+ 505 0028 68B1     		cbz	r0, .L86
+ 506 002a 0268     		ldr	r2, [r0]
+ 507 002c 5AB1     		cbz	r2, .L86
+ 508              	.L87:
+ 509 002e 0546     		mov	r5, r0
+ 510 0030 8068     		ldr	r0, [r0, #8]
+ 511 0032 0028     		cmp	r0, #0
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 10
+
+
+ 512 0034 FBD1     		bne	.L87
+ 513 0036 1C20     		movs	r0, #28
+ 514 0038 FFF7FEFF 		bl	nnom_mem
+ 515 003c A860     		str	r0, [r5, #8]
+ 516 003e 10B1     		cbz	r0, .L86
+ 517 0040 6A69     		ldr	r2, [r5, #20]
+ 518 0042 4261     		str	r2, [r0, #20]
+ 519 0044 A868     		ldr	r0, [r5, #8]
+ 520              	.L86:
+ 521 0046 2060     		str	r0, [r4]
+ 522 0048 7A6A     		ldr	r2, [r7, #36]
+ 523 004a 0260     		str	r2, [r0]
+ 524              	.L83:
+ 525 004c 3046     		mov	r0, r6
+ 526 004e F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 527              	.L89:
+ 528 0050 1C46     		mov	r4, r3
+ 529 0052 E8E7     		b	.L84
+ 530              	.L88:
+ 531 0054 0E46     		mov	r6, r1
+ 532 0056 F9E7     		b	.L83
+ 534              		.section	.text.model_mergex,"ax",%progbits
+ 535              		.align	1
+ 536              		.syntax unified
+ 537              		.thumb
+ 538              		.thumb_func
+ 540              	model_mergex:
+ 541              		@ args = 4, pretend = 12, frame = 8
+ 542              		@ frame_needed = 0, uses_anonymous_args = 1
+ 543 0000 0EB4     		push	{r1, r2, r3}
+ 544 0002 70B5     		push	{r4, r5, r6, lr}
+ 545 0004 83B0     		sub	sp, sp, #12
+ 546 0006 079E     		ldr	r6, [sp, #28]
+ 547 0008 0546     		mov	r5, r0
+ 548 000a 70B1     		cbz	r0, .L94
+ 549 000c 08AB     		add	r3, sp, #32
+ 550 000e 0193     		str	r3, [sp, #4]
+ 551 0010 002E     		cmp	r6, #0
+ 552 0012 0ADD     		ble	.L94
+ 553 0014 0024     		movs	r4, #0
+ 554              	.L96:
+ 555 0016 019B     		ldr	r3, [sp, #4]
+ 556 0018 1A1D     		adds	r2, r3, #4
+ 557 001a 0192     		str	r2, [sp, #4]
+ 558 001c 1968     		ldr	r1, [r3]
+ 559 001e 2846     		mov	r0, r5
+ 560 0020 FFF7FEFF 		bl	model_hook
+ 561 0024 0134     		adds	r4, r4, #1
+ 562 0026 A642     		cmp	r6, r4
+ 563 0028 F5D1     		bne	.L96
+ 564              	.L94:
+ 565 002a 2846     		mov	r0, r5
+ 566 002c 03B0     		add	sp, sp, #12
+ 567              		@ sp needed
+ 568 002e BDE87040 		pop	{r4, r5, r6, lr}
+ 569 0032 03B0     		add	sp, sp, #12
+ 570 0034 7047     		bx	lr
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 11
+
+
+ 572              		.section	.text.model_merge,"ax",%progbits
+ 573              		.align	1
+ 574              		.syntax unified
+ 575              		.thumb
+ 576              		.thumb_func
+ 578              	model_merge:
+ 579              		@ args = 0, pretend = 0, frame = 0
+ 580              		@ frame_needed = 0, uses_anonymous_args = 0
+ 581 0000 08B5     		push	{r3, lr}
+ 582 0002 1346     		mov	r3, r2
+ 583 0004 0A46     		mov	r2, r1
+ 584 0006 0221     		movs	r1, #2
+ 585 0008 FFF7FEFF 		bl	model_mergex
+ 586 000c 08BD     		pop	{r3, pc}
+ 588              		.section	.text.new_model,"ax",%progbits
+ 589              		.align	1
+ 590              		.global	new_model
+ 591              		.syntax unified
+ 592              		.thumb
+ 593              		.thumb_func
+ 595              	new_model:
+ 596              		@ args = 0, pretend = 0, frame = 0
+ 597              		@ frame_needed = 0, uses_anonymous_args = 0
+ 598 0000 10B5     		push	{r4, lr}
+ 599 0002 80B1     		cbz	r0, .L105
+ 600 0004 0446     		mov	r4, r0
+ 601 0006 8822     		movs	r2, #136
+ 602 0008 0021     		movs	r1, #0
+ 603 000a FFF7FEFF 		bl	memset
+ 604 000e 2046     		mov	r0, r4
+ 605              	.L103:
+ 606 0010 084B     		ldr	r3, .L106
+ 607 0012 8360     		str	r3, [r0, #8]
+ 608 0014 084B     		ldr	r3, .L106+4
+ 609 0016 C360     		str	r3, [r0, #12]
+ 610 0018 084B     		ldr	r3, .L106+8
+ 611 001a 0361     		str	r3, [r0, #16]
+ 612 001c 084B     		ldr	r3, .L106+12
+ 613 001e 4361     		str	r3, [r0, #20]
+ 614 0020 084B     		ldr	r3, .L106+16
+ 615 0022 8361     		str	r3, [r0, #24]
+ 616 0024 10BD     		pop	{r4, pc}
+ 617              	.L105:
+ 618 0026 8820     		movs	r0, #136
+ 619 0028 FFF7FEFF 		bl	nnom_mem
+ 620 002c 0123     		movs	r3, #1
+ 621 002e 80F88530 		strb	r3, [r0, #133]
+ 622 0032 EDE7     		b	.L103
+ 623              	.L107:
+ 624              		.align	2
+ 625              	.L106:
+ 626 0034 00000000 		.word	model_add
+ 627 0038 00000000 		.word	model_hook
+ 628 003c 00000000 		.word	model_merge
+ 629 0040 00000000 		.word	model_mergex
+ 630 0044 00000000 		.word	model_active
+ 632              		.section	.text.model_delete,"ax",%progbits
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 12
+
+
+ 633              		.align	1
+ 634              		.global	model_delete
+ 635              		.syntax unified
+ 636              		.thumb
+ 637              		.thumb_func
+ 639              	model_delete:
+ 640              		@ args = 0, pretend = 0, frame = 0
+ 641              		@ frame_needed = 0, uses_anonymous_args = 0
+ 642 0000 0028     		cmp	r0, #0
+ 643 0002 30D0     		beq	.L122
+ 644 0004 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 645 0006 0746     		mov	r7, r0
+ 646 0008 0568     		ldr	r5, [r0]
+ 647 000a BDB9     		cbnz	r5, .L116
+ 648              	.L110:
+ 649 000c 97F88530 		ldrb	r3, [r7, #133]	@ zero_extendqisi2
+ 650 0010 1BB3     		cbz	r3, .L125
+ 651              	.L117:
+ 652 0012 154B     		ldr	r3, .L127
+ 653 0014 0022     		movs	r2, #0
+ 654 0016 1A60     		str	r2, [r3]
+ 655 0018 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 656              	.L111:
+ 657 001a 237F     		ldrb	r3, [r4, #28]	@ zero_extendqisi2
+ 658 001c 022B     		cmp	r3, #2
+ 659 001e 15D0     		beq	.L126
+ 660              	.L112:
+ 661 0020 666A     		ldr	r6, [r4, #36]
+ 662 0022 1EB1     		cbz	r6, .L114
+ 663 0024 3346     		mov	r3, r6
+ 664              	.L115:
+ 665 0026 9B68     		ldr	r3, [r3, #8]
+ 666 0028 002B     		cmp	r3, #0
+ 667 002a FCD1     		bne	.L115
+ 668              	.L114:
+ 669 002c 206A     		ldr	r0, [r4, #32]
+ 670 002e FFF7FEFF 		bl	io_list_delete
+ 671 0032 3046     		mov	r0, r6
+ 672 0034 FFF7FEFF 		bl	io_list_delete
+ 673 0038 002D     		cmp	r5, #0
+ 674 003a E7D0     		beq	.L110
+ 675              	.L116:
+ 676 003c 2C46     		mov	r4, r5
+ 677 003e 2D68     		ldr	r5, [r5]
+ 678 0040 E368     		ldr	r3, [r4, #12]
+ 679 0042 002B     		cmp	r3, #0
+ 680 0044 E9D0     		beq	.L111
+ 681 0046 2046     		mov	r0, r4
+ 682 0048 9847     		blx	r3
+ 683 004a E6E7     		b	.L111
+ 684              	.L126:
+ 685 004c 236A     		ldr	r3, [r4, #32]
+ 686 004e 002B     		cmp	r3, #0
+ 687 0050 E6D0     		beq	.L112
+ 688              	.L113:
+ 689 0052 9B68     		ldr	r3, [r3, #8]
+ 690 0054 002B     		cmp	r3, #0
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 13
+
+
+ 691 0056 FCD1     		bne	.L113
+ 692 0058 E2E7     		b	.L112
+ 693              	.L125:
+ 694 005a 8822     		movs	r2, #136
+ 695 005c 0021     		movs	r1, #0
+ 696 005e 3846     		mov	r0, r7
+ 697 0060 FFF7FEFF 		bl	memset
+ 698 0064 D5E7     		b	.L117
+ 699              	.L122:
+ 700 0066 7047     		bx	lr
+ 701              	.L128:
+ 702              		.align	2
+ 703              	.L127:
+ 704 0068 00000000 		.word	nnom_memory_taken
+ 706              		.section	.text.nnom_io_length,"ax",%progbits
+ 707              		.align	1
+ 708              		.global	nnom_io_length
+ 709              		.syntax unified
+ 710              		.thumb
+ 711              		.thumb_func
+ 713              	nnom_io_length:
+ 714              		@ args = 0, pretend = 0, frame = 0
+ 715              		@ frame_needed = 0, uses_anonymous_args = 0
+ 716              		@ link register save eliminated.
+ 717 0000 0346     		mov	r3, r0
+ 718 0002 28B1     		cbz	r0, .L132
+ 719 0004 0020     		movs	r0, #0
+ 720              	.L131:
+ 721 0006 0130     		adds	r0, r0, #1
+ 722 0008 9B68     		ldr	r3, [r3, #8]
+ 723 000a 002B     		cmp	r3, #0
+ 724 000c FBD1     		bne	.L131
+ 725 000e 7047     		bx	lr
+ 726              	.L132:
+ 727 0010 0020     		movs	r0, #0
+ 728 0012 7047     		bx	lr
+ 730              		.section	.text.nnom_hook_length,"ax",%progbits
+ 731              		.align	1
+ 732              		.global	nnom_hook_length
+ 733              		.syntax unified
+ 734              		.thumb
+ 735              		.thumb_func
+ 737              	nnom_hook_length:
+ 738              		@ args = 0, pretend = 0, frame = 0
+ 739              		@ frame_needed = 0, uses_anonymous_args = 0
+ 740              		@ link register save eliminated.
+ 741 0000 0346     		mov	r3, r0
+ 742 0002 28B1     		cbz	r0, .L137
+ 743 0004 0020     		movs	r0, #0
+ 744              	.L136:
+ 745 0006 0130     		adds	r0, r0, #1
+ 746 0008 5B68     		ldr	r3, [r3, #4]
+ 747 000a 002B     		cmp	r3, #0
+ 748 000c FBD1     		bne	.L136
+ 749 000e 7047     		bx	lr
+ 750              	.L137:
+ 751 0010 0020     		movs	r0, #0
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 14
+
+
+ 752 0012 7047     		bx	lr
+ 754              		.section	.rodata.compile_layers.str1.4,"aMS",%progbits,1
+ 755              		.align	2
+ 756              	.LC7:
+ 757 0000 23252D33 		.ascii	"#%-3d %-10s - \000"
+ 757      6420252D 
+ 757      31307320 
+ 757      2D2000
+ 758 000f 00       		.align	2
+ 759              	.LC8:
+ 760 0010 23252D33 		.ascii	"#%-3d %-3s/\000"
+ 760      6420252D 
+ 760      33732F00 
+ 761              		.align	2
+ 762              	.LC9:
+ 763 001c 252D3673 		.ascii	"%-6s - \000"
+ 763      202D2000 
+ 764              		.align	2
+ 765              	.LC10:
+ 766 0024 252D3873 		.ascii	"%-8s - \000"
+ 766      202D2000 
+ 767              		.align	2
+ 768              	.LC11:
+ 769 002c 20202020 		.ascii	"         - \000"
+ 769      20202020 
+ 769      202D2000 
+ 770              		.align	2
+ 771              	.LC12:
+ 772 0038 2534642C 		.ascii	"%4d,\000"
+ 772      00
+ 773 003d 000000   		.align	2
+ 774              	.LC13:
+ 775 0040 20202020 		.ascii	"     \000"
+ 775      2000
+ 776 0046 0000     		.align	2
+ 777              	.LC14:
+ 778 0048 29202000 		.ascii	")  \000"
+ 779              		.align	2
+ 780              	.LC15:
+ 781 004c 20202020 		.ascii	"        \000"
+ 781      20202020 
+ 781      00
+ 782 0055 000000   		.align	2
+ 783              	.LC16:
+ 784 0058 25376420 		.ascii	"%7d \000"
+ 784      00
+ 785 005d 000000   		.align	2
+ 786              	.LC17:
+ 787 0060 2536646B 		.ascii	"%6dk \000"
+ 787      2000
+ 788 0066 0000     		.align	2
+ 789              	.LC18:
+ 790 0068 2533642E 		.ascii	"%3d.%02dM \000"
+ 790      25303264 
+ 790      4D2000
+ 791 0073 00       		.align	2
+ 792              	.LC19:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 15
+
+
+ 793 0074 2533642E 		.ascii	"%3d.%02dG \000"
+ 793      25303264 
+ 793      472000
+ 794 007f 00       		.align	2
+ 795              	.LC20:
+ 796 0080 28253664 		.ascii	"(%6d,%6d,%6d)\000"
+ 796      2C253664 
+ 796      2C253664 
+ 796      2900
+ 797              		.section	.text.compile_layers,"ax",%progbits
+ 798              		.align	1
+ 799              		.global	compile_layers
+ 800              		.syntax unified
+ 801              		.thumb
+ 802              		.thumb_func
+ 804              	compile_layers:
+ 805              		@ args = 0, pretend = 0, frame = 16
+ 806              		@ frame_needed = 0, uses_anonymous_args = 0
+ 807 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 808 0004 85B0     		sub	sp, sp, #20
+ 809 0006 8046     		mov	r8, r0
+ 810 0008 0C46     		mov	r4, r1
+ 811 000a 9146     		mov	r9, r2
+ 812 000c 0122     		movs	r2, #1
+ 813 000e 0392     		str	r2, [sp, #12]
+ 814 0010 9A46     		mov	r10, r3
+ 815 0012 23B1     		cbz	r3, .L198
+ 816              	.L140:
+ 817 0014 002C     		cmp	r4, #0
+ 818 0016 00F0D981 		beq	.L179
+ 819 001a A24F     		ldr	r7, .L207
+ 820 001c E6E0     		b	.L177
+ 821              	.L198:
+ 822 001e 0DF10C0A 		add	r10, sp, #12
+ 823 0022 F7E7     		b	.L140
+ 824              	.L204:
+ 825 0024 4846     		mov	r0, r9
+ 826 0026 FFF7FEFF 		bl	allocate_block
+ 827 002a 0646     		mov	r6, r0
+ 828 002c 037A     		ldrb	r3, [r0, #8]	@ zero_extendqisi2
+ 829 002e 0133     		adds	r3, r3, #1
+ 830 0030 0372     		strb	r3, [r0, #8]
+ 831 0032 E868     		ldr	r0, [r5, #12]
+ 832 0034 FFF7FEFF 		bl	tensor_size
+ 833 0038 0421     		movs	r1, #4
+ 834 003a FFF7FEFF 		bl	nnom_alignto
+ 835 003e 7368     		ldr	r3, [r6, #4]
+ 836 0040 9842     		cmp	r0, r3
+ 837 0042 38BF     		it	cc
+ 838 0044 1846     		movcc	r0, r3
+ 839 0046 7060     		str	r0, [r6, #4]
+ 840 0048 2E61     		str	r6, [r5, #16]
+ 841 004a 0123     		movs	r3, #1
+ 842 004c 7372     		strb	r3, [r6, #9]
+ 843 004e 05E0     		b	.L144
+ 844              	.L142:
+ 845 0050 2B68     		ldr	r3, [r5]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 16
+
+
+ 846 0052 1B69     		ldr	r3, [r3, #16]
+ 847 0054 2B61     		str	r3, [r5, #16]
+ 848 0056 AD68     		ldr	r5, [r5, #8]
+ 849 0058 002D     		cmp	r5, #0
+ 850 005a F9D1     		bne	.L142
+ 851              	.L144:
+ 852 005c 256A     		ldr	r5, [r4, #32]
+ 853 005e 002D     		cmp	r5, #0
+ 854 0060 00F0D180 		beq	.L145
+ 855 0064 CBE0     		b	.L143
+ 856              	.L146:
+ 857 0066 2B69     		ldr	r3, [r5, #16]
+ 858 0068 002B     		cmp	r3, #0
+ 859 006a 00F0B181 		beq	.L180
+ 860 006e 5B7A     		ldrb	r3, [r3, #9]	@ zero_extendqisi2
+ 861 0070 012B     		cmp	r3, #1
+ 862 0072 40F0B281 		bne	.L181
+ 863 0076 AD68     		ldr	r5, [r5, #8]
+ 864 0078 002D     		cmp	r5, #0
+ 865 007a F4D1     		bne	.L146
+ 866 007c C3E0     		b	.L145
+ 867              	.L205:
+ 868 007e 1460     		str	r4, [r2]
+ 869              	.L147:
+ 870 0080 2569     		ldr	r5, [r4, #16]
+ 871 0082 BDB1     		cbz	r5, .L150
+ 872 0084 4846     		mov	r0, r9
+ 873 0086 FFF7FEFF 		bl	allocate_block
+ 874 008a 2860     		str	r0, [r5]
+ 875 008c 2369     		ldr	r3, [r4, #16]
+ 876 008e 1A68     		ldr	r2, [r3]
+ 877 0090 137A     		ldrb	r3, [r2, #8]	@ zero_extendqisi2
+ 878 0092 0133     		adds	r3, r3, #1
+ 879 0094 1372     		strb	r3, [r2, #8]
+ 880 0096 2369     		ldr	r3, [r4, #16]
+ 881 0098 1B68     		ldr	r3, [r3]
+ 882 009a 0122     		movs	r2, #1
+ 883 009c 5A72     		strb	r2, [r3, #9]
+ 884 009e 2569     		ldr	r5, [r4, #16]
+ 885 00a0 0421     		movs	r1, #4
+ 886 00a2 6868     		ldr	r0, [r5, #4]
+ 887 00a4 FFF7FEFF 		bl	nnom_alignto
+ 888 00a8 2B68     		ldr	r3, [r5]
+ 889 00aa 5A68     		ldr	r2, [r3, #4]
+ 890 00ac 9042     		cmp	r0, r2
+ 891 00ae 38BF     		it	cc
+ 892 00b0 1046     		movcc	r0, r2
+ 893 00b2 5860     		str	r0, [r3, #4]
+ 894              	.L150:
+ 895 00b4 DAF80050 		ldr	r5, [r10]
+ 896 00b8 6B1C     		adds	r3, r5, #1
+ 897 00ba CAF80030 		str	r3, [r10]
+ 898 00be 206A     		ldr	r0, [r4, #32]
+ 899 00c0 FFF7FEFF 		bl	io_mem_size
+ 900 00c4 0090     		str	r0, [sp]
+ 901 00c6 606A     		ldr	r0, [r4, #36]
+ 902 00c8 FFF7FEFF 		bl	io_mem_size
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 17
+
+
+ 903 00cc 0190     		str	r0, [sp, #4]
+ 904 00ce A66A     		ldr	r6, [r4, #40]
+ 905 00d0 2369     		ldr	r3, [r4, #16]
+ 906 00d2 DBB1     		cbz	r3, .L182
+ 907 00d4 D3F804B0 		ldr	fp, [r3, #4]
+ 908              	.L151:
+ 909 00d8 227F     		ldrb	r2, [r4, #28]	@ zero_extendqisi2
+ 910 00da 0B2A     		cmp	r2, #11
+ 911 00dc 19D0     		beq	.L152
+ 912 00de 02EB4202 		add	r2, r2, r2, lsl #1
+ 913 00e2 714B     		ldr	r3, .L207+4
+ 914 00e4 03EB8202 		add	r2, r3, r2, lsl #2
+ 915 00e8 2946     		mov	r1, r5
+ 916 00ea 7048     		ldr	r0, .L207+8
+ 917 00ec FFF7FEFF 		bl	printf
+ 918              	.L153:
+ 919 00f0 6369     		ldr	r3, [r4, #20]
+ 920 00f2 E3B1     		cbz	r3, .L154
+ 921 00f4 197A     		ldrb	r1, [r3, #8]	@ zero_extendqisi2
+ 922 00f6 6E4B     		ldr	r3, .L207+12
+ 923 00f8 03EBC101 		add	r1, r3, r1, lsl #3
+ 924 00fc 6D48     		ldr	r0, .L207+16
+ 925 00fe FFF7FEFF 		bl	printf
+ 926              	.L155:
+ 927 0102 2820     		movs	r0, #40
+ 928 0104 FFF7FEFF 		bl	putchar
+ 929 0108 0025     		movs	r5, #0
+ 930 010a 1AE0     		b	.L158
+ 931              	.L182:
+ 932 010c 4FF0000B 		mov	fp, #0
+ 933 0110 E2E7     		b	.L151
+ 934              	.L152:
+ 935 0112 694A     		ldr	r2, .L207+20
+ 936 0114 2946     		mov	r1, r5
+ 937 0116 6948     		ldr	r0, .L207+24
+ 938 0118 FFF7FEFF 		bl	printf
+ 939 011c 236B     		ldr	r3, [r4, #48]
+ 940 011e 197D     		ldrb	r1, [r3, #20]	@ zero_extendqisi2
+ 941 0120 674B     		ldr	r3, .L207+28
+ 942 0122 03EBC101 		add	r1, r3, r1, lsl #3
+ 943 0126 6748     		ldr	r0, .L207+32
+ 944 0128 FFF7FEFF 		bl	printf
+ 945 012c E0E7     		b	.L153
+ 946              	.L154:
+ 947 012e 6648     		ldr	r0, .L207+36
+ 948 0130 FFF7FEFF 		bl	printf
+ 949 0134 E5E7     		b	.L155
+ 950              	.L156:
+ 951 0136 6548     		ldr	r0, .L207+40
+ 952 0138 FFF7FEFF 		bl	printf
+ 953              	.L157:
+ 954 013c 0135     		adds	r5, r5, #1
+ 955 013e 032D     		cmp	r5, #3
+ 956 0140 0BD0     		beq	.L199
+ 957              	.L158:
+ 958 0142 636A     		ldr	r3, [r4, #36]
+ 959 0144 DB68     		ldr	r3, [r3, #12]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 18
+
+
+ 960 0146 5A7C     		ldrb	r2, [r3, #17]	@ zero_extendqisi2
+ 961 0148 AA42     		cmp	r2, r5
+ 962 014a F4DD     		ble	.L156
+ 963 014c 5B68     		ldr	r3, [r3, #4]
+ 964 014e 33F81510 		ldrh	r1, [r3, r5, lsl #1]
+ 965 0152 3846     		mov	r0, r7
+ 966 0154 FFF7FEFF 		bl	printf
+ 967 0158 F0E7     		b	.L157
+ 968              	.L199:
+ 969 015a 5D48     		ldr	r0, .L207+44
+ 970 015c FFF7FEFF 		bl	printf
+ 971 0160 C6B1     		cbz	r6, .L200
+ 972 0162 42F20F73 		movw	r3, #9999
+ 973 0166 9E42     		cmp	r6, r3
+ 974 0168 5CD9     		bls	.L201
+ 975 016a 5A4B     		ldr	r3, .L207+48
+ 976 016c 9E42     		cmp	r6, r3
+ 977 016e 5ED9     		bls	.L202
+ 978 0170 594B     		ldr	r3, .L207+52
+ 979 0172 9E42     		cmp	r6, r3
+ 980 0174 63D8     		bhi	.L163
+ 981 0176 5949     		ldr	r1, .L207+56
+ 982 0178 A1FB0631 		umull	r3, r1, r1, r6
+ 983 017c 890C     		lsrs	r1, r1, #18
+ 984 017e 584A     		ldr	r2, .L207+60
+ 985 0180 02FB1162 		mls	r2, r2, r1, r6
+ 986 0184 574B     		ldr	r3, .L207+64
+ 987 0186 A3FB0232 		umull	r3, r2, r3, r2
+ 988 018a 520B     		lsrs	r2, r2, #13
+ 989 018c 5648     		ldr	r0, .L207+68
+ 990 018e FFF7FEFF 		bl	printf
+ 991 0192 02E0     		b	.L160
+ 992              	.L200:
+ 993 0194 5548     		ldr	r0, .L207+72
+ 994 0196 FFF7FEFF 		bl	printf
+ 995              	.L160:
+ 996 019a 5B46     		mov	r3, fp
+ 997 019c 019A     		ldr	r2, [sp, #4]
+ 998 019e 0099     		ldr	r1, [sp]
+ 999 01a0 5348     		ldr	r0, .L207+76
+ 1000 01a2 FFF7FEFF 		bl	printf
+ 1001 01a6 656A     		ldr	r5, [r4, #36]
+ 1002 01a8 002D     		cmp	r5, #0
+ 1003 01aa 00F01981 		beq	.L183
+ 1004 01ae AB68     		ldr	r3, [r5, #8]
+ 1005 01b0 002B     		cmp	r3, #0
+ 1006 01b2 40F0AD80 		bne	.L164
+ 1007 01b6 6B68     		ldr	r3, [r5, #4]
+ 1008 01b8 002B     		cmp	r3, #0
+ 1009 01ba 40F0A980 		bne	.L164
+ 1010 01be 236A     		ldr	r3, [r4, #32]
+ 1011 01c0 1A7E     		ldrb	r2, [r3, #24]	@ zero_extendqisi2
+ 1012 01c2 12B1     		cbz	r2, .L165
+ 1013 01c4 2A7E     		ldrb	r2, [r5, #24]	@ zero_extendqisi2
+ 1014 01c6 002A     		cmp	r2, #0
+ 1015 01c8 49D1     		bne	.L166
+ 1016              	.L165:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 19
+
+
+ 1017 01ca 1B69     		ldr	r3, [r3, #16]
+ 1018 01cc 2B61     		str	r3, [r5, #16]
+ 1019 01ce 4846     		mov	r0, r9
+ 1020 01d0 FFF7FEFF 		bl	print_memory_block_info
+ 1021 01d4 2046     		mov	r0, r4
+ 1022 01d6 FFF7FEFF 		bl	release_comp_mem
+ 1023              	.L167:
+ 1024 01da 636A     		ldr	r3, [r4, #36]
+ 1025 01dc 1B68     		ldr	r3, [r3]
+ 1026 01de 002B     		cmp	r3, #0
+ 1027 01e0 00F00681 		beq	.L187
+ 1028 01e4 5C69     		ldr	r4, [r3, #20]
+ 1029 01e6 002C     		cmp	r4, #0
+ 1030 01e8 00F0EE80 		beq	.L203
+ 1031              	.L177:
+ 1032 01ec 256A     		ldr	r5, [r4, #32]
+ 1033 01ee 2B68     		ldr	r3, [r5]
+ 1034 01f0 002B     		cmp	r3, #0
+ 1035 01f2 7FF42DAF 		bne	.L142
+ 1036 01f6 2B69     		ldr	r3, [r5, #16]
+ 1037 01f8 002B     		cmp	r3, #0
+ 1038 01fa 3FF413AF 		beq	.L204
+ 1039              	.L143:
+ 1040 01fe AB68     		ldr	r3, [r5, #8]
+ 1041 0200 002B     		cmp	r3, #0
+ 1042 0202 7FF430AF 		bne	.L146
+ 1043              	.L145:
+ 1044 0206 A368     		ldr	r3, [r4, #8]
+ 1045 0208 2046     		mov	r0, r4
+ 1046 020a 9847     		blx	r3
+ 1047 020c A045     		cmp	r8, r4
+ 1048 020e 3FF437AF 		beq	.L147
+ 1049 0212 4346     		mov	r3, r8
+ 1050              	.L148:
+ 1051 0214 1A46     		mov	r2, r3
+ 1052 0216 1B68     		ldr	r3, [r3]
+ 1053 0218 002B     		cmp	r3, #0
+ 1054 021a 3FF430AF 		beq	.L205
+ 1055 021e A242     		cmp	r2, r4
+ 1056 0220 F8D1     		bne	.L148
+ 1057 0222 2DE7     		b	.L147
+ 1058              	.L201:
+ 1059 0224 3146     		mov	r1, r6
+ 1060 0226 3348     		ldr	r0, .L207+80
+ 1061 0228 FFF7FEFF 		bl	printf
+ 1062 022c B5E7     		b	.L160
+ 1063              	.L202:
+ 1064 022e 3249     		ldr	r1, .L207+84
+ 1065 0230 A1FB0661 		umull	r6, r1, r1, r6
+ 1066 0234 8909     		lsrs	r1, r1, #6
+ 1067 0236 3148     		ldr	r0, .L207+88
+ 1068 0238 FFF7FEFF 		bl	printf
+ 1069 023c ADE7     		b	.L160
+ 1070              	.L163:
+ 1071 023e 710A     		lsrs	r1, r6, #9
+ 1072 0240 2F4B     		ldr	r3, .L207+92
+ 1073 0242 A3FB0131 		umull	r3, r1, r3, r1
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 20
+
+
+ 1074 0246 C909     		lsrs	r1, r1, #7
+ 1075 0248 2E4A     		ldr	r2, .L207+96
+ 1076 024a 02FB1162 		mls	r2, r2, r1, r6
+ 1077 024e 2E4B     		ldr	r3, .L207+100
+ 1078 0250 A3FB0232 		umull	r3, r2, r3, r2
+ 1079 0254 920D     		lsrs	r2, r2, #22
+ 1080 0256 2D48     		ldr	r0, .L207+104
+ 1081 0258 FFF7FEFF 		bl	printf
+ 1082 025c 9DE7     		b	.L160
+ 1083              	.L166:
+ 1084 025e 4846     		mov	r0, r9
+ 1085 0260 FFF7FEFF 		bl	allocate_block
+ 1086 0264 0546     		mov	r5, r0
+ 1087 0266 0028     		cmp	r0, #0
+ 1088 0268 00F0BC80 		beq	.L184
+ 1089 026c 0123     		movs	r3, #1
+ 1090 026e 0372     		strb	r3, [r0, #8]
+ 1091 0270 4372     		strb	r3, [r0, #9]
+ 1092 0272 636A     		ldr	r3, [r4, #36]
+ 1093 0274 D868     		ldr	r0, [r3, #12]
+ 1094 0276 FFF7FEFF 		bl	tensor_size
+ 1095 027a 0421     		movs	r1, #4
+ 1096 027c FFF7FEFF 		bl	nnom_alignto
+ 1097 0280 6B68     		ldr	r3, [r5, #4]
+ 1098 0282 9842     		cmp	r0, r3
+ 1099 0284 38BF     		it	cc
+ 1100 0286 1846     		movcc	r0, r3
+ 1101 0288 6860     		str	r0, [r5, #4]
+ 1102 028a 636A     		ldr	r3, [r4, #36]
+ 1103 028c 1D61     		str	r5, [r3, #16]
+ 1104 028e 4846     		mov	r0, r9
+ 1105 0290 FFF7FEFF 		bl	print_memory_block_info
+ 1106 0294 2046     		mov	r0, r4
+ 1107 0296 FFF7FEFF 		bl	release_input_mem
+ 1108 029a 2046     		mov	r0, r4
+ 1109 029c FFF7FEFF 		bl	release_comp_mem
+ 1110 02a0 9BE7     		b	.L167
+ 1111              	.L208:
+ 1112 02a2 00BF     		.align	2
+ 1113              	.L207:
+ 1114 02a4 38000000 		.word	.LC12
+ 1115 02a8 00000000 		.word	default_layer_names
+ 1116 02ac 00000000 		.word	.LC7
+ 1117 02b0 00000000 		.word	default_activation_names
+ 1118 02b4 24000000 		.word	.LC10
+ 1119 02b8 84000000 		.word	default_layer_names+132
+ 1120 02bc 10000000 		.word	.LC8
+ 1121 02c0 00000000 		.word	default_cell_names
+ 1122 02c4 1C000000 		.word	.LC9
+ 1123 02c8 2C000000 		.word	.LC11
+ 1124 02cc 40000000 		.word	.LC13
+ 1125 02d0 48000000 		.word	.LC14
+ 1126 02d4 3F420F00 		.word	999999
+ 1127 02d8 FFC99A3B 		.word	999999999
+ 1128 02dc 83DE1B43 		.word	1125899907
+ 1129 02e0 40420F00 		.word	1000000
+ 1130 02e4 5917B7D1 		.word	-776530087
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 21
+
+
+ 1131 02e8 68000000 		.word	.LC18
+ 1132 02ec 4C000000 		.word	.LC15
+ 1133 02f0 80000000 		.word	.LC20
+ 1134 02f4 58000000 		.word	.LC16
+ 1135 02f8 D34D6210 		.word	274877907
+ 1136 02fc 60000000 		.word	.LC17
+ 1137 0300 834B0400 		.word	281475
+ 1138 0304 00CA9A3B 		.word	1000000000
+ 1139 0308 6BCA5F6B 		.word	1801439851
+ 1140 030c 74000000 		.word	.LC19
+ 1141              	.L164:
+ 1142 0310 236A     		ldr	r3, [r4, #32]
+ 1143 0312 1A7E     		ldrb	r2, [r3, #24]	@ zero_extendqisi2
+ 1144 0314 5AB3     		cbz	r2, .L168
+ 1145 0316 2A7E     		ldrb	r2, [r5, #24]	@ zero_extendqisi2
+ 1146 0318 4AB3     		cbz	r2, .L168
+ 1147 031a 0427     		movs	r7, #4
+ 1148 031c 0126     		movs	r6, #1
+ 1149              	.L169:
+ 1150 031e 2B68     		ldr	r3, [r5]
+ 1151 0320 DBB1     		cbz	r3, .L171
+ 1152 0322 4846     		mov	r0, r9
+ 1153 0324 FFF7FEFF 		bl	allocate_block
+ 1154 0328 2861     		str	r0, [r5, #16]
+ 1155 032a 0028     		cmp	r0, #0
+ 1156 032c 5DD0     		beq	.L185
+ 1157 032e E868     		ldr	r0, [r5, #12]
+ 1158 0330 FFF7FEFF 		bl	tensor_size
+ 1159 0334 3946     		mov	r1, r7
+ 1160 0336 FFF7FEFF 		bl	nnom_alignto
+ 1161 033a 2B69     		ldr	r3, [r5, #16]
+ 1162 033c 5A68     		ldr	r2, [r3, #4]
+ 1163 033e 9042     		cmp	r0, r2
+ 1164 0340 38BF     		it	cc
+ 1165 0342 1046     		movcc	r0, r2
+ 1166 0344 5860     		str	r0, [r3, #4]
+ 1167 0346 2846     		mov	r0, r5
+ 1168 0348 FFF7FEFF 		bl	nnom_hook_length
+ 1169 034c 2B69     		ldr	r3, [r5, #16]
+ 1170 034e 1872     		strb	r0, [r3, #8]
+ 1171 0350 2B69     		ldr	r3, [r5, #16]
+ 1172 0352 5E72     		strb	r6, [r3, #9]
+ 1173 0354 AD68     		ldr	r5, [r5, #8]
+ 1174 0356 002D     		cmp	r5, #0
+ 1175 0358 E1D1     		bne	.L169
+ 1176              	.L171:
+ 1177 035a 4846     		mov	r0, r9
+ 1178 035c FFF7FEFF 		bl	print_memory_block_info
+ 1179 0360 2046     		mov	r0, r4
+ 1180 0362 FFF7FEFF 		bl	release_input_mem
+ 1181 0366 2046     		mov	r0, r4
+ 1182 0368 FFF7FEFF 		bl	release_comp_mem
+ 1183 036c 16E0     		b	.L170
+ 1184              	.L168:
+ 1185 036e 1B69     		ldr	r3, [r3, #16]
+ 1186 0370 2B61     		str	r3, [r5, #16]
+ 1187 0372 656A     		ldr	r5, [r4, #36]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 22
+
+
+ 1188 0374 2846     		mov	r0, r5
+ 1189 0376 FFF7FEFF 		bl	nnom_hook_length
+ 1190 037a 2A69     		ldr	r2, [r5, #16]
+ 1191 037c 137A     		ldrb	r3, [r2, #8]	@ zero_extendqisi2
+ 1192 037e 0344     		add	r3, r3, r0
+ 1193 0380 1372     		strb	r3, [r2, #8]
+ 1194 0382 636A     		ldr	r3, [r4, #36]
+ 1195 0384 1B69     		ldr	r3, [r3, #16]
+ 1196 0386 0122     		movs	r2, #1
+ 1197 0388 5A72     		strb	r2, [r3, #9]
+ 1198 038a 4846     		mov	r0, r9
+ 1199 038c FFF7FEFF 		bl	print_memory_block_info
+ 1200 0390 2046     		mov	r0, r4
+ 1201 0392 FFF7FEFF 		bl	release_input_mem
+ 1202 0396 2046     		mov	r0, r4
+ 1203 0398 FFF7FEFF 		bl	release_comp_mem
+ 1204              	.L170:
+ 1205 039c 656A     		ldr	r5, [r4, #36]
+ 1206 039e 1DB9     		cbnz	r5, .L176
+ 1207 03a0 0020     		movs	r0, #0
+ 1208 03a2 17E0     		b	.L141
+ 1209              	.L174:
+ 1210 03a4 AD68     		ldr	r5, [r5, #8]
+ 1211 03a6 6DB1     		cbz	r5, .L206
+ 1212              	.L176:
+ 1213 03a8 2C46     		mov	r4, r5
+ 1214              	.L173:
+ 1215 03aa 2168     		ldr	r1, [r4]
+ 1216 03ac 0029     		cmp	r1, #0
+ 1217 03ae F9D0     		beq	.L174
+ 1218 03b0 5346     		mov	r3, r10
+ 1219 03b2 4A46     		mov	r2, r9
+ 1220 03b4 4969     		ldr	r1, [r1, #20]
+ 1221 03b6 4046     		mov	r0, r8
+ 1222 03b8 FFF7FEFF 		bl	compile_layers
+ 1223 03bc 6468     		ldr	r4, [r4, #4]
+ 1224 03be 002C     		cmp	r4, #0
+ 1225 03c0 F3D1     		bne	.L173
+ 1226 03c2 EFE7     		b	.L174
+ 1227              	.L206:
+ 1228 03c4 0020     		movs	r0, #0
+ 1229 03c6 05E0     		b	.L141
+ 1230              	.L203:
+ 1231 03c8 0020     		movs	r0, #0
+ 1232 03ca 03E0     		b	.L141
+ 1233              	.L179:
+ 1234 03cc 0020     		movs	r0, #0
+ 1235 03ce 01E0     		b	.L141
+ 1236              	.L180:
+ 1237 03d0 6FF00700 		mvn	r0, #7
+ 1238              	.L141:
+ 1239 03d4 05B0     		add	sp, sp, #20
+ 1240              		@ sp needed
+ 1241 03d6 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 1242              	.L181:
+ 1243 03da 6FF00700 		mvn	r0, #7
+ 1244 03de F9E7     		b	.L141
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 23
+
+
+ 1245              	.L183:
+ 1246 03e0 0020     		movs	r0, #0
+ 1247 03e2 F7E7     		b	.L141
+ 1248              	.L184:
+ 1249 03e4 6FF00600 		mvn	r0, #6
+ 1250 03e8 F4E7     		b	.L141
+ 1251              	.L185:
+ 1252 03ea 6FF00600 		mvn	r0, #6
+ 1253 03ee F1E7     		b	.L141
+ 1254              	.L187:
+ 1255 03f0 0020     		movs	r0, #0
+ 1256 03f2 EFE7     		b	.L141
+ 1258              		.section	.rodata.mem_analysis_result.str1.4,"aMS",%progbits,1
+ 1259              		.align	2
+ 1260              	.LC21:
+ 1261 0000 4D656D6F 		.ascii	"Memory cost by each block:\012 \000"
+ 1261      72792063 
+ 1261      6F737420 
+ 1261      62792065 
+ 1261      61636820 
+ 1262 001d 000000   		.align	2
+ 1263              	.LC22:
+ 1264 0020 626C6B5F 		.ascii	"blk_%d:%d  \000"
+ 1264      25643A25 
+ 1264      64202000 
+ 1265              		.align	2
+ 1266              	.LC23:
+ 1267 002c 0A204D65 		.ascii	"\012 Memory cost by network buffers: %d bytes\012\000"
+ 1267      6D6F7279 
+ 1267      20636F73 
+ 1267      74206279 
+ 1267      206E6574 
+ 1268              		.section	.text.mem_analysis_result,"ax",%progbits
+ 1269              		.align	1
+ 1270              		.global	mem_analysis_result
+ 1271              		.syntax unified
+ 1272              		.thumb
+ 1273              		.thumb_func
+ 1275              	mem_analysis_result:
+ 1276              		@ args = 0, pretend = 0, frame = 0
+ 1277              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1278 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 1279 0002 0546     		mov	r5, r0
+ 1280 0004 0A48     		ldr	r0, .L213
+ 1281 0006 FFF7FEFF 		bl	printf
+ 1282 000a 0026     		movs	r6, #0
+ 1283 000c 3446     		mov	r4, r6
+ 1284 000e 094F     		ldr	r7, .L213+4
+ 1285              	.L210:
+ 1286 0010 6A6A     		ldr	r2, [r5, #36]
+ 1287 0012 1644     		add	r6, r6, r2
+ 1288 0014 2146     		mov	r1, r4
+ 1289 0016 3846     		mov	r0, r7
+ 1290 0018 FFF7FEFF 		bl	printf
+ 1291 001c 0134     		adds	r4, r4, #1
+ 1292 001e 0C35     		adds	r5, r5, #12
+ 1293 0020 082C     		cmp	r4, #8
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 24
+
+
+ 1294 0022 F5D1     		bne	.L210
+ 1295 0024 3146     		mov	r1, r6
+ 1296 0026 0448     		ldr	r0, .L213+8
+ 1297 0028 FFF7FEFF 		bl	printf
+ 1298 002c 3046     		mov	r0, r6
+ 1299 002e F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1300              	.L214:
+ 1301              		.align	2
+ 1302              	.L213:
+ 1303 0030 00000000 		.word	.LC21
+ 1304 0034 20000000 		.word	.LC22
+ 1305 0038 2C000000 		.word	.LC23
+ 1307              		.section	.text.block_mem_set,"ax",%progbits
+ 1308              		.align	1
+ 1309              		.global	block_mem_set
+ 1310              		.syntax unified
+ 1311              		.thumb
+ 1312              		.thumb_func
+ 1314              	block_mem_set:
+ 1315              		@ args = 0, pretend = 0, frame = 0
+ 1316              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1317              		@ link register save eliminated.
+ 1318 0000 0346     		mov	r3, r0
+ 1319 0002 00F1600C 		add	ip, r0, #96
+ 1320 0006 0022     		movs	r2, #0
+ 1321 0008 406A     		ldr	r0, [r0, #36]
+ 1322 000a 60B1     		cbz	r0, .L224
+ 1323 000c 10B4     		push	{r4}
+ 1324 000e 01E0     		b	.L222
+ 1325              	.L217:
+ 1326 0010 586A     		ldr	r0, [r3, #36]
+ 1327 0012 28B1     		cbz	r0, .L216
+ 1328              	.L222:
+ 1329 0014 8C18     		adds	r4, r1, r2
+ 1330 0016 1C62     		str	r4, [r3, #32]
+ 1331 0018 0244     		add	r2, r2, r0
+ 1332 001a 0C33     		adds	r3, r3, #12
+ 1333 001c 6345     		cmp	r3, ip
+ 1334 001e F7D1     		bne	.L217
+ 1335              	.L216:
+ 1336 0020 0020     		movs	r0, #0
+ 1337 0022 10BC     		pop	{r4}
+ 1338 0024 7047     		bx	lr
+ 1339              	.L224:
+ 1340 0026 0020     		movs	r0, #0
+ 1341 0028 7047     		bx	lr
+ 1343              		.section	.text.tensor_mem_set,"ax",%progbits
+ 1344              		.align	1
+ 1345              		.global	tensor_mem_set
+ 1346              		.syntax unified
+ 1347              		.thumb
+ 1348              		.thumb_func
+ 1350              	tensor_mem_set:
+ 1351              		@ args = 0, pretend = 0, frame = 0
+ 1352              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1353              		@ link register save eliminated.
+ 1354 0000 0068     		ldr	r0, [r0]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 25
+
+
+ 1355 0002 A0B1     		cbz	r0, .L226
+ 1356              	.L231:
+ 1357 0004 036A     		ldr	r3, [r0, #32]
+ 1358 0006 33B1     		cbz	r3, .L227
+ 1359              	.L228:
+ 1360 0008 DA68     		ldr	r2, [r3, #12]
+ 1361 000a 1969     		ldr	r1, [r3, #16]
+ 1362 000c 0968     		ldr	r1, [r1]
+ 1363 000e 1160     		str	r1, [r2]
+ 1364 0010 9B68     		ldr	r3, [r3, #8]
+ 1365 0012 002B     		cmp	r3, #0
+ 1366 0014 F8D1     		bne	.L228
+ 1367              	.L227:
+ 1368 0016 436A     		ldr	r3, [r0, #36]
+ 1369 0018 33B1     		cbz	r3, .L229
+ 1370              	.L230:
+ 1371 001a DA68     		ldr	r2, [r3, #12]
+ 1372 001c 1969     		ldr	r1, [r3, #16]
+ 1373 001e 0968     		ldr	r1, [r1]
+ 1374 0020 1160     		str	r1, [r2]
+ 1375 0022 9B68     		ldr	r3, [r3, #8]
+ 1376 0024 002B     		cmp	r3, #0
+ 1377 0026 F8D1     		bne	.L230
+ 1378              	.L229:
+ 1379 0028 0068     		ldr	r0, [r0]
+ 1380 002a 0028     		cmp	r0, #0
+ 1381 002c EAD1     		bne	.L231
+ 1382              	.L226:
+ 1383 002e 0020     		movs	r0, #0
+ 1384 0030 7047     		bx	lr
+ 1386              		.section	.rodata.set_tailed_activation.str1.4,"aMS",%progbits,1
+ 1387              		.align	2
+ 1388              	.LC24:
+ 1389 0000 4572726F 		.ascii	"Error: NULL object.\000"
+ 1389      723A204E 
+ 1389      554C4C20 
+ 1389      6F626A65 
+ 1389      63742E00 
+ 1390              		.section	.text.set_tailed_activation,"ax",%progbits
+ 1391              		.align	1
+ 1392              		.global	set_tailed_activation
+ 1393              		.syntax unified
+ 1394              		.thumb
+ 1395              		.thumb_func
+ 1397              	set_tailed_activation:
+ 1398              		@ args = 0, pretend = 0, frame = 0
+ 1399              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1400 0000 08B5     		push	{r3, lr}
+ 1401 0002 38B1     		cbz	r0, .L243
+ 1402 0004 0368     		ldr	r3, [r0]
+ 1403 0006 83B9     		cbnz	r3, .L238
+ 1404 0008 0B48     		ldr	r0, .L246
+ 1405 000a FFF7FEFF 		bl	puts
+ 1406 000e 4FF0FF30 		mov	r0, #-1
+ 1407 0012 0FE0     		b	.L237
+ 1408              	.L243:
+ 1409 0014 0848     		ldr	r0, .L246
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 26
+
+
+ 1410 0016 FFF7FEFF 		bl	puts
+ 1411 001a 4FF0FF30 		mov	r0, #-1
+ 1412 001e 09E0     		b	.L237
+ 1413              	.L245:
+ 1414 0020 596A     		ldr	r1, [r3, #36]
+ 1415 0022 C968     		ldr	r1, [r1, #12]
+ 1416 0024 5160     		str	r1, [r2, #4]
+ 1417              	.L239:
+ 1418 0026 1B68     		ldr	r3, [r3]
+ 1419 0028 1BB1     		cbz	r3, .L244
+ 1420              	.L238:
+ 1421 002a 5A69     		ldr	r2, [r3, #20]
+ 1422 002c 002A     		cmp	r2, #0
+ 1423 002e F7D1     		bne	.L245
+ 1424 0030 F9E7     		b	.L239
+ 1425              	.L244:
+ 1426 0032 0020     		movs	r0, #0
+ 1427              	.L237:
+ 1428 0034 08BD     		pop	{r3, pc}
+ 1429              	.L247:
+ 1430 0036 00BF     		.align	2
+ 1431              	.L246:
+ 1432 0038 00000000 		.word	.LC24
+ 1434              		.section	.rodata.model_compile.str1.4,"aMS",%progbits,1
+ 1435              		.align	2
+ 1436              	.LC25:
+ 1437 0000 4E4E6F4D 		.ascii	"NNoM version %d.%d.%d\012\000"
+ 1437      20766572 
+ 1437      73696F6E 
+ 1437      2025642E 
+ 1437      25642E25 
+ 1438 0017 00       		.align	2
+ 1439              	.LC26:
+ 1440 0018 546F2064 		.ascii	"To disable logs, please void the marco 'NNOM_LOG(.."
+ 1440      69736162 
+ 1440      6C65206C 
+ 1440      6F67732C 
+ 1440      20706C65 
+ 1441 004b 2E292720 		.ascii	".)' in 'nnom_port.h'.\000"
+ 1441      696E2027 
+ 1441      6E6E6F6D 
+ 1441      5F706F72 
+ 1441      742E6827 
+ 1442 0061 000000   		.align	2
+ 1443              	.LC27:
+ 1444 0064 44617461 		.ascii	"Data format: Channel last (HWC)\000"
+ 1444      20666F72 
+ 1444      6D61743A 
+ 1444      20436861 
+ 1444      6E6E656C 
+ 1445              		.align	2
+ 1446              	.LC28:
+ 1447 0084 53746174 		.ascii	"Static memory size set to: %d\012\000"
+ 1447      6963206D 
+ 1447      656D6F72 
+ 1447      79207369 
+ 1447      7A652073 
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 27
+
+
+ 1448 00a3 00       		.align	2
+ 1449              	.LC29:
+ 1450 00a4 53746172 		.ascii	"Start compiling model...\000"
+ 1450      7420636F 
+ 1450      6D70696C 
+ 1450      696E6720 
+ 1450      6D6F6465 
+ 1451 00bd 000000   		.align	2
+ 1452              	.LC30:
+ 1453 00c0 4C617965 		.ascii	"Layer(#)         Activation    output shape    ops("
+ 1453      72282329 
+ 1453      20202020 
+ 1453      20202020 
+ 1453      20416374 
+ 1454 00f3 4D414329 		.ascii	"MAC)   mem(in, out, buf)      mem blk lifetime\000"
+ 1454      2020206D 
+ 1454      656D2869 
+ 1454      6E2C206F 
+ 1454      75742C20 
+ 1455 0122 0000     		.align	2
+ 1456              	.LC31:
+ 1457 0124 2D2D2D2D 		.ascii	"---------------------------------------------------"
+ 1457      2D2D2D2D 
+ 1457      2D2D2D2D 
+ 1457      2D2D2D2D 
+ 1457      2D2D2D2D 
+ 1458 0157 2D2D2D2D 		.ascii	"----------------------------------------------\000"
+ 1458      2D2D2D2D 
+ 1458      2D2D2D2D 
+ 1458      2D2D2D2D 
+ 1458      2D2D2D2D 
+ 1459 0186 0000     		.align	2
+ 1460              	.LC32:
+ 1461 0188 5741524E 		.ascii	"WARNING: the last layer '%s' is not the Output Laye"
+ 1461      494E473A 
+ 1461      20746865 
+ 1461      206C6173 
+ 1461      74206C61 
+ 1462 01bb 722C2070 		.ascii	"r, please check carefully.\012\000"
+ 1462      6C656173 
+ 1462      65206368 
+ 1462      65636B20 
+ 1462      63617265 
+ 1463 01d7 00       		.align	2
+ 1464              	.LC33:
+ 1465 01d8 4552524F 		.ascii	"ERROR: No enough memory for network buffer, require"
+ 1465      523A204E 
+ 1465      6F20656E 
+ 1465      6F756768 
+ 1465      206D656D 
+ 1466 020b 64202564 		.ascii	"d %d bytes\012\000"
+ 1466      20627974 
+ 1466      65730A00 
+ 1467 0217 00       		.align	2
+ 1468              	.LC34:
+ 1469 0218 20546F74 		.ascii	" Total memory occupied: %d bytes\012\000"
+ 1469      616C206D 
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 28
+
+
+ 1469      656D6F72 
+ 1469      79206F63 
+ 1469      63757069 
+ 1470              		.section	.text.model_compile,"ax",%progbits
+ 1471              		.align	1
+ 1472              		.global	model_compile
+ 1473              		.syntax unified
+ 1474              		.thumb
+ 1475              		.thumb_func
+ 1477              	model_compile:
+ 1478              		@ args = 0, pretend = 0, frame = 8
+ 1479              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1480 0000 70B5     		push	{r4, r5, r6, lr}
+ 1481 0002 82B0     		sub	sp, sp, #8
+ 1482 0004 0123     		movs	r3, #1
+ 1483 0006 0193     		str	r3, [sp, #4]
+ 1484 0008 0028     		cmp	r0, #0
+ 1485 000a 54D0     		beq	.L259
+ 1486 000c 1546     		mov	r5, r2
+ 1487 000e 0446     		mov	r4, r0
+ 1488 0010 0029     		cmp	r1, #0
+ 1489 0012 56D0     		beq	.L260
+ 1490 0014 0160     		str	r1, [r0]
+ 1491 0016 6260     		str	r2, [r4, #4]
+ 1492 0018 002A     		cmp	r2, #0
+ 1493 001a 58D0     		beq	.L261
+ 1494              	.L252:
+ 1495 001c 0323     		movs	r3, #3
+ 1496 001e 0422     		movs	r2, #4
+ 1497 0020 0021     		movs	r1, #0
+ 1498 0022 3548     		ldr	r0, .L264
+ 1499 0024 FFF7FEFF 		bl	printf
+ 1500 0028 3448     		ldr	r0, .L264+4
+ 1501 002a FFF7FEFF 		bl	puts
+ 1502 002e 3448     		ldr	r0, .L264+8
+ 1503 0030 FFF7FEFF 		bl	puts
+ 1504 0034 334B     		ldr	r3, .L264+12
+ 1505 0036 1968     		ldr	r1, [r3]
+ 1506 0038 3348     		ldr	r0, .L264+16
+ 1507 003a FFF7FEFF 		bl	printf
+ 1508 003e 3348     		ldr	r0, .L264+20
+ 1509 0040 FFF7FEFF 		bl	puts
+ 1510 0044 3248     		ldr	r0, .L264+24
+ 1511 0046 FFF7FEFF 		bl	puts
+ 1512 004a 324E     		ldr	r6, .L264+28
+ 1513 004c 3046     		mov	r0, r6
+ 1514 004e FFF7FEFF 		bl	puts
+ 1515 0052 2246     		mov	r2, r4
+ 1516 0054 52F8200B 		ldr	r0, [r2], #32
+ 1517 0058 01AB     		add	r3, sp, #4
+ 1518 005a 0146     		mov	r1, r0
+ 1519 005c FFF7FEFF 		bl	compile_layers
+ 1520 0060 3046     		mov	r0, r6
+ 1521 0062 FFF7FEFF 		bl	puts
+ 1522 0066 297F     		ldrb	r1, [r5, #28]	@ zero_extendqisi2
+ 1523 0068 0329     		cmp	r1, #3
+ 1524 006a 35D1     		bne	.L262
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 29
+
+
+ 1525              	.L253:
+ 1526 006c 2046     		mov	r0, r4
+ 1527 006e FFF7FEFF 		bl	mem_analysis_result
+ 1528 0072 0546     		mov	r5, r0
+ 1529 0074 FFF7FEFF 		bl	nnom_mem
+ 1530 0078 0646     		mov	r6, r0
+ 1531 007a 0028     		cmp	r0, #0
+ 1532 007c 35D0     		beq	.L263
+ 1533 007e 264B     		ldr	r3, .L264+32
+ 1534 0080 1968     		ldr	r1, [r3]
+ 1535 0082 2648     		ldr	r0, .L264+36
+ 1536 0084 FFF7FEFF 		bl	printf
+ 1537 0088 3146     		mov	r1, r6
+ 1538 008a 2046     		mov	r0, r4
+ 1539 008c FFF7FEFF 		bl	block_mem_set
+ 1540 0090 2046     		mov	r0, r4
+ 1541 0092 FFF7FEFF 		bl	tensor_mem_set
+ 1542 0096 2046     		mov	r0, r4
+ 1543 0098 FFF7FEFF 		bl	set_tailed_activation
+ 1544 009c 2268     		ldr	r2, [r4]
+ 1545 009e 0023     		movs	r3, #0
+ 1546              	.L255:
+ 1547 00a0 22B1     		cbz	r2, .L256
+ 1548 00a2 916A     		ldr	r1, [r2, #40]
+ 1549 00a4 CB18     		adds	r3, r1, r3
+ 1550 00a6 1268     		ldr	r2, [r2]
+ 1551 00a8 002A     		cmp	r2, #0
+ 1552 00aa F9D1     		bne	.L255
+ 1553              	.L256:
+ 1554 00ac C4F88030 		str	r3, [r4, #128]
+ 1555 00b0 0020     		movs	r0, #0
+ 1556              	.L250:
+ 1557 00b2 02B0     		add	sp, sp, #8
+ 1558              		@ sp needed
+ 1559 00b4 70BD     		pop	{r4, r5, r6, pc}
+ 1560              	.L259:
+ 1561 00b6 1A48     		ldr	r0, .L264+40
+ 1562 00b8 FFF7FEFF 		bl	puts
+ 1563 00bc 4FF0FF30 		mov	r0, #-1
+ 1564 00c0 F7E7     		b	.L250
+ 1565              	.L260:
+ 1566 00c2 1748     		ldr	r0, .L264+40
+ 1567 00c4 FFF7FEFF 		bl	puts
+ 1568 00c8 4FF0FF30 		mov	r0, #-1
+ 1569 00cc F1E7     		b	.L250
+ 1570              	.L261:
+ 1571 00ce 0846     		mov	r0, r1
+ 1572 00d0 FFF7FEFF 		bl	find_last
+ 1573 00d4 6060     		str	r0, [r4, #4]
+ 1574 00d6 A1E7     		b	.L252
+ 1575              	.L262:
+ 1576 00d8 01EB4101 		add	r1, r1, r1, lsl #1
+ 1577 00dc 114B     		ldr	r3, .L264+44
+ 1578 00de 03EB8101 		add	r1, r3, r1, lsl #2
+ 1579 00e2 1148     		ldr	r0, .L264+48
+ 1580 00e4 FFF7FEFF 		bl	printf
+ 1581 00e8 C0E7     		b	.L253
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 30
+
+
+ 1582              	.L263:
+ 1583 00ea 2946     		mov	r1, r5
+ 1584 00ec 0F48     		ldr	r0, .L264+52
+ 1585 00ee FFF7FEFF 		bl	printf
+ 1586 00f2 6FF00600 		mvn	r0, #6
+ 1587 00f6 DCE7     		b	.L250
+ 1588              	.L265:
+ 1589              		.align	2
+ 1590              	.L264:
+ 1591 00f8 00000000 		.word	.LC25
+ 1592 00fc 18000000 		.word	.LC26
+ 1593 0100 64000000 		.word	.LC27
+ 1594 0104 00000000 		.word	nnom_static_buf_size
+ 1595 0108 84000000 		.word	.LC28
+ 1596 010c A4000000 		.word	.LC29
+ 1597 0110 C0000000 		.word	.LC30
+ 1598 0114 24010000 		.word	.LC31
+ 1599 0118 00000000 		.word	nnom_memory_taken
+ 1600 011c 18020000 		.word	.LC34
+ 1601 0120 00000000 		.word	.LC24
+ 1602 0124 00000000 		.word	default_layer_names
+ 1603 0128 88010000 		.word	.LC32
+ 1604 012c D8010000 		.word	.LC33
+ 1606              		.section	.text.sequencial_compile,"ax",%progbits
+ 1607              		.align	1
+ 1608              		.global	sequencial_compile
+ 1609              		.syntax unified
+ 1610              		.thumb
+ 1611              		.thumb_func
+ 1613              	sequencial_compile:
+ 1614              		@ args = 0, pretend = 0, frame = 0
+ 1615              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1616 0000 38B5     		push	{r3, r4, r5, lr}
+ 1617 0002 0446     		mov	r4, r0
+ 1618 0004 0568     		ldr	r5, [r0]
+ 1619 0006 2846     		mov	r0, r5
+ 1620 0008 FFF7FEFF 		bl	find_last
+ 1621 000c 0246     		mov	r2, r0
+ 1622 000e 2946     		mov	r1, r5
+ 1623 0010 2046     		mov	r0, r4
+ 1624 0012 FFF7FEFF 		bl	model_compile
+ 1625 0016 38BD     		pop	{r3, r4, r5, pc}
+ 1627              		.section	.text.layer_run,"ax",%progbits
+ 1628              		.align	1
+ 1629              		.global	layer_run
+ 1630              		.syntax unified
+ 1631              		.thumb
+ 1632              		.thumb_func
+ 1634              	layer_run:
+ 1635              		@ args = 0, pretend = 0, frame = 0
+ 1636              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1637 0000 38B5     		push	{r3, r4, r5, lr}
+ 1638 0002 58B1     		cbz	r0, .L273
+ 1639 0004 0446     		mov	r4, r0
+ 1640 0006 4368     		ldr	r3, [r0, #4]
+ 1641 0008 9847     		blx	r3
+ 1642 000a 0546     		mov	r5, r0
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 31
+
+
+ 1643 000c 6069     		ldr	r0, [r4, #20]
+ 1644 000e 08B1     		cbz	r0, .L271
+ 1645 0010 0368     		ldr	r3, [r0]
+ 1646 0012 9847     		blx	r3
+ 1647              	.L271:
+ 1648 0014 0023     		movs	r3, #0
+ 1649 0016 E362     		str	r3, [r4, #44]
+ 1650              	.L270:
+ 1651 0018 2846     		mov	r0, r5
+ 1652 001a 38BD     		pop	{r3, r4, r5, pc}
+ 1653              	.L273:
+ 1654 001c 0248     		ldr	r0, .L274
+ 1655 001e FFF7FEFF 		bl	puts
+ 1656 0022 4FF0FF35 		mov	r5, #-1
+ 1657 0026 F7E7     		b	.L270
+ 1658              	.L275:
+ 1659              		.align	2
+ 1660              	.L274:
+ 1661 0028 00000000 		.word	.LC24
+ 1663              		.section	.rodata.model_run_to.str1.4,"aMS",%progbits,1
+ 1664              		.align	2
+ 1665              	.LC35:
+ 1666 0000 4572726F 		.ascii	"Error: #%d %s layer return error code:%d\012\000"
+ 1666      723A2023 
+ 1666      25642025 
+ 1666      73206C61 
+ 1666      79657220 
+ 1667 002a 0000     		.align	2
+ 1668              	.LC36:
+ 1669 002c 4572726F 		.ascii	"Error: Callback return error code %d at #%d %s laye"
+ 1669      723A2043 
+ 1669      616C6C62 
+ 1669      61636B20 
+ 1669      72657475 
+ 1670 005f 720A00   		.ascii	"r\012\000"
+ 1671              		.section	.text.model_run_to,"ax",%progbits
+ 1672              		.align	1
+ 1673              		.global	model_run_to
+ 1674              		.syntax unified
+ 1675              		.thumb
+ 1676              		.thumb_func
+ 1678              	model_run_to:
+ 1679              		@ args = 0, pretend = 0, frame = 0
+ 1680              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1681 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 1682 0004 50B1     		cbz	r0, .L284
+ 1683 0006 0F46     		mov	r7, r1
+ 1684 0008 0646     		mov	r6, r0
+ 1685 000a 0468     		ldr	r4, [r0]
+ 1686 000c 0125     		movs	r5, #1
+ 1687 000e FCB9     		cbnz	r4, .L279
+ 1688 0010 1D48     		ldr	r0, .L286
+ 1689 0012 FFF7FEFF 		bl	puts
+ 1690 0016 4FF0FF38 		mov	r8, #-1
+ 1691 001a 10E0     		b	.L278
+ 1692              	.L284:
+ 1693 001c 1A48     		ldr	r0, .L286
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 32
+
+
+ 1694 001e FFF7FEFF 		bl	puts
+ 1695 0022 4FF0FF38 		mov	r8, #-1
+ 1696 0026 0AE0     		b	.L278
+ 1697              	.L285:
+ 1698 0028 227F     		ldrb	r2, [r4, #28]	@ zero_extendqisi2
+ 1699 002a 02EB4202 		add	r2, r2, r2, lsl #1
+ 1700 002e 0346     		mov	r3, r0
+ 1701 0030 1649     		ldr	r1, .L286+4
+ 1702 0032 01EB8202 		add	r2, r1, r2, lsl #2
+ 1703 0036 2946     		mov	r1, r5
+ 1704 0038 1548     		ldr	r0, .L286+8
+ 1705 003a FFF7FEFF 		bl	printf
+ 1706              	.L278:
+ 1707 003e 4046     		mov	r0, r8
+ 1708 0040 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 1709              	.L281:
+ 1710 0044 A742     		cmp	r7, r4
+ 1711 0046 FAD0     		beq	.L278
+ 1712 0048 2468     		ldr	r4, [r4]
+ 1713 004a 002C     		cmp	r4, #0
+ 1714 004c F7D0     		beq	.L278
+ 1715 004e 0135     		adds	r5, r5, #1
+ 1716              	.L279:
+ 1717 0050 2046     		mov	r0, r4
+ 1718 0052 FFF7FEFF 		bl	layer_run
+ 1719 0056 8046     		mov	r8, r0
+ 1720 0058 0028     		cmp	r0, #0
+ 1721 005a E5D1     		bne	.L285
+ 1722 005c F369     		ldr	r3, [r6, #28]
+ 1723 005e 002B     		cmp	r3, #0
+ 1724 0060 F0D0     		beq	.L281
+ 1725 0062 2146     		mov	r1, r4
+ 1726 0064 3046     		mov	r0, r6
+ 1727 0066 9847     		blx	r3
+ 1728 0068 8146     		mov	r9, r0
+ 1729 006a 0028     		cmp	r0, #0
+ 1730 006c EAD0     		beq	.L281
+ 1731 006e 237F     		ldrb	r3, [r4, #28]	@ zero_extendqisi2
+ 1732 0070 03EB4303 		add	r3, r3, r3, lsl #1
+ 1733 0074 054A     		ldr	r2, .L286+4
+ 1734 0076 02EB8303 		add	r3, r2, r3, lsl #2
+ 1735 007a 2A46     		mov	r2, r5
+ 1736 007c 0146     		mov	r1, r0
+ 1737 007e 0548     		ldr	r0, .L286+12
+ 1738 0080 FFF7FEFF 		bl	printf
+ 1739 0084 C846     		mov	r8, r9
+ 1740 0086 DAE7     		b	.L278
+ 1741              	.L287:
+ 1742              		.align	2
+ 1743              	.L286:
+ 1744 0088 00000000 		.word	.LC24
+ 1745 008c 00000000 		.word	default_layer_names
+ 1746 0090 00000000 		.word	.LC35
+ 1747 0094 2C000000 		.word	.LC36
+ 1749              		.section	.text.model_run,"ax",%progbits
+ 1750              		.align	1
+ 1751              		.global	model_run
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 33
+
+
+ 1752              		.syntax unified
+ 1753              		.thumb
+ 1754              		.thumb_func
+ 1756              	model_run:
+ 1757              		@ args = 0, pretend = 0, frame = 0
+ 1758              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1759 0000 08B5     		push	{r3, lr}
+ 1760 0002 0021     		movs	r1, #0
+ 1761 0004 FFF7FEFF 		bl	model_run_to
+ 1762 0008 08BD     		pop	{r3, pc}
+ 1764              		.section	.text.model_set_callback,"ax",%progbits
+ 1765              		.align	1
+ 1766              		.global	model_set_callback
+ 1767              		.syntax unified
+ 1768              		.thumb
+ 1769              		.thumb_func
+ 1771              	model_set_callback:
+ 1772              		@ args = 0, pretend = 0, frame = 0
+ 1773              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1774              		@ link register save eliminated.
+ 1775 0000 C369     		ldr	r3, [r0, #28]
+ 1776 0002 0BB1     		cbz	r3, .L291
+ 1777 0004 8B42     		cmp	r3, r1
+ 1778 0006 02D1     		bne	.L293
+ 1779              	.L291:
+ 1780 0008 C161     		str	r1, [r0, #28]
+ 1781 000a 0020     		movs	r0, #0
+ 1782 000c 7047     		bx	lr
+ 1783              	.L293:
+ 1784 000e 6FF00100 		mvn	r0, #1
+ 1785 0012 7047     		bx	lr
+ 1787              		.section	.text.model_delete_callback,"ax",%progbits
+ 1788              		.align	1
+ 1789              		.global	model_delete_callback
+ 1790              		.syntax unified
+ 1791              		.thumb
+ 1792              		.thumb_func
+ 1794              	model_delete_callback:
+ 1795              		@ args = 0, pretend = 0, frame = 0
+ 1796              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1797              		@ link register save eliminated.
+ 1798 0000 0023     		movs	r3, #0
+ 1799 0002 C361     		str	r3, [r0, #28]
+ 1800 0004 7047     		bx	lr
+ 1802              		.section	.rodata.check_model_version.str1.4,"aMS",%progbits,1
+ 1803              		.align	2
+ 1804              	.LC37:
+ 1805 0000 5741524E 		.ascii	"WARNING: model version %d.%d.%d dosen't match nnom "
+ 1805      494E473A 
+ 1805      206D6F64 
+ 1805      656C2076 
+ 1805      65727369 
+ 1806 0033 76657273 		.ascii	"version!\012\000"
+ 1806      696F6E21 
+ 1806      0A00
+ 1807 003d 000000   		.align	2
+ 1808              	.LC38:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 34
+
+
+ 1809 0040 4D6F6465 		.ascii	"Model version: %d.%d.%d\012\000"
+ 1809      6C207665 
+ 1809      7273696F 
+ 1809      6E3A2025 
+ 1809      642E2564 
+ 1810              		.section	.text.check_model_version,"ax",%progbits
+ 1811              		.align	1
+ 1812              		.global	check_model_version
+ 1813              		.syntax unified
+ 1814              		.thumb
+ 1815              		.thumb_func
+ 1817              	check_model_version:
+ 1818              		@ args = 0, pretend = 0, frame = 0
+ 1819              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1820 0000 08B5     		push	{r3, lr}
+ 1821 0002 40F29313 		movw	r3, #403
+ 1822 0006 9842     		cmp	r0, r3
+ 1823 0008 16D0     		beq	.L296
+ 1824 000a 0F4B     		ldr	r3, .L299
+ 1825 000c A3FB0012 		umull	r1, r2, r3, r0
+ 1826 0010 5209     		lsrs	r2, r2, #5
+ 1827 0012 4FF0640E 		mov	lr, #100
+ 1828 0016 A3FB0213 		umull	r1, r3, r3, r2
+ 1829 001a 4FEA531C 		lsr	ip, r3, #5
+ 1830 001e 0B49     		ldr	r1, .L299+4
+ 1831 0020 A1FB0031 		umull	r3, r1, r1, r0
+ 1832 0024 0EFB1203 		mls	r3, lr, r2, r0
+ 1833 0028 0EFB1C22 		mls	r2, lr, ip, r2
+ 1834 002c 490B     		lsrs	r1, r1, #13
+ 1835 002e 0848     		ldr	r0, .L299+8
+ 1836 0030 FFF7FEFF 		bl	printf
+ 1837 0034 0120     		movs	r0, #1
+ 1838              	.L297:
+ 1839 0036 08BD     		pop	{r3, pc}
+ 1840              	.L296:
+ 1841 0038 0323     		movs	r3, #3
+ 1842 003a 0422     		movs	r2, #4
+ 1843 003c 0021     		movs	r1, #0
+ 1844 003e 0548     		ldr	r0, .L299+12
+ 1845 0040 FFF7FEFF 		bl	printf
+ 1846 0044 0020     		movs	r0, #0
+ 1847 0046 F6E7     		b	.L297
+ 1848              	.L300:
+ 1849              		.align	2
+ 1850              	.L299:
+ 1851 0048 1F85EB51 		.word	1374389535
+ 1852 004c 5917B7D1 		.word	-776530087
+ 1853 0050 00000000 		.word	.LC37
+ 1854 0054 40000000 		.word	.LC38
+ 1856              		.section	.bss.nnom_static_buf_curr,"aw",%nobits
+ 1857              		.align	2
+ 1860              	nnom_static_buf_curr:
+ 1861 0000 00000000 		.space	4
+ 1862              		.section	.bss.nnom_static_buf_size,"aw",%nobits
+ 1863              		.align	2
+ 1866              	nnom_static_buf_size:
+ 1867 0000 00000000 		.space	4
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 35
+
+
+ 1868              		.section	.bss.nnom_static_buf,"aw",%nobits
+ 1869              		.align	2
+ 1872              	nnom_static_buf:
+ 1873 0000 00000000 		.space	4
+ 1874              		.global	nnom_memory_taken
+ 1875              		.section	.bss.nnom_memory_taken,"aw",%nobits
+ 1876              		.align	2
+ 1879              	nnom_memory_taken:
+ 1880 0000 00000000 		.space	4
+ 1881              		.global	default_cell_names
+ 1882              		.section	.rodata.default_cell_names,"a"
+ 1883              		.align	2
+ 1886              	default_cell_names:
+ 1887 0000 556E6B6E 		.ascii	"Unknown\000"
+ 1887      6F776E00 
+ 1888 0008 53696D70 		.ascii	"Simple\000"
+ 1888      6C6500
+ 1889 000f 00       		.space	1
+ 1890 0010 47525500 		.ascii	"GRU\000"
+ 1891 0014 00000000 		.space	4
+ 1892 0018 4C53544D 		.ascii	"LSTM\000"
+ 1892      00
+ 1893 001d 000000   		.space	3
+ 1894              		.global	default_activation_names
+ 1895              		.section	.rodata.default_activation_names,"a"
+ 1896              		.align	2
+ 1899              	default_activation_names:
+ 1900 0000 556E6B6E 		.ascii	"Unknown\000"
+ 1900      6F776E00 
+ 1901 0008 52654C55 		.ascii	"ReLU\000"
+ 1901      00
+ 1902 000d 000000   		.space	3
+ 1903 0010 4C6B7952 		.ascii	"LkyReLU\000"
+ 1903      654C5500 
+ 1904 0018 41647652 		.ascii	"AdvReLU\000"
+ 1904      654C5500 
+ 1905 0020 54616E48 		.ascii	"TanH\000"
+ 1905      00
+ 1906 0025 000000   		.space	3
+ 1907 0028 5369676D 		.ascii	"Sigmoid\000"
+ 1907      6F696400 
+ 1908 0030 48726454 		.ascii	"HrdTanH\000"
+ 1908      616E4800 
+ 1909 0038 48726453 		.ascii	"HrdSigd\000"
+ 1909      69676400 
+ 1910              		.global	default_layer_names
+ 1911              		.section	.rodata.default_layer_names,"a"
+ 1912              		.align	2
+ 1915              	default_layer_names:
+ 1916 0000 556E6B6E 		.ascii	"Unknown\000"
+ 1916      6F776E00 
+ 1917 0008 00000000 		.space	4
+ 1918 000c 42617365 		.ascii	"Base\000"
+ 1918      00
+ 1919 0011 00000000 		.space	7
+ 1919      000000
+ 1920 0018 496E7075 		.ascii	"Input\000"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 36
+
+
+ 1920      7400
+ 1921 001e 00000000 		.space	6
+ 1921      0000
+ 1922 0024 4F757470 		.ascii	"Output\000"
+ 1922      757400
+ 1923 002b 00000000 		.space	5
+ 1923      00
+ 1924 0030 436F6E76 		.ascii	"Conv2D\000"
+ 1924      324400
+ 1925 0037 00000000 		.space	5
+ 1925      00
+ 1926 003c 44575F43 		.ascii	"DW_Conv2D\000"
+ 1926      6F6E7632 
+ 1926      4400
+ 1927 0046 0000     		.space	2
+ 1928 0048 436F6E76 		.ascii	"Conv2DTrsp\000"
+ 1928      32445472 
+ 1928      737000
+ 1929 0053 00       		.space	1
+ 1930 0054 42617463 		.ascii	"BatchNorm\000"
+ 1930      684E6F72 
+ 1930      6D00
+ 1931 005e 0000     		.space	2
+ 1932 0060 44656E73 		.ascii	"Dense\000"
+ 1932      6500
+ 1933 0066 00000000 		.space	6
+ 1933      0000
+ 1934 006c 5A65726F 		.ascii	"ZeroPad\000"
+ 1934      50616400 
+ 1935 0074 00000000 		.space	4
+ 1936 0078 43726F70 		.ascii	"Cropping\000"
+ 1936      70696E67 
+ 1936      00
+ 1937 0081 000000   		.space	3
+ 1938 0084 524E4E00 		.ascii	"RNN\000"
+ 1939 0088 00000000 		.space	8
+ 1939      00000000 
+ 1940 0090 41637469 		.ascii	"Activation\000"
+ 1940      76617469 
+ 1940      6F6E00
+ 1941 009b 00       		.space	1
+ 1942 009c 52654C55 		.ascii	"ReLU\000"
+ 1942      00
+ 1943 00a1 00000000 		.space	7
+ 1943      000000
+ 1944 00a8 4C65616B 		.ascii	"Leaky_ReLU\000"
+ 1944      795F5265 
+ 1944      4C5500
+ 1945 00b3 00       		.space	1
+ 1946 00b4 4164765F 		.ascii	"Adv_ReLU\000"
+ 1946      52654C55 
+ 1946      00
+ 1947 00bd 000000   		.space	3
+ 1948 00c0 5369676D 		.ascii	"Sigmoid\000"
+ 1948      6F696400 
+ 1949 00c8 00000000 		.space	4
+ 1950 00cc 54616E68 		.ascii	"Tanh\000"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 37
+
+
+ 1950      00
+ 1951 00d1 00000000 		.space	7
+ 1951      000000
+ 1952 00d8 536F6674 		.ascii	"Softmax\000"
+ 1952      6D617800 
+ 1953 00e0 00000000 		.space	4
+ 1954 00e4 4D617850 		.ascii	"MaxPool\000"
+ 1954      6F6F6C00 
+ 1955 00ec 00000000 		.space	4
+ 1956 00f0 474C5F4D 		.ascii	"GL_MaxPool\000"
+ 1956      6178506F 
+ 1956      6F6C00
+ 1957 00fb 00       		.space	1
+ 1958 00fc 41766750 		.ascii	"AvgPool\000"
+ 1958      6F6F6C00 
+ 1959 0104 00000000 		.space	4
+ 1960 0108 474C5F41 		.ascii	"GL_AvgPool\000"
+ 1960      7667506F 
+ 1960      6F6C00
+ 1961 0113 00       		.space	1
+ 1962 0114 53756D50 		.ascii	"SumPool\000"
+ 1962      6F6F6C00 
+ 1963 011c 00000000 		.space	4
+ 1964 0120 474C5F53 		.ascii	"GL_SumPool\000"
+ 1964      756D506F 
+ 1964      6F6C00
+ 1965 012b 00       		.space	1
+ 1966 012c 55705361 		.ascii	"UpSample\000"
+ 1966      6D706C65 
+ 1966      00
+ 1967 0135 000000   		.space	3
+ 1968 0138 466C6174 		.ascii	"Flatten\000"
+ 1968      74656E00 
+ 1969 0140 00000000 		.space	4
+ 1970 0144 52657368 		.ascii	"Reshape\000"
+ 1970      61706500 
+ 1971 014c 00000000 		.space	4
+ 1972 0150 4C616D62 		.ascii	"Lambda\000"
+ 1972      646100
+ 1973 0157 00000000 		.space	5
+ 1973      00
+ 1974 015c 436F6E63 		.ascii	"Concat\000"
+ 1974      617400
+ 1975 0163 00000000 		.space	5
+ 1975      00
+ 1976 0168 41646400 		.ascii	"Add\000"
+ 1977 016c 00000000 		.space	8
+ 1977      00000000 
+ 1978 0174 53756200 		.ascii	"Sub\000"
+ 1979 0178 00000000 		.space	8
+ 1979      00000000 
+ 1980 0180 4D756C74 		.ascii	"Mult\000"
+ 1980      00
+ 1981 0185 00000000 		.space	7
+ 1981      000000
+ 1982              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 38
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 nnom.c
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:16     .text.find_last:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:21     .text.find_last:00000000 find_last
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:42     .text.model_active:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:47     .text.model_active:00000000 model_active
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:56     .text.io_list_delete:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:61     .text.io_list_delete:00000000 io_list_delete
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:83     .text.release_input_mem:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:88     .text.release_input_mem:00000000 release_input_mem
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:116    .rodata.model_add.str1.4:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:121    .text.model_add:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:126    .text.model_add:00000000 model_add
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:155    .text.model_add:00000030 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:158    .rodata.allocate_block.str1.4:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:164    .text.allocate_block:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:169    .text.allocate_block:00000000 allocate_block
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:194    .text.allocate_block:00000028 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:197    .text.io_mem_size:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:202    .text.io_mem_size:00000000 io_mem_size
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:224    .rodata.print_memory_block_info.str1.4:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:234    .text.print_memory_block_info:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:239    .text.print_memory_block_info:00000000 print_memory_block_info
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:280    .text.print_memory_block_info:0000004c $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:285    .text.release_comp_mem:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:290    .text.release_comp_mem:00000000 release_comp_mem
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:311    .text.nnom_set_static_buf:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:317    .text.nnom_set_static_buf:00000000 nnom_set_static_buf
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:332    .text.nnom_set_static_buf:00000010 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1872   .bss.nnom_static_buf:00000000 nnom_static_buf
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1866   .bss.nnom_static_buf_size:00000000 nnom_static_buf_size
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1860   .bss.nnom_static_buf_curr:00000000 nnom_static_buf_curr
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:337    .text.nnom_free:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:343    .text.nnom_free:00000000 nnom_free
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:350    .text.nnom_mem_stat:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:356    .text.nnom_mem_stat:00000000 nnom_mem_stat
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:366    .text.nnom_mem_stat:00000008 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1879   .bss.nnom_memory_taken:00000000 nnom_memory_taken
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:369    .text.nnom_alignto:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:375    .text.nnom_alignto:00000000 nnom_alignto
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:388    .rodata.nnom_malloc.str1.4:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:397    .text.nnom_malloc:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:403    .text.nnom_malloc:00000000 nnom_malloc
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:437    .text.nnom_malloc:00000038 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:444    .text.nnom_mem:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:450    .text.nnom_mem:00000000 nnom_mem
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:473    .text.nnom_mem:00000028 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:476    .text.model_hook:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:481    .text.model_hook:00000000 model_hook
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:535    .text.model_mergex:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:540    .text.model_mergex:00000000 model_mergex
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:573    .text.model_merge:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:578    .text.model_merge:00000000 model_merge
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:589    .text.new_model:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:595    .text.new_model:00000000 new_model
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:626    .text.new_model:00000034 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:633    .text.model_delete:00000000 $t
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 39
+
+
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:639    .text.model_delete:00000000 model_delete
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:704    .text.model_delete:00000068 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:707    .text.nnom_io_length:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:713    .text.nnom_io_length:00000000 nnom_io_length
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:731    .text.nnom_hook_length:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:737    .text.nnom_hook_length:00000000 nnom_hook_length
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:755    .rodata.compile_layers.str1.4:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:798    .text.compile_layers:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:804    .text.compile_layers:00000000 compile_layers
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1114   .text.compile_layers:000002a4 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1915   .rodata.default_layer_names:00000000 default_layer_names
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1899   .rodata.default_activation_names:00000000 default_activation_names
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1886   .rodata.default_cell_names:00000000 default_cell_names
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1142   .text.compile_layers:00000310 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1259   .rodata.mem_analysis_result.str1.4:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1269   .text.mem_analysis_result:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1275   .text.mem_analysis_result:00000000 mem_analysis_result
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1303   .text.mem_analysis_result:00000030 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1308   .text.block_mem_set:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1314   .text.block_mem_set:00000000 block_mem_set
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1344   .text.tensor_mem_set:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1350   .text.tensor_mem_set:00000000 tensor_mem_set
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1387   .rodata.set_tailed_activation.str1.4:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1391   .text.set_tailed_activation:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1397   .text.set_tailed_activation:00000000 set_tailed_activation
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1432   .text.set_tailed_activation:00000038 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1435   .rodata.model_compile.str1.4:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1471   .text.model_compile:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1477   .text.model_compile:00000000 model_compile
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1591   .text.model_compile:000000f8 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1607   .text.sequencial_compile:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1613   .text.sequencial_compile:00000000 sequencial_compile
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1628   .text.layer_run:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1634   .text.layer_run:00000000 layer_run
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1661   .text.layer_run:00000028 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1664   .rodata.model_run_to.str1.4:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1672   .text.model_run_to:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1678   .text.model_run_to:00000000 model_run_to
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1744   .text.model_run_to:00000088 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1750   .text.model_run:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1756   .text.model_run:00000000 model_run
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1765   .text.model_set_callback:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1771   .text.model_set_callback:00000000 model_set_callback
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1788   .text.model_delete_callback:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1794   .text.model_delete_callback:00000000 model_delete_callback
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1803   .rodata.check_model_version.str1.4:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1811   .text.check_model_version:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1817   .text.check_model_version:00000000 check_model_version
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1851   .text.check_model_version:00000048 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1857   .bss.nnom_static_buf_curr:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1863   .bss.nnom_static_buf_size:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1869   .bss.nnom_static_buf:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1876   .bss.nnom_memory_taken:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1883   .rodata.default_cell_names:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1896   .rodata.default_activation_names:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s:1912   .rodata.default_layer_names:00000000 $d
+
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5OD5RY.s 			page 40
+
+
+UNDEFINED SYMBOLS
+puts
+tensor_size
+printf
+putchar
+memset

@@ -1,0 +1,105 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5llABK.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"Delay.c"
+  14              		.text
+  15              		.section	.text.Delay_us,"ax",%progbits
+  16              		.align	1
+  17              		.global	Delay_us
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	Delay_us:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25              		@ link register save eliminated.
+  26 0000 00EBC000 		add	r0, r0, r0, lsl #3
+  27 0004 C000     		lsls	r0, r0, #3
+  28 0006 4FF0E023 		mov	r3, #-536813568
+  29 000a 5861     		str	r0, [r3, #20]
+  30 000c 0022     		movs	r2, #0
+  31 000e 9A61     		str	r2, [r3, #24]
+  32 0010 0522     		movs	r2, #5
+  33 0012 1A61     		str	r2, [r3, #16]
+  34 0014 1A46     		mov	r2, r3
+  35              	.L2:
+  36 0016 1369     		ldr	r3, [r2, #16]
+  37 0018 13F4803F 		tst	r3, #65536
+  38 001c FBD0     		beq	.L2
+  39 001e 4FF0E023 		mov	r3, #-536813568
+  40 0022 0422     		movs	r2, #4
+  41 0024 1A61     		str	r2, [r3, #16]
+  42 0026 7047     		bx	lr
+  44              		.section	.text.Delay_ms,"ax",%progbits
+  45              		.align	1
+  46              		.global	Delay_ms
+  47              		.syntax unified
+  48              		.thumb
+  49              		.thumb_func
+  51              	Delay_ms:
+  52              		@ args = 0, pretend = 0, frame = 0
+  53              		@ frame_needed = 0, uses_anonymous_args = 0
+  54 0000 58B1     		cbz	r0, .L9
+  55 0002 38B5     		push	{r3, r4, r5, lr}
+  56 0004 441E     		subs	r4, r0, #1
+  57 0006 4FF47A75 		mov	r5, #1000
+  58              	.L6:
+  59 000a 2846     		mov	r0, r5
+  60 000c FFF7FEFF 		bl	Delay_us
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5llABK.s 			page 2
+
+
+  61 0010 013C     		subs	r4, r4, #1
+  62 0012 B4F1FF3F 		cmp	r4, #-1
+  63 0016 F8D1     		bne	.L6
+  64 0018 38BD     		pop	{r3, r4, r5, pc}
+  65              	.L9:
+  66 001a 7047     		bx	lr
+  68              		.section	.text.Delay_s,"ax",%progbits
+  69              		.align	1
+  70              		.global	Delay_s
+  71              		.syntax unified
+  72              		.thumb
+  73              		.thumb_func
+  75              	Delay_s:
+  76              		@ args = 0, pretend = 0, frame = 0
+  77              		@ frame_needed = 0, uses_anonymous_args = 0
+  78 0000 58B1     		cbz	r0, .L17
+  79 0002 38B5     		push	{r3, r4, r5, lr}
+  80 0004 441E     		subs	r4, r0, #1
+  81 0006 4FF47A75 		mov	r5, #1000
+  82              	.L14:
+  83 000a 2846     		mov	r0, r5
+  84 000c FFF7FEFF 		bl	Delay_ms
+  85 0010 013C     		subs	r4, r4, #1
+  86 0012 B4F1FF3F 		cmp	r4, #-1
+  87 0016 F8D1     		bne	.L14
+  88 0018 38BD     		pop	{r3, r4, r5, pc}
+  89              	.L17:
+  90 001a 7047     		bx	lr
+  92              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc5llABK.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 Delay.c
+C:\Users\ihavenoK\AppData\Local\Temp\cc5llABK.s:16     .text.Delay_us:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5llABK.s:22     .text.Delay_us:00000000 Delay_us
+C:\Users\ihavenoK\AppData\Local\Temp\cc5llABK.s:45     .text.Delay_ms:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5llABK.s:51     .text.Delay_ms:00000000 Delay_ms
+C:\Users\ihavenoK\AppData\Local\Temp\cc5llABK.s:69     .text.Delay_s:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc5llABK.s:75     .text.Delay_s:00000000 Delay_s
+
+NO UNDEFINED SYMBOLS

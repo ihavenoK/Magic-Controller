@@ -1,0 +1,108 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccBnfZSI.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"nnom_lambda.c"
+  14              		.text
+  15              		.section	.text.Lambda,"ax",%progbits
+  16              		.align	1
+  17              		.global	Lambda
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	Lambda:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  26 0004 0646     		mov	r6, r0
+  27 0006 0D46     		mov	r5, r1
+  28 0008 9046     		mov	r8, r2
+  29 000a 1F46     		mov	r7, r3
+  30 000c 7820     		movs	r0, #120
+  31 000e FFF7FEFF 		bl	nnom_mem
+  32 0012 0446     		mov	r4, r0
+  33 0014 D8B1     		cbz	r0, .L1
+  34 0016 0121     		movs	r1, #1
+  35 0018 80F84C10 		strb	r1, [r0, #76]
+  36 001c 80F86810 		strb	r1, [r0, #104]
+  37 0020 00F13401 		add	r1, r0, #52
+  38 0024 FFF7FEFF 		bl	io_init
+  39 0028 2062     		str	r0, [r4, #32]
+  40 002a 04F15001 		add	r1, r4, #80
+  41 002e 2046     		mov	r0, r4
+  42 0030 FFF7FEFF 		bl	io_init
+  43 0034 6062     		str	r0, [r4, #36]
+  44 0036 1C23     		movs	r3, #28
+  45 0038 2377     		strb	r3, [r4, #28]
+  46 003a 2763     		str	r7, [r4, #48]
+  47 003c C4F80C80 		str	r8, [r4, #12]
+  48 0040 064B     		ldr	r3, .L7
+  49 0042 002D     		cmp	r5, #0
+  50 0044 08BF     		it	eq
+  51 0046 1D46     		moveq	r5, r3
+  52 0048 A560     		str	r5, [r4, #8]
+  53 004a 1EB1     		cbz	r6, .L6
+  54 004c 6660     		str	r6, [r4, #4]
+  55              	.L1:
+  56 004e 2046     		mov	r0, r4
+  57 0050 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+  58              	.L6:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccBnfZSI.s 			page 2
+
+
+  59 0054 024B     		ldr	r3, .L7+4
+  60 0056 6360     		str	r3, [r4, #4]
+  61 0058 F9E7     		b	.L1
+  62              	.L8:
+  63 005a 00BF     		.align	2
+  64              	.L7:
+  65 005c 00000000 		.word	default_build
+  66 0060 00000000 		.word	default_run
+  68              		.section	.text.lambda_s,"ax",%progbits
+  69              		.align	1
+  70              		.global	lambda_s
+  71              		.syntax unified
+  72              		.thumb
+  73              		.thumb_func
+  75              	lambda_s:
+  76              		@ args = 0, pretend = 0, frame = 0
+  77              		@ frame_needed = 0, uses_anonymous_args = 0
+  78 0000 10B5     		push	{r4, lr}
+  79 0002 0446     		mov	r4, r0
+  80 0004 0369     		ldr	r3, [r0, #16]
+  81 0006 C268     		ldr	r2, [r0, #12]
+  82 0008 8168     		ldr	r1, [r0, #8]
+  83 000a 4068     		ldr	r0, [r0, #4]
+  84 000c FFF7FEFF 		bl	Lambda
+  85 0010 00B1     		cbz	r0, .L9
+  86 0012 8461     		str	r4, [r0, #24]
+  87              	.L9:
+  88 0014 10BD     		pop	{r4, pc}
+  90              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccBnfZSI.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 nnom_lambda.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccBnfZSI.s:16     .text.Lambda:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccBnfZSI.s:22     .text.Lambda:00000000 Lambda
+C:\Users\ihavenoK\AppData\Local\Temp\ccBnfZSI.s:65     .text.Lambda:0000005c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccBnfZSI.s:69     .text.lambda_s:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccBnfZSI.s:75     .text.lambda_s:00000000 lambda_s
+
+UNDEFINED SYMBOLS
+nnom_mem
+io_init
+default_build
+default_run

@@ -1,0 +1,2674 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"inv_mpu_dmp_motion_driver.c"
+  14              		.text
+  15              		.section	.text.dmp_load_motion_driver_firmware,"ax",%progbits
+  16              		.align	1
+  17              		.global	dmp_load_motion_driver_firmware
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	dmp_load_motion_driver_firmware:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 08B5     		push	{r3, lr}
+  26 0002 C823     		movs	r3, #200
+  27 0004 4FF48062 		mov	r2, #1024
+  28 0008 0249     		ldr	r1, .L3
+  29 000a 40F6F630 		movw	r0, #3062
+  30 000e FFF7FEFF 		bl	mpu_load_firmware
+  31 0012 08BD     		pop	{r3, pc}
+  32              	.L4:
+  33              		.align	2
+  34              	.L3:
+  35 0014 00000000 		.word	dmp_memory
+  37              		.section	.rodata.dmp_set_orientation.str1.4,"aMS",%progbits,1
+  38              		.align	2
+  39              	.LC0:
+  40 0000 4CCD6C00 		.ascii	"L\315l\000"
+  41              		.align	2
+  42              	.LC1:
+  43 0004 0CC92C00 		.ascii	"\014\311,\000"
+  44              		.align	2
+  45              	.LC2:
+  46 0008 36567600 		.ascii	"6Vv\000"
+  47              		.align	2
+  48              	.LC3:
+  49 000c 26466600 		.ascii	"&Ff\000"
+  50              		.section	.text.dmp_set_orientation,"ax",%progbits
+  51              		.align	1
+  52              		.global	dmp_set_orientation
+  53              		.syntax unified
+  54              		.thumb
+  55              		.thumb_func
+  57              	dmp_set_orientation:
+  58              		@ args = 0, pretend = 0, frame = 24
+  59              		@ frame_needed = 0, uses_anonymous_args = 0
+  60 0000 10B5     		push	{r4, lr}
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 2
+
+
+  61 0002 86B0     		sub	sp, sp, #24
+  62 0004 0446     		mov	r4, r0
+  63 0006 4C4B     		ldr	r3, .L15
+  64 0008 1B68     		ldr	r3, [r3]
+  65 000a ADF80C30 		strh	r3, [sp, #12]	@ movhi
+  66 000e 1B0C     		lsrs	r3, r3, #16
+  67 0010 8DF80E30 		strb	r3, [sp, #14]
+  68 0014 494B     		ldr	r3, .L15+4
+  69 0016 1B68     		ldr	r3, [r3]
+  70 0018 ADF80830 		strh	r3, [sp, #8]	@ movhi
+  71 001c 1B0C     		lsrs	r3, r3, #16
+  72 001e 8DF80A30 		strb	r3, [sp, #10]
+  73 0022 474B     		ldr	r3, .L15+8
+  74 0024 1B68     		ldr	r3, [r3]
+  75 0026 ADF80430 		strh	r3, [sp, #4]	@ movhi
+  76 002a 1B0C     		lsrs	r3, r3, #16
+  77 002c 8DF80630 		strb	r3, [sp, #6]
+  78 0030 444B     		ldr	r3, .L15+12
+  79 0032 1B68     		ldr	r3, [r3]
+  80 0034 ADF80030 		strh	r3, [sp]	@ movhi
+  81 0038 1B0C     		lsrs	r3, r3, #16
+  82 003a 8DF80230 		strb	r3, [sp, #2]
+  83 003e 00F00301 		and	r1, r0, #3
+  84 0042 01F11803 		add	r3, r1, #24
+  85 0046 0DEB0301 		add	r1, sp, r3
+  86 004a 11F80C3C 		ldrb	r3, [r1, #-12]	@ zero_extendqisi2
+  87 004e 8DF81430 		strb	r3, [sp, #20]
+  88 0052 C0F3C102 		ubfx	r2, r0, #3, #2
+  89 0056 02F11803 		add	r3, r2, #24
+  90 005a 0DEB0302 		add	r2, sp, r3
+  91 005e 12F80C3C 		ldrb	r3, [r2, #-12]	@ zero_extendqisi2
+  92 0062 8DF81530 		strb	r3, [sp, #21]
+  93 0066 C0F38113 		ubfx	r3, r0, #6, #2
+  94 006a 1833     		adds	r3, r3, #24
+  95 006c 6B44     		add	r3, sp, r3
+  96 006e 13F80C0C 		ldrb	r0, [r3, #-12]	@ zero_extendqisi2
+  97 0072 8DF81600 		strb	r0, [sp, #22]
+  98 0076 11F8101C 		ldrb	r1, [r1, #-16]	@ zero_extendqisi2
+  99 007a 8DF81010 		strb	r1, [sp, #16]
+ 100 007e 12F8102C 		ldrb	r2, [r2, #-16]	@ zero_extendqisi2
+ 101 0082 8DF81120 		strb	r2, [sp, #17]
+ 102 0086 13F8103C 		ldrb	r3, [r3, #-16]	@ zero_extendqisi2
+ 103 008a 8DF81230 		strb	r3, [sp, #18]
+ 104 008e 05AA     		add	r2, sp, #20
+ 105 0090 0321     		movs	r1, #3
+ 106 0092 40F22640 		movw	r0, #1062
+ 107 0096 FFF7FEFF 		bl	mpu_write_mem
+ 108 009a 0028     		cmp	r0, #0
+ 109 009c 40D1     		bne	.L10
+ 110 009e 04AA     		add	r2, sp, #16
+ 111 00a0 0321     		movs	r1, #3
+ 112 00a2 40F22A40 		movw	r0, #1066
+ 113 00a6 FFF7FEFF 		bl	mpu_write_mem
+ 114 00aa 0028     		cmp	r0, #0
+ 115 00ac 3BD1     		bne	.L11
+ 116 00ae 019B     		ldr	r3, [sp, #4]
+ 117 00b0 ADF81430 		strh	r3, [sp, #20]	@ movhi
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 3
+
+
+ 118 00b4 1B0C     		lsrs	r3, r3, #16
+ 119 00b6 8DF81630 		strb	r3, [sp, #22]
+ 120 00ba 009B     		ldr	r3, [sp]
+ 121 00bc ADF81030 		strh	r3, [sp, #16]	@ movhi
+ 122 00c0 1B0C     		lsrs	r3, r3, #16
+ 123 00c2 8DF81230 		strb	r3, [sp, #18]
+ 124 00c6 14F0040F 		tst	r4, #4
+ 125 00ca 05D0     		beq	.L7
+ 126 00cc 3723     		movs	r3, #55
+ 127 00ce 8DF81430 		strb	r3, [sp, #20]
+ 128 00d2 2723     		movs	r3, #39
+ 129 00d4 8DF81030 		strb	r3, [sp, #16]
+ 130              	.L7:
+ 131 00d8 14F0200F 		tst	r4, #32
+ 132 00dc 05D0     		beq	.L8
+ 133 00de 5723     		movs	r3, #87
+ 134 00e0 8DF81530 		strb	r3, [sp, #21]
+ 135 00e4 4723     		movs	r3, #71
+ 136 00e6 8DF81130 		strb	r3, [sp, #17]
+ 137              	.L8:
+ 138 00ea 14F4807F 		tst	r4, #256
+ 139 00ee 05D0     		beq	.L9
+ 140 00f0 7723     		movs	r3, #119
+ 141 00f2 8DF81630 		strb	r3, [sp, #22]
+ 142 00f6 6723     		movs	r3, #103
+ 143 00f8 8DF81230 		strb	r3, [sp, #18]
+ 144              	.L9:
+ 145 00fc 05AA     		add	r2, sp, #20
+ 146 00fe 0321     		movs	r1, #3
+ 147 0100 4FF48860 		mov	r0, #1088
+ 148 0104 FFF7FEFF 		bl	mpu_write_mem
+ 149 0108 80B9     		cbnz	r0, .L12
+ 150 010a 04AA     		add	r2, sp, #16
+ 151 010c 0321     		movs	r1, #3
+ 152 010e 40F23140 		movw	r0, #1073
+ 153 0112 FFF7FEFF 		bl	mpu_write_mem
+ 154 0116 60B9     		cbnz	r0, .L13
+ 155 0118 0B4B     		ldr	r3, .L15+16
+ 156 011a 1C81     		strh	r4, [r3, #8]	@ movhi
+ 157              	.L5:
+ 158 011c 06B0     		add	sp, sp, #24
+ 159              		@ sp needed
+ 160 011e 10BD     		pop	{r4, pc}
+ 161              	.L10:
+ 162 0120 4FF0FF30 		mov	r0, #-1
+ 163 0124 FAE7     		b	.L5
+ 164              	.L11:
+ 165 0126 4FF0FF30 		mov	r0, #-1
+ 166 012a F7E7     		b	.L5
+ 167              	.L12:
+ 168 012c 4FF0FF30 		mov	r0, #-1
+ 169 0130 F4E7     		b	.L5
+ 170              	.L13:
+ 171 0132 4FF0FF30 		mov	r0, #-1
+ 172 0136 F1E7     		b	.L5
+ 173              	.L16:
+ 174              		.align	2
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 4
+
+
+ 175              	.L15:
+ 176 0138 00000000 		.word	.LC0
+ 177 013c 04000000 		.word	.LC1
+ 178 0140 08000000 		.word	.LC2
+ 179 0144 0C000000 		.word	.LC3
+ 180 0148 00000000 		.word	dmp
+ 182              		.section	.text.dmp_set_gyro_bias,"ax",%progbits
+ 183              		.align	1
+ 184              		.global	dmp_set_gyro_bias
+ 185              		.syntax unified
+ 186              		.thumb
+ 187              		.thumb_func
+ 189              	dmp_set_gyro_bias:
+ 190              		@ args = 0, pretend = 0, frame = 8
+ 191              		@ frame_needed = 0, uses_anonymous_args = 0
+ 192 0000 30B5     		push	{r4, r5, lr}
+ 193 0002 83B0     		sub	sp, sp, #12
+ 194 0004 374B     		ldr	r3, .L25
+ 195 0006 1A89     		ldrh	r2, [r3, #8]
+ 196 0008 02F00303 		and	r3, r2, #3
+ 197 000c 50F82330 		ldr	r3, [r0, r3, lsl #2]
+ 198 0010 12F0040F 		tst	r2, #4
+ 199 0014 18BF     		it	ne
+ 200 0016 5B42     		rsbne	r3, r3, #0
+ 201 0018 C2F3C101 		ubfx	r1, r2, #3, #2
+ 202 001c 50F82110 		ldr	r1, [r0, r1, lsl #2]
+ 203 0020 12F0200F 		tst	r2, #32
+ 204 0024 18BF     		it	ne
+ 205 0026 4942     		rsbne	r1, r1, #0
+ 206 0028 C2F38114 		ubfx	r4, r2, #6, #2
+ 207 002c 50F82440 		ldr	r4, [r0, r4, lsl #2]
+ 208 0030 12F4807F 		tst	r2, #256
+ 209 0034 18BF     		it	ne
+ 210 0036 6442     		rsbne	r4, r4, #0
+ 211 0038 DD17     		asrs	r5, r3, #31
+ 212 003a 2B4A     		ldr	r2, .L25+4
+ 213 003c A3FB0230 		umull	r3, r0, r3, r2
+ 214 0040 02FB0500 		mla	r0, r2, r5, r0
+ 215 0044 9B0F     		lsrs	r3, r3, #30
+ 216 0046 43EA8003 		orr	r3, r3, r0, lsl #2
+ 217 004a CD17     		asrs	r5, r1, #31
+ 218 004c A1FB0210 		umull	r1, r0, r1, r2
+ 219 0050 02FB0500 		mla	r0, r2, r5, r0
+ 220 0054 8D0F     		lsrs	r5, r1, #30
+ 221 0056 45EA8005 		orr	r5, r5, r0, lsl #2
+ 222 005a E017     		asrs	r0, r4, #31
+ 223 005c A4FB0241 		umull	r4, r1, r4, r2
+ 224 0060 02FB0012 		mla	r2, r2, r0, r1
+ 225 0064 A40F     		lsrs	r4, r4, #30
+ 226 0066 44EA8204 		orr	r4, r4, r2, lsl #2
+ 227 006a 1A16     		asrs	r2, r3, #24
+ 228 006c 8DF80420 		strb	r2, [sp, #4]
+ 229 0070 1A14     		asrs	r2, r3, #16
+ 230 0072 8DF80520 		strb	r2, [sp, #5]
+ 231 0076 1A12     		asrs	r2, r3, #8
+ 232 0078 8DF80620 		strb	r2, [sp, #6]
+ 233 007c 8DF80730 		strb	r3, [sp, #7]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 5
+
+
+ 234 0080 01AA     		add	r2, sp, #4
+ 235 0082 0421     		movs	r1, #4
+ 236 0084 4FF47470 		mov	r0, #976
+ 237 0088 FFF7FEFF 		bl	mpu_write_mem
+ 238 008c 20BB     		cbnz	r0, .L22
+ 239 008e 2B16     		asrs	r3, r5, #24
+ 240 0090 8DF80430 		strb	r3, [sp, #4]
+ 241 0094 2B14     		asrs	r3, r5, #16
+ 242 0096 8DF80530 		strb	r3, [sp, #5]
+ 243 009a 2B12     		asrs	r3, r5, #8
+ 244 009c 8DF80630 		strb	r3, [sp, #6]
+ 245 00a0 8DF80750 		strb	r5, [sp, #7]
+ 246 00a4 01AA     		add	r2, sp, #4
+ 247 00a6 0421     		movs	r1, #4
+ 248 00a8 4FF47570 		mov	r0, #980
+ 249 00ac FFF7FEFF 		bl	mpu_write_mem
+ 250 00b0 A8B9     		cbnz	r0, .L23
+ 251 00b2 2316     		asrs	r3, r4, #24
+ 252 00b4 8DF80430 		strb	r3, [sp, #4]
+ 253 00b8 2314     		asrs	r3, r4, #16
+ 254 00ba 8DF80530 		strb	r3, [sp, #5]
+ 255 00be 2312     		asrs	r3, r4, #8
+ 256 00c0 8DF80630 		strb	r3, [sp, #6]
+ 257 00c4 8DF80740 		strb	r4, [sp, #7]
+ 258 00c8 01AA     		add	r2, sp, #4
+ 259 00ca 0421     		movs	r1, #4
+ 260 00cc 4FF47670 		mov	r0, #984
+ 261 00d0 FFF7FEFF 		bl	mpu_write_mem
+ 262              	.L17:
+ 263 00d4 03B0     		add	sp, sp, #12
+ 264              		@ sp needed
+ 265 00d6 30BD     		pop	{r4, r5, pc}
+ 266              	.L22:
+ 267 00d8 4FF0FF30 		mov	r0, #-1
+ 268 00dc FAE7     		b	.L17
+ 269              	.L23:
+ 270 00de 4FF0FF30 		mov	r0, #-1
+ 271 00e2 F7E7     		b	.L17
+ 272              	.L26:
+ 273              		.align	2
+ 274              	.L25:
+ 275 00e4 00000000 		.word	dmp
+ 276 00e8 09E3CA02 		.word	46850825
+ 278              		.section	.text.dmp_set_accel_bias,"ax",%progbits
+ 279              		.align	1
+ 280              		.global	dmp_set_accel_bias
+ 281              		.syntax unified
+ 282              		.thumb
+ 283              		.thumb_func
+ 285              	dmp_set_accel_bias:
+ 286              		@ args = 0, pretend = 0, frame = 16
+ 287              		@ frame_needed = 0, uses_anonymous_args = 0
+ 288 0000 10B5     		push	{r4, lr}
+ 289 0002 84B0     		sub	sp, sp, #16
+ 290 0004 0446     		mov	r4, r0
+ 291 0006 0DF10200 		add	r0, sp, #2
+ 292 000a FFF7FEFF 		bl	mpu_get_accel_sens
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 6
+
+
+ 293 000e BDF802C0 		ldrh	ip, [sp, #2]
+ 294 0012 4FEACC3C 		lsl	ip, ip, #15
+ 295 0016 2E4B     		ldr	r3, .L32
+ 296 0018 B3F808E0 		ldrh	lr, [r3, #8]
+ 297 001c 0EF00303 		and	r3, lr, #3
+ 298 0020 54F82310 		ldr	r1, [r4, r3, lsl #2]
+ 299 0024 1EF0040F 		tst	lr, #4
+ 300 0028 18BF     		it	ne
+ 301 002a 4942     		rsbne	r1, r1, #0
+ 302 002c CEF3C103 		ubfx	r3, lr, #3, #2
+ 303 0030 54F82320 		ldr	r2, [r4, r3, lsl #2]
+ 304 0034 1EF0200F 		tst	lr, #32
+ 305 0038 18BF     		it	ne
+ 306 003a 5242     		rsbne	r2, r2, #0
+ 307 003c CEF38113 		ubfx	r3, lr, #6, #2
+ 308 0040 54F82330 		ldr	r3, [r4, r3, lsl #2]
+ 309 0044 1EF4807F 		tst	lr, #256
+ 310 0048 18BF     		it	ne
+ 311 004a 5B42     		rsbne	r3, r3, #0
+ 312 004c CC17     		asrs	r4, r1, #31
+ 313 004e A1FB0C10 		umull	r1, r0, r1, ip
+ 314 0052 0CFB0400 		mla	r0, ip, r4, r0
+ 315 0056 890F     		lsrs	r1, r1, #30
+ 316 0058 41EA8001 		orr	r1, r1, r0, lsl #2
+ 317 005c D417     		asrs	r4, r2, #31
+ 318 005e A2FB0C20 		umull	r2, r0, r2, ip
+ 319 0062 0CFB0400 		mla	r0, ip, r4, r0
+ 320 0066 920F     		lsrs	r2, r2, #30
+ 321 0068 42EA8002 		orr	r2, r2, r0, lsl #2
+ 322 006c DC17     		asrs	r4, r3, #31
+ 323 006e A3FB0C30 		umull	r3, r0, r3, ip
+ 324 0072 0CFB0400 		mla	r0, ip, r4, r0
+ 325 0076 9B0F     		lsrs	r3, r3, #30
+ 326 0078 43EA8003 		orr	r3, r3, r0, lsl #2
+ 327 007c 0816     		asrs	r0, r1, #24
+ 328 007e 8DF80400 		strb	r0, [sp, #4]
+ 329 0082 0814     		asrs	r0, r1, #16
+ 330 0084 8DF80500 		strb	r0, [sp, #5]
+ 331 0088 0812     		asrs	r0, r1, #8
+ 332 008a 8DF80600 		strb	r0, [sp, #6]
+ 333 008e 8DF80710 		strb	r1, [sp, #7]
+ 334 0092 1116     		asrs	r1, r2, #24
+ 335 0094 8DF80810 		strb	r1, [sp, #8]
+ 336 0098 1114     		asrs	r1, r2, #16
+ 337 009a 8DF80910 		strb	r1, [sp, #9]
+ 338 009e 1112     		asrs	r1, r2, #8
+ 339 00a0 8DF80A10 		strb	r1, [sp, #10]
+ 340 00a4 8DF80B20 		strb	r2, [sp, #11]
+ 341 00a8 1A16     		asrs	r2, r3, #24
+ 342 00aa 8DF80C20 		strb	r2, [sp, #12]
+ 343 00ae 1A14     		asrs	r2, r3, #16
+ 344 00b0 8DF80D20 		strb	r2, [sp, #13]
+ 345 00b4 1A12     		asrs	r2, r3, #8
+ 346 00b6 8DF80E20 		strb	r2, [sp, #14]
+ 347 00ba 8DF80F30 		strb	r3, [sp, #15]
+ 348 00be 01AA     		add	r2, sp, #4
+ 349 00c0 0C21     		movs	r1, #12
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 7
+
+
+ 350 00c2 4FF42570 		mov	r0, #660
+ 351 00c6 FFF7FEFF 		bl	mpu_write_mem
+ 352 00ca 04B0     		add	sp, sp, #16
+ 353              		@ sp needed
+ 354 00cc 10BD     		pop	{r4, pc}
+ 355              	.L33:
+ 356 00ce 00BF     		.align	2
+ 357              	.L32:
+ 358 00d0 00000000 		.word	dmp
+ 360              		.section	.rodata.dmp_set_fifo_rate.str1.4,"aMS",%progbits,1
+ 361              		.align	2
+ 362              	.LC4:
+ 363 0000 FEF2ABC4 		.ascii	"\376\362\253\304\252\361\337\337\273\257\337\337\000"
+ 363      AAF1DFDF 
+ 363      BBAFDFDF 
+ 363      00
+ 364              		.section	.text.dmp_set_fifo_rate,"ax",%progbits
+ 365              		.align	1
+ 366              		.global	dmp_set_fifo_rate
+ 367              		.syntax unified
+ 368              		.thumb
+ 369              		.thumb_func
+ 371              	dmp_set_fifo_rate:
+ 372              		@ args = 0, pretend = 0, frame = 24
+ 373              		@ frame_needed = 0, uses_anonymous_args = 0
+ 374 0000 10B5     		push	{r4, lr}
+ 375 0002 86B0     		sub	sp, sp, #24
+ 376 0004 0446     		mov	r4, r0
+ 377 0006 164B     		ldr	r3, .L40
+ 378 0008 93E80700 		ldm	r3, {r0, r1, r2}
+ 379 000c 06AB     		add	r3, sp, #24
+ 380 000e 03E90700 		stmdb	r3, {r0, r1, r2}
+ 381 0012 C82C     		cmp	r4, #200
+ 382 0014 1AD8     		bhi	.L36
+ 383 0016 0023     		movs	r3, #0
+ 384 0018 8DF80430 		strb	r3, [sp, #4]
+ 385 001c C823     		movs	r3, #200
+ 386 001e 93FBF4F3 		sdiv	r3, r3, r4
+ 387 0022 013B     		subs	r3, r3, #1
+ 388 0024 8DF80530 		strb	r3, [sp, #5]
+ 389 0028 01AA     		add	r2, sp, #4
+ 390 002a 0221     		movs	r1, #2
+ 391 002c 40F21620 		movw	r0, #534
+ 392 0030 FFF7FEFF 		bl	mpu_write_mem
+ 393 0034 68B9     		cbnz	r0, .L37
+ 394 0036 03AA     		add	r2, sp, #12
+ 395 0038 0C21     		movs	r1, #12
+ 396 003a 40F6C120 		movw	r0, #2753
+ 397 003e FFF7FEFF 		bl	mpu_write_mem
+ 398 0042 48B9     		cbnz	r0, .L38
+ 399 0044 074B     		ldr	r3, .L40+4
+ 400 0046 9C81     		strh	r4, [r3, #12]	@ movhi
+ 401              	.L34:
+ 402 0048 06B0     		add	sp, sp, #24
+ 403              		@ sp needed
+ 404 004a 10BD     		pop	{r4, pc}
+ 405              	.L36:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 8
+
+
+ 406 004c 4FF0FF30 		mov	r0, #-1
+ 407 0050 FAE7     		b	.L34
+ 408              	.L37:
+ 409 0052 4FF0FF30 		mov	r0, #-1
+ 410 0056 F7E7     		b	.L34
+ 411              	.L38:
+ 412 0058 4FF0FF30 		mov	r0, #-1
+ 413 005c F4E7     		b	.L34
+ 414              	.L41:
+ 415 005e 00BF     		.align	2
+ 416              	.L40:
+ 417 0060 00000000 		.word	.LC4
+ 418 0064 00000000 		.word	dmp
+ 420              		.section	.text.dmp_get_fifo_rate,"ax",%progbits
+ 421              		.align	1
+ 422              		.global	dmp_get_fifo_rate
+ 423              		.syntax unified
+ 424              		.thumb
+ 425              		.thumb_func
+ 427              	dmp_get_fifo_rate:
+ 428              		@ args = 0, pretend = 0, frame = 0
+ 429              		@ frame_needed = 0, uses_anonymous_args = 0
+ 430              		@ link register save eliminated.
+ 431 0000 024B     		ldr	r3, .L43
+ 432 0002 9B89     		ldrh	r3, [r3, #12]
+ 433 0004 0380     		strh	r3, [r0]	@ movhi
+ 434 0006 0020     		movs	r0, #0
+ 435 0008 7047     		bx	lr
+ 436              	.L44:
+ 437 000a 00BF     		.align	2
+ 438              	.L43:
+ 439 000c 00000000 		.word	dmp
+ 441              		.section	.text.dmp_set_tap_thresh,"ax",%progbits
+ 442              		.align	1
+ 443              		.global	dmp_set_tap_thresh
+ 444              		.syntax unified
+ 445              		.thumb
+ 446              		.thumb_func
+ 448              	dmp_set_tap_thresh:
+ 449              		@ args = 0, pretend = 0, frame = 8
+ 450              		@ frame_needed = 0, uses_anonymous_args = 0
+ 451 0000 70B5     		push	{r4, r5, r6, lr}
+ 452 0002 82B0     		sub	sp, sp, #8
+ 453 0004 0446     		mov	r4, r0
+ 454 0006 10F0070F 		tst	r0, #7
+ 455 000a 00F0AD80 		beq	.L55
+ 456 000e 0846     		mov	r0, r1
+ 457 0010 B1F5C86F 		cmp	r1, #1600
+ 458 0014 00F2AB80 		bhi	.L56
+ 459 0018 FFF7FEFF 		bl	__aeabi_ui2f
+ 460 001c 5C49     		ldr	r1, .L68
+ 461 001e FFF7FEFF 		bl	__aeabi_fdiv
+ 462 0022 0546     		mov	r5, r0
+ 463 0024 0DF10300 		add	r0, sp, #3
+ 464 0028 FFF7FEFF 		bl	mpu_get_accel_fsr
+ 465 002c 9DF80330 		ldrb	r3, [sp, #3]	@ zero_extendqisi2
+ 466 0030 023B     		subs	r3, r3, #2
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 9
+
+
+ 467 0032 0E2B     		cmp	r3, #14
+ 468 0034 00F29E80 		bhi	.L57
+ 469 0038 DFE803F0 		tbb	[pc, r3]
+ 470              	.L48:
+ 471 003c 08       		.byte	(.L51-.L48)/2
+ 472 003d 9C       		.byte	(.L57-.L48)/2
+ 473 003e 2C       		.byte	(.L50-.L48)/2
+ 474 003f 9C       		.byte	(.L57-.L48)/2
+ 475 0040 9C       		.byte	(.L57-.L48)/2
+ 476 0041 9C       		.byte	(.L57-.L48)/2
+ 477 0042 3C       		.byte	(.L49-.L48)/2
+ 478 0043 9C       		.byte	(.L57-.L48)/2
+ 479 0044 9C       		.byte	(.L57-.L48)/2
+ 480 0045 9C       		.byte	(.L57-.L48)/2
+ 481 0046 9C       		.byte	(.L57-.L48)/2
+ 482 0047 9C       		.byte	(.L57-.L48)/2
+ 483 0048 9C       		.byte	(.L57-.L48)/2
+ 484 0049 9C       		.byte	(.L57-.L48)/2
+ 485 004a 4C       		.byte	(.L47-.L48)/2
+ 486 004b 00       		.p2align 1
+ 487              	.L51:
+ 488 004c 4FF08D41 		mov	r1, #1182793728
+ 489 0050 2846     		mov	r0, r5
+ 490 0052 FFF7FEFF 		bl	__aeabi_fmul
+ 491 0056 FFF7FEFF 		bl	__aeabi_f2uiz
+ 492 005a 86B2     		uxth	r6, r0
+ 493 005c 4D49     		ldr	r1, .L68+4
+ 494 005e 2846     		mov	r0, r5
+ 495 0060 FFF7FEFF 		bl	__aeabi_fmul
+ 496 0064 FFF7FEFF 		bl	__aeabi_f2uiz
+ 497 0068 80B2     		uxth	r0, r0
+ 498              	.L52:
+ 499 006a 330A     		lsrs	r3, r6, #8
+ 500 006c 8DF80430 		strb	r3, [sp, #4]
+ 501 0070 8DF80560 		strb	r6, [sp, #5]
+ 502 0074 030A     		lsrs	r3, r0, #8
+ 503 0076 8DF80630 		strb	r3, [sp, #6]
+ 504 007a 8DF80700 		strb	r0, [sp, #7]
+ 505 007e 14F0010F 		tst	r4, #1
+ 506 0082 37D1     		bne	.L65
+ 507              	.L53:
+ 508 0084 14F0020F 		tst	r4, #2
+ 509 0088 48D1     		bne	.L66
+ 510              	.L54:
+ 511 008a 14F0040F 		tst	r4, #4
+ 512 008e 58D1     		bne	.L67
+ 513 0090 0020     		movs	r0, #0
+ 514 0092 71E0     		b	.L45
+ 515              	.L50:
+ 516 0094 4FF08C41 		mov	r1, #1174405120
+ 517 0098 2846     		mov	r0, r5
+ 518 009a FFF7FEFF 		bl	__aeabi_fmul
+ 519 009e FFF7FEFF 		bl	__aeabi_f2uiz
+ 520 00a2 86B2     		uxth	r6, r0
+ 521 00a4 3C49     		ldr	r1, .L68+8
+ 522 00a6 2846     		mov	r0, r5
+ 523 00a8 FFF7FEFF 		bl	__aeabi_fmul
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 10
+
+
+ 524 00ac FFF7FEFF 		bl	__aeabi_f2uiz
+ 525 00b0 80B2     		uxth	r0, r0
+ 526 00b2 DAE7     		b	.L52
+ 527              	.L49:
+ 528 00b4 4FF08B41 		mov	r1, #1166016512
+ 529 00b8 2846     		mov	r0, r5
+ 530 00ba FFF7FEFF 		bl	__aeabi_fmul
+ 531 00be FFF7FEFF 		bl	__aeabi_f2uiz
+ 532 00c2 86B2     		uxth	r6, r0
+ 533 00c4 3549     		ldr	r1, .L68+12
+ 534 00c6 2846     		mov	r0, r5
+ 535 00c8 FFF7FEFF 		bl	__aeabi_fmul
+ 536 00cc FFF7FEFF 		bl	__aeabi_f2uiz
+ 537 00d0 80B2     		uxth	r0, r0
+ 538 00d2 CAE7     		b	.L52
+ 539              	.L47:
+ 540 00d4 4FF08A41 		mov	r1, #1157627904
+ 541 00d8 2846     		mov	r0, r5
+ 542 00da FFF7FEFF 		bl	__aeabi_fmul
+ 543 00de FFF7FEFF 		bl	__aeabi_f2uiz
+ 544 00e2 86B2     		uxth	r6, r0
+ 545 00e4 2E49     		ldr	r1, .L68+16
+ 546 00e6 2846     		mov	r0, r5
+ 547 00e8 FFF7FEFF 		bl	__aeabi_fmul
+ 548 00ec FFF7FEFF 		bl	__aeabi_f2uiz
+ 549 00f0 80B2     		uxth	r0, r0
+ 550 00f2 BAE7     		b	.L52
+ 551              	.L65:
+ 552 00f4 01AA     		add	r2, sp, #4
+ 553 00f6 0221     		movs	r1, #2
+ 554 00f8 4FF4EA70 		mov	r0, #468
+ 555 00fc FFF7FEFF 		bl	mpu_write_mem
+ 556 0100 0028     		cmp	r0, #0
+ 557 0102 3BD1     		bne	.L58
+ 558 0104 0DF10602 		add	r2, sp, #6
+ 559 0108 0221     		movs	r1, #2
+ 560 010a 4FF49270 		mov	r0, #292
+ 561 010e FFF7FEFF 		bl	mpu_write_mem
+ 562 0112 0028     		cmp	r0, #0
+ 563 0114 B6D0     		beq	.L53
+ 564 0116 4FF0FF30 		mov	r0, #-1
+ 565 011a 2DE0     		b	.L45
+ 566              	.L66:
+ 567 011c 01AA     		add	r2, sp, #4
+ 568 011e 0221     		movs	r1, #2
+ 569 0120 4FF4EC70 		mov	r0, #472
+ 570 0124 FFF7FEFF 		bl	mpu_write_mem
+ 571 0128 58BB     		cbnz	r0, .L60
+ 572 012a 0DF10602 		add	r2, sp, #6
+ 573 012e 0221     		movs	r1, #2
+ 574 0130 4FF49470 		mov	r0, #296
+ 575 0134 FFF7FEFF 		bl	mpu_write_mem
+ 576 0138 0028     		cmp	r0, #0
+ 577 013a A6D0     		beq	.L54
+ 578 013c 4FF0FF30 		mov	r0, #-1
+ 579 0140 1AE0     		b	.L45
+ 580              	.L67:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 11
+
+
+ 581 0142 01AA     		add	r2, sp, #4
+ 582 0144 0221     		movs	r1, #2
+ 583 0146 4FF4EE70 		mov	r0, #476
+ 584 014a FFF7FEFF 		bl	mpu_write_mem
+ 585 014e D8B9     		cbnz	r0, .L63
+ 586 0150 0DF10602 		add	r2, sp, #6
+ 587 0154 0221     		movs	r1, #2
+ 588 0156 4FF49670 		mov	r0, #300
+ 589 015a FFF7FEFF 		bl	mpu_write_mem
+ 590 015e 0038     		subs	r0, r0, #0
+ 591 0160 18BF     		it	ne
+ 592 0162 0120     		movne	r0, #1
+ 593 0164 4042     		rsbs	r0, r0, #0
+ 594 0166 07E0     		b	.L45
+ 595              	.L55:
+ 596 0168 4FF0FF30 		mov	r0, #-1
+ 597 016c 04E0     		b	.L45
+ 598              	.L56:
+ 599 016e 4FF0FF30 		mov	r0, #-1
+ 600 0172 01E0     		b	.L45
+ 601              	.L57:
+ 602 0174 4FF0FF30 		mov	r0, #-1
+ 603              	.L45:
+ 604 0178 02B0     		add	sp, sp, #8
+ 605              		@ sp needed
+ 606 017a 70BD     		pop	{r4, r5, r6, pc}
+ 607              	.L58:
+ 608 017c 4FF0FF30 		mov	r0, #-1
+ 609 0180 FAE7     		b	.L45
+ 610              	.L60:
+ 611 0182 4FF0FF30 		mov	r0, #-1
+ 612 0186 F7E7     		b	.L45
+ 613              	.L63:
+ 614 0188 4FF0FF30 		mov	r0, #-1
+ 615 018c F4E7     		b	.L45
+ 616              	.L69:
+ 617 018e 00BF     		.align	2
+ 618              	.L68:
+ 619 0190 00004843 		.word	1128792064
+ 620 0194 00004046 		.word	1178599424
+ 621 0198 0000C045 		.word	1170210816
+ 622 019c 00004045 		.word	1161822208
+ 623 01a0 0000C044 		.word	1153433600
+ 625              		.section	.text.dmp_set_tap_axes,"ax",%progbits
+ 626              		.align	1
+ 627              		.global	dmp_set_tap_axes
+ 628              		.syntax unified
+ 629              		.thumb
+ 630              		.thumb_func
+ 632              	dmp_set_tap_axes:
+ 633              		@ args = 0, pretend = 0, frame = 8
+ 634              		@ frame_needed = 0, uses_anonymous_args = 0
+ 635 0000 00B5     		push	{lr}
+ 636 0002 83B0     		sub	sp, sp, #12
+ 637 0004 10F00103 		ands	r3, r0, #1
+ 638 0008 18BF     		it	ne
+ 639 000a 3023     		movne	r3, #48
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 12
+
+
+ 640 000c 8DF80730 		strb	r3, [sp, #7]
+ 641 0010 10F0020F 		tst	r0, #2
+ 642 0014 04D0     		beq	.L72
+ 643 0016 DBB2     		uxtb	r3, r3
+ 644 0018 43F00C03 		orr	r3, r3, #12
+ 645 001c 8DF80730 		strb	r3, [sp, #7]
+ 646              	.L72:
+ 647 0020 10F0040F 		tst	r0, #4
+ 648 0024 05D0     		beq	.L73
+ 649 0026 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 650 002a 43F00303 		orr	r3, r3, #3
+ 651 002e 8DF80730 		strb	r3, [sp, #7]
+ 652              	.L73:
+ 653 0032 0DF10702 		add	r2, sp, #7
+ 654 0036 0121     		movs	r1, #1
+ 655 0038 4FF4A470 		mov	r0, #328
+ 656 003c FFF7FEFF 		bl	mpu_write_mem
+ 657 0040 03B0     		add	sp, sp, #12
+ 658              		@ sp needed
+ 659 0042 5DF804FB 		ldr	pc, [sp], #4
+ 661              		.section	.text.dmp_set_tap_count,"ax",%progbits
+ 662              		.align	1
+ 663              		.global	dmp_set_tap_count
+ 664              		.syntax unified
+ 665              		.thumb
+ 666              		.thumb_func
+ 668              	dmp_set_tap_count:
+ 669              		@ args = 0, pretend = 0, frame = 8
+ 670              		@ frame_needed = 0, uses_anonymous_args = 0
+ 671 0000 00B5     		push	{lr}
+ 672 0002 83B0     		sub	sp, sp, #12
+ 673 0004 0428     		cmp	r0, #4
+ 674 0006 28BF     		it	cs
+ 675 0008 0420     		movcs	r0, #4
+ 676 000a 0128     		cmp	r0, #1
+ 677 000c 38BF     		it	cc
+ 678 000e 0120     		movcc	r0, #1
+ 679 0010 0138     		subs	r0, r0, #1
+ 680 0012 8DF80700 		strb	r0, [sp, #7]
+ 681 0016 0DF10702 		add	r2, sp, #7
+ 682 001a 0121     		movs	r1, #1
+ 683 001c 40F24F10 		movw	r0, #335
+ 684 0020 FFF7FEFF 		bl	mpu_write_mem
+ 685 0024 03B0     		add	sp, sp, #12
+ 686              		@ sp needed
+ 687 0026 5DF804FB 		ldr	pc, [sp], #4
+ 689              		.section	.text.dmp_set_tap_time,"ax",%progbits
+ 690              		.align	1
+ 691              		.global	dmp_set_tap_time
+ 692              		.syntax unified
+ 693              		.thumb
+ 694              		.thumb_func
+ 696              	dmp_set_tap_time:
+ 697              		@ args = 0, pretend = 0, frame = 8
+ 698              		@ frame_needed = 0, uses_anonymous_args = 0
+ 699 0000 00B5     		push	{lr}
+ 700 0002 83B0     		sub	sp, sp, #12
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 13
+
+
+ 701 0004 084B     		ldr	r3, .L80
+ 702 0006 A3FB0030 		umull	r3, r0, r3, r0
+ 703 000a 8308     		lsrs	r3, r0, #2
+ 704 000c 800A     		lsrs	r0, r0, #10
+ 705 000e 8DF80400 		strb	r0, [sp, #4]
+ 706 0012 8DF80530 		strb	r3, [sp, #5]
+ 707 0016 01AA     		add	r2, sp, #4
+ 708 0018 0221     		movs	r1, #2
+ 709 001a 4FF4EF70 		mov	r0, #478
+ 710 001e FFF7FEFF 		bl	mpu_write_mem
+ 711 0022 03B0     		add	sp, sp, #12
+ 712              		@ sp needed
+ 713 0024 5DF804FB 		ldr	pc, [sp], #4
+ 714              	.L81:
+ 715              		.align	2
+ 716              	.L80:
+ 717 0028 CDCCCCCC 		.word	-858993459
+ 719              		.section	.text.dmp_set_tap_time_multi,"ax",%progbits
+ 720              		.align	1
+ 721              		.global	dmp_set_tap_time_multi
+ 722              		.syntax unified
+ 723              		.thumb
+ 724              		.thumb_func
+ 726              	dmp_set_tap_time_multi:
+ 727              		@ args = 0, pretend = 0, frame = 8
+ 728              		@ frame_needed = 0, uses_anonymous_args = 0
+ 729 0000 00B5     		push	{lr}
+ 730 0002 83B0     		sub	sp, sp, #12
+ 731 0004 084B     		ldr	r3, .L84
+ 732 0006 A3FB0030 		umull	r3, r0, r3, r0
+ 733 000a 8308     		lsrs	r3, r0, #2
+ 734 000c 800A     		lsrs	r0, r0, #10
+ 735 000e 8DF80400 		strb	r0, [sp, #4]
+ 736 0012 8DF80530 		strb	r3, [sp, #5]
+ 737 0016 01AA     		add	r2, sp, #4
+ 738 0018 0221     		movs	r1, #2
+ 739 001a 4FF4ED70 		mov	r0, #474
+ 740 001e FFF7FEFF 		bl	mpu_write_mem
+ 741 0022 03B0     		add	sp, sp, #12
+ 742              		@ sp needed
+ 743 0024 5DF804FB 		ldr	pc, [sp], #4
+ 744              	.L85:
+ 745              		.align	2
+ 746              	.L84:
+ 747 0028 CDCCCCCC 		.word	-858993459
+ 749              		.section	.text.dmp_set_shake_reject_thresh,"ax",%progbits
+ 750              		.align	1
+ 751              		.global	dmp_set_shake_reject_thresh
+ 752              		.syntax unified
+ 753              		.thumb
+ 754              		.thumb_func
+ 756              	dmp_set_shake_reject_thresh:
+ 757              		@ args = 0, pretend = 0, frame = 8
+ 758              		@ frame_needed = 0, uses_anonymous_args = 0
+ 759 0000 00B5     		push	{lr}
+ 760 0002 83B0     		sub	sp, sp, #12
+ 761 0004 0D4B     		ldr	r3, .L88
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 14
+
+
+ 762 0006 83FB0023 		smull	r2, r3, r3, r0
+ 763 000a C017     		asrs	r0, r0, #31
+ 764 000c C0EBA310 		rsb	r0, r0, r3, asr #6
+ 765 0010 00FB01F1 		mul	r1, r0, r1
+ 766 0014 0B16     		asrs	r3, r1, #24
+ 767 0016 8DF80430 		strb	r3, [sp, #4]
+ 768 001a 0B14     		asrs	r3, r1, #16
+ 769 001c 8DF80530 		strb	r3, [sp, #5]
+ 770 0020 0B12     		asrs	r3, r1, #8
+ 771 0022 8DF80630 		strb	r3, [sp, #6]
+ 772 0026 8DF80710 		strb	r1, [sp, #7]
+ 773 002a 01AA     		add	r2, sp, #4
+ 774 002c 0421     		movs	r1, #4
+ 775 002e 4FF4AE70 		mov	r0, #348
+ 776 0032 FFF7FEFF 		bl	mpu_write_mem
+ 777 0036 03B0     		add	sp, sp, #12
+ 778              		@ sp needed
+ 779 0038 5DF804FB 		ldr	pc, [sp], #4
+ 780              	.L89:
+ 781              		.align	2
+ 782              	.L88:
+ 783 003c D34D6210 		.word	274877907
+ 785              		.section	.text.dmp_set_shake_reject_time,"ax",%progbits
+ 786              		.align	1
+ 787              		.global	dmp_set_shake_reject_time
+ 788              		.syntax unified
+ 789              		.thumb
+ 790              		.thumb_func
+ 792              	dmp_set_shake_reject_time:
+ 793              		@ args = 0, pretend = 0, frame = 8
+ 794              		@ frame_needed = 0, uses_anonymous_args = 0
+ 795 0000 00B5     		push	{lr}
+ 796 0002 83B0     		sub	sp, sp, #12
+ 797 0004 084B     		ldr	r3, .L92
+ 798 0006 A3FB0030 		umull	r3, r0, r3, r0
+ 799 000a 8308     		lsrs	r3, r0, #2
+ 800 000c 800A     		lsrs	r0, r0, #10
+ 801 000e 8DF80400 		strb	r0, [sp, #4]
+ 802 0012 8DF80530 		strb	r3, [sp, #5]
+ 803 0016 01AA     		add	r2, sp, #4
+ 804 0018 0221     		movs	r1, #2
+ 805 001a 4FF4AD70 		mov	r0, #346
+ 806 001e FFF7FEFF 		bl	mpu_write_mem
+ 807 0022 03B0     		add	sp, sp, #12
+ 808              		@ sp needed
+ 809 0024 5DF804FB 		ldr	pc, [sp], #4
+ 810              	.L93:
+ 811              		.align	2
+ 812              	.L92:
+ 813 0028 CDCCCCCC 		.word	-858993459
+ 815              		.section	.text.dmp_set_shake_reject_timeout,"ax",%progbits
+ 816              		.align	1
+ 817              		.global	dmp_set_shake_reject_timeout
+ 818              		.syntax unified
+ 819              		.thumb
+ 820              		.thumb_func
+ 822              	dmp_set_shake_reject_timeout:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 15
+
+
+ 823              		@ args = 0, pretend = 0, frame = 8
+ 824              		@ frame_needed = 0, uses_anonymous_args = 0
+ 825 0000 00B5     		push	{lr}
+ 826 0002 83B0     		sub	sp, sp, #12
+ 827 0004 084B     		ldr	r3, .L96
+ 828 0006 A3FB0030 		umull	r3, r0, r3, r0
+ 829 000a 8308     		lsrs	r3, r0, #2
+ 830 000c 800A     		lsrs	r0, r0, #10
+ 831 000e 8DF80400 		strb	r0, [sp, #4]
+ 832 0012 8DF80530 		strb	r3, [sp, #5]
+ 833 0016 01AA     		add	r2, sp, #4
+ 834 0018 0221     		movs	r1, #2
+ 835 001a 4FF4AC70 		mov	r0, #344
+ 836 001e FFF7FEFF 		bl	mpu_write_mem
+ 837 0022 03B0     		add	sp, sp, #12
+ 838              		@ sp needed
+ 839 0024 5DF804FB 		ldr	pc, [sp], #4
+ 840              	.L97:
+ 841              		.align	2
+ 842              	.L96:
+ 843 0028 CDCCCCCC 		.word	-858993459
+ 845              		.section	.text.dmp_get_pedometer_step_count,"ax",%progbits
+ 846              		.align	1
+ 847              		.global	dmp_get_pedometer_step_count
+ 848              		.syntax unified
+ 849              		.thumb
+ 850              		.thumb_func
+ 852              	dmp_get_pedometer_step_count:
+ 853              		@ args = 0, pretend = 0, frame = 8
+ 854              		@ frame_needed = 0, uses_anonymous_args = 0
+ 855 0000 D0B1     		cbz	r0, .L100
+ 856 0002 10B5     		push	{r4, lr}
+ 857 0004 82B0     		sub	sp, sp, #8
+ 858 0006 0446     		mov	r4, r0
+ 859 0008 01AA     		add	r2, sp, #4
+ 860 000a 0421     		movs	r1, #4
+ 861 000c 4FF45870 		mov	r0, #864
+ 862 0010 FFF7FEFF 		bl	mpu_read_mem
+ 863 0014 98B9     		cbnz	r0, .L101
+ 864 0016 9DF80420 		ldrb	r2, [sp, #4]	@ zero_extendqisi2
+ 865 001a 9DF80530 		ldrb	r3, [sp, #5]	@ zero_extendqisi2
+ 866 001e 1B04     		lsls	r3, r3, #16
+ 867 0020 43EA0263 		orr	r3, r3, r2, lsl #24
+ 868 0024 9DF80720 		ldrb	r2, [sp, #7]	@ zero_extendqisi2
+ 869 0028 1343     		orrs	r3, r3, r2
+ 870 002a 9DF80620 		ldrb	r2, [sp, #6]	@ zero_extendqisi2
+ 871 002e 43EA0223 		orr	r3, r3, r2, lsl #8
+ 872 0032 2360     		str	r3, [r4]
+ 873              	.L98:
+ 874 0034 02B0     		add	sp, sp, #8
+ 875              		@ sp needed
+ 876 0036 10BD     		pop	{r4, pc}
+ 877              	.L100:
+ 878 0038 4FF0FF30 		mov	r0, #-1
+ 879 003c 7047     		bx	lr
+ 880              	.L101:
+ 881 003e 4FF0FF30 		mov	r0, #-1
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 16
+
+
+ 882 0042 F7E7     		b	.L98
+ 884              		.section	.text.dmp_set_pedometer_step_count,"ax",%progbits
+ 885              		.align	1
+ 886              		.global	dmp_set_pedometer_step_count
+ 887              		.syntax unified
+ 888              		.thumb
+ 889              		.thumb_func
+ 891              	dmp_set_pedometer_step_count:
+ 892              		@ args = 0, pretend = 0, frame = 8
+ 893              		@ frame_needed = 0, uses_anonymous_args = 0
+ 894 0000 00B5     		push	{lr}
+ 895 0002 83B0     		sub	sp, sp, #12
+ 896 0004 030E     		lsrs	r3, r0, #24
+ 897 0006 8DF80430 		strb	r3, [sp, #4]
+ 898 000a 030C     		lsrs	r3, r0, #16
+ 899 000c 8DF80530 		strb	r3, [sp, #5]
+ 900 0010 030A     		lsrs	r3, r0, #8
+ 901 0012 8DF80630 		strb	r3, [sp, #6]
+ 902 0016 8DF80700 		strb	r0, [sp, #7]
+ 903 001a 01AA     		add	r2, sp, #4
+ 904 001c 0421     		movs	r1, #4
+ 905 001e 4FF45870 		mov	r0, #864
+ 906 0022 FFF7FEFF 		bl	mpu_write_mem
+ 907 0026 03B0     		add	sp, sp, #12
+ 908              		@ sp needed
+ 909 0028 5DF804FB 		ldr	pc, [sp], #4
+ 911              		.section	.text.dmp_get_pedometer_walk_time,"ax",%progbits
+ 912              		.align	1
+ 913              		.global	dmp_get_pedometer_walk_time
+ 914              		.syntax unified
+ 915              		.thumb
+ 916              		.thumb_func
+ 918              	dmp_get_pedometer_walk_time:
+ 919              		@ args = 0, pretend = 0, frame = 8
+ 920              		@ frame_needed = 0, uses_anonymous_args = 0
+ 921 0000 E8B1     		cbz	r0, .L110
+ 922 0002 10B5     		push	{r4, lr}
+ 923 0004 82B0     		sub	sp, sp, #8
+ 924 0006 0446     		mov	r4, r0
+ 925 0008 01AA     		add	r2, sp, #4
+ 926 000a 0421     		movs	r1, #4
+ 927 000c 4FF47170 		mov	r0, #964
+ 928 0010 FFF7FEFF 		bl	mpu_read_mem
+ 929 0014 B0B9     		cbnz	r0, .L111
+ 930 0016 9DF80420 		ldrb	r2, [sp, #4]	@ zero_extendqisi2
+ 931 001a 9DF80530 		ldrb	r3, [sp, #5]	@ zero_extendqisi2
+ 932 001e 1B04     		lsls	r3, r3, #16
+ 933 0020 43EA0263 		orr	r3, r3, r2, lsl #24
+ 934 0024 9DF80720 		ldrb	r2, [sp, #7]	@ zero_extendqisi2
+ 935 0028 1343     		orrs	r3, r3, r2
+ 936 002a 9DF80620 		ldrb	r2, [sp, #6]	@ zero_extendqisi2
+ 937 002e 43EA0223 		orr	r3, r3, r2, lsl #8
+ 938 0032 03EB8303 		add	r3, r3, r3, lsl #2
+ 939 0036 9B00     		lsls	r3, r3, #2
+ 940 0038 2360     		str	r3, [r4]
+ 941              	.L108:
+ 942 003a 02B0     		add	sp, sp, #8
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 17
+
+
+ 943              		@ sp needed
+ 944 003c 10BD     		pop	{r4, pc}
+ 945              	.L110:
+ 946 003e 4FF0FF30 		mov	r0, #-1
+ 947 0042 7047     		bx	lr
+ 948              	.L111:
+ 949 0044 4FF0FF30 		mov	r0, #-1
+ 950 0048 F7E7     		b	.L108
+ 952              		.section	.text.dmp_set_pedometer_walk_time,"ax",%progbits
+ 953              		.align	1
+ 954              		.global	dmp_set_pedometer_walk_time
+ 955              		.syntax unified
+ 956              		.thumb
+ 957              		.thumb_func
+ 959              	dmp_set_pedometer_walk_time:
+ 960              		@ args = 0, pretend = 0, frame = 8
+ 961              		@ frame_needed = 0, uses_anonymous_args = 0
+ 962 0000 00B5     		push	{lr}
+ 963 0002 83B0     		sub	sp, sp, #12
+ 964 0004 0B4B     		ldr	r3, .L118
+ 965 0006 A3FB0030 		umull	r3, r0, r3, r0
+ 966 000a 0309     		lsrs	r3, r0, #4
+ 967 000c 020F     		lsrs	r2, r0, #28
+ 968 000e 8DF80420 		strb	r2, [sp, #4]
+ 969 0012 020D     		lsrs	r2, r0, #20
+ 970 0014 8DF80520 		strb	r2, [sp, #5]
+ 971 0018 000B     		lsrs	r0, r0, #12
+ 972 001a 8DF80600 		strb	r0, [sp, #6]
+ 973 001e 8DF80730 		strb	r3, [sp, #7]
+ 974 0022 01AA     		add	r2, sp, #4
+ 975 0024 0421     		movs	r1, #4
+ 976 0026 4FF47170 		mov	r0, #964
+ 977 002a FFF7FEFF 		bl	mpu_write_mem
+ 978 002e 03B0     		add	sp, sp, #12
+ 979              		@ sp needed
+ 980 0030 5DF804FB 		ldr	pc, [sp], #4
+ 981              	.L119:
+ 982              		.align	2
+ 983              	.L118:
+ 984 0034 CDCCCCCC 		.word	-858993459
+ 986              		.section	.text.dmp_get_enabled_features,"ax",%progbits
+ 987              		.align	1
+ 988              		.global	dmp_get_enabled_features
+ 989              		.syntax unified
+ 990              		.thumb
+ 991              		.thumb_func
+ 993              	dmp_get_enabled_features:
+ 994              		@ args = 0, pretend = 0, frame = 0
+ 995              		@ frame_needed = 0, uses_anonymous_args = 0
+ 996              		@ link register save eliminated.
+ 997 0000 024B     		ldr	r3, .L121
+ 998 0002 5B89     		ldrh	r3, [r3, #10]
+ 999 0004 0380     		strh	r3, [r0]	@ movhi
+ 1000 0006 0020     		movs	r0, #0
+ 1001 0008 7047     		bx	lr
+ 1002              	.L122:
+ 1003 000a 00BF     		.align	2
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 18
+
+
+ 1004              	.L121:
+ 1005 000c 00000000 		.word	dmp
+ 1007              		.section	.rodata.dmp_enable_gyro_cal.str1.4,"aMS",%progbits,1
+ 1008              		.align	2
+ 1009              	.LC5:
+ 1010 0000 B8AAB38D 		.ascii	"\270\252\263\215\264\230\0155]\000"
+ 1010      B4980D35 
+ 1010      5D00
+ 1011 000a 0000     		.align	2
+ 1012              	.LC6:
+ 1013 000c B8AAAAAA 		.ascii	"\270\252\252\252\260\210\303\305\307\000"
+ 1013      B088C3C5 
+ 1013      C700
+ 1014              		.section	.text.dmp_enable_gyro_cal,"ax",%progbits
+ 1015              		.align	1
+ 1016              		.global	dmp_enable_gyro_cal
+ 1017              		.syntax unified
+ 1018              		.thumb
+ 1019              		.thumb_func
+ 1021              	dmp_enable_gyro_cal:
+ 1022              		@ args = 0, pretend = 0, frame = 16
+ 1023              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1024 0000 00B5     		push	{lr}
+ 1025 0002 85B0     		sub	sp, sp, #20
+ 1026 0004 68B1     		cbz	r0, .L124
+ 1027 0006 0D4A     		ldr	r2, .L127
+ 1028 0008 01AB     		add	r3, sp, #4
+ 1029 000a 07CA     		ldm	r2, {r0, r1, r2}
+ 1030 000c 03C3     		stmia	r3!, {r0, r1}
+ 1031 000e 1A70     		strb	r2, [r3]
+ 1032 0010 01AA     		add	r2, sp, #4
+ 1033 0012 0921     		movs	r1, #9
+ 1034 0014 4FF49760 		mov	r0, #1208
+ 1035 0018 FFF7FEFF 		bl	mpu_write_mem
+ 1036              	.L123:
+ 1037 001c 05B0     		add	sp, sp, #20
+ 1038              		@ sp needed
+ 1039 001e 5DF804FB 		ldr	pc, [sp], #4
+ 1040              	.L124:
+ 1041 0022 074A     		ldr	r2, .L127+4
+ 1042 0024 01AB     		add	r3, sp, #4
+ 1043 0026 07CA     		ldm	r2, {r0, r1, r2}
+ 1044 0028 03C3     		stmia	r3!, {r0, r1}
+ 1045 002a 1A70     		strb	r2, [r3]
+ 1046 002c 01AA     		add	r2, sp, #4
+ 1047 002e 0921     		movs	r1, #9
+ 1048 0030 4FF49760 		mov	r0, #1208
+ 1049 0034 FFF7FEFF 		bl	mpu_write_mem
+ 1050 0038 F0E7     		b	.L123
+ 1051              	.L128:
+ 1052 003a 00BF     		.align	2
+ 1053              	.L127:
+ 1054 003c 00000000 		.word	.LC5
+ 1055 0040 0C000000 		.word	.LC6
+ 1057              		.section	.text.dmp_enable_lp_quat,"ax",%progbits
+ 1058              		.align	1
+ 1059              		.global	dmp_enable_lp_quat
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 19
+
+
+ 1060              		.syntax unified
+ 1061              		.thumb
+ 1062              		.thumb_func
+ 1064              	dmp_enable_lp_quat:
+ 1065              		@ args = 0, pretend = 0, frame = 8
+ 1066              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1067 0000 00B5     		push	{lr}
+ 1068 0002 83B0     		sub	sp, sp, #12
+ 1069 0004 B0B1     		cbz	r0, .L130
+ 1070 0006 C023     		movs	r3, #192
+ 1071 0008 8DF80430 		strb	r3, [sp, #4]
+ 1072 000c C223     		movs	r3, #194
+ 1073 000e 8DF80530 		strb	r3, [sp, #5]
+ 1074 0012 C423     		movs	r3, #196
+ 1075 0014 8DF80630 		strb	r3, [sp, #6]
+ 1076 0018 C623     		movs	r3, #198
+ 1077 001a 8DF80730 		strb	r3, [sp, #7]
+ 1078              	.L131:
+ 1079 001e 01AA     		add	r2, sp, #4
+ 1080 0020 0421     		movs	r1, #4
+ 1081 0022 40F69820 		movw	r0, #2712
+ 1082 0026 FFF7FEFF 		bl	mpu_write_mem
+ 1083 002a FFF7FEFF 		bl	mpu_reset_fifo
+ 1084 002e 03B0     		add	sp, sp, #12
+ 1085              		@ sp needed
+ 1086 0030 5DF804FB 		ldr	pc, [sp], #4
+ 1087              	.L130:
+ 1088 0034 4FF08B33 		mov	r3, #-1953789045
+ 1089 0038 0193     		str	r3, [sp, #4]
+ 1090 003a F0E7     		b	.L131
+ 1092              		.section	.text.dmp_enable_6x_lp_quat,"ax",%progbits
+ 1093              		.align	1
+ 1094              		.global	dmp_enable_6x_lp_quat
+ 1095              		.syntax unified
+ 1096              		.thumb
+ 1097              		.thumb_func
+ 1099              	dmp_enable_6x_lp_quat:
+ 1100              		@ args = 0, pretend = 0, frame = 8
+ 1101              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1102 0000 00B5     		push	{lr}
+ 1103 0002 83B0     		sub	sp, sp, #12
+ 1104 0004 B0B1     		cbz	r0, .L134
+ 1105 0006 2023     		movs	r3, #32
+ 1106 0008 8DF80430 		strb	r3, [sp, #4]
+ 1107 000c 2823     		movs	r3, #40
+ 1108 000e 8DF80530 		strb	r3, [sp, #5]
+ 1109 0012 3023     		movs	r3, #48
+ 1110 0014 8DF80630 		strb	r3, [sp, #6]
+ 1111 0018 3823     		movs	r3, #56
+ 1112 001a 8DF80730 		strb	r3, [sp, #7]
+ 1113              	.L135:
+ 1114 001e 01AA     		add	r2, sp, #4
+ 1115 0020 0421     		movs	r1, #4
+ 1116 0022 40F69E20 		movw	r0, #2718
+ 1117 0026 FFF7FEFF 		bl	mpu_write_mem
+ 1118 002a FFF7FEFF 		bl	mpu_reset_fifo
+ 1119 002e 03B0     		add	sp, sp, #12
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 20
+
+
+ 1120              		@ sp needed
+ 1121 0030 5DF804FB 		ldr	pc, [sp], #4
+ 1122              	.L134:
+ 1123 0034 4FF0A333 		mov	r3, #-1549556829
+ 1124 0038 0193     		str	r3, [sp, #4]
+ 1125 003a F0E7     		b	.L135
+ 1127              		.section	.text.dmp_enable_feature,"ax",%progbits
+ 1128              		.align	1
+ 1129              		.global	dmp_enable_feature
+ 1130              		.syntax unified
+ 1131              		.thumb
+ 1132              		.thumb_func
+ 1134              	dmp_enable_feature:
+ 1135              		@ args = 0, pretend = 0, frame = 16
+ 1136              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1137 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 1138 0002 85B0     		sub	sp, sp, #20
+ 1139 0004 0446     		mov	r4, r0
+ 1140 0006 0223     		movs	r3, #2
+ 1141 0008 8DF80430 		strb	r3, [sp, #4]
+ 1142 000c CA23     		movs	r3, #202
+ 1143 000e 8DF80530 		strb	r3, [sp, #5]
+ 1144 0012 E323     		movs	r3, #227
+ 1145 0014 8DF80630 		strb	r3, [sp, #6]
+ 1146 0018 0923     		movs	r3, #9
+ 1147 001a 8DF80730 		strb	r3, [sp, #7]
+ 1148 001e 01AA     		add	r2, sp, #4
+ 1149 0020 0421     		movs	r1, #4
+ 1150 0022 6820     		movs	r0, #104
+ 1151 0024 FFF7FEFF 		bl	mpu_write_mem
+ 1152 0028 14F04006 		ands	r6, r4, #64
+ 1153 002c 40F0AE80 		bne	.L157
+ 1154 0030 A323     		movs	r3, #163
+ 1155 0032 1946     		mov	r1, r3
+ 1156 0034 1A46     		mov	r2, r3
+ 1157              	.L138:
+ 1158 0036 A320     		movs	r0, #163
+ 1159 0038 8DF80400 		strb	r0, [sp, #4]
+ 1160 003c 8DF80530 		strb	r3, [sp, #5]
+ 1161 0040 8DF80610 		strb	r1, [sp, #6]
+ 1162 0044 8DF80720 		strb	r2, [sp, #7]
+ 1163 0048 14F4C075 		ands	r5, r4, #384
+ 1164 004c 40F0A280 		bne	.L158
+ 1165 0050 0346     		mov	r3, r0
+ 1166 0052 0146     		mov	r1, r0
+ 1167 0054 0246     		mov	r2, r0
+ 1168              	.L139:
+ 1169 0056 8DF80830 		strb	r3, [sp, #8]
+ 1170 005a 8DF80910 		strb	r1, [sp, #9]
+ 1171 005e 8DF80A20 		strb	r2, [sp, #10]
+ 1172 0062 A323     		movs	r3, #163
+ 1173 0064 8DF80B30 		strb	r3, [sp, #11]
+ 1174 0068 8DF80C30 		strb	r3, [sp, #12]
+ 1175 006c 8DF80D30 		strb	r3, [sp, #13]
+ 1176 0070 01AA     		add	r2, sp, #4
+ 1177 0072 0A21     		movs	r1, #10
+ 1178 0074 40F6A720 		movw	r0, #2727
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 21
+
+
+ 1179 0078 FFF7FEFF 		bl	mpu_write_mem
+ 1180 007c 14F00307 		ands	r7, r4, #3
+ 1181 0080 0CBF     		ite	eq
+ 1182 0082 D823     		moveq	r3, #216
+ 1183 0084 2023     		movne	r3, #32
+ 1184 0086 8DF80430 		strb	r3, [sp, #4]
+ 1185 008a 01AA     		add	r2, sp, #4
+ 1186 008c 0121     		movs	r1, #1
+ 1187 008e 40F6B620 		movw	r0, #2742
+ 1188 0092 FFF7FEFF 		bl	mpu_write_mem
+ 1189 0096 14F0200F 		tst	r4, #32
+ 1190 009a 14BF     		ite	ne
+ 1191 009c 0120     		movne	r0, #1
+ 1192 009e 0020     		moveq	r0, #0
+ 1193 00a0 FFF7FEFF 		bl	dmp_enable_gyro_cal
+ 1194 00a4 A5B1     		cbz	r5, .L143
+ 1195 00a6 14F4807F 		tst	r4, #256
+ 1196 00aa 77D1     		bne	.L160
+ 1197 00ac B020     		movs	r0, #176
+ 1198 00ae 8021     		movs	r1, #128
+ 1199 00b0 B422     		movs	r2, #180
+ 1200 00b2 9023     		movs	r3, #144
+ 1201              	.L144:
+ 1202 00b4 8DF80400 		strb	r0, [sp, #4]
+ 1203 00b8 8DF80510 		strb	r1, [sp, #5]
+ 1204 00bc 8DF80620 		strb	r2, [sp, #6]
+ 1205 00c0 8DF80730 		strb	r3, [sp, #7]
+ 1206 00c4 01AA     		add	r2, sp, #4
+ 1207 00c6 0421     		movs	r1, #4
+ 1208 00c8 40F6A220 		movw	r0, #2722
+ 1209 00cc FFF7FEFF 		bl	mpu_write_mem
+ 1210              	.L143:
+ 1211 00d0 14F0010F 		tst	r4, #1
+ 1212 00d4 67D0     		beq	.L145
+ 1213 00d6 F823     		movs	r3, #248
+ 1214 00d8 8DF80430 		strb	r3, [sp, #4]
+ 1215 00dc 01AA     		add	r2, sp, #4
+ 1216 00de 0121     		movs	r1, #1
+ 1217 00e0 4FF40B60 		mov	r0, #2224
+ 1218 00e4 FFF7FEFF 		bl	mpu_write_mem
+ 1219 00e8 FA21     		movs	r1, #250
+ 1220 00ea 0720     		movs	r0, #7
+ 1221 00ec FFF7FEFF 		bl	dmp_set_tap_thresh
+ 1222 00f0 0720     		movs	r0, #7
+ 1223 00f2 FFF7FEFF 		bl	dmp_set_tap_axes
+ 1224 00f6 0120     		movs	r0, #1
+ 1225 00f8 FFF7FEFF 		bl	dmp_set_tap_count
+ 1226 00fc 6420     		movs	r0, #100
+ 1227 00fe FFF7FEFF 		bl	dmp_set_tap_time
+ 1228 0102 4FF4FA70 		mov	r0, #500
+ 1229 0106 FFF7FEFF 		bl	dmp_set_tap_time_multi
+ 1230 010a C821     		movs	r1, #200
+ 1231 010c 2D48     		ldr	r0, .L164
+ 1232 010e FFF7FEFF 		bl	dmp_set_shake_reject_thresh
+ 1233 0112 2820     		movs	r0, #40
+ 1234 0114 FFF7FEFF 		bl	dmp_set_shake_reject_time
+ 1235 0118 0A20     		movs	r0, #10
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 22
+
+
+ 1236 011a FFF7FEFF 		bl	dmp_set_shake_reject_timeout
+ 1237              	.L146:
+ 1238 011e 14F0020F 		tst	r4, #2
+ 1239 0122 0CBF     		ite	eq
+ 1240 0124 D823     		moveq	r3, #216
+ 1241 0126 D923     		movne	r3, #217
+ 1242 0128 8DF80430 		strb	r3, [sp, #4]
+ 1243 012c 01AA     		add	r2, sp, #4
+ 1244 012e 0121     		movs	r1, #1
+ 1245 0130 40F23D70 		movw	r0, #1853
+ 1246 0134 FFF7FEFF 		bl	mpu_write_mem
+ 1247 0138 14F0040F 		tst	r4, #4
+ 1248 013c 14BF     		ite	ne
+ 1249 013e 0120     		movne	r0, #1
+ 1250 0140 0020     		moveq	r0, #0
+ 1251 0142 FFF7FEFF 		bl	dmp_enable_lp_quat
+ 1252 0146 14F0100F 		tst	r4, #16
+ 1253 014a 14BF     		ite	ne
+ 1254 014c 0120     		movne	r0, #1
+ 1255 014e 0020     		moveq	r0, #0
+ 1256 0150 FFF7FEFF 		bl	dmp_enable_6x_lp_quat
+ 1257 0154 44F00803 		orr	r3, r4, #8
+ 1258 0158 1B4A     		ldr	r2, .L164+4
+ 1259 015a 5381     		strh	r3, [r2, #10]	@ movhi
+ 1260 015c FFF7FEFF 		bl	mpu_reset_fifo
+ 1261 0160 002E     		cmp	r6, #0
+ 1262 0162 0CBF     		ite	eq
+ 1263 0164 0023     		moveq	r3, #0
+ 1264 0166 0623     		movne	r3, #6
+ 1265 0168 3DBB     		cbnz	r5, .L153
+ 1266 016a 174A     		ldr	r2, .L164+4
+ 1267 016c 9373     		strb	r3, [r2, #14]
+ 1268              	.L154:
+ 1269 016e 14F0140F 		tst	r4, #20
+ 1270 0172 03D0     		beq	.L155
+ 1271 0174 144A     		ldr	r2, .L164+4
+ 1272 0176 937B     		ldrb	r3, [r2, #14]	@ zero_extendqisi2
+ 1273 0178 1033     		adds	r3, r3, #16
+ 1274 017a 9373     		strb	r3, [r2, #14]
+ 1275              	.L155:
+ 1276 017c 1FB1     		cbz	r7, .L156
+ 1277 017e 124A     		ldr	r2, .L164+4
+ 1278 0180 937B     		ldrb	r3, [r2, #14]	@ zero_extendqisi2
+ 1279 0182 0433     		adds	r3, r3, #4
+ 1280 0184 9373     		strb	r3, [r2, #14]
+ 1281              	.L156:
+ 1282 0186 0020     		movs	r0, #0
+ 1283 0188 05B0     		add	sp, sp, #20
+ 1284              		@ sp needed
+ 1285 018a F0BD     		pop	{r4, r5, r6, r7, pc}
+ 1286              	.L157:
+ 1287 018c C023     		movs	r3, #192
+ 1288 018e C821     		movs	r1, #200
+ 1289 0190 C222     		movs	r2, #194
+ 1290 0192 50E7     		b	.L138
+ 1291              	.L158:
+ 1292 0194 C423     		movs	r3, #196
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 23
+
+
+ 1293 0196 CC21     		movs	r1, #204
+ 1294 0198 C622     		movs	r2, #198
+ 1295 019a 5CE7     		b	.L139
+ 1296              	.L160:
+ 1297 019c B220     		movs	r0, #178
+ 1298 019e 8B21     		movs	r1, #139
+ 1299 01a0 B622     		movs	r2, #182
+ 1300 01a2 9B23     		movs	r3, #155
+ 1301 01a4 86E7     		b	.L144
+ 1302              	.L145:
+ 1303 01a6 D823     		movs	r3, #216
+ 1304 01a8 8DF80430 		strb	r3, [sp, #4]
+ 1305 01ac 01AA     		add	r2, sp, #4
+ 1306 01ae 0121     		movs	r1, #1
+ 1307 01b0 4FF40B60 		mov	r0, #2224
+ 1308 01b4 FFF7FEFF 		bl	mpu_write_mem
+ 1309 01b8 B1E7     		b	.L146
+ 1310              	.L153:
+ 1311 01ba 0633     		adds	r3, r3, #6
+ 1312 01bc 024A     		ldr	r2, .L164+4
+ 1313 01be 9373     		strb	r3, [r2, #14]
+ 1314 01c0 D5E7     		b	.L154
+ 1315              	.L165:
+ 1316 01c2 00BF     		.align	2
+ 1317              	.L164:
+ 1318 01c4 09E3CA02 		.word	46850825
+ 1319 01c8 00000000 		.word	dmp
+ 1321              		.section	.rodata.dmp_set_interrupt_mode.str1.4,"aMS",%progbits,1
+ 1322              		.align	2
+ 1323              	.LC7:
+ 1324 0000 D8B1B9F3 		.ascii	"\330\261\271\363\213\243\221\266\011\264\331\000"
+ 1324      8BA391B6 
+ 1324      09B4D900 
+ 1325              		.align	2
+ 1326              	.LC8:
+ 1327 000c DAB1B9F3 		.ascii	"\332\261\271\363\213\243\221\266\332\264\332\000"
+ 1327      8BA391B6 
+ 1327      DAB4DA00 
+ 1328              		.section	.text.dmp_set_interrupt_mode,"ax",%progbits
+ 1329              		.align	1
+ 1330              		.global	dmp_set_interrupt_mode
+ 1331              		.syntax unified
+ 1332              		.thumb
+ 1333              		.thumb_func
+ 1335              	dmp_set_interrupt_mode:
+ 1336              		@ args = 0, pretend = 0, frame = 24
+ 1337              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1338 0000 00B5     		push	{lr}
+ 1339 0002 87B0     		sub	sp, sp, #28
+ 1340 0004 8446     		mov	ip, r0
+ 1341 0006 144A     		ldr	r2, .L171
+ 1342 0008 03AB     		add	r3, sp, #12
+ 1343 000a 07CA     		ldm	r2, {r0, r1, r2}
+ 1344 000c 03C3     		stmia	r3!, {r0, r1}
+ 1345 000e 23F8022B 		strh	r2, [r3], #2	@ movhi
+ 1346 0012 120C     		lsrs	r2, r2, #16
+ 1347 0014 1A70     		strb	r2, [r3]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 24
+
+
+ 1348 0016 114A     		ldr	r2, .L171+4
+ 1349 0018 6B46     		mov	r3, sp
+ 1350 001a 07CA     		ldm	r2, {r0, r1, r2}
+ 1351 001c 03C3     		stmia	r3!, {r0, r1}
+ 1352 001e 23F8022B 		strh	r2, [r3], #2	@ movhi
+ 1353 0022 120C     		lsrs	r2, r2, #16
+ 1354 0024 1A70     		strb	r2, [r3]
+ 1355 0026 BCF1010F 		cmp	ip, #1
+ 1356 002a 0BD0     		beq	.L167
+ 1357 002c BCF1020F 		cmp	ip, #2
+ 1358 0030 0FD1     		bne	.L169
+ 1359 0032 03AA     		add	r2, sp, #12
+ 1360 0034 0B21     		movs	r1, #11
+ 1361 0036 40F68220 		movw	r0, #2690
+ 1362 003a FFF7FEFF 		bl	mpu_write_mem
+ 1363              	.L166:
+ 1364 003e 07B0     		add	sp, sp, #28
+ 1365              		@ sp needed
+ 1366 0040 5DF804FB 		ldr	pc, [sp], #4
+ 1367              	.L167:
+ 1368 0044 6A46     		mov	r2, sp
+ 1369 0046 0B21     		movs	r1, #11
+ 1370 0048 40F68220 		movw	r0, #2690
+ 1371 004c FFF7FEFF 		bl	mpu_write_mem
+ 1372 0050 F5E7     		b	.L166
+ 1373              	.L169:
+ 1374 0052 4FF0FF30 		mov	r0, #-1
+ 1375 0056 F2E7     		b	.L166
+ 1376              	.L172:
+ 1377              		.align	2
+ 1378              	.L171:
+ 1379 0058 00000000 		.word	.LC7
+ 1380 005c 0C000000 		.word	.LC8
+ 1382              		.section	.text.dmp_read_fifo,"ax",%progbits
+ 1383              		.align	1
+ 1384              		.global	dmp_read_fifo
+ 1385              		.syntax unified
+ 1386              		.thumb
+ 1387              		.thumb_func
+ 1389              	dmp_read_fifo:
+ 1390              		@ args = 8, pretend = 0, frame = 32
+ 1391              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1392 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+ 1393 0004 88B0     		sub	sp, sp, #32
+ 1394 0006 0646     		mov	r6, r0
+ 1395 0008 0F46     		mov	r7, r1
+ 1396 000a 9246     		mov	r10, r2
+ 1397 000c 9846     		mov	r8, r3
+ 1398 000e 109D     		ldr	r5, [sp, #64]
+ 1399 0010 0023     		movs	r3, #0
+ 1400 0012 2B80     		strh	r3, [r5]	@ movhi
+ 1401 0014 119A     		ldr	r2, [sp, #68]
+ 1402 0016 6946     		mov	r1, sp
+ 1403 0018 6B4B     		ldr	r3, .L186
+ 1404 001a 987B     		ldrb	r0, [r3, #14]	@ zero_extendqisi2
+ 1405 001c FFF7FEFF 		bl	mpu_read_fifo_stream
+ 1406 0020 0028     		cmp	r0, #0
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 25
+
+
+ 1407 0022 40F0CE80 		bne	.L181
+ 1408 0026 8146     		mov	r9, r0
+ 1409 0028 674B     		ldr	r3, .L186
+ 1410 002a 5B89     		ldrh	r3, [r3, #10]
+ 1411 002c 13F0140F 		tst	r3, #20
+ 1412 0030 5FD0     		beq	.L182
+ 1413 0032 9DF80020 		ldrb	r2, [sp]	@ zero_extendqisi2
+ 1414 0036 9DF80100 		ldrb	r0, [sp, #1]	@ zero_extendqisi2
+ 1415 003a 0004     		lsls	r0, r0, #16
+ 1416 003c 40EA0260 		orr	r0, r0, r2, lsl #24
+ 1417 0040 9DF80320 		ldrb	r2, [sp, #3]	@ zero_extendqisi2
+ 1418 0044 1043     		orrs	r0, r0, r2
+ 1419 0046 9DF80220 		ldrb	r2, [sp, #2]	@ zero_extendqisi2
+ 1420 004a 40EA0220 		orr	r0, r0, r2, lsl #8
+ 1421 004e CAF80000 		str	r0, [r10]
+ 1422 0052 9DF80410 		ldrb	r1, [sp, #4]	@ zero_extendqisi2
+ 1423 0056 9DF80520 		ldrb	r2, [sp, #5]	@ zero_extendqisi2
+ 1424 005a 1204     		lsls	r2, r2, #16
+ 1425 005c 42EA0162 		orr	r2, r2, r1, lsl #24
+ 1426 0060 9DF80710 		ldrb	r1, [sp, #7]	@ zero_extendqisi2
+ 1427 0064 0A43     		orrs	r2, r2, r1
+ 1428 0066 9DF80610 		ldrb	r1, [sp, #6]	@ zero_extendqisi2
+ 1429 006a 42EA0122 		orr	r2, r2, r1, lsl #8
+ 1430 006e CAF80420 		str	r2, [r10, #4]
+ 1431 0072 9DF80840 		ldrb	r4, [sp, #8]	@ zero_extendqisi2
+ 1432 0076 9DF80910 		ldrb	r1, [sp, #9]	@ zero_extendqisi2
+ 1433 007a 0904     		lsls	r1, r1, #16
+ 1434 007c 41EA0461 		orr	r1, r1, r4, lsl #24
+ 1435 0080 9DF80B40 		ldrb	r4, [sp, #11]	@ zero_extendqisi2
+ 1436 0084 2143     		orrs	r1, r1, r4
+ 1437 0086 9DF80A40 		ldrb	r4, [sp, #10]	@ zero_extendqisi2
+ 1438 008a 41EA0421 		orr	r1, r1, r4, lsl #8
+ 1439 008e CAF80810 		str	r1, [r10, #8]
+ 1440 0092 9DF80CC0 		ldrb	ip, [sp, #12]	@ zero_extendqisi2
+ 1441 0096 9DF80D40 		ldrb	r4, [sp, #13]	@ zero_extendqisi2
+ 1442 009a 2404     		lsls	r4, r4, #16
+ 1443 009c 44EA0C64 		orr	r4, r4, ip, lsl #24
+ 1444 00a0 9DF80FC0 		ldrb	ip, [sp, #15]	@ zero_extendqisi2
+ 1445 00a4 44EA0C04 		orr	r4, r4, ip
+ 1446 00a8 9DF80EC0 		ldrb	ip, [sp, #14]	@ zero_extendqisi2
+ 1447 00ac 44EA0C24 		orr	r4, r4, ip, lsl #8
+ 1448 00b0 CAF80C40 		str	r4, [r10, #12]
+ 1449 00b4 0014     		asrs	r0, r0, #16
+ 1450 00b6 4FEA224C 		asr	ip, r2, #16
+ 1451 00ba 0914     		asrs	r1, r1, #16
+ 1452 00bc 2214     		asrs	r2, r4, #16
+ 1453 00be 0CFB0CFC 		mul	ip, ip, ip
+ 1454 00c2 00FB00C0 		mla	r0, r0, r0, ip
+ 1455 00c6 01FB0101 		mla	r1, r1, r1, r0
+ 1456 00ca 02FB0212 		mla	r2, r2, r2, r1
+ 1457 00ce 02F17142 		add	r2, r2, #-251658240
+ 1458 00d2 B2F1007F 		cmp	r2, #33554432
+ 1459 00d6 05D8     		bhi	.L184
+ 1460 00d8 2A88     		ldrh	r2, [r5]
+ 1461 00da 42F48072 		orr	r2, r2, #256
+ 1462 00de 2A80     		strh	r2, [r5]	@ movhi
+ 1463 00e0 1022     		movs	r2, #16
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 26
+
+
+ 1464 00e2 07E0     		b	.L175
+ 1465              	.L184:
+ 1466 00e4 FFF7FEFF 		bl	mpu_reset_fifo
+ 1467 00e8 0023     		movs	r3, #0
+ 1468 00ea 2B80     		strh	r3, [r5]	@ movhi
+ 1469 00ec 4FF0FF39 		mov	r9, #-1
+ 1470 00f0 48E0     		b	.L173
+ 1471              	.L182:
+ 1472 00f2 0022     		movs	r2, #0
+ 1473              	.L175:
+ 1474 00f4 13F0400F 		tst	r3, #64
+ 1475 00f8 1DD0     		beq	.L177
+ 1476 00fa 02F12001 		add	r1, r2, #32
+ 1477 00fe 6944     		add	r1, sp, r1
+ 1478 0100 11F8204C 		ldrb	r4, [r1, #-32]	@ zero_extendqisi2
+ 1479 0104 11F81F0C 		ldrb	r0, [r1, #-31]	@ zero_extendqisi2
+ 1480 0108 40EA0420 		orr	r0, r0, r4, lsl #8
+ 1481 010c 3880     		strh	r0, [r7]	@ movhi
+ 1482 010e 11F81E4C 		ldrb	r4, [r1, #-30]	@ zero_extendqisi2
+ 1483 0112 11F81D0C 		ldrb	r0, [r1, #-29]	@ zero_extendqisi2
+ 1484 0116 40EA0420 		orr	r0, r0, r4, lsl #8
+ 1485 011a 7880     		strh	r0, [r7, #2]	@ movhi
+ 1486 011c 11F81C0C 		ldrb	r0, [r1, #-28]	@ zero_extendqisi2
+ 1487 0120 11F81B1C 		ldrb	r1, [r1, #-27]	@ zero_extendqisi2
+ 1488 0124 41EA0021 		orr	r1, r1, r0, lsl #8
+ 1489 0128 B980     		strh	r1, [r7, #4]	@ movhi
+ 1490 012a 0632     		adds	r2, r2, #6
+ 1491 012c D2B2     		uxtb	r2, r2
+ 1492 012e 2988     		ldrh	r1, [r5]
+ 1493 0130 41F00801 		orr	r1, r1, #8
+ 1494 0134 2980     		strh	r1, [r5]	@ movhi
+ 1495              	.L177:
+ 1496 0136 13F4C07F 		tst	r3, #384
+ 1497 013a 1DD0     		beq	.L178
+ 1498 013c 02F12001 		add	r1, r2, #32
+ 1499 0140 6944     		add	r1, sp, r1
+ 1500 0142 11F8204C 		ldrb	r4, [r1, #-32]	@ zero_extendqisi2
+ 1501 0146 11F81F0C 		ldrb	r0, [r1, #-31]	@ zero_extendqisi2
+ 1502 014a 40EA0420 		orr	r0, r0, r4, lsl #8
+ 1503 014e 3080     		strh	r0, [r6]	@ movhi
+ 1504 0150 11F81E4C 		ldrb	r4, [r1, #-30]	@ zero_extendqisi2
+ 1505 0154 11F81D0C 		ldrb	r0, [r1, #-29]	@ zero_extendqisi2
+ 1506 0158 40EA0420 		orr	r0, r0, r4, lsl #8
+ 1507 015c 7080     		strh	r0, [r6, #2]	@ movhi
+ 1508 015e 11F81C0C 		ldrb	r0, [r1, #-28]	@ zero_extendqisi2
+ 1509 0162 11F81B1C 		ldrb	r1, [r1, #-27]	@ zero_extendqisi2
+ 1510 0166 41EA0021 		orr	r1, r1, r0, lsl #8
+ 1511 016a B180     		strh	r1, [r6, #4]	@ movhi
+ 1512 016c 0632     		adds	r2, r2, #6
+ 1513 016e D2B2     		uxtb	r2, r2
+ 1514 0170 2988     		ldrh	r1, [r5]
+ 1515 0172 41F07001 		orr	r1, r1, #112
+ 1516 0176 2980     		strh	r1, [r5]	@ movhi
+ 1517              	.L178:
+ 1518 0178 13F0030F 		tst	r3, #3
+ 1519 017c 06D1     		bne	.L185
+ 1520              	.L179:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 27
+
+
+ 1521 017e 4046     		mov	r0, r8
+ 1522 0180 FFF7FEFF 		bl	get_tick_count
+ 1523              	.L173:
+ 1524 0184 4846     		mov	r0, r9
+ 1525 0186 08B0     		add	sp, sp, #32
+ 1526              		@ sp needed
+ 1527 0188 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 1528              	.L185:
+ 1529 018c 6C46     		mov	r4, sp
+ 1530 018e 1444     		add	r4, r4, r2
+ 1531 0190 E578     		ldrb	r5, [r4, #3]	@ zero_extendqisi2
+ 1532 0192 6378     		ldrb	r3, [r4, #1]	@ zero_extendqisi2
+ 1533 0194 13F0010F 		tst	r3, #1
+ 1534 0198 08D0     		beq	.L180
+ 1535 019a 0B4B     		ldr	r3, .L186
+ 1536 019c 1B68     		ldr	r3, [r3]
+ 1537 019e 2BB1     		cbz	r3, .L180
+ 1538 01a0 05F00701 		and	r1, r5, #7
+ 1539 01a4 0131     		adds	r1, r1, #1
+ 1540 01a6 C5F3C200 		ubfx	r0, r5, #3, #3
+ 1541 01aa 9847     		blx	r3
+ 1542              	.L180:
+ 1543 01ac 6378     		ldrb	r3, [r4, #1]	@ zero_extendqisi2
+ 1544 01ae 13F0080F 		tst	r3, #8
+ 1545 01b2 E4D0     		beq	.L179
+ 1546 01b4 044B     		ldr	r3, .L186
+ 1547 01b6 5B68     		ldr	r3, [r3, #4]
+ 1548 01b8 002B     		cmp	r3, #0
+ 1549 01ba E0D0     		beq	.L179
+ 1550 01bc A809     		lsrs	r0, r5, #6
+ 1551 01be 9847     		blx	r3
+ 1552 01c0 DDE7     		b	.L179
+ 1553              	.L181:
+ 1554 01c2 4FF0FF39 		mov	r9, #-1
+ 1555 01c6 DDE7     		b	.L173
+ 1556              	.L187:
+ 1557              		.align	2
+ 1558              	.L186:
+ 1559 01c8 00000000 		.word	dmp
+ 1561              		.section	.text.dmp_register_tap_cb,"ax",%progbits
+ 1562              		.align	1
+ 1563              		.global	dmp_register_tap_cb
+ 1564              		.syntax unified
+ 1565              		.thumb
+ 1566              		.thumb_func
+ 1568              	dmp_register_tap_cb:
+ 1569              		@ args = 0, pretend = 0, frame = 0
+ 1570              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1571              		@ link register save eliminated.
+ 1572 0000 014B     		ldr	r3, .L189
+ 1573 0002 1860     		str	r0, [r3]
+ 1574 0004 0020     		movs	r0, #0
+ 1575 0006 7047     		bx	lr
+ 1576              	.L190:
+ 1577              		.align	2
+ 1578              	.L189:
+ 1579 0008 00000000 		.word	dmp
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 28
+
+
+ 1581              		.section	.text.dmp_register_android_orient_cb,"ax",%progbits
+ 1582              		.align	1
+ 1583              		.global	dmp_register_android_orient_cb
+ 1584              		.syntax unified
+ 1585              		.thumb
+ 1586              		.thumb_func
+ 1588              	dmp_register_android_orient_cb:
+ 1589              		@ args = 0, pretend = 0, frame = 0
+ 1590              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1591              		@ link register save eliminated.
+ 1592 0000 014B     		ldr	r3, .L192
+ 1593 0002 5860     		str	r0, [r3, #4]
+ 1594 0004 0020     		movs	r0, #0
+ 1595 0006 7047     		bx	lr
+ 1596              	.L193:
+ 1597              		.align	2
+ 1598              	.L192:
+ 1599 0008 00000000 		.word	dmp
+ 1601              		.section	.bss.dmp,"aw",%nobits
+ 1602              		.align	2
+ 1605              	dmp:
+ 1606 0000 00000000 		.space	16
+ 1606      00000000 
+ 1606      00000000 
+ 1606      00000000 
+ 1607              		.section	.rodata.dmp_memory,"a"
+ 1608              		.align	2
+ 1611              	dmp_memory:
+ 1612 0000 00007000 		.ascii	"\000\000p\000\000\000\000$\000\000\000\002\000\003\000"
+ 1612      00000024 
+ 1612      00000002 
+ 1612      000300
+ 1613 000f 00006500 		.ascii	"\000\000e\000T\377\357\000\000\372\200\000\013\022\202"
+ 1613      54FFEF00 
+ 1613      00FA8000 
+ 1613      0B1282
+ 1614 001e 0001030C 		.ascii	"\000\001\003\0140\303\016\214\214\351\024\325@\002\023"
+ 1614      30C30E8C 
+ 1614      8CE914D5 
+ 1614      400213
+ 1615 002d 710F8E38 		.ascii	"q\017\2168\203\370\2030\000\370\203%\216\370\2030\000"
+ 1615      83F88330 
+ 1615      00F88325 
+ 1615      8EF88330 
+ 1615      00
+ 1616 003e F883FFFF 		.ascii	"\370\203\377\377\377\377\017\376\251\326$\000\004\000"
+ 1616      FFFF0FFE 
+ 1616      A9D62400 
+ 1616      0400
+ 1617 004c 1A8279A1 		.ascii	"\032\202y\241\000\000\000<\377\377\000\000\000\020\000"
+ 1617      0000003C 
+ 1617      FFFF0000 
+ 1617      001000
+ 1618 005b 0038836F 		.ascii	"\0008\203o\242\000>\0030@\000\000\000\002\312\343\011"
+ 1618      A2003E03 
+ 1618      30400000 
+ 1618      0002CAE3 
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 29
+
+
+ 1618      09
+ 1619 006c 3E800000 		.ascii	">\200\000\000 \000\000\000\000\000\000\000@\000\000"
+ 1619      20000000 
+ 1619      00000000 
+ 1619      400000
+ 1620 007b 00600000 		.ascii	"\000`\000\000\000\000\014\000\000\000\014\030n\000\000"
+ 1620      00000C00 
+ 1620      00000C18 
+ 1620      6E0000
+ 1621 008a 06920A16 		.ascii	"\006\222\012\026\300\337\377\377\002V\375\214\323w\377"
+ 1621      C0DFFFFF 
+ 1621      0256FD8C 
+ 1621      D377FF
+ 1622 0099 E1C496E0 		.ascii	"\341\304\226\340\305\276\252\000\000\000\000\377\377"
+ 1622      C5BEAA00 
+ 1622      000000FF 
+ 1622      FF
+ 1623 00a6 0B2B0000 		.ascii	"\013+\000\000\026W\000\000\003Y@\000\000\000\000\000"
+ 1623      16570000 
+ 1623      03594000 
+ 1623      00000000 
+ 1624 00b6 1DFA0002 		.ascii	"\035\372\000\002l\035\000\000\000\000?\377\337\353\000"
+ 1624      6C1D0000 
+ 1624      00003FFF 
+ 1624      DFEB00
+ 1625 00c5 3EB3B600 		.ascii	">\263\266\000\015\"x\000\000/<\000\000\000\000\000\031"
+ 1625      0D227800 
+ 1625      002F3C00 
+ 1625      00000000 
+ 1625      19
+ 1626 00d6 42B50000 		.ascii	"B\265\000\0009\242\000\000\263e\331\016\237\311\035"
+ 1626      39A20000 
+ 1626      B365D90E 
+ 1626      9FC91D
+ 1627 00e5 CF4C3430 		.ascii	"\317L40\000\000\000P\000\000\000;\266z\350\000d\000"
+ 1627      00000050 
+ 1627      0000003B 
+ 1627      B67AE800 
+ 1627      6400
+ 1628 00f7 0000C800 		.ascii	"\000\000\310\000\000\000\000\000\000\020\000\000\000"
+ 1628      00000000 
+ 1628      00100000 
+ 1628      00
+ 1629 0104 1000FA92 		.ascii	"\020\000\372\222\020\000\"^\000\015\"\237\000\001\000"
+ 1629      1000225E 
+ 1629      000D229F 
+ 1629      000100
+ 1630 0113 00003200 		.ascii	"\000\0002\000\000\377F\000\000c\324\000\000\020\000"
+ 1630      00FF4600 
+ 1630      0063D400 
+ 1630      001000
+ 1631 0122 000004D6 		.ascii	"\000\000\004\326\000\000\004\314\000\000\004\314\000"
+ 1631      000004CC 
+ 1631      000004CC 
+ 1631      00
+ 1632 012f 00000010 		.ascii	"\000\000\000\020r\000\000\000@\000\000\000\000\000\000"
+ 1632      72000000 
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 30
+
+
+ 1632      40000000 
+ 1632      000000
+ 1633 013e 00000006 		.ascii	"\000\000\000\006\000\002\000\005\000\007\000\000\000"
+ 1633      00020005 
+ 1633      00070000 
+ 1633      00
+ 1634 014b 00006400 		.ascii	"\000\000d\000\000\000\000\000\000\000\000\000\005\000"
+ 1634      00000000 
+ 1634      00000000 
+ 1634      0500
+ 1635 0159 05006400 		.ascii	"\005\000d\000 \000\000\000\000\000\000\000\000\000\000"
+ 1635      20000000 
+ 1635      00000000 
+ 1635      000000
+ 1636 0168 00004000 		.ascii	"\000\000@\000\000\000\003\000\000\000\0002\370\230\000"
+ 1636      00000300 
+ 1636      00000032 
+ 1636      F89800
+ 1637 0177 00FF6500 		.ascii	"\000\377e\000\000\203\017\000\000\377\233\374\000\000"
+ 1637      00830F00 
+ 1637      00FF9BFC 
+ 1637      0000
+ 1638 0185 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\000\000\000\000"
+ 1638      00000000 
+ 1638      00000000 
+ 1638      00
+ 1639 0192 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\000\000\000\000"
+ 1639      00000000 
+ 1639      00000000 
+ 1639      00
+ 1640 019f 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\000\000\000\000"
+ 1640      00000000 
+ 1640      00000000 
+ 1640      00
+ 1641 01ac 00001000 		.ascii	"\000\000\020\000@\000\000\000\000\000\000\006\000\000"
+ 1641      40000000 
+ 1641      00000006 
+ 1641      0000
+ 1642 01ba B26A0002 		.ascii	"\262j\000\002\000\000\000\001\373\203\000h\000\000\000"
+ 1642      00000001 
+ 1642      FB830068 
+ 1642      000000
+ 1643 01c9 D9FC007C 		.ascii	"\331\374\000|\361\377\203\000\000\000\000\000e\000\000"
+ 1643      F1FF8300 
+ 1643      00000000 
+ 1643      650000
+ 1644 01d8 006403E8 		.ascii	"\000d\003\350\000d\000(\000\000\000%\000\000\000\000"
+ 1644      00640028 
+ 1644      00000025 
+ 1644      00000000 
+ 1645 01e8 16A00000 		.ascii	"\026\240\000\000\000\000\020\000\000\000\020\000\000"
+ 1645      00001000 
+ 1645      00001000 
+ 1645      00
+ 1646 01f5 2F000000 		.ascii	"/\000\000\000\000\001\364\000\000\020\000\000(\000\000"
+ 1646      0001F400 
+ 1646      00100000 
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 31
+
+
+ 1646      280000
+ 1647 0204 FFFF4581 		.ascii	"\377\377E\201\377\377\372r\000\000\000\000\000\000\000"
+ 1647      FFFFFA72 
+ 1647      00000000 
+ 1647      000000
+ 1648 0213 00004400 		.ascii	"\000\000D\000\005\000\005\272\306\000Gx\242\000\000"
+ 1648      050005BA 
+ 1648      C6004778 
+ 1648      A20000
+ 1649 0222 00010000 		.ascii	"\000\001\000\000\000\000\000\000\006\000\000\000\000"
+ 1649      00000000 
+ 1649      06000000 
+ 1649      00
+ 1650 022f 14000025 		.ascii	"\024\000\000%M\000/pm\000\000\005\256\000\014\002\320"
+ 1650      4D002F70 
+ 1650      6D000005 
+ 1650      AE000C02 
+ 1650      D0
+ 1651 0240 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\000\000\000\000"
+ 1651      00000000 
+ 1651      00000000 
+ 1651      00
+ 1652 024d 00000000 		.ascii	"\000\000\000\000\033\000\000\000\000\000\000\000\000"
+ 1652      1B000000 
+ 1652      00000000 
+ 1652      00
+ 1653 025a 00000000 		.ascii	"\000\000\000\000\000\000\000d\000\000\000\010\000\000"
+ 1653      00000064 
+ 1653      00000008 
+ 1653      0000
+ 1654 0268 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\000\000\000\000"
+ 1654      00000000 
+ 1654      00000000 
+ 1654      00
+ 1655 0275 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\000\000\000\000"
+ 1655      00000000 
+ 1655      00000000 
+ 1655      00
+ 1656 0282 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\000\000\000\000"
+ 1656      00000000 
+ 1656      00000000 
+ 1656      00
+ 1657 028f 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\000\000\000\000"
+ 1657      00000000 
+ 1657      00000000 
+ 1657      00
+ 1658 029c 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\000\000\000\000"
+ 1658      00000000 
+ 1658      00000000 
+ 1658      00
+ 1659 02a9 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\000\000\000\000"
+ 1659      00000000 
+ 1659      00000000 
+ 1659      00
+ 1660 02b6 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\000\000\033\000"
+ 1660      00000000 
+ 1660      0000001B 
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 32
+
+
+ 1660      00
+ 1661 02c3 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\000\016\000\016"
+ 1661      00000000 
+ 1661      00000E00 
+ 1661      0E
+ 1662 02d0 00000AC7 		.ascii	"\000\000\012\307\000\004\000\000\000\000\0002\377\377"
+ 1662      00040000 
+ 1662      00000032 
+ 1662      FFFF
+ 1663 02de FF9C0000 		.ascii	"\377\234\000\000\013+\000\000\000\002\000\000\000\001"
+ 1663      0B2B0000 
+ 1663      00020000 
+ 1663      0001
+ 1664 02ec 00000064 		.ascii	"\000\000\000d\377\345\000\000\000\000\000\000\000\000"
+ 1664      FFE50000 
+ 1664      00000000 
+ 1664      0000
+ 1665 02fa 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\001\000\000\000"
+ 1665      00000000 
+ 1665      00010000 
+ 1665      00
+ 1666 0307 00000100 		.ascii	"\000\000\001\000\000\000\000\000\000\000\001\200\000"
+ 1666      00000000 
+ 1666      00000180 
+ 1666      00
+ 1667 0314 00018000 		.ascii	"\000\001\200\000\000\001\200\000\000$&\323\000\000\000"
+ 1667      00018000 
+ 1667      002426D3 
+ 1667      000000
+ 1668 0323 00000000 		.ascii	"\000\000\000\000\000\000\006\000\020\000\226\000<\000"
+ 1668      00000600 
+ 1668      10009600 
+ 1668      3C00
+ 1669 0331 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\000\000\000\000"
+ 1669      00000000 
+ 1669      00000000 
+ 1669      00
+ 1670 033e 00000C0A 		.ascii	"\000\000\014\012Nh\315\317w\011P\026gY\306\031\316\202"
+ 1670      4E68CDCF 
+ 1670      77095016 
+ 1670      6759C619 
+ 1670      CE82
+ 1671 0350 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\000\000\000\000"
+ 1671      00000000 
+ 1671      00000000 
+ 1671      00
+ 1672 035d 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\000\000\027\327"
+ 1672      00000000 
+ 1672      00000017 
+ 1672      D7
+ 1673 036a 84000300 		.ascii	"\204\000\003\000\000\000\000\000\000\000\000\000\000"
+ 1673      00000000 
+ 1673      00000000 
+ 1673      00
+ 1674 0377 00C7938F 		.ascii	"\000\307\223\217\235\036\033\034\031\000\000\000\000"
+ 1674      9D1E1B1C 
+ 1674      19000000 
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 33
+
+
+ 1674      00
+ 1675 0384 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\000\000\000\000"
+ 1675      00000000 
+ 1675      00000000 
+ 1675      00
+ 1676 0391 00000000 		.ascii	"\000\000\000\000\000\000\000\002\003\030\205\000\000"
+ 1676      00000002 
+ 1676      03188500 
+ 1676      00
+ 1677 039e 40000000 		.ascii	"@\000\000\000\000\003\000\000\000\003\000\000\000\000"
+ 1677      00030000 
+ 1677      00030000 
+ 1677      0000
+ 1678 03ac 00000000 		.ascii	"\000\000\000\000@\000\000\000\000\000\000\000\000\000"
+ 1678      40000000 
+ 1678      00000000 
+ 1678      0000
+ 1679 03ba 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\000\000\000\000"
+ 1679      00000000 
+ 1679      00000000 
+ 1679      00
+ 1680 03c7 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\000\000\000\000"
+ 1680      00000000 
+ 1680      00000000 
+ 1680      00
+ 1681 03d4 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\000\000\000\000"
+ 1681      00000000 
+ 1681      00000000 
+ 1681      00
+ 1682 03e1 00000067 		.ascii	"\000\000\000g}\337~r\220.UL\366\346\210\000\000\000"
+ 1682      7DDF7E72 
+ 1682      902E554C 
+ 1682      F6E68800 
+ 1682      0000
+ 1683 03f3 00000000 		.ascii	"\000\000\000\000\000\000\000\000\000\000\000\000\000"
+ 1683      00000000 
+ 1683      00000000 
+ 1683      00
+ 1684 0400 D8DCB4B8 		.ascii	"\330\334\264\270\260\330\271\253\363\370\372\263\267"
+ 1684      B0D8B9AB 
+ 1684      F3F8FAB3 
+ 1684      B7
+ 1685 040d BB8E9EAE 		.ascii	"\273\216\236\256\3612\365\033\361\264\270\260\200\227"
+ 1685      F132F51B 
+ 1685      F1B4B8B0 
+ 1685      8097
+ 1686 041b F1A9DFDF 		.ascii	"\361\251\337\337\337\252\337\337\337\362\252\305\315"
+ 1686      DFAADFDF 
+ 1686      DFF2AAC5 
+ 1686      CD
+ 1687 0428 C7A90CC9 		.ascii	"\307\251\014\311,\227\361\251\211&Ff\262\211\231\251"
+ 1687      2C97F1A9 
+ 1687      89264666 
+ 1687      B28999A9 
+ 1688 0438 2D557DB0 		.ascii	"-U}\260\260\212\250\2266Vv\361\272\243\264\262\200\300"
+ 1688      B08AA896 
+ 1688      365676F1 
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 34
+
+
+ 1688      BAA3B4B2 
+ 1688      80C0
+ 1689 044a B8A89711 		.ascii	"\270\250\227\021\262\203\230\272\243\360$\010D\020d"
+ 1689      B28398BA 
+ 1689      A3F02408 
+ 1689      441064
+ 1690 0459 18B2B9B4 		.ascii	"\030\262\271\264\230\203\361\243)U}\272\265\261\243"
+ 1690      9883F1A3 
+ 1690      29557DBA 
+ 1690      B5B1A3
+ 1691 0468 8393F000 		.ascii	"\203\223\360\000(P\365\262\266\252\203\223(T|\361\271"
+ 1691      2850F5B2 
+ 1691      B6AA8393 
+ 1691      28547CF1 
+ 1691      B9
+ 1692 0479 A3829361 		.ascii	"\243\202\223a\272\242\332\336\337\333\201\232\271\256"
+ 1692      BAA2DADE 
+ 1692      DFDB819A 
+ 1692      B9AE
+ 1693 0487 F5606870 		.ascii	"\365`hp\361\332\272\242\337\331\272\242\372\271\243"
+ 1693      F1DABAA2 
+ 1693      DFD9BAA2 
+ 1693      FAB9A3
+ 1694 0496 8292DB31 		.ascii	"\202\222\3331\272\242\331\272\242\370\337\205\244\320"
+ 1694      BAA2D9BA 
+ 1694      A2F8DF85 
+ 1694      A4D0
+ 1695 04a4 C1BBAD83 		.ascii	"\301\273\255\203\302\305\307\270\242\337\337\337\272"
+ 1695      C2C5C7B8 
+ 1695      A2DFDFDF 
+ 1695      BA
+ 1696 04b1 A0DFDFDF 		.ascii	"\240\337\337\337\330\330\361\270\252\263\215\264\230"
+ 1696      D8D8F1B8 
+ 1696      AAB38DB4 
+ 1696      98
+ 1697 04be 0D355DB2 		.ascii	"\0155]\262\266\272\257\214\226\031\217\237\247\016\026"
+ 1697      B6BAAF8C 
+ 1697      96198F9F 
+ 1697      A70E16
+ 1698 04cd 1EB49AB8 		.ascii	"\036\264\232\270\252\207,T|\272\244\260\212\266\221"
+ 1698      AA872C54 
+ 1698      7CBAA4B0 
+ 1698      8AB691
+ 1699 04dc 325676B2 		.ascii	"2Vv\262\204\224\244\310\010\315\330\270\264\260\361"
+ 1699      8494A4C8 
+ 1699      08CDD8B8 
+ 1699      B4B0F1
+ 1700 04eb 9982A82D 		.ascii	"\231\202\250-U}\230\250\016\026\036\242,T|\222\244\360"
+ 1700      557D98A8 
+ 1700      0E161EA2 
+ 1700      2C547C92 
+ 1700      A4F0
+ 1701 04fd 2C5078F1 		.ascii	",Px\361\204\250\230\304\315\374\330\015\333\250\374"
+ 1701      84A898C4 
+ 1701      CDFCD80D 
+ 1701      DBA8FC
+ 1702 050c 2DF3D9BA 		.ascii	"-\363\331\272\246\370\332\272\246\336\330\272\262\266"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 35
+
+
+ 1702      A6F8DABA 
+ 1702      A6DED8BA 
+ 1702      B2B6
+ 1703 051a 8696A6D0 		.ascii	"\206\226\246\320\363\310A\332\246\310\370\330\260\264"
+ 1703      F3C841DA 
+ 1703      A6C8F8D8 
+ 1703      B0B4
+ 1704 0528 B882A892 		.ascii	"\270\202\250\222\365,T\210\230\3615\331\364\030\330"
+ 1704      F52C5488 
+ 1704      98F135D9 
+ 1704      F418D8
+ 1705 0537 F1A2D0F8 		.ascii	"\361\242\320\370\371\250\204\331\307\337\370\370\203"
+ 1705      F9A884D9 
+ 1705      C7DFF8F8 
+ 1705      83
+ 1706 0544 C5DADF69 		.ascii	"\305\332\337i\337\203\301\330\364\001\024\361\250\202"
+ 1706      DF83C1D8 
+ 1706      F40114F1 
+ 1706      A882
+ 1707 0552 4EA884F3 		.ascii	"N\250\204\363\021\321\202\365\331\222(\227\210\361\011"
+ 1707      11D182F5 
+ 1707      D9922897 
+ 1707      88F109
+ 1708 0561 F41C1CD8 		.ascii	"\364\034\034\330\204\250\363\300\371\321\331\227\202"
+ 1708      84A8F3C0 
+ 1708      F9D1D997 
+ 1708      82
+ 1709 056e F129F40D 		.ascii	"\361)\364\015\330\363\371\371\321\331\202\364\302\003"
+ 1709      D8F3F9F9 
+ 1709      D1D982F4 
+ 1709      C203
+ 1710 057c D8DEDF1A 		.ascii	"\330\336\337\032\330\361\242\372\371\250\204\230\331"
+ 1710      D8F1A2FA 
+ 1710      F9A88498 
+ 1710      D9
+ 1711 0589 C7DFF8F8 		.ascii	"\307\337\370\370\370\203\307\332\337i\337\370\203\303"
+ 1711      F883C7DA 
+ 1711      DF69DFF8 
+ 1711      83C3
+ 1712 0597 D8F40114 		.ascii	"\330\364\001\024\361\230\250\202.\250\204\363\021\321"
+ 1712      F198A882 
+ 1712      2EA884F3 
+ 1712      11D1
+ 1713 05a5 82F5D992 		.ascii	"\202\365\331\222P\227\210\361\011\364\034\330\204\250"
+ 1713      509788F1 
+ 1713      09F41CD8 
+ 1713      84A8
+ 1714 05b3 F3C0F8F9 		.ascii	"\363\300\370\371\321\331\227\202\361I\364\015\330\363"
+ 1714      D1D99782 
+ 1714      F149F40D 
+ 1714      D8F3
+ 1715 05c1 F9F9D1D9 		.ascii	"\371\371\321\331\202\364\304\003\330\336\337\330\361"
+ 1715      82F4C403 
+ 1715      D8DEDFD8 
+ 1715      F1
+ 1716 05ce AD8898CC 		.ascii	"\255\210\230\314\250\011\371\331\202\222\250\365|\361"
+ 1716      A809F9D9 
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 36
+
+
+ 1716      8292A8F5 
+ 1716      7CF1
+ 1717 05dc 883ACF94 		.ascii	"\210:\317\224Jn\230\333i1\332\255\362\336\371\330\207"
+ 1717      4A6E98DB 
+ 1717      6931DAAD 
+ 1717      F2DEF9D8 
+ 1717      87
+ 1718 05ed 95A8F221 		.ascii	"\225\250\362!\321\332\245\371\364\027\331\361\256\216"
+ 1718      D1DAA5F9 
+ 1718      F417D9F1 
+ 1718      AE8E
+ 1719 05fb D0C0C3AE 		.ascii	"\320\300\303\256\202\306\204\303\250\205\225\310\245"
+ 1719      82C684C3 
+ 1719      A88595C8 
+ 1719      A5
+ 1720 0608 88F2C0F1 		.ascii	"\210\362\300\361\364\001\016\361\216\236\250\306>V\365"
+ 1720      F4010EF1 
+ 1720      8E9EA8C6 
+ 1720      3E56F5
+ 1721 0617 54F18872 		.ascii	"T\361\210r\364\001\025\361\230E\205n\365\216\236\004"
+ 1721      F40115F1 
+ 1721      9845856E 
+ 1721      F58E9E04 
+ 1722 0627 88F14298 		.ascii	"\210\361B\230Z\216\236\006\210i\364\001\034\361\230"
+ 1722      5A8E9E06 
+ 1722      8869F401 
+ 1722      1CF198
+ 1723 0636 1E1108D0 		.ascii	"\036\021\010\320\365\004\361\036\227\002\002\2306%\333"
+ 1723      F504F11E 
+ 1723      97020298 
+ 1723      3625DB
+ 1724 0645 F9D985A5 		.ascii	"\371\331\205\245\363\301\332\205\245\363\337\330\205"
+ 1724      F3C1DA85 
+ 1724      A5F3DFD8 
+ 1724      85
+ 1725 0652 95A8F309 		.ascii	"\225\250\363\011\332\245\372\330\202\222\250\365x\361"
+ 1725      DAA5FAD8 
+ 1725      8292A8F5 
+ 1725      78F1
+ 1726 0660 881A849F 		.ascii	"\210\032\204\237&\210\230!\332\364\035\363\330\207\237"
+ 1726      26889821 
+ 1726      DAF41DF3 
+ 1726      D8879F
+ 1727 066f 39D1AFD9 		.ascii	"9\321\257\331\337\337\373\371\364\014\363\330\372\320"
+ 1727      DFDFFBF9 
+ 1727      F40CF3D8 
+ 1727      FAD0
+ 1728 067d F8DAF9F9 		.ascii	"\370\332\371\371\320\337\331\371\330\364\013\330\363"
+ 1728      D0DFD9F9 
+ 1728      D8F40BD8 
+ 1728      F3
+ 1729 068a 879F39D1 		.ascii	"\207\2379\321\257\331\337\337\364\035\363\330\372\374"
+ 1729      AFD9DFDF 
+ 1729      F41DF3D8 
+ 1729      FAFC
+ 1730 0698 A869F9F9 		.ascii	"\250i\371\371\257\320\332\336\372\331\370\217\237\250"
+ 1730      AFD0DADE 
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 37
+
+
+ 1730      FAD9F88F 
+ 1730      9FA8
+ 1731 06a6 F1CCF398 		.ascii	"\361\314\363\230\333E\331\257\337\320\370\330\361\217"
+ 1731      DB45D9AF 
+ 1731      DFD0F8D8 
+ 1731      F18F
+ 1732 06b4 9FA8CAF3 		.ascii	"\237\250\312\363\210\011\332\257\217\313\370\330\362"
+ 1732      8809DAAF 
+ 1732      8FCBF8D8 
+ 1732      F2
+ 1733 06c1 AD978D0C 		.ascii	"\255\227\215\014\331\245\337\371\272\246\363\372\364"
+ 1733      D9A5DFF9 
+ 1733      BAA6F3FA 
+ 1733      F4
+ 1734 06ce 12F2D895 		.ascii	"\022\362\330\225\015\321\331\272\246\363\372\332\245"
+ 1734      0DD1D9BA 
+ 1734      A6F3FADA 
+ 1734      A5
+ 1735 06db F2C1BAA6 		.ascii	"\362\301\272\246\363\337\330\361\272\262\266\206\226"
+ 1735      F3DFD8F1 
+ 1735      BAB2B686 
+ 1735      96
+ 1736 06e8 A6D0CAF3 		.ascii	"\246\320\312\363I\332\246\313\370\330\260\264\270\330"
+ 1736      49DAA6CB 
+ 1736      F8D8B0B4 
+ 1736      B8D8
+ 1737 06f6 AD84F2C0 		.ascii	"\255\204\362\300\337\361\217\313\303\250\262\266\206"
+ 1737      DFF18FCB 
+ 1737      C3A8B2B6 
+ 1737      86
+ 1738 0703 96C8C1CB 		.ascii	"\226\310\301\313\303\363\260\264\210\230\250!\333q\215"
+ 1738      C3F3B0B4 
+ 1738      8898A821 
+ 1738      DB718D
+ 1739 0712 9D718595 		.ascii	"\235q\205\225!\331\255\362\372\330\205\227\250(\331"
+ 1739      21D9ADF2 
+ 1739      FAD88597 
+ 1739      A828D9
+ 1740 0721 F408D8F2 		.ascii	"\364\010\330\362\215)\332\364\005\331\362\205\244\302"
+ 1740      8D29DAF4 
+ 1740      05D9F285 
+ 1740      A4C2
+ 1741 072f F2D8A88D 		.ascii	"\362\330\250\215\224\001\321\331\364\021\362\330\207"
+ 1741      9401D1D9 
+ 1741      F411F2D8 
+ 1741      87
+ 1742 073c 21D8F40A 		.ascii	"!\330\364\012\330\362\204\230\250\310\001\321\331\364"
+ 1742      D8F28498 
+ 1742      A8C801D1 
+ 1742      D9F4
+ 1743 074a 11D8F3A4 		.ascii	"\021\330\363\244\310\273\257\320\362\336\370\370\370"
+ 1743      C8BBAFD0 
+ 1743      F2DEF8F8 
+ 1743      F8
+ 1744 0757 F8F8F8F8 		.ascii	"\370\370\370\370\370\330\361\270\366\265\271\260\212"
+ 1744      F8D8F1B8 
+ 1744      F6B5B9B0 
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 38
+
+
+ 1744      8A
+ 1745 0764 95A3DE3C 		.ascii	"\225\243\336<\243\331\370\330\\\243\331\370\330|\243"
+ 1745      A3D9F8D8 
+ 1745      5CA3D9F8 
+ 1745      D87CA3
+ 1746 0773 D9F8D8F8 		.ascii	"\331\370\330\370\371\321\245\331\337\332\372\330\261"
+ 1746      F9D1A5D9 
+ 1746      DFDAFAD8 
+ 1746      B1
+ 1747 0780 8530F7D9 		.ascii	"\2050\367\331\336\330\3700\255\332\336\330\362\264\214"
+ 1747      DED8F830 
+ 1747      ADDADED8 
+ 1747      F2B48C
+ 1748 078f 99A32D55 		.ascii	"\231\243-U}\240\203\337\337\337\265\221\240\366)\331"
+ 1748      7DA083DF 
+ 1748      DFDFB591 
+ 1748      A0F629D9 
+ 1749 079f FBD8A0FC 		.ascii	"\373\330\240\374)\331\372\330\240\320Q\331\370\330\374"
+ 1749      29D9FAD8 
+ 1749      A0D051D9 
+ 1749      F8D8FC
+ 1750 07ae 51D9F9D8 		.ascii	"Q\331\371\330y\331\373\330\240\320\374y\331\372\330"
+ 1750      79D9FBD8 
+ 1750      A0D0FC79 
+ 1750      D9FAD8
+ 1751 07bd A1F9F9F9 		.ascii	"\241\371\371\371\371\371\240\332\337\337\337\330\241"
+ 1751      F9F9A0DA 
+ 1751      DFDFDFD8 
+ 1751      A1
+ 1752 07ca F8F8F8F8 		.ascii	"\370\370\370\370\370\254"
+ 1752      F8AC
+ 1753 07d0 DEF8ADDE 		.ascii	"\336\370\255\336\203\223\254,T|\361\250\337\337\337"
+ 1753      8393AC2C 
+ 1753      547CF1A8 
+ 1753      DFDFDF
+ 1754 07df F69D2CDA 		.ascii	"\366\235,\332\240\337\331\372\333-\370\330\250P\332"
+ 1754      A0DFD9FA 
+ 1754      DB2DF8D8 
+ 1754      A850DA
+ 1755 07ee A0D0DED9 		.ascii	"\240\320\336\331\320\370\370\370\333U\370\330\250x\332"
+ 1755      D0F8F8F8 
+ 1755      DB55F8D8 
+ 1755      A878DA
+ 1756 07fd A0D0DFD9 		.ascii	"\240\320\337\331\320\372\370\370\370\370\333}\370\330"
+ 1756      D0FAF8F8 
+ 1756      F8F8DB7D 
+ 1756      F8D8
+ 1757 080b 9CA88CF5 		.ascii	"\234\250\214\3650\3338\331\320\336\337\240\320\336\337"
+ 1757      30DB38D9 
+ 1757      D0DEDFA0 
+ 1757      D0DEDF
+ 1758 081a D8A848DB 		.ascii	"\330\250H\333X\331\337\320\336\240\337\320\336\330\250"
+ 1758      58D9DFD0 
+ 1758      DEA0DFD0 
+ 1758      DED8A8
+ 1759 0829 68DB70D9 		.ascii	"h\333p\331\337\337\240\337\337\330\361\250\210\220,"
+ 1759      DFDFA0DF 
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 39
+
+
+ 1759      DFD8F1A8 
+ 1759      88902C
+ 1760 0838 547C98A8 		.ascii	"T|\230\250\320\\8\321\332\362\256\214\337\371\330\260"
+ 1760      D05C38D1 
+ 1760      DAF2AE8C 
+ 1760      DFF9D8B0 
+ 1761 0848 87A8C1C1 		.ascii	"\207\250\301\301\261\210\250\306\371\371\3326\330\250"
+ 1761      B188A8C6 
+ 1761      F9F9DA36 
+ 1761      D8A8
+ 1762 0856 F9DA36D8 		.ascii	"\371\3326\330\250\371\3326\330\250\371\3326\330\250"
+ 1762      A8F9DA36 
+ 1762      D8A8F9DA 
+ 1762      36D8A8
+ 1763 0865 F9DA36D8 		.ascii	"\371\3326\330\367\215\235\255\370\030\332\362\256\337"
+ 1763      F78D9DAD 
+ 1763      F818DAF2 
+ 1763      AEDF
+ 1764 0873 D8F7ADFA 		.ascii	"\330\367\255\3720\331\244\336\371\330\362\256\336\372"
+ 1764      30D9A4DE 
+ 1764      F9D8F2AE 
+ 1764      DEFA
+ 1765 0881 F983A7D9 		.ascii	"\371\203\247\331\303\305\307\361\210\233\247z\255\367"
+ 1765      C3C5C7F1 
+ 1765      889BA77A 
+ 1765      ADF7
+ 1766 088f DEDFA4F8 		.ascii	"\336\337\244\370\204\224\010\247\227\363\000\256\362"
+ 1766      849408A7 
+ 1766      97F300AE 
+ 1766      F2
+ 1767 089c 9819A488 		.ascii	"\230\031\244\210\306\243\224\210\3662\337\362\203\223"
+ 1767      C6A39488 
+ 1767      F632DFF2 
+ 1767      8393
+ 1768 08aa DB09D9F2 		.ascii	"\333\011\331\362\252\337\330\330\256\370\371\321\332"
+ 1768      AADFD8D8 
+ 1768      AEF8F9D1 
+ 1768      DA
+ 1769 08b7 F3A4DEA7 		.ascii	"\363\244\336\247\361\210\233z\330\363\204\224\256\031"
+ 1769      F1889B7A 
+ 1769      D8F38494 
+ 1769      AE19
+ 1770 08c5 F9DAAAF1 		.ascii	"\371\332\252\361\337\330\250\201\300\303\305\307\243"
+ 1770      DFD8A881 
+ 1770      C0C3C5C7 
+ 1770      A3
+ 1771 08d2 9283F628 		.ascii	"\222\203\366(\255\336\331\370\330\243P\255\331\370\330"
+ 1771      ADDED9F8 
+ 1771      D8A350AD 
+ 1771      D9F8D8
+ 1772 08e1 A378ADD9 		.ascii	"\243x\255\331\370\330\370\371\321\241\332\336\303\305"
+ 1772      F8D8F8F9 
+ 1772      D1A1DADE 
+ 1772      C3C5
+ 1773 08ef C7D8A181 		.ascii	"\307\330\241\201\224\370\030\362\260\211\254\303\305"
+ 1773      94F818F2 
+ 1773      B089ACC3 
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 40
+
+
+ 1773      C5
+ 1774 08fc C7F1D8B8 		.ascii	"\307\361\330\270\264\260\227\206\2501\233\006\231\007"
+ 1774      B4B09786 
+ 1774      A8319B06 
+ 1774      9907
+ 1775 090a AB972888 		.ascii	"\253\227(\210\233\360\014 \024@\260\264\270\360\250"
+ 1775      9BF00C20 
+ 1775      1440B0B4 
+ 1775      B8F0A8
+ 1776 0919 8A9A2850 		.ascii	"\212\232(Px\267\233\250)Qy$pYDi8dH1\361\273\253\210"
+ 1776      78B79BA8 
+ 1776      29517924 
+ 1776      70594469 
+ 1776      38644831 
+ 1777 0931 002C547C 		.ascii	"\000,T|\360\263\213\270\250\004(Px\361\260\210\264\227"
+ 1777      F0B38BB8 
+ 1777      A8042850 
+ 1777      78F1B088 
+ 1777      B497
+ 1778 0943 26A85998 		.ascii	"&\250Y\230\273\253\263\213\002&Ff\260\270\360\212\234"
+ 1778      BBABB38B 
+ 1778      02264666 
+ 1778      B0B8F08A 
+ 1778      9C
+ 1779 0954 A8295179 		.ascii	"\250)Qy\213)Qy\212$pY\213 Xq\212Di8\2139@h\212dH1\213"
+ 1779      8B295179 
+ 1779      8A247059 
+ 1779      8B205871 
+ 1779      8A446938 
+ 1780 0971 30496088 		.ascii	"0I`\210\361\254\000,T|\360\214\250\004(Px\361\210\227"
+ 1780      F1AC002C 
+ 1780      547CF08C 
+ 1780      A8042850 
+ 1780      78F18897 
+ 1781 0985 26A85998 		.ascii	"&\250Y\230\254\214\002&Ff\360\211\234\250)Qy$pYDi8d"
+ 1781      AC8C0226 
+ 1781      4666F089 
+ 1781      9CA82951 
+ 1781      79247059 
+ 1782 099d 4831A988 		.ascii	"H1\251\210\011 Yp\253\0218@i\250\0311H`\214\250<A\\"
+ 1782      09205970 
+ 1782      AB113840 
+ 1782      69A81931 
+ 1782      48608CA8 
+ 1783 09b4 207C00F1 		.ascii	" |\000\361\207\230\031\206\250nv~\251\231\210-U}\330"
+ 1783      87981986 
+ 1783      A86E767E 
+ 1783      A999882D 
+ 1783      557DD8
+ 1784 09c7 B1B5B9A3 		.ascii	"\261\265\271\243\337\337\337\256\320\337\252\320\336"
+ 1784      DFDFDFAE 
+ 1784      D0DFAAD0 
+ 1784      DE
+ 1785 09d4 F2ABF8F9 		.ascii	"\362\253\370\371\331\260\207\304\252\361\337\337\273"
+ 1785      D9B087C4 
+ 1785      AAF1DFDF 
+ 1785      BB
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 41
+
+
+ 1786 09e1 AFDFDFB9 		.ascii	"\257\337\337\271\330\261\361\243\227\216`\337\260\204"
+ 1786      D8B1F1A3 
+ 1786      978E60DF 
+ 1786      B084
+ 1787 09ef F2C8F8F9 		.ascii	"\362\310\370\371\331\336\330\223\205\361J\261\203\243"
+ 1787      D9DED893 
+ 1787      85F14AB1 
+ 1787      83A3
+ 1788 09fd 08B5839A 		.ascii	"\010\265\203\232\010\020\267\237\020\330\361\260\272"
+ 1788      0810B79F 
+ 1788      10D8F1B0 
+ 1788      BA
+ 1789 0a0a AEB08AC2 		.ascii	"\256\260\212\302\262\266\216\236\361\373\331\364\035"
+ 1789      B2B68E9E 
+ 1789      F1FBD9F4 
+ 1789      1D
+ 1790 0a17 D8F9D90C 		.ascii	"\330\371\331\014\361\330\370\370\255a\331\256\373\330"
+ 1790      F1D8F8F8 
+ 1790      AD61D9AE 
+ 1790      FBD8
+ 1791 0a25 F40CF1D8 		.ascii	"\364\014\361\330\370\370\255\031\331\256\373\337\330"
+ 1791      F8F8AD19 
+ 1791      D9AEFBDF 
+ 1791      D8
+ 1792 0a32 F416F1D8 		.ascii	"\364\026\361\330\370\255\215a\331\364\364\254\365\234"
+ 1792      F8AD8D61 
+ 1792      D9F4F4AC 
+ 1792      F59C
+ 1793 0a40 9C8DDF2B 		.ascii	"\234\215\337+\272\266\256\372\370\364\013\330\361\256"
+ 1793      BAB6AEFA 
+ 1793      F8F40BD8 
+ 1793      F1AE
+ 1794 0a4e D0F8AD51 		.ascii	"\320\370\255Q\332\256\372\370\361\330\271\261\266\243"
+ 1794      DAAEFAF8 
+ 1794      F1D8B9B1 
+ 1794      B6A3
+ 1795 0a5c 839C08B9 		.ascii	"\203\234\010\271\261\203\232\265\252\300\3750\203\267"
+ 1795      B1839AB5 
+ 1795      AAC0FD30 
+ 1795      83B7
+ 1796 0a6a 9F10B58B 		.ascii	"\237\020\265\213\223\362\002\002\321\253\332\336\330"
+ 1796      93F20202 
+ 1796      D1ABDADE 
+ 1796      D8
+ 1797 0a77 F1B080BA 		.ascii	"\361\260\200\272\253\300\303\262\204\301\303\330\261"
+ 1797      ABC0C3B2 
+ 1797      84C1C3D8 
+ 1797      B1
+ 1798 0a84 B9F38BA3 		.ascii	"\271\363\213\243\221\266\011\264\331\253\336\260\207"
+ 1798      91B609B4 
+ 1798      D9ABDEB0 
+ 1798      87
+ 1799 0a91 9CB9A3DD 		.ascii	"\234\271\243\335\361\263\213\213\213\213\213\260\207"
+ 1799      F1B38B8B 
+ 1799      8B8B8BB0 
+ 1799      87
+ 1800 0a9e A3A3A3A3 		.ascii	"\243\243\243\243\262\213\266\233\362\243\243\243\243"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 42
+
+
+ 1800      B28BB69B 
+ 1800      F2A3A3A3 
+ 1800      A3
+ 1801 0aab A3A3A3A3 		.ascii	"\243\243\243\243\243\243\361\260\207\265\232\243\363"
+ 1801      A3A3F1B0 
+ 1801      87B59AA3 
+ 1801      F3
+ 1802 0ab8 9BA3A3DC 		.ascii	"\233\243\243\334\272\254\337\271\243\243\243\243\243"
+ 1802      BAACDFB9 
+ 1802      A3A3A3A3 
+ 1802      A3
+ 1803 0ac5 A3A3A3A3 		.ascii	"\243\243\243\243\243\243\243\243\243\243\243\330\330"
+ 1803      A3A3A3A3 
+ 1803      A3A3A3D8 
+ 1803      D8
+ 1804 0ad2 D8BBB3B7 		.ascii	"\330\273\263\267\361\252\371\332\377\331\200\232\252"
+ 1804      F1AAF9DA 
+ 1804      FFD9809A 
+ 1804      AA
+ 1805 0adf 28B48098 		.ascii	"(\264\200\230\247 \267\227\207\250f\210\360yQ\361\220"
+ 1805      A720B797 
+ 1805      87A86688 
+ 1805      F07951F1 
+ 1805      90
+ 1806 0af0 2C870CA7 		.ascii	",\207\014\247\201\227b\223\360qq`\205\224\001)Qy\220"
+ 1806      81976293 
+ 1806      F0717160 
+ 1806      85940129 
+ 1806      517990
+ 1807 0b03 A5F1284C 		.ascii	"\245\361(Ll\207\014\225\030\205x\243\203\220(Ll\210"
+ 1807      6C870C95 
+ 1807      188578A3 
+ 1807      8390284C 
+ 1807      6C88
+ 1808 0b15 6CD8F3A2 		.ascii	"l\330\363\242\202\000\362\020\250\222\031\200\242\362"
+ 1808      8200F210 
+ 1808      A8921980 
+ 1808      A2F2
+ 1809 0b23 D926D8F1 		.ascii	"\331&\330\361\210\250M\331H\330\226\2509\200\331<\330"
+ 1809      88A84DD9 
+ 1809      48D896A8 
+ 1809      3980D93C 
+ 1809      D8
+ 1810 0b34 9580A839 		.ascii	"\225\200\2509\246\206\230\331,\332\207\247,\330\250"
+ 1810      A68698D9 
+ 1810      2CDA87A7 
+ 1810      2CD8A8
+ 1811 0b43 899519A9 		.ascii	"\211\225\031\251\200\3318\330\250\2119\251\200\332<"
+ 1811      80D938D8 
+ 1811      A88939A9 
+ 1811      80DA3C
+ 1812 0b52 D8A82EA8 		.ascii	"\330\250.\2509\220\331\014\330\250\2251\230\331\014"
+ 1812      3990D90C 
+ 1812      D8A89531 
+ 1812      98D90C
+ 1813 0b61 D8A809D9 		.ascii	"\330\250\011\331\377\330\001\332\377\330\2259\251\332"
+ 1813      FFD801DA 
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 43
+
+
+ 1813      FFD89539 
+ 1813      A9DA
+ 1814 0b6f 26FFD890 		.ascii	"&\377\330\220\250\015\211\231\250\020\200\230!\332."
+ 1814      A80D8999 
+ 1814      A8108098 
+ 1814      21DA2E
+ 1815 0b7e D88999A8 		.ascii	"\330\211\231\2501\200\332.\330\250\206\2261\200\332"
+ 1815      3180DA2E 
+ 1815      D8A88696 
+ 1815      3180DA
+ 1816 0b8d 2ED8A887 		.ascii	".\330\250\2071\200\332.\330\250\202\222\363A\200\361"
+ 1816      3180DA2E 
+ 1816      D8A88292 
+ 1816      F34180F1 
+ 1817 0b9d D92ED8A8 		.ascii	"\331.\330\250\202\363\031\200\361\331.\330\202\254\363"
+ 1817      82F31980 
+ 1817      F1D92ED8 
+ 1817      82ACF3
+ 1818 0bac C0A28022 		.ascii	"\300\242\200\"\361\246.\247.\251\"\230\250)\332\254"
+ 1818      F1A62EA7 
+ 1818      2EA92298 
+ 1818      A829DAAC 
+ 1819 0bbc DEFFD8A2 		.ascii	"\336\377\330\242\362*\361\251.\202\222\250\3621\200"
+ 1819      F22AF1A9 
+ 1819      2E8292A8 
+ 1819      F23180
+ 1820 0bcb A696F1D9 		.ascii	"\246\226\361\331\000\254\214\234\0140\254\336\320\336"
+ 1820      00AC8C9C 
+ 1820      0C30ACDE 
+ 1820      D0DE
+ 1821 0bd9 FFD88C9C 		.ascii	"\377\330\214\234\254\320\020\254\336\200\222\242\362"
+ 1821      ACD010AC 
+ 1821      DE8092A2 
+ 1821      F2
+ 1822 0be6 4C82A8F1 		.ascii	"L\202\250\361\312\3625\361\226\210\246\331\000\330\361"
+ 1822      CAF235F1 
+ 1822      9688A6D9 
+ 1822      00D8F1
+ 1823 0bf5 FF       		.ascii	"\377"
+ 1824              		.global	__aeabi_f2uiz
+ 1825              		.global	__aeabi_fmul
+ 1826              		.global	__aeabi_fdiv
+ 1827              		.global	__aeabi_ui2f
+ 1828              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 44
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 inv_mpu_dmp_motion_driver.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:16     .text.dmp_load_motion_driver_firmware:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:22     .text.dmp_load_motion_driver_firmware:00000000 dmp_load_motion_driver_firmware
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:35     .text.dmp_load_motion_driver_firmware:00000014 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1611   .rodata.dmp_memory:00000000 dmp_memory
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:38     .rodata.dmp_set_orientation.str1.4:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:51     .text.dmp_set_orientation:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:57     .text.dmp_set_orientation:00000000 dmp_set_orientation
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:176    .text.dmp_set_orientation:00000138 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1605   .bss.dmp:00000000 dmp
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:183    .text.dmp_set_gyro_bias:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:189    .text.dmp_set_gyro_bias:00000000 dmp_set_gyro_bias
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:275    .text.dmp_set_gyro_bias:000000e4 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:279    .text.dmp_set_accel_bias:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:285    .text.dmp_set_accel_bias:00000000 dmp_set_accel_bias
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:358    .text.dmp_set_accel_bias:000000d0 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:361    .rodata.dmp_set_fifo_rate.str1.4:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:365    .text.dmp_set_fifo_rate:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:371    .text.dmp_set_fifo_rate:00000000 dmp_set_fifo_rate
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:417    .text.dmp_set_fifo_rate:00000060 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:421    .text.dmp_get_fifo_rate:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:427    .text.dmp_get_fifo_rate:00000000 dmp_get_fifo_rate
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:439    .text.dmp_get_fifo_rate:0000000c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:442    .text.dmp_set_tap_thresh:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:448    .text.dmp_set_tap_thresh:00000000 dmp_set_tap_thresh
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:471    .text.dmp_set_tap_thresh:0000003c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:619    .text.dmp_set_tap_thresh:00000190 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:626    .text.dmp_set_tap_axes:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:632    .text.dmp_set_tap_axes:00000000 dmp_set_tap_axes
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:662    .text.dmp_set_tap_count:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:668    .text.dmp_set_tap_count:00000000 dmp_set_tap_count
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:690    .text.dmp_set_tap_time:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:696    .text.dmp_set_tap_time:00000000 dmp_set_tap_time
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:717    .text.dmp_set_tap_time:00000028 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:720    .text.dmp_set_tap_time_multi:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:726    .text.dmp_set_tap_time_multi:00000000 dmp_set_tap_time_multi
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:747    .text.dmp_set_tap_time_multi:00000028 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:750    .text.dmp_set_shake_reject_thresh:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:756    .text.dmp_set_shake_reject_thresh:00000000 dmp_set_shake_reject_thresh
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:783    .text.dmp_set_shake_reject_thresh:0000003c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:786    .text.dmp_set_shake_reject_time:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:792    .text.dmp_set_shake_reject_time:00000000 dmp_set_shake_reject_time
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:813    .text.dmp_set_shake_reject_time:00000028 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:816    .text.dmp_set_shake_reject_timeout:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:822    .text.dmp_set_shake_reject_timeout:00000000 dmp_set_shake_reject_timeout
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:843    .text.dmp_set_shake_reject_timeout:00000028 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:846    .text.dmp_get_pedometer_step_count:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:852    .text.dmp_get_pedometer_step_count:00000000 dmp_get_pedometer_step_count
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:885    .text.dmp_set_pedometer_step_count:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:891    .text.dmp_set_pedometer_step_count:00000000 dmp_set_pedometer_step_count
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:912    .text.dmp_get_pedometer_walk_time:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:918    .text.dmp_get_pedometer_walk_time:00000000 dmp_get_pedometer_walk_time
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:953    .text.dmp_set_pedometer_walk_time:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:959    .text.dmp_set_pedometer_walk_time:00000000 dmp_set_pedometer_walk_time
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:984    .text.dmp_set_pedometer_walk_time:00000034 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:987    .text.dmp_get_enabled_features:00000000 $t
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s 			page 45
+
+
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:993    .text.dmp_get_enabled_features:00000000 dmp_get_enabled_features
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1005   .text.dmp_get_enabled_features:0000000c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1008   .rodata.dmp_enable_gyro_cal.str1.4:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1015   .text.dmp_enable_gyro_cal:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1021   .text.dmp_enable_gyro_cal:00000000 dmp_enable_gyro_cal
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1054   .text.dmp_enable_gyro_cal:0000003c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1058   .text.dmp_enable_lp_quat:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1064   .text.dmp_enable_lp_quat:00000000 dmp_enable_lp_quat
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1093   .text.dmp_enable_6x_lp_quat:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1099   .text.dmp_enable_6x_lp_quat:00000000 dmp_enable_6x_lp_quat
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1128   .text.dmp_enable_feature:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1134   .text.dmp_enable_feature:00000000 dmp_enable_feature
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1318   .text.dmp_enable_feature:000001c4 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1322   .rodata.dmp_set_interrupt_mode.str1.4:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1329   .text.dmp_set_interrupt_mode:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1335   .text.dmp_set_interrupt_mode:00000000 dmp_set_interrupt_mode
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1379   .text.dmp_set_interrupt_mode:00000058 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1383   .text.dmp_read_fifo:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1389   .text.dmp_read_fifo:00000000 dmp_read_fifo
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1559   .text.dmp_read_fifo:000001c8 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1562   .text.dmp_register_tap_cb:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1568   .text.dmp_register_tap_cb:00000000 dmp_register_tap_cb
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1579   .text.dmp_register_tap_cb:00000008 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1582   .text.dmp_register_android_orient_cb:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1588   .text.dmp_register_android_orient_cb:00000000 dmp_register_android_orient_cb
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1599   .text.dmp_register_android_orient_cb:00000008 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1602   .bss.dmp:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:1608   .rodata.dmp_memory:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:486    .text.dmp_set_tap_thresh:0000004b $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKZ4bUH.s:486    .text.dmp_set_tap_thresh:0000004c $t
+
+UNDEFINED SYMBOLS
+mpu_load_firmware
+mpu_write_mem
+mpu_get_accel_sens
+__aeabi_ui2f
+__aeabi_fdiv
+mpu_get_accel_fsr
+__aeabi_fmul
+__aeabi_f2uiz
+mpu_read_mem
+mpu_reset_fifo
+mpu_read_fifo_stream
+get_tick_count

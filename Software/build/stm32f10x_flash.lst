@@ -1,0 +1,1124 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f10x_flash.c"
+  14              		.text
+  15              		.section	.text.FLASH_SetLatency,"ax",%progbits
+  16              		.align	1
+  17              		.global	FLASH_SetLatency
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	FLASH_SetLatency:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25              		@ link register save eliminated.
+  26 0000 034A     		ldr	r2, .L2
+  27 0002 1368     		ldr	r3, [r2]
+  28 0004 03F03803 		and	r3, r3, #56
+  29 0008 0343     		orrs	r3, r3, r0
+  30 000a 1360     		str	r3, [r2]
+  31 000c 7047     		bx	lr
+  32              	.L3:
+  33 000e 00BF     		.align	2
+  34              	.L2:
+  35 0010 00200240 		.word	1073881088
+  37              		.section	.text.FLASH_HalfCycleAccessCmd,"ax",%progbits
+  38              		.align	1
+  39              		.global	FLASH_HalfCycleAccessCmd
+  40              		.syntax unified
+  41              		.thumb
+  42              		.thumb_func
+  44              	FLASH_HalfCycleAccessCmd:
+  45              		@ args = 0, pretend = 0, frame = 0
+  46              		@ frame_needed = 0, uses_anonymous_args = 0
+  47              		@ link register save eliminated.
+  48 0000 044B     		ldr	r3, .L5
+  49 0002 1A68     		ldr	r2, [r3]
+  50 0004 22F00802 		bic	r2, r2, #8
+  51 0008 1A60     		str	r2, [r3]
+  52 000a 1A68     		ldr	r2, [r3]
+  53 000c 0243     		orrs	r2, r2, r0
+  54 000e 1A60     		str	r2, [r3]
+  55 0010 7047     		bx	lr
+  56              	.L6:
+  57 0012 00BF     		.align	2
+  58              	.L5:
+  59 0014 00200240 		.word	1073881088
+  61              		.section	.text.FLASH_PrefetchBufferCmd,"ax",%progbits
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s 			page 2
+
+
+  62              		.align	1
+  63              		.global	FLASH_PrefetchBufferCmd
+  64              		.syntax unified
+  65              		.thumb
+  66              		.thumb_func
+  68              	FLASH_PrefetchBufferCmd:
+  69              		@ args = 0, pretend = 0, frame = 0
+  70              		@ frame_needed = 0, uses_anonymous_args = 0
+  71              		@ link register save eliminated.
+  72 0000 044B     		ldr	r3, .L8
+  73 0002 1A68     		ldr	r2, [r3]
+  74 0004 22F01002 		bic	r2, r2, #16
+  75 0008 1A60     		str	r2, [r3]
+  76 000a 1A68     		ldr	r2, [r3]
+  77 000c 0243     		orrs	r2, r2, r0
+  78 000e 1A60     		str	r2, [r3]
+  79 0010 7047     		bx	lr
+  80              	.L9:
+  81 0012 00BF     		.align	2
+  82              	.L8:
+  83 0014 00200240 		.word	1073881088
+  85              		.section	.text.FLASH_Unlock,"ax",%progbits
+  86              		.align	1
+  87              		.global	FLASH_Unlock
+  88              		.syntax unified
+  89              		.thumb
+  90              		.thumb_func
+  92              	FLASH_Unlock:
+  93              		@ args = 0, pretend = 0, frame = 0
+  94              		@ frame_needed = 0, uses_anonymous_args = 0
+  95              		@ link register save eliminated.
+  96 0000 034B     		ldr	r3, .L11
+  97 0002 044A     		ldr	r2, .L11+4
+  98 0004 5A60     		str	r2, [r3, #4]
+  99 0006 02F18832 		add	r2, r2, #-2004318072
+ 100 000a 5A60     		str	r2, [r3, #4]
+ 101 000c 7047     		bx	lr
+ 102              	.L12:
+ 103 000e 00BF     		.align	2
+ 104              	.L11:
+ 105 0010 00200240 		.word	1073881088
+ 106 0014 23016745 		.word	1164378403
+ 108              		.section	.text.FLASH_UnlockBank1,"ax",%progbits
+ 109              		.align	1
+ 110              		.global	FLASH_UnlockBank1
+ 111              		.syntax unified
+ 112              		.thumb
+ 113              		.thumb_func
+ 115              	FLASH_UnlockBank1:
+ 116              		@ args = 0, pretend = 0, frame = 0
+ 117              		@ frame_needed = 0, uses_anonymous_args = 0
+ 118              		@ link register save eliminated.
+ 119 0000 034B     		ldr	r3, .L14
+ 120 0002 044A     		ldr	r2, .L14+4
+ 121 0004 5A60     		str	r2, [r3, #4]
+ 122 0006 02F18832 		add	r2, r2, #-2004318072
+ 123 000a 5A60     		str	r2, [r3, #4]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s 			page 3
+
+
+ 124 000c 7047     		bx	lr
+ 125              	.L15:
+ 126 000e 00BF     		.align	2
+ 127              	.L14:
+ 128 0010 00200240 		.word	1073881088
+ 129 0014 23016745 		.word	1164378403
+ 131              		.section	.text.FLASH_Lock,"ax",%progbits
+ 132              		.align	1
+ 133              		.global	FLASH_Lock
+ 134              		.syntax unified
+ 135              		.thumb
+ 136              		.thumb_func
+ 138              	FLASH_Lock:
+ 139              		@ args = 0, pretend = 0, frame = 0
+ 140              		@ frame_needed = 0, uses_anonymous_args = 0
+ 141              		@ link register save eliminated.
+ 142 0000 024A     		ldr	r2, .L17
+ 143 0002 1369     		ldr	r3, [r2, #16]
+ 144 0004 43F08003 		orr	r3, r3, #128
+ 145 0008 1361     		str	r3, [r2, #16]
+ 146 000a 7047     		bx	lr
+ 147              	.L18:
+ 148              		.align	2
+ 149              	.L17:
+ 150 000c 00200240 		.word	1073881088
+ 152              		.section	.text.FLASH_LockBank1,"ax",%progbits
+ 153              		.align	1
+ 154              		.global	FLASH_LockBank1
+ 155              		.syntax unified
+ 156              		.thumb
+ 157              		.thumb_func
+ 159              	FLASH_LockBank1:
+ 160              		@ args = 0, pretend = 0, frame = 0
+ 161              		@ frame_needed = 0, uses_anonymous_args = 0
+ 162              		@ link register save eliminated.
+ 163 0000 024A     		ldr	r2, .L20
+ 164 0002 1369     		ldr	r3, [r2, #16]
+ 165 0004 43F08003 		orr	r3, r3, #128
+ 166 0008 1361     		str	r3, [r2, #16]
+ 167 000a 7047     		bx	lr
+ 168              	.L21:
+ 169              		.align	2
+ 170              	.L20:
+ 171 000c 00200240 		.word	1073881088
+ 173              		.section	.text.FLASH_GetUserOptionByte,"ax",%progbits
+ 174              		.align	1
+ 175              		.global	FLASH_GetUserOptionByte
+ 176              		.syntax unified
+ 177              		.thumb
+ 178              		.thumb_func
+ 180              	FLASH_GetUserOptionByte:
+ 181              		@ args = 0, pretend = 0, frame = 0
+ 182              		@ frame_needed = 0, uses_anonymous_args = 0
+ 183              		@ link register save eliminated.
+ 184 0000 014B     		ldr	r3, .L23
+ 185 0002 D869     		ldr	r0, [r3, #28]
+ 186 0004 8008     		lsrs	r0, r0, #2
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s 			page 4
+
+
+ 187 0006 7047     		bx	lr
+ 188              	.L24:
+ 189              		.align	2
+ 190              	.L23:
+ 191 0008 00200240 		.word	1073881088
+ 193              		.section	.text.FLASH_GetWriteProtectionOptionByte,"ax",%progbits
+ 194              		.align	1
+ 195              		.global	FLASH_GetWriteProtectionOptionByte
+ 196              		.syntax unified
+ 197              		.thumb
+ 198              		.thumb_func
+ 200              	FLASH_GetWriteProtectionOptionByte:
+ 201              		@ args = 0, pretend = 0, frame = 0
+ 202              		@ frame_needed = 0, uses_anonymous_args = 0
+ 203              		@ link register save eliminated.
+ 204 0000 014B     		ldr	r3, .L26
+ 205 0002 186A     		ldr	r0, [r3, #32]
+ 206 0004 7047     		bx	lr
+ 207              	.L27:
+ 208 0006 00BF     		.align	2
+ 209              	.L26:
+ 210 0008 00200240 		.word	1073881088
+ 212              		.section	.text.FLASH_GetReadOutProtectionStatus,"ax",%progbits
+ 213              		.align	1
+ 214              		.global	FLASH_GetReadOutProtectionStatus
+ 215              		.syntax unified
+ 216              		.thumb
+ 217              		.thumb_func
+ 219              	FLASH_GetReadOutProtectionStatus:
+ 220              		@ args = 0, pretend = 0, frame = 0
+ 221              		@ frame_needed = 0, uses_anonymous_args = 0
+ 222              		@ link register save eliminated.
+ 223 0000 024B     		ldr	r3, .L29
+ 224 0002 D869     		ldr	r0, [r3, #28]
+ 225 0004 C0F34000 		ubfx	r0, r0, #1, #1
+ 226 0008 7047     		bx	lr
+ 227              	.L30:
+ 228 000a 00BF     		.align	2
+ 229              	.L29:
+ 230 000c 00200240 		.word	1073881088
+ 232              		.section	.text.FLASH_GetPrefetchBufferStatus,"ax",%progbits
+ 233              		.align	1
+ 234              		.global	FLASH_GetPrefetchBufferStatus
+ 235              		.syntax unified
+ 236              		.thumb
+ 237              		.thumb_func
+ 239              	FLASH_GetPrefetchBufferStatus:
+ 240              		@ args = 0, pretend = 0, frame = 0
+ 241              		@ frame_needed = 0, uses_anonymous_args = 0
+ 242              		@ link register save eliminated.
+ 243 0000 024B     		ldr	r3, .L32
+ 244 0002 1868     		ldr	r0, [r3]
+ 245 0004 C0F34010 		ubfx	r0, r0, #5, #1
+ 246 0008 7047     		bx	lr
+ 247              	.L33:
+ 248 000a 00BF     		.align	2
+ 249              	.L32:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s 			page 5
+
+
+ 250 000c 00200240 		.word	1073881088
+ 252              		.section	.text.FLASH_ITConfig,"ax",%progbits
+ 253              		.align	1
+ 254              		.global	FLASH_ITConfig
+ 255              		.syntax unified
+ 256              		.thumb
+ 257              		.thumb_func
+ 259              	FLASH_ITConfig:
+ 260              		@ args = 0, pretend = 0, frame = 0
+ 261              		@ frame_needed = 0, uses_anonymous_args = 0
+ 262              		@ link register save eliminated.
+ 263 0000 21B1     		cbz	r1, .L35
+ 264 0002 054A     		ldr	r2, .L37
+ 265 0004 1369     		ldr	r3, [r2, #16]
+ 266 0006 0343     		orrs	r3, r3, r0
+ 267 0008 1361     		str	r3, [r2, #16]
+ 268 000a 7047     		bx	lr
+ 269              	.L35:
+ 270 000c 024A     		ldr	r2, .L37
+ 271 000e 1369     		ldr	r3, [r2, #16]
+ 272 0010 23EA0003 		bic	r3, r3, r0
+ 273 0014 1361     		str	r3, [r2, #16]
+ 274 0016 7047     		bx	lr
+ 275              	.L38:
+ 276              		.align	2
+ 277              	.L37:
+ 278 0018 00200240 		.word	1073881088
+ 280              		.section	.text.FLASH_GetFlagStatus,"ax",%progbits
+ 281              		.align	1
+ 282              		.global	FLASH_GetFlagStatus
+ 283              		.syntax unified
+ 284              		.thumb
+ 285              		.thumb_func
+ 287              	FLASH_GetFlagStatus:
+ 288              		@ args = 0, pretend = 0, frame = 0
+ 289              		@ frame_needed = 0, uses_anonymous_args = 0
+ 290              		@ link register save eliminated.
+ 291 0000 0128     		cmp	r0, #1
+ 292 0002 06D0     		beq	.L42
+ 293 0004 054B     		ldr	r3, .L43
+ 294 0006 DB68     		ldr	r3, [r3, #12]
+ 295 0008 1840     		ands	r0, r0, r3
+ 296 000a 0038     		subs	r0, r0, #0
+ 297 000c 18BF     		it	ne
+ 298 000e 0120     		movne	r0, #1
+ 299 0010 7047     		bx	lr
+ 300              	.L42:
+ 301 0012 024B     		ldr	r3, .L43
+ 302 0014 D869     		ldr	r0, [r3, #28]
+ 303 0016 00F00100 		and	r0, r0, #1
+ 304 001a 7047     		bx	lr
+ 305              	.L44:
+ 306              		.align	2
+ 307              	.L43:
+ 308 001c 00200240 		.word	1073881088
+ 310              		.section	.text.FLASH_ClearFlag,"ax",%progbits
+ 311              		.align	1
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s 			page 6
+
+
+ 312              		.global	FLASH_ClearFlag
+ 313              		.syntax unified
+ 314              		.thumb
+ 315              		.thumb_func
+ 317              	FLASH_ClearFlag:
+ 318              		@ args = 0, pretend = 0, frame = 0
+ 319              		@ frame_needed = 0, uses_anonymous_args = 0
+ 320              		@ link register save eliminated.
+ 321 0000 014B     		ldr	r3, .L46
+ 322 0002 D860     		str	r0, [r3, #12]
+ 323 0004 7047     		bx	lr
+ 324              	.L47:
+ 325 0006 00BF     		.align	2
+ 326              	.L46:
+ 327 0008 00200240 		.word	1073881088
+ 329              		.section	.text.FLASH_GetStatus,"ax",%progbits
+ 330              		.align	1
+ 331              		.global	FLASH_GetStatus
+ 332              		.syntax unified
+ 333              		.thumb
+ 334              		.thumb_func
+ 336              	FLASH_GetStatus:
+ 337              		@ args = 0, pretend = 0, frame = 0
+ 338              		@ frame_needed = 0, uses_anonymous_args = 0
+ 339              		@ link register save eliminated.
+ 340 0000 0A4B     		ldr	r3, .L53
+ 341 0002 DB68     		ldr	r3, [r3, #12]
+ 342 0004 13F0010F 		tst	r3, #1
+ 343 0008 0CD1     		bne	.L50
+ 344 000a 084B     		ldr	r3, .L53
+ 345 000c DB68     		ldr	r3, [r3, #12]
+ 346 000e 13F0040F 		tst	r3, #4
+ 347 0012 09D1     		bne	.L51
+ 348 0014 054B     		ldr	r3, .L53
+ 349 0016 DB68     		ldr	r3, [r3, #12]
+ 350 0018 13F0100F 		tst	r3, #16
+ 351 001c 0CBF     		ite	eq
+ 352 001e 0420     		moveq	r0, #4
+ 353 0020 0320     		movne	r0, #3
+ 354 0022 7047     		bx	lr
+ 355              	.L50:
+ 356 0024 0120     		movs	r0, #1
+ 357 0026 7047     		bx	lr
+ 358              	.L51:
+ 359 0028 0220     		movs	r0, #2
+ 360 002a 7047     		bx	lr
+ 361              	.L54:
+ 362              		.align	2
+ 363              	.L53:
+ 364 002c 00200240 		.word	1073881088
+ 366              		.section	.text.FLASH_GetBank1Status,"ax",%progbits
+ 367              		.align	1
+ 368              		.global	FLASH_GetBank1Status
+ 369              		.syntax unified
+ 370              		.thumb
+ 371              		.thumb_func
+ 373              	FLASH_GetBank1Status:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s 			page 7
+
+
+ 374              		@ args = 0, pretend = 0, frame = 0
+ 375              		@ frame_needed = 0, uses_anonymous_args = 0
+ 376              		@ link register save eliminated.
+ 377 0000 0A4B     		ldr	r3, .L60
+ 378 0002 DB68     		ldr	r3, [r3, #12]
+ 379 0004 13F0010F 		tst	r3, #1
+ 380 0008 0CD1     		bne	.L57
+ 381 000a 084B     		ldr	r3, .L60
+ 382 000c DB68     		ldr	r3, [r3, #12]
+ 383 000e 13F0040F 		tst	r3, #4
+ 384 0012 09D1     		bne	.L58
+ 385 0014 054B     		ldr	r3, .L60
+ 386 0016 DB68     		ldr	r3, [r3, #12]
+ 387 0018 13F0100F 		tst	r3, #16
+ 388 001c 0CBF     		ite	eq
+ 389 001e 0420     		moveq	r0, #4
+ 390 0020 0320     		movne	r0, #3
+ 391 0022 7047     		bx	lr
+ 392              	.L57:
+ 393 0024 0120     		movs	r0, #1
+ 394 0026 7047     		bx	lr
+ 395              	.L58:
+ 396 0028 0220     		movs	r0, #2
+ 397 002a 7047     		bx	lr
+ 398              	.L61:
+ 399              		.align	2
+ 400              	.L60:
+ 401 002c 00200240 		.word	1073881088
+ 403              		.section	.text.FLASH_WaitForLastOperation,"ax",%progbits
+ 404              		.align	1
+ 405              		.global	FLASH_WaitForLastOperation
+ 406              		.syntax unified
+ 407              		.thumb
+ 408              		.thumb_func
+ 410              	FLASH_WaitForLastOperation:
+ 411              		@ args = 0, pretend = 0, frame = 0
+ 412              		@ frame_needed = 0, uses_anonymous_args = 0
+ 413 0000 10B5     		push	{r4, lr}
+ 414 0002 0446     		mov	r4, r0
+ 415 0004 FFF7FEFF 		bl	FLASH_GetBank1Status
+ 416 0008 0128     		cmp	r0, #1
+ 417 000a 05D1     		bne	.L64
+ 418              	.L63:
+ 419 000c 44B1     		cbz	r4, .L70
+ 420 000e FFF7FEFF 		bl	FLASH_GetBank1Status
+ 421 0012 013C     		subs	r4, r4, #1
+ 422 0014 0128     		cmp	r0, #1
+ 423 0016 F9D0     		beq	.L63
+ 424              	.L64:
+ 425 0018 002C     		cmp	r4, #0
+ 426 001a 08BF     		it	eq
+ 427 001c 0520     		moveq	r0, #5
+ 428              	.L66:
+ 429 001e 10BD     		pop	{r4, pc}
+ 430              	.L70:
+ 431 0020 0520     		movs	r0, #5
+ 432 0022 FCE7     		b	.L66
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s 			page 8
+
+
+ 434              		.section	.text.FLASH_ErasePage,"ax",%progbits
+ 435              		.align	1
+ 436              		.global	FLASH_ErasePage
+ 437              		.syntax unified
+ 438              		.thumb
+ 439              		.thumb_func
+ 441              	FLASH_ErasePage:
+ 442              		@ args = 0, pretend = 0, frame = 0
+ 443              		@ frame_needed = 0, uses_anonymous_args = 0
+ 444 0000 38B5     		push	{r3, r4, r5, lr}
+ 445 0002 0446     		mov	r4, r0
+ 446 0004 4FF43020 		mov	r0, #720896
+ 447 0008 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 448 000c 0428     		cmp	r0, #4
+ 449 000e 00D0     		beq	.L74
+ 450              	.L72:
+ 451 0010 38BD     		pop	{r3, r4, r5, pc}
+ 452              	.L74:
+ 453 0012 0A4D     		ldr	r5, .L75
+ 454 0014 2B69     		ldr	r3, [r5, #16]
+ 455 0016 43F00203 		orr	r3, r3, #2
+ 456 001a 2B61     		str	r3, [r5, #16]
+ 457 001c 6C61     		str	r4, [r5, #20]
+ 458 001e 2B69     		ldr	r3, [r5, #16]
+ 459 0020 43F04003 		orr	r3, r3, #64
+ 460 0024 2B61     		str	r3, [r5, #16]
+ 461 0026 4FF43020 		mov	r0, #720896
+ 462 002a FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 463 002e 2B69     		ldr	r3, [r5, #16]
+ 464 0030 23F00203 		bic	r3, r3, #2
+ 465 0034 DB04     		lsls	r3, r3, #19
+ 466 0036 DB0C     		lsrs	r3, r3, #19
+ 467 0038 2B61     		str	r3, [r5, #16]
+ 468 003a E9E7     		b	.L72
+ 469              	.L76:
+ 470              		.align	2
+ 471              	.L75:
+ 472 003c 00200240 		.word	1073881088
+ 474              		.section	.text.FLASH_EraseAllPages,"ax",%progbits
+ 475              		.align	1
+ 476              		.global	FLASH_EraseAllPages
+ 477              		.syntax unified
+ 478              		.thumb
+ 479              		.thumb_func
+ 481              	FLASH_EraseAllPages:
+ 482              		@ args = 0, pretend = 0, frame = 0
+ 483              		@ frame_needed = 0, uses_anonymous_args = 0
+ 484 0000 10B5     		push	{r4, lr}
+ 485 0002 4FF43020 		mov	r0, #720896
+ 486 0006 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 487 000a 0428     		cmp	r0, #4
+ 488 000c 00D0     		beq	.L80
+ 489              	.L78:
+ 490 000e 10BD     		pop	{r4, pc}
+ 491              	.L80:
+ 492 0010 094C     		ldr	r4, .L81
+ 493 0012 2369     		ldr	r3, [r4, #16]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s 			page 9
+
+
+ 494 0014 43F00403 		orr	r3, r3, #4
+ 495 0018 2361     		str	r3, [r4, #16]
+ 496 001a 2369     		ldr	r3, [r4, #16]
+ 497 001c 43F04003 		orr	r3, r3, #64
+ 498 0020 2361     		str	r3, [r4, #16]
+ 499 0022 4FF43020 		mov	r0, #720896
+ 500 0026 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 501 002a 2369     		ldr	r3, [r4, #16]
+ 502 002c 23F00403 		bic	r3, r3, #4
+ 503 0030 DB04     		lsls	r3, r3, #19
+ 504 0032 DB0C     		lsrs	r3, r3, #19
+ 505 0034 2361     		str	r3, [r4, #16]
+ 506 0036 EAE7     		b	.L78
+ 507              	.L82:
+ 508              		.align	2
+ 509              	.L81:
+ 510 0038 00200240 		.word	1073881088
+ 512              		.section	.text.FLASH_EraseOptionBytes,"ax",%progbits
+ 513              		.align	1
+ 514              		.global	FLASH_EraseOptionBytes
+ 515              		.syntax unified
+ 516              		.thumb
+ 517              		.thumb_func
+ 519              	FLASH_EraseOptionBytes:
+ 520              		@ args = 0, pretend = 0, frame = 0
+ 521              		@ frame_needed = 0, uses_anonymous_args = 0
+ 522 0000 10B5     		push	{r4, lr}
+ 523 0002 FFF7FEFF 		bl	FLASH_GetReadOutProtectionStatus
+ 524 0006 0028     		cmp	r0, #0
+ 525 0008 14BF     		ite	ne
+ 526 000a 0024     		movne	r4, #0
+ 527 000c A524     		moveq	r4, #165
+ 528 000e 4FF43020 		mov	r0, #720896
+ 529 0012 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 530 0016 0428     		cmp	r0, #4
+ 531 0018 00D0     		beq	.L89
+ 532              	.L85:
+ 533 001a 10BD     		pop	{r4, pc}
+ 534              	.L89:
+ 535 001c 1C4B     		ldr	r3, .L91
+ 536 001e 1D4A     		ldr	r2, .L91+4
+ 537 0020 9A60     		str	r2, [r3, #8]
+ 538 0022 02F18832 		add	r2, r2, #-2004318072
+ 539 0026 9A60     		str	r2, [r3, #8]
+ 540 0028 1A69     		ldr	r2, [r3, #16]
+ 541 002a 42F02002 		orr	r2, r2, #32
+ 542 002e 1A61     		str	r2, [r3, #16]
+ 543 0030 1A69     		ldr	r2, [r3, #16]
+ 544 0032 42F04002 		orr	r2, r2, #64
+ 545 0036 1A61     		str	r2, [r3, #16]
+ 546 0038 4FF43020 		mov	r0, #720896
+ 547 003c FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 548 0040 0428     		cmp	r0, #4
+ 549 0042 09D0     		beq	.L90
+ 550 0044 0528     		cmp	r0, #5
+ 551 0046 E8D0     		beq	.L85
+ 552 0048 114A     		ldr	r2, .L91
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s 			page 10
+
+
+ 553 004a 1369     		ldr	r3, [r2, #16]
+ 554 004c 23F01003 		bic	r3, r3, #16
+ 555 0050 DB04     		lsls	r3, r3, #19
+ 556 0052 DB0C     		lsrs	r3, r3, #19
+ 557 0054 1361     		str	r3, [r2, #16]
+ 558 0056 E0E7     		b	.L85
+ 559              	.L90:
+ 560 0058 0D4B     		ldr	r3, .L91
+ 561 005a 1A69     		ldr	r2, [r3, #16]
+ 562 005c 22F02002 		bic	r2, r2, #32
+ 563 0060 D204     		lsls	r2, r2, #19
+ 564 0062 D20C     		lsrs	r2, r2, #19
+ 565 0064 1A61     		str	r2, [r3, #16]
+ 566 0066 1A69     		ldr	r2, [r3, #16]
+ 567 0068 42F01002 		orr	r2, r2, #16
+ 568 006c 1A61     		str	r2, [r3, #16]
+ 569 006e 0A4B     		ldr	r3, .L91+8
+ 570 0070 1C80     		strh	r4, [r3]	@ movhi
+ 571 0072 4FF40050 		mov	r0, #8192
+ 572 0076 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 573 007a 0528     		cmp	r0, #5
+ 574 007c CDD0     		beq	.L85
+ 575 007e 044A     		ldr	r2, .L91
+ 576 0080 1369     		ldr	r3, [r2, #16]
+ 577 0082 23F01003 		bic	r3, r3, #16
+ 578 0086 DB04     		lsls	r3, r3, #19
+ 579 0088 DB0C     		lsrs	r3, r3, #19
+ 580 008a 1361     		str	r3, [r2, #16]
+ 581 008c C5E7     		b	.L85
+ 582              	.L92:
+ 583 008e 00BF     		.align	2
+ 584              	.L91:
+ 585 0090 00200240 		.word	1073881088
+ 586 0094 23016745 		.word	1164378403
+ 587 0098 00F8FF1F 		.word	536868864
+ 589              		.section	.text.FLASH_ProgramWord,"ax",%progbits
+ 590              		.align	1
+ 591              		.global	FLASH_ProgramWord
+ 592              		.syntax unified
+ 593              		.thumb
+ 594              		.thumb_func
+ 596              	FLASH_ProgramWord:
+ 597              		@ args = 0, pretend = 0, frame = 8
+ 598              		@ frame_needed = 0, uses_anonymous_args = 0
+ 599 0000 30B5     		push	{r4, r5, lr}
+ 600 0002 83B0     		sub	sp, sp, #12
+ 601 0004 0546     		mov	r5, r0
+ 602 0006 0C46     		mov	r4, r1
+ 603 0008 0023     		movs	r3, #0
+ 604 000a 0193     		str	r3, [sp, #4]
+ 605 000c 4FF40050 		mov	r0, #8192
+ 606 0010 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 607 0014 0428     		cmp	r0, #4
+ 608 0016 01D0     		beq	.L97
+ 609              	.L94:
+ 610 0018 03B0     		add	sp, sp, #12
+ 611              		@ sp needed
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s 			page 11
+
+
+ 612 001a 30BD     		pop	{r4, r5, pc}
+ 613              	.L97:
+ 614 001c 124A     		ldr	r2, .L99
+ 615 001e 1369     		ldr	r3, [r2, #16]
+ 616 0020 43F00103 		orr	r3, r3, #1
+ 617 0024 1361     		str	r3, [r2, #16]
+ 618 0026 A3B2     		uxth	r3, r4
+ 619 0028 2B80     		strh	r3, [r5]	@ movhi
+ 620 002a 4FF40050 		mov	r0, #8192
+ 621 002e FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 622 0032 0428     		cmp	r0, #4
+ 623 0034 07D0     		beq	.L98
+ 624 0036 0C4A     		ldr	r2, .L99
+ 625 0038 1369     		ldr	r3, [r2, #16]
+ 626 003a 23F00103 		bic	r3, r3, #1
+ 627 003e DB04     		lsls	r3, r3, #19
+ 628 0040 DB0C     		lsrs	r3, r3, #19
+ 629 0042 1361     		str	r3, [r2, #16]
+ 630 0044 E8E7     		b	.L94
+ 631              	.L98:
+ 632 0046 0235     		adds	r5, r5, #2
+ 633 0048 0195     		str	r5, [sp, #4]
+ 634 004a 019B     		ldr	r3, [sp, #4]
+ 635 004c 210C     		lsrs	r1, r4, #16
+ 636 004e 1980     		strh	r1, [r3]	@ movhi
+ 637 0050 4FF40050 		mov	r0, #8192
+ 638 0054 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 639 0058 034A     		ldr	r2, .L99
+ 640 005a 1369     		ldr	r3, [r2, #16]
+ 641 005c 23F00103 		bic	r3, r3, #1
+ 642 0060 DB04     		lsls	r3, r3, #19
+ 643 0062 DB0C     		lsrs	r3, r3, #19
+ 644 0064 1361     		str	r3, [r2, #16]
+ 645 0066 D7E7     		b	.L94
+ 646              	.L100:
+ 647              		.align	2
+ 648              	.L99:
+ 649 0068 00200240 		.word	1073881088
+ 651              		.section	.text.FLASH_ProgramHalfWord,"ax",%progbits
+ 652              		.align	1
+ 653              		.global	FLASH_ProgramHalfWord
+ 654              		.syntax unified
+ 655              		.thumb
+ 656              		.thumb_func
+ 658              	FLASH_ProgramHalfWord:
+ 659              		@ args = 0, pretend = 0, frame = 0
+ 660              		@ frame_needed = 0, uses_anonymous_args = 0
+ 661 0000 70B5     		push	{r4, r5, r6, lr}
+ 662 0002 0446     		mov	r4, r0
+ 663 0004 0D46     		mov	r5, r1
+ 664 0006 4FF40050 		mov	r0, #8192
+ 665 000a FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 666 000e 0428     		cmp	r0, #4
+ 667 0010 00D0     		beq	.L104
+ 668              	.L102:
+ 669 0012 70BD     		pop	{r4, r5, r6, pc}
+ 670              	.L104:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s 			page 12
+
+
+ 671 0014 084E     		ldr	r6, .L105
+ 672 0016 3369     		ldr	r3, [r6, #16]
+ 673 0018 43F00103 		orr	r3, r3, #1
+ 674 001c 3361     		str	r3, [r6, #16]
+ 675 001e 2580     		strh	r5, [r4]	@ movhi
+ 676 0020 4FF40050 		mov	r0, #8192
+ 677 0024 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 678 0028 3369     		ldr	r3, [r6, #16]
+ 679 002a 23F00103 		bic	r3, r3, #1
+ 680 002e DB04     		lsls	r3, r3, #19
+ 681 0030 DB0C     		lsrs	r3, r3, #19
+ 682 0032 3361     		str	r3, [r6, #16]
+ 683 0034 EDE7     		b	.L102
+ 684              	.L106:
+ 685 0036 00BF     		.align	2
+ 686              	.L105:
+ 687 0038 00200240 		.word	1073881088
+ 689              		.section	.text.FLASH_ProgramOptionByteData,"ax",%progbits
+ 690              		.align	1
+ 691              		.global	FLASH_ProgramOptionByteData
+ 692              		.syntax unified
+ 693              		.thumb
+ 694              		.thumb_func
+ 696              	FLASH_ProgramOptionByteData:
+ 697              		@ args = 0, pretend = 0, frame = 0
+ 698              		@ frame_needed = 0, uses_anonymous_args = 0
+ 699 0000 38B5     		push	{r3, r4, r5, lr}
+ 700 0002 0546     		mov	r5, r0
+ 701 0004 0C46     		mov	r4, r1
+ 702 0006 4FF40050 		mov	r0, #8192
+ 703 000a FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 704 000e 0428     		cmp	r0, #4
+ 705 0010 00D0     		beq	.L110
+ 706              	.L108:
+ 707 0012 38BD     		pop	{r3, r4, r5, pc}
+ 708              	.L110:
+ 709 0014 0C4B     		ldr	r3, .L111
+ 710 0016 0D4A     		ldr	r2, .L111+4
+ 711 0018 9A60     		str	r2, [r3, #8]
+ 712 001a 02F18832 		add	r2, r2, #-2004318072
+ 713 001e 9A60     		str	r2, [r3, #8]
+ 714 0020 1A69     		ldr	r2, [r3, #16]
+ 715 0022 42F01002 		orr	r2, r2, #16
+ 716 0026 1A61     		str	r2, [r3, #16]
+ 717 0028 2C80     		strh	r4, [r5]	@ movhi
+ 718 002a 4FF40050 		mov	r0, #8192
+ 719 002e FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 720 0032 0528     		cmp	r0, #5
+ 721 0034 EDD0     		beq	.L108
+ 722 0036 044A     		ldr	r2, .L111
+ 723 0038 1369     		ldr	r3, [r2, #16]
+ 724 003a 23F01003 		bic	r3, r3, #16
+ 725 003e DB04     		lsls	r3, r3, #19
+ 726 0040 DB0C     		lsrs	r3, r3, #19
+ 727 0042 1361     		str	r3, [r2, #16]
+ 728 0044 E5E7     		b	.L108
+ 729              	.L112:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s 			page 13
+
+
+ 730 0046 00BF     		.align	2
+ 731              	.L111:
+ 732 0048 00200240 		.word	1073881088
+ 733 004c 23016745 		.word	1164378403
+ 735              		.section	.text.FLASH_EnableWriteProtection,"ax",%progbits
+ 736              		.align	1
+ 737              		.global	FLASH_EnableWriteProtection
+ 738              		.syntax unified
+ 739              		.thumb
+ 740              		.thumb_func
+ 742              	FLASH_EnableWriteProtection:
+ 743              		@ args = 0, pretend = 0, frame = 0
+ 744              		@ frame_needed = 0, uses_anonymous_args = 0
+ 745 0000 38B5     		push	{r3, r4, r5, lr}
+ 746 0002 0546     		mov	r5, r0
+ 747 0004 4FF40050 		mov	r0, #8192
+ 748 0008 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 749 000c 0446     		mov	r4, r0
+ 750 000e 0428     		cmp	r0, #4
+ 751 0010 01D0     		beq	.L123
+ 752              	.L114:
+ 753 0012 2046     		mov	r0, r4
+ 754 0014 38BD     		pop	{r3, r4, r5, pc}
+ 755              	.L123:
+ 756 0016 ED43     		mvns	r5, r5
+ 757 0018 E9B2     		uxtb	r1, r5
+ 758 001a 234B     		ldr	r3, .L128
+ 759 001c 234A     		ldr	r2, .L128+4
+ 760 001e 9A60     		str	r2, [r3, #8]
+ 761 0020 02F18832 		add	r2, r2, #-2004318072
+ 762 0024 9A60     		str	r2, [r3, #8]
+ 763 0026 1A69     		ldr	r2, [r3, #16]
+ 764 0028 42F01002 		orr	r2, r2, #16
+ 765 002c 1A61     		str	r2, [r3, #16]
+ 766 002e FF29     		cmp	r1, #255
+ 767 0030 14D1     		bne	.L124
+ 768              	.L115:
+ 769 0032 C5F30723 		ubfx	r3, r5, #8, #8
+ 770 0036 FF2B     		cmp	r3, #255
+ 771 0038 23D1     		bne	.L125
+ 772              	.L117:
+ 773 003a C5F30743 		ubfx	r3, r5, #16, #8
+ 774 003e FF2B     		cmp	r3, #255
+ 775 0040 07D0     		beq	.L118
+ 776 0042 1B4A     		ldr	r2, .L128+8
+ 777 0044 9381     		strh	r3, [r2, #12]	@ movhi
+ 778 0046 4FF40050 		mov	r0, #8192
+ 779 004a FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 780 004e 0428     		cmp	r0, #4
+ 781 0050 0CD1     		bne	.L116
+ 782              	.L118:
+ 783 0052 2D0E     		lsrs	r5, r5, #24
+ 784 0054 FF2D     		cmp	r5, #255
+ 785 0056 1DD1     		bne	.L126
+ 786 0058 2046     		mov	r0, r4
+ 787 005a 09E0     		b	.L119
+ 788              	.L124:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s 			page 14
+
+
+ 789 005c 144B     		ldr	r3, .L128+8
+ 790 005e 1981     		strh	r1, [r3, #8]	@ movhi
+ 791 0060 4FF40050 		mov	r0, #8192
+ 792 0064 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 793 0068 0428     		cmp	r0, #4
+ 794 006a E2D0     		beq	.L115
+ 795              	.L116:
+ 796 006c 0528     		cmp	r0, #5
+ 797 006e 18D0     		beq	.L127
+ 798              	.L119:
+ 799 0070 0D4A     		ldr	r2, .L128
+ 800 0072 1369     		ldr	r3, [r2, #16]
+ 801 0074 23F01003 		bic	r3, r3, #16
+ 802 0078 DB04     		lsls	r3, r3, #19
+ 803 007a DB0C     		lsrs	r3, r3, #19
+ 804 007c 1361     		str	r3, [r2, #16]
+ 805 007e 0446     		mov	r4, r0
+ 806 0080 C7E7     		b	.L114
+ 807              	.L125:
+ 808 0082 0B4A     		ldr	r2, .L128+8
+ 809 0084 5381     		strh	r3, [r2, #10]	@ movhi
+ 810 0086 4FF40050 		mov	r0, #8192
+ 811 008a FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 812 008e 0428     		cmp	r0, #4
+ 813 0090 ECD1     		bne	.L116
+ 814 0092 D2E7     		b	.L117
+ 815              	.L126:
+ 816 0094 064B     		ldr	r3, .L128+8
+ 817 0096 DD81     		strh	r5, [r3, #14]	@ movhi
+ 818 0098 4FF40050 		mov	r0, #8192
+ 819 009c FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 820 00a0 E4E7     		b	.L116
+ 821              	.L127:
+ 822 00a2 0446     		mov	r4, r0
+ 823 00a4 B5E7     		b	.L114
+ 824              	.L129:
+ 825 00a6 00BF     		.align	2
+ 826              	.L128:
+ 827 00a8 00200240 		.word	1073881088
+ 828 00ac 23016745 		.word	1164378403
+ 829 00b0 00F8FF1F 		.word	536868864
+ 831              		.section	.text.FLASH_ReadOutProtection,"ax",%progbits
+ 832              		.align	1
+ 833              		.global	FLASH_ReadOutProtection
+ 834              		.syntax unified
+ 835              		.thumb
+ 836              		.thumb_func
+ 838              	FLASH_ReadOutProtection:
+ 839              		@ args = 0, pretend = 0, frame = 0
+ 840              		@ frame_needed = 0, uses_anonymous_args = 0
+ 841 0000 10B5     		push	{r4, lr}
+ 842 0002 0446     		mov	r4, r0
+ 843 0004 4FF43020 		mov	r0, #720896
+ 844 0008 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 845 000c 0428     		cmp	r0, #4
+ 846 000e 00D0     		beq	.L136
+ 847              	.L131:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s 			page 15
+
+
+ 848 0010 10BD     		pop	{r4, pc}
+ 849              	.L136:
+ 850 0012 1F4B     		ldr	r3, .L138
+ 851 0014 1F4A     		ldr	r2, .L138+4
+ 852 0016 9A60     		str	r2, [r3, #8]
+ 853 0018 02F18832 		add	r2, r2, #-2004318072
+ 854 001c 9A60     		str	r2, [r3, #8]
+ 855 001e 1A69     		ldr	r2, [r3, #16]
+ 856 0020 42F02002 		orr	r2, r2, #32
+ 857 0024 1A61     		str	r2, [r3, #16]
+ 858 0026 1A69     		ldr	r2, [r3, #16]
+ 859 0028 42F04002 		orr	r2, r2, #64
+ 860 002c 1A61     		str	r2, [r3, #16]
+ 861 002e 4FF43020 		mov	r0, #720896
+ 862 0032 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 863 0036 0428     		cmp	r0, #4
+ 864 0038 09D0     		beq	.L137
+ 865 003a 0528     		cmp	r0, #5
+ 866 003c E8D0     		beq	.L131
+ 867 003e 144A     		ldr	r2, .L138
+ 868 0040 1369     		ldr	r3, [r2, #16]
+ 869 0042 23F02003 		bic	r3, r3, #32
+ 870 0046 DB04     		lsls	r3, r3, #19
+ 871 0048 DB0C     		lsrs	r3, r3, #19
+ 872 004a 1361     		str	r3, [r2, #16]
+ 873 004c E0E7     		b	.L131
+ 874              	.L137:
+ 875 004e 104B     		ldr	r3, .L138
+ 876 0050 1A69     		ldr	r2, [r3, #16]
+ 877 0052 22F02002 		bic	r2, r2, #32
+ 878 0056 D204     		lsls	r2, r2, #19
+ 879 0058 D20C     		lsrs	r2, r2, #19
+ 880 005a 1A61     		str	r2, [r3, #16]
+ 881 005c 1A69     		ldr	r2, [r3, #16]
+ 882 005e 42F01002 		orr	r2, r2, #16
+ 883 0062 1A61     		str	r2, [r3, #16]
+ 884 0064 84B1     		cbz	r4, .L133
+ 885 0066 0C4B     		ldr	r3, .L138+8
+ 886 0068 0022     		movs	r2, #0
+ 887 006a 1A80     		strh	r2, [r3]	@ movhi
+ 888              	.L134:
+ 889 006c 4FF43020 		mov	r0, #720896
+ 890 0070 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 891 0074 0528     		cmp	r0, #5
+ 892 0076 CBD0     		beq	.L131
+ 893 0078 054A     		ldr	r2, .L138
+ 894 007a 1369     		ldr	r3, [r2, #16]
+ 895 007c 23F01003 		bic	r3, r3, #16
+ 896 0080 DB04     		lsls	r3, r3, #19
+ 897 0082 DB0C     		lsrs	r3, r3, #19
+ 898 0084 1361     		str	r3, [r2, #16]
+ 899 0086 C3E7     		b	.L131
+ 900              	.L133:
+ 901 0088 034B     		ldr	r3, .L138+8
+ 902 008a A522     		movs	r2, #165
+ 903 008c 1A80     		strh	r2, [r3]	@ movhi
+ 904 008e EDE7     		b	.L134
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s 			page 16
+
+
+ 905              	.L139:
+ 906              		.align	2
+ 907              	.L138:
+ 908 0090 00200240 		.word	1073881088
+ 909 0094 23016745 		.word	1164378403
+ 910 0098 00F8FF1F 		.word	536868864
+ 912              		.section	.text.FLASH_UserOptionByteConfig,"ax",%progbits
+ 913              		.align	1
+ 914              		.global	FLASH_UserOptionByteConfig
+ 915              		.syntax unified
+ 916              		.thumb
+ 917              		.thumb_func
+ 919              	FLASH_UserOptionByteConfig:
+ 920              		@ args = 0, pretend = 0, frame = 0
+ 921              		@ frame_needed = 0, uses_anonymous_args = 0
+ 922 0000 70B5     		push	{r4, r5, r6, lr}
+ 923 0002 0546     		mov	r5, r0
+ 924 0004 0C46     		mov	r4, r1
+ 925 0006 1646     		mov	r6, r2
+ 926 0008 134B     		ldr	r3, .L144
+ 927 000a 1449     		ldr	r1, .L144+4
+ 928 000c 9960     		str	r1, [r3, #8]
+ 929 000e 01F18831 		add	r1, r1, #-2004318072
+ 930 0012 9960     		str	r1, [r3, #8]
+ 931 0014 4FF40050 		mov	r0, #8192
+ 932 0018 FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 933 001c 0428     		cmp	r0, #4
+ 934 001e 00D0     		beq	.L143
+ 935              	.L141:
+ 936 0020 70BD     		pop	{r4, r5, r6, pc}
+ 937              	.L143:
+ 938 0022 0D4A     		ldr	r2, .L144
+ 939 0024 1369     		ldr	r3, [r2, #16]
+ 940 0026 43F01003 		orr	r3, r3, #16
+ 941 002a 1361     		str	r3, [r2, #16]
+ 942 002c 46EA0502 		orr	r2, r6, r5
+ 943 0030 1443     		orrs	r4, r4, r2
+ 944 0032 44F0F804 		orr	r4, r4, #248
+ 945 0036 0A4B     		ldr	r3, .L144+8
+ 946 0038 5C80     		strh	r4, [r3, #2]	@ movhi
+ 947 003a 4FF40050 		mov	r0, #8192
+ 948 003e FFF7FEFF 		bl	FLASH_WaitForLastOperation
+ 949 0042 0528     		cmp	r0, #5
+ 950 0044 ECD0     		beq	.L141
+ 951 0046 044A     		ldr	r2, .L144
+ 952 0048 1369     		ldr	r3, [r2, #16]
+ 953 004a 23F01003 		bic	r3, r3, #16
+ 954 004e DB04     		lsls	r3, r3, #19
+ 955 0050 DB0C     		lsrs	r3, r3, #19
+ 956 0052 1361     		str	r3, [r2, #16]
+ 957 0054 E4E7     		b	.L141
+ 958              	.L145:
+ 959 0056 00BF     		.align	2
+ 960              	.L144:
+ 961 0058 00200240 		.word	1073881088
+ 962 005c 23016745 		.word	1164378403
+ 963 0060 00F8FF1F 		.word	536868864
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s 			page 17
+
+
+ 965              		.section	.text.FLASH_WaitForLastBank1Operation,"ax",%progbits
+ 966              		.align	1
+ 967              		.global	FLASH_WaitForLastBank1Operation
+ 968              		.syntax unified
+ 969              		.thumb
+ 970              		.thumb_func
+ 972              	FLASH_WaitForLastBank1Operation:
+ 973              		@ args = 0, pretend = 0, frame = 0
+ 974              		@ frame_needed = 0, uses_anonymous_args = 0
+ 975 0000 10B5     		push	{r4, lr}
+ 976 0002 0446     		mov	r4, r0
+ 977 0004 FFF7FEFF 		bl	FLASH_GetBank1Status
+ 978 0008 0128     		cmp	r0, #1
+ 979 000a 05D1     		bne	.L148
+ 980              	.L147:
+ 981 000c 44B1     		cbz	r4, .L154
+ 982 000e FFF7FEFF 		bl	FLASH_GetBank1Status
+ 983 0012 013C     		subs	r4, r4, #1
+ 984 0014 0128     		cmp	r0, #1
+ 985 0016 F9D0     		beq	.L147
+ 986              	.L148:
+ 987 0018 002C     		cmp	r4, #0
+ 988 001a 08BF     		it	eq
+ 989 001c 0520     		moveq	r0, #5
+ 990              	.L150:
+ 991 001e 10BD     		pop	{r4, pc}
+ 992              	.L154:
+ 993 0020 0520     		movs	r0, #5
+ 994 0022 FCE7     		b	.L150
+ 996              		.section	.text.FLASH_EraseAllBank1Pages,"ax",%progbits
+ 997              		.align	1
+ 998              		.global	FLASH_EraseAllBank1Pages
+ 999              		.syntax unified
+ 1000              		.thumb
+ 1001              		.thumb_func
+ 1003              	FLASH_EraseAllBank1Pages:
+ 1004              		@ args = 0, pretend = 0, frame = 0
+ 1005              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1006 0000 10B5     		push	{r4, lr}
+ 1007 0002 4FF43020 		mov	r0, #720896
+ 1008 0006 FFF7FEFF 		bl	FLASH_WaitForLastBank1Operation
+ 1009 000a 0428     		cmp	r0, #4
+ 1010 000c 00D0     		beq	.L158
+ 1011              	.L156:
+ 1012 000e 10BD     		pop	{r4, pc}
+ 1013              	.L158:
+ 1014 0010 094C     		ldr	r4, .L159
+ 1015 0012 2369     		ldr	r3, [r4, #16]
+ 1016 0014 43F00403 		orr	r3, r3, #4
+ 1017 0018 2361     		str	r3, [r4, #16]
+ 1018 001a 2369     		ldr	r3, [r4, #16]
+ 1019 001c 43F04003 		orr	r3, r3, #64
+ 1020 0020 2361     		str	r3, [r4, #16]
+ 1021 0022 4FF43020 		mov	r0, #720896
+ 1022 0026 FFF7FEFF 		bl	FLASH_WaitForLastBank1Operation
+ 1023 002a 2369     		ldr	r3, [r4, #16]
+ 1024 002c 23F00403 		bic	r3, r3, #4
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s 			page 18
+
+
+ 1025 0030 DB04     		lsls	r3, r3, #19
+ 1026 0032 DB0C     		lsrs	r3, r3, #19
+ 1027 0034 2361     		str	r3, [r4, #16]
+ 1028 0036 EAE7     		b	.L156
+ 1029              	.L160:
+ 1030              		.align	2
+ 1031              	.L159:
+ 1032 0038 00200240 		.word	1073881088
+ 1034              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s 			page 19
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f10x_flash.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:16     .text.FLASH_SetLatency:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:22     .text.FLASH_SetLatency:00000000 FLASH_SetLatency
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:35     .text.FLASH_SetLatency:00000010 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:38     .text.FLASH_HalfCycleAccessCmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:44     .text.FLASH_HalfCycleAccessCmd:00000000 FLASH_HalfCycleAccessCmd
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:59     .text.FLASH_HalfCycleAccessCmd:00000014 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:62     .text.FLASH_PrefetchBufferCmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:68     .text.FLASH_PrefetchBufferCmd:00000000 FLASH_PrefetchBufferCmd
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:83     .text.FLASH_PrefetchBufferCmd:00000014 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:86     .text.FLASH_Unlock:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:92     .text.FLASH_Unlock:00000000 FLASH_Unlock
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:105    .text.FLASH_Unlock:00000010 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:109    .text.FLASH_UnlockBank1:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:115    .text.FLASH_UnlockBank1:00000000 FLASH_UnlockBank1
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:128    .text.FLASH_UnlockBank1:00000010 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:132    .text.FLASH_Lock:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:138    .text.FLASH_Lock:00000000 FLASH_Lock
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:150    .text.FLASH_Lock:0000000c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:153    .text.FLASH_LockBank1:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:159    .text.FLASH_LockBank1:00000000 FLASH_LockBank1
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:171    .text.FLASH_LockBank1:0000000c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:174    .text.FLASH_GetUserOptionByte:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:180    .text.FLASH_GetUserOptionByte:00000000 FLASH_GetUserOptionByte
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:191    .text.FLASH_GetUserOptionByte:00000008 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:194    .text.FLASH_GetWriteProtectionOptionByte:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:200    .text.FLASH_GetWriteProtectionOptionByte:00000000 FLASH_GetWriteProtectionOptionByte
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:210    .text.FLASH_GetWriteProtectionOptionByte:00000008 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:213    .text.FLASH_GetReadOutProtectionStatus:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:219    .text.FLASH_GetReadOutProtectionStatus:00000000 FLASH_GetReadOutProtectionStatus
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:230    .text.FLASH_GetReadOutProtectionStatus:0000000c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:233    .text.FLASH_GetPrefetchBufferStatus:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:239    .text.FLASH_GetPrefetchBufferStatus:00000000 FLASH_GetPrefetchBufferStatus
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:250    .text.FLASH_GetPrefetchBufferStatus:0000000c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:253    .text.FLASH_ITConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:259    .text.FLASH_ITConfig:00000000 FLASH_ITConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:278    .text.FLASH_ITConfig:00000018 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:281    .text.FLASH_GetFlagStatus:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:287    .text.FLASH_GetFlagStatus:00000000 FLASH_GetFlagStatus
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:308    .text.FLASH_GetFlagStatus:0000001c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:311    .text.FLASH_ClearFlag:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:317    .text.FLASH_ClearFlag:00000000 FLASH_ClearFlag
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:327    .text.FLASH_ClearFlag:00000008 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:330    .text.FLASH_GetStatus:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:336    .text.FLASH_GetStatus:00000000 FLASH_GetStatus
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:364    .text.FLASH_GetStatus:0000002c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:367    .text.FLASH_GetBank1Status:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:373    .text.FLASH_GetBank1Status:00000000 FLASH_GetBank1Status
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:401    .text.FLASH_GetBank1Status:0000002c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:404    .text.FLASH_WaitForLastOperation:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:410    .text.FLASH_WaitForLastOperation:00000000 FLASH_WaitForLastOperation
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:435    .text.FLASH_ErasePage:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:441    .text.FLASH_ErasePage:00000000 FLASH_ErasePage
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:472    .text.FLASH_ErasePage:0000003c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:475    .text.FLASH_EraseAllPages:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:481    .text.FLASH_EraseAllPages:00000000 FLASH_EraseAllPages
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s 			page 20
+
+
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:510    .text.FLASH_EraseAllPages:00000038 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:513    .text.FLASH_EraseOptionBytes:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:519    .text.FLASH_EraseOptionBytes:00000000 FLASH_EraseOptionBytes
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:585    .text.FLASH_EraseOptionBytes:00000090 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:590    .text.FLASH_ProgramWord:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:596    .text.FLASH_ProgramWord:00000000 FLASH_ProgramWord
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:649    .text.FLASH_ProgramWord:00000068 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:652    .text.FLASH_ProgramHalfWord:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:658    .text.FLASH_ProgramHalfWord:00000000 FLASH_ProgramHalfWord
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:687    .text.FLASH_ProgramHalfWord:00000038 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:690    .text.FLASH_ProgramOptionByteData:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:696    .text.FLASH_ProgramOptionByteData:00000000 FLASH_ProgramOptionByteData
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:732    .text.FLASH_ProgramOptionByteData:00000048 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:736    .text.FLASH_EnableWriteProtection:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:742    .text.FLASH_EnableWriteProtection:00000000 FLASH_EnableWriteProtection
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:827    .text.FLASH_EnableWriteProtection:000000a8 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:832    .text.FLASH_ReadOutProtection:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:838    .text.FLASH_ReadOutProtection:00000000 FLASH_ReadOutProtection
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:908    .text.FLASH_ReadOutProtection:00000090 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:913    .text.FLASH_UserOptionByteConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:919    .text.FLASH_UserOptionByteConfig:00000000 FLASH_UserOptionByteConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:961    .text.FLASH_UserOptionByteConfig:00000058 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:966    .text.FLASH_WaitForLastBank1Operation:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:972    .text.FLASH_WaitForLastBank1Operation:00000000 FLASH_WaitForLastBank1Operation
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:997    .text.FLASH_EraseAllBank1Pages:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:1003   .text.FLASH_EraseAllBank1Pages:00000000 FLASH_EraseAllBank1Pages
+C:\Users\ihavenoK\AppData\Local\Temp\ccaHYdcA.s:1032   .text.FLASH_EraseAllBank1Pages:00000038 $d
+
+NO UNDEFINED SYMBOLS

@@ -1,0 +1,2692 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f10x_tim.c"
+  14              		.text
+  15              		.section	.text.TI1_Config,"ax",%progbits
+  16              		.align	1
+  17              		.syntax unified
+  18              		.thumb
+  19              		.thumb_func
+  21              	TI1_Config:
+  22              		@ args = 0, pretend = 0, frame = 0
+  23              		@ frame_needed = 0, uses_anonymous_args = 0
+  24 0000 00B5     		push	{lr}
+  25 0002 B0F820C0 		ldrh	ip, [r0, #32]
+  26 0006 2CF0010C 		bic	ip, ip, #1
+  27 000a 4FEA0C4C 		lsl	ip, ip, #16
+  28 000e 4FEA1C4C 		lsr	ip, ip, #16
+  29 0012 A0F820C0 		strh	ip, [r0, #32]	@ movhi
+  30 0016 B0F818C0 		ldrh	ip, [r0, #24]
+  31 001a B0F820E0 		ldrh	lr, [r0, #32]
+  32 001e 1FFA8EFE 		uxth	lr, lr
+  33 0022 2CF0F30C 		bic	ip, ip, #243
+  34 0026 4FEA0C4C 		lsl	ip, ip, #16
+  35 002a 4FEA1C4C 		lsr	ip, ip, #16
+  36 002e 42EA0312 		orr	r2, r2, r3, lsl #4
+  37 0032 4CEA020C 		orr	ip, ip, r2
+  38 0036 1FFA8CFC 		uxth	ip, ip
+  39 003a 124A     		ldr	r2, .L6
+  40 003c 9042     		cmp	r0, r2
+  41 003e 17D0     		beq	.L2
+  42 0040 114B     		ldr	r3, .L6+4
+  43 0042 9842     		cmp	r0, r3
+  44 0044 14D0     		beq	.L2
+  45 0046 B0F1804F 		cmp	r0, #1073741824
+  46 004a 11D0     		beq	.L2
+  47 004c A3F59833 		sub	r3, r3, #77824
+  48 0050 9842     		cmp	r0, r3
+  49 0052 0DD0     		beq	.L2
+  50 0054 03F58063 		add	r3, r3, #1024
+  51 0058 9842     		cmp	r0, r3
+  52 005a 09D0     		beq	.L2
+  53 005c 03F58063 		add	r3, r3, #1024
+  54 0060 9842     		cmp	r0, r3
+  55 0062 05D0     		beq	.L2
+  56 0064 2EF00A03 		bic	r3, lr, #10
+  57 0068 1943     		orrs	r1, r1, r3
+  58 006a 41F00101 		orr	r1, r1, #1
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 2
+
+
+  59 006e 04E0     		b	.L4
+  60              	.L2:
+  61 0070 2EF00203 		bic	r3, lr, #2
+  62 0074 1943     		orrs	r1, r1, r3
+  63 0076 41F00101 		orr	r1, r1, #1
+  64              	.L4:
+  65 007a A0F818C0 		strh	ip, [r0, #24]	@ movhi
+  66 007e 0184     		strh	r1, [r0, #32]	@ movhi
+  67 0080 5DF804FB 		ldr	pc, [sp], #4
+  68              	.L7:
+  69              		.align	2
+  70              	.L6:
+  71 0084 002C0140 		.word	1073818624
+  72 0088 00340140 		.word	1073820672
+  74              		.section	.text.TI2_Config,"ax",%progbits
+  75              		.align	1
+  76              		.syntax unified
+  77              		.thumb
+  78              		.thumb_func
+  80              	TI2_Config:
+  81              		@ args = 0, pretend = 0, frame = 0
+  82              		@ frame_needed = 0, uses_anonymous_args = 0
+  83 0000 10B5     		push	{r4, lr}
+  84 0002 8E46     		mov	lr, r1
+  85 0004 B0F820C0 		ldrh	ip, [r0, #32]
+  86 0008 2CF0100C 		bic	ip, ip, #16
+  87 000c 4FEA0C4C 		lsl	ip, ip, #16
+  88 0010 4FEA1C4C 		lsr	ip, ip, #16
+  89 0014 A0F820C0 		strh	ip, [r0, #32]	@ movhi
+  90 0018 B0F818C0 		ldrh	ip, [r0, #24]
+  91 001c 018C     		ldrh	r1, [r0, #32]
+  92 001e 8CB2     		uxth	r4, r1
+  93 0020 4FEA0E11 		lsl	r1, lr, #4
+  94 0024 89B2     		uxth	r1, r1
+  95 0026 2CF4407C 		bic	ip, ip, #768
+  96 002a 4FEA0C5C 		lsl	ip, ip, #20
+  97 002e 4FEA1C5C 		lsr	ip, ip, #20
+  98 0032 1202     		lsls	r2, r2, #8
+  99 0034 42EA0332 		orr	r2, r2, r3, lsl #12
+ 100 0038 4CEA020C 		orr	ip, ip, r2
+ 101 003c 1FFA8CFC 		uxth	ip, ip
+ 102 0040 124A     		ldr	r2, .L13
+ 103 0042 9042     		cmp	r0, r2
+ 104 0044 18D0     		beq	.L9
+ 105 0046 124B     		ldr	r3, .L13+4
+ 106 0048 9842     		cmp	r0, r3
+ 107 004a 15D0     		beq	.L9
+ 108 004c B0F1804F 		cmp	r0, #1073741824
+ 109 0050 12D0     		beq	.L9
+ 110 0052 A3F59833 		sub	r3, r3, #77824
+ 111 0056 9842     		cmp	r0, r3
+ 112 0058 0ED0     		beq	.L9
+ 113 005a 03F58063 		add	r3, r3, #1024
+ 114 005e 9842     		cmp	r0, r3
+ 115 0060 0AD0     		beq	.L9
+ 116 0062 03F58063 		add	r3, r3, #1024
+ 117 0066 9842     		cmp	r0, r3
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 3
+
+
+ 118 0068 06D0     		beq	.L9
+ 119 006a 24F0A003 		bic	r3, r4, #160
+ 120 006e 4EEA0301 		orr	r1, lr, r3
+ 121 0072 41F01001 		orr	r1, r1, #16
+ 122 0076 04E0     		b	.L11
+ 123              	.L9:
+ 124 0078 24F02003 		bic	r3, r4, #32
+ 125 007c 1943     		orrs	r1, r1, r3
+ 126 007e 41F01001 		orr	r1, r1, #16
+ 127              	.L11:
+ 128 0082 A0F818C0 		strh	ip, [r0, #24]	@ movhi
+ 129 0086 0184     		strh	r1, [r0, #32]	@ movhi
+ 130 0088 10BD     		pop	{r4, pc}
+ 131              	.L14:
+ 132 008a 00BF     		.align	2
+ 133              	.L13:
+ 134 008c 002C0140 		.word	1073818624
+ 135 0090 00340140 		.word	1073820672
+ 137              		.section	.text.TIM_DeInit,"ax",%progbits
+ 138              		.align	1
+ 139              		.global	TIM_DeInit
+ 140              		.syntax unified
+ 141              		.thumb
+ 142              		.thumb_func
+ 144              	TIM_DeInit:
+ 145              		@ args = 0, pretend = 0, frame = 0
+ 146              		@ frame_needed = 0, uses_anonymous_args = 0
+ 147 0000 08B5     		push	{r3, lr}
+ 148 0002 724B     		ldr	r3, .L50
+ 149 0004 9842     		cmp	r0, r3
+ 150 0006 40D0     		beq	.L34
+ 151 0008 B0F1804F 		cmp	r0, #1073741824
+ 152 000c 48D0     		beq	.L35
+ 153 000e 704B     		ldr	r3, .L50+4
+ 154 0010 9842     		cmp	r0, r3
+ 155 0012 4ED0     		beq	.L36
+ 156 0014 6F4B     		ldr	r3, .L50+8
+ 157 0016 9842     		cmp	r0, r3
+ 158 0018 54D0     		beq	.L37
+ 159 001a 6F4B     		ldr	r3, .L50+12
+ 160 001c 9842     		cmp	r0, r3
+ 161 001e 5AD0     		beq	.L38
+ 162 0020 6E4B     		ldr	r3, .L50+16
+ 163 0022 9842     		cmp	r0, r3
+ 164 0024 60D0     		beq	.L39
+ 165 0026 6E4B     		ldr	r3, .L50+20
+ 166 0028 9842     		cmp	r0, r3
+ 167 002a 66D0     		beq	.L40
+ 168 002c 6D4B     		ldr	r3, .L50+24
+ 169 002e 9842     		cmp	r0, r3
+ 170 0030 6CD0     		beq	.L41
+ 171 0032 6D4B     		ldr	r3, .L50+28
+ 172 0034 9842     		cmp	r0, r3
+ 173 0036 74D0     		beq	.L42
+ 174 0038 6C4B     		ldr	r3, .L50+32
+ 175 003a 9842     		cmp	r0, r3
+ 176 003c 7CD0     		beq	.L43
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 4
+
+
+ 177 003e 6C4B     		ldr	r3, .L50+36
+ 178 0040 9842     		cmp	r0, r3
+ 179 0042 00F08480 		beq	.L44
+ 180 0046 6B4B     		ldr	r3, .L50+40
+ 181 0048 9842     		cmp	r0, r3
+ 182 004a 00F08B80 		beq	.L45
+ 183 004e 6A4B     		ldr	r3, .L50+44
+ 184 0050 9842     		cmp	r0, r3
+ 185 0052 00F09080 		beq	.L46
+ 186 0056 694B     		ldr	r3, .L50+48
+ 187 0058 9842     		cmp	r0, r3
+ 188 005a 00F09580 		beq	.L47
+ 189 005e 684B     		ldr	r3, .L50+52
+ 190 0060 9842     		cmp	r0, r3
+ 191 0062 00F09C80 		beq	.L48
+ 192 0066 674B     		ldr	r3, .L50+56
+ 193 0068 9842     		cmp	r0, r3
+ 194 006a 00F0A380 		beq	.L49
+ 195 006e 664B     		ldr	r3, .L50+60
+ 196 0070 9842     		cmp	r0, r3
+ 197 0072 14D1     		bne	.L15
+ 198 0074 0121     		movs	r1, #1
+ 199 0076 4FF48020 		mov	r0, #262144
+ 200 007a FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 201 007e 0021     		movs	r1, #0
+ 202 0080 4FF48020 		mov	r0, #262144
+ 203 0084 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 204 0088 09E0     		b	.L15
+ 205              	.L34:
+ 206 008a 0121     		movs	r1, #1
+ 207 008c 4FF40060 		mov	r0, #2048
+ 208 0090 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 209 0094 0021     		movs	r1, #0
+ 210 0096 4FF40060 		mov	r0, #2048
+ 211 009a FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 212              	.L15:
+ 213 009e 08BD     		pop	{r3, pc}
+ 214              	.L35:
+ 215 00a0 0121     		movs	r1, #1
+ 216 00a2 0846     		mov	r0, r1
+ 217 00a4 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 218 00a8 0021     		movs	r1, #0
+ 219 00aa 0120     		movs	r0, #1
+ 220 00ac FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 221 00b0 F5E7     		b	.L15
+ 222              	.L36:
+ 223 00b2 0121     		movs	r1, #1
+ 224 00b4 0220     		movs	r0, #2
+ 225 00b6 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 226 00ba 0021     		movs	r1, #0
+ 227 00bc 0220     		movs	r0, #2
+ 228 00be FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 229 00c2 ECE7     		b	.L15
+ 230              	.L37:
+ 231 00c4 0121     		movs	r1, #1
+ 232 00c6 0420     		movs	r0, #4
+ 233 00c8 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 5
+
+
+ 234 00cc 0021     		movs	r1, #0
+ 235 00ce 0420     		movs	r0, #4
+ 236 00d0 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 237 00d4 E3E7     		b	.L15
+ 238              	.L38:
+ 239 00d6 0121     		movs	r1, #1
+ 240 00d8 0820     		movs	r0, #8
+ 241 00da FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 242 00de 0021     		movs	r1, #0
+ 243 00e0 0820     		movs	r0, #8
+ 244 00e2 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 245 00e6 DAE7     		b	.L15
+ 246              	.L39:
+ 247 00e8 0121     		movs	r1, #1
+ 248 00ea 1020     		movs	r0, #16
+ 249 00ec FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 250 00f0 0021     		movs	r1, #0
+ 251 00f2 1020     		movs	r0, #16
+ 252 00f4 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 253 00f8 D1E7     		b	.L15
+ 254              	.L40:
+ 255 00fa 0121     		movs	r1, #1
+ 256 00fc 2020     		movs	r0, #32
+ 257 00fe FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 258 0102 0021     		movs	r1, #0
+ 259 0104 2020     		movs	r0, #32
+ 260 0106 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 261 010a C8E7     		b	.L15
+ 262              	.L41:
+ 263 010c 0121     		movs	r1, #1
+ 264 010e 4FF40050 		mov	r0, #8192
+ 265 0112 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 266 0116 0021     		movs	r1, #0
+ 267 0118 4FF40050 		mov	r0, #8192
+ 268 011c FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 269 0120 BDE7     		b	.L15
+ 270              	.L42:
+ 271 0122 0121     		movs	r1, #1
+ 272 0124 4FF40020 		mov	r0, #524288
+ 273 0128 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 274 012c 0021     		movs	r1, #0
+ 275 012e 4FF40020 		mov	r0, #524288
+ 276 0132 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 277 0136 B2E7     		b	.L15
+ 278              	.L43:
+ 279 0138 0121     		movs	r1, #1
+ 280 013a 4FF48010 		mov	r0, #1048576
+ 281 013e FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 282 0142 0021     		movs	r1, #0
+ 283 0144 4FF48010 		mov	r0, #1048576
+ 284 0148 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 285 014c A7E7     		b	.L15
+ 286              	.L44:
+ 287 014e 0121     		movs	r1, #1
+ 288 0150 4FF40010 		mov	r0, #2097152
+ 289 0154 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 290 0158 0021     		movs	r1, #0
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 6
+
+
+ 291 015a 4FF40010 		mov	r0, #2097152
+ 292 015e FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 293 0162 9CE7     		b	.L15
+ 294              	.L45:
+ 295 0164 0121     		movs	r1, #1
+ 296 0166 4020     		movs	r0, #64
+ 297 0168 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 298 016c 0021     		movs	r1, #0
+ 299 016e 4020     		movs	r0, #64
+ 300 0170 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 301 0174 93E7     		b	.L15
+ 302              	.L46:
+ 303 0176 0121     		movs	r1, #1
+ 304 0178 8020     		movs	r0, #128
+ 305 017a FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 306 017e 0021     		movs	r1, #0
+ 307 0180 8020     		movs	r0, #128
+ 308 0182 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 309 0186 8AE7     		b	.L15
+ 310              	.L47:
+ 311 0188 0121     		movs	r1, #1
+ 312 018a 4FF48070 		mov	r0, #256
+ 313 018e FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 314 0192 0021     		movs	r1, #0
+ 315 0194 4FF48070 		mov	r0, #256
+ 316 0198 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+ 317 019c 7FE7     		b	.L15
+ 318              	.L48:
+ 319 019e 0121     		movs	r1, #1
+ 320 01a0 4FF48030 		mov	r0, #65536
+ 321 01a4 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 322 01a8 0021     		movs	r1, #0
+ 323 01aa 4FF48030 		mov	r0, #65536
+ 324 01ae FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 325 01b2 74E7     		b	.L15
+ 326              	.L49:
+ 327 01b4 0121     		movs	r1, #1
+ 328 01b6 4FF40030 		mov	r0, #131072
+ 329 01ba FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 330 01be 0021     		movs	r1, #0
+ 331 01c0 4FF40030 		mov	r0, #131072
+ 332 01c4 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 333 01c8 69E7     		b	.L15
+ 334              	.L51:
+ 335 01ca 00BF     		.align	2
+ 336              	.L50:
+ 337 01cc 002C0140 		.word	1073818624
+ 338 01d0 00040040 		.word	1073742848
+ 339 01d4 00080040 		.word	1073743872
+ 340 01d8 000C0040 		.word	1073744896
+ 341 01dc 00100040 		.word	1073745920
+ 342 01e0 00140040 		.word	1073746944
+ 343 01e4 00340140 		.word	1073820672
+ 344 01e8 004C0140 		.word	1073826816
+ 345 01ec 00500140 		.word	1073827840
+ 346 01f0 00540140 		.word	1073828864
+ 347 01f4 00180040 		.word	1073747968
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 7
+
+
+ 348 01f8 001C0040 		.word	1073748992
+ 349 01fc 00200040 		.word	1073750016
+ 350 0200 00400140 		.word	1073823744
+ 351 0204 00440140 		.word	1073824768
+ 352 0208 00480140 		.word	1073825792
+ 354              		.section	.text.TIM_TimeBaseInit,"ax",%progbits
+ 355              		.align	1
+ 356              		.global	TIM_TimeBaseInit
+ 357              		.syntax unified
+ 358              		.thumb
+ 359              		.thumb_func
+ 361              	TIM_TimeBaseInit:
+ 362              		@ args = 0, pretend = 0, frame = 0
+ 363              		@ frame_needed = 0, uses_anonymous_args = 0
+ 364              		@ link register save eliminated.
+ 365 0000 0388     		ldrh	r3, [r0]
+ 366 0002 9BB2     		uxth	r3, r3
+ 367 0004 284A     		ldr	r2, .L65
+ 368 0006 9042     		cmp	r0, r2
+ 369 0008 1BD0     		beq	.L53
+ 370 000a 02F50062 		add	r2, r2, #2048
+ 371 000e 9042     		cmp	r0, r2
+ 372 0010 17D0     		beq	.L53
+ 373 0012 B0F1804F 		cmp	r0, #1073741824
+ 374 0016 14D0     		beq	.L53
+ 375 0018 A2F59832 		sub	r2, r2, #77824
+ 376 001c 9042     		cmp	r0, r2
+ 377 001e 10D0     		beq	.L53
+ 378 0020 02F58062 		add	r2, r2, #1024
+ 379 0024 9042     		cmp	r0, r2
+ 380 0026 0CD0     		beq	.L53
+ 381 0028 02F58062 		add	r2, r2, #1024
+ 382 002c 9042     		cmp	r0, r2
+ 383 002e 08D0     		beq	.L53
+ 384 0030 1E4A     		ldr	r2, .L65+4
+ 385 0032 9042     		cmp	r0, r2
+ 386 0034 24D1     		bne	.L63
+ 387              	.L57:
+ 388 0036 0380     		strh	r3, [r0]	@ movhi
+ 389 0038 8B88     		ldrh	r3, [r1, #4]
+ 390 003a 8385     		strh	r3, [r0, #44]	@ movhi
+ 391 003c 0B88     		ldrh	r3, [r1]
+ 392 003e 0385     		strh	r3, [r0, #40]	@ movhi
+ 393 0040 1BE0     		b	.L59
+ 394              	.L53:
+ 395 0042 23F07003 		bic	r3, r3, #112
+ 396 0046 4A88     		ldrh	r2, [r1, #2]
+ 397 0048 1343     		orrs	r3, r3, r2
+ 398 004a 23F44073 		bic	r3, r3, #768
+ 399 004e CA88     		ldrh	r2, [r1, #6]
+ 400 0050 1343     		orrs	r3, r3, r2
+ 401 0052 0380     		strh	r3, [r0]	@ movhi
+ 402 0054 8B88     		ldrh	r3, [r1, #4]
+ 403 0056 8385     		strh	r3, [r0, #44]	@ movhi
+ 404 0058 0B88     		ldrh	r3, [r1]
+ 405 005a 0385     		strh	r3, [r0, #40]	@ movhi
+ 406 005c 124B     		ldr	r3, .L65
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 8
+
+
+ 407 005e 9842     		cmp	r0, r3
+ 408 0060 09D0     		beq	.L55
+ 409 0062 134B     		ldr	r3, .L65+8
+ 410 0064 9842     		cmp	r0, r3
+ 411 0066 06D0     		beq	.L55
+ 412              	.L60:
+ 413 0068 124B     		ldr	r3, .L65+12
+ 414 006a 9842     		cmp	r0, r3
+ 415 006c 03D0     		beq	.L55
+ 416 006e 03F58063 		add	r3, r3, #1024
+ 417 0072 9842     		cmp	r0, r3
+ 418 0074 12D1     		bne	.L64
+ 419              	.L55:
+ 420 0076 0B7A     		ldrb	r3, [r1, #8]	@ zero_extendqisi2
+ 421 0078 0386     		strh	r3, [r0, #48]	@ movhi
+ 422              	.L59:
+ 423 007a 0123     		movs	r3, #1
+ 424 007c 8382     		strh	r3, [r0, #20]	@ movhi
+ 425 007e 7047     		bx	lr
+ 426              	.L63:
+ 427 0080 02F58062 		add	r2, r2, #1024
+ 428 0084 9042     		cmp	r0, r2
+ 429 0086 D6D0     		beq	.L57
+ 430 0088 23F44073 		bic	r3, r3, #768
+ 431 008c CA88     		ldrh	r2, [r1, #6]
+ 432 008e 1343     		orrs	r3, r3, r2
+ 433 0090 0380     		strh	r3, [r0]	@ movhi
+ 434 0092 8B88     		ldrh	r3, [r1, #4]
+ 435 0094 8385     		strh	r3, [r0, #44]	@ movhi
+ 436 0096 0B88     		ldrh	r3, [r1]
+ 437 0098 0385     		strh	r3, [r0, #40]	@ movhi
+ 438 009a E5E7     		b	.L60
+ 439              	.L64:
+ 440 009c 03F58063 		add	r3, r3, #1024
+ 441 00a0 9842     		cmp	r0, r3
+ 442 00a2 E8D0     		beq	.L55
+ 443 00a4 E9E7     		b	.L59
+ 444              	.L66:
+ 445 00a6 00BF     		.align	2
+ 446              	.L65:
+ 447 00a8 002C0140 		.word	1073818624
+ 448 00ac 00100040 		.word	1073745920
+ 449 00b0 00340140 		.word	1073820672
+ 450 00b4 00400140 		.word	1073823744
+ 452              		.section	.text.TIM_OC1Init,"ax",%progbits
+ 453              		.align	1
+ 454              		.global	TIM_OC1Init
+ 455              		.syntax unified
+ 456              		.thumb
+ 457              		.thumb_func
+ 459              	TIM_OC1Init:
+ 460              		@ args = 0, pretend = 0, frame = 0
+ 461              		@ frame_needed = 0, uses_anonymous_args = 0
+ 462 0000 10B5     		push	{r4, lr}
+ 463 0002 038C     		ldrh	r3, [r0, #32]
+ 464 0004 23F00103 		bic	r3, r3, #1
+ 465 0008 1B04     		lsls	r3, r3, #16
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 9
+
+
+ 466 000a 1B0C     		lsrs	r3, r3, #16
+ 467 000c 0384     		strh	r3, [r0, #32]	@ movhi
+ 468 000e 038C     		ldrh	r3, [r0, #32]
+ 469 0010 B0F804C0 		ldrh	ip, [r0, #4]
+ 470 0014 1FFA8CFC 		uxth	ip, ip
+ 471 0018 028B     		ldrh	r2, [r0, #24]
+ 472 001a 22F07302 		bic	r2, r2, #115
+ 473 001e 1204     		lsls	r2, r2, #16
+ 474 0020 120C     		lsrs	r2, r2, #16
+ 475 0022 0C88     		ldrh	r4, [r1]
+ 476 0024 2243     		orrs	r2, r2, r4
+ 477 0026 23F00203 		bic	r3, r3, #2
+ 478 002a 1B04     		lsls	r3, r3, #16
+ 479 002c 1B0C     		lsrs	r3, r3, #16
+ 480 002e B1F808E0 		ldrh	lr, [r1, #8]
+ 481 0032 4C88     		ldrh	r4, [r1, #2]
+ 482 0034 4EEA040E 		orr	lr, lr, r4
+ 483 0038 43EA0E03 		orr	r3, r3, lr
+ 484 003c 9BB2     		uxth	r3, r3
+ 485 003e 164C     		ldr	r4, .L71
+ 486 0040 A042     		cmp	r0, r4
+ 487 0042 0FD0     		beq	.L68
+ 488 0044 04F50064 		add	r4, r4, #2048
+ 489 0048 A042     		cmp	r0, r4
+ 490 004a 0BD0     		beq	.L68
+ 491 004c 04F54064 		add	r4, r4, #3072
+ 492 0050 A042     		cmp	r0, r4
+ 493 0052 07D0     		beq	.L68
+ 494 0054 04F58064 		add	r4, r4, #1024
+ 495 0058 A042     		cmp	r0, r4
+ 496 005a 03D0     		beq	.L68
+ 497 005c 04F58064 		add	r4, r4, #1024
+ 498 0060 A042     		cmp	r0, r4
+ 499 0062 12D1     		bne	.L69
+ 500              	.L68:
+ 501 0064 23F00803 		bic	r3, r3, #8
+ 502 0068 4C89     		ldrh	r4, [r1, #10]
+ 503 006a 2343     		orrs	r3, r3, r4
+ 504 006c 23F00403 		bic	r3, r3, #4
+ 505 0070 8C88     		ldrh	r4, [r1, #4]
+ 506 0072 2343     		orrs	r3, r3, r4
+ 507 0074 2CF4407C 		bic	ip, ip, #768
+ 508 0078 B1F80CE0 		ldrh	lr, [r1, #12]
+ 509 007c CC89     		ldrh	r4, [r1, #14]
+ 510 007e 4EEA040E 		orr	lr, lr, r4
+ 511 0082 4CEA0E0C 		orr	ip, ip, lr
+ 512 0086 1FFA8CFC 		uxth	ip, ip
+ 513              	.L69:
+ 514 008a A0F804C0 		strh	ip, [r0, #4]	@ movhi
+ 515 008e 0283     		strh	r2, [r0, #24]	@ movhi
+ 516 0090 CA88     		ldrh	r2, [r1, #6]
+ 517 0092 8286     		strh	r2, [r0, #52]	@ movhi
+ 518 0094 0384     		strh	r3, [r0, #32]	@ movhi
+ 519 0096 10BD     		pop	{r4, pc}
+ 520              	.L72:
+ 521              		.align	2
+ 522              	.L71:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 10
+
+
+ 523 0098 002C0140 		.word	1073818624
+ 525              		.section	.text.TIM_OC2Init,"ax",%progbits
+ 526              		.align	1
+ 527              		.global	TIM_OC2Init
+ 528              		.syntax unified
+ 529              		.thumb
+ 530              		.thumb_func
+ 532              	TIM_OC2Init:
+ 533              		@ args = 0, pretend = 0, frame = 0
+ 534              		@ frame_needed = 0, uses_anonymous_args = 0
+ 535 0000 10B5     		push	{r4, lr}
+ 536 0002 038C     		ldrh	r3, [r0, #32]
+ 537 0004 23F01003 		bic	r3, r3, #16
+ 538 0008 1B04     		lsls	r3, r3, #16
+ 539 000a 1B0C     		lsrs	r3, r3, #16
+ 540 000c 0384     		strh	r3, [r0, #32]	@ movhi
+ 541 000e 038C     		ldrh	r3, [r0, #32]
+ 542 0010 B0F804C0 		ldrh	ip, [r0, #4]
+ 543 0014 1FFA8CFC 		uxth	ip, ip
+ 544 0018 028B     		ldrh	r2, [r0, #24]
+ 545 001a 22F4E642 		bic	r2, r2, #29440
+ 546 001e 1204     		lsls	r2, r2, #16
+ 547 0020 120C     		lsrs	r2, r2, #16
+ 548 0022 0C88     		ldrh	r4, [r1]
+ 549 0024 42EA0422 		orr	r2, r2, r4, lsl #8
+ 550 0028 92B2     		uxth	r2, r2
+ 551 002a 23F02003 		bic	r3, r3, #32
+ 552 002e 1B04     		lsls	r3, r3, #16
+ 553 0030 1B0C     		lsrs	r3, r3, #16
+ 554 0032 B1F808E0 		ldrh	lr, [r1, #8]
+ 555 0036 4C88     		ldrh	r4, [r1, #2]
+ 556 0038 4EEA040E 		orr	lr, lr, r4
+ 557 003c 43EA0E13 		orr	r3, r3, lr, lsl #4
+ 558 0040 9BB2     		uxth	r3, r3
+ 559 0042 134C     		ldr	r4, .L77
+ 560 0044 A042     		cmp	r0, r4
+ 561 0046 03D0     		beq	.L74
+ 562 0048 04F50064 		add	r4, r4, #2048
+ 563 004c A042     		cmp	r0, r4
+ 564 004e 18D1     		bne	.L75
+ 565              	.L74:
+ 566 0050 23F08003 		bic	r3, r3, #128
+ 567 0054 4C89     		ldrh	r4, [r1, #10]
+ 568 0056 43EA0413 		orr	r3, r3, r4, lsl #4
+ 569 005a 4FF6BF7E 		movw	lr, #65471
+ 570 005e 03EA0E0E 		and	lr, r3, lr
+ 571 0062 8B88     		ldrh	r3, [r1, #4]
+ 572 0064 4EEA031E 		orr	lr, lr, r3, lsl #4
+ 573 0068 1FFA8EF3 		uxth	r3, lr
+ 574 006c 2CF4406C 		bic	ip, ip, #3072
+ 575 0070 B1F80CE0 		ldrh	lr, [r1, #12]
+ 576 0074 CC89     		ldrh	r4, [r1, #14]
+ 577 0076 4EEA040E 		orr	lr, lr, r4
+ 578 007a 4CEA8E0C 		orr	ip, ip, lr, lsl #2
+ 579 007e 1FFA8CFC 		uxth	ip, ip
+ 580              	.L75:
+ 581 0082 A0F804C0 		strh	ip, [r0, #4]	@ movhi
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 11
+
+
+ 582 0086 0283     		strh	r2, [r0, #24]	@ movhi
+ 583 0088 CA88     		ldrh	r2, [r1, #6]
+ 584 008a 0287     		strh	r2, [r0, #56]	@ movhi
+ 585 008c 0384     		strh	r3, [r0, #32]	@ movhi
+ 586 008e 10BD     		pop	{r4, pc}
+ 587              	.L78:
+ 588              		.align	2
+ 589              	.L77:
+ 590 0090 002C0140 		.word	1073818624
+ 592              		.section	.text.TIM_OC3Init,"ax",%progbits
+ 593              		.align	1
+ 594              		.global	TIM_OC3Init
+ 595              		.syntax unified
+ 596              		.thumb
+ 597              		.thumb_func
+ 599              	TIM_OC3Init:
+ 600              		@ args = 0, pretend = 0, frame = 0
+ 601              		@ frame_needed = 0, uses_anonymous_args = 0
+ 602 0000 10B5     		push	{r4, lr}
+ 603 0002 038C     		ldrh	r3, [r0, #32]
+ 604 0004 23F48073 		bic	r3, r3, #256
+ 605 0008 1B04     		lsls	r3, r3, #16
+ 606 000a 1B0C     		lsrs	r3, r3, #16
+ 607 000c 0384     		strh	r3, [r0, #32]	@ movhi
+ 608 000e 038C     		ldrh	r3, [r0, #32]
+ 609 0010 B0F804C0 		ldrh	ip, [r0, #4]
+ 610 0014 1FFA8CFC 		uxth	ip, ip
+ 611 0018 828B     		ldrh	r2, [r0, #28]
+ 612 001a 22F07302 		bic	r2, r2, #115
+ 613 001e 1204     		lsls	r2, r2, #16
+ 614 0020 120C     		lsrs	r2, r2, #16
+ 615 0022 0C88     		ldrh	r4, [r1]
+ 616 0024 2243     		orrs	r2, r2, r4
+ 617 0026 23F40073 		bic	r3, r3, #512
+ 618 002a 1B04     		lsls	r3, r3, #16
+ 619 002c 1B0C     		lsrs	r3, r3, #16
+ 620 002e B1F808E0 		ldrh	lr, [r1, #8]
+ 621 0032 4C88     		ldrh	r4, [r1, #2]
+ 622 0034 4EEA040E 		orr	lr, lr, r4
+ 623 0038 43EA0E23 		orr	r3, r3, lr, lsl #8
+ 624 003c 9BB2     		uxth	r3, r3
+ 625 003e 134C     		ldr	r4, .L83
+ 626 0040 A042     		cmp	r0, r4
+ 627 0042 03D0     		beq	.L80
+ 628 0044 04F50064 		add	r4, r4, #2048
+ 629 0048 A042     		cmp	r0, r4
+ 630 004a 18D1     		bne	.L81
+ 631              	.L80:
+ 632 004c 23F40063 		bic	r3, r3, #2048
+ 633 0050 4C89     		ldrh	r4, [r1, #10]
+ 634 0052 43EA0423 		orr	r3, r3, r4, lsl #8
+ 635 0056 4FF6FF3E 		movw	lr, #64511
+ 636 005a 03EA0E0E 		and	lr, r3, lr
+ 637 005e 8B88     		ldrh	r3, [r1, #4]
+ 638 0060 4EEA032E 		orr	lr, lr, r3, lsl #8
+ 639 0064 1FFA8EF3 		uxth	r3, lr
+ 640 0068 2CF4405C 		bic	ip, ip, #12288
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 12
+
+
+ 641 006c B1F80CE0 		ldrh	lr, [r1, #12]
+ 642 0070 CC89     		ldrh	r4, [r1, #14]
+ 643 0072 4EEA040E 		orr	lr, lr, r4
+ 644 0076 4CEA0E1C 		orr	ip, ip, lr, lsl #4
+ 645 007a 1FFA8CFC 		uxth	ip, ip
+ 646              	.L81:
+ 647 007e A0F804C0 		strh	ip, [r0, #4]	@ movhi
+ 648 0082 8283     		strh	r2, [r0, #28]	@ movhi
+ 649 0084 CA88     		ldrh	r2, [r1, #6]
+ 650 0086 8287     		strh	r2, [r0, #60]	@ movhi
+ 651 0088 0384     		strh	r3, [r0, #32]	@ movhi
+ 652 008a 10BD     		pop	{r4, pc}
+ 653              	.L84:
+ 654              		.align	2
+ 655              	.L83:
+ 656 008c 002C0140 		.word	1073818624
+ 658              		.section	.text.TIM_OC4Init,"ax",%progbits
+ 659              		.align	1
+ 660              		.global	TIM_OC4Init
+ 661              		.syntax unified
+ 662              		.thumb
+ 663              		.thumb_func
+ 665              	TIM_OC4Init:
+ 666              		@ args = 0, pretend = 0, frame = 0
+ 667              		@ frame_needed = 0, uses_anonymous_args = 0
+ 668 0000 10B5     		push	{r4, lr}
+ 669 0002 038C     		ldrh	r3, [r0, #32]
+ 670 0004 23F48053 		bic	r3, r3, #4096
+ 671 0008 1B04     		lsls	r3, r3, #16
+ 672 000a 1B0C     		lsrs	r3, r3, #16
+ 673 000c 0384     		strh	r3, [r0, #32]	@ movhi
+ 674 000e 038C     		ldrh	r3, [r0, #32]
+ 675 0010 B0F804C0 		ldrh	ip, [r0, #4]
+ 676 0014 1FFA8CFC 		uxth	ip, ip
+ 677 0018 828B     		ldrh	r2, [r0, #28]
+ 678 001a 22F4E642 		bic	r2, r2, #29440
+ 679 001e 1204     		lsls	r2, r2, #16
+ 680 0020 120C     		lsrs	r2, r2, #16
+ 681 0022 0C88     		ldrh	r4, [r1]
+ 682 0024 42EA0422 		orr	r2, r2, r4, lsl #8
+ 683 0028 92B2     		uxth	r2, r2
+ 684 002a 23F40053 		bic	r3, r3, #8192
+ 685 002e 1B04     		lsls	r3, r3, #16
+ 686 0030 1B0C     		lsrs	r3, r3, #16
+ 687 0032 B1F808E0 		ldrh	lr, [r1, #8]
+ 688 0036 4C88     		ldrh	r4, [r1, #2]
+ 689 0038 4EEA040E 		orr	lr, lr, r4
+ 690 003c 43EA0E33 		orr	r3, r3, lr, lsl #12
+ 691 0040 9BB2     		uxth	r3, r3
+ 692 0042 0B4C     		ldr	r4, .L89
+ 693 0044 A042     		cmp	r0, r4
+ 694 0046 03D0     		beq	.L86
+ 695 0048 04F50064 		add	r4, r4, #2048
+ 696 004c A042     		cmp	r0, r4
+ 697 004e 06D1     		bne	.L87
+ 698              	.L86:
+ 699 0050 2CF4804C 		bic	ip, ip, #16384
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 13
+
+
+ 700 0054 8C89     		ldrh	r4, [r1, #12]
+ 701 0056 4CEA841C 		orr	ip, ip, r4, lsl #6
+ 702 005a 1FFA8CFC 		uxth	ip, ip
+ 703              	.L87:
+ 704 005e A0F804C0 		strh	ip, [r0, #4]	@ movhi
+ 705 0062 8283     		strh	r2, [r0, #28]	@ movhi
+ 706 0064 CA88     		ldrh	r2, [r1, #6]
+ 707 0066 A0F84020 		strh	r2, [r0, #64]	@ movhi
+ 708 006a 0384     		strh	r3, [r0, #32]	@ movhi
+ 709 006c 10BD     		pop	{r4, pc}
+ 710              	.L90:
+ 711 006e 00BF     		.align	2
+ 712              	.L89:
+ 713 0070 002C0140 		.word	1073818624
+ 715              		.section	.text.TIM_BDTRConfig,"ax",%progbits
+ 716              		.align	1
+ 717              		.global	TIM_BDTRConfig
+ 718              		.syntax unified
+ 719              		.thumb
+ 720              		.thumb_func
+ 722              	TIM_BDTRConfig:
+ 723              		@ args = 0, pretend = 0, frame = 0
+ 724              		@ frame_needed = 0, uses_anonymous_args = 0
+ 725              		@ link register save eliminated.
+ 726 0000 0B88     		ldrh	r3, [r1]
+ 727 0002 4A88     		ldrh	r2, [r1, #2]
+ 728 0004 1343     		orrs	r3, r3, r2
+ 729 0006 8A88     		ldrh	r2, [r1, #4]
+ 730 0008 1343     		orrs	r3, r3, r2
+ 731 000a CA88     		ldrh	r2, [r1, #6]
+ 732 000c 1343     		orrs	r3, r3, r2
+ 733 000e 0A89     		ldrh	r2, [r1, #8]
+ 734 0010 1343     		orrs	r3, r3, r2
+ 735 0012 4A89     		ldrh	r2, [r1, #10]
+ 736 0014 1343     		orrs	r3, r3, r2
+ 737 0016 8A89     		ldrh	r2, [r1, #12]
+ 738 0018 1343     		orrs	r3, r3, r2
+ 739 001a 9BB2     		uxth	r3, r3
+ 740 001c A0F84430 		strh	r3, [r0, #68]	@ movhi
+ 741 0020 7047     		bx	lr
+ 743              		.section	.text.TIM_TimeBaseStructInit,"ax",%progbits
+ 744              		.align	1
+ 745              		.global	TIM_TimeBaseStructInit
+ 746              		.syntax unified
+ 747              		.thumb
+ 748              		.thumb_func
+ 750              	TIM_TimeBaseStructInit:
+ 751              		@ args = 0, pretend = 0, frame = 0
+ 752              		@ frame_needed = 0, uses_anonymous_args = 0
+ 753              		@ link register save eliminated.
+ 754 0000 4FF6FF73 		movw	r3, #65535
+ 755 0004 8380     		strh	r3, [r0, #4]	@ movhi
+ 756 0006 0023     		movs	r3, #0
+ 757 0008 0380     		strh	r3, [r0]	@ movhi
+ 758 000a C380     		strh	r3, [r0, #6]	@ movhi
+ 759 000c 4380     		strh	r3, [r0, #2]	@ movhi
+ 760 000e 0372     		strb	r3, [r0, #8]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 14
+
+
+ 761 0010 7047     		bx	lr
+ 763              		.section	.text.TIM_OCStructInit,"ax",%progbits
+ 764              		.align	1
+ 765              		.global	TIM_OCStructInit
+ 766              		.syntax unified
+ 767              		.thumb
+ 768              		.thumb_func
+ 770              	TIM_OCStructInit:
+ 771              		@ args = 0, pretend = 0, frame = 0
+ 772              		@ frame_needed = 0, uses_anonymous_args = 0
+ 773              		@ link register save eliminated.
+ 774 0000 0023     		movs	r3, #0
+ 775 0002 0380     		strh	r3, [r0]	@ movhi
+ 776 0004 4380     		strh	r3, [r0, #2]	@ movhi
+ 777 0006 8380     		strh	r3, [r0, #4]	@ movhi
+ 778 0008 C380     		strh	r3, [r0, #6]	@ movhi
+ 779 000a 0381     		strh	r3, [r0, #8]	@ movhi
+ 780 000c 4381     		strh	r3, [r0, #10]	@ movhi
+ 781 000e 8381     		strh	r3, [r0, #12]	@ movhi
+ 782 0010 C381     		strh	r3, [r0, #14]	@ movhi
+ 783 0012 7047     		bx	lr
+ 785              		.section	.text.TIM_ICStructInit,"ax",%progbits
+ 786              		.align	1
+ 787              		.global	TIM_ICStructInit
+ 788              		.syntax unified
+ 789              		.thumb
+ 790              		.thumb_func
+ 792              	TIM_ICStructInit:
+ 793              		@ args = 0, pretend = 0, frame = 0
+ 794              		@ frame_needed = 0, uses_anonymous_args = 0
+ 795              		@ link register save eliminated.
+ 796 0000 0023     		movs	r3, #0
+ 797 0002 0380     		strh	r3, [r0]	@ movhi
+ 798 0004 4380     		strh	r3, [r0, #2]	@ movhi
+ 799 0006 0122     		movs	r2, #1
+ 800 0008 8280     		strh	r2, [r0, #4]	@ movhi
+ 801 000a C380     		strh	r3, [r0, #6]	@ movhi
+ 802 000c 0381     		strh	r3, [r0, #8]	@ movhi
+ 803 000e 7047     		bx	lr
+ 805              		.section	.text.TIM_BDTRStructInit,"ax",%progbits
+ 806              		.align	1
+ 807              		.global	TIM_BDTRStructInit
+ 808              		.syntax unified
+ 809              		.thumb
+ 810              		.thumb_func
+ 812              	TIM_BDTRStructInit:
+ 813              		@ args = 0, pretend = 0, frame = 0
+ 814              		@ frame_needed = 0, uses_anonymous_args = 0
+ 815              		@ link register save eliminated.
+ 816 0000 0023     		movs	r3, #0
+ 817 0002 0380     		strh	r3, [r0]	@ movhi
+ 818 0004 4380     		strh	r3, [r0, #2]	@ movhi
+ 819 0006 8380     		strh	r3, [r0, #4]	@ movhi
+ 820 0008 C380     		strh	r3, [r0, #6]	@ movhi
+ 821 000a 0381     		strh	r3, [r0, #8]	@ movhi
+ 822 000c 4381     		strh	r3, [r0, #10]	@ movhi
+ 823 000e 8381     		strh	r3, [r0, #12]	@ movhi
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 15
+
+
+ 824 0010 7047     		bx	lr
+ 826              		.section	.text.TIM_Cmd,"ax",%progbits
+ 827              		.align	1
+ 828              		.global	TIM_Cmd
+ 829              		.syntax unified
+ 830              		.thumb
+ 831              		.thumb_func
+ 833              	TIM_Cmd:
+ 834              		@ args = 0, pretend = 0, frame = 0
+ 835              		@ frame_needed = 0, uses_anonymous_args = 0
+ 836              		@ link register save eliminated.
+ 837 0000 29B1     		cbz	r1, .L97
+ 838 0002 0388     		ldrh	r3, [r0]
+ 839 0004 9BB2     		uxth	r3, r3
+ 840 0006 43F00103 		orr	r3, r3, #1
+ 841 000a 0380     		strh	r3, [r0]	@ movhi
+ 842 000c 7047     		bx	lr
+ 843              	.L97:
+ 844 000e 0388     		ldrh	r3, [r0]
+ 845 0010 23F00103 		bic	r3, r3, #1
+ 846 0014 1B04     		lsls	r3, r3, #16
+ 847 0016 1B0C     		lsrs	r3, r3, #16
+ 848 0018 0380     		strh	r3, [r0]	@ movhi
+ 849 001a 7047     		bx	lr
+ 851              		.section	.text.TIM_CtrlPWMOutputs,"ax",%progbits
+ 852              		.align	1
+ 853              		.global	TIM_CtrlPWMOutputs
+ 854              		.syntax unified
+ 855              		.thumb
+ 856              		.thumb_func
+ 858              	TIM_CtrlPWMOutputs:
+ 859              		@ args = 0, pretend = 0, frame = 0
+ 860              		@ frame_needed = 0, uses_anonymous_args = 0
+ 861              		@ link register save eliminated.
+ 862 0000 49B1     		cbz	r1, .L100
+ 863 0002 B0F84430 		ldrh	r3, [r0, #68]
+ 864 0006 6FEA4343 		mvn	r3, r3, lsl #17
+ 865 000a 6FEA5343 		mvn	r3, r3, lsr #17
+ 866 000e 9BB2     		uxth	r3, r3
+ 867 0010 A0F84430 		strh	r3, [r0, #68]	@ movhi
+ 868 0014 7047     		bx	lr
+ 869              	.L100:
+ 870 0016 B0F84430 		ldrh	r3, [r0, #68]
+ 871 001a C3F30E03 		ubfx	r3, r3, #0, #15
+ 872 001e A0F84430 		strh	r3, [r0, #68]	@ movhi
+ 873 0022 7047     		bx	lr
+ 875              		.section	.text.TIM_ITConfig,"ax",%progbits
+ 876              		.align	1
+ 877              		.global	TIM_ITConfig
+ 878              		.syntax unified
+ 879              		.thumb
+ 880              		.thumb_func
+ 882              	TIM_ITConfig:
+ 883              		@ args = 0, pretend = 0, frame = 0
+ 884              		@ frame_needed = 0, uses_anonymous_args = 0
+ 885              		@ link register save eliminated.
+ 886 0000 22B1     		cbz	r2, .L103
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 16
+
+
+ 887 0002 8389     		ldrh	r3, [r0, #12]
+ 888 0004 9BB2     		uxth	r3, r3
+ 889 0006 0B43     		orrs	r3, r3, r1
+ 890 0008 8381     		strh	r3, [r0, #12]	@ movhi
+ 891 000a 7047     		bx	lr
+ 892              	.L103:
+ 893 000c 8389     		ldrh	r3, [r0, #12]
+ 894 000e 9BB2     		uxth	r3, r3
+ 895 0010 23EA0103 		bic	r3, r3, r1
+ 896 0014 8381     		strh	r3, [r0, #12]	@ movhi
+ 897 0016 7047     		bx	lr
+ 899              		.section	.text.TIM_GenerateEvent,"ax",%progbits
+ 900              		.align	1
+ 901              		.global	TIM_GenerateEvent
+ 902              		.syntax unified
+ 903              		.thumb
+ 904              		.thumb_func
+ 906              	TIM_GenerateEvent:
+ 907              		@ args = 0, pretend = 0, frame = 0
+ 908              		@ frame_needed = 0, uses_anonymous_args = 0
+ 909              		@ link register save eliminated.
+ 910 0000 8182     		strh	r1, [r0, #20]	@ movhi
+ 911 0002 7047     		bx	lr
+ 913              		.section	.text.TIM_DMAConfig,"ax",%progbits
+ 914              		.align	1
+ 915              		.global	TIM_DMAConfig
+ 916              		.syntax unified
+ 917              		.thumb
+ 918              		.thumb_func
+ 920              	TIM_DMAConfig:
+ 921              		@ args = 0, pretend = 0, frame = 0
+ 922              		@ frame_needed = 0, uses_anonymous_args = 0
+ 923              		@ link register save eliminated.
+ 924 0000 1143     		orrs	r1, r1, r2
+ 925 0002 A0F84810 		strh	r1, [r0, #72]	@ movhi
+ 926 0006 7047     		bx	lr
+ 928              		.section	.text.TIM_DMACmd,"ax",%progbits
+ 929              		.align	1
+ 930              		.global	TIM_DMACmd
+ 931              		.syntax unified
+ 932              		.thumb
+ 933              		.thumb_func
+ 935              	TIM_DMACmd:
+ 936              		@ args = 0, pretend = 0, frame = 0
+ 937              		@ frame_needed = 0, uses_anonymous_args = 0
+ 938              		@ link register save eliminated.
+ 939 0000 22B1     		cbz	r2, .L108
+ 940 0002 8389     		ldrh	r3, [r0, #12]
+ 941 0004 9BB2     		uxth	r3, r3
+ 942 0006 0B43     		orrs	r3, r3, r1
+ 943 0008 8381     		strh	r3, [r0, #12]	@ movhi
+ 944 000a 7047     		bx	lr
+ 945              	.L108:
+ 946 000c 8389     		ldrh	r3, [r0, #12]
+ 947 000e 9BB2     		uxth	r3, r3
+ 948 0010 23EA0103 		bic	r3, r3, r1
+ 949 0014 8381     		strh	r3, [r0, #12]	@ movhi
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 17
+
+
+ 950 0016 7047     		bx	lr
+ 952              		.section	.text.TIM_InternalClockConfig,"ax",%progbits
+ 953              		.align	1
+ 954              		.global	TIM_InternalClockConfig
+ 955              		.syntax unified
+ 956              		.thumb
+ 957              		.thumb_func
+ 959              	TIM_InternalClockConfig:
+ 960              		@ args = 0, pretend = 0, frame = 0
+ 961              		@ frame_needed = 0, uses_anonymous_args = 0
+ 962              		@ link register save eliminated.
+ 963 0000 0389     		ldrh	r3, [r0, #8]
+ 964 0002 23F00703 		bic	r3, r3, #7
+ 965 0006 1B04     		lsls	r3, r3, #16
+ 966 0008 1B0C     		lsrs	r3, r3, #16
+ 967 000a 0381     		strh	r3, [r0, #8]	@ movhi
+ 968 000c 7047     		bx	lr
+ 970              		.section	.text.TIM_ITRxExternalClockConfig,"ax",%progbits
+ 971              		.align	1
+ 972              		.global	TIM_ITRxExternalClockConfig
+ 973              		.syntax unified
+ 974              		.thumb
+ 975              		.thumb_func
+ 977              	TIM_ITRxExternalClockConfig:
+ 978              		@ args = 0, pretend = 0, frame = 0
+ 979              		@ frame_needed = 0, uses_anonymous_args = 0
+ 980              		@ link register save eliminated.
+ 981 0000 0389     		ldrh	r3, [r0, #8]
+ 982 0002 23F07003 		bic	r3, r3, #112
+ 983 0006 1B04     		lsls	r3, r3, #16
+ 984 0008 1B0C     		lsrs	r3, r3, #16
+ 985 000a 1943     		orrs	r1, r1, r3
+ 986 000c 0181     		strh	r1, [r0, #8]	@ movhi
+ 987 000e 0389     		ldrh	r3, [r0, #8]
+ 988 0010 9BB2     		uxth	r3, r3
+ 989 0012 43F00703 		orr	r3, r3, #7
+ 990 0016 0381     		strh	r3, [r0, #8]	@ movhi
+ 991 0018 7047     		bx	lr
+ 993              		.section	.text.TIM_TIxExternalClockConfig,"ax",%progbits
+ 994              		.align	1
+ 995              		.global	TIM_TIxExternalClockConfig
+ 996              		.syntax unified
+ 997              		.thumb
+ 998              		.thumb_func
+ 1000              	TIM_TIxExternalClockConfig:
+ 1001              		@ args = 0, pretend = 0, frame = 0
+ 1002              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1003 0000 38B5     		push	{r3, r4, r5, lr}
+ 1004 0002 0446     		mov	r4, r0
+ 1005 0004 0D46     		mov	r5, r1
+ 1006 0006 1146     		mov	r1, r2
+ 1007 0008 602D     		cmp	r5, #96
+ 1008 000a 0FD0     		beq	.L116
+ 1009 000c 0122     		movs	r2, #1
+ 1010 000e FFF7FEFF 		bl	TI1_Config
+ 1011              	.L114:
+ 1012 0012 2389     		ldrh	r3, [r4, #8]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 18
+
+
+ 1013 0014 23F07003 		bic	r3, r3, #112
+ 1014 0018 1B04     		lsls	r3, r3, #16
+ 1015 001a 1B0C     		lsrs	r3, r3, #16
+ 1016 001c 1D43     		orrs	r5, r5, r3
+ 1017 001e 2581     		strh	r5, [r4, #8]	@ movhi
+ 1018 0020 2389     		ldrh	r3, [r4, #8]
+ 1019 0022 9BB2     		uxth	r3, r3
+ 1020 0024 43F00703 		orr	r3, r3, #7
+ 1021 0028 2381     		strh	r3, [r4, #8]	@ movhi
+ 1022 002a 38BD     		pop	{r3, r4, r5, pc}
+ 1023              	.L116:
+ 1024 002c 0122     		movs	r2, #1
+ 1025 002e FFF7FEFF 		bl	TI2_Config
+ 1026 0032 EEE7     		b	.L114
+ 1028              		.section	.text.TIM_ETRConfig,"ax",%progbits
+ 1029              		.align	1
+ 1030              		.global	TIM_ETRConfig
+ 1031              		.syntax unified
+ 1032              		.thumb
+ 1033              		.thumb_func
+ 1035              	TIM_ETRConfig:
+ 1036              		@ args = 0, pretend = 0, frame = 0
+ 1037              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1038              		@ link register save eliminated.
+ 1039 0000 B0F808C0 		ldrh	ip, [r0, #8]
+ 1040 0004 5FFA8CFC 		uxtb	ip, ip
+ 1041 0008 0A43     		orrs	r2, r2, r1
+ 1042 000a 42EA0322 		orr	r2, r2, r3, lsl #8
+ 1043 000e 4CEA020C 		orr	ip, ip, r2
+ 1044 0012 1FFA8CFC 		uxth	ip, ip
+ 1045 0016 A0F808C0 		strh	ip, [r0, #8]	@ movhi
+ 1046 001a 7047     		bx	lr
+ 1048              		.section	.text.TIM_ETRClockMode1Config,"ax",%progbits
+ 1049              		.align	1
+ 1050              		.global	TIM_ETRClockMode1Config
+ 1051              		.syntax unified
+ 1052              		.thumb
+ 1053              		.thumb_func
+ 1055              	TIM_ETRClockMode1Config:
+ 1056              		@ args = 0, pretend = 0, frame = 0
+ 1057              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1058 0000 10B5     		push	{r4, lr}
+ 1059 0002 0446     		mov	r4, r0
+ 1060 0004 FFF7FEFF 		bl	TIM_ETRConfig
+ 1061 0008 2389     		ldrh	r3, [r4, #8]
+ 1062 000a 23F07003 		bic	r3, r3, #112
+ 1063 000e 1B04     		lsls	r3, r3, #16
+ 1064 0010 1B0C     		lsrs	r3, r3, #16
+ 1065 0012 43F07703 		orr	r3, r3, #119
+ 1066 0016 2381     		strh	r3, [r4, #8]	@ movhi
+ 1067 0018 10BD     		pop	{r4, pc}
+ 1069              		.section	.text.TIM_ETRClockMode2Config,"ax",%progbits
+ 1070              		.align	1
+ 1071              		.global	TIM_ETRClockMode2Config
+ 1072              		.syntax unified
+ 1073              		.thumb
+ 1074              		.thumb_func
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 19
+
+
+ 1076              	TIM_ETRClockMode2Config:
+ 1077              		@ args = 0, pretend = 0, frame = 0
+ 1078              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1079 0000 10B5     		push	{r4, lr}
+ 1080 0002 0446     		mov	r4, r0
+ 1081 0004 FFF7FEFF 		bl	TIM_ETRConfig
+ 1082 0008 2389     		ldrh	r3, [r4, #8]
+ 1083 000a 9BB2     		uxth	r3, r3
+ 1084 000c 43F48043 		orr	r3, r3, #16384
+ 1085 0010 2381     		strh	r3, [r4, #8]	@ movhi
+ 1086 0012 10BD     		pop	{r4, pc}
+ 1088              		.section	.text.TIM_PrescalerConfig,"ax",%progbits
+ 1089              		.align	1
+ 1090              		.global	TIM_PrescalerConfig
+ 1091              		.syntax unified
+ 1092              		.thumb
+ 1093              		.thumb_func
+ 1095              	TIM_PrescalerConfig:
+ 1096              		@ args = 0, pretend = 0, frame = 0
+ 1097              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1098              		@ link register save eliminated.
+ 1099 0000 0185     		strh	r1, [r0, #40]	@ movhi
+ 1100 0002 8282     		strh	r2, [r0, #20]	@ movhi
+ 1101 0004 7047     		bx	lr
+ 1103              		.section	.text.TIM_CounterModeConfig,"ax",%progbits
+ 1104              		.align	1
+ 1105              		.global	TIM_CounterModeConfig
+ 1106              		.syntax unified
+ 1107              		.thumb
+ 1108              		.thumb_func
+ 1110              	TIM_CounterModeConfig:
+ 1111              		@ args = 0, pretend = 0, frame = 0
+ 1112              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1113              		@ link register save eliminated.
+ 1114 0000 0388     		ldrh	r3, [r0]
+ 1115 0002 23F07003 		bic	r3, r3, #112
+ 1116 0006 1B04     		lsls	r3, r3, #16
+ 1117 0008 1B0C     		lsrs	r3, r3, #16
+ 1118 000a 0B43     		orrs	r3, r3, r1
+ 1119 000c 0380     		strh	r3, [r0]	@ movhi
+ 1120 000e 7047     		bx	lr
+ 1122              		.section	.text.TIM_SelectInputTrigger,"ax",%progbits
+ 1123              		.align	1
+ 1124              		.global	TIM_SelectInputTrigger
+ 1125              		.syntax unified
+ 1126              		.thumb
+ 1127              		.thumb_func
+ 1129              	TIM_SelectInputTrigger:
+ 1130              		@ args = 0, pretend = 0, frame = 0
+ 1131              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1132              		@ link register save eliminated.
+ 1133 0000 0389     		ldrh	r3, [r0, #8]
+ 1134 0002 23F07003 		bic	r3, r3, #112
+ 1135 0006 1B04     		lsls	r3, r3, #16
+ 1136 0008 1B0C     		lsrs	r3, r3, #16
+ 1137 000a 0B43     		orrs	r3, r3, r1
+ 1138 000c 0381     		strh	r3, [r0, #8]	@ movhi
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 20
+
+
+ 1139 000e 7047     		bx	lr
+ 1141              		.section	.text.TIM_EncoderInterfaceConfig,"ax",%progbits
+ 1142              		.align	1
+ 1143              		.global	TIM_EncoderInterfaceConfig
+ 1144              		.syntax unified
+ 1145              		.thumb
+ 1146              		.thumb_func
+ 1148              	TIM_EncoderInterfaceConfig:
+ 1149              		@ args = 0, pretend = 0, frame = 0
+ 1150              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1151 0000 10B5     		push	{r4, lr}
+ 1152 0002 0489     		ldrh	r4, [r0, #8]
+ 1153 0004 B0F818E0 		ldrh	lr, [r0, #24]
+ 1154 0008 1FFA8EFE 		uxth	lr, lr
+ 1155 000c B0F820C0 		ldrh	ip, [r0, #32]
+ 1156 0010 24F00704 		bic	r4, r4, #7
+ 1157 0014 2404     		lsls	r4, r4, #16
+ 1158 0016 240C     		lsrs	r4, r4, #16
+ 1159 0018 0C43     		orrs	r4, r4, r1
+ 1160 001a 2EF4407E 		bic	lr, lr, #768
+ 1161 001e 2EF0030E 		bic	lr, lr, #3
+ 1162 0022 4EF4807E 		orr	lr, lr, #256
+ 1163 0026 4EF0010E 		orr	lr, lr, #1
+ 1164 002a 2CF0220C 		bic	ip, ip, #34
+ 1165 002e 4FEA0C4C 		lsl	ip, ip, #16
+ 1166 0032 4FEA1C4C 		lsr	ip, ip, #16
+ 1167 0036 42EA0312 		orr	r2, r2, r3, lsl #4
+ 1168 003a 4CEA020C 		orr	ip, ip, r2
+ 1169 003e 1FFA8CFC 		uxth	ip, ip
+ 1170 0042 0481     		strh	r4, [r0, #8]	@ movhi
+ 1171 0044 A0F818E0 		strh	lr, [r0, #24]	@ movhi
+ 1172 0048 A0F820C0 		strh	ip, [r0, #32]	@ movhi
+ 1173 004c 10BD     		pop	{r4, pc}
+ 1175              		.section	.text.TIM_ForcedOC1Config,"ax",%progbits
+ 1176              		.align	1
+ 1177              		.global	TIM_ForcedOC1Config
+ 1178              		.syntax unified
+ 1179              		.thumb
+ 1180              		.thumb_func
+ 1182              	TIM_ForcedOC1Config:
+ 1183              		@ args = 0, pretend = 0, frame = 0
+ 1184              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1185              		@ link register save eliminated.
+ 1186 0000 038B     		ldrh	r3, [r0, #24]
+ 1187 0002 23F07003 		bic	r3, r3, #112
+ 1188 0006 1B04     		lsls	r3, r3, #16
+ 1189 0008 1B0C     		lsrs	r3, r3, #16
+ 1190 000a 0B43     		orrs	r3, r3, r1
+ 1191 000c 0383     		strh	r3, [r0, #24]	@ movhi
+ 1192 000e 7047     		bx	lr
+ 1194              		.section	.text.TIM_ForcedOC2Config,"ax",%progbits
+ 1195              		.align	1
+ 1196              		.global	TIM_ForcedOC2Config
+ 1197              		.syntax unified
+ 1198              		.thumb
+ 1199              		.thumb_func
+ 1201              	TIM_ForcedOC2Config:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 21
+
+
+ 1202              		@ args = 0, pretend = 0, frame = 0
+ 1203              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1204              		@ link register save eliminated.
+ 1205 0000 038B     		ldrh	r3, [r0, #24]
+ 1206 0002 23F4E043 		bic	r3, r3, #28672
+ 1207 0006 1B04     		lsls	r3, r3, #16
+ 1208 0008 1B0C     		lsrs	r3, r3, #16
+ 1209 000a 43EA0123 		orr	r3, r3, r1, lsl #8
+ 1210 000e 9BB2     		uxth	r3, r3
+ 1211 0010 0383     		strh	r3, [r0, #24]	@ movhi
+ 1212 0012 7047     		bx	lr
+ 1214              		.section	.text.TIM_ForcedOC3Config,"ax",%progbits
+ 1215              		.align	1
+ 1216              		.global	TIM_ForcedOC3Config
+ 1217              		.syntax unified
+ 1218              		.thumb
+ 1219              		.thumb_func
+ 1221              	TIM_ForcedOC3Config:
+ 1222              		@ args = 0, pretend = 0, frame = 0
+ 1223              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1224              		@ link register save eliminated.
+ 1225 0000 838B     		ldrh	r3, [r0, #28]
+ 1226 0002 23F07003 		bic	r3, r3, #112
+ 1227 0006 1B04     		lsls	r3, r3, #16
+ 1228 0008 1B0C     		lsrs	r3, r3, #16
+ 1229 000a 0B43     		orrs	r3, r3, r1
+ 1230 000c 8383     		strh	r3, [r0, #28]	@ movhi
+ 1231 000e 7047     		bx	lr
+ 1233              		.section	.text.TIM_ForcedOC4Config,"ax",%progbits
+ 1234              		.align	1
+ 1235              		.global	TIM_ForcedOC4Config
+ 1236              		.syntax unified
+ 1237              		.thumb
+ 1238              		.thumb_func
+ 1240              	TIM_ForcedOC4Config:
+ 1241              		@ args = 0, pretend = 0, frame = 0
+ 1242              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1243              		@ link register save eliminated.
+ 1244 0000 838B     		ldrh	r3, [r0, #28]
+ 1245 0002 23F4E043 		bic	r3, r3, #28672
+ 1246 0006 1B04     		lsls	r3, r3, #16
+ 1247 0008 1B0C     		lsrs	r3, r3, #16
+ 1248 000a 43EA0123 		orr	r3, r3, r1, lsl #8
+ 1249 000e 9BB2     		uxth	r3, r3
+ 1250 0010 8383     		strh	r3, [r0, #28]	@ movhi
+ 1251 0012 7047     		bx	lr
+ 1253              		.section	.text.TIM_ARRPreloadConfig,"ax",%progbits
+ 1254              		.align	1
+ 1255              		.global	TIM_ARRPreloadConfig
+ 1256              		.syntax unified
+ 1257              		.thumb
+ 1258              		.thumb_func
+ 1260              	TIM_ARRPreloadConfig:
+ 1261              		@ args = 0, pretend = 0, frame = 0
+ 1262              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1263              		@ link register save eliminated.
+ 1264 0000 29B1     		cbz	r1, .L132
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 22
+
+
+ 1265 0002 0388     		ldrh	r3, [r0]
+ 1266 0004 9BB2     		uxth	r3, r3
+ 1267 0006 43F08003 		orr	r3, r3, #128
+ 1268 000a 0380     		strh	r3, [r0]	@ movhi
+ 1269 000c 7047     		bx	lr
+ 1270              	.L132:
+ 1271 000e 0388     		ldrh	r3, [r0]
+ 1272 0010 23F08003 		bic	r3, r3, #128
+ 1273 0014 1B04     		lsls	r3, r3, #16
+ 1274 0016 1B0C     		lsrs	r3, r3, #16
+ 1275 0018 0380     		strh	r3, [r0]	@ movhi
+ 1276 001a 7047     		bx	lr
+ 1278              		.section	.text.TIM_SelectCOM,"ax",%progbits
+ 1279              		.align	1
+ 1280              		.global	TIM_SelectCOM
+ 1281              		.syntax unified
+ 1282              		.thumb
+ 1283              		.thumb_func
+ 1285              	TIM_SelectCOM:
+ 1286              		@ args = 0, pretend = 0, frame = 0
+ 1287              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1288              		@ link register save eliminated.
+ 1289 0000 29B1     		cbz	r1, .L135
+ 1290 0002 8388     		ldrh	r3, [r0, #4]
+ 1291 0004 9BB2     		uxth	r3, r3
+ 1292 0006 43F00403 		orr	r3, r3, #4
+ 1293 000a 8380     		strh	r3, [r0, #4]	@ movhi
+ 1294 000c 7047     		bx	lr
+ 1295              	.L135:
+ 1296 000e 8388     		ldrh	r3, [r0, #4]
+ 1297 0010 23F00403 		bic	r3, r3, #4
+ 1298 0014 1B04     		lsls	r3, r3, #16
+ 1299 0016 1B0C     		lsrs	r3, r3, #16
+ 1300 0018 8380     		strh	r3, [r0, #4]	@ movhi
+ 1301 001a 7047     		bx	lr
+ 1303              		.section	.text.TIM_SelectCCDMA,"ax",%progbits
+ 1304              		.align	1
+ 1305              		.global	TIM_SelectCCDMA
+ 1306              		.syntax unified
+ 1307              		.thumb
+ 1308              		.thumb_func
+ 1310              	TIM_SelectCCDMA:
+ 1311              		@ args = 0, pretend = 0, frame = 0
+ 1312              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1313              		@ link register save eliminated.
+ 1314 0000 29B1     		cbz	r1, .L138
+ 1315 0002 8388     		ldrh	r3, [r0, #4]
+ 1316 0004 9BB2     		uxth	r3, r3
+ 1317 0006 43F00803 		orr	r3, r3, #8
+ 1318 000a 8380     		strh	r3, [r0, #4]	@ movhi
+ 1319 000c 7047     		bx	lr
+ 1320              	.L138:
+ 1321 000e 8388     		ldrh	r3, [r0, #4]
+ 1322 0010 23F00803 		bic	r3, r3, #8
+ 1323 0014 1B04     		lsls	r3, r3, #16
+ 1324 0016 1B0C     		lsrs	r3, r3, #16
+ 1325 0018 8380     		strh	r3, [r0, #4]	@ movhi
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 23
+
+
+ 1326 001a 7047     		bx	lr
+ 1328              		.section	.text.TIM_CCPreloadControl,"ax",%progbits
+ 1329              		.align	1
+ 1330              		.global	TIM_CCPreloadControl
+ 1331              		.syntax unified
+ 1332              		.thumb
+ 1333              		.thumb_func
+ 1335              	TIM_CCPreloadControl:
+ 1336              		@ args = 0, pretend = 0, frame = 0
+ 1337              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1338              		@ link register save eliminated.
+ 1339 0000 29B1     		cbz	r1, .L141
+ 1340 0002 8388     		ldrh	r3, [r0, #4]
+ 1341 0004 9BB2     		uxth	r3, r3
+ 1342 0006 43F00103 		orr	r3, r3, #1
+ 1343 000a 8380     		strh	r3, [r0, #4]	@ movhi
+ 1344 000c 7047     		bx	lr
+ 1345              	.L141:
+ 1346 000e 8388     		ldrh	r3, [r0, #4]
+ 1347 0010 23F00103 		bic	r3, r3, #1
+ 1348 0014 1B04     		lsls	r3, r3, #16
+ 1349 0016 1B0C     		lsrs	r3, r3, #16
+ 1350 0018 8380     		strh	r3, [r0, #4]	@ movhi
+ 1351 001a 7047     		bx	lr
+ 1353              		.section	.text.TIM_OC1PreloadConfig,"ax",%progbits
+ 1354              		.align	1
+ 1355              		.global	TIM_OC1PreloadConfig
+ 1356              		.syntax unified
+ 1357              		.thumb
+ 1358              		.thumb_func
+ 1360              	TIM_OC1PreloadConfig:
+ 1361              		@ args = 0, pretend = 0, frame = 0
+ 1362              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1363              		@ link register save eliminated.
+ 1364 0000 038B     		ldrh	r3, [r0, #24]
+ 1365 0002 23F00803 		bic	r3, r3, #8
+ 1366 0006 1B04     		lsls	r3, r3, #16
+ 1367 0008 1B0C     		lsrs	r3, r3, #16
+ 1368 000a 0B43     		orrs	r3, r3, r1
+ 1369 000c 0383     		strh	r3, [r0, #24]	@ movhi
+ 1370 000e 7047     		bx	lr
+ 1372              		.section	.text.TIM_OC2PreloadConfig,"ax",%progbits
+ 1373              		.align	1
+ 1374              		.global	TIM_OC2PreloadConfig
+ 1375              		.syntax unified
+ 1376              		.thumb
+ 1377              		.thumb_func
+ 1379              	TIM_OC2PreloadConfig:
+ 1380              		@ args = 0, pretend = 0, frame = 0
+ 1381              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1382              		@ link register save eliminated.
+ 1383 0000 038B     		ldrh	r3, [r0, #24]
+ 1384 0002 23F40063 		bic	r3, r3, #2048
+ 1385 0006 1B04     		lsls	r3, r3, #16
+ 1386 0008 1B0C     		lsrs	r3, r3, #16
+ 1387 000a 43EA0123 		orr	r3, r3, r1, lsl #8
+ 1388 000e 9BB2     		uxth	r3, r3
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 24
+
+
+ 1389 0010 0383     		strh	r3, [r0, #24]	@ movhi
+ 1390 0012 7047     		bx	lr
+ 1392              		.section	.text.TIM_OC3PreloadConfig,"ax",%progbits
+ 1393              		.align	1
+ 1394              		.global	TIM_OC3PreloadConfig
+ 1395              		.syntax unified
+ 1396              		.thumb
+ 1397              		.thumb_func
+ 1399              	TIM_OC3PreloadConfig:
+ 1400              		@ args = 0, pretend = 0, frame = 0
+ 1401              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1402              		@ link register save eliminated.
+ 1403 0000 838B     		ldrh	r3, [r0, #28]
+ 1404 0002 23F00803 		bic	r3, r3, #8
+ 1405 0006 1B04     		lsls	r3, r3, #16
+ 1406 0008 1B0C     		lsrs	r3, r3, #16
+ 1407 000a 0B43     		orrs	r3, r3, r1
+ 1408 000c 8383     		strh	r3, [r0, #28]	@ movhi
+ 1409 000e 7047     		bx	lr
+ 1411              		.section	.text.TIM_OC4PreloadConfig,"ax",%progbits
+ 1412              		.align	1
+ 1413              		.global	TIM_OC4PreloadConfig
+ 1414              		.syntax unified
+ 1415              		.thumb
+ 1416              		.thumb_func
+ 1418              	TIM_OC4PreloadConfig:
+ 1419              		@ args = 0, pretend = 0, frame = 0
+ 1420              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1421              		@ link register save eliminated.
+ 1422 0000 838B     		ldrh	r3, [r0, #28]
+ 1423 0002 23F40063 		bic	r3, r3, #2048
+ 1424 0006 1B04     		lsls	r3, r3, #16
+ 1425 0008 1B0C     		lsrs	r3, r3, #16
+ 1426 000a 43EA0123 		orr	r3, r3, r1, lsl #8
+ 1427 000e 9BB2     		uxth	r3, r3
+ 1428 0010 8383     		strh	r3, [r0, #28]	@ movhi
+ 1429 0012 7047     		bx	lr
+ 1431              		.section	.text.TIM_OC1FastConfig,"ax",%progbits
+ 1432              		.align	1
+ 1433              		.global	TIM_OC1FastConfig
+ 1434              		.syntax unified
+ 1435              		.thumb
+ 1436              		.thumb_func
+ 1438              	TIM_OC1FastConfig:
+ 1439              		@ args = 0, pretend = 0, frame = 0
+ 1440              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1441              		@ link register save eliminated.
+ 1442 0000 038B     		ldrh	r3, [r0, #24]
+ 1443 0002 23F00403 		bic	r3, r3, #4
+ 1444 0006 1B04     		lsls	r3, r3, #16
+ 1445 0008 1B0C     		lsrs	r3, r3, #16
+ 1446 000a 0B43     		orrs	r3, r3, r1
+ 1447 000c 0383     		strh	r3, [r0, #24]	@ movhi
+ 1448 000e 7047     		bx	lr
+ 1450              		.section	.text.TIM_OC2FastConfig,"ax",%progbits
+ 1451              		.align	1
+ 1452              		.global	TIM_OC2FastConfig
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 25
+
+
+ 1453              		.syntax unified
+ 1454              		.thumb
+ 1455              		.thumb_func
+ 1457              	TIM_OC2FastConfig:
+ 1458              		@ args = 0, pretend = 0, frame = 0
+ 1459              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1460              		@ link register save eliminated.
+ 1461 0000 038B     		ldrh	r3, [r0, #24]
+ 1462 0002 23F48063 		bic	r3, r3, #1024
+ 1463 0006 1B04     		lsls	r3, r3, #16
+ 1464 0008 1B0C     		lsrs	r3, r3, #16
+ 1465 000a 43EA0123 		orr	r3, r3, r1, lsl #8
+ 1466 000e 9BB2     		uxth	r3, r3
+ 1467 0010 0383     		strh	r3, [r0, #24]	@ movhi
+ 1468 0012 7047     		bx	lr
+ 1470              		.section	.text.TIM_OC3FastConfig,"ax",%progbits
+ 1471              		.align	1
+ 1472              		.global	TIM_OC3FastConfig
+ 1473              		.syntax unified
+ 1474              		.thumb
+ 1475              		.thumb_func
+ 1477              	TIM_OC3FastConfig:
+ 1478              		@ args = 0, pretend = 0, frame = 0
+ 1479              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1480              		@ link register save eliminated.
+ 1481 0000 838B     		ldrh	r3, [r0, #28]
+ 1482 0002 23F00403 		bic	r3, r3, #4
+ 1483 0006 1B04     		lsls	r3, r3, #16
+ 1484 0008 1B0C     		lsrs	r3, r3, #16
+ 1485 000a 0B43     		orrs	r3, r3, r1
+ 1486 000c 8383     		strh	r3, [r0, #28]	@ movhi
+ 1487 000e 7047     		bx	lr
+ 1489              		.section	.text.TIM_OC4FastConfig,"ax",%progbits
+ 1490              		.align	1
+ 1491              		.global	TIM_OC4FastConfig
+ 1492              		.syntax unified
+ 1493              		.thumb
+ 1494              		.thumb_func
+ 1496              	TIM_OC4FastConfig:
+ 1497              		@ args = 0, pretend = 0, frame = 0
+ 1498              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1499              		@ link register save eliminated.
+ 1500 0000 838B     		ldrh	r3, [r0, #28]
+ 1501 0002 23F48063 		bic	r3, r3, #1024
+ 1502 0006 1B04     		lsls	r3, r3, #16
+ 1503 0008 1B0C     		lsrs	r3, r3, #16
+ 1504 000a 43EA0123 		orr	r3, r3, r1, lsl #8
+ 1505 000e 9BB2     		uxth	r3, r3
+ 1506 0010 8383     		strh	r3, [r0, #28]	@ movhi
+ 1507 0012 7047     		bx	lr
+ 1509              		.section	.text.TIM_ClearOC1Ref,"ax",%progbits
+ 1510              		.align	1
+ 1511              		.global	TIM_ClearOC1Ref
+ 1512              		.syntax unified
+ 1513              		.thumb
+ 1514              		.thumb_func
+ 1516              	TIM_ClearOC1Ref:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 26
+
+
+ 1517              		@ args = 0, pretend = 0, frame = 0
+ 1518              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1519              		@ link register save eliminated.
+ 1520 0000 038B     		ldrh	r3, [r0, #24]
+ 1521 0002 23F08003 		bic	r3, r3, #128
+ 1522 0006 1B04     		lsls	r3, r3, #16
+ 1523 0008 1B0C     		lsrs	r3, r3, #16
+ 1524 000a 0B43     		orrs	r3, r3, r1
+ 1525 000c 0383     		strh	r3, [r0, #24]	@ movhi
+ 1526 000e 7047     		bx	lr
+ 1528              		.section	.text.TIM_ClearOC2Ref,"ax",%progbits
+ 1529              		.align	1
+ 1530              		.global	TIM_ClearOC2Ref
+ 1531              		.syntax unified
+ 1532              		.thumb
+ 1533              		.thumb_func
+ 1535              	TIM_ClearOC2Ref:
+ 1536              		@ args = 0, pretend = 0, frame = 0
+ 1537              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1538              		@ link register save eliminated.
+ 1539 0000 038B     		ldrh	r3, [r0, #24]
+ 1540 0002 C3F30E03 		ubfx	r3, r3, #0, #15
+ 1541 0006 43EA0123 		orr	r3, r3, r1, lsl #8
+ 1542 000a 9BB2     		uxth	r3, r3
+ 1543 000c 0383     		strh	r3, [r0, #24]	@ movhi
+ 1544 000e 7047     		bx	lr
+ 1546              		.section	.text.TIM_ClearOC3Ref,"ax",%progbits
+ 1547              		.align	1
+ 1548              		.global	TIM_ClearOC3Ref
+ 1549              		.syntax unified
+ 1550              		.thumb
+ 1551              		.thumb_func
+ 1553              	TIM_ClearOC3Ref:
+ 1554              		@ args = 0, pretend = 0, frame = 0
+ 1555              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1556              		@ link register save eliminated.
+ 1557 0000 838B     		ldrh	r3, [r0, #28]
+ 1558 0002 23F08003 		bic	r3, r3, #128
+ 1559 0006 1B04     		lsls	r3, r3, #16
+ 1560 0008 1B0C     		lsrs	r3, r3, #16
+ 1561 000a 0B43     		orrs	r3, r3, r1
+ 1562 000c 8383     		strh	r3, [r0, #28]	@ movhi
+ 1563 000e 7047     		bx	lr
+ 1565              		.section	.text.TIM_ClearOC4Ref,"ax",%progbits
+ 1566              		.align	1
+ 1567              		.global	TIM_ClearOC4Ref
+ 1568              		.syntax unified
+ 1569              		.thumb
+ 1570              		.thumb_func
+ 1572              	TIM_ClearOC4Ref:
+ 1573              		@ args = 0, pretend = 0, frame = 0
+ 1574              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1575              		@ link register save eliminated.
+ 1576 0000 838B     		ldrh	r3, [r0, #28]
+ 1577 0002 C3F30E03 		ubfx	r3, r3, #0, #15
+ 1578 0006 43EA0123 		orr	r3, r3, r1, lsl #8
+ 1579 000a 9BB2     		uxth	r3, r3
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 27
+
+
+ 1580 000c 8383     		strh	r3, [r0, #28]	@ movhi
+ 1581 000e 7047     		bx	lr
+ 1583              		.section	.text.TIM_OC1PolarityConfig,"ax",%progbits
+ 1584              		.align	1
+ 1585              		.global	TIM_OC1PolarityConfig
+ 1586              		.syntax unified
+ 1587              		.thumb
+ 1588              		.thumb_func
+ 1590              	TIM_OC1PolarityConfig:
+ 1591              		@ args = 0, pretend = 0, frame = 0
+ 1592              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1593              		@ link register save eliminated.
+ 1594 0000 038C     		ldrh	r3, [r0, #32]
+ 1595 0002 23F00203 		bic	r3, r3, #2
+ 1596 0006 1B04     		lsls	r3, r3, #16
+ 1597 0008 1B0C     		lsrs	r3, r3, #16
+ 1598 000a 0B43     		orrs	r3, r3, r1
+ 1599 000c 0384     		strh	r3, [r0, #32]	@ movhi
+ 1600 000e 7047     		bx	lr
+ 1602              		.section	.text.TIM_OC1NPolarityConfig,"ax",%progbits
+ 1603              		.align	1
+ 1604              		.global	TIM_OC1NPolarityConfig
+ 1605              		.syntax unified
+ 1606              		.thumb
+ 1607              		.thumb_func
+ 1609              	TIM_OC1NPolarityConfig:
+ 1610              		@ args = 0, pretend = 0, frame = 0
+ 1611              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1612              		@ link register save eliminated.
+ 1613 0000 038C     		ldrh	r3, [r0, #32]
+ 1614 0002 23F00803 		bic	r3, r3, #8
+ 1615 0006 1B04     		lsls	r3, r3, #16
+ 1616 0008 1B0C     		lsrs	r3, r3, #16
+ 1617 000a 0B43     		orrs	r3, r3, r1
+ 1618 000c 0384     		strh	r3, [r0, #32]	@ movhi
+ 1619 000e 7047     		bx	lr
+ 1621              		.section	.text.TIM_OC2PolarityConfig,"ax",%progbits
+ 1622              		.align	1
+ 1623              		.global	TIM_OC2PolarityConfig
+ 1624              		.syntax unified
+ 1625              		.thumb
+ 1626              		.thumb_func
+ 1628              	TIM_OC2PolarityConfig:
+ 1629              		@ args = 0, pretend = 0, frame = 0
+ 1630              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1631              		@ link register save eliminated.
+ 1632 0000 038C     		ldrh	r3, [r0, #32]
+ 1633 0002 23F02003 		bic	r3, r3, #32
+ 1634 0006 1B04     		lsls	r3, r3, #16
+ 1635 0008 1B0C     		lsrs	r3, r3, #16
+ 1636 000a 43EA0113 		orr	r3, r3, r1, lsl #4
+ 1637 000e 9BB2     		uxth	r3, r3
+ 1638 0010 0384     		strh	r3, [r0, #32]	@ movhi
+ 1639 0012 7047     		bx	lr
+ 1641              		.section	.text.TIM_OC2NPolarityConfig,"ax",%progbits
+ 1642              		.align	1
+ 1643              		.global	TIM_OC2NPolarityConfig
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 28
+
+
+ 1644              		.syntax unified
+ 1645              		.thumb
+ 1646              		.thumb_func
+ 1648              	TIM_OC2NPolarityConfig:
+ 1649              		@ args = 0, pretend = 0, frame = 0
+ 1650              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1651              		@ link register save eliminated.
+ 1652 0000 038C     		ldrh	r3, [r0, #32]
+ 1653 0002 23F08003 		bic	r3, r3, #128
+ 1654 0006 1B04     		lsls	r3, r3, #16
+ 1655 0008 1B0C     		lsrs	r3, r3, #16
+ 1656 000a 43EA0113 		orr	r3, r3, r1, lsl #4
+ 1657 000e 9BB2     		uxth	r3, r3
+ 1658 0010 0384     		strh	r3, [r0, #32]	@ movhi
+ 1659 0012 7047     		bx	lr
+ 1661              		.section	.text.TIM_OC3PolarityConfig,"ax",%progbits
+ 1662              		.align	1
+ 1663              		.global	TIM_OC3PolarityConfig
+ 1664              		.syntax unified
+ 1665              		.thumb
+ 1666              		.thumb_func
+ 1668              	TIM_OC3PolarityConfig:
+ 1669              		@ args = 0, pretend = 0, frame = 0
+ 1670              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1671              		@ link register save eliminated.
+ 1672 0000 038C     		ldrh	r3, [r0, #32]
+ 1673 0002 23F40073 		bic	r3, r3, #512
+ 1674 0006 1B04     		lsls	r3, r3, #16
+ 1675 0008 1B0C     		lsrs	r3, r3, #16
+ 1676 000a 43EA0123 		orr	r3, r3, r1, lsl #8
+ 1677 000e 9BB2     		uxth	r3, r3
+ 1678 0010 0384     		strh	r3, [r0, #32]	@ movhi
+ 1679 0012 7047     		bx	lr
+ 1681              		.section	.text.TIM_OC3NPolarityConfig,"ax",%progbits
+ 1682              		.align	1
+ 1683              		.global	TIM_OC3NPolarityConfig
+ 1684              		.syntax unified
+ 1685              		.thumb
+ 1686              		.thumb_func
+ 1688              	TIM_OC3NPolarityConfig:
+ 1689              		@ args = 0, pretend = 0, frame = 0
+ 1690              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1691              		@ link register save eliminated.
+ 1692 0000 038C     		ldrh	r3, [r0, #32]
+ 1693 0002 23F40063 		bic	r3, r3, #2048
+ 1694 0006 1B04     		lsls	r3, r3, #16
+ 1695 0008 1B0C     		lsrs	r3, r3, #16
+ 1696 000a 43EA0123 		orr	r3, r3, r1, lsl #8
+ 1697 000e 9BB2     		uxth	r3, r3
+ 1698 0010 0384     		strh	r3, [r0, #32]	@ movhi
+ 1699 0012 7047     		bx	lr
+ 1701              		.section	.text.TIM_OC4PolarityConfig,"ax",%progbits
+ 1702              		.align	1
+ 1703              		.global	TIM_OC4PolarityConfig
+ 1704              		.syntax unified
+ 1705              		.thumb
+ 1706              		.thumb_func
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 29
+
+
+ 1708              	TIM_OC4PolarityConfig:
+ 1709              		@ args = 0, pretend = 0, frame = 0
+ 1710              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1711              		@ link register save eliminated.
+ 1712 0000 038C     		ldrh	r3, [r0, #32]
+ 1713 0002 23F40053 		bic	r3, r3, #8192
+ 1714 0006 1B04     		lsls	r3, r3, #16
+ 1715 0008 1B0C     		lsrs	r3, r3, #16
+ 1716 000a 43EA0133 		orr	r3, r3, r1, lsl #12
+ 1717 000e 9BB2     		uxth	r3, r3
+ 1718 0010 0384     		strh	r3, [r0, #32]	@ movhi
+ 1719 0012 7047     		bx	lr
+ 1721              		.section	.text.TIM_CCxCmd,"ax",%progbits
+ 1722              		.align	1
+ 1723              		.global	TIM_CCxCmd
+ 1724              		.syntax unified
+ 1725              		.thumb
+ 1726              		.thumb_func
+ 1728              	TIM_CCxCmd:
+ 1729              		@ args = 0, pretend = 0, frame = 0
+ 1730              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1731              		@ link register save eliminated.
+ 1732 0000 038C     		ldrh	r3, [r0, #32]
+ 1733 0002 9BB2     		uxth	r3, r3
+ 1734 0004 4FF0010C 		mov	ip, #1
+ 1735 0008 0CFA01FC 		lsl	ip, ip, r1
+ 1736 000c 23EA0C03 		bic	r3, r3, ip
+ 1737 0010 0384     		strh	r3, [r0, #32]	@ movhi
+ 1738 0012 038C     		ldrh	r3, [r0, #32]
+ 1739 0014 8A40     		lsls	r2, r2, r1
+ 1740 0016 1A43     		orrs	r2, r2, r3
+ 1741 0018 92B2     		uxth	r2, r2
+ 1742 001a 0284     		strh	r2, [r0, #32]	@ movhi
+ 1743 001c 7047     		bx	lr
+ 1745              		.section	.text.TIM_CCxNCmd,"ax",%progbits
+ 1746              		.align	1
+ 1747              		.global	TIM_CCxNCmd
+ 1748              		.syntax unified
+ 1749              		.thumb
+ 1750              		.thumb_func
+ 1752              	TIM_CCxNCmd:
+ 1753              		@ args = 0, pretend = 0, frame = 0
+ 1754              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1755              		@ link register save eliminated.
+ 1756 0000 038C     		ldrh	r3, [r0, #32]
+ 1757 0002 9BB2     		uxth	r3, r3
+ 1758 0004 4FF0040C 		mov	ip, #4
+ 1759 0008 0CFA01FC 		lsl	ip, ip, r1
+ 1760 000c 23EA0C03 		bic	r3, r3, ip
+ 1761 0010 0384     		strh	r3, [r0, #32]	@ movhi
+ 1762 0012 038C     		ldrh	r3, [r0, #32]
+ 1763 0014 8A40     		lsls	r2, r2, r1
+ 1764 0016 1A43     		orrs	r2, r2, r3
+ 1765 0018 92B2     		uxth	r2, r2
+ 1766 001a 0284     		strh	r2, [r0, #32]	@ movhi
+ 1767 001c 7047     		bx	lr
+ 1769              		.section	.text.TIM_SelectOCxM,"ax",%progbits
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 30
+
+
+ 1770              		.align	1
+ 1771              		.global	TIM_SelectOCxM
+ 1772              		.syntax unified
+ 1773              		.thumb
+ 1774              		.thumb_func
+ 1776              	TIM_SelectOCxM:
+ 1777              		@ args = 0, pretend = 0, frame = 0
+ 1778              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1779 0000 00B5     		push	{lr}
+ 1780 0002 00F1180E 		add	lr, r0, #24
+ 1781 0006 038C     		ldrh	r3, [r0, #32]
+ 1782 0008 9BB2     		uxth	r3, r3
+ 1783 000a 4FF0010C 		mov	ip, #1
+ 1784 000e 0CFA01FC 		lsl	ip, ip, r1
+ 1785 0012 23EA0C03 		bic	r3, r3, ip
+ 1786 0016 0384     		strh	r3, [r0, #32]	@ movhi
+ 1787 0018 31F00803 		bics	r3, r1, #8
+ 1788 001c 0DD1     		bne	.L165
+ 1789 001e 4908     		lsrs	r1, r1, #1
+ 1790 0020 51F80E30 		ldr	r3, [r1, lr]
+ 1791 0024 23F07003 		bic	r3, r3, #112
+ 1792 0028 41F80E30 		str	r3, [r1, lr]
+ 1793 002c 51F80E30 		ldr	r3, [r1, lr]
+ 1794 0030 1343     		orrs	r3, r3, r2
+ 1795 0032 41F80E30 		str	r3, [r1, lr]
+ 1796              	.L164:
+ 1797 0036 5DF804FB 		ldr	pc, [sp], #4
+ 1798              	.L165:
+ 1799 003a 0439     		subs	r1, r1, #4
+ 1800 003c C1F34E01 		ubfx	r1, r1, #1, #15
+ 1801 0040 51F80E30 		ldr	r3, [r1, lr]
+ 1802 0044 23F4E043 		bic	r3, r3, #28672
+ 1803 0048 41F80E30 		str	r3, [r1, lr]
+ 1804 004c 51F80E30 		ldr	r3, [r1, lr]
+ 1805 0050 1202     		lsls	r2, r2, #8
+ 1806 0052 92B2     		uxth	r2, r2
+ 1807 0054 1A43     		orrs	r2, r2, r3
+ 1808 0056 41F80E20 		str	r2, [r1, lr]
+ 1809 005a ECE7     		b	.L164
+ 1811              		.section	.text.TIM_UpdateDisableConfig,"ax",%progbits
+ 1812              		.align	1
+ 1813              		.global	TIM_UpdateDisableConfig
+ 1814              		.syntax unified
+ 1815              		.thumb
+ 1816              		.thumb_func
+ 1818              	TIM_UpdateDisableConfig:
+ 1819              		@ args = 0, pretend = 0, frame = 0
+ 1820              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1821              		@ link register save eliminated.
+ 1822 0000 29B1     		cbz	r1, .L169
+ 1823 0002 0388     		ldrh	r3, [r0]
+ 1824 0004 9BB2     		uxth	r3, r3
+ 1825 0006 43F00203 		orr	r3, r3, #2
+ 1826 000a 0380     		strh	r3, [r0]	@ movhi
+ 1827 000c 7047     		bx	lr
+ 1828              	.L169:
+ 1829 000e 0388     		ldrh	r3, [r0]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 31
+
+
+ 1830 0010 23F00203 		bic	r3, r3, #2
+ 1831 0014 1B04     		lsls	r3, r3, #16
+ 1832 0016 1B0C     		lsrs	r3, r3, #16
+ 1833 0018 0380     		strh	r3, [r0]	@ movhi
+ 1834 001a 7047     		bx	lr
+ 1836              		.section	.text.TIM_UpdateRequestConfig,"ax",%progbits
+ 1837              		.align	1
+ 1838              		.global	TIM_UpdateRequestConfig
+ 1839              		.syntax unified
+ 1840              		.thumb
+ 1841              		.thumb_func
+ 1843              	TIM_UpdateRequestConfig:
+ 1844              		@ args = 0, pretend = 0, frame = 0
+ 1845              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1846              		@ link register save eliminated.
+ 1847 0000 29B1     		cbz	r1, .L172
+ 1848 0002 0388     		ldrh	r3, [r0]
+ 1849 0004 9BB2     		uxth	r3, r3
+ 1850 0006 43F00403 		orr	r3, r3, #4
+ 1851 000a 0380     		strh	r3, [r0]	@ movhi
+ 1852 000c 7047     		bx	lr
+ 1853              	.L172:
+ 1854 000e 0388     		ldrh	r3, [r0]
+ 1855 0010 23F00403 		bic	r3, r3, #4
+ 1856 0014 1B04     		lsls	r3, r3, #16
+ 1857 0016 1B0C     		lsrs	r3, r3, #16
+ 1858 0018 0380     		strh	r3, [r0]	@ movhi
+ 1859 001a 7047     		bx	lr
+ 1861              		.section	.text.TIM_SelectHallSensor,"ax",%progbits
+ 1862              		.align	1
+ 1863              		.global	TIM_SelectHallSensor
+ 1864              		.syntax unified
+ 1865              		.thumb
+ 1866              		.thumb_func
+ 1868              	TIM_SelectHallSensor:
+ 1869              		@ args = 0, pretend = 0, frame = 0
+ 1870              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1871              		@ link register save eliminated.
+ 1872 0000 29B1     		cbz	r1, .L175
+ 1873 0002 8388     		ldrh	r3, [r0, #4]
+ 1874 0004 9BB2     		uxth	r3, r3
+ 1875 0006 43F08003 		orr	r3, r3, #128
+ 1876 000a 8380     		strh	r3, [r0, #4]	@ movhi
+ 1877 000c 7047     		bx	lr
+ 1878              	.L175:
+ 1879 000e 8388     		ldrh	r3, [r0, #4]
+ 1880 0010 23F08003 		bic	r3, r3, #128
+ 1881 0014 1B04     		lsls	r3, r3, #16
+ 1882 0016 1B0C     		lsrs	r3, r3, #16
+ 1883 0018 8380     		strh	r3, [r0, #4]	@ movhi
+ 1884 001a 7047     		bx	lr
+ 1886              		.section	.text.TIM_SelectOnePulseMode,"ax",%progbits
+ 1887              		.align	1
+ 1888              		.global	TIM_SelectOnePulseMode
+ 1889              		.syntax unified
+ 1890              		.thumb
+ 1891              		.thumb_func
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 32
+
+
+ 1893              	TIM_SelectOnePulseMode:
+ 1894              		@ args = 0, pretend = 0, frame = 0
+ 1895              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1896              		@ link register save eliminated.
+ 1897 0000 0388     		ldrh	r3, [r0]
+ 1898 0002 23F00803 		bic	r3, r3, #8
+ 1899 0006 1B04     		lsls	r3, r3, #16
+ 1900 0008 1B0C     		lsrs	r3, r3, #16
+ 1901 000a 0380     		strh	r3, [r0]	@ movhi
+ 1902 000c 0388     		ldrh	r3, [r0]
+ 1903 000e 9BB2     		uxth	r3, r3
+ 1904 0010 0B43     		orrs	r3, r3, r1
+ 1905 0012 0380     		strh	r3, [r0]	@ movhi
+ 1906 0014 7047     		bx	lr
+ 1908              		.section	.text.TIM_SelectOutputTrigger,"ax",%progbits
+ 1909              		.align	1
+ 1910              		.global	TIM_SelectOutputTrigger
+ 1911              		.syntax unified
+ 1912              		.thumb
+ 1913              		.thumb_func
+ 1915              	TIM_SelectOutputTrigger:
+ 1916              		@ args = 0, pretend = 0, frame = 0
+ 1917              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1918              		@ link register save eliminated.
+ 1919 0000 8388     		ldrh	r3, [r0, #4]
+ 1920 0002 23F07003 		bic	r3, r3, #112
+ 1921 0006 1B04     		lsls	r3, r3, #16
+ 1922 0008 1B0C     		lsrs	r3, r3, #16
+ 1923 000a 8380     		strh	r3, [r0, #4]	@ movhi
+ 1924 000c 8388     		ldrh	r3, [r0, #4]
+ 1925 000e 9BB2     		uxth	r3, r3
+ 1926 0010 0B43     		orrs	r3, r3, r1
+ 1927 0012 8380     		strh	r3, [r0, #4]	@ movhi
+ 1928 0014 7047     		bx	lr
+ 1930              		.section	.text.TIM_SelectSlaveMode,"ax",%progbits
+ 1931              		.align	1
+ 1932              		.global	TIM_SelectSlaveMode
+ 1933              		.syntax unified
+ 1934              		.thumb
+ 1935              		.thumb_func
+ 1937              	TIM_SelectSlaveMode:
+ 1938              		@ args = 0, pretend = 0, frame = 0
+ 1939              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1940              		@ link register save eliminated.
+ 1941 0000 0389     		ldrh	r3, [r0, #8]
+ 1942 0002 23F00703 		bic	r3, r3, #7
+ 1943 0006 1B04     		lsls	r3, r3, #16
+ 1944 0008 1B0C     		lsrs	r3, r3, #16
+ 1945 000a 0381     		strh	r3, [r0, #8]	@ movhi
+ 1946 000c 0389     		ldrh	r3, [r0, #8]
+ 1947 000e 9BB2     		uxth	r3, r3
+ 1948 0010 0B43     		orrs	r3, r3, r1
+ 1949 0012 0381     		strh	r3, [r0, #8]	@ movhi
+ 1950 0014 7047     		bx	lr
+ 1952              		.section	.text.TIM_SelectMasterSlaveMode,"ax",%progbits
+ 1953              		.align	1
+ 1954              		.global	TIM_SelectMasterSlaveMode
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 33
+
+
+ 1955              		.syntax unified
+ 1956              		.thumb
+ 1957              		.thumb_func
+ 1959              	TIM_SelectMasterSlaveMode:
+ 1960              		@ args = 0, pretend = 0, frame = 0
+ 1961              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1962              		@ link register save eliminated.
+ 1963 0000 0389     		ldrh	r3, [r0, #8]
+ 1964 0002 23F08003 		bic	r3, r3, #128
+ 1965 0006 1B04     		lsls	r3, r3, #16
+ 1966 0008 1B0C     		lsrs	r3, r3, #16
+ 1967 000a 0381     		strh	r3, [r0, #8]	@ movhi
+ 1968 000c 0389     		ldrh	r3, [r0, #8]
+ 1969 000e 9BB2     		uxth	r3, r3
+ 1970 0010 0B43     		orrs	r3, r3, r1
+ 1971 0012 0381     		strh	r3, [r0, #8]	@ movhi
+ 1972 0014 7047     		bx	lr
+ 1974              		.section	.text.TIM_SetCounter,"ax",%progbits
+ 1975              		.align	1
+ 1976              		.global	TIM_SetCounter
+ 1977              		.syntax unified
+ 1978              		.thumb
+ 1979              		.thumb_func
+ 1981              	TIM_SetCounter:
+ 1982              		@ args = 0, pretend = 0, frame = 0
+ 1983              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1984              		@ link register save eliminated.
+ 1985 0000 8184     		strh	r1, [r0, #36]	@ movhi
+ 1986 0002 7047     		bx	lr
+ 1988              		.section	.text.TIM_SetAutoreload,"ax",%progbits
+ 1989              		.align	1
+ 1990              		.global	TIM_SetAutoreload
+ 1991              		.syntax unified
+ 1992              		.thumb
+ 1993              		.thumb_func
+ 1995              	TIM_SetAutoreload:
+ 1996              		@ args = 0, pretend = 0, frame = 0
+ 1997              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1998              		@ link register save eliminated.
+ 1999 0000 8185     		strh	r1, [r0, #44]	@ movhi
+ 2000 0002 7047     		bx	lr
+ 2002              		.section	.text.TIM_SetCompare1,"ax",%progbits
+ 2003              		.align	1
+ 2004              		.global	TIM_SetCompare1
+ 2005              		.syntax unified
+ 2006              		.thumb
+ 2007              		.thumb_func
+ 2009              	TIM_SetCompare1:
+ 2010              		@ args = 0, pretend = 0, frame = 0
+ 2011              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2012              		@ link register save eliminated.
+ 2013 0000 8186     		strh	r1, [r0, #52]	@ movhi
+ 2014 0002 7047     		bx	lr
+ 2016              		.section	.text.TIM_SetCompare2,"ax",%progbits
+ 2017              		.align	1
+ 2018              		.global	TIM_SetCompare2
+ 2019              		.syntax unified
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 34
+
+
+ 2020              		.thumb
+ 2021              		.thumb_func
+ 2023              	TIM_SetCompare2:
+ 2024              		@ args = 0, pretend = 0, frame = 0
+ 2025              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2026              		@ link register save eliminated.
+ 2027 0000 0187     		strh	r1, [r0, #56]	@ movhi
+ 2028 0002 7047     		bx	lr
+ 2030              		.section	.text.TIM_SetCompare3,"ax",%progbits
+ 2031              		.align	1
+ 2032              		.global	TIM_SetCompare3
+ 2033              		.syntax unified
+ 2034              		.thumb
+ 2035              		.thumb_func
+ 2037              	TIM_SetCompare3:
+ 2038              		@ args = 0, pretend = 0, frame = 0
+ 2039              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2040              		@ link register save eliminated.
+ 2041 0000 8187     		strh	r1, [r0, #60]	@ movhi
+ 2042 0002 7047     		bx	lr
+ 2044              		.section	.text.TIM_SetCompare4,"ax",%progbits
+ 2045              		.align	1
+ 2046              		.global	TIM_SetCompare4
+ 2047              		.syntax unified
+ 2048              		.thumb
+ 2049              		.thumb_func
+ 2051              	TIM_SetCompare4:
+ 2052              		@ args = 0, pretend = 0, frame = 0
+ 2053              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2054              		@ link register save eliminated.
+ 2055 0000 A0F84010 		strh	r1, [r0, #64]	@ movhi
+ 2056 0004 7047     		bx	lr
+ 2058              		.section	.text.TIM_SetIC1Prescaler,"ax",%progbits
+ 2059              		.align	1
+ 2060              		.global	TIM_SetIC1Prescaler
+ 2061              		.syntax unified
+ 2062              		.thumb
+ 2063              		.thumb_func
+ 2065              	TIM_SetIC1Prescaler:
+ 2066              		@ args = 0, pretend = 0, frame = 0
+ 2067              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2068              		@ link register save eliminated.
+ 2069 0000 038B     		ldrh	r3, [r0, #24]
+ 2070 0002 23F00C03 		bic	r3, r3, #12
+ 2071 0006 1B04     		lsls	r3, r3, #16
+ 2072 0008 1B0C     		lsrs	r3, r3, #16
+ 2073 000a 0383     		strh	r3, [r0, #24]	@ movhi
+ 2074 000c 038B     		ldrh	r3, [r0, #24]
+ 2075 000e 9BB2     		uxth	r3, r3
+ 2076 0010 0B43     		orrs	r3, r3, r1
+ 2077 0012 0383     		strh	r3, [r0, #24]	@ movhi
+ 2078 0014 7047     		bx	lr
+ 2080              		.section	.text.TIM_SetIC2Prescaler,"ax",%progbits
+ 2081              		.align	1
+ 2082              		.global	TIM_SetIC2Prescaler
+ 2083              		.syntax unified
+ 2084              		.thumb
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 35
+
+
+ 2085              		.thumb_func
+ 2087              	TIM_SetIC2Prescaler:
+ 2088              		@ args = 0, pretend = 0, frame = 0
+ 2089              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2090              		@ link register save eliminated.
+ 2091 0000 038B     		ldrh	r3, [r0, #24]
+ 2092 0002 23F44063 		bic	r3, r3, #3072
+ 2093 0006 1B04     		lsls	r3, r3, #16
+ 2094 0008 1B0C     		lsrs	r3, r3, #16
+ 2095 000a 0383     		strh	r3, [r0, #24]	@ movhi
+ 2096 000c 038B     		ldrh	r3, [r0, #24]
+ 2097 000e 9BB2     		uxth	r3, r3
+ 2098 0010 43EA0123 		orr	r3, r3, r1, lsl #8
+ 2099 0014 9BB2     		uxth	r3, r3
+ 2100 0016 0383     		strh	r3, [r0, #24]	@ movhi
+ 2101 0018 7047     		bx	lr
+ 2103              		.section	.text.TIM_PWMIConfig,"ax",%progbits
+ 2104              		.align	1
+ 2105              		.global	TIM_PWMIConfig
+ 2106              		.syntax unified
+ 2107              		.thumb
+ 2108              		.thumb_func
+ 2110              	TIM_PWMIConfig:
+ 2111              		@ args = 0, pretend = 0, frame = 0
+ 2112              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2113 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 2114 0002 0546     		mov	r5, r0
+ 2115 0004 0C46     		mov	r4, r1
+ 2116 0006 4988     		ldrh	r1, [r1, #2]
+ 2117 0008 B1FA81F3 		clz	r3, r1
+ 2118 000c 5B09     		lsrs	r3, r3, #5
+ 2119 000e 5E00     		lsls	r6, r3, #1
+ 2120 0010 A288     		ldrh	r2, [r4, #4]
+ 2121 0012 012A     		cmp	r2, #1
+ 2122 0014 14BF     		ite	ne
+ 2123 0016 0127     		movne	r7, #1
+ 2124 0018 0227     		moveq	r7, #2
+ 2125 001a 2388     		ldrh	r3, [r4]
+ 2126 001c 8BB9     		cbnz	r3, .L191
+ 2127 001e 2389     		ldrh	r3, [r4, #8]
+ 2128 0020 FFF7FEFF 		bl	TI1_Config
+ 2129 0024 E188     		ldrh	r1, [r4, #6]
+ 2130 0026 2846     		mov	r0, r5
+ 2131 0028 FFF7FEFF 		bl	TIM_SetIC1Prescaler
+ 2132 002c 2389     		ldrh	r3, [r4, #8]
+ 2133 002e 3A46     		mov	r2, r7
+ 2134 0030 3146     		mov	r1, r6
+ 2135 0032 2846     		mov	r0, r5
+ 2136 0034 FFF7FEFF 		bl	TI2_Config
+ 2137 0038 E188     		ldrh	r1, [r4, #6]
+ 2138 003a 2846     		mov	r0, r5
+ 2139 003c FFF7FEFF 		bl	TIM_SetIC2Prescaler
+ 2140              	.L189:
+ 2141 0040 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 2142              	.L191:
+ 2143 0042 2389     		ldrh	r3, [r4, #8]
+ 2144 0044 FFF7FEFF 		bl	TI2_Config
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 36
+
+
+ 2145 0048 E188     		ldrh	r1, [r4, #6]
+ 2146 004a 2846     		mov	r0, r5
+ 2147 004c FFF7FEFF 		bl	TIM_SetIC2Prescaler
+ 2148 0050 2389     		ldrh	r3, [r4, #8]
+ 2149 0052 3A46     		mov	r2, r7
+ 2150 0054 3146     		mov	r1, r6
+ 2151 0056 2846     		mov	r0, r5
+ 2152 0058 FFF7FEFF 		bl	TI1_Config
+ 2153 005c E188     		ldrh	r1, [r4, #6]
+ 2154 005e 2846     		mov	r0, r5
+ 2155 0060 FFF7FEFF 		bl	TIM_SetIC1Prescaler
+ 2156 0064 ECE7     		b	.L189
+ 2158              		.section	.text.TIM_SetIC3Prescaler,"ax",%progbits
+ 2159              		.align	1
+ 2160              		.global	TIM_SetIC3Prescaler
+ 2161              		.syntax unified
+ 2162              		.thumb
+ 2163              		.thumb_func
+ 2165              	TIM_SetIC3Prescaler:
+ 2166              		@ args = 0, pretend = 0, frame = 0
+ 2167              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2168              		@ link register save eliminated.
+ 2169 0000 838B     		ldrh	r3, [r0, #28]
+ 2170 0002 23F00C03 		bic	r3, r3, #12
+ 2171 0006 1B04     		lsls	r3, r3, #16
+ 2172 0008 1B0C     		lsrs	r3, r3, #16
+ 2173 000a 8383     		strh	r3, [r0, #28]	@ movhi
+ 2174 000c 838B     		ldrh	r3, [r0, #28]
+ 2175 000e 9BB2     		uxth	r3, r3
+ 2176 0010 0B43     		orrs	r3, r3, r1
+ 2177 0012 8383     		strh	r3, [r0, #28]	@ movhi
+ 2178 0014 7047     		bx	lr
+ 2180              		.section	.text.TIM_SetIC4Prescaler,"ax",%progbits
+ 2181              		.align	1
+ 2182              		.global	TIM_SetIC4Prescaler
+ 2183              		.syntax unified
+ 2184              		.thumb
+ 2185              		.thumb_func
+ 2187              	TIM_SetIC4Prescaler:
+ 2188              		@ args = 0, pretend = 0, frame = 0
+ 2189              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2190              		@ link register save eliminated.
+ 2191 0000 838B     		ldrh	r3, [r0, #28]
+ 2192 0002 23F44063 		bic	r3, r3, #3072
+ 2193 0006 1B04     		lsls	r3, r3, #16
+ 2194 0008 1B0C     		lsrs	r3, r3, #16
+ 2195 000a 8383     		strh	r3, [r0, #28]	@ movhi
+ 2196 000c 838B     		ldrh	r3, [r0, #28]
+ 2197 000e 9BB2     		uxth	r3, r3
+ 2198 0010 43EA0123 		orr	r3, r3, r1, lsl #8
+ 2199 0014 9BB2     		uxth	r3, r3
+ 2200 0016 8383     		strh	r3, [r0, #28]	@ movhi
+ 2201 0018 7047     		bx	lr
+ 2203              		.section	.text.TIM_ICInit,"ax",%progbits
+ 2204              		.align	1
+ 2205              		.global	TIM_ICInit
+ 2206              		.syntax unified
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 37
+
+
+ 2207              		.thumb
+ 2208              		.thumb_func
+ 2210              	TIM_ICInit:
+ 2211              		@ args = 0, pretend = 0, frame = 0
+ 2212              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2213 0000 70B5     		push	{r4, r5, r6, lr}
+ 2214 0002 0446     		mov	r4, r0
+ 2215 0004 0D46     		mov	r5, r1
+ 2216 0006 0B88     		ldrh	r3, [r1]
+ 2217 0008 002B     		cmp	r3, #0
+ 2218 000a 3AD0     		beq	.L209
+ 2219 000c 042B     		cmp	r3, #4
+ 2220 000e 42D0     		beq	.L210
+ 2221 0010 082B     		cmp	r3, #8
+ 2222 0012 4AD0     		beq	.L211
+ 2223 0014 4888     		ldrh	r0, [r1, #2]
+ 2224 0016 B1F804C0 		ldrh	ip, [r1, #4]
+ 2225 001a 0A89     		ldrh	r2, [r1, #8]
+ 2226 001c 238C     		ldrh	r3, [r4, #32]
+ 2227 001e 23F48053 		bic	r3, r3, #4096
+ 2228 0022 1B04     		lsls	r3, r3, #16
+ 2229 0024 1B0C     		lsrs	r3, r3, #16
+ 2230 0026 2384     		strh	r3, [r4, #32]	@ movhi
+ 2231 0028 A38B     		ldrh	r3, [r4, #28]
+ 2232 002a 218C     		ldrh	r1, [r4, #32]
+ 2233 002c 8EB2     		uxth	r6, r1
+ 2234 002e 4FEA003E 		lsl	lr, r0, #12
+ 2235 0032 1FFA8EFE 		uxth	lr, lr
+ 2236 0036 23F44073 		bic	r3, r3, #768
+ 2237 003a 1B05     		lsls	r3, r3, #20
+ 2238 003c 1B0D     		lsrs	r3, r3, #20
+ 2239 003e 1203     		lsls	r2, r2, #12
+ 2240 0040 42EA0C22 		orr	r2, r2, ip, lsl #8
+ 2241 0044 1343     		orrs	r3, r3, r2
+ 2242 0046 9BB2     		uxth	r3, r3
+ 2243 0048 3D49     		ldr	r1, .L212
+ 2244 004a 8C42     		cmp	r4, r1
+ 2245 004c 6BD0     		beq	.L205
+ 2246 004e 3D4A     		ldr	r2, .L212+4
+ 2247 0050 9442     		cmp	r4, r2
+ 2248 0052 68D0     		beq	.L205
+ 2249 0054 B4F1804F 		cmp	r4, #1073741824
+ 2250 0058 65D0     		beq	.L205
+ 2251 005a A2F59832 		sub	r2, r2, #77824
+ 2252 005e 9442     		cmp	r4, r2
+ 2253 0060 61D0     		beq	.L205
+ 2254 0062 02F58062 		add	r2, r2, #1024
+ 2255 0066 9442     		cmp	r4, r2
+ 2256 0068 5DD0     		beq	.L205
+ 2257 006a 02F58062 		add	r2, r2, #1024
+ 2258 006e 9442     		cmp	r4, r2
+ 2259 0070 59D0     		beq	.L205
+ 2260 0072 47F6FF51 		movw	r1, #32255
+ 2261 0076 3140     		ands	r1, r1, r6
+ 2262 0078 40EA0102 		orr	r2, r0, r1
+ 2263 007c 42F48052 		orr	r2, r2, #4096
+ 2264 0080 57E0     		b	.L207
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 38
+
+
+ 2265              	.L209:
+ 2266 0082 0B89     		ldrh	r3, [r1, #8]
+ 2267 0084 8A88     		ldrh	r2, [r1, #4]
+ 2268 0086 4988     		ldrh	r1, [r1, #2]
+ 2269 0088 FFF7FEFF 		bl	TI1_Config
+ 2270 008c E988     		ldrh	r1, [r5, #6]
+ 2271 008e 2046     		mov	r0, r4
+ 2272 0090 FFF7FEFF 		bl	TIM_SetIC1Prescaler
+ 2273 0094 53E0     		b	.L197
+ 2274              	.L210:
+ 2275 0096 0B89     		ldrh	r3, [r1, #8]
+ 2276 0098 8A88     		ldrh	r2, [r1, #4]
+ 2277 009a 4988     		ldrh	r1, [r1, #2]
+ 2278 009c FFF7FEFF 		bl	TI2_Config
+ 2279 00a0 E988     		ldrh	r1, [r5, #6]
+ 2280 00a2 2046     		mov	r0, r4
+ 2281 00a4 FFF7FEFF 		bl	TIM_SetIC2Prescaler
+ 2282 00a8 49E0     		b	.L197
+ 2283              	.L211:
+ 2284 00aa 4888     		ldrh	r0, [r1, #2]
+ 2285 00ac 8B88     		ldrh	r3, [r1, #4]
+ 2286 00ae B1F808C0 		ldrh	ip, [r1, #8]
+ 2287 00b2 228C     		ldrh	r2, [r4, #32]
+ 2288 00b4 22F48072 		bic	r2, r2, #256
+ 2289 00b8 1204     		lsls	r2, r2, #16
+ 2290 00ba 120C     		lsrs	r2, r2, #16
+ 2291 00bc 2284     		strh	r2, [r4, #32]	@ movhi
+ 2292 00be A18B     		ldrh	r1, [r4, #28]
+ 2293 00c0 89B2     		uxth	r1, r1
+ 2294 00c2 228C     		ldrh	r2, [r4, #32]
+ 2295 00c4 92B2     		uxth	r2, r2
+ 2296 00c6 0602     		lsls	r6, r0, #8
+ 2297 00c8 B6B2     		uxth	r6, r6
+ 2298 00ca 21F0F301 		bic	r1, r1, #243
+ 2299 00ce 0B43     		orrs	r3, r3, r1
+ 2300 00d0 43EA0C13 		orr	r3, r3, ip, lsl #4
+ 2301 00d4 9BB2     		uxth	r3, r3
+ 2302 00d6 1A49     		ldr	r1, .L212
+ 2303 00d8 8C42     		cmp	r4, r1
+ 2304 00da 18D0     		beq	.L202
+ 2305 00dc 01F50061 		add	r1, r1, #2048
+ 2306 00e0 8C42     		cmp	r4, r1
+ 2307 00e2 14D0     		beq	.L202
+ 2308 00e4 B4F1804F 		cmp	r4, #1073741824
+ 2309 00e8 11D0     		beq	.L202
+ 2310 00ea A1F59831 		sub	r1, r1, #77824
+ 2311 00ee 8C42     		cmp	r4, r1
+ 2312 00f0 0DD0     		beq	.L202
+ 2313 00f2 01F58061 		add	r1, r1, #1024
+ 2314 00f6 8C42     		cmp	r4, r1
+ 2315 00f8 09D0     		beq	.L202
+ 2316 00fa 01F58061 		add	r1, r1, #1024
+ 2317 00fe 8C42     		cmp	r4, r1
+ 2318 0100 05D0     		beq	.L202
+ 2319 0102 22F42062 		bic	r2, r2, #2560
+ 2320 0106 0243     		orrs	r2, r2, r0
+ 2321 0108 42F48072 		orr	r2, r2, #256
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 39
+
+
+ 2322 010c 04E0     		b	.L204
+ 2323              	.L202:
+ 2324 010e 22F40072 		bic	r2, r2, #512
+ 2325 0112 3243     		orrs	r2, r2, r6
+ 2326 0114 42F48072 		orr	r2, r2, #256
+ 2327              	.L204:
+ 2328 0118 A383     		strh	r3, [r4, #28]	@ movhi
+ 2329 011a 2284     		strh	r2, [r4, #32]	@ movhi
+ 2330 011c E988     		ldrh	r1, [r5, #6]
+ 2331 011e 2046     		mov	r0, r4
+ 2332 0120 FFF7FEFF 		bl	TIM_SetIC3Prescaler
+ 2333 0124 0BE0     		b	.L197
+ 2334              	.L205:
+ 2335 0126 26F40051 		bic	r1, r6, #8192
+ 2336 012a 4EEA0102 		orr	r2, lr, r1
+ 2337 012e 42F48052 		orr	r2, r2, #4096
+ 2338              	.L207:
+ 2339 0132 A383     		strh	r3, [r4, #28]	@ movhi
+ 2340 0134 2284     		strh	r2, [r4, #32]	@ movhi
+ 2341 0136 E988     		ldrh	r1, [r5, #6]
+ 2342 0138 2046     		mov	r0, r4
+ 2343 013a FFF7FEFF 		bl	TIM_SetIC4Prescaler
+ 2344              	.L197:
+ 2345 013e 70BD     		pop	{r4, r5, r6, pc}
+ 2346              	.L213:
+ 2347              		.align	2
+ 2348              	.L212:
+ 2349 0140 002C0140 		.word	1073818624
+ 2350 0144 00340140 		.word	1073820672
+ 2352              		.section	.text.TIM_SetClockDivision,"ax",%progbits
+ 2353              		.align	1
+ 2354              		.global	TIM_SetClockDivision
+ 2355              		.syntax unified
+ 2356              		.thumb
+ 2357              		.thumb_func
+ 2359              	TIM_SetClockDivision:
+ 2360              		@ args = 0, pretend = 0, frame = 0
+ 2361              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2362              		@ link register save eliminated.
+ 2363 0000 0388     		ldrh	r3, [r0]
+ 2364 0002 23F44073 		bic	r3, r3, #768
+ 2365 0006 1B04     		lsls	r3, r3, #16
+ 2366 0008 1B0C     		lsrs	r3, r3, #16
+ 2367 000a 0380     		strh	r3, [r0]	@ movhi
+ 2368 000c 0388     		ldrh	r3, [r0]
+ 2369 000e 9BB2     		uxth	r3, r3
+ 2370 0010 0B43     		orrs	r3, r3, r1
+ 2371 0012 0380     		strh	r3, [r0]	@ movhi
+ 2372 0014 7047     		bx	lr
+ 2374              		.section	.text.TIM_GetCapture1,"ax",%progbits
+ 2375              		.align	1
+ 2376              		.global	TIM_GetCapture1
+ 2377              		.syntax unified
+ 2378              		.thumb
+ 2379              		.thumb_func
+ 2381              	TIM_GetCapture1:
+ 2382              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 40
+
+
+ 2383              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2384              		@ link register save eliminated.
+ 2385 0000 808E     		ldrh	r0, [r0, #52]
+ 2386 0002 80B2     		uxth	r0, r0
+ 2387 0004 7047     		bx	lr
+ 2389              		.section	.text.TIM_GetCapture2,"ax",%progbits
+ 2390              		.align	1
+ 2391              		.global	TIM_GetCapture2
+ 2392              		.syntax unified
+ 2393              		.thumb
+ 2394              		.thumb_func
+ 2396              	TIM_GetCapture2:
+ 2397              		@ args = 0, pretend = 0, frame = 0
+ 2398              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2399              		@ link register save eliminated.
+ 2400 0000 008F     		ldrh	r0, [r0, #56]
+ 2401 0002 80B2     		uxth	r0, r0
+ 2402 0004 7047     		bx	lr
+ 2404              		.section	.text.TIM_GetCapture3,"ax",%progbits
+ 2405              		.align	1
+ 2406              		.global	TIM_GetCapture3
+ 2407              		.syntax unified
+ 2408              		.thumb
+ 2409              		.thumb_func
+ 2411              	TIM_GetCapture3:
+ 2412              		@ args = 0, pretend = 0, frame = 0
+ 2413              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2414              		@ link register save eliminated.
+ 2415 0000 808F     		ldrh	r0, [r0, #60]
+ 2416 0002 80B2     		uxth	r0, r0
+ 2417 0004 7047     		bx	lr
+ 2419              		.section	.text.TIM_GetCapture4,"ax",%progbits
+ 2420              		.align	1
+ 2421              		.global	TIM_GetCapture4
+ 2422              		.syntax unified
+ 2423              		.thumb
+ 2424              		.thumb_func
+ 2426              	TIM_GetCapture4:
+ 2427              		@ args = 0, pretend = 0, frame = 0
+ 2428              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2429              		@ link register save eliminated.
+ 2430 0000 B0F84000 		ldrh	r0, [r0, #64]
+ 2431 0004 80B2     		uxth	r0, r0
+ 2432 0006 7047     		bx	lr
+ 2434              		.section	.text.TIM_GetCounter,"ax",%progbits
+ 2435              		.align	1
+ 2436              		.global	TIM_GetCounter
+ 2437              		.syntax unified
+ 2438              		.thumb
+ 2439              		.thumb_func
+ 2441              	TIM_GetCounter:
+ 2442              		@ args = 0, pretend = 0, frame = 0
+ 2443              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2444              		@ link register save eliminated.
+ 2445 0000 808C     		ldrh	r0, [r0, #36]
+ 2446 0002 80B2     		uxth	r0, r0
+ 2447 0004 7047     		bx	lr
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 41
+
+
+ 2449              		.section	.text.TIM_GetPrescaler,"ax",%progbits
+ 2450              		.align	1
+ 2451              		.global	TIM_GetPrescaler
+ 2452              		.syntax unified
+ 2453              		.thumb
+ 2454              		.thumb_func
+ 2456              	TIM_GetPrescaler:
+ 2457              		@ args = 0, pretend = 0, frame = 0
+ 2458              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2459              		@ link register save eliminated.
+ 2460 0000 008D     		ldrh	r0, [r0, #40]
+ 2461 0002 80B2     		uxth	r0, r0
+ 2462 0004 7047     		bx	lr
+ 2464              		.section	.text.TIM_GetFlagStatus,"ax",%progbits
+ 2465              		.align	1
+ 2466              		.global	TIM_GetFlagStatus
+ 2467              		.syntax unified
+ 2468              		.thumb
+ 2469              		.thumb_func
+ 2471              	TIM_GetFlagStatus:
+ 2472              		@ args = 0, pretend = 0, frame = 0
+ 2473              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2474              		@ link register save eliminated.
+ 2475 0000 038A     		ldrh	r3, [r0, #16]
+ 2476 0002 01EA0300 		and	r0, r1, r3
+ 2477 0006 0038     		subs	r0, r0, #0
+ 2478 0008 18BF     		it	ne
+ 2479 000a 0120     		movne	r0, #1
+ 2480 000c 7047     		bx	lr
+ 2482              		.section	.text.TIM_ClearFlag,"ax",%progbits
+ 2483              		.align	1
+ 2484              		.global	TIM_ClearFlag
+ 2485              		.syntax unified
+ 2486              		.thumb
+ 2487              		.thumb_func
+ 2489              	TIM_ClearFlag:
+ 2490              		@ args = 0, pretend = 0, frame = 0
+ 2491              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2492              		@ link register save eliminated.
+ 2493 0000 C943     		mvns	r1, r1
+ 2494 0002 89B2     		uxth	r1, r1
+ 2495 0004 0182     		strh	r1, [r0, #16]	@ movhi
+ 2496 0006 7047     		bx	lr
+ 2498              		.section	.text.TIM_GetITStatus,"ax",%progbits
+ 2499              		.align	1
+ 2500              		.global	TIM_GetITStatus
+ 2501              		.syntax unified
+ 2502              		.thumb
+ 2503              		.thumb_func
+ 2505              	TIM_GetITStatus:
+ 2506              		@ args = 0, pretend = 0, frame = 0
+ 2507              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2508              		@ link register save eliminated.
+ 2509 0000 038A     		ldrh	r3, [r0, #16]
+ 2510 0002 8089     		ldrh	r0, [r0, #12]
+ 2511 0004 80B2     		uxth	r0, r0
+ 2512 0006 1942     		tst	r1, r3
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 42
+
+
+ 2513 0008 04D0     		beq	.L225
+ 2514 000a 0840     		ands	r0, r0, r1
+ 2515 000c 0038     		subs	r0, r0, #0
+ 2516 000e 18BF     		it	ne
+ 2517 0010 0120     		movne	r0, #1
+ 2518 0012 7047     		bx	lr
+ 2519              	.L225:
+ 2520 0014 0020     		movs	r0, #0
+ 2521 0016 7047     		bx	lr
+ 2523              		.section	.text.TIM_ClearITPendingBit,"ax",%progbits
+ 2524              		.align	1
+ 2525              		.global	TIM_ClearITPendingBit
+ 2526              		.syntax unified
+ 2527              		.thumb
+ 2528              		.thumb_func
+ 2530              	TIM_ClearITPendingBit:
+ 2531              		@ args = 0, pretend = 0, frame = 0
+ 2532              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2533              		@ link register save eliminated.
+ 2534 0000 C943     		mvns	r1, r1
+ 2535 0002 89B2     		uxth	r1, r1
+ 2536 0004 0182     		strh	r1, [r0, #16]	@ movhi
+ 2537 0006 7047     		bx	lr
+ 2539              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 43
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f10x_tim.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:16     .text.TI1_Config:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:21     .text.TI1_Config:00000000 TI1_Config
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:71     .text.TI1_Config:00000084 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:75     .text.TI2_Config:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:80     .text.TI2_Config:00000000 TI2_Config
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:134    .text.TI2_Config:0000008c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:138    .text.TIM_DeInit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:144    .text.TIM_DeInit:00000000 TIM_DeInit
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:337    .text.TIM_DeInit:000001cc $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:355    .text.TIM_TimeBaseInit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:361    .text.TIM_TimeBaseInit:00000000 TIM_TimeBaseInit
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:447    .text.TIM_TimeBaseInit:000000a8 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:453    .text.TIM_OC1Init:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:459    .text.TIM_OC1Init:00000000 TIM_OC1Init
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:523    .text.TIM_OC1Init:00000098 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:526    .text.TIM_OC2Init:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:532    .text.TIM_OC2Init:00000000 TIM_OC2Init
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:590    .text.TIM_OC2Init:00000090 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:593    .text.TIM_OC3Init:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:599    .text.TIM_OC3Init:00000000 TIM_OC3Init
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:656    .text.TIM_OC3Init:0000008c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:659    .text.TIM_OC4Init:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:665    .text.TIM_OC4Init:00000000 TIM_OC4Init
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:713    .text.TIM_OC4Init:00000070 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:716    .text.TIM_BDTRConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:722    .text.TIM_BDTRConfig:00000000 TIM_BDTRConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:744    .text.TIM_TimeBaseStructInit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:750    .text.TIM_TimeBaseStructInit:00000000 TIM_TimeBaseStructInit
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:764    .text.TIM_OCStructInit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:770    .text.TIM_OCStructInit:00000000 TIM_OCStructInit
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:786    .text.TIM_ICStructInit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:792    .text.TIM_ICStructInit:00000000 TIM_ICStructInit
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:806    .text.TIM_BDTRStructInit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:812    .text.TIM_BDTRStructInit:00000000 TIM_BDTRStructInit
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:827    .text.TIM_Cmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:833    .text.TIM_Cmd:00000000 TIM_Cmd
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:852    .text.TIM_CtrlPWMOutputs:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:858    .text.TIM_CtrlPWMOutputs:00000000 TIM_CtrlPWMOutputs
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:876    .text.TIM_ITConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:882    .text.TIM_ITConfig:00000000 TIM_ITConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:900    .text.TIM_GenerateEvent:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:906    .text.TIM_GenerateEvent:00000000 TIM_GenerateEvent
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:914    .text.TIM_DMAConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:920    .text.TIM_DMAConfig:00000000 TIM_DMAConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:929    .text.TIM_DMACmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:935    .text.TIM_DMACmd:00000000 TIM_DMACmd
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:953    .text.TIM_InternalClockConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:959    .text.TIM_InternalClockConfig:00000000 TIM_InternalClockConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:971    .text.TIM_ITRxExternalClockConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:977    .text.TIM_ITRxExternalClockConfig:00000000 TIM_ITRxExternalClockConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:994    .text.TIM_TIxExternalClockConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1000   .text.TIM_TIxExternalClockConfig:00000000 TIM_TIxExternalClockConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1029   .text.TIM_ETRConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1035   .text.TIM_ETRConfig:00000000 TIM_ETRConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1049   .text.TIM_ETRClockMode1Config:00000000 $t
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 44
+
+
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1055   .text.TIM_ETRClockMode1Config:00000000 TIM_ETRClockMode1Config
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1070   .text.TIM_ETRClockMode2Config:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1076   .text.TIM_ETRClockMode2Config:00000000 TIM_ETRClockMode2Config
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1089   .text.TIM_PrescalerConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1095   .text.TIM_PrescalerConfig:00000000 TIM_PrescalerConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1104   .text.TIM_CounterModeConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1110   .text.TIM_CounterModeConfig:00000000 TIM_CounterModeConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1123   .text.TIM_SelectInputTrigger:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1129   .text.TIM_SelectInputTrigger:00000000 TIM_SelectInputTrigger
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1142   .text.TIM_EncoderInterfaceConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1148   .text.TIM_EncoderInterfaceConfig:00000000 TIM_EncoderInterfaceConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1176   .text.TIM_ForcedOC1Config:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1182   .text.TIM_ForcedOC1Config:00000000 TIM_ForcedOC1Config
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1195   .text.TIM_ForcedOC2Config:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1201   .text.TIM_ForcedOC2Config:00000000 TIM_ForcedOC2Config
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1215   .text.TIM_ForcedOC3Config:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1221   .text.TIM_ForcedOC3Config:00000000 TIM_ForcedOC3Config
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1234   .text.TIM_ForcedOC4Config:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1240   .text.TIM_ForcedOC4Config:00000000 TIM_ForcedOC4Config
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1254   .text.TIM_ARRPreloadConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1260   .text.TIM_ARRPreloadConfig:00000000 TIM_ARRPreloadConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1279   .text.TIM_SelectCOM:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1285   .text.TIM_SelectCOM:00000000 TIM_SelectCOM
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1304   .text.TIM_SelectCCDMA:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1310   .text.TIM_SelectCCDMA:00000000 TIM_SelectCCDMA
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1329   .text.TIM_CCPreloadControl:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1335   .text.TIM_CCPreloadControl:00000000 TIM_CCPreloadControl
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1354   .text.TIM_OC1PreloadConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1360   .text.TIM_OC1PreloadConfig:00000000 TIM_OC1PreloadConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1373   .text.TIM_OC2PreloadConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1379   .text.TIM_OC2PreloadConfig:00000000 TIM_OC2PreloadConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1393   .text.TIM_OC3PreloadConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1399   .text.TIM_OC3PreloadConfig:00000000 TIM_OC3PreloadConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1412   .text.TIM_OC4PreloadConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1418   .text.TIM_OC4PreloadConfig:00000000 TIM_OC4PreloadConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1432   .text.TIM_OC1FastConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1438   .text.TIM_OC1FastConfig:00000000 TIM_OC1FastConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1451   .text.TIM_OC2FastConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1457   .text.TIM_OC2FastConfig:00000000 TIM_OC2FastConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1471   .text.TIM_OC3FastConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1477   .text.TIM_OC3FastConfig:00000000 TIM_OC3FastConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1490   .text.TIM_OC4FastConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1496   .text.TIM_OC4FastConfig:00000000 TIM_OC4FastConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1510   .text.TIM_ClearOC1Ref:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1516   .text.TIM_ClearOC1Ref:00000000 TIM_ClearOC1Ref
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1529   .text.TIM_ClearOC2Ref:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1535   .text.TIM_ClearOC2Ref:00000000 TIM_ClearOC2Ref
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1547   .text.TIM_ClearOC3Ref:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1553   .text.TIM_ClearOC3Ref:00000000 TIM_ClearOC3Ref
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1566   .text.TIM_ClearOC4Ref:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1572   .text.TIM_ClearOC4Ref:00000000 TIM_ClearOC4Ref
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1584   .text.TIM_OC1PolarityConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1590   .text.TIM_OC1PolarityConfig:00000000 TIM_OC1PolarityConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1603   .text.TIM_OC1NPolarityConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1609   .text.TIM_OC1NPolarityConfig:00000000 TIM_OC1NPolarityConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1622   .text.TIM_OC2PolarityConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1628   .text.TIM_OC2PolarityConfig:00000000 TIM_OC2PolarityConfig
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 45
+
+
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1642   .text.TIM_OC2NPolarityConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1648   .text.TIM_OC2NPolarityConfig:00000000 TIM_OC2NPolarityConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1662   .text.TIM_OC3PolarityConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1668   .text.TIM_OC3PolarityConfig:00000000 TIM_OC3PolarityConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1682   .text.TIM_OC3NPolarityConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1688   .text.TIM_OC3NPolarityConfig:00000000 TIM_OC3NPolarityConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1702   .text.TIM_OC4PolarityConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1708   .text.TIM_OC4PolarityConfig:00000000 TIM_OC4PolarityConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1722   .text.TIM_CCxCmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1728   .text.TIM_CCxCmd:00000000 TIM_CCxCmd
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1746   .text.TIM_CCxNCmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1752   .text.TIM_CCxNCmd:00000000 TIM_CCxNCmd
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1770   .text.TIM_SelectOCxM:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1776   .text.TIM_SelectOCxM:00000000 TIM_SelectOCxM
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1812   .text.TIM_UpdateDisableConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1818   .text.TIM_UpdateDisableConfig:00000000 TIM_UpdateDisableConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1837   .text.TIM_UpdateRequestConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1843   .text.TIM_UpdateRequestConfig:00000000 TIM_UpdateRequestConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1862   .text.TIM_SelectHallSensor:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1868   .text.TIM_SelectHallSensor:00000000 TIM_SelectHallSensor
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1887   .text.TIM_SelectOnePulseMode:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1893   .text.TIM_SelectOnePulseMode:00000000 TIM_SelectOnePulseMode
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1909   .text.TIM_SelectOutputTrigger:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1915   .text.TIM_SelectOutputTrigger:00000000 TIM_SelectOutputTrigger
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1931   .text.TIM_SelectSlaveMode:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1937   .text.TIM_SelectSlaveMode:00000000 TIM_SelectSlaveMode
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1953   .text.TIM_SelectMasterSlaveMode:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1959   .text.TIM_SelectMasterSlaveMode:00000000 TIM_SelectMasterSlaveMode
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1975   .text.TIM_SetCounter:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1981   .text.TIM_SetCounter:00000000 TIM_SetCounter
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1989   .text.TIM_SetAutoreload:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:1995   .text.TIM_SetAutoreload:00000000 TIM_SetAutoreload
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2003   .text.TIM_SetCompare1:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2009   .text.TIM_SetCompare1:00000000 TIM_SetCompare1
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2017   .text.TIM_SetCompare2:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2023   .text.TIM_SetCompare2:00000000 TIM_SetCompare2
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2031   .text.TIM_SetCompare3:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2037   .text.TIM_SetCompare3:00000000 TIM_SetCompare3
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2045   .text.TIM_SetCompare4:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2051   .text.TIM_SetCompare4:00000000 TIM_SetCompare4
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2059   .text.TIM_SetIC1Prescaler:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2065   .text.TIM_SetIC1Prescaler:00000000 TIM_SetIC1Prescaler
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2081   .text.TIM_SetIC2Prescaler:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2087   .text.TIM_SetIC2Prescaler:00000000 TIM_SetIC2Prescaler
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2104   .text.TIM_PWMIConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2110   .text.TIM_PWMIConfig:00000000 TIM_PWMIConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2159   .text.TIM_SetIC3Prescaler:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2165   .text.TIM_SetIC3Prescaler:00000000 TIM_SetIC3Prescaler
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2181   .text.TIM_SetIC4Prescaler:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2187   .text.TIM_SetIC4Prescaler:00000000 TIM_SetIC4Prescaler
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2204   .text.TIM_ICInit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2210   .text.TIM_ICInit:00000000 TIM_ICInit
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2349   .text.TIM_ICInit:00000140 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2353   .text.TIM_SetClockDivision:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2359   .text.TIM_SetClockDivision:00000000 TIM_SetClockDivision
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2375   .text.TIM_GetCapture1:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2381   .text.TIM_GetCapture1:00000000 TIM_GetCapture1
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s 			page 46
+
+
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2390   .text.TIM_GetCapture2:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2396   .text.TIM_GetCapture2:00000000 TIM_GetCapture2
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2405   .text.TIM_GetCapture3:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2411   .text.TIM_GetCapture3:00000000 TIM_GetCapture3
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2420   .text.TIM_GetCapture4:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2426   .text.TIM_GetCapture4:00000000 TIM_GetCapture4
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2435   .text.TIM_GetCounter:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2441   .text.TIM_GetCounter:00000000 TIM_GetCounter
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2450   .text.TIM_GetPrescaler:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2456   .text.TIM_GetPrescaler:00000000 TIM_GetPrescaler
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2465   .text.TIM_GetFlagStatus:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2471   .text.TIM_GetFlagStatus:00000000 TIM_GetFlagStatus
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2483   .text.TIM_ClearFlag:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2489   .text.TIM_ClearFlag:00000000 TIM_ClearFlag
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2499   .text.TIM_GetITStatus:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2505   .text.TIM_GetITStatus:00000000 TIM_GetITStatus
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2524   .text.TIM_ClearITPendingBit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDiADm6.s:2530   .text.TIM_ClearITPendingBit:00000000 TIM_ClearITPendingBit
+
+UNDEFINED SYMBOLS
+RCC_APB2PeriphResetCmd
+RCC_APB1PeriphResetCmd

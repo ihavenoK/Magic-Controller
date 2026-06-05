@@ -1,0 +1,921 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"nnom_activation.c"
+  14              		.text
+  15              		.section	.text.relu_run,"ax",%progbits
+  16              		.align	1
+  17              		.syntax unified
+  18              		.thumb
+  19              		.thumb_func
+  21              	relu_run:
+  22              		@ args = 0, pretend = 0, frame = 0
+  23              		@ frame_needed = 0, uses_anonymous_args = 0
+  24 0000 10B5     		push	{r4, lr}
+  25 0002 4068     		ldr	r0, [r0, #4]
+  26 0004 837C     		ldrb	r3, [r0, #18]	@ zero_extendqisi2
+  27 0006 102B     		cmp	r3, #16
+  28 0008 08D0     		beq	.L5
+  29 000a 0468     		ldr	r4, [r0]
+  30 000c FFF7FEFF 		bl	tensor_size
+  31 0010 0146     		mov	r1, r0
+  32 0012 2046     		mov	r0, r4
+  33 0014 FFF7FEFF 		bl	local_relu_q7
+  34              	.L3:
+  35 0018 0020     		movs	r0, #0
+  36 001a 10BD     		pop	{r4, pc}
+  37              	.L5:
+  38 001c 0468     		ldr	r4, [r0]
+  39 001e FFF7FEFF 		bl	tensor_size
+  40 0022 0146     		mov	r1, r0
+  41 0024 2046     		mov	r0, r4
+  42 0026 FFF7FEFF 		bl	local_relu_q15
+  43 002a F5E7     		b	.L3
+  45              		.section	.text.leaky_relu_run,"ax",%progbits
+  46              		.align	1
+  47              		.syntax unified
+  48              		.thumb
+  49              		.thumb_func
+  51              	leaky_relu_run:
+  52              		@ args = 0, pretend = 0, frame = 0
+  53              		@ frame_needed = 0, uses_anonymous_args = 0
+  54 0000 38B5     		push	{r3, r4, r5, lr}
+  55 0002 0346     		mov	r3, r0
+  56 0004 4068     		ldr	r0, [r0, #4]
+  57 0006 827C     		ldrb	r2, [r0, #18]	@ zero_extendqisi2
+  58 0008 102A     		cmp	r2, #16
+  59 000a 0BD0     		beq	.L10
+  60 000c 0468     		ldr	r4, [r0]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s 			page 2
+
+
+  61 000e 93F90C50 		ldrsb	r5, [r3, #12]
+  62 0012 FFF7FEFF 		bl	tensor_size
+  63 0016 0246     		mov	r2, r0
+  64 0018 2946     		mov	r1, r5
+  65 001a 2046     		mov	r0, r4
+  66 001c FFF7FEFF 		bl	local_leaky_relu_q7
+  67              	.L8:
+  68 0020 0020     		movs	r0, #0
+  69 0022 38BD     		pop	{r3, r4, r5, pc}
+  70              	.L10:
+  71 0024 0468     		ldr	r4, [r0]
+  72 0026 93F90C50 		ldrsb	r5, [r3, #12]
+  73 002a FFF7FEFF 		bl	tensor_size
+  74 002e 0246     		mov	r2, r0
+  75 0030 2946     		mov	r1, r5
+  76 0032 2046     		mov	r0, r4
+  77 0034 FFF7FEFF 		bl	local_leaky_relu_q15
+  78 0038 F2E7     		b	.L8
+  80              		.section	.text.adv_relu_run,"ax",%progbits
+  81              		.align	1
+  82              		.syntax unified
+  83              		.thumb
+  84              		.thumb_func
+  86              	adv_relu_run:
+  87              		@ args = 0, pretend = 0, frame = 0
+  88              		@ frame_needed = 0, uses_anonymous_args = 0
+  89 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  90 0004 82B0     		sub	sp, sp, #8
+  91 0006 0446     		mov	r4, r0
+  92 0008 4568     		ldr	r5, [r0, #4]
+  93 000a AB7C     		ldrb	r3, [r5, #18]	@ zero_extendqisi2
+  94 000c 102B     		cmp	r3, #16
+  95 000e 35D0     		beq	.L51
+  96 0010 AB68     		ldr	r3, [r5, #8]
+  97 0012 1B68     		ldr	r3, [r3]
+  98 0014 C3F10703 		rsb	r3, r3, #7
+  99 0018 0126     		movs	r6, #1
+ 100 001a 9E40     		lsls	r6, r6, r3
+ 101 001c 3046     		mov	r0, r6
+ 102 001e FFF7FEFF 		bl	__aeabi_i2f
+ 103 0022 6169     		ldr	r1, [r4, #20]	@ float
+ 104 0024 FFF7FEFF 		bl	__aeabi_fmul
+ 105 0028 0746     		mov	r7, r0
+ 106 002a 4A49     		ldr	r1, .L52
+ 107 002c FFF7FEFF 		bl	__aeabi_fcmplt
+ 108 0030 0028     		cmp	r0, #0
+ 109 0032 72D0     		beq	.L46
+ 110 0034 3846     		mov	r0, r7
+ 111 0036 FFF7FEFF 		bl	__aeabi_f2iz
+ 112 003a 4FFA80F8 		sxtb	r8, r0
+ 113              	.L20:
+ 114 003e 2769     		ldr	r7, [r4, #16]	@ float
+ 115 0040 4549     		ldr	r1, .L52+4
+ 116 0042 3846     		mov	r0, r7
+ 117 0044 FFF7FEFF 		bl	__aeabi_fcmpun
+ 118 0048 0028     		cmp	r0, #0
+ 119 004a 69D1     		bne	.L39
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s 			page 3
+
+
+ 120 004c 4249     		ldr	r1, .L52+4
+ 121 004e 3846     		mov	r0, r7
+ 122 0050 FFF7FEFF 		bl	__aeabi_fcmple
+ 123 0054 0028     		cmp	r0, #0
+ 124 0056 63D1     		bne	.L39
+ 125 0058 7F26     		movs	r6, #127
+ 126              	.L22:
+ 127 005a 2F68     		ldr	r7, [r5]
+ 128 005c 94F90C40 		ldrsb	r4, [r4, #12]
+ 129 0060 2846     		mov	r0, r5
+ 130 0062 FFF7FEFF 		bl	tensor_size
+ 131 0066 0090     		str	r0, [sp]
+ 132 0068 4346     		mov	r3, r8
+ 133 006a 3246     		mov	r2, r6
+ 134 006c 2146     		mov	r1, r4
+ 135 006e 3846     		mov	r0, r7
+ 136 0070 FFF7FEFF 		bl	local_adv_relu_q7
+ 137              	.L19:
+ 138 0074 0020     		movs	r0, #0
+ 139 0076 02B0     		add	sp, sp, #8
+ 140              		@ sp needed
+ 141 0078 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 142              	.L51:
+ 143 007c AB68     		ldr	r3, [r5, #8]
+ 144 007e 1B68     		ldr	r3, [r3]
+ 145 0080 C3F10F03 		rsb	r3, r3, #15
+ 146 0084 0126     		movs	r6, #1
+ 147 0086 9E40     		lsls	r6, r6, r3
+ 148 0088 3046     		mov	r0, r6
+ 149 008a FFF7FEFF 		bl	__aeabi_i2f
+ 150 008e 6169     		ldr	r1, [r4, #20]	@ float
+ 151 0090 FFF7FEFF 		bl	__aeabi_fmul
+ 152 0094 0746     		mov	r7, r0
+ 153 0096 3149     		ldr	r1, .L52+8
+ 154 0098 FFF7FEFF 		bl	__aeabi_fcmplt
+ 155 009c F8B1     		cbz	r0, .L42
+ 156 009e 3846     		mov	r0, r7
+ 157 00a0 FFF7FEFF 		bl	__aeabi_f2iz
+ 158 00a4 0FFA80F8 		sxth	r8, r0
+ 159              	.L13:
+ 160 00a8 2769     		ldr	r7, [r4, #16]	@ float
+ 161 00aa 2B49     		ldr	r1, .L52+4
+ 162 00ac 3846     		mov	r0, r7
+ 163 00ae FFF7FEFF 		bl	__aeabi_fcmpun
+ 164 00b2 B8B9     		cbnz	r0, .L35
+ 165 00b4 2849     		ldr	r1, .L52+4
+ 166 00b6 3846     		mov	r0, r7
+ 167 00b8 FFF7FEFF 		bl	__aeabi_fcmple
+ 168 00bc 90B9     		cbnz	r0, .L35
+ 169 00be 47F6FF76 		movw	r6, #32767
+ 170              	.L15:
+ 171 00c2 2F68     		ldr	r7, [r5]
+ 172 00c4 94F90C40 		ldrsb	r4, [r4, #12]
+ 173 00c8 2846     		mov	r0, r5
+ 174 00ca FFF7FEFF 		bl	tensor_size
+ 175 00ce 0090     		str	r0, [sp]
+ 176 00d0 4346     		mov	r3, r8
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s 			page 4
+
+
+ 177 00d2 3246     		mov	r2, r6
+ 178 00d4 2146     		mov	r1, r4
+ 179 00d6 3846     		mov	r0, r7
+ 180 00d8 FFF7FEFF 		bl	local_adv_relu_q15
+ 181 00dc CAE7     		b	.L19
+ 182              	.L42:
+ 183 00de 47F6FF78 		movw	r8, #32767
+ 184 00e2 E1E7     		b	.L13
+ 185              	.L35:
+ 186 00e4 1E49     		ldr	r1, .L52+12
+ 187 00e6 3846     		mov	r0, r7
+ 188 00e8 FFF7FEFF 		bl	__aeabi_fcmpeq
+ 189 00ec 78B9     		cbnz	r0, .L44
+ 190 00ee 70B2     		sxtb	r0, r6
+ 191 00f0 FFF7FEFF 		bl	__aeabi_i2f
+ 192 00f4 3946     		mov	r1, r7
+ 193 00f6 FFF7FEFF 		bl	__aeabi_fmul
+ 194 00fa 0646     		mov	r6, r0
+ 195 00fc 1749     		ldr	r1, .L52+8
+ 196 00fe FFF7FEFF 		bl	__aeabi_fcmplt
+ 197 0102 38B1     		cbz	r0, .L45
+ 198 0104 3046     		mov	r0, r6
+ 199 0106 FFF7FEFF 		bl	__aeabi_f2iz
+ 200 010a 06B2     		sxth	r6, r0
+ 201 010c D9E7     		b	.L15
+ 202              	.L44:
+ 203 010e 47F6FF76 		movw	r6, #32767
+ 204 0112 D6E7     		b	.L15
+ 205              	.L45:
+ 206 0114 47F6FF76 		movw	r6, #32767
+ 207 0118 D3E7     		b	.L15
+ 208              	.L46:
+ 209 011a 4FF07F08 		mov	r8, #127
+ 210 011e 8EE7     		b	.L20
+ 211              	.L39:
+ 212 0120 0F49     		ldr	r1, .L52+12
+ 213 0122 3846     		mov	r0, r7
+ 214 0124 FFF7FEFF 		bl	__aeabi_fcmpeq
+ 215 0128 78B9     		cbnz	r0, .L48
+ 216 012a 70B2     		sxtb	r0, r6
+ 217 012c FFF7FEFF 		bl	__aeabi_i2f
+ 218 0130 3946     		mov	r1, r7
+ 219 0132 FFF7FEFF 		bl	__aeabi_fmul
+ 220 0136 0646     		mov	r6, r0
+ 221 0138 0649     		ldr	r1, .L52
+ 222 013a FFF7FEFF 		bl	__aeabi_fcmplt
+ 223 013e 30B1     		cbz	r0, .L49
+ 224 0140 3046     		mov	r0, r6
+ 225 0142 FFF7FEFF 		bl	__aeabi_f2iz
+ 226 0146 46B2     		sxtb	r6, r0
+ 227 0148 87E7     		b	.L22
+ 228              	.L48:
+ 229 014a 7F26     		movs	r6, #127
+ 230 014c 85E7     		b	.L22
+ 231              	.L49:
+ 232 014e 7F26     		movs	r6, #127
+ 233 0150 83E7     		b	.L22
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s 			page 5
+
+
+ 234              	.L53:
+ 235 0152 00BF     		.align	2
+ 236              	.L52:
+ 237 0154 0000FE42 		.word	1123942400
+ 238 0158 FFFF7F7F 		.word	2139095039
+ 239 015c 00FEFF46 		.word	1191181824
+ 240 0160 0080FF4E 		.word	1325367296
+ 242              		.section	.text.tanh_run,"ax",%progbits
+ 243              		.align	1
+ 244              		.syntax unified
+ 245              		.thumb
+ 246              		.thumb_func
+ 248              	tanh_run:
+ 249              		@ args = 0, pretend = 0, frame = 0
+ 250              		@ frame_needed = 0, uses_anonymous_args = 0
+ 251 0000 38B5     		push	{r3, r4, r5, lr}
+ 252 0002 0346     		mov	r3, r0
+ 253 0004 4068     		ldr	r0, [r0, #4]
+ 254 0006 827C     		ldrb	r2, [r0, #18]	@ zero_extendqisi2
+ 255 0008 102A     		cmp	r2, #16
+ 256 000a 0DD0     		beq	.L58
+ 257 000c 1C7B     		ldrb	r4, [r3, #12]	@ zero_extendqisi2
+ 258 000e C4F10704 		rsb	r4, r4, #7
+ 259 0012 E4B2     		uxtb	r4, r4
+ 260 0014 0568     		ldr	r5, [r0]
+ 261 0016 FFF7FEFF 		bl	tensor_size
+ 262 001a 0146     		mov	r1, r0
+ 263 001c 2246     		mov	r2, r4
+ 264 001e 2846     		mov	r0, r5
+ 265 0020 FFF7FEFF 		bl	local_tanh_q7
+ 266              	.L56:
+ 267 0024 0020     		movs	r0, #0
+ 268 0026 38BD     		pop	{r3, r4, r5, pc}
+ 269              	.L58:
+ 270 0028 1C7B     		ldrb	r4, [r3, #12]	@ zero_extendqisi2
+ 271 002a C4F10F04 		rsb	r4, r4, #15
+ 272 002e E4B2     		uxtb	r4, r4
+ 273 0030 0568     		ldr	r5, [r0]
+ 274 0032 FFF7FEFF 		bl	tensor_size
+ 275 0036 0146     		mov	r1, r0
+ 276 0038 2246     		mov	r2, r4
+ 277 003a 2846     		mov	r0, r5
+ 278 003c FFF7FEFF 		bl	local_tanh_q15
+ 279 0040 F0E7     		b	.L56
+ 281              		.section	.text.sigmoid_run,"ax",%progbits
+ 282              		.align	1
+ 283              		.syntax unified
+ 284              		.thumb
+ 285              		.thumb_func
+ 287              	sigmoid_run:
+ 288              		@ args = 0, pretend = 0, frame = 0
+ 289              		@ frame_needed = 0, uses_anonymous_args = 0
+ 290 0000 38B5     		push	{r3, r4, r5, lr}
+ 291 0002 0346     		mov	r3, r0
+ 292 0004 4068     		ldr	r0, [r0, #4]
+ 293 0006 827C     		ldrb	r2, [r0, #18]	@ zero_extendqisi2
+ 294 0008 102A     		cmp	r2, #16
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s 			page 6
+
+
+ 295 000a 0DD0     		beq	.L63
+ 296 000c 1C7B     		ldrb	r4, [r3, #12]	@ zero_extendqisi2
+ 297 000e C4F10704 		rsb	r4, r4, #7
+ 298 0012 E4B2     		uxtb	r4, r4
+ 299 0014 0568     		ldr	r5, [r0]
+ 300 0016 FFF7FEFF 		bl	tensor_size
+ 301 001a 0146     		mov	r1, r0
+ 302 001c 2246     		mov	r2, r4
+ 303 001e 2846     		mov	r0, r5
+ 304 0020 FFF7FEFF 		bl	local_sigmoid_q7
+ 305              	.L61:
+ 306 0024 0020     		movs	r0, #0
+ 307 0026 38BD     		pop	{r3, r4, r5, pc}
+ 308              	.L63:
+ 309 0028 1C7B     		ldrb	r4, [r3, #12]	@ zero_extendqisi2
+ 310 002a C4F10F04 		rsb	r4, r4, #15
+ 311 002e E4B2     		uxtb	r4, r4
+ 312 0030 0568     		ldr	r5, [r0]
+ 313 0032 FFF7FEFF 		bl	tensor_size
+ 314 0036 0146     		mov	r1, r0
+ 315 0038 2246     		mov	r2, r4
+ 316 003a 2846     		mov	r0, r5
+ 317 003c FFF7FEFF 		bl	local_sigmoid_q15
+ 318 0040 F0E7     		b	.L61
+ 320              		.section	.text.hard_tanh_run,"ax",%progbits
+ 321              		.align	1
+ 322              		.syntax unified
+ 323              		.thumb
+ 324              		.thumb_func
+ 326              	hard_tanh_run:
+ 327              		@ args = 0, pretend = 0, frame = 0
+ 328              		@ frame_needed = 0, uses_anonymous_args = 0
+ 329 0000 38B5     		push	{r3, r4, r5, lr}
+ 330 0002 0446     		mov	r4, r0
+ 331 0004 4068     		ldr	r0, [r0, #4]
+ 332 0006 837C     		ldrb	r3, [r0, #18]	@ zero_extendqisi2
+ 333 0008 102B     		cmp	r3, #16
+ 334 000a 09D0     		beq	.L68
+ 335 000c 0568     		ldr	r5, [r0]
+ 336 000e FFF7FEFF 		bl	tensor_size
+ 337 0012 0146     		mov	r1, r0
+ 338 0014 227B     		ldrb	r2, [r4, #12]	@ zero_extendqisi2
+ 339 0016 2846     		mov	r0, r5
+ 340 0018 FFF7FEFF 		bl	local_hard_tanh_q7
+ 341              	.L66:
+ 342 001c 0020     		movs	r0, #0
+ 343 001e 38BD     		pop	{r3, r4, r5, pc}
+ 344              	.L68:
+ 345 0020 0568     		ldr	r5, [r0]
+ 346 0022 FFF7FEFF 		bl	tensor_size
+ 347 0026 0146     		mov	r1, r0
+ 348 0028 227B     		ldrb	r2, [r4, #12]	@ zero_extendqisi2
+ 349 002a 0832     		adds	r2, r2, #8
+ 350 002c 2846     		mov	r0, r5
+ 351 002e FFF7FEFF 		bl	local_hard_tanh_q15
+ 352 0032 F3E7     		b	.L66
+ 354              		.section	.text.hard_sigmoid_run,"ax",%progbits
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s 			page 7
+
+
+ 355              		.align	1
+ 356              		.syntax unified
+ 357              		.thumb
+ 358              		.thumb_func
+ 360              	hard_sigmoid_run:
+ 361              		@ args = 0, pretend = 0, frame = 0
+ 362              		@ frame_needed = 0, uses_anonymous_args = 0
+ 363 0000 38B5     		push	{r3, r4, r5, lr}
+ 364 0002 0446     		mov	r4, r0
+ 365 0004 4068     		ldr	r0, [r0, #4]
+ 366 0006 837C     		ldrb	r3, [r0, #18]	@ zero_extendqisi2
+ 367 0008 102B     		cmp	r3, #16
+ 368 000a 09D0     		beq	.L73
+ 369 000c 0568     		ldr	r5, [r0]
+ 370 000e FFF7FEFF 		bl	tensor_size
+ 371 0012 0146     		mov	r1, r0
+ 372 0014 227B     		ldrb	r2, [r4, #12]	@ zero_extendqisi2
+ 373 0016 2846     		mov	r0, r5
+ 374 0018 FFF7FEFF 		bl	local_hard_sigmoid_q7
+ 375              	.L71:
+ 376 001c 0020     		movs	r0, #0
+ 377 001e 38BD     		pop	{r3, r4, r5, pc}
+ 378              	.L73:
+ 379 0020 0568     		ldr	r5, [r0]
+ 380 0022 FFF7FEFF 		bl	tensor_size
+ 381 0026 0146     		mov	r1, r0
+ 382 0028 227B     		ldrb	r2, [r4, #12]	@ zero_extendqisi2
+ 383 002a 0832     		adds	r2, r2, #8
+ 384 002c 2846     		mov	r0, r5
+ 385 002e FFF7FEFF 		bl	local_hard_sigmoid_q15
+ 386 0032 F3E7     		b	.L71
+ 388              		.section	.text.activation_free,"ax",%progbits
+ 389              		.align	1
+ 390              		.global	activation_free
+ 391              		.syntax unified
+ 392              		.thumb
+ 393              		.thumb_func
+ 395              	activation_free:
+ 396              		@ args = 0, pretend = 0, frame = 0
+ 397              		@ frame_needed = 0, uses_anonymous_args = 0
+ 398 0000 28B1     		cbz	r0, .L77
+ 399 0002 08B5     		push	{r3, lr}
+ 400 0004 006B     		ldr	r0, [r0, #48]
+ 401 0006 FFF7FEFF 		bl	nnom_free
+ 402 000a 0020     		movs	r0, #0
+ 403 000c 08BD     		pop	{r3, pc}
+ 404              	.L77:
+ 405 000e 0020     		movs	r0, #0
+ 406 0010 7047     		bx	lr
+ 408              		.section	.text.Activation,"ax",%progbits
+ 409              		.align	1
+ 410              		.global	Activation
+ 411              		.syntax unified
+ 412              		.thumb
+ 413              		.thumb_func
+ 415              	Activation:
+ 416              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s 			page 8
+
+
+ 417              		@ frame_needed = 0, uses_anonymous_args = 0
+ 418 0000 38B5     		push	{r3, r4, r5, lr}
+ 419 0002 0546     		mov	r5, r0
+ 420 0004 6C20     		movs	r0, #108
+ 421 0006 FFF7FEFF 		bl	nnom_mem
+ 422 000a 0446     		mov	r4, r0
+ 423 000c C8B1     		cbz	r0, .L80
+ 424 000e 0C23     		movs	r3, #12
+ 425 0010 0377     		strb	r3, [r0, #28]
+ 426 0012 0D4B     		ldr	r3, .L83
+ 427 0014 4360     		str	r3, [r0, #4]
+ 428 0016 0D4B     		ldr	r3, .L83+4
+ 429 0018 8360     		str	r3, [r0, #8]
+ 430 001a 0123     		movs	r3, #1
+ 431 001c 80F84C30 		strb	r3, [r0, #76]
+ 432 0020 0023     		movs	r3, #0
+ 433 0022 80F86830 		strb	r3, [r0, #104]
+ 434 0026 00F13401 		add	r1, r0, #52
+ 435 002a FFF7FEFF 		bl	io_init
+ 436 002e 2062     		str	r0, [r4, #32]
+ 437 0030 04F15001 		add	r1, r4, #80
+ 438 0034 2046     		mov	r0, r4
+ 439 0036 FFF7FEFF 		bl	io_init
+ 440 003a 6062     		str	r0, [r4, #36]
+ 441 003c 2563     		str	r5, [r4, #48]
+ 442 003e 044B     		ldr	r3, .L83+8
+ 443 0040 E360     		str	r3, [r4, #12]
+ 444              	.L80:
+ 445 0042 2046     		mov	r0, r4
+ 446 0044 38BD     		pop	{r3, r4, r5, pc}
+ 447              	.L84:
+ 448 0046 00BF     		.align	2
+ 449              	.L83:
+ 450 0048 00000000 		.word	activation_run
+ 451 004c 00000000 		.word	default_build
+ 452 0050 00000000 		.word	activation_free
+ 454              		.section	.text.act_delete,"ax",%progbits
+ 455              		.align	1
+ 456              		.global	act_delete
+ 457              		.syntax unified
+ 458              		.thumb
+ 459              		.thumb_func
+ 461              	act_delete:
+ 462              		@ args = 0, pretend = 0, frame = 0
+ 463              		@ frame_needed = 0, uses_anonymous_args = 0
+ 464 0000 08B5     		push	{r3, lr}
+ 465 0002 FFF7FEFF 		bl	nnom_free
+ 466 0006 08BD     		pop	{r3, pc}
+ 468              		.section	.text.act_relu,"ax",%progbits
+ 469              		.align	1
+ 470              		.global	act_relu
+ 471              		.syntax unified
+ 472              		.thumb
+ 473              		.thumb_func
+ 475              	act_relu:
+ 476              		@ args = 0, pretend = 0, frame = 0
+ 477              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s 			page 9
+
+
+ 478 0000 08B5     		push	{r3, lr}
+ 479 0002 0C20     		movs	r0, #12
+ 480 0004 FFF7FEFF 		bl	nnom_mem
+ 481 0008 0346     		mov	r3, r0
+ 482 000a 18B1     		cbz	r0, .L87
+ 483 000c 024A     		ldr	r2, .L90
+ 484 000e 0260     		str	r2, [r0]
+ 485 0010 0122     		movs	r2, #1
+ 486 0012 0272     		strb	r2, [r0, #8]
+ 487              	.L87:
+ 488 0014 1846     		mov	r0, r3
+ 489 0016 08BD     		pop	{r3, pc}
+ 490              	.L91:
+ 491              		.align	2
+ 492              	.L90:
+ 493 0018 00000000 		.word	relu_run
+ 495              		.section	.text.ReLU,"ax",%progbits
+ 496              		.align	1
+ 497              		.global	ReLU
+ 498              		.syntax unified
+ 499              		.thumb
+ 500              		.thumb_func
+ 502              	ReLU:
+ 503              		@ args = 0, pretend = 0, frame = 0
+ 504              		@ frame_needed = 0, uses_anonymous_args = 0
+ 505 0000 08B5     		push	{r3, lr}
+ 506 0002 FFF7FEFF 		bl	act_relu
+ 507 0006 FFF7FEFF 		bl	Activation
+ 508 000a 08B1     		cbz	r0, .L92
+ 509 000c 0D23     		movs	r3, #13
+ 510 000e 0377     		strb	r3, [r0, #28]
+ 511              	.L92:
+ 512 0010 08BD     		pop	{r3, pc}
+ 514              		.section	.text.act_leaky_relu,"ax",%progbits
+ 515              		.align	1
+ 516              		.global	act_leaky_relu
+ 517              		.syntax unified
+ 518              		.thumb
+ 519              		.thumb_func
+ 521              	act_leaky_relu:
+ 522              		@ args = 0, pretend = 0, frame = 0
+ 523              		@ frame_needed = 0, uses_anonymous_args = 0
+ 524 0000 38B5     		push	{r3, r4, r5, lr}
+ 525 0002 0546     		mov	r5, r0
+ 526 0004 1020     		movs	r0, #16
+ 527 0006 FFF7FEFF 		bl	nnom_mem
+ 528 000a 0446     		mov	r4, r0
+ 529 000c 58B1     		cbz	r0, .L95
+ 530 000e 074B     		ldr	r3, .L98
+ 531 0010 0360     		str	r3, [r0]
+ 532 0012 0223     		movs	r3, #2
+ 533 0014 0372     		strb	r3, [r0, #8]
+ 534 0016 4FF08641 		mov	r1, #1124073472
+ 535 001a 2846     		mov	r0, r5
+ 536 001c FFF7FEFF 		bl	__aeabi_fmul
+ 537 0020 FFF7FEFF 		bl	__aeabi_f2iz
+ 538 0024 2073     		strb	r0, [r4, #12]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s 			page 10
+
+
+ 539              	.L95:
+ 540 0026 2046     		mov	r0, r4
+ 541 0028 38BD     		pop	{r3, r4, r5, pc}
+ 542              	.L99:
+ 543 002a 00BF     		.align	2
+ 544              	.L98:
+ 545 002c 00000000 		.word	leaky_relu_run
+ 547              		.section	.text.LeakyReLU,"ax",%progbits
+ 548              		.align	1
+ 549              		.global	LeakyReLU
+ 550              		.syntax unified
+ 551              		.thumb
+ 552              		.thumb_func
+ 554              	LeakyReLU:
+ 555              		@ args = 0, pretend = 0, frame = 0
+ 556              		@ frame_needed = 0, uses_anonymous_args = 0
+ 557 0000 08B5     		push	{r3, lr}
+ 558 0002 FFF7FEFF 		bl	act_leaky_relu
+ 559 0006 FFF7FEFF 		bl	Activation
+ 560 000a 08B1     		cbz	r0, .L100
+ 561 000c 0E23     		movs	r3, #14
+ 562 000e 0377     		strb	r3, [r0, #28]
+ 563              	.L100:
+ 564 0010 08BD     		pop	{r3, pc}
+ 566              		.section	.text.act_adv_relu,"ax",%progbits
+ 567              		.align	1
+ 568              		.global	act_adv_relu
+ 569              		.syntax unified
+ 570              		.thumb
+ 571              		.thumb_func
+ 573              	act_adv_relu:
+ 574              		@ args = 0, pretend = 0, frame = 0
+ 575              		@ frame_needed = 0, uses_anonymous_args = 0
+ 576 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 577 0002 0746     		mov	r7, r0
+ 578 0004 0E46     		mov	r6, r1
+ 579 0006 1546     		mov	r5, r2
+ 580 0008 1820     		movs	r0, #24
+ 581 000a FFF7FEFF 		bl	nnom_mem
+ 582 000e 0446     		mov	r4, r0
+ 583 0010 68B1     		cbz	r0, .L103
+ 584 0012 084B     		ldr	r3, .L106
+ 585 0014 0360     		str	r3, [r0]
+ 586 0016 0323     		movs	r3, #3
+ 587 0018 0372     		strb	r3, [r0, #8]
+ 588 001a 4FF08641 		mov	r1, #1124073472
+ 589 001e 3846     		mov	r0, r7
+ 590 0020 FFF7FEFF 		bl	__aeabi_fmul
+ 591 0024 FFF7FEFF 		bl	__aeabi_f2iz
+ 592 0028 2073     		strb	r0, [r4, #12]
+ 593 002a 2661     		str	r6, [r4, #16]	@ float
+ 594 002c 6561     		str	r5, [r4, #20]	@ float
+ 595              	.L103:
+ 596 002e 2046     		mov	r0, r4
+ 597 0030 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 598              	.L107:
+ 599 0032 00BF     		.align	2
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s 			page 11
+
+
+ 600              	.L106:
+ 601 0034 00000000 		.word	adv_relu_run
+ 603              		.section	.text.AdvReLU,"ax",%progbits
+ 604              		.align	1
+ 605              		.global	AdvReLU
+ 606              		.syntax unified
+ 607              		.thumb
+ 608              		.thumb_func
+ 610              	AdvReLU:
+ 611              		@ args = 0, pretend = 0, frame = 0
+ 612              		@ frame_needed = 0, uses_anonymous_args = 0
+ 613 0000 08B5     		push	{r3, lr}
+ 614 0002 FFF7FEFF 		bl	act_adv_relu
+ 615 0006 FFF7FEFF 		bl	Activation
+ 616 000a 08B1     		cbz	r0, .L108
+ 617 000c 0F23     		movs	r3, #15
+ 618 000e 0377     		strb	r3, [r0, #28]
+ 619              	.L108:
+ 620 0010 08BD     		pop	{r3, pc}
+ 622              		.section	.text.act_tanh,"ax",%progbits
+ 623              		.align	1
+ 624              		.global	act_tanh
+ 625              		.syntax unified
+ 626              		.thumb
+ 627              		.thumb_func
+ 629              	act_tanh:
+ 630              		@ args = 0, pretend = 0, frame = 0
+ 631              		@ frame_needed = 0, uses_anonymous_args = 0
+ 632 0000 10B5     		push	{r4, lr}
+ 633 0002 0446     		mov	r4, r0
+ 634 0004 1020     		movs	r0, #16
+ 635 0006 FFF7FEFF 		bl	nnom_mem
+ 636 000a 0346     		mov	r3, r0
+ 637 000c 20B1     		cbz	r0, .L111
+ 638 000e 034A     		ldr	r2, .L114
+ 639 0010 0260     		str	r2, [r0]
+ 640 0012 0422     		movs	r2, #4
+ 641 0014 0272     		strb	r2, [r0, #8]
+ 642 0016 0473     		strb	r4, [r0, #12]
+ 643              	.L111:
+ 644 0018 1846     		mov	r0, r3
+ 645 001a 10BD     		pop	{r4, pc}
+ 646              	.L115:
+ 647              		.align	2
+ 648              	.L114:
+ 649 001c 00000000 		.word	tanh_run
+ 651              		.section	.text.TanH,"ax",%progbits
+ 652              		.align	1
+ 653              		.global	TanH
+ 654              		.syntax unified
+ 655              		.thumb
+ 656              		.thumb_func
+ 658              	TanH:
+ 659              		@ args = 0, pretend = 0, frame = 0
+ 660              		@ frame_needed = 0, uses_anonymous_args = 0
+ 661 0000 08B5     		push	{r3, lr}
+ 662 0002 FFF7FEFF 		bl	act_tanh
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s 			page 12
+
+
+ 663 0006 FFF7FEFF 		bl	Activation
+ 664 000a 08B1     		cbz	r0, .L116
+ 665 000c 1123     		movs	r3, #17
+ 666 000e 0377     		strb	r3, [r0, #28]
+ 667              	.L116:
+ 668 0010 08BD     		pop	{r3, pc}
+ 670              		.section	.text.act_sigmoid,"ax",%progbits
+ 671              		.align	1
+ 672              		.global	act_sigmoid
+ 673              		.syntax unified
+ 674              		.thumb
+ 675              		.thumb_func
+ 677              	act_sigmoid:
+ 678              		@ args = 0, pretend = 0, frame = 0
+ 679              		@ frame_needed = 0, uses_anonymous_args = 0
+ 680 0000 10B5     		push	{r4, lr}
+ 681 0002 0446     		mov	r4, r0
+ 682 0004 1020     		movs	r0, #16
+ 683 0006 FFF7FEFF 		bl	nnom_mem
+ 684 000a 0346     		mov	r3, r0
+ 685 000c 20B1     		cbz	r0, .L119
+ 686 000e 034A     		ldr	r2, .L122
+ 687 0010 0260     		str	r2, [r0]
+ 688 0012 0522     		movs	r2, #5
+ 689 0014 0272     		strb	r2, [r0, #8]
+ 690 0016 0473     		strb	r4, [r0, #12]
+ 691              	.L119:
+ 692 0018 1846     		mov	r0, r3
+ 693 001a 10BD     		pop	{r4, pc}
+ 694              	.L123:
+ 695              		.align	2
+ 696              	.L122:
+ 697 001c 00000000 		.word	sigmoid_run
+ 699              		.section	.text.Sigmoid,"ax",%progbits
+ 700              		.align	1
+ 701              		.global	Sigmoid
+ 702              		.syntax unified
+ 703              		.thumb
+ 704              		.thumb_func
+ 706              	Sigmoid:
+ 707              		@ args = 0, pretend = 0, frame = 0
+ 708              		@ frame_needed = 0, uses_anonymous_args = 0
+ 709 0000 08B5     		push	{r3, lr}
+ 710 0002 FFF7FEFF 		bl	act_sigmoid
+ 711 0006 FFF7FEFF 		bl	Activation
+ 712 000a 08B1     		cbz	r0, .L124
+ 713 000c 1023     		movs	r3, #16
+ 714 000e 0377     		strb	r3, [r0, #28]
+ 715              	.L124:
+ 716 0010 08BD     		pop	{r3, pc}
+ 718              		.section	.text.act_hard_tanh,"ax",%progbits
+ 719              		.align	1
+ 720              		.global	act_hard_tanh
+ 721              		.syntax unified
+ 722              		.thumb
+ 723              		.thumb_func
+ 725              	act_hard_tanh:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s 			page 13
+
+
+ 726              		@ args = 0, pretend = 0, frame = 0
+ 727              		@ frame_needed = 0, uses_anonymous_args = 0
+ 728 0000 10B5     		push	{r4, lr}
+ 729 0002 0446     		mov	r4, r0
+ 730 0004 1020     		movs	r0, #16
+ 731 0006 FFF7FEFF 		bl	nnom_mem
+ 732 000a 0346     		mov	r3, r0
+ 733 000c 20B1     		cbz	r0, .L127
+ 734 000e 034A     		ldr	r2, .L130
+ 735 0010 0260     		str	r2, [r0]
+ 736 0012 0622     		movs	r2, #6
+ 737 0014 0272     		strb	r2, [r0, #8]
+ 738 0016 0473     		strb	r4, [r0, #12]
+ 739              	.L127:
+ 740 0018 1846     		mov	r0, r3
+ 741 001a 10BD     		pop	{r4, pc}
+ 742              	.L131:
+ 743              		.align	2
+ 744              	.L130:
+ 745 001c 00000000 		.word	hard_tanh_run
+ 747              		.section	.text.act_hard_sigmoid,"ax",%progbits
+ 748              		.align	1
+ 749              		.global	act_hard_sigmoid
+ 750              		.syntax unified
+ 751              		.thumb
+ 752              		.thumb_func
+ 754              	act_hard_sigmoid:
+ 755              		@ args = 0, pretend = 0, frame = 0
+ 756              		@ frame_needed = 0, uses_anonymous_args = 0
+ 757 0000 10B5     		push	{r4, lr}
+ 758 0002 0446     		mov	r4, r0
+ 759 0004 1020     		movs	r0, #16
+ 760 0006 FFF7FEFF 		bl	nnom_mem
+ 761 000a 0346     		mov	r3, r0
+ 762 000c 20B1     		cbz	r0, .L132
+ 763 000e 034A     		ldr	r2, .L135
+ 764 0010 0260     		str	r2, [r0]
+ 765 0012 0722     		movs	r2, #7
+ 766 0014 0272     		strb	r2, [r0, #8]
+ 767 0016 0473     		strb	r4, [r0, #12]
+ 768              	.L132:
+ 769 0018 1846     		mov	r0, r3
+ 770 001a 10BD     		pop	{r4, pc}
+ 771              	.L136:
+ 772              		.align	2
+ 773              	.L135:
+ 774 001c 00000000 		.word	hard_sigmoid_run
+ 776              		.section	.text.act_get_dec_bit,"ax",%progbits
+ 777              		.align	1
+ 778              		.global	act_get_dec_bit
+ 779              		.syntax unified
+ 780              		.thumb
+ 781              		.thumb_func
+ 783              	act_get_dec_bit:
+ 784              		@ args = 0, pretend = 0, frame = 0
+ 785              		@ frame_needed = 0, uses_anonymous_args = 0
+ 786              		@ link register save eliminated.
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s 			page 14
+
+
+ 787 0000 0438     		subs	r0, r0, #4
+ 788 0002 0428     		cmp	r0, #4
+ 789 0004 2CBF     		ite	cs
+ 790 0006 0846     		movcs	r0, r1
+ 791 0008 0720     		movcc	r0, #7
+ 792 000a 7047     		bx	lr
+ 794              		.section	.text.act_tensor_run,"ax",%progbits
+ 795              		.align	1
+ 796              		.global	act_tensor_run
+ 797              		.syntax unified
+ 798              		.thumb
+ 799              		.thumb_func
+ 801              	act_tensor_run:
+ 802              		@ args = 0, pretend = 0, frame = 0
+ 803              		@ frame_needed = 0, uses_anonymous_args = 0
+ 804 0000 08B5     		push	{r3, lr}
+ 805 0002 4160     		str	r1, [r0, #4]
+ 806 0004 0368     		ldr	r3, [r0]
+ 807 0006 9847     		blx	r3
+ 808 0008 08BD     		pop	{r3, pc}
+ 810              		.section	.text.activation_run,"ax",%progbits
+ 811              		.align	1
+ 812              		.global	activation_run
+ 813              		.syntax unified
+ 814              		.thumb
+ 815              		.thumb_func
+ 817              	activation_run:
+ 818              		@ args = 0, pretend = 0, frame = 0
+ 819              		@ frame_needed = 0, uses_anonymous_args = 0
+ 820 0000 08B5     		push	{r3, lr}
+ 821 0002 036A     		ldr	r3, [r0, #32]
+ 822 0004 D968     		ldr	r1, [r3, #12]
+ 823 0006 006B     		ldr	r0, [r0, #48]
+ 824 0008 FFF7FEFF 		bl	act_tensor_run
+ 825 000c 08BD     		pop	{r3, pc}
+ 827              		.global	__aeabi_fcmpeq
+ 828              		.global	__aeabi_fcmple
+ 829              		.global	__aeabi_fcmpun
+ 830              		.global	__aeabi_f2iz
+ 831              		.global	__aeabi_fcmplt
+ 832              		.global	__aeabi_fmul
+ 833              		.global	__aeabi_i2f
+ 834              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s 			page 15
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 nnom_activation.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:16     .text.relu_run:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:21     .text.relu_run:00000000 relu_run
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:46     .text.leaky_relu_run:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:51     .text.leaky_relu_run:00000000 leaky_relu_run
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:81     .text.adv_relu_run:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:86     .text.adv_relu_run:00000000 adv_relu_run
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:237    .text.adv_relu_run:00000154 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:243    .text.tanh_run:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:248    .text.tanh_run:00000000 tanh_run
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:282    .text.sigmoid_run:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:287    .text.sigmoid_run:00000000 sigmoid_run
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:321    .text.hard_tanh_run:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:326    .text.hard_tanh_run:00000000 hard_tanh_run
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:355    .text.hard_sigmoid_run:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:360    .text.hard_sigmoid_run:00000000 hard_sigmoid_run
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:389    .text.activation_free:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:395    .text.activation_free:00000000 activation_free
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:409    .text.Activation:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:415    .text.Activation:00000000 Activation
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:450    .text.Activation:00000048 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:817    .text.activation_run:00000000 activation_run
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:455    .text.act_delete:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:461    .text.act_delete:00000000 act_delete
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:469    .text.act_relu:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:475    .text.act_relu:00000000 act_relu
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:493    .text.act_relu:00000018 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:496    .text.ReLU:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:502    .text.ReLU:00000000 ReLU
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:515    .text.act_leaky_relu:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:521    .text.act_leaky_relu:00000000 act_leaky_relu
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:545    .text.act_leaky_relu:0000002c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:548    .text.LeakyReLU:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:554    .text.LeakyReLU:00000000 LeakyReLU
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:567    .text.act_adv_relu:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:573    .text.act_adv_relu:00000000 act_adv_relu
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:601    .text.act_adv_relu:00000034 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:604    .text.AdvReLU:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:610    .text.AdvReLU:00000000 AdvReLU
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:623    .text.act_tanh:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:629    .text.act_tanh:00000000 act_tanh
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:649    .text.act_tanh:0000001c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:652    .text.TanH:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:658    .text.TanH:00000000 TanH
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:671    .text.act_sigmoid:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:677    .text.act_sigmoid:00000000 act_sigmoid
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:697    .text.act_sigmoid:0000001c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:700    .text.Sigmoid:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:706    .text.Sigmoid:00000000 Sigmoid
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:719    .text.act_hard_tanh:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:725    .text.act_hard_tanh:00000000 act_hard_tanh
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:745    .text.act_hard_tanh:0000001c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:748    .text.act_hard_sigmoid:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:754    .text.act_hard_sigmoid:00000000 act_hard_sigmoid
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:774    .text.act_hard_sigmoid:0000001c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:777    .text.act_get_dec_bit:00000000 $t
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s 			page 16
+
+
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:783    .text.act_get_dec_bit:00000000 act_get_dec_bit
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:795    .text.act_tensor_run:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:801    .text.act_tensor_run:00000000 act_tensor_run
+C:\Users\ihavenoK\AppData\Local\Temp\ccTrblaV.s:811    .text.activation_run:00000000 $t
+
+UNDEFINED SYMBOLS
+tensor_size
+local_relu_q7
+local_relu_q15
+local_leaky_relu_q7
+local_leaky_relu_q15
+__aeabi_i2f
+__aeabi_fmul
+__aeabi_fcmplt
+__aeabi_f2iz
+__aeabi_fcmpun
+__aeabi_fcmple
+local_adv_relu_q7
+local_adv_relu_q15
+__aeabi_fcmpeq
+local_tanh_q7
+local_tanh_q15
+local_sigmoid_q7
+local_sigmoid_q15
+local_hard_tanh_q7
+local_hard_tanh_q15
+local_hard_sigmoid_q7
+local_hard_sigmoid_q15
+nnom_free
+nnom_mem
+io_init
+default_build

@@ -1,0 +1,376 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"SPI.c"
+  14              		.text
+  15              		.section	.text.SPI1_Init,"ax",%progbits
+  16              		.align	1
+  17              		.global	SPI1_Init
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	SPI1_Init:
+  23              		@ args = 0, pretend = 0, frame = 24
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+  26 0002 87B0     		sub	sp, sp, #28
+  27 0004 0121     		movs	r1, #1
+  28 0006 0520     		movs	r0, #5
+  29 0008 FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+  30 000c 0121     		movs	r1, #1
+  31 000e 4FF48050 		mov	r0, #4096
+  32 0012 FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+  33 0016 1823     		movs	r3, #24
+  34 0018 8DF81730 		strb	r3, [sp, #23]
+  35 001c A023     		movs	r3, #160
+  36 001e ADF81430 		strh	r3, [sp, #20]	@ movhi
+  37 0022 0327     		movs	r7, #3
+  38 0024 8DF81670 		strb	r7, [sp, #22]
+  39 0028 05AC     		add	r4, sp, #20
+  40 002a 224D     		ldr	r5, .L3
+  41 002c 2146     		mov	r1, r4
+  42 002e 2846     		mov	r0, r5
+  43 0030 FFF7FEFF 		bl	GPIO_Init
+  44 0034 4823     		movs	r3, #72
+  45 0036 8DF81730 		strb	r3, [sp, #23]
+  46 003a 4023     		movs	r3, #64
+  47 003c ADF81430 		strh	r3, [sp, #20]	@ movhi
+  48 0040 8DF81670 		strb	r7, [sp, #22]
+  49 0044 2146     		mov	r1, r4
+  50 0046 2846     		mov	r0, r5
+  51 0048 FFF7FEFF 		bl	GPIO_Init
+  52 004c 1026     		movs	r6, #16
+  53 004e 8DF81760 		strb	r6, [sp, #23]
+  54 0052 ADF81460 		strh	r6, [sp, #20]	@ movhi
+  55 0056 8DF81670 		strb	r7, [sp, #22]
+  56 005a 2146     		mov	r1, r4
+  57 005c 2846     		mov	r0, r5
+  58 005e FFF7FEFF 		bl	GPIO_Init
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s 			page 2
+
+
+  59 0062 0024     		movs	r4, #0
+  60 0064 ADF80040 		strh	r4, [sp]	@ movhi
+  61 0068 4FF48273 		mov	r3, #260
+  62 006c ADF80230 		strh	r3, [sp, #2]	@ movhi
+  63 0070 ADF80440 		strh	r4, [sp, #4]	@ movhi
+  64 0074 ADF80640 		strh	r4, [sp, #6]	@ movhi
+  65 0078 ADF80840 		strh	r4, [sp, #8]	@ movhi
+  66 007c 4FF40073 		mov	r3, #512
+  67 0080 ADF80A30 		strh	r3, [sp, #10]	@ movhi
+  68 0084 ADF80C60 		strh	r6, [sp, #12]	@ movhi
+  69 0088 ADF80E40 		strh	r4, [sp, #14]	@ movhi
+  70 008c 0723     		movs	r3, #7
+  71 008e ADF81030 		strh	r3, [sp, #16]	@ movhi
+  72 0092 094F     		ldr	r7, .L3+4
+  73 0094 6946     		mov	r1, sp
+  74 0096 3846     		mov	r0, r7
+  75 0098 FFF7FEFF 		bl	SPI_Init
+  76 009c 0121     		movs	r1, #1
+  77 009e 3846     		mov	r0, r7
+  78 00a0 FFF7FEFF 		bl	SPI_Cmd
+  79 00a4 2246     		mov	r2, r4
+  80 00a6 3146     		mov	r1, r6
+  81 00a8 2846     		mov	r0, r5
+  82 00aa FFF7FEFF 		bl	GPIO_WriteBit
+  83 00ae 07B0     		add	sp, sp, #28
+  84              		@ sp needed
+  85 00b0 F0BD     		pop	{r4, r5, r6, r7, pc}
+  86              	.L4:
+  87 00b2 00BF     		.align	2
+  88              	.L3:
+  89 00b4 00080140 		.word	1073809408
+  90 00b8 00300140 		.word	1073819648
+  92              		.section	.text.SPI1_Start,"ax",%progbits
+  93              		.align	1
+  94              		.global	SPI1_Start
+  95              		.syntax unified
+  96              		.thumb
+  97              		.thumb_func
+  99              	SPI1_Start:
+ 100              		@ args = 0, pretend = 0, frame = 0
+ 101              		@ frame_needed = 0, uses_anonymous_args = 0
+ 102 0000 08B5     		push	{r3, lr}
+ 103 0002 0022     		movs	r2, #0
+ 104 0004 1021     		movs	r1, #16
+ 105 0006 0248     		ldr	r0, .L7
+ 106 0008 FFF7FEFF 		bl	GPIO_WriteBit
+ 107 000c 08BD     		pop	{r3, pc}
+ 108              	.L8:
+ 109 000e 00BF     		.align	2
+ 110              	.L7:
+ 111 0010 00080140 		.word	1073809408
+ 113              		.section	.text.SPI1_Stop,"ax",%progbits
+ 114              		.align	1
+ 115              		.global	SPI1_Stop
+ 116              		.syntax unified
+ 117              		.thumb
+ 118              		.thumb_func
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s 			page 3
+
+
+ 120              	SPI1_Stop:
+ 121              		@ args = 0, pretend = 0, frame = 0
+ 122              		@ frame_needed = 0, uses_anonymous_args = 0
+ 123 0000 08B5     		push	{r3, lr}
+ 124 0002 0122     		movs	r2, #1
+ 125 0004 1021     		movs	r1, #16
+ 126 0006 0248     		ldr	r0, .L11
+ 127 0008 FFF7FEFF 		bl	GPIO_WriteBit
+ 128 000c 08BD     		pop	{r3, pc}
+ 129              	.L12:
+ 130 000e 00BF     		.align	2
+ 131              	.L11:
+ 132 0010 00080140 		.word	1073809408
+ 134              		.section	.text.SPI1_SwapByte,"ax",%progbits
+ 135              		.align	1
+ 136              		.global	SPI1_SwapByte
+ 137              		.syntax unified
+ 138              		.thumb
+ 139              		.thumb_func
+ 141              	SPI1_SwapByte:
+ 142              		@ args = 0, pretend = 0, frame = 0
+ 143              		@ frame_needed = 0, uses_anonymous_args = 0
+ 144 0000 70B5     		push	{r4, r5, r6, lr}
+ 145 0002 0646     		mov	r6, r0
+ 146 0004 0C4D     		ldr	r5, .L19
+ 147 0006 0224     		movs	r4, #2
+ 148              	.L14:
+ 149 0008 2146     		mov	r1, r4
+ 150 000a 2846     		mov	r0, r5
+ 151 000c FFF7FEFF 		bl	SPI_I2S_GetFlagStatus
+ 152 0010 0128     		cmp	r0, #1
+ 153 0012 F9D1     		bne	.L14
+ 154 0014 3146     		mov	r1, r6
+ 155 0016 0848     		ldr	r0, .L19
+ 156 0018 FFF7FEFF 		bl	SPI_I2S_SendData
+ 157 001c 064D     		ldr	r5, .L19
+ 158 001e 0124     		movs	r4, #1
+ 159              	.L15:
+ 160 0020 2146     		mov	r1, r4
+ 161 0022 2846     		mov	r0, r5
+ 162 0024 FFF7FEFF 		bl	SPI_I2S_GetFlagStatus
+ 163 0028 0128     		cmp	r0, #1
+ 164 002a F9D1     		bne	.L15
+ 165 002c 0248     		ldr	r0, .L19
+ 166 002e FFF7FEFF 		bl	SPI_I2S_ReceiveData
+ 167 0032 C0B2     		uxtb	r0, r0
+ 168 0034 70BD     		pop	{r4, r5, r6, pc}
+ 169              	.L20:
+ 170 0036 00BF     		.align	2
+ 171              	.L19:
+ 172 0038 00300140 		.word	1073819648
+ 174              		.section	.text.SPI2_Init,"ax",%progbits
+ 175              		.align	1
+ 176              		.global	SPI2_Init
+ 177              		.syntax unified
+ 178              		.thumb
+ 179              		.thumb_func
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s 			page 4
+
+
+ 181              	SPI2_Init:
+ 182              		@ args = 0, pretend = 0, frame = 24
+ 183              		@ frame_needed = 0, uses_anonymous_args = 0
+ 184 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 185 0004 86B0     		sub	sp, sp, #24
+ 186 0006 0121     		movs	r1, #1
+ 187 0008 0920     		movs	r0, #9
+ 188 000a FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+ 189 000e 0121     		movs	r1, #1
+ 190 0010 4FF48040 		mov	r0, #16384
+ 191 0014 FFF7FEFF 		bl	RCC_APB1PeriphClockCmd
+ 192 0018 4FF01008 		mov	r8, #16
+ 193 001c 8DF81780 		strb	r8, [sp, #23]
+ 194 0020 4FF48057 		mov	r7, #4096
+ 195 0024 ADF81470 		strh	r7, [sp, #20]	@ movhi
+ 196 0028 0326     		movs	r6, #3
+ 197 002a 8DF81660 		strb	r6, [sp, #22]
+ 198 002e 05AD     		add	r5, sp, #20
+ 199 0030 234C     		ldr	r4, .L23
+ 200 0032 2946     		mov	r1, r5
+ 201 0034 2046     		mov	r0, r4
+ 202 0036 FFF7FEFF 		bl	GPIO_Init
+ 203 003a 1823     		movs	r3, #24
+ 204 003c 8DF81730 		strb	r3, [sp, #23]
+ 205 0040 4FF42043 		mov	r3, #40960
+ 206 0044 ADF81430 		strh	r3, [sp, #20]	@ movhi
+ 207 0048 8DF81660 		strb	r6, [sp, #22]
+ 208 004c 2946     		mov	r1, r5
+ 209 004e 2046     		mov	r0, r4
+ 210 0050 FFF7FEFF 		bl	GPIO_Init
+ 211 0054 4823     		movs	r3, #72
+ 212 0056 8DF81730 		strb	r3, [sp, #23]
+ 213 005a 4FF48043 		mov	r3, #16384
+ 214 005e ADF81430 		strh	r3, [sp, #20]	@ movhi
+ 215 0062 8DF81660 		strb	r6, [sp, #22]
+ 216 0066 2946     		mov	r1, r5
+ 217 0068 2046     		mov	r0, r4
+ 218 006a FFF7FEFF 		bl	GPIO_Init
+ 219 006e 4FF48273 		mov	r3, #260
+ 220 0072 ADF80230 		strh	r3, [sp, #2]	@ movhi
+ 221 0076 0023     		movs	r3, #0
+ 222 0078 ADF80030 		strh	r3, [sp]	@ movhi
+ 223 007c ADF80430 		strh	r3, [sp, #4]	@ movhi
+ 224 0080 ADF80E30 		strh	r3, [sp, #14]	@ movhi
+ 225 0084 ADF80C80 		strh	r8, [sp, #12]	@ movhi
+ 226 0088 ADF80630 		strh	r3, [sp, #6]	@ movhi
+ 227 008c ADF80830 		strh	r3, [sp, #8]	@ movhi
+ 228 0090 4FF40073 		mov	r3, #512
+ 229 0094 ADF80A30 		strh	r3, [sp, #10]	@ movhi
+ 230 0098 0723     		movs	r3, #7
+ 231 009a ADF81030 		strh	r3, [sp, #16]	@ movhi
+ 232 009e 094D     		ldr	r5, .L23+4
+ 233 00a0 6946     		mov	r1, sp
+ 234 00a2 2846     		mov	r0, r5
+ 235 00a4 FFF7FEFF 		bl	SPI_Init
+ 236 00a8 0122     		movs	r2, #1
+ 237 00aa 3946     		mov	r1, r7
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s 			page 5
+
+
+ 238 00ac 2046     		mov	r0, r4
+ 239 00ae FFF7FEFF 		bl	GPIO_WriteBit
+ 240 00b2 0121     		movs	r1, #1
+ 241 00b4 2846     		mov	r0, r5
+ 242 00b6 FFF7FEFF 		bl	SPI_Cmd
+ 243 00ba 06B0     		add	sp, sp, #24
+ 244              		@ sp needed
+ 245 00bc BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 246              	.L24:
+ 247              		.align	2
+ 248              	.L23:
+ 249 00c0 000C0140 		.word	1073810432
+ 250 00c4 00380040 		.word	1073756160
+ 252              		.section	.text.SPI2_Start,"ax",%progbits
+ 253              		.align	1
+ 254              		.global	SPI2_Start
+ 255              		.syntax unified
+ 256              		.thumb
+ 257              		.thumb_func
+ 259              	SPI2_Start:
+ 260              		@ args = 0, pretend = 0, frame = 0
+ 261              		@ frame_needed = 0, uses_anonymous_args = 0
+ 262 0000 08B5     		push	{r3, lr}
+ 263 0002 0022     		movs	r2, #0
+ 264 0004 4FF48051 		mov	r1, #4096
+ 265 0008 0148     		ldr	r0, .L27
+ 266 000a FFF7FEFF 		bl	GPIO_WriteBit
+ 267 000e 08BD     		pop	{r3, pc}
+ 268              	.L28:
+ 269              		.align	2
+ 270              	.L27:
+ 271 0010 000C0140 		.word	1073810432
+ 273              		.section	.text.SPI2_Stop,"ax",%progbits
+ 274              		.align	1
+ 275              		.global	SPI2_Stop
+ 276              		.syntax unified
+ 277              		.thumb
+ 278              		.thumb_func
+ 280              	SPI2_Stop:
+ 281              		@ args = 0, pretend = 0, frame = 0
+ 282              		@ frame_needed = 0, uses_anonymous_args = 0
+ 283 0000 08B5     		push	{r3, lr}
+ 284 0002 0122     		movs	r2, #1
+ 285 0004 4FF48051 		mov	r1, #4096
+ 286 0008 0148     		ldr	r0, .L31
+ 287 000a FFF7FEFF 		bl	GPIO_WriteBit
+ 288 000e 08BD     		pop	{r3, pc}
+ 289              	.L32:
+ 290              		.align	2
+ 291              	.L31:
+ 292 0010 000C0140 		.word	1073810432
+ 294              		.section	.text.SPI2_SwapByte,"ax",%progbits
+ 295              		.align	1
+ 296              		.global	SPI2_SwapByte
+ 297              		.syntax unified
+ 298              		.thumb
+ 299              		.thumb_func
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s 			page 6
+
+
+ 301              	SPI2_SwapByte:
+ 302              		@ args = 0, pretend = 0, frame = 0
+ 303              		@ frame_needed = 0, uses_anonymous_args = 0
+ 304 0000 70B5     		push	{r4, r5, r6, lr}
+ 305 0002 0646     		mov	r6, r0
+ 306 0004 0C4D     		ldr	r5, .L39
+ 307 0006 0224     		movs	r4, #2
+ 308              	.L34:
+ 309 0008 2146     		mov	r1, r4
+ 310 000a 2846     		mov	r0, r5
+ 311 000c FFF7FEFF 		bl	SPI_I2S_GetFlagStatus
+ 312 0010 0128     		cmp	r0, #1
+ 313 0012 F9D1     		bne	.L34
+ 314 0014 3146     		mov	r1, r6
+ 315 0016 0848     		ldr	r0, .L39
+ 316 0018 FFF7FEFF 		bl	SPI_I2S_SendData
+ 317 001c 064D     		ldr	r5, .L39
+ 318 001e 0124     		movs	r4, #1
+ 319              	.L35:
+ 320 0020 2146     		mov	r1, r4
+ 321 0022 2846     		mov	r0, r5
+ 322 0024 FFF7FEFF 		bl	SPI_I2S_GetFlagStatus
+ 323 0028 0128     		cmp	r0, #1
+ 324 002a F9D1     		bne	.L35
+ 325 002c 0248     		ldr	r0, .L39
+ 326 002e FFF7FEFF 		bl	SPI_I2S_ReceiveData
+ 327 0032 C0B2     		uxtb	r0, r0
+ 328 0034 70BD     		pop	{r4, r5, r6, pc}
+ 329              	.L40:
+ 330 0036 00BF     		.align	2
+ 331              	.L39:
+ 332 0038 00380040 		.word	1073756160
+ 334              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 SPI.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s:16     .text.SPI1_Init:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s:22     .text.SPI1_Init:00000000 SPI1_Init
+C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s:89     .text.SPI1_Init:000000b4 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s:93     .text.SPI1_Start:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s:99     .text.SPI1_Start:00000000 SPI1_Start
+C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s:111    .text.SPI1_Start:00000010 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s:114    .text.SPI1_Stop:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s:120    .text.SPI1_Stop:00000000 SPI1_Stop
+C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s:132    .text.SPI1_Stop:00000010 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s:135    .text.SPI1_SwapByte:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s:141    .text.SPI1_SwapByte:00000000 SPI1_SwapByte
+C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s:172    .text.SPI1_SwapByte:00000038 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s:175    .text.SPI2_Init:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s:181    .text.SPI2_Init:00000000 SPI2_Init
+C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s:249    .text.SPI2_Init:000000c0 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s:253    .text.SPI2_Start:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s:259    .text.SPI2_Start:00000000 SPI2_Start
+C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s:271    .text.SPI2_Start:00000010 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s:274    .text.SPI2_Stop:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s:280    .text.SPI2_Stop:00000000 SPI2_Stop
+C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s:292    .text.SPI2_Stop:00000010 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s:295    .text.SPI2_SwapByte:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s:301    .text.SPI2_SwapByte:00000000 SPI2_SwapByte
+C:\Users\ihavenoK\AppData\Local\Temp\ccvPBKkd.s:332    .text.SPI2_SwapByte:00000038 $d
+
+UNDEFINED SYMBOLS
+RCC_APB2PeriphClockCmd
+GPIO_Init
+SPI_Init
+SPI_Cmd
+GPIO_WriteBit
+SPI_I2S_GetFlagStatus
+SPI_I2S_SendData
+SPI_I2S_ReceiveData
+RCC_APB1PeriphClockCmd

@@ -1,0 +1,1375 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f10x_can.c"
+  14              		.text
+  15              		.section	.text.CAN_DeInit,"ax",%progbits
+  16              		.align	1
+  17              		.global	CAN_DeInit
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	CAN_DeInit:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 08B5     		push	{r3, lr}
+  26 0002 0C4B     		ldr	r3, .L6
+  27 0004 9842     		cmp	r0, r3
+  28 0006 0AD0     		beq	.L5
+  29 0008 0121     		movs	r1, #1
+  30 000a 4FF08060 		mov	r0, #67108864
+  31 000e FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  32 0012 0021     		movs	r1, #0
+  33 0014 4FF08060 		mov	r0, #67108864
+  34 0018 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  35              	.L1:
+  36 001c 08BD     		pop	{r3, pc}
+  37              	.L5:
+  38 001e 0121     		movs	r1, #1
+  39 0020 4FF00070 		mov	r0, #33554432
+  40 0024 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  41 0028 0021     		movs	r1, #0
+  42 002a 4FF00070 		mov	r0, #33554432
+  43 002e FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  44 0032 F3E7     		b	.L1
+  45              	.L7:
+  46              		.align	2
+  47              	.L6:
+  48 0034 00640040 		.word	1073767424
+  50              		.section	.text.CAN_Init,"ax",%progbits
+  51              		.align	1
+  52              		.global	CAN_Init
+  53              		.syntax unified
+  54              		.thumb
+  55              		.thumb_func
+  57              	CAN_Init:
+  58              		@ args = 0, pretend = 0, frame = 0
+  59              		@ frame_needed = 0, uses_anonymous_args = 0
+  60              		@ link register save eliminated.
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s 			page 2
+
+
+  61 0000 0368     		ldr	r3, [r0]
+  62 0002 23F00203 		bic	r3, r3, #2
+  63 0006 0360     		str	r3, [r0]
+  64 0008 0368     		ldr	r3, [r0]
+  65 000a 43F00103 		orr	r3, r3, #1
+  66 000e 0360     		str	r3, [r0]
+  67 0010 4368     		ldr	r3, [r0, #4]
+  68 0012 13F0010F 		tst	r3, #1
+  69 0016 07D1     		bne	.L9
+  70 0018 4FF6FF73 		movw	r3, #65535
+  71              	.L10:
+  72 001c 4268     		ldr	r2, [r0, #4]
+  73 001e 12F0010F 		tst	r2, #1
+  74 0022 01D1     		bne	.L9
+  75 0024 013B     		subs	r3, r3, #1
+  76 0026 F9D1     		bne	.L10
+  77              	.L9:
+  78 0028 4368     		ldr	r3, [r0, #4]
+  79 002a 13F0010F 		tst	r3, #1
+  80 002e 59D0     		beq	.L26
+  81 0030 8B79     		ldrb	r3, [r1, #6]	@ zero_extendqisi2
+  82 0032 012B     		cmp	r3, #1
+  83 0034 0368     		ldr	r3, [r0]
+  84 0036 0CBF     		ite	eq
+  85 0038 43F08003 		orreq	r3, r3, #128
+  86 003c 23F08003 		bicne	r3, r3, #128
+  87 0040 0360     		str	r3, [r0]
+  88 0042 CB79     		ldrb	r3, [r1, #7]	@ zero_extendqisi2
+  89 0044 012B     		cmp	r3, #1
+  90 0046 0368     		ldr	r3, [r0]
+  91 0048 0CBF     		ite	eq
+  92 004a 43F04003 		orreq	r3, r3, #64
+  93 004e 23F04003 		bicne	r3, r3, #64
+  94 0052 0360     		str	r3, [r0]
+  95 0054 0B7A     		ldrb	r3, [r1, #8]	@ zero_extendqisi2
+  96 0056 012B     		cmp	r3, #1
+  97 0058 0368     		ldr	r3, [r0]
+  98 005a 0CBF     		ite	eq
+  99 005c 43F02003 		orreq	r3, r3, #32
+ 100 0060 23F02003 		bicne	r3, r3, #32
+ 101 0064 0360     		str	r3, [r0]
+ 102 0066 4B7A     		ldrb	r3, [r1, #9]	@ zero_extendqisi2
+ 103 0068 012B     		cmp	r3, #1
+ 104 006a 0368     		ldr	r3, [r0]
+ 105 006c 0CBF     		ite	eq
+ 106 006e 43F01003 		orreq	r3, r3, #16
+ 107 0072 23F01003 		bicne	r3, r3, #16
+ 108 0076 0360     		str	r3, [r0]
+ 109 0078 8B7A     		ldrb	r3, [r1, #10]	@ zero_extendqisi2
+ 110 007a 012B     		cmp	r3, #1
+ 111 007c 0368     		ldr	r3, [r0]
+ 112 007e 0CBF     		ite	eq
+ 113 0080 43F00803 		orreq	r3, r3, #8
+ 114 0084 23F00803 		bicne	r3, r3, #8
+ 115 0088 0360     		str	r3, [r0]
+ 116 008a CB7A     		ldrb	r3, [r1, #11]	@ zero_extendqisi2
+ 117 008c 012B     		cmp	r3, #1
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s 			page 3
+
+
+ 118 008e 0368     		ldr	r3, [r0]
+ 119 0090 0CBF     		ite	eq
+ 120 0092 43F00403 		orreq	r3, r3, #4
+ 121 0096 23F00403 		bicne	r3, r3, #4
+ 122 009a 0360     		str	r3, [r0]
+ 123 009c 8A78     		ldrb	r2, [r1, #2]	@ zero_extendqisi2
+ 124 009e CB78     		ldrb	r3, [r1, #3]	@ zero_extendqisi2
+ 125 00a0 1B06     		lsls	r3, r3, #24
+ 126 00a2 43EA8273 		orr	r3, r3, r2, lsl #30
+ 127 00a6 0A79     		ldrb	r2, [r1, #4]	@ zero_extendqisi2
+ 128 00a8 43EA0243 		orr	r3, r3, r2, lsl #16
+ 129 00ac 4A79     		ldrb	r2, [r1, #5]	@ zero_extendqisi2
+ 130 00ae 43EA0253 		orr	r3, r3, r2, lsl #20
+ 131 00b2 0A88     		ldrh	r2, [r1]
+ 132 00b4 013A     		subs	r2, r2, #1
+ 133 00b6 1343     		orrs	r3, r3, r2
+ 134 00b8 C361     		str	r3, [r0, #28]
+ 135 00ba 0368     		ldr	r3, [r0]
+ 136 00bc 23F00103 		bic	r3, r3, #1
+ 137 00c0 0360     		str	r3, [r0]
+ 138 00c2 4368     		ldr	r3, [r0, #4]
+ 139 00c4 13F0010F 		tst	r3, #1
+ 140 00c8 07D0     		beq	.L24
+ 141 00ca 4FF6FF73 		movw	r3, #65535
+ 142              	.L25:
+ 143 00ce 4268     		ldr	r2, [r0, #4]
+ 144 00d0 12F0010F 		tst	r2, #1
+ 145 00d4 01D0     		beq	.L24
+ 146 00d6 013B     		subs	r3, r3, #1
+ 147 00d8 F9D1     		bne	.L25
+ 148              	.L24:
+ 149 00da 4068     		ldr	r0, [r0, #4]
+ 150 00dc C043     		mvns	r0, r0
+ 151 00de 00F00100 		and	r0, r0, #1
+ 152 00e2 7047     		bx	lr
+ 153              	.L26:
+ 154 00e4 0020     		movs	r0, #0
+ 155 00e6 7047     		bx	lr
+ 157              		.section	.text.CAN_FilterInit,"ax",%progbits
+ 158              		.align	1
+ 159              		.global	CAN_FilterInit
+ 160              		.syntax unified
+ 161              		.thumb
+ 162              		.thumb_func
+ 164              	CAN_FilterInit:
+ 165              		@ args = 0, pretend = 0, frame = 0
+ 166              		@ frame_needed = 0, uses_anonymous_args = 0
+ 167 0000 10B5     		push	{r4, lr}
+ 168 0002 827A     		ldrb	r2, [r0, #10]	@ zero_extendqisi2
+ 169 0004 0123     		movs	r3, #1
+ 170 0006 9340     		lsls	r3, r3, r2
+ 171 0008 3F4A     		ldr	r2, .L41
+ 172 000a D2F80012 		ldr	r1, [r2, #512]
+ 173 000e 41F00101 		orr	r1, r1, #1
+ 174 0012 C2F80012 		str	r1, [r2, #512]
+ 175 0016 D2F81C12 		ldr	r1, [r2, #540]
+ 176 001a 6FEA030C 		mvn	ip, r3
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s 			page 4
+
+
+ 177 001e 21EA0301 		bic	r1, r1, r3
+ 178 0022 C2F81C12 		str	r1, [r2, #540]
+ 179 0026 027B     		ldrb	r2, [r0, #12]	@ zero_extendqisi2
+ 180 0028 D2B9     		cbnz	r2, .L30
+ 181 002a 374A     		ldr	r2, .L41
+ 182 002c D2F80C12 		ldr	r1, [r2, #524]
+ 183 0030 0CEA0101 		and	r1, ip, r1
+ 184 0034 C2F80C12 		str	r1, [r2, #524]
+ 185 0038 817A     		ldrb	r1, [r0, #10]	@ zero_extendqisi2
+ 186 003a B0F806E0 		ldrh	lr, [r0, #6]
+ 187 003e 4488     		ldrh	r4, [r0, #2]
+ 188 0040 44EA0E44 		orr	r4, r4, lr, lsl #16
+ 189 0044 4831     		adds	r1, r1, #72
+ 190 0046 42F83140 		str	r4, [r2, r1, lsl #3]
+ 191 004a 90F80AE0 		ldrb	lr, [r0, #10]	@ zero_extendqisi2
+ 192 004e 8488     		ldrh	r4, [r0, #4]
+ 193 0050 0188     		ldrh	r1, [r0]
+ 194 0052 41EA0441 		orr	r1, r1, r4, lsl #16
+ 195 0056 0EF1480E 		add	lr, lr, #72
+ 196 005a 02EBCE02 		add	r2, r2, lr, lsl #3
+ 197 005e 5160     		str	r1, [r2, #4]
+ 198              	.L30:
+ 199 0060 027B     		ldrb	r2, [r0, #12]	@ zero_extendqisi2
+ 200 0062 012A     		cmp	r2, #1
+ 201 0064 20D0     		beq	.L38
+ 202              	.L31:
+ 203 0066 C27A     		ldrb	r2, [r0, #11]	@ zero_extendqisi2
+ 204 0068 002A     		cmp	r2, #0
+ 205 006a 37D1     		bne	.L32
+ 206 006c 2649     		ldr	r1, .L41
+ 207 006e D1F80422 		ldr	r2, [r1, #516]
+ 208 0072 0CEA0202 		and	r2, ip, r2
+ 209 0076 C1F80422 		str	r2, [r1, #516]
+ 210              	.L33:
+ 211 007a 0289     		ldrh	r2, [r0, #8]
+ 212 007c 32B9     		cbnz	r2, .L34
+ 213 007e 2249     		ldr	r1, .L41
+ 214 0080 D1F81422 		ldr	r2, [r1, #532]
+ 215 0084 0CEA0202 		and	r2, ip, r2
+ 216 0088 C1F81422 		str	r2, [r1, #532]
+ 217              	.L34:
+ 218 008c 0289     		ldrh	r2, [r0, #8]
+ 219 008e 012A     		cmp	r2, #1
+ 220 0090 2BD0     		beq	.L39
+ 221              	.L35:
+ 222 0092 427B     		ldrb	r2, [r0, #13]	@ zero_extendqisi2
+ 223 0094 012A     		cmp	r2, #1
+ 224 0096 2FD0     		beq	.L40
+ 225              	.L36:
+ 226 0098 1B4A     		ldr	r2, .L41
+ 227 009a D2F80032 		ldr	r3, [r2, #512]
+ 228 009e 23F00103 		bic	r3, r3, #1
+ 229 00a2 C2F80032 		str	r3, [r2, #512]
+ 230 00a6 10BD     		pop	{r4, pc}
+ 231              	.L38:
+ 232 00a8 174A     		ldr	r2, .L41
+ 233 00aa D2F80C12 		ldr	r1, [r2, #524]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s 			page 5
+
+
+ 234 00ae 1943     		orrs	r1, r1, r3
+ 235 00b0 C2F80C12 		str	r1, [r2, #524]
+ 236 00b4 817A     		ldrb	r1, [r0, #10]	@ zero_extendqisi2
+ 237 00b6 B0F800E0 		ldrh	lr, [r0]
+ 238 00ba 4488     		ldrh	r4, [r0, #2]
+ 239 00bc 44EA0E44 		orr	r4, r4, lr, lsl #16
+ 240 00c0 4831     		adds	r1, r1, #72
+ 241 00c2 42F83140 		str	r4, [r2, r1, lsl #3]
+ 242 00c6 847A     		ldrb	r4, [r0, #10]	@ zero_extendqisi2
+ 243 00c8 B0F804E0 		ldrh	lr, [r0, #4]
+ 244 00cc C188     		ldrh	r1, [r0, #6]
+ 245 00ce 41EA0E41 		orr	r1, r1, lr, lsl #16
+ 246 00d2 4834     		adds	r4, r4, #72
+ 247 00d4 02EBC402 		add	r2, r2, r4, lsl #3
+ 248 00d8 5160     		str	r1, [r2, #4]
+ 249 00da C4E7     		b	.L31
+ 250              	.L32:
+ 251 00dc 0A49     		ldr	r1, .L41
+ 252 00de D1F80422 		ldr	r2, [r1, #516]
+ 253 00e2 1A43     		orrs	r2, r2, r3
+ 254 00e4 C1F80422 		str	r2, [r1, #516]
+ 255 00e8 C7E7     		b	.L33
+ 256              	.L39:
+ 257 00ea 0749     		ldr	r1, .L41
+ 258 00ec D1F81422 		ldr	r2, [r1, #532]
+ 259 00f0 1A43     		orrs	r2, r2, r3
+ 260 00f2 C1F81422 		str	r2, [r1, #532]
+ 261 00f6 CCE7     		b	.L35
+ 262              	.L40:
+ 263 00f8 0349     		ldr	r1, .L41
+ 264 00fa D1F81C22 		ldr	r2, [r1, #540]
+ 265 00fe 1343     		orrs	r3, r3, r2
+ 266 0100 C1F81C32 		str	r3, [r1, #540]
+ 267 0104 C8E7     		b	.L36
+ 268              	.L42:
+ 269 0106 00BF     		.align	2
+ 270              	.L41:
+ 271 0108 00640040 		.word	1073767424
+ 273              		.section	.text.CAN_StructInit,"ax",%progbits
+ 274              		.align	1
+ 275              		.global	CAN_StructInit
+ 276              		.syntax unified
+ 277              		.thumb
+ 278              		.thumb_func
+ 280              	CAN_StructInit:
+ 281              		@ args = 0, pretend = 0, frame = 0
+ 282              		@ frame_needed = 0, uses_anonymous_args = 0
+ 283              		@ link register save eliminated.
+ 284 0000 0023     		movs	r3, #0
+ 285 0002 8371     		strb	r3, [r0, #6]
+ 286 0004 C371     		strb	r3, [r0, #7]
+ 287 0006 0372     		strb	r3, [r0, #8]
+ 288 0008 4372     		strb	r3, [r0, #9]
+ 289 000a 8372     		strb	r3, [r0, #10]
+ 290 000c C372     		strb	r3, [r0, #11]
+ 291 000e 8370     		strb	r3, [r0, #2]
+ 292 0010 C370     		strb	r3, [r0, #3]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s 			page 6
+
+
+ 293 0012 0323     		movs	r3, #3
+ 294 0014 0371     		strb	r3, [r0, #4]
+ 295 0016 0223     		movs	r3, #2
+ 296 0018 4371     		strb	r3, [r0, #5]
+ 297 001a 0123     		movs	r3, #1
+ 298 001c 0380     		strh	r3, [r0]	@ movhi
+ 299 001e 7047     		bx	lr
+ 301              		.section	.text.CAN_SlaveStartBank,"ax",%progbits
+ 302              		.align	1
+ 303              		.global	CAN_SlaveStartBank
+ 304              		.syntax unified
+ 305              		.thumb
+ 306              		.thumb_func
+ 308              	CAN_SlaveStartBank:
+ 309              		@ args = 0, pretend = 0, frame = 0
+ 310              		@ frame_needed = 0, uses_anonymous_args = 0
+ 311              		@ link register save eliminated.
+ 312 0000 0D4B     		ldr	r3, .L45
+ 313 0002 D3F80022 		ldr	r2, [r3, #512]
+ 314 0006 42F00102 		orr	r2, r2, #1
+ 315 000a C3F80022 		str	r2, [r3, #512]
+ 316 000e D3F80022 		ldr	r2, [r3, #512]
+ 317 0012 22F47C52 		bic	r2, r2, #16128
+ 318 0016 22F00E02 		bic	r2, r2, #14
+ 319 001a C3F80022 		str	r2, [r3, #512]
+ 320 001e D3F80022 		ldr	r2, [r3, #512]
+ 321 0022 42EA0022 		orr	r2, r2, r0, lsl #8
+ 322 0026 C3F80022 		str	r2, [r3, #512]
+ 323 002a D3F80022 		ldr	r2, [r3, #512]
+ 324 002e 22F00102 		bic	r2, r2, #1
+ 325 0032 C3F80022 		str	r2, [r3, #512]
+ 326 0036 7047     		bx	lr
+ 327              	.L46:
+ 328              		.align	2
+ 329              	.L45:
+ 330 0038 00640040 		.word	1073767424
+ 332              		.section	.text.CAN_DBGFreeze,"ax",%progbits
+ 333              		.align	1
+ 334              		.global	CAN_DBGFreeze
+ 335              		.syntax unified
+ 336              		.thumb
+ 337              		.thumb_func
+ 339              	CAN_DBGFreeze:
+ 340              		@ args = 0, pretend = 0, frame = 0
+ 341              		@ frame_needed = 0, uses_anonymous_args = 0
+ 342              		@ link register save eliminated.
+ 343 0000 21B1     		cbz	r1, .L48
+ 344 0002 0368     		ldr	r3, [r0]
+ 345 0004 43F48033 		orr	r3, r3, #65536
+ 346 0008 0360     		str	r3, [r0]
+ 347 000a 7047     		bx	lr
+ 348              	.L48:
+ 349 000c 0368     		ldr	r3, [r0]
+ 350 000e 23F48033 		bic	r3, r3, #65536
+ 351 0012 0360     		str	r3, [r0]
+ 352 0014 7047     		bx	lr
+ 354              		.section	.text.CAN_TTComModeCmd,"ax",%progbits
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s 			page 7
+
+
+ 355              		.align	1
+ 356              		.global	CAN_TTComModeCmd
+ 357              		.syntax unified
+ 358              		.thumb
+ 359              		.thumb_func
+ 361              	CAN_TTComModeCmd:
+ 362              		@ args = 0, pretend = 0, frame = 0
+ 363              		@ frame_needed = 0, uses_anonymous_args = 0
+ 364              		@ link register save eliminated.
+ 365 0000 B1B1     		cbz	r1, .L51
+ 366 0002 0368     		ldr	r3, [r0]
+ 367 0004 43F08003 		orr	r3, r3, #128
+ 368 0008 0360     		str	r3, [r0]
+ 369 000a D0F88431 		ldr	r3, [r0, #388]
+ 370 000e 43F48073 		orr	r3, r3, #256
+ 371 0012 C0F88431 		str	r3, [r0, #388]
+ 372 0016 D0F89431 		ldr	r3, [r0, #404]
+ 373 001a 43F48073 		orr	r3, r3, #256
+ 374 001e C0F89431 		str	r3, [r0, #404]
+ 375 0022 D0F8A431 		ldr	r3, [r0, #420]
+ 376 0026 43F48073 		orr	r3, r3, #256
+ 377 002a C0F8A431 		str	r3, [r0, #420]
+ 378 002e 7047     		bx	lr
+ 379              	.L51:
+ 380 0030 0368     		ldr	r3, [r0]
+ 381 0032 23F08003 		bic	r3, r3, #128
+ 382 0036 0360     		str	r3, [r0]
+ 383 0038 D0F88431 		ldr	r3, [r0, #388]
+ 384 003c 23F48073 		bic	r3, r3, #256
+ 385 0040 C0F88431 		str	r3, [r0, #388]
+ 386 0044 D0F89431 		ldr	r3, [r0, #404]
+ 387 0048 23F48073 		bic	r3, r3, #256
+ 388 004c C0F89431 		str	r3, [r0, #404]
+ 389 0050 D0F8A431 		ldr	r3, [r0, #420]
+ 390 0054 23F48073 		bic	r3, r3, #256
+ 391 0058 C0F8A431 		str	r3, [r0, #420]
+ 392 005c 7047     		bx	lr
+ 394              		.section	.text.CAN_Transmit,"ax",%progbits
+ 395              		.align	1
+ 396              		.global	CAN_Transmit
+ 397              		.syntax unified
+ 398              		.thumb
+ 399              		.thumb_func
+ 401              	CAN_Transmit:
+ 402              		@ args = 0, pretend = 0, frame = 0
+ 403              		@ frame_needed = 0, uses_anonymous_args = 0
+ 404 0000 0246     		mov	r2, r0
+ 405 0002 8368     		ldr	r3, [r0, #8]
+ 406 0004 13F0806F 		tst	r3, #67108864
+ 407 0008 09D1     		bne	.L58
+ 408 000a 8368     		ldr	r3, [r0, #8]
+ 409 000c 13F0006F 		tst	r3, #134217728
+ 410 0010 55D1     		bne	.L59
+ 411 0012 8368     		ldr	r3, [r0, #8]
+ 412 0014 13F0805F 		tst	r3, #268435456
+ 413 0018 61D0     		beq	.L60
+ 414 001a 0220     		movs	r0, #2
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s 			page 8
+
+
+ 415 001c 00E0     		b	.L54
+ 416              	.L58:
+ 417 001e 0020     		movs	r0, #0
+ 418              	.L54:
+ 419 0020 30B5     		push	{r4, r5, lr}
+ 420 0022 8446     		mov	ip, r0
+ 421 0024 02EB0013 		add	r3, r2, r0, lsl #4
+ 422 0028 D3F88041 		ldr	r4, [r3, #384]
+ 423 002c 04F00104 		and	r4, r4, #1
+ 424 0030 C3F88041 		str	r4, [r3, #384]
+ 425 0034 0C7A     		ldrb	r4, [r1, #8]	@ zero_extendqisi2
+ 426 0036 002C     		cmp	r4, #0
+ 427 0038 43D1     		bne	.L56
+ 428 003a D3F88051 		ldr	r5, [r3, #384]
+ 429 003e 4C7A     		ldrb	r4, [r1, #9]	@ zero_extendqisi2
+ 430 0040 D1F800E0 		ldr	lr, [r1]
+ 431 0044 44EA4E54 		orr	r4, r4, lr, lsl #21
+ 432 0048 2C43     		orrs	r4, r4, r5
+ 433 004a C3F88041 		str	r4, [r3, #384]
+ 434              	.L57:
+ 435 004e 8C7A     		ldrb	r4, [r1, #10]	@ zero_extendqisi2
+ 436 0050 04F00F04 		and	r4, r4, #15
+ 437 0054 8C72     		strb	r4, [r1, #10]
+ 438 0056 D3F88441 		ldr	r4, [r3, #388]
+ 439 005a 24F00F04 		bic	r4, r4, #15
+ 440 005e C3F88441 		str	r4, [r3, #388]
+ 441 0062 D3F88451 		ldr	r5, [r3, #388]
+ 442 0066 8C7A     		ldrb	r4, [r1, #10]	@ zero_extendqisi2
+ 443 0068 2C43     		orrs	r4, r4, r5
+ 444 006a C3F88441 		str	r4, [r3, #388]
+ 445 006e 91F80EE0 		ldrb	lr, [r1, #14]	@ zero_extendqisi2
+ 446 0072 4C7B     		ldrb	r4, [r1, #13]	@ zero_extendqisi2
+ 447 0074 2404     		lsls	r4, r4, #16
+ 448 0076 44EA0E64 		orr	r4, r4, lr, lsl #24
+ 449 007a 91F80BE0 		ldrb	lr, [r1, #11]	@ zero_extendqisi2
+ 450 007e 44EA0E04 		orr	r4, r4, lr
+ 451 0082 91F80CE0 		ldrb	lr, [r1, #12]	@ zero_extendqisi2
+ 452 0086 44EA0E24 		orr	r4, r4, lr, lsl #8
+ 453 008a 02EB0C12 		add	r2, r2, ip, lsl #4
+ 454 008e C2F88841 		str	r4, [r2, #392]
+ 455 0092 8C7C     		ldrb	r4, [r1, #18]	@ zero_extendqisi2
+ 456 0094 91F811C0 		ldrb	ip, [r1, #17]	@ zero_extendqisi2
+ 457 0098 4FEA0C4C 		lsl	ip, ip, #16
+ 458 009c 4CEA046C 		orr	ip, ip, r4, lsl #24
+ 459 00a0 CC7B     		ldrb	r4, [r1, #15]	@ zero_extendqisi2
+ 460 00a2 4CEA040C 		orr	ip, ip, r4
+ 461 00a6 097C     		ldrb	r1, [r1, #16]	@ zero_extendqisi2
+ 462 00a8 4CEA0121 		orr	r1, ip, r1, lsl #8
+ 463 00ac C2F88C11 		str	r1, [r2, #396]
+ 464 00b0 D3F88021 		ldr	r2, [r3, #384]
+ 465 00b4 42F00102 		orr	r2, r2, #1
+ 466 00b8 C3F88021 		str	r2, [r3, #384]
+ 467 00bc 30BD     		pop	{r4, r5, pc}
+ 468              	.L59:
+ 469 00be 0120     		movs	r0, #1
+ 470 00c0 AEE7     		b	.L54
+ 471              	.L56:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s 			page 9
+
+
+ 472 00c2 D3F88051 		ldr	r5, [r3, #384]
+ 473 00c6 D1F804E0 		ldr	lr, [r1, #4]
+ 474 00ca 44EACE04 		orr	r4, r4, lr, lsl #3
+ 475 00ce 91F809E0 		ldrb	lr, [r1, #9]	@ zero_extendqisi2
+ 476 00d2 44EA0E04 		orr	r4, r4, lr
+ 477 00d6 2C43     		orrs	r4, r4, r5
+ 478 00d8 C3F88041 		str	r4, [r3, #384]
+ 479 00dc B7E7     		b	.L57
+ 480              	.L60:
+ 481 00de 0420     		movs	r0, #4
+ 482 00e0 7047     		bx	lr
+ 484              		.section	.text.CAN_TransmitStatus,"ax",%progbits
+ 485              		.align	1
+ 486              		.global	CAN_TransmitStatus
+ 487              		.syntax unified
+ 488              		.thumb
+ 489              		.thumb_func
+ 491              	CAN_TransmitStatus:
+ 492              		@ args = 0, pretend = 0, frame = 0
+ 493              		@ frame_needed = 0, uses_anonymous_args = 0
+ 494              		@ link register save eliminated.
+ 495 0000 0129     		cmp	r1, #1
+ 496 0002 12D0     		beq	.L65
+ 497 0004 0229     		cmp	r1, #2
+ 498 0006 18D0     		beq	.L66
+ 499 0008 39BB     		cbnz	r1, .L70
+ 500 000a 8068     		ldr	r0, [r0, #8]
+ 501 000c 20F07B40 		bic	r0, r0, #-83886080
+ 502 0010 20F47F00 		bic	r0, r0, #16711680
+ 503 0014 20F47F40 		bic	r0, r0, #65280
+ 504 0018 20F0FC00 		bic	r0, r0, #252
+ 505              	.L68:
+ 506 001c F8B1     		cbz	r0, .L72
+ 507 001e 114B     		ldr	r3, .L73
+ 508 0020 9842     		cmp	r0, r3
+ 509 0022 14BF     		ite	ne
+ 510 0024 0020     		movne	r0, #0
+ 511 0026 0120     		moveq	r0, #1
+ 512 0028 7047     		bx	lr
+ 513              	.L65:
+ 514 002a 8268     		ldr	r2, [r0, #8]
+ 515 002c 0E4B     		ldr	r3, .L73+4
+ 516 002e 02EA0300 		and	r0, r2, r3
+ 517 0032 9343     		bics	r3, r3, r2
+ 518 0034 F2D1     		bne	.L68
+ 519 0036 0120     		movs	r0, #1
+ 520 0038 7047     		bx	lr
+ 521              	.L66:
+ 522 003a 8068     		ldr	r0, [r0, #8]
+ 523 003c 20F06F40 		bic	r0, r0, #-285212672
+ 524 0040 20F47C00 		bic	r0, r0, #16515072
+ 525 0044 000C     		lsrs	r0, r0, #16
+ 526 0046 0004     		lsls	r0, r0, #16
+ 527 0048 074B     		ldr	r3, .L73+4
+ 528 004a 9842     		cmp	r0, r3
+ 529 004c E6D9     		bls	.L68
+ 530 004e 074B     		ldr	r3, .L73+8
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s 			page 10
+
+
+ 531 0050 9842     		cmp	r0, r3
+ 532 0052 14BF     		ite	ne
+ 533 0054 0020     		movne	r0, #0
+ 534 0056 0120     		moveq	r0, #1
+ 535 0058 7047     		bx	lr
+ 536              	.L70:
+ 537 005a 0220     		movs	r0, #2
+ 538 005c 7047     		bx	lr
+ 539              	.L72:
+ 540 005e 0220     		movs	r0, #2
+ 541 0060 7047     		bx	lr
+ 542              	.L74:
+ 543 0062 00BF     		.align	2
+ 544              	.L73:
+ 545 0064 03000004 		.word	67108867
+ 546 0068 00030008 		.word	134218496
+ 547 006c 00000310 		.word	268632064
+ 549              		.section	.text.CAN_CancelTransmit,"ax",%progbits
+ 550              		.align	1
+ 551              		.global	CAN_CancelTransmit
+ 552              		.syntax unified
+ 553              		.thumb
+ 554              		.thumb_func
+ 556              	CAN_CancelTransmit:
+ 557              		@ args = 0, pretend = 0, frame = 0
+ 558              		@ frame_needed = 0, uses_anonymous_args = 0
+ 559              		@ link register save eliminated.
+ 560 0000 0129     		cmp	r1, #1
+ 561 0002 07D0     		beq	.L76
+ 562 0004 0229     		cmp	r1, #2
+ 563 0006 0AD0     		beq	.L77
+ 564 0008 69B9     		cbnz	r1, .L75
+ 565 000a 8368     		ldr	r3, [r0, #8]
+ 566 000c 43F08003 		orr	r3, r3, #128
+ 567 0010 8360     		str	r3, [r0, #8]
+ 568 0012 7047     		bx	lr
+ 569              	.L76:
+ 570 0014 8368     		ldr	r3, [r0, #8]
+ 571 0016 43F40043 		orr	r3, r3, #32768
+ 572 001a 8360     		str	r3, [r0, #8]
+ 573 001c 7047     		bx	lr
+ 574              	.L77:
+ 575 001e 8368     		ldr	r3, [r0, #8]
+ 576 0020 43F40003 		orr	r3, r3, #8388608
+ 577 0024 8360     		str	r3, [r0, #8]
+ 578              	.L75:
+ 579 0026 7047     		bx	lr
+ 581              		.section	.text.CAN_Receive,"ax",%progbits
+ 582              		.align	1
+ 583              		.global	CAN_Receive
+ 584              		.syntax unified
+ 585              		.thumb
+ 586              		.thumb_func
+ 588              	CAN_Receive:
+ 589              		@ args = 0, pretend = 0, frame = 0
+ 590              		@ frame_needed = 0, uses_anonymous_args = 0
+ 591              		@ link register save eliminated.
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s 			page 11
+
+
+ 592 0000 10B4     		push	{r4}
+ 593 0002 00EB0113 		add	r3, r0, r1, lsl #4
+ 594 0006 D3F8B041 		ldr	r4, [r3, #432]
+ 595 000a 04F00404 		and	r4, r4, #4
+ 596 000e 1472     		strb	r4, [r2, #8]
+ 597 0010 C4BB     		cbnz	r4, .L80
+ 598 0012 D3F8B041 		ldr	r4, [r3, #432]
+ 599 0016 640D     		lsrs	r4, r4, #21
+ 600 0018 1460     		str	r4, [r2]
+ 601              	.L81:
+ 602 001a D3F8B041 		ldr	r4, [r3, #432]
+ 603 001e 04F00204 		and	r4, r4, #2
+ 604 0022 5472     		strb	r4, [r2, #9]
+ 605 0024 D3F8B441 		ldr	r4, [r3, #436]
+ 606 0028 04F00F04 		and	r4, r4, #15
+ 607 002c 9472     		strb	r4, [r2, #10]
+ 608 002e D3F8B431 		ldr	r3, [r3, #436]
+ 609 0032 1B0A     		lsrs	r3, r3, #8
+ 610 0034 D374     		strb	r3, [r2, #19]
+ 611 0036 00EB0113 		add	r3, r0, r1, lsl #4
+ 612 003a D3F8B841 		ldr	r4, [r3, #440]
+ 613 003e D472     		strb	r4, [r2, #11]
+ 614 0040 D3F8B841 		ldr	r4, [r3, #440]
+ 615 0044 240A     		lsrs	r4, r4, #8
+ 616 0046 1473     		strb	r4, [r2, #12]
+ 617 0048 D3F8B841 		ldr	r4, [r3, #440]
+ 618 004c 240C     		lsrs	r4, r4, #16
+ 619 004e 5473     		strb	r4, [r2, #13]
+ 620 0050 D3F8B841 		ldr	r4, [r3, #440]
+ 621 0054 240E     		lsrs	r4, r4, #24
+ 622 0056 9473     		strb	r4, [r2, #14]
+ 623 0058 D3F8BC41 		ldr	r4, [r3, #444]
+ 624 005c D473     		strb	r4, [r2, #15]
+ 625 005e D3F8BC41 		ldr	r4, [r3, #444]
+ 626 0062 240A     		lsrs	r4, r4, #8
+ 627 0064 1474     		strb	r4, [r2, #16]
+ 628 0066 D3F8BC41 		ldr	r4, [r3, #444]
+ 629 006a 240C     		lsrs	r4, r4, #16
+ 630 006c 5474     		strb	r4, [r2, #17]
+ 631 006e D3F8BC31 		ldr	r3, [r3, #444]
+ 632 0072 1B0E     		lsrs	r3, r3, #24
+ 633 0074 9374     		strb	r3, [r2, #18]
+ 634 0076 51B9     		cbnz	r1, .L82
+ 635 0078 C368     		ldr	r3, [r0, #12]
+ 636 007a 43F02003 		orr	r3, r3, #32
+ 637 007e C360     		str	r3, [r0, #12]
+ 638              	.L79:
+ 639 0080 10BC     		pop	{r4}
+ 640 0082 7047     		bx	lr
+ 641              	.L80:
+ 642 0084 D3F8B041 		ldr	r4, [r3, #432]
+ 643 0088 E408     		lsrs	r4, r4, #3
+ 644 008a 5460     		str	r4, [r2, #4]
+ 645 008c C5E7     		b	.L81
+ 646              	.L82:
+ 647 008e 0369     		ldr	r3, [r0, #16]
+ 648 0090 43F02003 		orr	r3, r3, #32
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s 			page 12
+
+
+ 649 0094 0361     		str	r3, [r0, #16]
+ 650 0096 F3E7     		b	.L79
+ 652              		.section	.text.CAN_FIFORelease,"ax",%progbits
+ 653              		.align	1
+ 654              		.global	CAN_FIFORelease
+ 655              		.syntax unified
+ 656              		.thumb
+ 657              		.thumb_func
+ 659              	CAN_FIFORelease:
+ 660              		@ args = 0, pretend = 0, frame = 0
+ 661              		@ frame_needed = 0, uses_anonymous_args = 0
+ 662              		@ link register save eliminated.
+ 663 0000 21B9     		cbnz	r1, .L86
+ 664 0002 C368     		ldr	r3, [r0, #12]
+ 665 0004 43F02003 		orr	r3, r3, #32
+ 666 0008 C360     		str	r3, [r0, #12]
+ 667 000a 7047     		bx	lr
+ 668              	.L86:
+ 669 000c 0369     		ldr	r3, [r0, #16]
+ 670 000e 43F02003 		orr	r3, r3, #32
+ 671 0012 0361     		str	r3, [r0, #16]
+ 672 0014 7047     		bx	lr
+ 674              		.section	.text.CAN_MessagePending,"ax",%progbits
+ 675              		.align	1
+ 676              		.global	CAN_MessagePending
+ 677              		.syntax unified
+ 678              		.thumb
+ 679              		.thumb_func
+ 681              	CAN_MessagePending:
+ 682              		@ args = 0, pretend = 0, frame = 0
+ 683              		@ frame_needed = 0, uses_anonymous_args = 0
+ 684              		@ link register save eliminated.
+ 685 0000 19B9     		cbnz	r1, .L89
+ 686 0002 C068     		ldr	r0, [r0, #12]
+ 687 0004 00F00300 		and	r0, r0, #3
+ 688 0008 7047     		bx	lr
+ 689              	.L89:
+ 690 000a 0129     		cmp	r1, #1
+ 691 000c 06BF     		itte	eq
+ 692 000e 0069     		ldreq	r0, [r0, #16]
+ 693 0010 00F00300 		andeq	r0, r0, #3
+ 694 0014 0020     		movne	r0, #0
+ 695 0016 7047     		bx	lr
+ 697              		.section	.text.CAN_OperatingModeRequest,"ax",%progbits
+ 698              		.align	1
+ 699              		.global	CAN_OperatingModeRequest
+ 700              		.syntax unified
+ 701              		.thumb
+ 702              		.thumb_func
+ 704              	CAN_OperatingModeRequest:
+ 705              		@ args = 0, pretend = 0, frame = 0
+ 706              		@ frame_needed = 0, uses_anonymous_args = 0
+ 707              		@ link register save eliminated.
+ 708 0000 D9B9     		cbnz	r1, .L93
+ 709 0002 0368     		ldr	r3, [r0]
+ 710 0004 23F00303 		bic	r3, r3, #3
+ 711 0008 43F00103 		orr	r3, r3, #1
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s 			page 13
+
+
+ 712 000c 0360     		str	r3, [r0]
+ 713 000e 4368     		ldr	r3, [r0, #4]
+ 714 0010 03F00303 		and	r3, r3, #3
+ 715 0014 012B     		cmp	r3, #1
+ 716 0016 08D0     		beq	.L94
+ 717 0018 4FF6FF72 		movw	r2, #65535
+ 718              	.L95:
+ 719 001c 4368     		ldr	r3, [r0, #4]
+ 720 001e 03F00303 		and	r3, r3, #3
+ 721 0022 012B     		cmp	r3, #1
+ 722 0024 01D0     		beq	.L94
+ 723 0026 013A     		subs	r2, r2, #1
+ 724 0028 F8D1     		bne	.L95
+ 725              	.L94:
+ 726 002a 4068     		ldr	r0, [r0, #4]
+ 727 002c 00F00300 		and	r0, r0, #3
+ 728 0030 0128     		cmp	r0, #1
+ 729 0032 14BF     		ite	ne
+ 730 0034 0020     		movne	r0, #0
+ 731 0036 0120     		moveq	r0, #1
+ 732 0038 7047     		bx	lr
+ 733              	.L93:
+ 734 003a 0129     		cmp	r1, #1
+ 735 003c 03D0     		beq	.L106
+ 736 003e 0229     		cmp	r1, #2
+ 737 0040 18D0     		beq	.L107
+ 738 0042 0020     		movs	r0, #0
+ 739 0044 7047     		bx	lr
+ 740              	.L106:
+ 741 0046 0368     		ldr	r3, [r0]
+ 742 0048 23F00303 		bic	r3, r3, #3
+ 743 004c 0360     		str	r3, [r0]
+ 744 004e 4368     		ldr	r3, [r0, #4]
+ 745 0050 13F0030F 		tst	r3, #3
+ 746 0054 07D0     		beq	.L98
+ 747 0056 4FF6FF73 		movw	r3, #65535
+ 748              	.L99:
+ 749 005a 4268     		ldr	r2, [r0, #4]
+ 750 005c 12F0030F 		tst	r2, #3
+ 751 0060 01D0     		beq	.L98
+ 752 0062 013B     		subs	r3, r3, #1
+ 753 0064 F9D1     		bne	.L99
+ 754              	.L98:
+ 755 0066 4068     		ldr	r0, [r0, #4]
+ 756 0068 00F00300 		and	r0, r0, #3
+ 757 006c B0FA80F0 		clz	r0, r0
+ 758 0070 4009     		lsrs	r0, r0, #5
+ 759 0072 7047     		bx	lr
+ 760              	.L107:
+ 761 0074 0368     		ldr	r3, [r0]
+ 762 0076 23F00303 		bic	r3, r3, #3
+ 763 007a 43F00203 		orr	r3, r3, #2
+ 764 007e 0360     		str	r3, [r0]
+ 765 0080 4368     		ldr	r3, [r0, #4]
+ 766 0082 03F00303 		and	r3, r3, #3
+ 767 0086 022B     		cmp	r3, #2
+ 768 0088 08D0     		beq	.L100
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s 			page 14
+
+
+ 769 008a 4FF6FF72 		movw	r2, #65535
+ 770              	.L101:
+ 771 008e 4368     		ldr	r3, [r0, #4]
+ 772 0090 03F00303 		and	r3, r3, #3
+ 773 0094 022B     		cmp	r3, #2
+ 774 0096 01D0     		beq	.L100
+ 775 0098 013A     		subs	r2, r2, #1
+ 776 009a F8D1     		bne	.L101
+ 777              	.L100:
+ 778 009c 4068     		ldr	r0, [r0, #4]
+ 779 009e 00F00300 		and	r0, r0, #3
+ 780 00a2 0228     		cmp	r0, #2
+ 781 00a4 14BF     		ite	ne
+ 782 00a6 0020     		movne	r0, #0
+ 783 00a8 0120     		moveq	r0, #1
+ 784 00aa 7047     		bx	lr
+ 786              		.section	.text.CAN_Sleep,"ax",%progbits
+ 787              		.align	1
+ 788              		.global	CAN_Sleep
+ 789              		.syntax unified
+ 790              		.thumb
+ 791              		.thumb_func
+ 793              	CAN_Sleep:
+ 794              		@ args = 0, pretend = 0, frame = 0
+ 795              		@ frame_needed = 0, uses_anonymous_args = 0
+ 796              		@ link register save eliminated.
+ 797 0000 0368     		ldr	r3, [r0]
+ 798 0002 23F00303 		bic	r3, r3, #3
+ 799 0006 43F00203 		orr	r3, r3, #2
+ 800 000a 0360     		str	r3, [r0]
+ 801 000c 4068     		ldr	r0, [r0, #4]
+ 802 000e 00F00300 		and	r0, r0, #3
+ 803 0012 0228     		cmp	r0, #2
+ 804 0014 14BF     		ite	ne
+ 805 0016 0020     		movne	r0, #0
+ 806 0018 0120     		moveq	r0, #1
+ 807 001a 7047     		bx	lr
+ 809              		.section	.text.CAN_WakeUp,"ax",%progbits
+ 810              		.align	1
+ 811              		.global	CAN_WakeUp
+ 812              		.syntax unified
+ 813              		.thumb
+ 814              		.thumb_func
+ 816              	CAN_WakeUp:
+ 817              		@ args = 0, pretend = 0, frame = 0
+ 818              		@ frame_needed = 0, uses_anonymous_args = 0
+ 819              		@ link register save eliminated.
+ 820 0000 0368     		ldr	r3, [r0]
+ 821 0002 23F00203 		bic	r3, r3, #2
+ 822 0006 0360     		str	r3, [r0]
+ 823 0008 4368     		ldr	r3, [r0, #4]
+ 824 000a 13F0020F 		tst	r3, #2
+ 825 000e 07D0     		beq	.L110
+ 826 0010 4FF6FF73 		movw	r3, #65535
+ 827              	.L111:
+ 828 0014 4268     		ldr	r2, [r0, #4]
+ 829 0016 12F0020F 		tst	r2, #2
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s 			page 15
+
+
+ 830 001a 01D0     		beq	.L110
+ 831 001c 013B     		subs	r3, r3, #1
+ 832 001e F9D1     		bne	.L111
+ 833              	.L110:
+ 834 0020 4068     		ldr	r0, [r0, #4]
+ 835 0022 C0F34000 		ubfx	r0, r0, #1, #1
+ 836 0026 80F00100 		eor	r0, r0, #1
+ 837 002a 00F00100 		and	r0, r0, #1
+ 838 002e 7047     		bx	lr
+ 840              		.section	.text.CAN_GetLastErrorCode,"ax",%progbits
+ 841              		.align	1
+ 842              		.global	CAN_GetLastErrorCode
+ 843              		.syntax unified
+ 844              		.thumb
+ 845              		.thumb_func
+ 847              	CAN_GetLastErrorCode:
+ 848              		@ args = 0, pretend = 0, frame = 0
+ 849              		@ frame_needed = 0, uses_anonymous_args = 0
+ 850              		@ link register save eliminated.
+ 851 0000 8069     		ldr	r0, [r0, #24]
+ 852 0002 00F07000 		and	r0, r0, #112
+ 853 0006 7047     		bx	lr
+ 855              		.section	.text.CAN_GetReceiveErrorCounter,"ax",%progbits
+ 856              		.align	1
+ 857              		.global	CAN_GetReceiveErrorCounter
+ 858              		.syntax unified
+ 859              		.thumb
+ 860              		.thumb_func
+ 862              	CAN_GetReceiveErrorCounter:
+ 863              		@ args = 0, pretend = 0, frame = 0
+ 864              		@ frame_needed = 0, uses_anonymous_args = 0
+ 865              		@ link register save eliminated.
+ 866 0000 8069     		ldr	r0, [r0, #24]
+ 867 0002 000E     		lsrs	r0, r0, #24
+ 868 0004 7047     		bx	lr
+ 870              		.section	.text.CAN_GetLSBTransmitErrorCounter,"ax",%progbits
+ 871              		.align	1
+ 872              		.global	CAN_GetLSBTransmitErrorCounter
+ 873              		.syntax unified
+ 874              		.thumb
+ 875              		.thumb_func
+ 877              	CAN_GetLSBTransmitErrorCounter:
+ 878              		@ args = 0, pretend = 0, frame = 0
+ 879              		@ frame_needed = 0, uses_anonymous_args = 0
+ 880              		@ link register save eliminated.
+ 881 0000 8069     		ldr	r0, [r0, #24]
+ 882 0002 C0F30740 		ubfx	r0, r0, #16, #8
+ 883 0006 7047     		bx	lr
+ 885              		.section	.text.CAN_ITConfig,"ax",%progbits
+ 886              		.align	1
+ 887              		.global	CAN_ITConfig
+ 888              		.syntax unified
+ 889              		.thumb
+ 890              		.thumb_func
+ 892              	CAN_ITConfig:
+ 893              		@ args = 0, pretend = 0, frame = 0
+ 894              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s 			page 16
+
+
+ 895              		@ link register save eliminated.
+ 896 0000 1AB1     		cbz	r2, .L117
+ 897 0002 4369     		ldr	r3, [r0, #20]
+ 898 0004 0B43     		orrs	r3, r3, r1
+ 899 0006 4361     		str	r3, [r0, #20]
+ 900 0008 7047     		bx	lr
+ 901              	.L117:
+ 902 000a 4369     		ldr	r3, [r0, #20]
+ 903 000c 23EA0103 		bic	r3, r3, r1
+ 904 0010 4361     		str	r3, [r0, #20]
+ 905 0012 7047     		bx	lr
+ 907              		.section	.text.CAN_GetFlagStatus,"ax",%progbits
+ 908              		.align	1
+ 909              		.global	CAN_GetFlagStatus
+ 910              		.syntax unified
+ 911              		.thumb
+ 912              		.thumb_func
+ 914              	CAN_GetFlagStatus:
+ 915              		@ args = 0, pretend = 0, frame = 0
+ 916              		@ frame_needed = 0, uses_anonymous_args = 0
+ 917              		@ link register save eliminated.
+ 918 0000 11F4700F 		tst	r1, #15728640
+ 919 0004 07D0     		beq	.L120
+ 920 0006 8069     		ldr	r0, [r0, #24]
+ 921 0008 0840     		ands	r0, r0, r1
+ 922 000a C0F31300 		ubfx	r0, r0, #0, #20
+ 923 000e 0038     		subs	r0, r0, #0
+ 924 0010 18BF     		it	ne
+ 925 0012 0120     		movne	r0, #1
+ 926 0014 7047     		bx	lr
+ 927              	.L120:
+ 928 0016 11F0807F 		tst	r1, #16777216
+ 929 001a 07D0     		beq	.L122
+ 930 001c 4068     		ldr	r0, [r0, #4]
+ 931 001e 0840     		ands	r0, r0, r1
+ 932 0020 C0F31300 		ubfx	r0, r0, #0, #20
+ 933 0024 0038     		subs	r0, r0, #0
+ 934 0026 18BF     		it	ne
+ 935 0028 0120     		movne	r0, #1
+ 936 002a 7047     		bx	lr
+ 937              	.L122:
+ 938 002c 11F0006F 		tst	r1, #134217728
+ 939 0030 07D0     		beq	.L123
+ 940 0032 8068     		ldr	r0, [r0, #8]
+ 941 0034 0840     		ands	r0, r0, r1
+ 942 0036 C0F31300 		ubfx	r0, r0, #0, #20
+ 943 003a 0038     		subs	r0, r0, #0
+ 944 003c 18BF     		it	ne
+ 945 003e 0120     		movne	r0, #1
+ 946 0040 7047     		bx	lr
+ 947              	.L123:
+ 948 0042 11F0007F 		tst	r1, #33554432
+ 949 0046 14BF     		ite	ne
+ 950 0048 C068     		ldrne	r0, [r0, #12]
+ 951 004a 0069     		ldreq	r0, [r0, #16]
+ 952 004c 0840     		ands	r0, r0, r1
+ 953 004e C0F31300 		ubfx	r0, r0, #0, #20
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s 			page 17
+
+
+ 954 0052 0038     		subs	r0, r0, #0
+ 955 0054 18BF     		it	ne
+ 956 0056 0120     		movne	r0, #1
+ 957 0058 7047     		bx	lr
+ 959              		.section	.text.CAN_ClearFlag,"ax",%progbits
+ 960              		.align	1
+ 961              		.global	CAN_ClearFlag
+ 962              		.syntax unified
+ 963              		.thumb
+ 964              		.thumb_func
+ 966              	CAN_ClearFlag:
+ 967              		@ args = 0, pretend = 0, frame = 0
+ 968              		@ frame_needed = 0, uses_anonymous_args = 0
+ 969              		@ link register save eliminated.
+ 970 0000 0B4B     		ldr	r3, .L132
+ 971 0002 9942     		cmp	r1, r3
+ 972 0004 06D0     		beq	.L131
+ 973 0006 C1F31303 		ubfx	r3, r1, #0, #20
+ 974 000a 11F0007F 		tst	r1, #33554432
+ 975 000e 04D0     		beq	.L128
+ 976 0010 C360     		str	r3, [r0, #12]
+ 977 0012 7047     		bx	lr
+ 978              	.L131:
+ 979 0014 0023     		movs	r3, #0
+ 980 0016 8361     		str	r3, [r0, #24]
+ 981 0018 7047     		bx	lr
+ 982              	.L128:
+ 983 001a 11F0806F 		tst	r1, #67108864
+ 984 001e 01D0     		beq	.L129
+ 985 0020 0361     		str	r3, [r0, #16]
+ 986 0022 7047     		bx	lr
+ 987              	.L129:
+ 988 0024 11F0006F 		tst	r1, #134217728
+ 989 0028 14BF     		ite	ne
+ 990 002a 8360     		strne	r3, [r0, #8]
+ 991 002c 4360     		streq	r3, [r0, #4]
+ 992 002e 7047     		bx	lr
+ 993              	.L133:
+ 994              		.align	2
+ 995              	.L132:
+ 996 0030 7000F030 		.word	821035120
+ 998              		.section	.text.CAN_GetITStatus,"ax",%progbits
+ 999              		.align	1
+ 1000              		.global	CAN_GetITStatus
+ 1001              		.syntax unified
+ 1002              		.thumb
+ 1003              		.thumb_func
+ 1005              	CAN_GetITStatus:
+ 1006              		@ args = 0, pretend = 0, frame = 0
+ 1007              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1008              		@ link register save eliminated.
+ 1009 0000 4369     		ldr	r3, [r0, #20]
+ 1010 0002 0B42     		tst	r3, r1
+ 1011 0004 79D0     		beq	.L154
+ 1012 0006 B1F5807F 		cmp	r1, #256
+ 1013 000a 63D0     		beq	.L136
+ 1014 000c 1ED8     		bhi	.L137
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s 			page 18
+
+
+ 1015 000e 2029     		cmp	r1, #32
+ 1016 0010 14D8     		bhi	.L138
+ 1017 0012 0139     		subs	r1, r1, #1
+ 1018 0014 1F29     		cmp	r1, #31
+ 1019 0016 72D8     		bhi	.L155
+ 1020 0018 DFE801F0 		tbb	[pc, r1]
+ 1021              	.L140:
+ 1022 001c 37       		.byte	(.L145-.L140)/2
+ 1023 001d 40       		.byte	(.L144-.L140)/2
+ 1024 001e 71       		.byte	(.L155-.L140)/2
+ 1025 001f 46       		.byte	(.L143-.L140)/2
+ 1026 0020 71       		.byte	(.L155-.L140)/2
+ 1027 0021 71       		.byte	(.L155-.L140)/2
+ 1028 0022 71       		.byte	(.L155-.L140)/2
+ 1029 0023 4A       		.byte	(.L142-.L140)/2
+ 1030 0024 71       		.byte	(.L155-.L140)/2
+ 1031 0025 71       		.byte	(.L155-.L140)/2
+ 1032 0026 71       		.byte	(.L155-.L140)/2
+ 1033 0027 71       		.byte	(.L155-.L140)/2
+ 1034 0028 71       		.byte	(.L155-.L140)/2
+ 1035 0029 71       		.byte	(.L155-.L140)/2
+ 1036 002a 71       		.byte	(.L155-.L140)/2
+ 1037 002b 4E       		.byte	(.L141-.L140)/2
+ 1038 002c 71       		.byte	(.L155-.L140)/2
+ 1039 002d 71       		.byte	(.L155-.L140)/2
+ 1040 002e 71       		.byte	(.L155-.L140)/2
+ 1041 002f 71       		.byte	(.L155-.L140)/2
+ 1042 0030 71       		.byte	(.L155-.L140)/2
+ 1043 0031 71       		.byte	(.L155-.L140)/2
+ 1044 0032 71       		.byte	(.L155-.L140)/2
+ 1045 0033 71       		.byte	(.L155-.L140)/2
+ 1046 0034 71       		.byte	(.L155-.L140)/2
+ 1047 0035 71       		.byte	(.L155-.L140)/2
+ 1048 0036 71       		.byte	(.L155-.L140)/2
+ 1049 0037 71       		.byte	(.L155-.L140)/2
+ 1050 0038 71       		.byte	(.L155-.L140)/2
+ 1051 0039 71       		.byte	(.L155-.L140)/2
+ 1052 003a 71       		.byte	(.L155-.L140)/2
+ 1053 003b 54       		.byte	(.L139-.L140)/2
+ 1054              		.p2align 1
+ 1055              	.L138:
+ 1056 003c 4029     		cmp	r1, #64
+ 1057 003e 03D1     		bne	.L156
+ 1058 0040 0069     		ldr	r0, [r0, #16]
+ 1059 0042 C0F30010 		ubfx	r0, r0, #4, #1
+ 1060 0046 7047     		bx	lr
+ 1061              	.L156:
+ 1062 0048 0020     		movs	r0, #0
+ 1063 004a 7047     		bx	lr
+ 1064              	.L137:
+ 1065 004c B1F5004F 		cmp	r1, #32768
+ 1066 0050 4FD0     		beq	.L147
+ 1067 0052 0ED8     		bhi	.L148
+ 1068 0054 B1F5806F 		cmp	r1, #1024
+ 1069 0058 40D0     		beq	.L149
+ 1070 005a B1F5006F 		cmp	r1, #2048
+ 1071 005e 41D0     		beq	.L150
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s 			page 19
+
+
+ 1072 0060 B1F5007F 		cmp	r1, #512
+ 1073 0064 03D1     		bne	.L157
+ 1074 0066 8069     		ldr	r0, [r0, #24]
+ 1075 0068 C0F34000 		ubfx	r0, r0, #1, #1
+ 1076 006c 7047     		bx	lr
+ 1077              	.L157:
+ 1078 006e 0020     		movs	r0, #0
+ 1079 0070 7047     		bx	lr
+ 1080              	.L148:
+ 1081 0072 B1F5803F 		cmp	r1, #65536
+ 1082 0076 29D0     		beq	.L152
+ 1083 0078 B1F5003F 		cmp	r1, #131072
+ 1084 007c 03D1     		bne	.L158
+ 1085 007e 4068     		ldr	r0, [r0, #4]
+ 1086 0080 C0F30010 		ubfx	r0, r0, #4, #1
+ 1087 0084 7047     		bx	lr
+ 1088              	.L158:
+ 1089 0086 0020     		movs	r0, #0
+ 1090 0088 7047     		bx	lr
+ 1091              	.L145:
+ 1092 008a 8068     		ldr	r0, [r0, #8]
+ 1093 008c 00F00130 		and	r0, r0, #16843009
+ 1094 0090 20F08070 		bic	r0, r0, #16777216
+ 1095 0094 0038     		subs	r0, r0, #0
+ 1096 0096 18BF     		it	ne
+ 1097 0098 0120     		movne	r0, #1
+ 1098 009a 7047     		bx	lr
+ 1099              	.L144:
+ 1100 009c C068     		ldr	r0, [r0, #12]
+ 1101 009e 10F00300 		ands	r0, r0, #3
+ 1102 00a2 18BF     		it	ne
+ 1103 00a4 0120     		movne	r0, #1
+ 1104 00a6 7047     		bx	lr
+ 1105              	.L143:
+ 1106 00a8 C068     		ldr	r0, [r0, #12]
+ 1107 00aa C0F3C000 		ubfx	r0, r0, #3, #1
+ 1108 00ae 7047     		bx	lr
+ 1109              	.L142:
+ 1110 00b0 C068     		ldr	r0, [r0, #12]
+ 1111 00b2 C0F30010 		ubfx	r0, r0, #4, #1
+ 1112 00b6 7047     		bx	lr
+ 1113              	.L141:
+ 1114 00b8 0069     		ldr	r0, [r0, #16]
+ 1115 00ba 10F00300 		ands	r0, r0, #3
+ 1116 00be 18BF     		it	ne
+ 1117 00c0 0120     		movne	r0, #1
+ 1118 00c2 7047     		bx	lr
+ 1119              	.L139:
+ 1120 00c4 0069     		ldr	r0, [r0, #16]
+ 1121 00c6 C0F3C000 		ubfx	r0, r0, #3, #1
+ 1122 00ca 7047     		bx	lr
+ 1123              	.L152:
+ 1124 00cc 4068     		ldr	r0, [r0, #4]
+ 1125 00ce C0F3C000 		ubfx	r0, r0, #3, #1
+ 1126 00d2 7047     		bx	lr
+ 1127              	.L136:
+ 1128 00d4 8069     		ldr	r0, [r0, #24]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s 			page 20
+
+
+ 1129 00d6 00F00100 		and	r0, r0, #1
+ 1130 00da 7047     		bx	lr
+ 1131              	.L149:
+ 1132 00dc 8069     		ldr	r0, [r0, #24]
+ 1133 00de C0F38000 		ubfx	r0, r0, #2, #1
+ 1134 00e2 7047     		bx	lr
+ 1135              	.L150:
+ 1136 00e4 8069     		ldr	r0, [r0, #24]
+ 1137 00e6 00F07000 		and	r0, r0, #112
+ 1138 00ea 0038     		subs	r0, r0, #0
+ 1139 00ec 18BF     		it	ne
+ 1140 00ee 0120     		movne	r0, #1
+ 1141 00f0 7047     		bx	lr
+ 1142              	.L147:
+ 1143 00f2 4068     		ldr	r0, [r0, #4]
+ 1144 00f4 C0F38000 		ubfx	r0, r0, #2, #1
+ 1145 00f8 7047     		bx	lr
+ 1146              	.L154:
+ 1147 00fa 0020     		movs	r0, #0
+ 1148 00fc 7047     		bx	lr
+ 1149              	.L155:
+ 1150 00fe 0020     		movs	r0, #0
+ 1151 0100 7047     		bx	lr
+ 1153              		.section	.text.CAN_ClearITPendingBit,"ax",%progbits
+ 1154              		.align	1
+ 1155              		.global	CAN_ClearITPendingBit
+ 1156              		.syntax unified
+ 1157              		.thumb
+ 1158              		.thumb_func
+ 1160              	CAN_ClearITPendingBit:
+ 1161              		@ args = 0, pretend = 0, frame = 0
+ 1162              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1163              		@ link register save eliminated.
+ 1164 0000 B1F5007F 		cmp	r1, #512
+ 1165 0004 4ED0     		beq	.L160
+ 1166 0006 21D8     		bhi	.L161
+ 1167 0008 2029     		cmp	r1, #32
+ 1168 000a 16D8     		bhi	.L162
+ 1169 000c 0029     		cmp	r1, #0
+ 1170 000e 53D0     		beq	.L159
+ 1171 0010 0139     		subs	r1, r1, #1
+ 1172 0012 1F29     		cmp	r1, #31
+ 1173 0014 50D8     		bhi	.L159
+ 1174 0016 DFE801F0 		tbb	[pc, r1]
+ 1175              	.L165:
+ 1176 001a 33       		.byte	(.L168-.L165)/2
+ 1177 001b 4F       		.byte	(.L159-.L165)/2
+ 1178 001c 4F       		.byte	(.L159-.L165)/2
+ 1179 001d 36       		.byte	(.L167-.L165)/2
+ 1180 001e 4F       		.byte	(.L159-.L165)/2
+ 1181 001f 4F       		.byte	(.L159-.L165)/2
+ 1182 0020 4F       		.byte	(.L159-.L165)/2
+ 1183 0021 39       		.byte	(.L166-.L165)/2
+ 1184 0022 4F       		.byte	(.L159-.L165)/2
+ 1185 0023 4F       		.byte	(.L159-.L165)/2
+ 1186 0024 4F       		.byte	(.L159-.L165)/2
+ 1187 0025 4F       		.byte	(.L159-.L165)/2
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s 			page 21
+
+
+ 1188 0026 4F       		.byte	(.L159-.L165)/2
+ 1189 0027 4F       		.byte	(.L159-.L165)/2
+ 1190 0028 4F       		.byte	(.L159-.L165)/2
+ 1191 0029 4F       		.byte	(.L159-.L165)/2
+ 1192 002a 4F       		.byte	(.L159-.L165)/2
+ 1193 002b 4F       		.byte	(.L159-.L165)/2
+ 1194 002c 4F       		.byte	(.L159-.L165)/2
+ 1195 002d 4F       		.byte	(.L159-.L165)/2
+ 1196 002e 4F       		.byte	(.L159-.L165)/2
+ 1197 002f 4F       		.byte	(.L159-.L165)/2
+ 1198 0030 4F       		.byte	(.L159-.L165)/2
+ 1199 0031 4F       		.byte	(.L159-.L165)/2
+ 1200 0032 4F       		.byte	(.L159-.L165)/2
+ 1201 0033 4F       		.byte	(.L159-.L165)/2
+ 1202 0034 4F       		.byte	(.L159-.L165)/2
+ 1203 0035 4F       		.byte	(.L159-.L165)/2
+ 1204 0036 4F       		.byte	(.L159-.L165)/2
+ 1205 0037 4F       		.byte	(.L159-.L165)/2
+ 1206 0038 4F       		.byte	(.L159-.L165)/2
+ 1207 0039 3C       		.byte	(.L164-.L165)/2
+ 1208              		.p2align 1
+ 1209              	.L162:
+ 1210 003a 4029     		cmp	r1, #64
+ 1211 003c 2CD0     		beq	.L169
+ 1212 003e B1F5807F 		cmp	r1, #256
+ 1213 0042 02D1     		bne	.L178
+ 1214 0044 0423     		movs	r3, #4
+ 1215 0046 4360     		str	r3, [r0, #4]
+ 1216 0048 7047     		bx	lr
+ 1217              	.L178:
+ 1218 004a 7047     		bx	lr
+ 1219              	.L161:
+ 1220 004c B1F5004F 		cmp	r1, #32768
+ 1221 0050 2ED0     		beq	.L171
+ 1222 0052 08D9     		bls	.L179
+ 1223 0054 B1F5803F 		cmp	r1, #65536
+ 1224 0058 21D0     		beq	.L175
+ 1225 005a B1F5003F 		cmp	r1, #131072
+ 1226 005e 0ED1     		bne	.L180
+ 1227 0060 1023     		movs	r3, #16
+ 1228 0062 4360     		str	r3, [r0, #4]
+ 1229 0064 7047     		bx	lr
+ 1230              	.L179:
+ 1231 0066 B1F5806F 		cmp	r1, #1024
+ 1232 006a 1ED0     		beq	.L173
+ 1233 006c B1F5006F 		cmp	r1, #2048
+ 1234 0070 04D1     		bne	.L181
+ 1235 0072 0023     		movs	r3, #0
+ 1236 0074 8361     		str	r3, [r0, #24]
+ 1237 0076 0423     		movs	r3, #4
+ 1238 0078 4360     		str	r3, [r0, #4]
+ 1239 007a 7047     		bx	lr
+ 1240              	.L181:
+ 1241 007c 7047     		bx	lr
+ 1242              	.L180:
+ 1243 007e 7047     		bx	lr
+ 1244              	.L168:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s 			page 22
+
+
+ 1245 0080 0E4B     		ldr	r3, .L182
+ 1246 0082 8360     		str	r3, [r0, #8]
+ 1247 0084 7047     		bx	lr
+ 1248              	.L167:
+ 1249 0086 0823     		movs	r3, #8
+ 1250 0088 C360     		str	r3, [r0, #12]
+ 1251 008a 7047     		bx	lr
+ 1252              	.L166:
+ 1253 008c 1023     		movs	r3, #16
+ 1254 008e C360     		str	r3, [r0, #12]
+ 1255 0090 7047     		bx	lr
+ 1256              	.L164:
+ 1257 0092 0823     		movs	r3, #8
+ 1258 0094 0361     		str	r3, [r0, #16]
+ 1259 0096 7047     		bx	lr
+ 1260              	.L169:
+ 1261 0098 1023     		movs	r3, #16
+ 1262 009a 0361     		str	r3, [r0, #16]
+ 1263 009c 7047     		bx	lr
+ 1264              	.L175:
+ 1265 009e 0823     		movs	r3, #8
+ 1266 00a0 4360     		str	r3, [r0, #4]
+ 1267 00a2 7047     		bx	lr
+ 1268              	.L160:
+ 1269 00a4 0423     		movs	r3, #4
+ 1270 00a6 4360     		str	r3, [r0, #4]
+ 1271 00a8 7047     		bx	lr
+ 1272              	.L173:
+ 1273 00aa 0423     		movs	r3, #4
+ 1274 00ac 4360     		str	r3, [r0, #4]
+ 1275 00ae 7047     		bx	lr
+ 1276              	.L171:
+ 1277 00b0 0023     		movs	r3, #0
+ 1278 00b2 8361     		str	r3, [r0, #24]
+ 1279 00b4 0423     		movs	r3, #4
+ 1280 00b6 4360     		str	r3, [r0, #4]
+ 1281              	.L159:
+ 1282 00b8 7047     		bx	lr
+ 1283              	.L183:
+ 1284 00ba 00BF     		.align	2
+ 1285              	.L182:
+ 1286 00bc 01010100 		.word	65793
+ 1288              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s 			page 23
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f10x_can.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:16     .text.CAN_DeInit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:22     .text.CAN_DeInit:00000000 CAN_DeInit
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:48     .text.CAN_DeInit:00000034 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:51     .text.CAN_Init:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:57     .text.CAN_Init:00000000 CAN_Init
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:158    .text.CAN_FilterInit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:164    .text.CAN_FilterInit:00000000 CAN_FilterInit
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:271    .text.CAN_FilterInit:00000108 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:274    .text.CAN_StructInit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:280    .text.CAN_StructInit:00000000 CAN_StructInit
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:302    .text.CAN_SlaveStartBank:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:308    .text.CAN_SlaveStartBank:00000000 CAN_SlaveStartBank
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:330    .text.CAN_SlaveStartBank:00000038 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:333    .text.CAN_DBGFreeze:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:339    .text.CAN_DBGFreeze:00000000 CAN_DBGFreeze
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:355    .text.CAN_TTComModeCmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:361    .text.CAN_TTComModeCmd:00000000 CAN_TTComModeCmd
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:395    .text.CAN_Transmit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:401    .text.CAN_Transmit:00000000 CAN_Transmit
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:485    .text.CAN_TransmitStatus:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:491    .text.CAN_TransmitStatus:00000000 CAN_TransmitStatus
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:545    .text.CAN_TransmitStatus:00000064 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:550    .text.CAN_CancelTransmit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:556    .text.CAN_CancelTransmit:00000000 CAN_CancelTransmit
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:582    .text.CAN_Receive:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:588    .text.CAN_Receive:00000000 CAN_Receive
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:653    .text.CAN_FIFORelease:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:659    .text.CAN_FIFORelease:00000000 CAN_FIFORelease
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:675    .text.CAN_MessagePending:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:681    .text.CAN_MessagePending:00000000 CAN_MessagePending
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:698    .text.CAN_OperatingModeRequest:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:704    .text.CAN_OperatingModeRequest:00000000 CAN_OperatingModeRequest
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:787    .text.CAN_Sleep:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:793    .text.CAN_Sleep:00000000 CAN_Sleep
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:810    .text.CAN_WakeUp:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:816    .text.CAN_WakeUp:00000000 CAN_WakeUp
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:841    .text.CAN_GetLastErrorCode:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:847    .text.CAN_GetLastErrorCode:00000000 CAN_GetLastErrorCode
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:856    .text.CAN_GetReceiveErrorCounter:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:862    .text.CAN_GetReceiveErrorCounter:00000000 CAN_GetReceiveErrorCounter
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:871    .text.CAN_GetLSBTransmitErrorCounter:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:877    .text.CAN_GetLSBTransmitErrorCounter:00000000 CAN_GetLSBTransmitErrorCounter
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:886    .text.CAN_ITConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:892    .text.CAN_ITConfig:00000000 CAN_ITConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:908    .text.CAN_GetFlagStatus:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:914    .text.CAN_GetFlagStatus:00000000 CAN_GetFlagStatus
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:960    .text.CAN_ClearFlag:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:966    .text.CAN_ClearFlag:00000000 CAN_ClearFlag
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:996    .text.CAN_ClearFlag:00000030 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:999    .text.CAN_GetITStatus:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:1005   .text.CAN_GetITStatus:00000000 CAN_GetITStatus
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:1022   .text.CAN_GetITStatus:0000001c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:1054   .text.CAN_GetITStatus:0000003c $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:1154   .text.CAN_ClearITPendingBit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:1160   .text.CAN_ClearITPendingBit:00000000 CAN_ClearITPendingBit
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s 			page 24
+
+
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:1176   .text.CAN_ClearITPendingBit:0000001a $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:1208   .text.CAN_ClearITPendingBit:0000003a $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJgC1Ud.s:1286   .text.CAN_ClearITPendingBit:000000bc $d
+
+UNDEFINED SYMBOLS
+RCC_APB1PeriphResetCmd

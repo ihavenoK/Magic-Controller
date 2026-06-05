@@ -1,0 +1,370 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f10x_cec.c"
+  14              		.text
+  15              		.section	.text.CEC_DeInit,"ax",%progbits
+  16              		.align	1
+  17              		.global	CEC_DeInit
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	CEC_DeInit:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 08B5     		push	{r3, lr}
+  26 0002 0121     		movs	r1, #1
+  27 0004 4FF08040 		mov	r0, #1073741824
+  28 0008 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  29 000c 0021     		movs	r1, #0
+  30 000e 4FF08040 		mov	r0, #1073741824
+  31 0012 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  32 0016 08BD     		pop	{r3, pc}
+  34              		.section	.text.CEC_Init,"ax",%progbits
+  35              		.align	1
+  36              		.global	CEC_Init
+  37              		.syntax unified
+  38              		.thumb
+  39              		.thumb_func
+  41              	CEC_Init:
+  42              		@ args = 0, pretend = 0, frame = 0
+  43              		@ frame_needed = 0, uses_anonymous_args = 0
+  44              		@ link register save eliminated.
+  45 0000 0549     		ldr	r1, .L4
+  46 0002 0B68     		ldr	r3, [r1]
+  47 0004 03F0F303 		and	r3, r3, #243
+  48 0008 0288     		ldrh	r2, [r0]
+  49 000a 4088     		ldrh	r0, [r0, #2]
+  50 000c 0243     		orrs	r2, r2, r0
+  51 000e 1343     		orrs	r3, r3, r2
+  52 0010 9BB2     		uxth	r3, r3
+  53 0012 0B60     		str	r3, [r1]
+  54 0014 7047     		bx	lr
+  55              	.L5:
+  56 0016 00BF     		.align	2
+  57              	.L4:
+  58 0018 00780040 		.word	1073772544
+  60              		.section	.text.CEC_Cmd,"ax",%progbits
+  61              		.align	1
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s 			page 2
+
+
+  62              		.global	CEC_Cmd
+  63              		.syntax unified
+  64              		.thumb
+  65              		.thumb_func
+  67              	CEC_Cmd:
+  68              		@ args = 0, pretend = 0, frame = 0
+  69              		@ frame_needed = 0, uses_anonymous_args = 0
+  70              		@ link register save eliminated.
+  71 0000 044B     		ldr	r3, .L10
+  72 0002 1860     		str	r0, [r3]
+  73 0004 20B9     		cbnz	r0, .L6
+  74 0006 044A     		ldr	r2, .L10+4
+  75              	.L8:
+  76 0008 1368     		ldr	r3, [r2]
+  77 000a 13F0010F 		tst	r3, #1
+  78 000e FBD1     		bne	.L8
+  79              	.L6:
+  80 0010 7047     		bx	lr
+  81              	.L11:
+  82 0012 00BF     		.align	2
+  83              	.L10:
+  84 0014 00000F42 		.word	1108279296
+  85 0018 00780040 		.word	1073772544
+  87              		.section	.text.CEC_ITConfig,"ax",%progbits
+  88              		.align	1
+  89              		.global	CEC_ITConfig
+  90              		.syntax unified
+  91              		.thumb
+  92              		.thumb_func
+  94              	CEC_ITConfig:
+  95              		@ args = 0, pretend = 0, frame = 0
+  96              		@ frame_needed = 0, uses_anonymous_args = 0
+  97              		@ link register save eliminated.
+  98 0000 014B     		ldr	r3, .L13
+  99 0002 5860     		str	r0, [r3, #4]
+ 100 0004 7047     		bx	lr
+ 101              	.L14:
+ 102 0006 00BF     		.align	2
+ 103              	.L13:
+ 104 0008 00000F42 		.word	1108279296
+ 106              		.section	.text.CEC_OwnAddressConfig,"ax",%progbits
+ 107              		.align	1
+ 108              		.global	CEC_OwnAddressConfig
+ 109              		.syntax unified
+ 110              		.thumb
+ 111              		.thumb_func
+ 113              	CEC_OwnAddressConfig:
+ 114              		@ args = 0, pretend = 0, frame = 0
+ 115              		@ frame_needed = 0, uses_anonymous_args = 0
+ 116              		@ link register save eliminated.
+ 117 0000 014B     		ldr	r3, .L16
+ 118 0002 5860     		str	r0, [r3, #4]
+ 119 0004 7047     		bx	lr
+ 120              	.L17:
+ 121 0006 00BF     		.align	2
+ 122              	.L16:
+ 123 0008 00780040 		.word	1073772544
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s 			page 3
+
+
+ 125              		.section	.text.CEC_SetPrescaler,"ax",%progbits
+ 126              		.align	1
+ 127              		.global	CEC_SetPrescaler
+ 128              		.syntax unified
+ 129              		.thumb
+ 130              		.thumb_func
+ 132              	CEC_SetPrescaler:
+ 133              		@ args = 0, pretend = 0, frame = 0
+ 134              		@ frame_needed = 0, uses_anonymous_args = 0
+ 135              		@ link register save eliminated.
+ 136 0000 014B     		ldr	r3, .L19
+ 137 0002 9860     		str	r0, [r3, #8]
+ 138 0004 7047     		bx	lr
+ 139              	.L20:
+ 140 0006 00BF     		.align	2
+ 141              	.L19:
+ 142 0008 00780040 		.word	1073772544
+ 144              		.section	.text.CEC_SendDataByte,"ax",%progbits
+ 145              		.align	1
+ 146              		.global	CEC_SendDataByte
+ 147              		.syntax unified
+ 148              		.thumb
+ 149              		.thumb_func
+ 151              	CEC_SendDataByte:
+ 152              		@ args = 0, pretend = 0, frame = 0
+ 153              		@ frame_needed = 0, uses_anonymous_args = 0
+ 154              		@ link register save eliminated.
+ 155 0000 014B     		ldr	r3, .L22
+ 156 0002 5861     		str	r0, [r3, #20]
+ 157 0004 7047     		bx	lr
+ 158              	.L23:
+ 159 0006 00BF     		.align	2
+ 160              	.L22:
+ 161 0008 00780040 		.word	1073772544
+ 163              		.section	.text.CEC_ReceiveDataByte,"ax",%progbits
+ 164              		.align	1
+ 165              		.global	CEC_ReceiveDataByte
+ 166              		.syntax unified
+ 167              		.thumb
+ 168              		.thumb_func
+ 170              	CEC_ReceiveDataByte:
+ 171              		@ args = 0, pretend = 0, frame = 0
+ 172              		@ frame_needed = 0, uses_anonymous_args = 0
+ 173              		@ link register save eliminated.
+ 174 0000 014B     		ldr	r3, .L25
+ 175 0002 9869     		ldr	r0, [r3, #24]
+ 176 0004 C0B2     		uxtb	r0, r0
+ 177 0006 7047     		bx	lr
+ 178              	.L26:
+ 179              		.align	2
+ 180              	.L25:
+ 181 0008 00780040 		.word	1073772544
+ 183              		.section	.text.CEC_StartOfMessage,"ax",%progbits
+ 184              		.align	1
+ 185              		.global	CEC_StartOfMessage
+ 186              		.syntax unified
+ 187              		.thumb
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s 			page 4
+
+
+ 188              		.thumb_func
+ 190              	CEC_StartOfMessage:
+ 191              		@ args = 0, pretend = 0, frame = 0
+ 192              		@ frame_needed = 0, uses_anonymous_args = 0
+ 193              		@ link register save eliminated.
+ 194 0000 024B     		ldr	r3, .L28
+ 195 0002 0122     		movs	r2, #1
+ 196 0004 C3F80022 		str	r2, [r3, #512]
+ 197 0008 7047     		bx	lr
+ 198              	.L29:
+ 199 000a 00BF     		.align	2
+ 200              	.L28:
+ 201 000c 00000F42 		.word	1108279296
+ 203              		.section	.text.CEC_EndOfMessageCmd,"ax",%progbits
+ 204              		.align	1
+ 205              		.global	CEC_EndOfMessageCmd
+ 206              		.syntax unified
+ 207              		.thumb
+ 208              		.thumb_func
+ 210              	CEC_EndOfMessageCmd:
+ 211              		@ args = 0, pretend = 0, frame = 0
+ 212              		@ frame_needed = 0, uses_anonymous_args = 0
+ 213              		@ link register save eliminated.
+ 214 0000 014B     		ldr	r3, .L31
+ 215 0002 C3F80402 		str	r0, [r3, #516]
+ 216 0006 7047     		bx	lr
+ 217              	.L32:
+ 218              		.align	2
+ 219              	.L31:
+ 220 0008 00000F42 		.word	1108279296
+ 222              		.section	.text.CEC_GetFlagStatus,"ax",%progbits
+ 223              		.align	1
+ 224              		.global	CEC_GetFlagStatus
+ 225              		.syntax unified
+ 226              		.thumb
+ 227              		.thumb_func
+ 229              	CEC_GetFlagStatus:
+ 230              		@ args = 0, pretend = 0, frame = 0
+ 231              		@ frame_needed = 0, uses_anonymous_args = 0
+ 232              		@ link register save eliminated.
+ 233 0000 20F07F43 		bic	r3, r0, #-16777216
+ 234 0004 000F     		lsrs	r0, r0, #28
+ 235 0006 1ABF     		itte	ne
+ 236 0008 1B0C     		lsrne	r3, r3, #16
+ 237 000a 044A     		ldrne	r2, .L36
+ 238 000c 044A     		ldreq	r2, .L36+4
+ 239 000e 1068     		ldr	r0, [r2]
+ 240 0010 1840     		ands	r0, r0, r3
+ 241 0012 0038     		subs	r0, r0, #0
+ 242 0014 18BF     		it	ne
+ 243 0016 0120     		movne	r0, #1
+ 244 0018 7047     		bx	lr
+ 245              	.L37:
+ 246 001a 00BF     		.align	2
+ 247              	.L36:
+ 248 001c 0C780040 		.word	1073772556
+ 249 0020 10780040 		.word	1073772560
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s 			page 5
+
+
+ 251              		.section	.text.CEC_ClearFlag,"ax",%progbits
+ 252              		.align	1
+ 253              		.global	CEC_ClearFlag
+ 254              		.syntax unified
+ 255              		.thumb
+ 256              		.thumb_func
+ 258              	CEC_ClearFlag:
+ 259              		@ args = 0, pretend = 0, frame = 0
+ 260              		@ frame_needed = 0, uses_anonymous_args = 0
+ 261              		@ link register save eliminated.
+ 262 0000 10B4     		push	{r4}
+ 263 0002 064A     		ldr	r2, .L40
+ 264 0004 1169     		ldr	r1, [r2, #16]
+ 265 0006 1469     		ldr	r4, [r2, #16]
+ 266 0008 C343     		mvns	r3, r0
+ 267 000a 23F00303 		bic	r3, r3, #3
+ 268 000e 01F00201 		and	r1, r1, #2
+ 269 0012 0B43     		orrs	r3, r3, r1
+ 270 0014 2340     		ands	r3, r3, r4
+ 271 0016 1361     		str	r3, [r2, #16]
+ 272 0018 10BC     		pop	{r4}
+ 273 001a 7047     		bx	lr
+ 274              	.L41:
+ 275              		.align	2
+ 276              	.L40:
+ 277 001c 00780040 		.word	1073772544
+ 279              		.section	.text.CEC_GetITStatus,"ax",%progbits
+ 280              		.align	1
+ 281              		.global	CEC_GetITStatus
+ 282              		.syntax unified
+ 283              		.thumb
+ 284              		.thumb_func
+ 286              	CEC_GetITStatus:
+ 287              		@ args = 0, pretend = 0, frame = 0
+ 288              		@ frame_needed = 0, uses_anonymous_args = 0
+ 289              		@ link register save eliminated.
+ 290 0000 044A     		ldr	r2, .L45
+ 291 0002 1368     		ldr	r3, [r2]
+ 292 0004 1269     		ldr	r2, [r2, #16]
+ 293 0006 1042     		tst	r0, r2
+ 294 0008 14BF     		ite	ne
+ 295 000a C3F34000 		ubfxne	r0, r3, #1, #1
+ 296 000e 0020     		moveq	r0, #0
+ 297 0010 7047     		bx	lr
+ 298              	.L46:
+ 299 0012 00BF     		.align	2
+ 300              	.L45:
+ 301 0014 00780040 		.word	1073772544
+ 303              		.section	.text.CEC_ClearITPendingBit,"ax",%progbits
+ 304              		.align	1
+ 305              		.global	CEC_ClearITPendingBit
+ 306              		.syntax unified
+ 307              		.thumb
+ 308              		.thumb_func
+ 310              	CEC_ClearITPendingBit:
+ 311              		@ args = 0, pretend = 0, frame = 0
+ 312              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s 			page 6
+
+
+ 313              		@ link register save eliminated.
+ 314 0000 10B4     		push	{r4}
+ 315 0002 064A     		ldr	r2, .L49
+ 316 0004 1169     		ldr	r1, [r2, #16]
+ 317 0006 1469     		ldr	r4, [r2, #16]
+ 318 0008 C343     		mvns	r3, r0
+ 319 000a 23F00303 		bic	r3, r3, #3
+ 320 000e 01F00201 		and	r1, r1, #2
+ 321 0012 0B43     		orrs	r3, r3, r1
+ 322 0014 2340     		ands	r3, r3, r4
+ 323 0016 1361     		str	r3, [r2, #16]
+ 324 0018 10BC     		pop	{r4}
+ 325 001a 7047     		bx	lr
+ 326              	.L50:
+ 327              		.align	2
+ 328              	.L49:
+ 329 001c 00780040 		.word	1073772544
+ 331              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f10x_cec.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:16     .text.CEC_DeInit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:22     .text.CEC_DeInit:00000000 CEC_DeInit
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:35     .text.CEC_Init:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:41     .text.CEC_Init:00000000 CEC_Init
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:58     .text.CEC_Init:00000018 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:61     .text.CEC_Cmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:67     .text.CEC_Cmd:00000000 CEC_Cmd
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:84     .text.CEC_Cmd:00000014 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:88     .text.CEC_ITConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:94     .text.CEC_ITConfig:00000000 CEC_ITConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:104    .text.CEC_ITConfig:00000008 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:107    .text.CEC_OwnAddressConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:113    .text.CEC_OwnAddressConfig:00000000 CEC_OwnAddressConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:123    .text.CEC_OwnAddressConfig:00000008 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:126    .text.CEC_SetPrescaler:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:132    .text.CEC_SetPrescaler:00000000 CEC_SetPrescaler
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:142    .text.CEC_SetPrescaler:00000008 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:145    .text.CEC_SendDataByte:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:151    .text.CEC_SendDataByte:00000000 CEC_SendDataByte
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:161    .text.CEC_SendDataByte:00000008 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:164    .text.CEC_ReceiveDataByte:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:170    .text.CEC_ReceiveDataByte:00000000 CEC_ReceiveDataByte
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:181    .text.CEC_ReceiveDataByte:00000008 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:184    .text.CEC_StartOfMessage:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:190    .text.CEC_StartOfMessage:00000000 CEC_StartOfMessage
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:201    .text.CEC_StartOfMessage:0000000c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:204    .text.CEC_EndOfMessageCmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:210    .text.CEC_EndOfMessageCmd:00000000 CEC_EndOfMessageCmd
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:220    .text.CEC_EndOfMessageCmd:00000008 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:223    .text.CEC_GetFlagStatus:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:229    .text.CEC_GetFlagStatus:00000000 CEC_GetFlagStatus
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:248    .text.CEC_GetFlagStatus:0000001c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:252    .text.CEC_ClearFlag:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:258    .text.CEC_ClearFlag:00000000 CEC_ClearFlag
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:277    .text.CEC_ClearFlag:0000001c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:280    .text.CEC_GetITStatus:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:286    .text.CEC_GetITStatus:00000000 CEC_GetITStatus
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:301    .text.CEC_GetITStatus:00000014 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:304    .text.CEC_ClearITPendingBit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:310    .text.CEC_ClearITPendingBit:00000000 CEC_ClearITPendingBit
+C:\Users\ihavenoK\AppData\Local\Temp\ccakLhDy.s:329    .text.CEC_ClearITPendingBit:0000001c $d
+
+UNDEFINED SYMBOLS
+RCC_APB1PeriphResetCmd

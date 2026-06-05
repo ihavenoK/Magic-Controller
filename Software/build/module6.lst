@@ -1,0 +1,64 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKYoa97.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"module6.c"
+  14              		.text
+  15              		.section	.text.Module6_Init,"ax",%progbits
+  16              		.align	1
+  17              		.global	Module6_Init
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	Module6_Init:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25              		@ link register save eliminated.
+  26 0000 7047     		bx	lr
+  28              		.section	.text.Module6_Mode0_Handler,"ax",%progbits
+  29              		.align	1
+  30              		.global	Module6_Mode0_Handler
+  31              		.syntax unified
+  32              		.thumb
+  33              		.thumb_func
+  35              	Module6_Mode0_Handler:
+  36              		@ args = 0, pretend = 0, frame = 0
+  37              		@ frame_needed = 0, uses_anonymous_args = 0
+  38              		@ link register save eliminated.
+  39 0000 7047     		bx	lr
+  41              		.section	.text.Module6_Mode1_Handler,"ax",%progbits
+  42              		.align	1
+  43              		.global	Module6_Mode1_Handler
+  44              		.syntax unified
+  45              		.thumb
+  46              		.thumb_func
+  48              	Module6_Mode1_Handler:
+  49              		@ args = 0, pretend = 0, frame = 0
+  50              		@ frame_needed = 0, uses_anonymous_args = 0
+  51              		@ link register save eliminated.
+  52 0000 7047     		bx	lr
+  54              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKYoa97.s 			page 2
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 module6.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccKYoa97.s:16     .text.Module6_Init:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKYoa97.s:22     .text.Module6_Init:00000000 Module6_Init
+C:\Users\ihavenoK\AppData\Local\Temp\ccKYoa97.s:29     .text.Module6_Mode0_Handler:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKYoa97.s:35     .text.Module6_Mode0_Handler:00000000 Module6_Mode0_Handler
+C:\Users\ihavenoK\AppData\Local\Temp\ccKYoa97.s:42     .text.Module6_Mode1_Handler:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKYoa97.s:48     .text.Module6_Mode1_Handler:00000000 Module6_Mode1_Handler
+
+NO UNDEFINED SYMBOLS

@@ -1,0 +1,408 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f10x_rtc.c"
+  14              		.text
+  15              		.section	.text.RTC_ITConfig,"ax",%progbits
+  16              		.align	1
+  17              		.global	RTC_ITConfig
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	RTC_ITConfig:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25              		@ link register save eliminated.
+  26 0000 29B1     		cbz	r1, .L2
+  27 0002 064A     		ldr	r2, .L4
+  28 0004 1388     		ldrh	r3, [r2]
+  29 0006 9BB2     		uxth	r3, r3
+  30 0008 0343     		orrs	r3, r3, r0
+  31 000a 1380     		strh	r3, [r2]	@ movhi
+  32 000c 7047     		bx	lr
+  33              	.L2:
+  34 000e 034A     		ldr	r2, .L4
+  35 0010 1388     		ldrh	r3, [r2]
+  36 0012 9BB2     		uxth	r3, r3
+  37 0014 23EA0003 		bic	r3, r3, r0
+  38 0018 1380     		strh	r3, [r2]	@ movhi
+  39 001a 7047     		bx	lr
+  40              	.L5:
+  41              		.align	2
+  42              	.L4:
+  43 001c 00280040 		.word	1073752064
+  45              		.section	.text.RTC_EnterConfigMode,"ax",%progbits
+  46              		.align	1
+  47              		.global	RTC_EnterConfigMode
+  48              		.syntax unified
+  49              		.thumb
+  50              		.thumb_func
+  52              	RTC_EnterConfigMode:
+  53              		@ args = 0, pretend = 0, frame = 0
+  54              		@ frame_needed = 0, uses_anonymous_args = 0
+  55              		@ link register save eliminated.
+  56 0000 034A     		ldr	r2, .L7
+  57 0002 9388     		ldrh	r3, [r2, #4]
+  58 0004 9BB2     		uxth	r3, r3
+  59 0006 43F01003 		orr	r3, r3, #16
+  60 000a 9380     		strh	r3, [r2, #4]	@ movhi
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s 			page 2
+
+
+  61 000c 7047     		bx	lr
+  62              	.L8:
+  63 000e 00BF     		.align	2
+  64              	.L7:
+  65 0010 00280040 		.word	1073752064
+  67              		.section	.text.RTC_ExitConfigMode,"ax",%progbits
+  68              		.align	1
+  69              		.global	RTC_ExitConfigMode
+  70              		.syntax unified
+  71              		.thumb
+  72              		.thumb_func
+  74              	RTC_ExitConfigMode:
+  75              		@ args = 0, pretend = 0, frame = 0
+  76              		@ frame_needed = 0, uses_anonymous_args = 0
+  77              		@ link register save eliminated.
+  78 0000 034A     		ldr	r2, .L10
+  79 0002 9388     		ldrh	r3, [r2, #4]
+  80 0004 23F01003 		bic	r3, r3, #16
+  81 0008 1B04     		lsls	r3, r3, #16
+  82 000a 1B0C     		lsrs	r3, r3, #16
+  83 000c 9380     		strh	r3, [r2, #4]	@ movhi
+  84 000e 7047     		bx	lr
+  85              	.L11:
+  86              		.align	2
+  87              	.L10:
+  88 0010 00280040 		.word	1073752064
+  90              		.section	.text.RTC_GetCounter,"ax",%progbits
+  91              		.align	1
+  92              		.global	RTC_GetCounter
+  93              		.syntax unified
+  94              		.thumb
+  95              		.thumb_func
+  97              	RTC_GetCounter:
+  98              		@ args = 0, pretend = 0, frame = 0
+  99              		@ frame_needed = 0, uses_anonymous_args = 0
+ 100              		@ link register save eliminated.
+ 101 0000 084B     		ldr	r3, .L15
+ 102 0002 1A8B     		ldrh	r2, [r3, #24]
+ 103 0004 92B2     		uxth	r2, r2
+ 104 0006 988B     		ldrh	r0, [r3, #28]
+ 105 0008 80B2     		uxth	r0, r0
+ 106 000a 1B8B     		ldrh	r3, [r3, #24]
+ 107 000c 9BB2     		uxth	r3, r3
+ 108 000e 9A42     		cmp	r2, r3
+ 109 0010 05D0     		beq	.L13
+ 110 0012 044A     		ldr	r2, .L15
+ 111 0014 908B     		ldrh	r0, [r2, #28]
+ 112 0016 80B2     		uxth	r0, r0
+ 113 0018 40EA0340 		orr	r0, r0, r3, lsl #16
+ 114 001c 7047     		bx	lr
+ 115              	.L13:
+ 116 001e 40EA0240 		orr	r0, r0, r2, lsl #16
+ 117 0022 7047     		bx	lr
+ 118              	.L16:
+ 119              		.align	2
+ 120              	.L15:
+ 121 0024 00280040 		.word	1073752064
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s 			page 3
+
+
+ 123              		.section	.text.RTC_SetCounter,"ax",%progbits
+ 124              		.align	1
+ 125              		.global	RTC_SetCounter
+ 126              		.syntax unified
+ 127              		.thumb
+ 128              		.thumb_func
+ 130              	RTC_SetCounter:
+ 131              		@ args = 0, pretend = 0, frame = 0
+ 132              		@ frame_needed = 0, uses_anonymous_args = 0
+ 133 0000 10B5     		push	{r4, lr}
+ 134 0002 0446     		mov	r4, r0
+ 135 0004 FFF7FEFF 		bl	RTC_EnterConfigMode
+ 136 0008 220C     		lsrs	r2, r4, #16
+ 137 000a 034B     		ldr	r3, .L19
+ 138 000c 1A83     		strh	r2, [r3, #24]	@ movhi
+ 139 000e A4B2     		uxth	r4, r4
+ 140 0010 9C83     		strh	r4, [r3, #28]	@ movhi
+ 141 0012 FFF7FEFF 		bl	RTC_ExitConfigMode
+ 142 0016 10BD     		pop	{r4, pc}
+ 143              	.L20:
+ 144              		.align	2
+ 145              	.L19:
+ 146 0018 00280040 		.word	1073752064
+ 148              		.section	.text.RTC_SetPrescaler,"ax",%progbits
+ 149              		.align	1
+ 150              		.global	RTC_SetPrescaler
+ 151              		.syntax unified
+ 152              		.thumb
+ 153              		.thumb_func
+ 155              	RTC_SetPrescaler:
+ 156              		@ args = 0, pretend = 0, frame = 0
+ 157              		@ frame_needed = 0, uses_anonymous_args = 0
+ 158 0000 10B5     		push	{r4, lr}
+ 159 0002 0446     		mov	r4, r0
+ 160 0004 FFF7FEFF 		bl	RTC_EnterConfigMode
+ 161 0008 C4F30342 		ubfx	r2, r4, #16, #4
+ 162 000c 034B     		ldr	r3, .L23
+ 163 000e 1A81     		strh	r2, [r3, #8]	@ movhi
+ 164 0010 A4B2     		uxth	r4, r4
+ 165 0012 9C81     		strh	r4, [r3, #12]	@ movhi
+ 166 0014 FFF7FEFF 		bl	RTC_ExitConfigMode
+ 167 0018 10BD     		pop	{r4, pc}
+ 168              	.L24:
+ 169 001a 00BF     		.align	2
+ 170              	.L23:
+ 171 001c 00280040 		.word	1073752064
+ 173              		.section	.text.RTC_SetAlarm,"ax",%progbits
+ 174              		.align	1
+ 175              		.global	RTC_SetAlarm
+ 176              		.syntax unified
+ 177              		.thumb
+ 178              		.thumb_func
+ 180              	RTC_SetAlarm:
+ 181              		@ args = 0, pretend = 0, frame = 0
+ 182              		@ frame_needed = 0, uses_anonymous_args = 0
+ 183 0000 10B5     		push	{r4, lr}
+ 184 0002 0446     		mov	r4, r0
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s 			page 4
+
+
+ 185 0004 FFF7FEFF 		bl	RTC_EnterConfigMode
+ 186 0008 220C     		lsrs	r2, r4, #16
+ 187 000a 034B     		ldr	r3, .L27
+ 188 000c 1A84     		strh	r2, [r3, #32]	@ movhi
+ 189 000e A4B2     		uxth	r4, r4
+ 190 0010 9C84     		strh	r4, [r3, #36]	@ movhi
+ 191 0012 FFF7FEFF 		bl	RTC_ExitConfigMode
+ 192 0016 10BD     		pop	{r4, pc}
+ 193              	.L28:
+ 194              		.align	2
+ 195              	.L27:
+ 196 0018 00280040 		.word	1073752064
+ 198              		.section	.text.RTC_GetDivider,"ax",%progbits
+ 199              		.align	1
+ 200              		.global	RTC_GetDivider
+ 201              		.syntax unified
+ 202              		.thumb
+ 203              		.thumb_func
+ 205              	RTC_GetDivider:
+ 206              		@ args = 0, pretend = 0, frame = 0
+ 207              		@ frame_needed = 0, uses_anonymous_args = 0
+ 208              		@ link register save eliminated.
+ 209 0000 044A     		ldr	r2, .L30
+ 210 0002 138A     		ldrh	r3, [r2, #16]
+ 211 0004 1B04     		lsls	r3, r3, #16
+ 212 0006 03F47023 		and	r3, r3, #983040
+ 213 000a 908A     		ldrh	r0, [r2, #20]
+ 214 000c 80B2     		uxth	r0, r0
+ 215 000e 1843     		orrs	r0, r0, r3
+ 216 0010 7047     		bx	lr
+ 217              	.L31:
+ 218 0012 00BF     		.align	2
+ 219              	.L30:
+ 220 0014 00280040 		.word	1073752064
+ 222              		.section	.text.RTC_WaitForLastTask,"ax",%progbits
+ 223              		.align	1
+ 224              		.global	RTC_WaitForLastTask
+ 225              		.syntax unified
+ 226              		.thumb
+ 227              		.thumb_func
+ 229              	RTC_WaitForLastTask:
+ 230              		@ args = 0, pretend = 0, frame = 0
+ 231              		@ frame_needed = 0, uses_anonymous_args = 0
+ 232              		@ link register save eliminated.
+ 233 0000 024A     		ldr	r2, .L35
+ 234              	.L33:
+ 235 0002 9388     		ldrh	r3, [r2, #4]
+ 236 0004 13F0200F 		tst	r3, #32
+ 237 0008 FBD0     		beq	.L33
+ 238 000a 7047     		bx	lr
+ 239              	.L36:
+ 240              		.align	2
+ 241              	.L35:
+ 242 000c 00280040 		.word	1073752064
+ 244              		.section	.text.RTC_WaitForSynchro,"ax",%progbits
+ 245              		.align	1
+ 246              		.global	RTC_WaitForSynchro
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s 			page 5
+
+
+ 247              		.syntax unified
+ 248              		.thumb
+ 249              		.thumb_func
+ 251              	RTC_WaitForSynchro:
+ 252              		@ args = 0, pretend = 0, frame = 0
+ 253              		@ frame_needed = 0, uses_anonymous_args = 0
+ 254              		@ link register save eliminated.
+ 255 0000 054A     		ldr	r2, .L40
+ 256 0002 9388     		ldrh	r3, [r2, #4]
+ 257 0004 23F00803 		bic	r3, r3, #8
+ 258 0008 1B04     		lsls	r3, r3, #16
+ 259 000a 1B0C     		lsrs	r3, r3, #16
+ 260 000c 9380     		strh	r3, [r2, #4]	@ movhi
+ 261              	.L38:
+ 262 000e 9388     		ldrh	r3, [r2, #4]
+ 263 0010 13F0080F 		tst	r3, #8
+ 264 0014 FBD0     		beq	.L38
+ 265 0016 7047     		bx	lr
+ 266              	.L41:
+ 267              		.align	2
+ 268              	.L40:
+ 269 0018 00280040 		.word	1073752064
+ 271              		.section	.text.RTC_GetFlagStatus,"ax",%progbits
+ 272              		.align	1
+ 273              		.global	RTC_GetFlagStatus
+ 274              		.syntax unified
+ 275              		.thumb
+ 276              		.thumb_func
+ 278              	RTC_GetFlagStatus:
+ 279              		@ args = 0, pretend = 0, frame = 0
+ 280              		@ frame_needed = 0, uses_anonymous_args = 0
+ 281              		@ link register save eliminated.
+ 282 0000 034B     		ldr	r3, .L43
+ 283 0002 9B88     		ldrh	r3, [r3, #4]
+ 284 0004 1840     		ands	r0, r0, r3
+ 285 0006 0038     		subs	r0, r0, #0
+ 286 0008 18BF     		it	ne
+ 287 000a 0120     		movne	r0, #1
+ 288 000c 7047     		bx	lr
+ 289              	.L44:
+ 290 000e 00BF     		.align	2
+ 291              	.L43:
+ 292 0010 00280040 		.word	1073752064
+ 294              		.section	.text.RTC_ClearFlag,"ax",%progbits
+ 295              		.align	1
+ 296              		.global	RTC_ClearFlag
+ 297              		.syntax unified
+ 298              		.thumb
+ 299              		.thumb_func
+ 301              	RTC_ClearFlag:
+ 302              		@ args = 0, pretend = 0, frame = 0
+ 303              		@ frame_needed = 0, uses_anonymous_args = 0
+ 304              		@ link register save eliminated.
+ 305 0000 034A     		ldr	r2, .L46
+ 306 0002 9388     		ldrh	r3, [r2, #4]
+ 307 0004 9BB2     		uxth	r3, r3
+ 308 0006 23EA0003 		bic	r3, r3, r0
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s 			page 6
+
+
+ 309 000a 9380     		strh	r3, [r2, #4]	@ movhi
+ 310 000c 7047     		bx	lr
+ 311              	.L47:
+ 312 000e 00BF     		.align	2
+ 313              	.L46:
+ 314 0010 00280040 		.word	1073752064
+ 316              		.section	.text.RTC_GetITStatus,"ax",%progbits
+ 317              		.align	1
+ 318              		.global	RTC_GetITStatus
+ 319              		.syntax unified
+ 320              		.thumb
+ 321              		.thumb_func
+ 323              	RTC_GetITStatus:
+ 324              		@ args = 0, pretend = 0, frame = 0
+ 325              		@ frame_needed = 0, uses_anonymous_args = 0
+ 326              		@ link register save eliminated.
+ 327 0000 064A     		ldr	r2, .L51
+ 328 0002 9388     		ldrh	r3, [r2, #4]
+ 329 0004 9BB2     		uxth	r3, r3
+ 330 0006 1288     		ldrh	r2, [r2]
+ 331 0008 1042     		tst	r0, r2
+ 332 000a 05D0     		beq	.L50
+ 333 000c 1840     		ands	r0, r0, r3
+ 334 000e C0B2     		uxtb	r0, r0
+ 335 0010 0038     		subs	r0, r0, #0
+ 336 0012 18BF     		it	ne
+ 337 0014 0120     		movne	r0, #1
+ 338 0016 7047     		bx	lr
+ 339              	.L50:
+ 340 0018 0020     		movs	r0, #0
+ 341 001a 7047     		bx	lr
+ 342              	.L52:
+ 343              		.align	2
+ 344              	.L51:
+ 345 001c 00280040 		.word	1073752064
+ 347              		.section	.text.RTC_ClearITPendingBit,"ax",%progbits
+ 348              		.align	1
+ 349              		.global	RTC_ClearITPendingBit
+ 350              		.syntax unified
+ 351              		.thumb
+ 352              		.thumb_func
+ 354              	RTC_ClearITPendingBit:
+ 355              		@ args = 0, pretend = 0, frame = 0
+ 356              		@ frame_needed = 0, uses_anonymous_args = 0
+ 357              		@ link register save eliminated.
+ 358 0000 034A     		ldr	r2, .L54
+ 359 0002 9388     		ldrh	r3, [r2, #4]
+ 360 0004 9BB2     		uxth	r3, r3
+ 361 0006 23EA0003 		bic	r3, r3, r0
+ 362 000a 9380     		strh	r3, [r2, #4]	@ movhi
+ 363 000c 7047     		bx	lr
+ 364              	.L55:
+ 365 000e 00BF     		.align	2
+ 366              	.L54:
+ 367 0010 00280040 		.word	1073752064
+ 369              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f10x_rtc.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:16     .text.RTC_ITConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:22     .text.RTC_ITConfig:00000000 RTC_ITConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:43     .text.RTC_ITConfig:0000001c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:46     .text.RTC_EnterConfigMode:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:52     .text.RTC_EnterConfigMode:00000000 RTC_EnterConfigMode
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:65     .text.RTC_EnterConfigMode:00000010 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:68     .text.RTC_ExitConfigMode:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:74     .text.RTC_ExitConfigMode:00000000 RTC_ExitConfigMode
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:88     .text.RTC_ExitConfigMode:00000010 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:91     .text.RTC_GetCounter:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:97     .text.RTC_GetCounter:00000000 RTC_GetCounter
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:121    .text.RTC_GetCounter:00000024 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:124    .text.RTC_SetCounter:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:130    .text.RTC_SetCounter:00000000 RTC_SetCounter
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:146    .text.RTC_SetCounter:00000018 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:149    .text.RTC_SetPrescaler:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:155    .text.RTC_SetPrescaler:00000000 RTC_SetPrescaler
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:171    .text.RTC_SetPrescaler:0000001c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:174    .text.RTC_SetAlarm:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:180    .text.RTC_SetAlarm:00000000 RTC_SetAlarm
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:196    .text.RTC_SetAlarm:00000018 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:199    .text.RTC_GetDivider:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:205    .text.RTC_GetDivider:00000000 RTC_GetDivider
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:220    .text.RTC_GetDivider:00000014 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:223    .text.RTC_WaitForLastTask:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:229    .text.RTC_WaitForLastTask:00000000 RTC_WaitForLastTask
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:242    .text.RTC_WaitForLastTask:0000000c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:245    .text.RTC_WaitForSynchro:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:251    .text.RTC_WaitForSynchro:00000000 RTC_WaitForSynchro
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:269    .text.RTC_WaitForSynchro:00000018 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:272    .text.RTC_GetFlagStatus:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:278    .text.RTC_GetFlagStatus:00000000 RTC_GetFlagStatus
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:292    .text.RTC_GetFlagStatus:00000010 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:295    .text.RTC_ClearFlag:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:301    .text.RTC_ClearFlag:00000000 RTC_ClearFlag
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:314    .text.RTC_ClearFlag:00000010 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:317    .text.RTC_GetITStatus:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:323    .text.RTC_GetITStatus:00000000 RTC_GetITStatus
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:345    .text.RTC_GetITStatus:0000001c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:348    .text.RTC_ClearITPendingBit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:354    .text.RTC_ClearITPendingBit:00000000 RTC_ClearITPendingBit
+C:\Users\ihavenoK\AppData\Local\Temp\ccKAlw71.s:367    .text.RTC_ClearITPendingBit:00000010 $d
+
+NO UNDEFINED SYMBOLS

@@ -11,6 +11,18 @@ NNOM_Demo/
 *.o
 *.d
 
+# Python虚拟环境
+.venv/
+Software/.venv/
+
+# IDE/编辑器配置
+.workbuddy/
+.idea/
+.vscode/
+
+# 超大的编译后可执行文件（超过 GitHub 100MB 限制，需用户自行编译或使用 Git LFS）
+Upper_computer/Train_model/Train_model.exe
+
 # 系统文件
 .DS_Store
 Thumbs.db

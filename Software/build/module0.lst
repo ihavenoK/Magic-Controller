@@ -1,0 +1,346 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"module0.c"
+  14              		.text
+  15              		.section	.rodata.print_model_name.str1.4,"aMS",%progbits,1
+  16              		.align	2
+  17              	.LC0:
+  18 0000 257300   		.ascii	"%s\000"
+  19 0003 00       		.align	2
+  20              	.LC1:
+  21 0004 556E7265 		.ascii	"Unrecognized Model\000"
+  21      636F676E 
+  21      697A6564 
+  21      204D6F64 
+  21      656C00
+  22              		.section	.text.print_model_name,"ax",%progbits
+  23              		.align	1
+  24              		.global	print_model_name
+  25              		.syntax unified
+  26              		.thumb
+  27              		.thumb_func
+  29              	print_model_name:
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33 0002 C3B2     		uxtb	r3, r0
+  34 0004 0B2B     		cmp	r3, #11
+  35 0006 06D8     		bhi	.L2
+  36 0008 054B     		ldr	r3, .L5
+  37 000a 53F82010 		ldr	r1, [r3, r0, lsl #2]
+  38 000e 0548     		ldr	r0, .L5+4
+  39 0010 FFF7FEFF 		bl	printf
+  40              	.L1:
+  41 0014 08BD     		pop	{r3, pc}
+  42              	.L2:
+  43 0016 0448     		ldr	r0, .L5+8
+  44 0018 FFF7FEFF 		bl	printf
+  45 001c FAE7     		b	.L1
+  46              	.L6:
+  47 001e 00BF     		.align	2
+  48              	.L5:
+  49 0020 00000000 		.word	model_names
+  50 0024 00000000 		.word	.LC0
+  51 0028 04000000 		.word	.LC1
+  53              		.section	.text.check_model,"ax",%progbits
+  54              		.align	1
+  55              		.global	check_model
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s 			page 2
+
+
+  56              		.syntax unified
+  57              		.thumb
+  58              		.thumb_func
+  60              	check_model:
+  61              		@ args = 0, pretend = 0, frame = 0
+  62              		@ frame_needed = 0, uses_anonymous_args = 0
+  63 0000 10B5     		push	{r4, lr}
+  64 0002 084B     		ldr	r3, .L11
+  65 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  66 0006 0B2B     		cmp	r3, #11
+  67 0008 08D8     		bhi	.L9
+  68 000a 5CB2     		sxtb	r4, r3
+  69 000c 064B     		ldr	r3, .L11+4
+  70 000e 1B5D     		ldrb	r3, [r3, r4]	@ zero_extendqisi2
+  71 0010 0370     		strb	r3, [r0]
+  72              	.L8:
+  73 0012 2046     		mov	r0, r4
+  74 0014 FFF7FEFF 		bl	print_model_name
+  75 0018 2046     		mov	r0, r4
+  76 001a 10BD     		pop	{r4, pc}
+  77              	.L9:
+  78 001c 4FF0FF34 		mov	r4, #-1
+  79 0020 F7E7     		b	.L8
+  80              	.L12:
+  81 0022 00BF     		.align	2
+  82              	.L11:
+  83 0024 00000000 		.word	model_output
+  84 0028 00000000 		.word	model_indices
+  86              		.section	.rodata.handle_ir_signal.str1.4,"aMS",%progbits,1
+  87              		.align	2
+  88              	.LC2:
+  89 0000 202A2025 		.ascii	" * %d * \000"
+  89      64202A20 
+  89      00
+  90              		.section	.text.handle_ir_signal,"ax",%progbits
+  91              		.align	1
+  92              		.global	handle_ir_signal
+  93              		.syntax unified
+  94              		.thumb
+  95              		.thumb_func
+  97              	handle_ir_signal:
+  98              		@ args = 0, pretend = 0, frame = 8
+  99              		@ frame_needed = 0, uses_anonymous_args = 0
+ 100 0000 30B5     		push	{r4, r5, lr}
+ 101 0002 83B0     		sub	sp, sp, #12
+ 102 0004 0446     		mov	r4, r0
+ 103 0006 0DF10700 		add	r0, sp, #7
+ 104 000a FFF7FEFF 		bl	check_model
+ 105 000e B0F1FF3F 		cmp	r0, #-1
+ 106 0012 05D1     		bne	.L19
+ 107 0014 104B     		ldr	r3, .L20
+ 108 0016 1B68     		ldr	r3, [r3]
+ 109 0018 0220     		movs	r0, #2
+ 110 001a 9847     		blx	r3
+ 111              	.L13:
+ 112 001c 03B0     		add	sp, sp, #12
+ 113              		@ sp needed
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s 			page 3
+
+
+ 114 001e 30BD     		pop	{r4, r5, pc}
+ 115              	.L19:
+ 116 0020 9DF80750 		ldrb	r5, [sp, #7]	@ zero_extendqisi2
+ 117 0024 2946     		mov	r1, r5
+ 118 0026 0D48     		ldr	r0, .L20+4
+ 119 0028 FFF7FEFF 		bl	printf
+ 120 002c 74B9     		cbnz	r4, .L15
+ 121 002e 2946     		mov	r1, r5
+ 122 0030 0B48     		ldr	r0, .L20+8
+ 123 0032 FFF7FEFF 		bl	IR_Send_Pack
+ 124 0036 0146     		mov	r1, r0
+ 125              	.L16:
+ 126 0038 0A4B     		ldr	r3, .L20+12
+ 127 003a 1980     		strh	r1, [r3]	@ movhi
+ 128 003c 0848     		ldr	r0, .L20+8
+ 129 003e FFF7FEFF 		bl	Uart_Send
+ 130 0042 054B     		ldr	r3, .L20
+ 131 0044 1B68     		ldr	r3, [r3]
+ 132 0046 0320     		movs	r0, #3
+ 133 0048 9847     		blx	r3
+ 134 004a E7E7     		b	.L13
+ 135              	.L15:
+ 136 004c 2946     		mov	r1, r5
+ 137 004e 0448     		ldr	r0, .L20+8
+ 138 0050 FFF7FEFF 		bl	IR_Learn_Pack
+ 139 0054 0146     		mov	r1, r0
+ 140 0056 EFE7     		b	.L16
+ 141              	.L21:
+ 142              		.align	2
+ 143              	.L20:
+ 144 0058 00000000 		.word	LED
+ 145 005c 00000000 		.word	.LC2
+ 146 0060 00000000 		.word	buf
+ 147 0064 00000000 		.word	bufLen
+ 149              		.section	.text.Module0_Init,"ax",%progbits
+ 150              		.align	1
+ 151              		.global	Module0_Init
+ 152              		.syntax unified
+ 153              		.thumb
+ 154              		.thumb_func
+ 156              	Module0_Init:
+ 157              		@ args = 0, pretend = 0, frame = 0
+ 158              		@ frame_needed = 0, uses_anonymous_args = 0
+ 159 0000 08B5     		push	{r3, lr}
+ 160 0002 FFF7FEFF 		bl	USART2_Config
+ 161 0006 08BD     		pop	{r3, pc}
+ 163              		.section	.text.Module0_Mode0_Handler,"ax",%progbits
+ 164              		.align	1
+ 165              		.global	Module0_Mode0_Handler
+ 166              		.syntax unified
+ 167              		.thumb
+ 168              		.thumb_func
+ 170              	Module0_Mode0_Handler:
+ 171              		@ args = 0, pretend = 0, frame = 0
+ 172              		@ frame_needed = 0, uses_anonymous_args = 0
+ 173 0000 08B5     		push	{r3, lr}
+ 174 0002 0020     		movs	r0, #0
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s 			page 4
+
+
+ 175 0004 FFF7FEFF 		bl	handle_ir_signal
+ 176 0008 08BD     		pop	{r3, pc}
+ 178              		.section	.text.Module0_Mode1_Handler,"ax",%progbits
+ 179              		.align	1
+ 180              		.global	Module0_Mode1_Handler
+ 181              		.syntax unified
+ 182              		.thumb
+ 183              		.thumb_func
+ 185              	Module0_Mode1_Handler:
+ 186              		@ args = 0, pretend = 0, frame = 0
+ 187              		@ frame_needed = 0, uses_anonymous_args = 0
+ 188 0000 08B5     		push	{r3, lr}
+ 189 0002 0120     		movs	r0, #1
+ 190 0004 FFF7FEFF 		bl	handle_ir_signal
+ 191 0008 08BD     		pop	{r3, pc}
+ 193              		.global	model_indices
+ 194              		.section	.rodata.model_indices,"a"
+ 195              		.align	2
+ 198              	model_indices:
+ 199 0000 00010203 		.ascii	"\000\001\002\003\004\005\006\000\000\000\001\001"
+ 199      04050600 
+ 199      00000101 
+ 200              		.global	model_names
+ 201              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 202              		.align	2
+ 203              	.LC3:
+ 204 0000 52696768 		.ascii	"RightAngle\000"
+ 204      74416E67 
+ 204      6C6500
+ 205 000b 00       		.align	2
+ 206              	.LC4:
+ 207 000c 53686172 		.ascii	"SharpAngle\000"
+ 207      70416E67 
+ 207      6C6500
+ 208 0017 00       		.align	2
+ 209              	.LC5:
+ 210 0018 4C696768 		.ascii	"Lightning\000"
+ 210      746E696E 
+ 210      6700
+ 211 0022 0000     		.align	2
+ 212              	.LC6:
+ 213 0024 54726961 		.ascii	"Triangle\000"
+ 213      6E676C65 
+ 213      00
+ 214 002d 000000   		.align	2
+ 215              	.LC7:
+ 216 0030 4C657474 		.ascii	"Letter_h\000"
+ 216      65725F68 
+ 216      00
+ 217 0039 000000   		.align	2
+ 218              	.LC8:
+ 219 003c 4C657474 		.ascii	"Letter_R\000"
+ 219      65725F52 
+ 219      00
+ 220 0045 000000   		.align	2
+ 221              	.LC9:
+ 222 0048 4C657474 		.ascii	"Letter_W\000"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s 			page 5
+
+
+ 222      65725F57 
+ 222      00
+ 223 0051 000000   		.align	2
+ 224              	.LC10:
+ 225 0054 4C657474 		.ascii	"Letter_phi\000"
+ 225      65725F70 
+ 225      686900
+ 226 005f 00       		.align	2
+ 227              	.LC11:
+ 228 0060 43697263 		.ascii	"Circle\000"
+ 228      6C6500
+ 229 0067 00       		.align	2
+ 230              	.LC12:
+ 231 0068 5570416E 		.ascii	"UpAndDown\000"
+ 231      64446F77 
+ 231      6E00
+ 232 0072 0000     		.align	2
+ 233              	.LC13:
+ 234 0074 486F726E 		.ascii	"Horn\000"
+ 234      00
+ 235 0079 000000   		.align	2
+ 236              	.LC14:
+ 237 007c 57617665 		.ascii	"Wave\000"
+ 237      00
+ 238              		.section	.data.model_names,"aw"
+ 239              		.align	2
+ 242              	model_names:
+ 243 0000 00000000 		.word	.LC3
+ 244 0004 0C000000 		.word	.LC4
+ 245 0008 18000000 		.word	.LC5
+ 246 000c 24000000 		.word	.LC6
+ 247 0010 30000000 		.word	.LC7
+ 248 0014 3C000000 		.word	.LC8
+ 249 0018 48000000 		.word	.LC9
+ 250 001c 54000000 		.word	.LC10
+ 251 0020 60000000 		.word	.LC11
+ 252 0024 68000000 		.word	.LC12
+ 253 0028 74000000 		.word	.LC13
+ 254 002c 7C000000 		.word	.LC14
+ 255              		.global	i
+ 256              		.section	.bss.i,"aw",%nobits
+ 259              	i:
+ 260 0000 00       		.space	1
+ 261              		.global	buf
+ 262              		.section	.bss.buf,"aw",%nobits
+ 263              		.align	2
+ 266              	buf:
+ 267 0000 00000000 		.space	128
+ 267      00000000 
+ 267      00000000 
+ 267      00000000 
+ 267      00000000 
+ 268              		.global	bufLen
+ 269              		.section	.bss.bufLen,"aw",%nobits
+ 270              		.align	1
+ 273              	bufLen:
+ 274 0000 0000     		.space	2
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s 			page 6
+
+
+ 275              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 module0.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:16     .rodata.print_model_name.str1.4:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:23     .text.print_model_name:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:29     .text.print_model_name:00000000 print_model_name
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:49     .text.print_model_name:00000020 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:242    .data.model_names:00000000 model_names
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:54     .text.check_model:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:60     .text.check_model:00000000 check_model
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:83     .text.check_model:00000024 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:198    .rodata.model_indices:00000000 model_indices
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:87     .rodata.handle_ir_signal.str1.4:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:91     .text.handle_ir_signal:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:97     .text.handle_ir_signal:00000000 handle_ir_signal
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:144    .text.handle_ir_signal:00000058 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:266    .bss.buf:00000000 buf
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:273    .bss.bufLen:00000000 bufLen
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:150    .text.Module0_Init:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:156    .text.Module0_Init:00000000 Module0_Init
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:164    .text.Module0_Mode0_Handler:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:170    .text.Module0_Mode0_Handler:00000000 Module0_Mode0_Handler
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:179    .text.Module0_Mode1_Handler:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:185    .text.Module0_Mode1_Handler:00000000 Module0_Mode1_Handler
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:195    .rodata.model_indices:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:202    .rodata.str1.4:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:239    .data.model_names:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:259    .bss.i:00000000 i
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:260    .bss.i:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:263    .bss.buf:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccjc3fbR.s:270    .bss.bufLen:00000000 $d
+
+UNDEFINED SYMBOLS
+printf
+model_output
+IR_Send_Pack
+Uart_Send
+IR_Learn_Pack
+LED
+USART2_Config

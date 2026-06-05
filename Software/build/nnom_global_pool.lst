@@ -1,0 +1,380 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccYjqEUf.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"nnom_global_pool.c"
+  14              		.text
+  15              		.section	.text.global_pool_build,"ax",%progbits
+  16              		.align	1
+  17              		.global	global_pool_build
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	global_pool_build:
+  23              		@ args = 0, pretend = 0, frame = 16
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 30B5     		push	{r4, r5, lr}
+  26 0002 87B0     		sub	sp, sp, #28
+  27 0004 0446     		mov	r4, r0
+  28 0006 036A     		ldr	r3, [r0, #32]
+  29 0008 1A68     		ldr	r2, [r3]
+  30 000a D268     		ldr	r2, [r2, #12]
+  31 000c DA60     		str	r2, [r3, #12]
+  32 000e 036A     		ldr	r3, [r0, #32]
+  33 0010 D868     		ldr	r0, [r3, #12]
+  34 0012 FFF7FEFF 		bl	tensor_get_num_channel
+  35 0016 0246     		mov	r2, r0
+  36 0018 656A     		ldr	r5, [r4, #36]
+  37 001a 0121     		movs	r1, #1
+  38 001c 0020     		movs	r0, #0
+  39 001e FFF7FEFF 		bl	new_tensor
+  40 0022 E860     		str	r0, [r5, #12]
+  41 0024 236A     		ldr	r3, [r4, #32]
+  42 0026 D868     		ldr	r0, [r3, #12]
+  43 0028 FFF7FEFF 		bl	tensor_get_num_channel
+  44 002c ADF81400 		strh	r0, [sp, #20]	@ movhi
+  45 0030 236A     		ldr	r3, [r4, #32]
+  46 0032 DB68     		ldr	r3, [r3, #12]
+  47 0034 9B68     		ldr	r3, [r3, #8]
+  48 0036 1968     		ldr	r1, [r3]
+  49 0038 636A     		ldr	r3, [r4, #36]
+  50 003a D868     		ldr	r0, [r3, #12]
+  51 003c 0823     		movs	r3, #8
+  52 003e 0193     		str	r3, [sp, #4]
+  53 0040 0123     		movs	r3, #1
+  54 0042 0093     		str	r3, [sp]
+  55 0044 05AB     		add	r3, sp, #20
+  56 0046 0022     		movs	r2, #0
+  57 0048 FFF7FEFF 		bl	tensor_set_attr_v
+  58 004c 6369     		ldr	r3, [r4, #20]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccYjqEUf.s 			page 2
+
+
+  59 004e 3BB1     		cbz	r3, .L2
+  60 0050 626A     		ldr	r2, [r4, #36]
+  61 0052 D268     		ldr	r2, [r2, #12]
+  62 0054 9568     		ldr	r5, [r2, #8]
+  63 0056 2968     		ldr	r1, [r5]
+  64 0058 187A     		ldrb	r0, [r3, #8]	@ zero_extendqisi2
+  65 005a FFF7FEFF 		bl	act_get_dec_bit
+  66 005e 2860     		str	r0, [r5]
+  67              	.L2:
+  68 0060 236A     		ldr	r3, [r4, #32]
+  69 0062 DB68     		ldr	r3, [r3, #12]
+  70 0064 5968     		ldr	r1, [r3, #4]
+  71 0066 02AD     		add	r5, sp, #8
+  72 0068 0123     		movs	r3, #1
+  73 006a 4A88     		ldrh	r2, [r1, #2]
+  74 006c 0988     		ldrh	r1, [r1]
+  75 006e 2846     		mov	r0, r5
+  76 0070 FFF7FEFF 		bl	shape
+  77 0074 0298     		ldr	r0, [sp, #8]	@ unaligned
+  78 0076 2063     		str	r0, [r4, #48]
+  79 0078 BDF80C30 		ldrh	r3, [sp, #12]	@ unaligned
+  80 007c A386     		strh	r3, [r4, #52]	@ unaligned
+  81 007e 0123     		movs	r3, #1
+  82 0080 1A46     		mov	r2, r3
+  83 0082 1946     		mov	r1, r3
+  84 0084 2846     		mov	r0, r5
+  85 0086 FFF7FEFF 		bl	shape
+  86 008a 029B     		ldr	r3, [sp, #8]	@ unaligned
+  87 008c C4F83630 		str	r3, [r4, #54]	@ unaligned
+  88 0090 BDF80C30 		ldrh	r3, [sp, #12]	@ unaligned
+  89 0094 6387     		strh	r3, [r4, #58]	@ unaligned
+  90 0096 0023     		movs	r3, #0
+  91 0098 1A46     		mov	r2, r3
+  92 009a 1946     		mov	r1, r3
+  93 009c 2846     		mov	r0, r5
+  94 009e FFF7FEFF 		bl	shape
+  95 00a2 0298     		ldr	r0, [sp, #8]	@ unaligned
+  96 00a4 E063     		str	r0, [r4, #60]
+  97 00a6 BDF80C30 		ldrh	r3, [sp, #12]	@ unaligned
+  98 00aa A4F84030 		strh	r3, [r4, #64]	@ unaligned
+  99 00ae 0023     		movs	r3, #0
+ 100 00b0 84F84230 		strb	r3, [r4, #66]
+ 101 00b4 237F     		ldrb	r3, [r4, #28]	@ zero_extendqisi2
+ 102 00b6 153B     		subs	r3, r3, #21
+ 103 00b8 DBB2     		uxtb	r3, r3
+ 104 00ba 012B     		cmp	r3, #1
+ 105 00bc 07D9     		bls	.L6
+ 106              	.L3:
+ 107 00be 237F     		ldrb	r3, [r4, #28]	@ zero_extendqisi2
+ 108 00c0 173B     		subs	r3, r3, #23
+ 109 00c2 DBB2     		uxtb	r3, r3
+ 110 00c4 012B     		cmp	r3, #1
+ 111 00c6 10D9     		bls	.L7
+ 112              	.L4:
+ 113 00c8 0020     		movs	r0, #0
+ 114 00ca 07B0     		add	sp, sp, #28
+ 115              		@ sp needed
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccYjqEUf.s 			page 3
+
+
+ 116 00cc 30BD     		pop	{r4, r5, pc}
+ 117              	.L6:
+ 118 00ce 2269     		ldr	r2, [r4, #16]
+ 119 00d0 636A     		ldr	r3, [r4, #36]
+ 120 00d2 DB68     		ldr	r3, [r3, #12]
+ 121 00d4 5B68     		ldr	r3, [r3, #4]
+ 122 00d6 1B88     		ldrh	r3, [r3]
+ 123 00d8 216A     		ldr	r1, [r4, #32]
+ 124 00da C968     		ldr	r1, [r1, #12]
+ 125 00dc 4968     		ldr	r1, [r1, #4]
+ 126 00de 8988     		ldrh	r1, [r1, #4]
+ 127 00e0 01FB03F3 		mul	r3, r1, r3
+ 128 00e4 5B00     		lsls	r3, r3, #1
+ 129 00e6 5360     		str	r3, [r2, #4]
+ 130 00e8 E9E7     		b	.L3
+ 131              	.L7:
+ 132 00ea 636A     		ldr	r3, [r4, #36]
+ 133 00ec D868     		ldr	r0, [r3, #12]
+ 134 00ee FFF7FEFF 		bl	tensor_size
+ 135 00f2 2369     		ldr	r3, [r4, #16]
+ 136 00f4 8000     		lsls	r0, r0, #2
+ 137 00f6 5860     		str	r0, [r3, #4]
+ 138 00f8 E6E7     		b	.L4
+ 140              		.section	.text.GlobalMaxPool,"ax",%progbits
+ 141              		.align	1
+ 142              		.global	GlobalMaxPool
+ 143              		.syntax unified
+ 144              		.thumb
+ 145              		.thumb_func
+ 147              	GlobalMaxPool:
+ 148              		@ args = 0, pretend = 0, frame = 16
+ 149              		@ frame_needed = 0, uses_anonymous_args = 0
+ 150 0000 30B5     		push	{r4, r5, lr}
+ 151 0002 87B0     		sub	sp, sp, #28
+ 152 0004 02AC     		add	r4, sp, #8
+ 153 0006 0022     		movs	r2, #0
+ 154 0008 1146     		mov	r1, r2
+ 155 000a 2046     		mov	r0, r4
+ 156 000c FFF7FEFF 		bl	kernel
+ 157 0010 04AD     		add	r5, sp, #16
+ 158 0012 0022     		movs	r2, #0
+ 159 0014 1146     		mov	r1, r2
+ 160 0016 2846     		mov	r0, r5
+ 161 0018 FFF7FEFF 		bl	stride
+ 162 001c 0023     		movs	r3, #0
+ 163 001e 0093     		str	r3, [sp]
+ 164 0020 95E80C00 		ldm	r5, {r2, r3}
+ 165 0024 94E80300 		ldm	r4, {r0, r1}
+ 166 0028 FFF7FEFF 		bl	MaxPool
+ 167 002c 0346     		mov	r3, r0
+ 168 002e 18B1     		cbz	r0, .L8
+ 169 0030 1422     		movs	r2, #20
+ 170 0032 0277     		strb	r2, [r0, #28]
+ 171 0034 024A     		ldr	r2, .L11
+ 172 0036 8260     		str	r2, [r0, #8]
+ 173              	.L8:
+ 174 0038 1846     		mov	r0, r3
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccYjqEUf.s 			page 4
+
+
+ 175 003a 07B0     		add	sp, sp, #28
+ 176              		@ sp needed
+ 177 003c 30BD     		pop	{r4, r5, pc}
+ 178              	.L12:
+ 179 003e 00BF     		.align	2
+ 180              	.L11:
+ 181 0040 00000000 		.word	global_pool_build
+ 183              		.section	.text.global_maxpool_s,"ax",%progbits
+ 184              		.align	1
+ 185              		.global	global_maxpool_s
+ 186              		.syntax unified
+ 187              		.thumb
+ 188              		.thumb_func
+ 190              	global_maxpool_s:
+ 191              		@ args = 0, pretend = 0, frame = 0
+ 192              		@ frame_needed = 0, uses_anonymous_args = 0
+ 193 0000 10B5     		push	{r4, lr}
+ 194 0002 0446     		mov	r4, r0
+ 195 0004 FFF7FEFF 		bl	GlobalMaxPool
+ 196 0008 0346     		mov	r3, r0
+ 197 000a 20B1     		cbz	r0, .L13
+ 198 000c 8461     		str	r4, [r0, #24]
+ 199 000e B4F90420 		ldrsh	r2, [r4, #4]
+ 200 0012 A0F84420 		strh	r2, [r0, #68]	@ movhi
+ 201              	.L13:
+ 202 0016 1846     		mov	r0, r3
+ 203 0018 10BD     		pop	{r4, pc}
+ 205              		.section	.text.GlobalAvgPool,"ax",%progbits
+ 206              		.align	1
+ 207              		.global	GlobalAvgPool
+ 208              		.syntax unified
+ 209              		.thumb
+ 210              		.thumb_func
+ 212              	GlobalAvgPool:
+ 213              		@ args = 0, pretend = 0, frame = 16
+ 214              		@ frame_needed = 0, uses_anonymous_args = 0
+ 215 0000 30B5     		push	{r4, r5, lr}
+ 216 0002 87B0     		sub	sp, sp, #28
+ 217 0004 02AC     		add	r4, sp, #8
+ 218 0006 0022     		movs	r2, #0
+ 219 0008 1146     		mov	r1, r2
+ 220 000a 2046     		mov	r0, r4
+ 221 000c FFF7FEFF 		bl	kernel
+ 222 0010 04AD     		add	r5, sp, #16
+ 223 0012 0022     		movs	r2, #0
+ 224 0014 1146     		mov	r1, r2
+ 225 0016 2846     		mov	r0, r5
+ 226 0018 FFF7FEFF 		bl	stride
+ 227 001c 0023     		movs	r3, #0
+ 228 001e 0093     		str	r3, [sp]
+ 229 0020 95E80C00 		ldm	r5, {r2, r3}
+ 230 0024 94E80300 		ldm	r4, {r0, r1}
+ 231 0028 FFF7FEFF 		bl	MaxPool
+ 232 002c 0346     		mov	r3, r0
+ 233 002e 28B1     		cbz	r0, .L16
+ 234 0030 1622     		movs	r2, #22
+ 235 0032 0277     		strb	r2, [r0, #28]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccYjqEUf.s 			page 5
+
+
+ 236 0034 034A     		ldr	r2, .L19
+ 237 0036 4260     		str	r2, [r0, #4]
+ 238 0038 034A     		ldr	r2, .L19+4
+ 239 003a 8260     		str	r2, [r0, #8]
+ 240              	.L16:
+ 241 003c 1846     		mov	r0, r3
+ 242 003e 07B0     		add	sp, sp, #28
+ 243              		@ sp needed
+ 244 0040 30BD     		pop	{r4, r5, pc}
+ 245              	.L20:
+ 246 0042 00BF     		.align	2
+ 247              	.L19:
+ 248 0044 00000000 		.word	avgpool_run
+ 249 0048 00000000 		.word	global_pool_build
+ 251              		.section	.text.global_avgpool_s,"ax",%progbits
+ 252              		.align	1
+ 253              		.global	global_avgpool_s
+ 254              		.syntax unified
+ 255              		.thumb
+ 256              		.thumb_func
+ 258              	global_avgpool_s:
+ 259              		@ args = 0, pretend = 0, frame = 0
+ 260              		@ frame_needed = 0, uses_anonymous_args = 0
+ 261 0000 10B5     		push	{r4, lr}
+ 262 0002 0446     		mov	r4, r0
+ 263 0004 FFF7FEFF 		bl	GlobalAvgPool
+ 264 0008 0346     		mov	r3, r0
+ 265 000a 20B1     		cbz	r0, .L21
+ 266 000c 8461     		str	r4, [r0, #24]
+ 267 000e B4F90420 		ldrsh	r2, [r4, #4]
+ 268 0012 A0F84420 		strh	r2, [r0, #68]	@ movhi
+ 269              	.L21:
+ 270 0016 1846     		mov	r0, r3
+ 271 0018 10BD     		pop	{r4, pc}
+ 273              		.section	.text.GlobalSumPool,"ax",%progbits
+ 274              		.align	1
+ 275              		.global	GlobalSumPool
+ 276              		.syntax unified
+ 277              		.thumb
+ 278              		.thumb_func
+ 280              	GlobalSumPool:
+ 281              		@ args = 0, pretend = 0, frame = 16
+ 282              		@ frame_needed = 0, uses_anonymous_args = 0
+ 283 0000 30B5     		push	{r4, r5, lr}
+ 284 0002 87B0     		sub	sp, sp, #28
+ 285 0004 02AC     		add	r4, sp, #8
+ 286 0006 0022     		movs	r2, #0
+ 287 0008 1146     		mov	r1, r2
+ 288 000a 2046     		mov	r0, r4
+ 289 000c FFF7FEFF 		bl	kernel
+ 290 0010 04AD     		add	r5, sp, #16
+ 291 0012 0022     		movs	r2, #0
+ 292 0014 1146     		mov	r1, r2
+ 293 0016 2846     		mov	r0, r5
+ 294 0018 FFF7FEFF 		bl	stride
+ 295 001c 0023     		movs	r3, #0
+ 296 001e 0093     		str	r3, [sp]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccYjqEUf.s 			page 6
+
+
+ 297 0020 95E80C00 		ldm	r5, {r2, r3}
+ 298 0024 94E80300 		ldm	r4, {r0, r1}
+ 299 0028 FFF7FEFF 		bl	MaxPool
+ 300 002c 0346     		mov	r3, r0
+ 301 002e 28B1     		cbz	r0, .L24
+ 302 0030 1822     		movs	r2, #24
+ 303 0032 0277     		strb	r2, [r0, #28]
+ 304 0034 034A     		ldr	r2, .L27
+ 305 0036 4260     		str	r2, [r0, #4]
+ 306 0038 034A     		ldr	r2, .L27+4
+ 307 003a 8260     		str	r2, [r0, #8]
+ 308              	.L24:
+ 309 003c 1846     		mov	r0, r3
+ 310 003e 07B0     		add	sp, sp, #28
+ 311              		@ sp needed
+ 312 0040 30BD     		pop	{r4, r5, pc}
+ 313              	.L28:
+ 314 0042 00BF     		.align	2
+ 315              	.L27:
+ 316 0044 00000000 		.word	sumpool_run
+ 317 0048 00000000 		.word	global_pool_build
+ 319              		.section	.text.global_sumpool_s,"ax",%progbits
+ 320              		.align	1
+ 321              		.global	global_sumpool_s
+ 322              		.syntax unified
+ 323              		.thumb
+ 324              		.thumb_func
+ 326              	global_sumpool_s:
+ 327              		@ args = 0, pretend = 0, frame = 0
+ 328              		@ frame_needed = 0, uses_anonymous_args = 0
+ 329 0000 10B5     		push	{r4, lr}
+ 330 0002 0446     		mov	r4, r0
+ 331 0004 FFF7FEFF 		bl	GlobalSumPool
+ 332 0008 0346     		mov	r3, r0
+ 333 000a 20B1     		cbz	r0, .L29
+ 334 000c 8461     		str	r4, [r0, #24]
+ 335 000e B4F90420 		ldrsh	r2, [r4, #4]
+ 336 0012 A0F84420 		strh	r2, [r0, #68]	@ movhi
+ 337              	.L29:
+ 338 0016 1846     		mov	r0, r3
+ 339 0018 10BD     		pop	{r4, pc}
+ 341              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccYjqEUf.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 nnom_global_pool.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccYjqEUf.s:16     .text.global_pool_build:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccYjqEUf.s:22     .text.global_pool_build:00000000 global_pool_build
+C:\Users\ihavenoK\AppData\Local\Temp\ccYjqEUf.s:141    .text.GlobalMaxPool:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccYjqEUf.s:147    .text.GlobalMaxPool:00000000 GlobalMaxPool
+C:\Users\ihavenoK\AppData\Local\Temp\ccYjqEUf.s:181    .text.GlobalMaxPool:00000040 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccYjqEUf.s:184    .text.global_maxpool_s:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccYjqEUf.s:190    .text.global_maxpool_s:00000000 global_maxpool_s
+C:\Users\ihavenoK\AppData\Local\Temp\ccYjqEUf.s:206    .text.GlobalAvgPool:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccYjqEUf.s:212    .text.GlobalAvgPool:00000000 GlobalAvgPool
+C:\Users\ihavenoK\AppData\Local\Temp\ccYjqEUf.s:248    .text.GlobalAvgPool:00000044 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccYjqEUf.s:252    .text.global_avgpool_s:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccYjqEUf.s:258    .text.global_avgpool_s:00000000 global_avgpool_s
+C:\Users\ihavenoK\AppData\Local\Temp\ccYjqEUf.s:274    .text.GlobalSumPool:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccYjqEUf.s:280    .text.GlobalSumPool:00000000 GlobalSumPool
+C:\Users\ihavenoK\AppData\Local\Temp\ccYjqEUf.s:316    .text.GlobalSumPool:00000044 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccYjqEUf.s:320    .text.global_sumpool_s:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccYjqEUf.s:326    .text.global_sumpool_s:00000000 global_sumpool_s
+
+UNDEFINED SYMBOLS
+tensor_get_num_channel
+new_tensor
+tensor_set_attr_v
+act_get_dec_bit
+shape
+tensor_size
+kernel
+stride
+MaxPool
+avgpool_run
+sumpool_run

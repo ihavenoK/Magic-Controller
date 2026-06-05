@@ -1,0 +1,909 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f10x_adc.c"
+  14              		.text
+  15              		.section	.text.ADC_DeInit,"ax",%progbits
+  16              		.align	1
+  17              		.global	ADC_DeInit
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	ADC_DeInit:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 08B5     		push	{r3, lr}
+  26 0002 154B     		ldr	r3, .L9
+  27 0004 9842     		cmp	r0, r3
+  28 0006 06D0     		beq	.L6
+  29 0008 144B     		ldr	r3, .L9+4
+  30 000a 9842     		cmp	r0, r3
+  31 000c 0ED0     		beq	.L7
+  32 000e 144B     		ldr	r3, .L9+8
+  33 0010 9842     		cmp	r0, r3
+  34 0012 16D0     		beq	.L8
+  35              	.L1:
+  36 0014 08BD     		pop	{r3, pc}
+  37              	.L6:
+  38 0016 0121     		movs	r1, #1
+  39 0018 4FF40070 		mov	r0, #512
+  40 001c FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  41 0020 0021     		movs	r1, #0
+  42 0022 4FF40070 		mov	r0, #512
+  43 0026 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  44 002a F3E7     		b	.L1
+  45              	.L7:
+  46 002c 0121     		movs	r1, #1
+  47 002e 4FF48060 		mov	r0, #1024
+  48 0032 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  49 0036 0021     		movs	r1, #0
+  50 0038 4FF48060 		mov	r0, #1024
+  51 003c FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  52 0040 E8E7     		b	.L1
+  53              	.L8:
+  54 0042 0121     		movs	r1, #1
+  55 0044 4FF40040 		mov	r0, #32768
+  56 0048 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  57 004c 0021     		movs	r1, #0
+  58 004e 4FF40040 		mov	r0, #32768
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s 			page 2
+
+
+  59 0052 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  60 0056 DDE7     		b	.L1
+  61              	.L10:
+  62              		.align	2
+  63              	.L9:
+  64 0058 00240140 		.word	1073816576
+  65 005c 00280140 		.word	1073817600
+  66 0060 003C0140 		.word	1073822720
+  68              		.section	.text.ADC_Init,"ax",%progbits
+  69              		.align	1
+  70              		.global	ADC_Init
+  71              		.syntax unified
+  72              		.thumb
+  73              		.thumb_func
+  75              	ADC_Init:
+  76              		@ args = 0, pretend = 0, frame = 0
+  77              		@ frame_needed = 0, uses_anonymous_args = 0
+  78              		@ link register save eliminated.
+  79 0000 10B4     		push	{r4}
+  80 0002 4368     		ldr	r3, [r0, #4]
+  81 0004 0A79     		ldrb	r2, [r1, #4]	@ zero_extendqisi2
+  82 0006 23F47023 		bic	r3, r3, #983040
+  83 000a 23F48073 		bic	r3, r3, #256
+  84 000e 43EA0223 		orr	r3, r3, r2, lsl #8
+  85 0012 0A68     		ldr	r2, [r1]
+  86 0014 1343     		orrs	r3, r3, r2
+  87 0016 4360     		str	r3, [r0, #4]
+  88 0018 8468     		ldr	r4, [r0, #8]
+  89 001a CB68     		ldr	r3, [r1, #12]
+  90 001c 8A68     		ldr	r2, [r1, #8]
+  91 001e 1343     		orrs	r3, r3, r2
+  92 0020 084A     		ldr	r2, .L13
+  93 0022 2240     		ands	r2, r2, r4
+  94 0024 1343     		orrs	r3, r3, r2
+  95 0026 4A79     		ldrb	r2, [r1, #5]	@ zero_extendqisi2
+  96 0028 43EA4203 		orr	r3, r3, r2, lsl #1
+  97 002c 8360     		str	r3, [r0, #8]
+  98 002e C36A     		ldr	r3, [r0, #44]
+  99 0030 23F47003 		bic	r3, r3, #15728640
+ 100 0034 0A7C     		ldrb	r2, [r1, #16]	@ zero_extendqisi2
+ 101 0036 013A     		subs	r2, r2, #1
+ 102 0038 D2B2     		uxtb	r2, r2
+ 103 003a 43EA0253 		orr	r3, r3, r2, lsl #20
+ 104 003e C362     		str	r3, [r0, #44]
+ 105 0040 10BC     		pop	{r4}
+ 106 0042 7047     		bx	lr
+ 107              	.L14:
+ 108              		.align	2
+ 109              	.L13:
+ 110 0044 FDF7F1FF 		.word	-919555
+ 112              		.section	.text.ADC_StructInit,"ax",%progbits
+ 113              		.align	1
+ 114              		.global	ADC_StructInit
+ 115              		.syntax unified
+ 116              		.thumb
+ 117              		.thumb_func
+ 119              	ADC_StructInit:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s 			page 3
+
+
+ 120              		@ args = 0, pretend = 0, frame = 0
+ 121              		@ frame_needed = 0, uses_anonymous_args = 0
+ 122              		@ link register save eliminated.
+ 123 0000 0023     		movs	r3, #0
+ 124 0002 0360     		str	r3, [r0]
+ 125 0004 0371     		strb	r3, [r0, #4]
+ 126 0006 4371     		strb	r3, [r0, #5]
+ 127 0008 8360     		str	r3, [r0, #8]
+ 128 000a C360     		str	r3, [r0, #12]
+ 129 000c 0123     		movs	r3, #1
+ 130 000e 0374     		strb	r3, [r0, #16]
+ 131 0010 7047     		bx	lr
+ 133              		.section	.text.ADC_Cmd,"ax",%progbits
+ 134              		.align	1
+ 135              		.global	ADC_Cmd
+ 136              		.syntax unified
+ 137              		.thumb
+ 138              		.thumb_func
+ 140              	ADC_Cmd:
+ 141              		@ args = 0, pretend = 0, frame = 0
+ 142              		@ frame_needed = 0, uses_anonymous_args = 0
+ 143              		@ link register save eliminated.
+ 144 0000 21B1     		cbz	r1, .L17
+ 145 0002 8368     		ldr	r3, [r0, #8]
+ 146 0004 43F00103 		orr	r3, r3, #1
+ 147 0008 8360     		str	r3, [r0, #8]
+ 148 000a 7047     		bx	lr
+ 149              	.L17:
+ 150 000c 8368     		ldr	r3, [r0, #8]
+ 151 000e 23F00103 		bic	r3, r3, #1
+ 152 0012 8360     		str	r3, [r0, #8]
+ 153 0014 7047     		bx	lr
+ 155              		.section	.text.ADC_DMACmd,"ax",%progbits
+ 156              		.align	1
+ 157              		.global	ADC_DMACmd
+ 158              		.syntax unified
+ 159              		.thumb
+ 160              		.thumb_func
+ 162              	ADC_DMACmd:
+ 163              		@ args = 0, pretend = 0, frame = 0
+ 164              		@ frame_needed = 0, uses_anonymous_args = 0
+ 165              		@ link register save eliminated.
+ 166 0000 21B1     		cbz	r1, .L20
+ 167 0002 8368     		ldr	r3, [r0, #8]
+ 168 0004 43F48073 		orr	r3, r3, #256
+ 169 0008 8360     		str	r3, [r0, #8]
+ 170 000a 7047     		bx	lr
+ 171              	.L20:
+ 172 000c 8368     		ldr	r3, [r0, #8]
+ 173 000e 23F48073 		bic	r3, r3, #256
+ 174 0012 8360     		str	r3, [r0, #8]
+ 175 0014 7047     		bx	lr
+ 177              		.section	.text.ADC_ITConfig,"ax",%progbits
+ 178              		.align	1
+ 179              		.global	ADC_ITConfig
+ 180              		.syntax unified
+ 181              		.thumb
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s 			page 4
+
+
+ 182              		.thumb_func
+ 184              	ADC_ITConfig:
+ 185              		@ args = 0, pretend = 0, frame = 0
+ 186              		@ frame_needed = 0, uses_anonymous_args = 0
+ 187              		@ link register save eliminated.
+ 188 0000 C9B2     		uxtb	r1, r1
+ 189 0002 1AB1     		cbz	r2, .L23
+ 190 0004 4368     		ldr	r3, [r0, #4]
+ 191 0006 1943     		orrs	r1, r1, r3
+ 192 0008 4160     		str	r1, [r0, #4]
+ 193 000a 7047     		bx	lr
+ 194              	.L23:
+ 195 000c 4368     		ldr	r3, [r0, #4]
+ 196 000e 23EA0103 		bic	r3, r3, r1
+ 197 0012 4360     		str	r3, [r0, #4]
+ 198 0014 7047     		bx	lr
+ 200              		.section	.text.ADC_ResetCalibration,"ax",%progbits
+ 201              		.align	1
+ 202              		.global	ADC_ResetCalibration
+ 203              		.syntax unified
+ 204              		.thumb
+ 205              		.thumb_func
+ 207              	ADC_ResetCalibration:
+ 208              		@ args = 0, pretend = 0, frame = 0
+ 209              		@ frame_needed = 0, uses_anonymous_args = 0
+ 210              		@ link register save eliminated.
+ 211 0000 8368     		ldr	r3, [r0, #8]
+ 212 0002 43F00803 		orr	r3, r3, #8
+ 213 0006 8360     		str	r3, [r0, #8]
+ 214 0008 7047     		bx	lr
+ 216              		.section	.text.ADC_GetResetCalibrationStatus,"ax",%progbits
+ 217              		.align	1
+ 218              		.global	ADC_GetResetCalibrationStatus
+ 219              		.syntax unified
+ 220              		.thumb
+ 221              		.thumb_func
+ 223              	ADC_GetResetCalibrationStatus:
+ 224              		@ args = 0, pretend = 0, frame = 0
+ 225              		@ frame_needed = 0, uses_anonymous_args = 0
+ 226              		@ link register save eliminated.
+ 227 0000 8068     		ldr	r0, [r0, #8]
+ 228 0002 C0F3C000 		ubfx	r0, r0, #3, #1
+ 229 0006 7047     		bx	lr
+ 231              		.section	.text.ADC_StartCalibration,"ax",%progbits
+ 232              		.align	1
+ 233              		.global	ADC_StartCalibration
+ 234              		.syntax unified
+ 235              		.thumb
+ 236              		.thumb_func
+ 238              	ADC_StartCalibration:
+ 239              		@ args = 0, pretend = 0, frame = 0
+ 240              		@ frame_needed = 0, uses_anonymous_args = 0
+ 241              		@ link register save eliminated.
+ 242 0000 8368     		ldr	r3, [r0, #8]
+ 243 0002 43F00403 		orr	r3, r3, #4
+ 244 0006 8360     		str	r3, [r0, #8]
+ 245 0008 7047     		bx	lr
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s 			page 5
+
+
+ 247              		.section	.text.ADC_GetCalibrationStatus,"ax",%progbits
+ 248              		.align	1
+ 249              		.global	ADC_GetCalibrationStatus
+ 250              		.syntax unified
+ 251              		.thumb
+ 252              		.thumb_func
+ 254              	ADC_GetCalibrationStatus:
+ 255              		@ args = 0, pretend = 0, frame = 0
+ 256              		@ frame_needed = 0, uses_anonymous_args = 0
+ 257              		@ link register save eliminated.
+ 258 0000 8068     		ldr	r0, [r0, #8]
+ 259 0002 C0F38000 		ubfx	r0, r0, #2, #1
+ 260 0006 7047     		bx	lr
+ 262              		.section	.text.ADC_SoftwareStartConvCmd,"ax",%progbits
+ 263              		.align	1
+ 264              		.global	ADC_SoftwareStartConvCmd
+ 265              		.syntax unified
+ 266              		.thumb
+ 267              		.thumb_func
+ 269              	ADC_SoftwareStartConvCmd:
+ 270              		@ args = 0, pretend = 0, frame = 0
+ 271              		@ frame_needed = 0, uses_anonymous_args = 0
+ 272              		@ link register save eliminated.
+ 273 0000 21B1     		cbz	r1, .L30
+ 274 0002 8368     		ldr	r3, [r0, #8]
+ 275 0004 43F4A003 		orr	r3, r3, #5242880
+ 276 0008 8360     		str	r3, [r0, #8]
+ 277 000a 7047     		bx	lr
+ 278              	.L30:
+ 279 000c 8368     		ldr	r3, [r0, #8]
+ 280 000e 23F4A003 		bic	r3, r3, #5242880
+ 281 0012 8360     		str	r3, [r0, #8]
+ 282 0014 7047     		bx	lr
+ 284              		.section	.text.ADC_GetSoftwareStartConvStatus,"ax",%progbits
+ 285              		.align	1
+ 286              		.global	ADC_GetSoftwareStartConvStatus
+ 287              		.syntax unified
+ 288              		.thumb
+ 289              		.thumb_func
+ 291              	ADC_GetSoftwareStartConvStatus:
+ 292              		@ args = 0, pretend = 0, frame = 0
+ 293              		@ frame_needed = 0, uses_anonymous_args = 0
+ 294              		@ link register save eliminated.
+ 295 0000 8068     		ldr	r0, [r0, #8]
+ 296 0002 C0F38050 		ubfx	r0, r0, #22, #1
+ 297 0006 7047     		bx	lr
+ 299              		.section	.text.ADC_DiscModeChannelCountConfig,"ax",%progbits
+ 300              		.align	1
+ 301              		.global	ADC_DiscModeChannelCountConfig
+ 302              		.syntax unified
+ 303              		.thumb
+ 304              		.thumb_func
+ 306              	ADC_DiscModeChannelCountConfig:
+ 307              		@ args = 0, pretend = 0, frame = 0
+ 308              		@ frame_needed = 0, uses_anonymous_args = 0
+ 309              		@ link register save eliminated.
+ 310 0000 4368     		ldr	r3, [r0, #4]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s 			page 6
+
+
+ 311 0002 23F46043 		bic	r3, r3, #57344
+ 312 0006 0139     		subs	r1, r1, #1
+ 313 0008 43EA4133 		orr	r3, r3, r1, lsl #13
+ 314 000c 4360     		str	r3, [r0, #4]
+ 315 000e 7047     		bx	lr
+ 317              		.section	.text.ADC_DiscModeCmd,"ax",%progbits
+ 318              		.align	1
+ 319              		.global	ADC_DiscModeCmd
+ 320              		.syntax unified
+ 321              		.thumb
+ 322              		.thumb_func
+ 324              	ADC_DiscModeCmd:
+ 325              		@ args = 0, pretend = 0, frame = 0
+ 326              		@ frame_needed = 0, uses_anonymous_args = 0
+ 327              		@ link register save eliminated.
+ 328 0000 21B1     		cbz	r1, .L35
+ 329 0002 4368     		ldr	r3, [r0, #4]
+ 330 0004 43F40063 		orr	r3, r3, #2048
+ 331 0008 4360     		str	r3, [r0, #4]
+ 332 000a 7047     		bx	lr
+ 333              	.L35:
+ 334 000c 4368     		ldr	r3, [r0, #4]
+ 335 000e 23F40063 		bic	r3, r3, #2048
+ 336 0012 4360     		str	r3, [r0, #4]
+ 337 0014 7047     		bx	lr
+ 339              		.section	.text.ADC_RegularChannelConfig,"ax",%progbits
+ 340              		.align	1
+ 341              		.global	ADC_RegularChannelConfig
+ 342              		.syntax unified
+ 343              		.thumb
+ 344              		.thumb_func
+ 346              	ADC_RegularChannelConfig:
+ 347              		@ args = 0, pretend = 0, frame = 0
+ 348              		@ frame_needed = 0, uses_anonymous_args = 0
+ 349 0000 10B5     		push	{r4, lr}
+ 350 0002 0929     		cmp	r1, #9
+ 351 0004 20D9     		bls	.L38
+ 352 0006 C468     		ldr	r4, [r0, #12]
+ 353 0008 A1F10A0C 		sub	ip, r1, #10
+ 354 000c 0CEB4C0C 		add	ip, ip, ip, lsl #1
+ 355 0010 4FF0070E 		mov	lr, #7
+ 356 0014 0EFA0CFE 		lsl	lr, lr, ip
+ 357 0018 24EA0E04 		bic	r4, r4, lr
+ 358 001c 03FA0CFC 		lsl	ip, r3, ip
+ 359 0020 4CEA0404 		orr	r4, ip, r4
+ 360 0024 C460     		str	r4, [r0, #12]
+ 361              	.L39:
+ 362 0026 062A     		cmp	r2, #6
+ 363 0028 1DD8     		bhi	.L40
+ 364 002a 436B     		ldr	r3, [r0, #52]
+ 365 002c 013A     		subs	r2, r2, #1
+ 366 002e 02EB8202 		add	r2, r2, r2, lsl #2
+ 367 0032 4FF01F0C 		mov	ip, #31
+ 368 0036 0CFA02FC 		lsl	ip, ip, r2
+ 369 003a 23EA0C03 		bic	r3, r3, ip
+ 370 003e 01FA02F2 		lsl	r2, r1, r2
+ 371 0042 1A43     		orrs	r2, r2, r3
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s 			page 7
+
+
+ 372 0044 4263     		str	r2, [r0, #52]
+ 373              	.L37:
+ 374 0046 10BD     		pop	{r4, pc}
+ 375              	.L38:
+ 376 0048 0469     		ldr	r4, [r0, #16]
+ 377 004a 01EB410E 		add	lr, r1, r1, lsl #1
+ 378 004e 4FF0070C 		mov	ip, #7
+ 379 0052 0CFA0EFC 		lsl	ip, ip, lr
+ 380 0056 24EA0C0C 		bic	ip, r4, ip
+ 381 005a 03FA0EF3 		lsl	r3, r3, lr
+ 382 005e 43EA0C03 		orr	r3, r3, ip
+ 383 0062 0361     		str	r3, [r0, #16]
+ 384 0064 DFE7     		b	.L39
+ 385              	.L40:
+ 386 0066 0C2A     		cmp	r2, #12
+ 387 0068 0CD8     		bhi	.L42
+ 388 006a 036B     		ldr	r3, [r0, #48]
+ 389 006c 073A     		subs	r2, r2, #7
+ 390 006e 02EB8202 		add	r2, r2, r2, lsl #2
+ 391 0072 1F24     		movs	r4, #31
+ 392 0074 9440     		lsls	r4, r4, r2
+ 393 0076 23EA0403 		bic	r3, r3, r4
+ 394 007a 01FA02F2 		lsl	r2, r1, r2
+ 395 007e 1A43     		orrs	r2, r2, r3
+ 396 0080 0263     		str	r2, [r0, #48]
+ 397 0082 E0E7     		b	.L37
+ 398              	.L42:
+ 399 0084 C36A     		ldr	r3, [r0, #44]
+ 400 0086 0D3A     		subs	r2, r2, #13
+ 401 0088 02EB8202 		add	r2, r2, r2, lsl #2
+ 402 008c 1F24     		movs	r4, #31
+ 403 008e 9440     		lsls	r4, r4, r2
+ 404 0090 23EA0403 		bic	r3, r3, r4
+ 405 0094 9140     		lsls	r1, r1, r2
+ 406 0096 1943     		orrs	r1, r1, r3
+ 407 0098 C162     		str	r1, [r0, #44]
+ 408 009a D4E7     		b	.L37
+ 410              		.section	.text.ADC_ExternalTrigConvCmd,"ax",%progbits
+ 411              		.align	1
+ 412              		.global	ADC_ExternalTrigConvCmd
+ 413              		.syntax unified
+ 414              		.thumb
+ 415              		.thumb_func
+ 417              	ADC_ExternalTrigConvCmd:
+ 418              		@ args = 0, pretend = 0, frame = 0
+ 419              		@ frame_needed = 0, uses_anonymous_args = 0
+ 420              		@ link register save eliminated.
+ 421 0000 21B1     		cbz	r1, .L45
+ 422 0002 8368     		ldr	r3, [r0, #8]
+ 423 0004 43F48013 		orr	r3, r3, #1048576
+ 424 0008 8360     		str	r3, [r0, #8]
+ 425 000a 7047     		bx	lr
+ 426              	.L45:
+ 427 000c 8368     		ldr	r3, [r0, #8]
+ 428 000e 23F48013 		bic	r3, r3, #1048576
+ 429 0012 8360     		str	r3, [r0, #8]
+ 430 0014 7047     		bx	lr
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s 			page 8
+
+
+ 432              		.section	.text.ADC_GetConversionValue,"ax",%progbits
+ 433              		.align	1
+ 434              		.global	ADC_GetConversionValue
+ 435              		.syntax unified
+ 436              		.thumb
+ 437              		.thumb_func
+ 439              	ADC_GetConversionValue:
+ 440              		@ args = 0, pretend = 0, frame = 0
+ 441              		@ frame_needed = 0, uses_anonymous_args = 0
+ 442              		@ link register save eliminated.
+ 443 0000 C06C     		ldr	r0, [r0, #76]
+ 444 0002 80B2     		uxth	r0, r0
+ 445 0004 7047     		bx	lr
+ 447              		.section	.text.ADC_GetDualModeConversionValue,"ax",%progbits
+ 448              		.align	1
+ 449              		.global	ADC_GetDualModeConversionValue
+ 450              		.syntax unified
+ 451              		.thumb
+ 452              		.thumb_func
+ 454              	ADC_GetDualModeConversionValue:
+ 455              		@ args = 0, pretend = 0, frame = 0
+ 456              		@ frame_needed = 0, uses_anonymous_args = 0
+ 457              		@ link register save eliminated.
+ 458 0000 014B     		ldr	r3, .L49
+ 459 0002 D3F84C04 		ldr	r0, [r3, #1100]
+ 460 0006 7047     		bx	lr
+ 461              	.L50:
+ 462              		.align	2
+ 463              	.L49:
+ 464 0008 00200140 		.word	1073815552
+ 466              		.section	.text.ADC_AutoInjectedConvCmd,"ax",%progbits
+ 467              		.align	1
+ 468              		.global	ADC_AutoInjectedConvCmd
+ 469              		.syntax unified
+ 470              		.thumb
+ 471              		.thumb_func
+ 473              	ADC_AutoInjectedConvCmd:
+ 474              		@ args = 0, pretend = 0, frame = 0
+ 475              		@ frame_needed = 0, uses_anonymous_args = 0
+ 476              		@ link register save eliminated.
+ 477 0000 21B1     		cbz	r1, .L52
+ 478 0002 4368     		ldr	r3, [r0, #4]
+ 479 0004 43F48063 		orr	r3, r3, #1024
+ 480 0008 4360     		str	r3, [r0, #4]
+ 481 000a 7047     		bx	lr
+ 482              	.L52:
+ 483 000c 4368     		ldr	r3, [r0, #4]
+ 484 000e 23F48063 		bic	r3, r3, #1024
+ 485 0012 4360     		str	r3, [r0, #4]
+ 486 0014 7047     		bx	lr
+ 488              		.section	.text.ADC_InjectedDiscModeCmd,"ax",%progbits
+ 489              		.align	1
+ 490              		.global	ADC_InjectedDiscModeCmd
+ 491              		.syntax unified
+ 492              		.thumb
+ 493              		.thumb_func
+ 495              	ADC_InjectedDiscModeCmd:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s 			page 9
+
+
+ 496              		@ args = 0, pretend = 0, frame = 0
+ 497              		@ frame_needed = 0, uses_anonymous_args = 0
+ 498              		@ link register save eliminated.
+ 499 0000 21B1     		cbz	r1, .L55
+ 500 0002 4368     		ldr	r3, [r0, #4]
+ 501 0004 43F48053 		orr	r3, r3, #4096
+ 502 0008 4360     		str	r3, [r0, #4]
+ 503 000a 7047     		bx	lr
+ 504              	.L55:
+ 505 000c 4368     		ldr	r3, [r0, #4]
+ 506 000e 23F48053 		bic	r3, r3, #4096
+ 507 0012 4360     		str	r3, [r0, #4]
+ 508 0014 7047     		bx	lr
+ 510              		.section	.text.ADC_ExternalTrigInjectedConvConfig,"ax",%progbits
+ 511              		.align	1
+ 512              		.global	ADC_ExternalTrigInjectedConvConfig
+ 513              		.syntax unified
+ 514              		.thumb
+ 515              		.thumb_func
+ 517              	ADC_ExternalTrigInjectedConvConfig:
+ 518              		@ args = 0, pretend = 0, frame = 0
+ 519              		@ frame_needed = 0, uses_anonymous_args = 0
+ 520              		@ link register save eliminated.
+ 521 0000 8368     		ldr	r3, [r0, #8]
+ 522 0002 23F4E043 		bic	r3, r3, #28672
+ 523 0006 0B43     		orrs	r3, r3, r1
+ 524 0008 8360     		str	r3, [r0, #8]
+ 525 000a 7047     		bx	lr
+ 527              		.section	.text.ADC_ExternalTrigInjectedConvCmd,"ax",%progbits
+ 528              		.align	1
+ 529              		.global	ADC_ExternalTrigInjectedConvCmd
+ 530              		.syntax unified
+ 531              		.thumb
+ 532              		.thumb_func
+ 534              	ADC_ExternalTrigInjectedConvCmd:
+ 535              		@ args = 0, pretend = 0, frame = 0
+ 536              		@ frame_needed = 0, uses_anonymous_args = 0
+ 537              		@ link register save eliminated.
+ 538 0000 21B1     		cbz	r1, .L59
+ 539 0002 8368     		ldr	r3, [r0, #8]
+ 540 0004 43F40043 		orr	r3, r3, #32768
+ 541 0008 8360     		str	r3, [r0, #8]
+ 542 000a 7047     		bx	lr
+ 543              	.L59:
+ 544 000c 8368     		ldr	r3, [r0, #8]
+ 545 000e 23F40043 		bic	r3, r3, #32768
+ 546 0012 8360     		str	r3, [r0, #8]
+ 547 0014 7047     		bx	lr
+ 549              		.section	.text.ADC_SoftwareStartInjectedConvCmd,"ax",%progbits
+ 550              		.align	1
+ 551              		.global	ADC_SoftwareStartInjectedConvCmd
+ 552              		.syntax unified
+ 553              		.thumb
+ 554              		.thumb_func
+ 556              	ADC_SoftwareStartInjectedConvCmd:
+ 557              		@ args = 0, pretend = 0, frame = 0
+ 558              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s 			page 10
+
+
+ 559              		@ link register save eliminated.
+ 560 0000 21B1     		cbz	r1, .L62
+ 561 0002 8368     		ldr	r3, [r0, #8]
+ 562 0004 43F40213 		orr	r3, r3, #2129920
+ 563 0008 8360     		str	r3, [r0, #8]
+ 564 000a 7047     		bx	lr
+ 565              	.L62:
+ 566 000c 8368     		ldr	r3, [r0, #8]
+ 567 000e 23F40213 		bic	r3, r3, #2129920
+ 568 0012 8360     		str	r3, [r0, #8]
+ 569 0014 7047     		bx	lr
+ 571              		.section	.text.ADC_GetSoftwareStartInjectedConvCmdStatus,"ax",%progbits
+ 572              		.align	1
+ 573              		.global	ADC_GetSoftwareStartInjectedConvCmdStatus
+ 574              		.syntax unified
+ 575              		.thumb
+ 576              		.thumb_func
+ 578              	ADC_GetSoftwareStartInjectedConvCmdStatus:
+ 579              		@ args = 0, pretend = 0, frame = 0
+ 580              		@ frame_needed = 0, uses_anonymous_args = 0
+ 581              		@ link register save eliminated.
+ 582 0000 8068     		ldr	r0, [r0, #8]
+ 583 0002 C0F34050 		ubfx	r0, r0, #21, #1
+ 584 0006 7047     		bx	lr
+ 586              		.section	.text.ADC_InjectedChannelConfig,"ax",%progbits
+ 587              		.align	1
+ 588              		.global	ADC_InjectedChannelConfig
+ 589              		.syntax unified
+ 590              		.thumb
+ 591              		.thumb_func
+ 593              	ADC_InjectedChannelConfig:
+ 594              		@ args = 0, pretend = 0, frame = 0
+ 595              		@ frame_needed = 0, uses_anonymous_args = 0
+ 596 0000 10B5     		push	{r4, lr}
+ 597 0002 0929     		cmp	r1, #9
+ 598 0004 22D9     		bls	.L66
+ 599 0006 C468     		ldr	r4, [r0, #12]
+ 600 0008 A1F10A0C 		sub	ip, r1, #10
+ 601 000c 0CEB4C0C 		add	ip, ip, ip, lsl #1
+ 602 0010 4FF0070E 		mov	lr, #7
+ 603 0014 0EFA0CFE 		lsl	lr, lr, ip
+ 604 0018 24EA0E04 		bic	r4, r4, lr
+ 605 001c 03FA0CFC 		lsl	ip, r3, ip
+ 606 0020 4CEA0404 		orr	r4, ip, r4
+ 607 0024 C460     		str	r4, [r0, #12]
+ 608              	.L67:
+ 609 0026 836B     		ldr	r3, [r0, #56]
+ 610 0028 0232     		adds	r2, r2, #2
+ 611 002a C3F3015C 		ubfx	ip, r3, #20, #2
+ 612 002e A2EB0C02 		sub	r2, r2, ip
+ 613 0032 D2B2     		uxtb	r2, r2
+ 614 0034 02EB8202 		add	r2, r2, r2, lsl #2
+ 615 0038 4FF01F0C 		mov	ip, #31
+ 616 003c 0CFA02FC 		lsl	ip, ip, r2
+ 617 0040 23EA0C03 		bic	r3, r3, ip
+ 618 0044 9140     		lsls	r1, r1, r2
+ 619 0046 1943     		orrs	r1, r1, r3
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s 			page 11
+
+
+ 620 0048 8163     		str	r1, [r0, #56]
+ 621 004a 10BD     		pop	{r4, pc}
+ 622              	.L66:
+ 623 004c 0469     		ldr	r4, [r0, #16]
+ 624 004e 01EB410E 		add	lr, r1, r1, lsl #1
+ 625 0052 4FF0070C 		mov	ip, #7
+ 626 0056 0CFA0EFC 		lsl	ip, ip, lr
+ 627 005a 24EA0C0C 		bic	ip, r4, ip
+ 628 005e 03FA0EF3 		lsl	r3, r3, lr
+ 629 0062 43EA0C03 		orr	r3, r3, ip
+ 630 0066 0361     		str	r3, [r0, #16]
+ 631 0068 DDE7     		b	.L67
+ 633              		.section	.text.ADC_InjectedSequencerLengthConfig,"ax",%progbits
+ 634              		.align	1
+ 635              		.global	ADC_InjectedSequencerLengthConfig
+ 636              		.syntax unified
+ 637              		.thumb
+ 638              		.thumb_func
+ 640              	ADC_InjectedSequencerLengthConfig:
+ 641              		@ args = 0, pretend = 0, frame = 0
+ 642              		@ frame_needed = 0, uses_anonymous_args = 0
+ 643              		@ link register save eliminated.
+ 644 0000 836B     		ldr	r3, [r0, #56]
+ 645 0002 23F44013 		bic	r3, r3, #3145728
+ 646 0006 0139     		subs	r1, r1, #1
+ 647 0008 43EA0153 		orr	r3, r3, r1, lsl #20
+ 648 000c 8363     		str	r3, [r0, #56]
+ 649 000e 7047     		bx	lr
+ 651              		.section	.text.ADC_SetInjectedOffset,"ax",%progbits
+ 652              		.align	1
+ 653              		.global	ADC_SetInjectedOffset
+ 654              		.syntax unified
+ 655              		.thumb
+ 656              		.thumb_func
+ 658              	ADC_SetInjectedOffset:
+ 659              		@ args = 0, pretend = 0, frame = 8
+ 660              		@ frame_needed = 0, uses_anonymous_args = 0
+ 661              		@ link register save eliminated.
+ 662 0000 82B0     		sub	sp, sp, #8
+ 663 0002 0023     		movs	r3, #0
+ 664 0004 0193     		str	r3, [sp, #4]
+ 665 0006 0190     		str	r0, [sp, #4]
+ 666 0008 019B     		ldr	r3, [sp, #4]
+ 667 000a 1944     		add	r1, r1, r3
+ 668 000c 0191     		str	r1, [sp, #4]
+ 669 000e 019B     		ldr	r3, [sp, #4]
+ 670 0010 1A60     		str	r2, [r3]
+ 671 0012 02B0     		add	sp, sp, #8
+ 672              		@ sp needed
+ 673 0014 7047     		bx	lr
+ 675              		.section	.text.ADC_GetInjectedConversionValue,"ax",%progbits
+ 676              		.align	1
+ 677              		.global	ADC_GetInjectedConversionValue
+ 678              		.syntax unified
+ 679              		.thumb
+ 680              		.thumb_func
+ 682              	ADC_GetInjectedConversionValue:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s 			page 12
+
+
+ 683              		@ args = 0, pretend = 0, frame = 8
+ 684              		@ frame_needed = 0, uses_anonymous_args = 0
+ 685              		@ link register save eliminated.
+ 686 0000 82B0     		sub	sp, sp, #8
+ 687 0002 0023     		movs	r3, #0
+ 688 0004 0193     		str	r3, [sp, #4]
+ 689 0006 0190     		str	r0, [sp, #4]
+ 690 0008 019B     		ldr	r3, [sp, #4]
+ 691 000a 2833     		adds	r3, r3, #40
+ 692 000c 0B44     		add	r3, r3, r1
+ 693 000e 0193     		str	r3, [sp, #4]
+ 694 0010 019B     		ldr	r3, [sp, #4]
+ 695 0012 1868     		ldr	r0, [r3]
+ 696 0014 80B2     		uxth	r0, r0
+ 697 0016 02B0     		add	sp, sp, #8
+ 698              		@ sp needed
+ 699 0018 7047     		bx	lr
+ 701              		.section	.text.ADC_AnalogWatchdogCmd,"ax",%progbits
+ 702              		.align	1
+ 703              		.global	ADC_AnalogWatchdogCmd
+ 704              		.syntax unified
+ 705              		.thumb
+ 706              		.thumb_func
+ 708              	ADC_AnalogWatchdogCmd:
+ 709              		@ args = 0, pretend = 0, frame = 0
+ 710              		@ frame_needed = 0, uses_anonymous_args = 0
+ 711              		@ link register save eliminated.
+ 712 0000 4368     		ldr	r3, [r0, #4]
+ 713 0002 23F44003 		bic	r3, r3, #12582912
+ 714 0006 23F40073 		bic	r3, r3, #512
+ 715 000a 0B43     		orrs	r3, r3, r1
+ 716 000c 4360     		str	r3, [r0, #4]
+ 717 000e 7047     		bx	lr
+ 719              		.section	.text.ADC_AnalogWatchdogThresholdsConfig,"ax",%progbits
+ 720              		.align	1
+ 721              		.global	ADC_AnalogWatchdogThresholdsConfig
+ 722              		.syntax unified
+ 723              		.thumb
+ 724              		.thumb_func
+ 726              	ADC_AnalogWatchdogThresholdsConfig:
+ 727              		@ args = 0, pretend = 0, frame = 0
+ 728              		@ frame_needed = 0, uses_anonymous_args = 0
+ 729              		@ link register save eliminated.
+ 730 0000 4162     		str	r1, [r0, #36]
+ 731 0002 8262     		str	r2, [r0, #40]
+ 732 0004 7047     		bx	lr
+ 734              		.section	.text.ADC_AnalogWatchdogSingleChannelConfig,"ax",%progbits
+ 735              		.align	1
+ 736              		.global	ADC_AnalogWatchdogSingleChannelConfig
+ 737              		.syntax unified
+ 738              		.thumb
+ 739              		.thumb_func
+ 741              	ADC_AnalogWatchdogSingleChannelConfig:
+ 742              		@ args = 0, pretend = 0, frame = 0
+ 743              		@ frame_needed = 0, uses_anonymous_args = 0
+ 744              		@ link register save eliminated.
+ 745 0000 4368     		ldr	r3, [r0, #4]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s 			page 13
+
+
+ 746 0002 23F01F03 		bic	r3, r3, #31
+ 747 0006 1943     		orrs	r1, r1, r3
+ 748 0008 4160     		str	r1, [r0, #4]
+ 749 000a 7047     		bx	lr
+ 751              		.section	.text.ADC_TempSensorVrefintCmd,"ax",%progbits
+ 752              		.align	1
+ 753              		.global	ADC_TempSensorVrefintCmd
+ 754              		.syntax unified
+ 755              		.thumb
+ 756              		.thumb_func
+ 758              	ADC_TempSensorVrefintCmd:
+ 759              		@ args = 0, pretend = 0, frame = 0
+ 760              		@ frame_needed = 0, uses_anonymous_args = 0
+ 761              		@ link register save eliminated.
+ 762 0000 28B1     		cbz	r0, .L78
+ 763 0002 064A     		ldr	r2, .L80
+ 764 0004 9368     		ldr	r3, [r2, #8]
+ 765 0006 43F40003 		orr	r3, r3, #8388608
+ 766 000a 9360     		str	r3, [r2, #8]
+ 767 000c 7047     		bx	lr
+ 768              	.L78:
+ 769 000e 034A     		ldr	r2, .L80
+ 770 0010 9368     		ldr	r3, [r2, #8]
+ 771 0012 23F40003 		bic	r3, r3, #8388608
+ 772 0016 9360     		str	r3, [r2, #8]
+ 773 0018 7047     		bx	lr
+ 774              	.L81:
+ 775 001a 00BF     		.align	2
+ 776              	.L80:
+ 777 001c 00240140 		.word	1073816576
+ 779              		.section	.text.ADC_GetFlagStatus,"ax",%progbits
+ 780              		.align	1
+ 781              		.global	ADC_GetFlagStatus
+ 782              		.syntax unified
+ 783              		.thumb
+ 784              		.thumb_func
+ 786              	ADC_GetFlagStatus:
+ 787              		@ args = 0, pretend = 0, frame = 0
+ 788              		@ frame_needed = 0, uses_anonymous_args = 0
+ 789              		@ link register save eliminated.
+ 790 0000 0068     		ldr	r0, [r0]
+ 791 0002 0840     		ands	r0, r0, r1
+ 792 0004 0038     		subs	r0, r0, #0
+ 793 0006 18BF     		it	ne
+ 794 0008 0120     		movne	r0, #1
+ 795 000a 7047     		bx	lr
+ 797              		.section	.text.ADC_ClearFlag,"ax",%progbits
+ 798              		.align	1
+ 799              		.global	ADC_ClearFlag
+ 800              		.syntax unified
+ 801              		.thumb
+ 802              		.thumb_func
+ 804              	ADC_ClearFlag:
+ 805              		@ args = 0, pretend = 0, frame = 0
+ 806              		@ frame_needed = 0, uses_anonymous_args = 0
+ 807              		@ link register save eliminated.
+ 808 0000 C943     		mvns	r1, r1
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s 			page 14
+
+
+ 809 0002 0160     		str	r1, [r0]
+ 810 0004 7047     		bx	lr
+ 812              		.section	.text.ADC_GetITStatus,"ax",%progbits
+ 813              		.align	1
+ 814              		.global	ADC_GetITStatus
+ 815              		.syntax unified
+ 816              		.thumb
+ 817              		.thumb_func
+ 819              	ADC_GetITStatus:
+ 820              		@ args = 0, pretend = 0, frame = 0
+ 821              		@ frame_needed = 0, uses_anonymous_args = 0
+ 822              		@ link register save eliminated.
+ 823 0000 4268     		ldr	r2, [r0, #4]
+ 824 0002 0368     		ldr	r3, [r0]
+ 825 0004 13EA1123 		ands	r3, r3, r1, lsr #8
+ 826 0008 05D0     		beq	.L86
+ 827 000a C8B2     		uxtb	r0, r1
+ 828 000c 1040     		ands	r0, r0, r2
+ 829 000e 0038     		subs	r0, r0, #0
+ 830 0010 18BF     		it	ne
+ 831 0012 0120     		movne	r0, #1
+ 832 0014 7047     		bx	lr
+ 833              	.L86:
+ 834 0016 0020     		movs	r0, #0
+ 835 0018 7047     		bx	lr
+ 837              		.section	.text.ADC_ClearITPendingBit,"ax",%progbits
+ 838              		.align	1
+ 839              		.global	ADC_ClearITPendingBit
+ 840              		.syntax unified
+ 841              		.thumb
+ 842              		.thumb_func
+ 844              	ADC_ClearITPendingBit:
+ 845              		@ args = 0, pretend = 0, frame = 0
+ 846              		@ frame_needed = 0, uses_anonymous_args = 0
+ 847              		@ link register save eliminated.
+ 848 0000 6FEA1121 		mvn	r1, r1, lsr #8
+ 849 0004 0160     		str	r1, [r0]
+ 850 0006 7047     		bx	lr
+ 852              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s 			page 15
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f10x_adc.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:16     .text.ADC_DeInit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:22     .text.ADC_DeInit:00000000 ADC_DeInit
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:64     .text.ADC_DeInit:00000058 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:69     .text.ADC_Init:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:75     .text.ADC_Init:00000000 ADC_Init
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:110    .text.ADC_Init:00000044 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:113    .text.ADC_StructInit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:119    .text.ADC_StructInit:00000000 ADC_StructInit
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:134    .text.ADC_Cmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:140    .text.ADC_Cmd:00000000 ADC_Cmd
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:156    .text.ADC_DMACmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:162    .text.ADC_DMACmd:00000000 ADC_DMACmd
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:178    .text.ADC_ITConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:184    .text.ADC_ITConfig:00000000 ADC_ITConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:201    .text.ADC_ResetCalibration:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:207    .text.ADC_ResetCalibration:00000000 ADC_ResetCalibration
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:217    .text.ADC_GetResetCalibrationStatus:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:223    .text.ADC_GetResetCalibrationStatus:00000000 ADC_GetResetCalibrationStatus
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:232    .text.ADC_StartCalibration:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:238    .text.ADC_StartCalibration:00000000 ADC_StartCalibration
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:248    .text.ADC_GetCalibrationStatus:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:254    .text.ADC_GetCalibrationStatus:00000000 ADC_GetCalibrationStatus
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:263    .text.ADC_SoftwareStartConvCmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:269    .text.ADC_SoftwareStartConvCmd:00000000 ADC_SoftwareStartConvCmd
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:285    .text.ADC_GetSoftwareStartConvStatus:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:291    .text.ADC_GetSoftwareStartConvStatus:00000000 ADC_GetSoftwareStartConvStatus
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:300    .text.ADC_DiscModeChannelCountConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:306    .text.ADC_DiscModeChannelCountConfig:00000000 ADC_DiscModeChannelCountConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:318    .text.ADC_DiscModeCmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:324    .text.ADC_DiscModeCmd:00000000 ADC_DiscModeCmd
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:340    .text.ADC_RegularChannelConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:346    .text.ADC_RegularChannelConfig:00000000 ADC_RegularChannelConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:411    .text.ADC_ExternalTrigConvCmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:417    .text.ADC_ExternalTrigConvCmd:00000000 ADC_ExternalTrigConvCmd
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:433    .text.ADC_GetConversionValue:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:439    .text.ADC_GetConversionValue:00000000 ADC_GetConversionValue
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:448    .text.ADC_GetDualModeConversionValue:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:454    .text.ADC_GetDualModeConversionValue:00000000 ADC_GetDualModeConversionValue
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:464    .text.ADC_GetDualModeConversionValue:00000008 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:467    .text.ADC_AutoInjectedConvCmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:473    .text.ADC_AutoInjectedConvCmd:00000000 ADC_AutoInjectedConvCmd
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:489    .text.ADC_InjectedDiscModeCmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:495    .text.ADC_InjectedDiscModeCmd:00000000 ADC_InjectedDiscModeCmd
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:511    .text.ADC_ExternalTrigInjectedConvConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:517    .text.ADC_ExternalTrigInjectedConvConfig:00000000 ADC_ExternalTrigInjectedConvConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:528    .text.ADC_ExternalTrigInjectedConvCmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:534    .text.ADC_ExternalTrigInjectedConvCmd:00000000 ADC_ExternalTrigInjectedConvCmd
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:550    .text.ADC_SoftwareStartInjectedConvCmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:556    .text.ADC_SoftwareStartInjectedConvCmd:00000000 ADC_SoftwareStartInjectedConvCmd
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:572    .text.ADC_GetSoftwareStartInjectedConvCmdStatus:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:578    .text.ADC_GetSoftwareStartInjectedConvCmdStatus:00000000 ADC_GetSoftwareStartInjectedConvCmdStatus
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:587    .text.ADC_InjectedChannelConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:593    .text.ADC_InjectedChannelConfig:00000000 ADC_InjectedChannelConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:634    .text.ADC_InjectedSequencerLengthConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:640    .text.ADC_InjectedSequencerLengthConfig:00000000 ADC_InjectedSequencerLengthConfig
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s 			page 16
+
+
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:652    .text.ADC_SetInjectedOffset:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:658    .text.ADC_SetInjectedOffset:00000000 ADC_SetInjectedOffset
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:676    .text.ADC_GetInjectedConversionValue:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:682    .text.ADC_GetInjectedConversionValue:00000000 ADC_GetInjectedConversionValue
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:702    .text.ADC_AnalogWatchdogCmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:708    .text.ADC_AnalogWatchdogCmd:00000000 ADC_AnalogWatchdogCmd
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:720    .text.ADC_AnalogWatchdogThresholdsConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:726    .text.ADC_AnalogWatchdogThresholdsConfig:00000000 ADC_AnalogWatchdogThresholdsConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:735    .text.ADC_AnalogWatchdogSingleChannelConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:741    .text.ADC_AnalogWatchdogSingleChannelConfig:00000000 ADC_AnalogWatchdogSingleChannelConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:752    .text.ADC_TempSensorVrefintCmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:758    .text.ADC_TempSensorVrefintCmd:00000000 ADC_TempSensorVrefintCmd
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:777    .text.ADC_TempSensorVrefintCmd:0000001c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:780    .text.ADC_GetFlagStatus:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:786    .text.ADC_GetFlagStatus:00000000 ADC_GetFlagStatus
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:798    .text.ADC_ClearFlag:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:804    .text.ADC_ClearFlag:00000000 ADC_ClearFlag
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:813    .text.ADC_GetITStatus:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:819    .text.ADC_GetITStatus:00000000 ADC_GetITStatus
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:838    .text.ADC_ClearITPendingBit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccloOcPp.s:844    .text.ADC_ClearITPendingBit:00000000 ADC_ClearITPendingBit
+
+UNDEFINED SYMBOLS
+RCC_APB2PeriphResetCmd

@@ -1,0 +1,163 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccp1pp7k.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"nnom_softmax.c"
+  14              		.text
+  15              		.section	.text.softmax_build,"ax",%progbits
+  16              		.align	1
+  17              		.global	softmax_build
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	softmax_build:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 70B5     		push	{r4, r5, r6, lr}
+  26 0002 0446     		mov	r4, r0
+  27 0004 036A     		ldr	r3, [r0, #32]
+  28 0006 1A68     		ldr	r2, [r3]
+  29 0008 D268     		ldr	r2, [r2, #12]
+  30 000a DA60     		str	r2, [r3, #12]
+  31 000c 036A     		ldr	r3, [r0, #32]
+  32 000e D868     		ldr	r0, [r3, #12]
+  33 0010 467C     		ldrb	r6, [r0, #17]	@ zero_extendqisi2
+  34 0012 FFF7FEFF 		bl	tensor_get_num_channel
+  35 0016 0246     		mov	r2, r0
+  36 0018 656A     		ldr	r5, [r4, #36]
+  37 001a 3146     		mov	r1, r6
+  38 001c 0020     		movs	r0, #0
+  39 001e FFF7FEFF 		bl	new_tensor
+  40 0022 E860     		str	r0, [r5, #12]
+  41 0024 226A     		ldr	r2, [r4, #32]
+  42 0026 636A     		ldr	r3, [r4, #36]
+  43 0028 D168     		ldr	r1, [r2, #12]
+  44 002a D868     		ldr	r0, [r3, #12]
+  45 002c FFF7FEFF 		bl	tensor_cpy_attr
+  46 0030 636A     		ldr	r3, [r4, #36]
+  47 0032 DB68     		ldr	r3, [r3, #12]
+  48 0034 9B68     		ldr	r3, [r3, #8]
+  49 0036 0722     		movs	r2, #7
+  50 0038 1A60     		str	r2, [r3]
+  51 003a 0020     		movs	r0, #0
+  52 003c 70BD     		pop	{r4, r5, r6, pc}
+  54              		.section	.text.softmax_run,"ax",%progbits
+  55              		.align	1
+  56              		.global	softmax_run
+  57              		.syntax unified
+  58              		.thumb
+  59              		.thumb_func
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccp1pp7k.s 			page 2
+
+
+  61              	softmax_run:
+  62              		@ args = 0, pretend = 0, frame = 0
+  63              		@ frame_needed = 0, uses_anonymous_args = 0
+  64 0000 38B5     		push	{r3, r4, r5, lr}
+  65 0002 0446     		mov	r4, r0
+  66 0004 036A     		ldr	r3, [r0, #32]
+  67 0006 DB68     		ldr	r3, [r3, #12]
+  68 0008 1D68     		ldr	r5, [r3]
+  69 000a 436A     		ldr	r3, [r0, #36]
+  70 000c D868     		ldr	r0, [r3, #12]
+  71 000e FFF7FEFF 		bl	tensor_size
+  72 0012 0146     		mov	r1, r0
+  73 0014 636A     		ldr	r3, [r4, #36]
+  74 0016 DB68     		ldr	r3, [r3, #12]
+  75 0018 1A68     		ldr	r2, [r3]
+  76 001a 2846     		mov	r0, r5
+  77 001c FFF7FEFF 		bl	local_softmax_q7
+  78 0020 0020     		movs	r0, #0
+  79 0022 38BD     		pop	{r3, r4, r5, pc}
+  81              		.section	.text.Softmax,"ax",%progbits
+  82              		.align	1
+  83              		.global	Softmax
+  84              		.syntax unified
+  85              		.thumb
+  86              		.thumb_func
+  88              	Softmax:
+  89              		@ args = 0, pretend = 0, frame = 0
+  90              		@ frame_needed = 0, uses_anonymous_args = 0
+  91 0000 10B5     		push	{r4, lr}
+  92 0002 6820     		movs	r0, #104
+  93 0004 FFF7FEFF 		bl	nnom_mem
+  94 0008 0446     		mov	r4, r0
+  95 000a A8B1     		cbz	r0, .L5
+  96 000c 1223     		movs	r3, #18
+  97 000e 0377     		strb	r3, [r0, #28]
+  98 0010 0A4B     		ldr	r3, .L8
+  99 0012 4360     		str	r3, [r0, #4]
+ 100 0014 0A4B     		ldr	r3, .L8+4
+ 101 0016 8360     		str	r3, [r0, #8]
+ 102 0018 0123     		movs	r3, #1
+ 103 001a 80F84830 		strb	r3, [r0, #72]
+ 104 001e 80F86430 		strb	r3, [r0, #100]
+ 105 0022 00F13001 		add	r1, r0, #48
+ 106 0026 FFF7FEFF 		bl	io_init
+ 107 002a 2062     		str	r0, [r4, #32]
+ 108 002c 04F14C01 		add	r1, r4, #76
+ 109 0030 2046     		mov	r0, r4
+ 110 0032 FFF7FEFF 		bl	io_init
+ 111 0036 6062     		str	r0, [r4, #36]
+ 112              	.L5:
+ 113 0038 2046     		mov	r0, r4
+ 114 003a 10BD     		pop	{r4, pc}
+ 115              	.L9:
+ 116              		.align	2
+ 117              	.L8:
+ 118 003c 00000000 		.word	softmax_run
+ 119 0040 00000000 		.word	softmax_build
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccp1pp7k.s 			page 3
+
+
+ 121              		.section	.text.softmax_s,"ax",%progbits
+ 122              		.align	1
+ 123              		.global	softmax_s
+ 124              		.syntax unified
+ 125              		.thumb
+ 126              		.thumb_func
+ 128              	softmax_s:
+ 129              		@ args = 0, pretend = 0, frame = 0
+ 130              		@ frame_needed = 0, uses_anonymous_args = 0
+ 131 0000 10B5     		push	{r4, lr}
+ 132 0002 0446     		mov	r4, r0
+ 133 0004 FFF7FEFF 		bl	Softmax
+ 134 0008 00B1     		cbz	r0, .L10
+ 135 000a 8461     		str	r4, [r0, #24]
+ 136              	.L10:
+ 137 000c 10BD     		pop	{r4, pc}
+ 139              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccp1pp7k.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 nnom_softmax.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccp1pp7k.s:16     .text.softmax_build:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccp1pp7k.s:22     .text.softmax_build:00000000 softmax_build
+C:\Users\ihavenoK\AppData\Local\Temp\ccp1pp7k.s:55     .text.softmax_run:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccp1pp7k.s:61     .text.softmax_run:00000000 softmax_run
+C:\Users\ihavenoK\AppData\Local\Temp\ccp1pp7k.s:82     .text.Softmax:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccp1pp7k.s:88     .text.Softmax:00000000 Softmax
+C:\Users\ihavenoK\AppData\Local\Temp\ccp1pp7k.s:118    .text.Softmax:0000003c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccp1pp7k.s:122    .text.softmax_s:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccp1pp7k.s:128    .text.softmax_s:00000000 softmax_s
+
+UNDEFINED SYMBOLS
+tensor_get_num_channel
+new_tensor
+tensor_cpy_attr
+tensor_size
+local_softmax_q7
+nnom_mem
+io_init

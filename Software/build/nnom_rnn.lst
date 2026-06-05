@@ -1,0 +1,370 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccENL6ar.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"nnom_rnn.c"
+  14              		.text
+  15              		.section	.text.rnn_free,"ax",%progbits
+  16              		.align	1
+  17              		.global	rnn_free
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	rnn_free:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 10B5     		push	{r4, lr}
+  26 0002 0446     		mov	r4, r0
+  27 0004 006B     		ldr	r0, [r0, #48]
+  28 0006 8368     		ldr	r3, [r0, #8]
+  29 0008 03B1     		cbz	r3, .L2
+  30 000a 9847     		blx	r3
+  31              	.L2:
+  32 000c 606B     		ldr	r0, [r4, #52]
+  33 000e FFF7FEFF 		bl	nnom_free
+  34 0012 0020     		movs	r0, #0
+  35 0014 10BD     		pop	{r4, pc}
+  37              		.section	.text.rnn_build,"ax",%progbits
+  38              		.align	1
+  39              		.global	rnn_build
+  40              		.syntax unified
+  41              		.thumb
+  42              		.thumb_func
+  44              	rnn_build:
+  45              		@ args = 0, pretend = 0, frame = 0
+  46              		@ frame_needed = 0, uses_anonymous_args = 0
+  47 0000 38B5     		push	{r3, r4, r5, lr}
+  48 0002 0446     		mov	r4, r0
+  49 0004 036A     		ldr	r3, [r0, #32]
+  50 0006 1A68     		ldr	r2, [r3]
+  51 0008 D268     		ldr	r2, [r2, #12]
+  52 000a DA60     		str	r2, [r3, #12]
+  53 000c 036A     		ldr	r3, [r0, #32]
+  54 000e DB68     		ldr	r3, [r3, #12]
+  55 0010 5A7C     		ldrb	r2, [r3, #17]	@ zero_extendqisi2
+  56 0012 022A     		cmp	r2, #2
+  57 0014 5B68     		ldr	r3, [r3, #4]
+  58 0016 8CBF     		ite	hi
+  59 0018 5B88     		ldrhhi	r3, [r3, #2]
+  60 001a 1B88     		ldrhls	r3, [r3]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccENL6ar.s 			page 2
+
+
+  61 001c 0387     		strh	r3, [r0, #56]	@ movhi
+  62 001e 90F83A30 		ldrb	r3, [r0, #58]	@ zero_extendqisi2
+  63 0022 002B     		cmp	r3, #0
+  64 0024 48D0     		beq	.L7
+  65 0026 456A     		ldr	r5, [r0, #36]
+  66 0028 0022     		movs	r2, #0
+  67 002a 0221     		movs	r1, #2
+  68 002c 1046     		mov	r0, r2
+  69 002e FFF7FEFF 		bl	new_tensor
+  70 0032 E860     		str	r0, [r5, #12]
+  71 0034 636A     		ldr	r3, [r4, #36]
+  72 0036 DB68     		ldr	r3, [r3, #12]
+  73 0038 5B68     		ldr	r3, [r3, #4]
+  74 003a 228F     		ldrh	r2, [r4, #56]
+  75 003c 1A80     		strh	r2, [r3]	@ movhi
+  76 003e 636A     		ldr	r3, [r4, #36]
+  77 0040 DB68     		ldr	r3, [r3, #12]
+  78 0042 5B68     		ldr	r3, [r3, #4]
+  79 0044 226B     		ldr	r2, [r4, #48]
+  80 0046 128E     		ldrh	r2, [r2, #48]
+  81 0048 5A80     		strh	r2, [r3, #2]	@ movhi
+  82              	.L8:
+  83 004a 236A     		ldr	r3, [r4, #32]
+  84 004c DB68     		ldr	r3, [r3, #12]
+  85 004e 9B7C     		ldrb	r3, [r3, #18]	@ zero_extendqisi2
+  86 0050 102B     		cmp	r3, #16
+  87 0052 14BF     		ite	ne
+  88 0054 0722     		movne	r2, #7
+  89 0056 0F22     		moveq	r2, #15
+  90 0058 636A     		ldr	r3, [r4, #36]
+  91 005a DB68     		ldr	r3, [r3, #12]
+  92 005c 9B68     		ldr	r3, [r3, #8]
+  93 005e 1A60     		str	r2, [r3]
+  94 0060 636A     		ldr	r3, [r4, #36]
+  95 0062 DB68     		ldr	r3, [r3, #12]
+  96 0064 226A     		ldr	r2, [r4, #32]
+  97 0066 D268     		ldr	r2, [r2, #12]
+  98 0068 927C     		ldrb	r2, [r2, #18]	@ zero_extendqisi2
+  99 006a 9A74     		strb	r2, [r3, #18]
+ 100 006c 6369     		ldr	r3, [r4, #20]
+ 101 006e 3BB1     		cbz	r3, .L10
+ 102 0070 626A     		ldr	r2, [r4, #36]
+ 103 0072 D268     		ldr	r2, [r2, #12]
+ 104 0074 9568     		ldr	r5, [r2, #8]
+ 105 0076 2968     		ldr	r1, [r5]
+ 106 0078 187A     		ldrb	r0, [r3, #8]	@ zero_extendqisi2
+ 107 007a FFF7FEFF 		bl	act_get_dec_bit
+ 108 007e 2860     		str	r0, [r5]
+ 109              	.L10:
+ 110 0080 236A     		ldr	r3, [r4, #32]
+ 111 0082 D868     		ldr	r0, [r3, #12]
+ 112 0084 FFF7FEFF 		bl	tensor_get_num_channel
+ 113 0088 236B     		ldr	r3, [r4, #48]
+ 114 008a 5886     		strh	r0, [r3, #50]	@ movhi
+ 115 008c 206B     		ldr	r0, [r4, #48]
+ 116 008e 4368     		ldr	r3, [r0, #4]
+ 117 0090 9847     		blx	r3
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccENL6ar.s 			page 3
+
+
+ 118 0092 2369     		ldr	r3, [r4, #16]
+ 119 0094 226B     		ldr	r2, [r4, #48]
+ 120 0096 926A     		ldr	r2, [r2, #40]
+ 121 0098 5A60     		str	r2, [r3, #4]
+ 122 009a 236B     		ldr	r3, [r4, #48]
+ 123 009c D86A     		ldr	r0, [r3, #44]
+ 124 009e 4000     		lsls	r0, r0, #1
+ 125 00a0 FFF7FEFF 		bl	nnom_mem
+ 126 00a4 6063     		str	r0, [r4, #52]
+ 127 00a6 A8B1     		cbz	r0, .L13
+ 128 00a8 236B     		ldr	r3, [r4, #48]
+ 129 00aa 228F     		ldrh	r2, [r4, #56]
+ 130 00ac 5B6B     		ldr	r3, [r3, #52]
+ 131 00ae 02FB03F3 		mul	r3, r2, r3
+ 132 00b2 A362     		str	r3, [r4, #40]
+ 133 00b4 0020     		movs	r0, #0
+ 134              	.L11:
+ 135 00b6 38BD     		pop	{r3, r4, r5, pc}
+ 136              	.L7:
+ 137 00b8 456A     		ldr	r5, [r0, #36]
+ 138 00ba 0022     		movs	r2, #0
+ 139 00bc 0121     		movs	r1, #1
+ 140 00be 1046     		mov	r0, r2
+ 141 00c0 FFF7FEFF 		bl	new_tensor
+ 142 00c4 E860     		str	r0, [r5, #12]
+ 143 00c6 636A     		ldr	r3, [r4, #36]
+ 144 00c8 DB68     		ldr	r3, [r3, #12]
+ 145 00ca 5B68     		ldr	r3, [r3, #4]
+ 146 00cc 226B     		ldr	r2, [r4, #48]
+ 147 00ce 128E     		ldrh	r2, [r2, #48]
+ 148 00d0 1A80     		strh	r2, [r3]	@ movhi
+ 149 00d2 BAE7     		b	.L8
+ 150              	.L13:
+ 151 00d4 6FF00600 		mvn	r0, #6
+ 152 00d8 EDE7     		b	.L11
+ 154              		.section	.text.rnn_run,"ax",%progbits
+ 155              		.align	1
+ 156              		.global	rnn_run
+ 157              		.syntax unified
+ 158              		.thumb
+ 159              		.thumb_func
+ 161              	rnn_run:
+ 162              		@ args = 0, pretend = 0, frame = 16
+ 163              		@ frame_needed = 0, uses_anonymous_args = 0
+ 164 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 165 0004 85B0     		sub	sp, sp, #20
+ 166 0006 0446     		mov	r4, r0
+ 167 0008 036A     		ldr	r3, [r0, #32]
+ 168 000a D868     		ldr	r0, [r3, #12]
+ 169 000c 437C     		ldrb	r3, [r0, #17]	@ zero_extendqisi2
+ 170 000e 03F10043 		add	r3, r3, #-2147483648
+ 171 0012 023B     		subs	r3, r3, #2
+ 172 0014 4268     		ldr	r2, [r0, #4]
+ 173 0016 32F81330 		ldrh	r3, [r2, r3, lsl #1]
+ 174 001a 0293     		str	r3, [sp, #8]
+ 175 001c FFF7FEFF 		bl	tensor_get_num_channel
+ 176 0020 8246     		mov	r10, r0
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccENL6ar.s 			page 4
+
+
+ 177 0022 236B     		ldr	r3, [r4, #48]
+ 178 0024 DA6A     		ldr	r2, [r3, #44]
+ 179 0026 D4F834B0 		ldr	fp, [r4, #52]
+ 180 002a 0BEB0203 		add	r3, fp, r2
+ 181 002e 0393     		str	r3, [sp, #12]
+ 182 0030 94F83B30 		ldrb	r3, [r4, #59]	@ zero_extendqisi2
+ 183 0034 9BB1     		cbz	r3, .L29
+ 184              	.L16:
+ 185 0036 94F83A30 		ldrb	r3, [r4, #58]	@ zero_extendqisi2
+ 186 003a B3B1     		cbz	r3, .L24
+ 187 003c 236B     		ldr	r3, [r4, #48]
+ 188 003e 1A8E     		ldrh	r2, [r3, #48]
+ 189              	.L17:
+ 190 0040 029B     		ldr	r3, [sp, #8]
+ 191 0042 002B     		cmp	r3, #0
+ 192 0044 4ED0     		beq	.L25
+ 193 0046 5E1E     		subs	r6, r3, #1
+ 194 0048 06FB0AF9 		mul	r9, r6, r10
+ 195 004c 02FB06F6 		mul	r6, r2, r6
+ 196 0050 0027     		movs	r7, #0
+ 197 0052 B846     		mov	r8, r7
+ 198 0054 3D46     		mov	r5, r7
+ 199 0056 CDF804B0 		str	fp, [sp, #4]
+ 200 005a 9346     		mov	fp, r2
+ 201 005c 2BE0     		b	.L23
+ 202              	.L29:
+ 203 005e 5200     		lsls	r2, r2, #1
+ 204 0060 0021     		movs	r1, #0
+ 205 0062 5846     		mov	r0, fp
+ 206 0064 FFF7FEFF 		bl	memset
+ 207 0068 E5E7     		b	.L16
+ 208              	.L24:
+ 209 006a 0022     		movs	r2, #0
+ 210 006c E8E7     		b	.L17
+ 211              	.L19:
+ 212 006e 226B     		ldr	r2, [r4, #48]
+ 213 0070 236A     		ldr	r3, [r4, #32]
+ 214 0072 DB68     		ldr	r3, [r3, #12]
+ 215 0074 1B68     		ldr	r3, [r3]
+ 216 0076 4344     		add	r3, r3, r8
+ 217 0078 9361     		str	r3, [r2, #24]
+ 218 007a 226B     		ldr	r2, [r4, #48]
+ 219 007c 636A     		ldr	r3, [r4, #36]
+ 220 007e DB68     		ldr	r3, [r3, #12]
+ 221 0080 1B68     		ldr	r3, [r3]
+ 222 0082 3B44     		add	r3, r3, r7
+ 223 0084 D361     		str	r3, [r2, #28]
+ 224              	.L20:
+ 225 0086 236B     		ldr	r3, [r4, #48]
+ 226 0088 1A6A     		ldr	r2, [r3, #32]
+ 227 008a 0199     		ldr	r1, [sp, #4]
+ 228 008c 9142     		cmp	r1, r2
+ 229 008e 23D0     		beq	.L21
+ 230 0090 1962     		str	r1, [r3, #32]
+ 231 0092 236B     		ldr	r3, [r4, #48]
+ 232 0094 039A     		ldr	r2, [sp, #12]
+ 233 0096 5A62     		str	r2, [r3, #36]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccENL6ar.s 			page 5
+
+
+ 234              	.L22:
+ 235 0098 206B     		ldr	r0, [r4, #48]
+ 236 009a 0368     		ldr	r3, [r0]
+ 237 009c 9847     		blx	r3
+ 238 009e 0346     		mov	r3, r0
+ 239 00a0 08BB     		cbnz	r0, .L18
+ 240 00a2 0135     		adds	r5, r5, #1
+ 241 00a4 A9EB0A09 		sub	r9, r9, r10
+ 242 00a8 A6EB0B06 		sub	r6, r6, fp
+ 243 00ac D044     		add	r8, r8, r10
+ 244 00ae 5F44     		add	r7, r7, fp
+ 245 00b0 029A     		ldr	r2, [sp, #8]
+ 246 00b2 AA42     		cmp	r2, r5
+ 247 00b4 17D0     		beq	.L18
+ 248              	.L23:
+ 249 00b6 94F83C30 		ldrb	r3, [r4, #60]	@ zero_extendqisi2
+ 250 00ba 002B     		cmp	r3, #0
+ 251 00bc D7D0     		beq	.L19
+ 252 00be 226B     		ldr	r2, [r4, #48]
+ 253 00c0 236A     		ldr	r3, [r4, #32]
+ 254 00c2 DB68     		ldr	r3, [r3, #12]
+ 255 00c4 1B68     		ldr	r3, [r3]
+ 256 00c6 4B44     		add	r3, r3, r9
+ 257 00c8 9361     		str	r3, [r2, #24]
+ 258 00ca 226B     		ldr	r2, [r4, #48]
+ 259 00cc 636A     		ldr	r3, [r4, #36]
+ 260 00ce DB68     		ldr	r3, [r3, #12]
+ 261 00d0 1B68     		ldr	r3, [r3]
+ 262 00d2 3344     		add	r3, r3, r6
+ 263 00d4 D361     		str	r3, [r2, #28]
+ 264 00d6 D6E7     		b	.L20
+ 265              	.L21:
+ 266 00d8 039A     		ldr	r2, [sp, #12]
+ 267 00da 1A62     		str	r2, [r3, #32]
+ 268 00dc 236B     		ldr	r3, [r4, #48]
+ 269 00de 019A     		ldr	r2, [sp, #4]
+ 270 00e0 5A62     		str	r2, [r3, #36]
+ 271 00e2 D9E7     		b	.L22
+ 272              	.L25:
+ 273 00e4 0023     		movs	r3, #0
+ 274              	.L18:
+ 275 00e6 1846     		mov	r0, r3
+ 276 00e8 05B0     		add	sp, sp, #20
+ 277              		@ sp needed
+ 278 00ea BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 280              		.section	.text.rnn_s,"ax",%progbits
+ 281              		.align	1
+ 282              		.global	rnn_s
+ 283              		.syntax unified
+ 284              		.thumb
+ 285              		.thumb_func
+ 287              	rnn_s:
+ 288              		@ args = 0, pretend = 0, frame = 0
+ 289              		@ frame_needed = 0, uses_anonymous_args = 0
+ 290 0000 70B5     		push	{r4, r5, r6, lr}
+ 291 0002 0646     		mov	r6, r0
+ 292 0004 0D46     		mov	r5, r1
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccENL6ar.s 			page 6
+
+
+ 293 0006 8420     		movs	r0, #132
+ 294 0008 FFF7FEFF 		bl	nnom_mem
+ 295 000c 0446     		mov	r4, r0
+ 296 000e 40B3     		cbz	r0, .L30
+ 297 0010 0B23     		movs	r3, #11
+ 298 0012 0377     		strb	r3, [r0, #28]
+ 299 0014 0123     		movs	r3, #1
+ 300 0016 80F85830 		strb	r3, [r0, #88]
+ 301 001a 80F87430 		strb	r3, [r0, #116]
+ 302 001e 80F88030 		strb	r3, [r0, #128]
+ 303 0022 00F14001 		add	r1, r0, #64
+ 304 0026 FFF7FEFF 		bl	io_init
+ 305 002a 2062     		str	r0, [r4, #32]
+ 306 002c 04F15C01 		add	r1, r4, #92
+ 307 0030 2046     		mov	r0, r4
+ 308 0032 FFF7FEFF 		bl	io_init
+ 309 0036 6062     		str	r0, [r4, #36]
+ 310 0038 04F17803 		add	r3, r4, #120
+ 311 003c 2361     		str	r3, [r4, #16]
+ 312 003e 0A4B     		ldr	r3, .L33
+ 313 0040 6360     		str	r3, [r4, #4]
+ 314 0042 0A4B     		ldr	r3, .L33+4
+ 315 0044 A360     		str	r3, [r4, #8]
+ 316 0046 0A4B     		ldr	r3, .L33+8
+ 317 0048 E360     		str	r3, [r4, #12]
+ 318 004a 2B79     		ldrb	r3, [r5, #4]	@ zero_extendqisi2
+ 319 004c 84F83A30 		strb	r3, [r4, #58]
+ 320 0050 6B79     		ldrb	r3, [r5, #5]	@ zero_extendqisi2
+ 321 0052 84F83B30 		strb	r3, [r4, #59]
+ 322 0056 AB79     		ldrb	r3, [r5, #6]	@ zero_extendqisi2
+ 323 0058 84F83C30 		strb	r3, [r4, #60]
+ 324 005c A561     		str	r5, [r4, #24]
+ 325 005e 2663     		str	r6, [r4, #48]
+ 326 0060 F460     		str	r4, [r6, #12]
+ 327              	.L30:
+ 328 0062 2046     		mov	r0, r4
+ 329 0064 70BD     		pop	{r4, r5, r6, pc}
+ 330              	.L34:
+ 331 0066 00BF     		.align	2
+ 332              	.L33:
+ 333 0068 00000000 		.word	rnn_run
+ 334 006c 00000000 		.word	rnn_build
+ 335 0070 00000000 		.word	rnn_free
+ 337              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccENL6ar.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 nnom_rnn.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccENL6ar.s:16     .text.rnn_free:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccENL6ar.s:22     .text.rnn_free:00000000 rnn_free
+C:\Users\ihavenoK\AppData\Local\Temp\ccENL6ar.s:38     .text.rnn_build:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccENL6ar.s:44     .text.rnn_build:00000000 rnn_build
+C:\Users\ihavenoK\AppData\Local\Temp\ccENL6ar.s:155    .text.rnn_run:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccENL6ar.s:161    .text.rnn_run:00000000 rnn_run
+C:\Users\ihavenoK\AppData\Local\Temp\ccENL6ar.s:281    .text.rnn_s:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccENL6ar.s:287    .text.rnn_s:00000000 rnn_s
+C:\Users\ihavenoK\AppData\Local\Temp\ccENL6ar.s:333    .text.rnn_s:00000068 $d
+
+UNDEFINED SYMBOLS
+nnom_free
+new_tensor
+act_get_dec_bit
+tensor_get_num_channel
+nnom_mem
+memset
+io_init

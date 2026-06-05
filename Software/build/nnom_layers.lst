@@ -1,0 +1,184 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccsOz2Bu.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"nnom_layers.c"
+  14              		.text
+  15              		.section	.text.shape_size,"ax",%progbits
+  16              		.align	1
+  17              		.global	shape_size
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	shape_size:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25              		@ link register save eliminated.
+  26 0000 0346     		mov	r3, r0
+  27 0002 38B1     		cbz	r0, .L3
+  28 0004 0088     		ldrh	r0, [r0]
+  29 0006 5A88     		ldrh	r2, [r3, #2]
+  30 0008 02FB00F0 		mul	r0, r2, r0
+  31 000c 9B88     		ldrh	r3, [r3, #4]
+  32 000e 03FB00F0 		mul	r0, r3, r0
+  33 0012 7047     		bx	lr
+  34              	.L3:
+  35 0014 0020     		movs	r0, #0
+  36 0016 7047     		bx	lr
+  38              		.section	.text.shape,"ax",%progbits
+  39              		.align	1
+  40              		.global	shape
+  41              		.syntax unified
+  42              		.thumb
+  43              		.thumb_func
+  45              	shape:
+  46              		@ args = 0, pretend = 0, frame = 0
+  47              		@ frame_needed = 0, uses_anonymous_args = 0
+  48              		@ link register save eliminated.
+  49 0000 0180     		strh	r1, [r0]	@ movhi
+  50 0002 4280     		strh	r2, [r0, #2]	@ movhi
+  51 0004 8380     		strh	r3, [r0, #4]	@ movhi
+  52 0006 7047     		bx	lr
+  54              		.section	.text.kernel,"ax",%progbits
+  55              		.align	1
+  56              		.global	kernel
+  57              		.syntax unified
+  58              		.thumb
+  59              		.thumb_func
+  61              	kernel:
+  62              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccsOz2Bu.s 			page 2
+
+
+  63              		@ frame_needed = 0, uses_anonymous_args = 0
+  64              		@ link register save eliminated.
+  65 0000 0180     		strh	r1, [r0]	@ movhi
+  66 0002 4280     		strh	r2, [r0, #2]	@ movhi
+  67 0004 0122     		movs	r2, #1
+  68 0006 8280     		strh	r2, [r0, #4]	@ movhi
+  69 0008 7047     		bx	lr
+  71              		.section	.text.stride,"ax",%progbits
+  72              		.align	1
+  73              		.global	stride
+  74              		.syntax unified
+  75              		.thumb
+  76              		.thumb_func
+  78              	stride:
+  79              		@ args = 0, pretend = 0, frame = 0
+  80              		@ frame_needed = 0, uses_anonymous_args = 0
+  81              		@ link register save eliminated.
+  82 0000 0180     		strh	r1, [r0]	@ movhi
+  83 0002 4280     		strh	r2, [r0, #2]	@ movhi
+  84 0004 0122     		movs	r2, #1
+  85 0006 8280     		strh	r2, [r0, #4]	@ movhi
+  86 0008 7047     		bx	lr
+  88              		.section	.text.dilation,"ax",%progbits
+  89              		.align	1
+  90              		.global	dilation
+  91              		.syntax unified
+  92              		.thumb
+  93              		.thumb_func
+  95              	dilation:
+  96              		@ args = 0, pretend = 0, frame = 0
+  97              		@ frame_needed = 0, uses_anonymous_args = 0
+  98              		@ link register save eliminated.
+  99 0000 0180     		strh	r1, [r0]	@ movhi
+ 100 0002 4280     		strh	r2, [r0, #2]	@ movhi
+ 101 0004 0122     		movs	r2, #1
+ 102 0006 8280     		strh	r2, [r0, #4]	@ movhi
+ 103 0008 7047     		bx	lr
+ 105              		.section	.text.border,"ax",%progbits
+ 106              		.align	1
+ 107              		.global	border
+ 108              		.syntax unified
+ 109              		.thumb
+ 110              		.thumb_func
+ 112              	border:
+ 113              		@ args = 4, pretend = 0, frame = 0
+ 114              		@ frame_needed = 0, uses_anonymous_args = 0
+ 115              		@ link register save eliminated.
+ 116 0000 0180     		strh	r1, [r0]	@ movhi
+ 117 0002 4280     		strh	r2, [r0, #2]	@ movhi
+ 118 0004 8380     		strh	r3, [r0, #4]	@ movhi
+ 119 0006 009B     		ldr	r3, [sp]
+ 120 0008 C380     		strh	r3, [r0, #6]	@ movhi
+ 121 000a 7047     		bx	lr
+ 123              		.section	.text.io_init,"ax",%progbits
+ 124              		.align	1
+ 125              		.global	io_init
+ 126              		.syntax unified
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccsOz2Bu.s 			page 3
+
+
+ 127              		.thumb
+ 128              		.thumb_func
+ 130              	io_init:
+ 131              		@ args = 0, pretend = 0, frame = 0
+ 132              		@ frame_needed = 0, uses_anonymous_args = 0
+ 133              		@ link register save eliminated.
+ 134 0000 4861     		str	r0, [r1, #20]
+ 135 0002 0846     		mov	r0, r1
+ 136 0004 7047     		bx	lr
+ 138              		.section	.text.io_add_aux,"ax",%progbits
+ 139              		.align	1
+ 140              		.global	io_add_aux
+ 141              		.syntax unified
+ 142              		.thumb
+ 143              		.thumb_func
+ 145              	io_add_aux:
+ 146              		@ args = 0, pretend = 0, frame = 0
+ 147              		@ frame_needed = 0, uses_anonymous_args = 0
+ 148 0000 10B5     		push	{r4, lr}
+ 149 0002 0446     		mov	r4, r0
+ 150 0004 60B1     		cbz	r0, .L10
+ 151 0006 4069     		ldr	r0, [r0, #20]
+ 152 0008 50B1     		cbz	r0, .L10
+ 153 000a A368     		ldr	r3, [r4, #8]
+ 154 000c 3BB9     		cbnz	r3, .L13
+ 155 000e 1C20     		movs	r0, #28
+ 156 0010 FFF7FEFF 		bl	nnom_mem
+ 157 0014 20B1     		cbz	r0, .L10
+ 158 0016 A060     		str	r0, [r4, #8]
+ 159 0018 6369     		ldr	r3, [r4, #20]
+ 160 001a 4361     		str	r3, [r0, #20]
+ 161 001c 00E0     		b	.L10
+ 162              	.L13:
+ 163 001e 0020     		movs	r0, #0
+ 164              	.L10:
+ 165 0020 10BD     		pop	{r4, pc}
+ 167              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccsOz2Bu.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 nnom_layers.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccsOz2Bu.s:16     .text.shape_size:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccsOz2Bu.s:22     .text.shape_size:00000000 shape_size
+C:\Users\ihavenoK\AppData\Local\Temp\ccsOz2Bu.s:39     .text.shape:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccsOz2Bu.s:45     .text.shape:00000000 shape
+C:\Users\ihavenoK\AppData\Local\Temp\ccsOz2Bu.s:55     .text.kernel:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccsOz2Bu.s:61     .text.kernel:00000000 kernel
+C:\Users\ihavenoK\AppData\Local\Temp\ccsOz2Bu.s:72     .text.stride:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccsOz2Bu.s:78     .text.stride:00000000 stride
+C:\Users\ihavenoK\AppData\Local\Temp\ccsOz2Bu.s:89     .text.dilation:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccsOz2Bu.s:95     .text.dilation:00000000 dilation
+C:\Users\ihavenoK\AppData\Local\Temp\ccsOz2Bu.s:106    .text.border:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccsOz2Bu.s:112    .text.border:00000000 border
+C:\Users\ihavenoK\AppData\Local\Temp\ccsOz2Bu.s:124    .text.io_init:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccsOz2Bu.s:130    .text.io_init:00000000 io_init
+C:\Users\ihavenoK\AppData\Local\Temp\ccsOz2Bu.s:139    .text.io_add_aux:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccsOz2Bu.s:145    .text.io_add_aux:00000000 io_add_aux
+
+UNDEFINED SYMBOLS
+nnom_mem

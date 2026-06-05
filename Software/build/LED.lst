@@ -1,0 +1,198 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cciKGPAq.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"LED.c"
+  14              		.text
+  15              		.section	.text.LED_Blink,"ax",%progbits
+  16              		.align	1
+  17              		.global	LED_Blink
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	LED_Blink:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  26 0002 0428     		cmp	r0, #4
+  27 0004 26D8     		bhi	.L1
+  28 0006 DFE800F0 		tbb	[pc, r0]
+  29              	.L4:
+  30 000a 03       		.byte	(.L8-.L4)/2
+  31 000b 09       		.byte	(.L7-.L4)/2
+  32 000c 3D       		.byte	(.L9-.L4)/2
+  33 000d 0F       		.byte	(.L10-.L4)/2
+  34 000e 26       		.byte	(.L11-.L4)/2
+  35 000f 00       		.p2align 1
+  36              	.L8:
+  37 0010 0022     		movs	r2, #0
+  38 0012 0221     		movs	r1, #2
+  39 0014 2748     		ldr	r0, .L17
+  40 0016 FFF7FEFF 		bl	GPIO_WriteBit
+  41 001a 1BE0     		b	.L1
+  42              	.L7:
+  43 001c 0122     		movs	r2, #1
+  44 001e 0221     		movs	r1, #2
+  45 0020 2448     		ldr	r0, .L17
+  46 0022 FFF7FEFF 		bl	GPIO_WriteBit
+  47 0026 15E0     		b	.L1
+  48              	.L10:
+  49 0028 0624     		movs	r4, #6
+  50 002a 224F     		ldr	r7, .L17
+  51 002c 0226     		movs	r6, #2
+  52 002e 6425     		movs	r5, #100
+  53              	.L5:
+  54 0030 0022     		movs	r2, #0
+  55 0032 3146     		mov	r1, r6
+  56 0034 3846     		mov	r0, r7
+  57 0036 FFF7FEFF 		bl	GPIO_WriteBit
+  58 003a 2846     		mov	r0, r5
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cciKGPAq.s 			page 2
+
+
+  59 003c FFF7FEFF 		bl	Delay_ms
+  60 0040 0122     		movs	r2, #1
+  61 0042 3146     		mov	r1, r6
+  62 0044 3846     		mov	r0, r7
+  63 0046 FFF7FEFF 		bl	GPIO_WriteBit
+  64 004a 2846     		mov	r0, r5
+  65 004c FFF7FEFF 		bl	Delay_ms
+  66 0050 013C     		subs	r4, r4, #1
+  67 0052 EDD1     		bne	.L5
+  68              	.L1:
+  69 0054 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+  70              	.L11:
+  71 0056 0B24     		movs	r4, #11
+  72 0058 164F     		ldr	r7, .L17
+  73 005a 0226     		movs	r6, #2
+  74 005c 3225     		movs	r5, #50
+  75              	.L3:
+  76 005e 0022     		movs	r2, #0
+  77 0060 3146     		mov	r1, r6
+  78 0062 3846     		mov	r0, r7
+  79 0064 FFF7FEFF 		bl	GPIO_WriteBit
+  80 0068 2846     		mov	r0, r5
+  81 006a FFF7FEFF 		bl	Delay_ms
+  82 006e 0122     		movs	r2, #1
+  83 0070 3146     		mov	r1, r6
+  84 0072 3846     		mov	r0, r7
+  85 0074 FFF7FEFF 		bl	GPIO_WriteBit
+  86 0078 2846     		mov	r0, r5
+  87 007a FFF7FEFF 		bl	Delay_ms
+  88 007e 013C     		subs	r4, r4, #1
+  89 0080 EDD1     		bne	.L3
+  90 0082 E7E7     		b	.L1
+  91              	.L9:
+  92 0084 0424     		movs	r4, #4
+  93 0086 0B4F     		ldr	r7, .L17
+  94 0088 0226     		movs	r6, #2
+  95 008a FA25     		movs	r5, #250
+  96              	.L6:
+  97 008c 0022     		movs	r2, #0
+  98 008e 3146     		mov	r1, r6
+  99 0090 3846     		mov	r0, r7
+ 100 0092 FFF7FEFF 		bl	GPIO_WriteBit
+ 101 0096 2846     		mov	r0, r5
+ 102 0098 FFF7FEFF 		bl	Delay_ms
+ 103 009c 0122     		movs	r2, #1
+ 104 009e 3146     		mov	r1, r6
+ 105 00a0 3846     		mov	r0, r7
+ 106 00a2 FFF7FEFF 		bl	GPIO_WriteBit
+ 107 00a6 2846     		mov	r0, r5
+ 108 00a8 FFF7FEFF 		bl	Delay_ms
+ 109 00ac 013C     		subs	r4, r4, #1
+ 110 00ae EDD1     		bne	.L6
+ 111 00b0 D0E7     		b	.L1
+ 112              	.L18:
+ 113 00b2 00BF     		.align	2
+ 114              	.L17:
+ 115 00b4 00080140 		.word	1073809408
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cciKGPAq.s 			page 3
+
+
+ 117              		.section	.text.LED_Init,"ax",%progbits
+ 118              		.align	1
+ 119              		.global	LED_Init
+ 120              		.syntax unified
+ 121              		.thumb
+ 122              		.thumb_func
+ 124              	LED_Init:
+ 125              		@ args = 0, pretend = 0, frame = 8
+ 126              		@ frame_needed = 0, uses_anonymous_args = 0
+ 127 0000 00B5     		push	{lr}
+ 128 0002 83B0     		sub	sp, sp, #12
+ 129 0004 0121     		movs	r1, #1
+ 130 0006 0420     		movs	r0, #4
+ 131 0008 FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+ 132 000c 1023     		movs	r3, #16
+ 133 000e 8DF80730 		strb	r3, [sp, #7]
+ 134 0012 0223     		movs	r3, #2
+ 135 0014 ADF80430 		strh	r3, [sp, #4]	@ movhi
+ 136 0018 0323     		movs	r3, #3
+ 137 001a 8DF80630 		strb	r3, [sp, #6]
+ 138 001e 01A9     		add	r1, sp, #4
+ 139 0020 0648     		ldr	r0, .L21
+ 140 0022 FFF7FEFF 		bl	GPIO_Init
+ 141 0026 064B     		ldr	r3, .L21+4
+ 142 0028 0020     		movs	r0, #0
+ 143 002a 1871     		strb	r0, [r3, #4]
+ 144 002c 054A     		ldr	r2, .L21+8
+ 145 002e 1A60     		str	r2, [r3]
+ 146 0030 FFF7FEFF 		bl	LED_Blink
+ 147 0034 03B0     		add	sp, sp, #12
+ 148              		@ sp needed
+ 149 0036 5DF804FB 		ldr	pc, [sp], #4
+ 150              	.L22:
+ 151 003a 00BF     		.align	2
+ 152              	.L21:
+ 153 003c 00080140 		.word	1073809408
+ 154 0040 00000000 		.word	LED
+ 155 0044 00000000 		.word	LED_Blink
+ 157              		.global	Laser
+ 158              		.section	.bss.Laser,"aw",%nobits
+ 159              		.align	2
+ 162              	Laser:
+ 163 0000 00000000 		.space	8
+ 163      00000000 
+ 164              		.global	LED
+ 165              		.section	.bss.LED,"aw",%nobits
+ 166              		.align	2
+ 169              	LED:
+ 170 0000 00000000 		.space	8
+ 170      00000000 
+ 171              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cciKGPAq.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 LED.c
+C:\Users\ihavenoK\AppData\Local\Temp\cciKGPAq.s:16     .text.LED_Blink:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cciKGPAq.s:22     .text.LED_Blink:00000000 LED_Blink
+C:\Users\ihavenoK\AppData\Local\Temp\cciKGPAq.s:30     .text.LED_Blink:0000000a $d
+C:\Users\ihavenoK\AppData\Local\Temp\cciKGPAq.s:115    .text.LED_Blink:000000b4 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cciKGPAq.s:118    .text.LED_Init:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cciKGPAq.s:124    .text.LED_Init:00000000 LED_Init
+C:\Users\ihavenoK\AppData\Local\Temp\cciKGPAq.s:153    .text.LED_Init:0000003c $d
+C:\Users\ihavenoK\AppData\Local\Temp\cciKGPAq.s:169    .bss.LED:00000000 LED
+C:\Users\ihavenoK\AppData\Local\Temp\cciKGPAq.s:162    .bss.Laser:00000000 Laser
+C:\Users\ihavenoK\AppData\Local\Temp\cciKGPAq.s:159    .bss.Laser:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cciKGPAq.s:166    .bss.LED:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cciKGPAq.s:35     .text.LED_Blink:0000000f $d
+C:\Users\ihavenoK\AppData\Local\Temp\cciKGPAq.s:35     .text.LED_Blink:00000010 $t
+
+UNDEFINED SYMBOLS
+GPIO_WriteBit
+Delay_ms
+RCC_APB2PeriphClockCmd
+GPIO_Init

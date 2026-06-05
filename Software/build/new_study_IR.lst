@@ -1,0 +1,132 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc4sW4fN.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"new_study_IR.c"
+  14              		.text
+  15              		.section	.text.USART2_Config,"ax",%progbits
+  16              		.align	1
+  17              		.global	USART2_Config
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	USART2_Config:
+  23              		@ args = 0, pretend = 0, frame = 24
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 70B5     		push	{r4, r5, r6, lr}
+  26 0002 86B0     		sub	sp, sp, #24
+  27 0004 0121     		movs	r1, #1
+  28 0006 0420     		movs	r0, #4
+  29 0008 FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+  30 000c 0121     		movs	r1, #1
+  31 000e 4FF40030 		mov	r0, #131072
+  32 0012 FFF7FEFF 		bl	RCC_APB1PeriphClockCmd
+  33 0016 0426     		movs	r6, #4
+  34 0018 ADF81460 		strh	r6, [sp, #20]	@ movhi
+  35 001c 1823     		movs	r3, #24
+  36 001e 8DF81730 		strb	r3, [sp, #23]
+  37 0022 0323     		movs	r3, #3
+  38 0024 8DF81630 		strb	r3, [sp, #22]
+  39 0028 05AD     		add	r5, sp, #20
+  40 002a 154C     		ldr	r4, .L3
+  41 002c 2946     		mov	r1, r5
+  42 002e 2046     		mov	r0, r4
+  43 0030 FFF7FEFF 		bl	GPIO_Init
+  44 0034 0823     		movs	r3, #8
+  45 0036 ADF81430 		strh	r3, [sp, #20]	@ movhi
+  46 003a 8DF81760 		strb	r6, [sp, #23]
+  47 003e 2946     		mov	r1, r5
+  48 0040 2046     		mov	r0, r4
+  49 0042 FFF7FEFF 		bl	GPIO_Init
+  50 0046 4FF4E133 		mov	r3, #115200
+  51 004a 0193     		str	r3, [sp, #4]
+  52 004c 0023     		movs	r3, #0
+  53 004e ADF80830 		strh	r3, [sp, #8]	@ movhi
+  54 0052 ADF80A30 		strh	r3, [sp, #10]	@ movhi
+  55 0056 ADF80C30 		strh	r3, [sp, #12]	@ movhi
+  56 005a ADF81030 		strh	r3, [sp, #16]	@ movhi
+  57 005e 0C23     		movs	r3, #12
+  58 0060 ADF80E30 		strh	r3, [sp, #14]	@ movhi
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc4sW4fN.s 			page 2
+
+
+  59 0064 A4F54444 		sub	r4, r4, #50176
+  60 0068 0DEB0601 		add	r1, sp, r6
+  61 006c 2046     		mov	r0, r4
+  62 006e FFF7FEFF 		bl	USART_Init
+  63 0072 0121     		movs	r1, #1
+  64 0074 2046     		mov	r0, r4
+  65 0076 FFF7FEFF 		bl	USART_Cmd
+  66 007a 06B0     		add	sp, sp, #24
+  67              		@ sp needed
+  68 007c 70BD     		pop	{r4, r5, r6, pc}
+  69              	.L4:
+  70 007e 00BF     		.align	2
+  71              	.L3:
+  72 0080 00080140 		.word	1073809408
+  74              		.section	.text.Uart_Send,"ax",%progbits
+  75              		.align	1
+  76              		.global	Uart_Send
+  77              		.syntax unified
+  78              		.thumb
+  79              		.thumb_func
+  81              	Uart_Send:
+  82              		@ args = 0, pretend = 0, frame = 0
+  83              		@ frame_needed = 0, uses_anonymous_args = 0
+  84 0000 91B1     		cbz	r1, .L12
+  85 0002 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  86 0004 0646     		mov	r6, r0
+  87 0006 4718     		adds	r7, r0, r1
+  88 0008 084C     		ldr	r4, .L15
+  89 000a 8025     		movs	r5, #128
+  90              	.L8:
+  91 000c 16F8011B 		ldrb	r1, [r6], #1	@ zero_extendqisi2
+  92 0010 2046     		mov	r0, r4
+  93 0012 FFF7FEFF 		bl	USART_SendData
+  94              	.L7:
+  95 0016 2946     		mov	r1, r5
+  96 0018 2046     		mov	r0, r4
+  97 001a FFF7FEFF 		bl	USART_GetFlagStatus
+  98 001e 0128     		cmp	r0, #1
+  99 0020 F9D1     		bne	.L7
+ 100 0022 BE42     		cmp	r6, r7
+ 101 0024 F2D1     		bne	.L8
+ 102 0026 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 103              	.L12:
+ 104 0028 7047     		bx	lr
+ 105              	.L16:
+ 106 002a 00BF     		.align	2
+ 107              	.L15:
+ 108 002c 00440040 		.word	1073759232
+ 110              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc4sW4fN.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 new_study_IR.c
+C:\Users\ihavenoK\AppData\Local\Temp\cc4sW4fN.s:16     .text.USART2_Config:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc4sW4fN.s:22     .text.USART2_Config:00000000 USART2_Config
+C:\Users\ihavenoK\AppData\Local\Temp\cc4sW4fN.s:72     .text.USART2_Config:00000080 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc4sW4fN.s:75     .text.Uart_Send:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc4sW4fN.s:81     .text.Uart_Send:00000000 Uart_Send
+C:\Users\ihavenoK\AppData\Local\Temp\cc4sW4fN.s:108    .text.Uart_Send:0000002c $d
+
+UNDEFINED SYMBOLS
+RCC_APB2PeriphClockCmd
+RCC_APB1PeriphClockCmd
+GPIO_Init
+USART_Init
+USART_Cmd
+USART_SendData
+USART_GetFlagStatus

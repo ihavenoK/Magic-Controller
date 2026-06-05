@@ -1,0 +1,332 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccIF404M.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"nnom_gru_cell.c"
+  14              		.text
+  15              		.section	.text.gru_cell_free,"ax",%progbits
+  16              		.align	1
+  17              		.global	gru_cell_free
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	gru_cell_free:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25              		@ link register save eliminated.
+  26 0000 0020     		movs	r0, #0
+  27 0002 7047     		bx	lr
+  29              		.section	.text.gru_cell_build,"ax",%progbits
+  30              		.align	1
+  31              		.global	gru_cell_build
+  32              		.syntax unified
+  33              		.thumb
+  34              		.thumb_func
+  36              	gru_cell_build:
+  37              		@ args = 0, pretend = 0, frame = 0
+  38              		@ frame_needed = 0, uses_anonymous_args = 0
+  39              		@ link register save eliminated.
+  40 0000 30B4     		push	{r4, r5}
+  41 0002 C168     		ldr	r1, [r0, #12]
+  42 0004 446C     		ldr	r4, [r0, #68]
+  43 0006 C36B     		ldr	r3, [r0, #60]
+  44 0008 9B68     		ldr	r3, [r3, #8]
+  45 000a 1B68     		ldr	r3, [r3]
+  46 000c 826C     		ldr	r2, [r0, #72]
+  47 000e 1344     		add	r3, r3, r2
+  48 0010 1B1B     		subs	r3, r3, r4
+  49 0012 0365     		str	r3, [r0, #80]
+  50 0014 826B     		ldr	r2, [r0, #56]
+  51 0016 0B6A     		ldr	r3, [r1, #32]
+  52 0018 DB68     		ldr	r3, [r3, #12]
+  53 001a 9B68     		ldr	r3, [r3, #8]
+  54 001c 9568     		ldr	r5, [r2, #8]
+  55 001e 1B68     		ldr	r3, [r3]
+  56 0020 2D68     		ldr	r5, [r5]
+  57 0022 2B44     		add	r3, r3, r5
+  58 0024 1B1B     		subs	r3, r3, r4
+  59 0026 C364     		str	r3, [r0, #76]
+  60 0028 0B6A     		ldr	r3, [r1, #32]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccIF404M.s 			page 2
+
+
+  61 002a DB68     		ldr	r3, [r3, #12]
+  62 002c 9B68     		ldr	r3, [r3, #8]
+  63 002e 9268     		ldr	r2, [r2, #8]
+  64 0030 1B68     		ldr	r3, [r3]
+  65 0032 1268     		ldr	r2, [r2]
+  66 0034 1344     		add	r3, r3, r2
+  67 0036 026C     		ldr	r2, [r0, #64]
+  68 0038 9268     		ldr	r2, [r2, #8]
+  69 003a 1268     		ldr	r2, [r2]
+  70 003c 9B1A     		subs	r3, r3, r2
+  71 003e 4365     		str	r3, [r0, #84]
+  72 0040 028E     		ldrh	r2, [r0, #48]
+  73 0042 5300     		lsls	r3, r2, #1
+  74 0044 C362     		str	r3, [r0, #44]
+  75 0046 438E     		ldrh	r3, [r0, #50]
+  76 0048 02EBC201 		add	r1, r2, r2, lsl #3
+  77 004c 1944     		add	r1, r1, r3
+  78 004e 4900     		lsls	r1, r1, #1
+  79 0050 8162     		str	r1, [r0, #40]
+  80 0052 02FB03F3 		mul	r3, r2, r3
+  81 0056 03EB4303 		add	r3, r3, r3, lsl #1
+  82 005a 02FB02F1 		mul	r1, r2, r2
+  83 005e 03EBC103 		add	r3, r3, r1, lsl #3
+  84 0062 02EB8201 		add	r1, r2, r2, lsl #2
+  85 0066 02EB4102 		add	r2, r2, r1, lsl #1
+  86 006a 1344     		add	r3, r3, r2
+  87 006c 4363     		str	r3, [r0, #52]
+  88 006e 0020     		movs	r0, #0
+  89 0070 30BC     		pop	{r4, r5}
+  90 0072 7047     		bx	lr
+  92              		.section	.text.gru_cell_run,"ax",%progbits
+  93              		.align	1
+  94              		.global	gru_cell_run
+  95              		.syntax unified
+  96              		.thumb
+  97              		.thumb_func
+  99              	gru_cell_run:
+ 100              		@ args = 0, pretend = 0, frame = 24
+ 101              		@ frame_needed = 0, uses_anonymous_args = 0
+ 102 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 103 0004 8DB0     		sub	sp, sp, #52
+ 104 0006 0446     		mov	r4, r0
+ 105 0008 436C     		ldr	r3, [r0, #68]
+ 106 000a C3F10703 		rsb	r3, r3, #7
+ 107 000e 0793     		str	r3, [sp, #28]
+ 108 0010 036C     		ldr	r3, [r0, #64]
+ 109 0012 D3F800A0 		ldr	r10, [r3]
+ 110 0016 058E     		ldrh	r5, [r0, #48]
+ 111 0018 05EB4505 		add	r5, r5, r5, lsl #1
+ 112 001c 0AEB0502 		add	r2, r10, r5
+ 113 0020 0892     		str	r2, [sp, #32]
+ 114 0022 036A     		ldr	r3, [r0, #32]
+ 115 0024 0693     		str	r3, [sp, #24]
+ 116 0026 D0F824B0 		ldr	fp, [r0, #36]
+ 117 002a C368     		ldr	r3, [r0, #12]
+ 118 002c 1B69     		ldr	r3, [r3, #16]
+ 119 002e 1B68     		ldr	r3, [r3]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccIF404M.s 			page 3
+
+
+ 120 0030 D3F80080 		ldr	r8, [r3]
+ 121 0034 08EB4509 		add	r9, r8, r5, lsl #1
+ 122 0038 08EB8506 		add	r6, r8, r5, lsl #2
+ 123 003c 06EB4505 		add	r5, r6, r5, lsl #1
+ 124 0040 428E     		ldrh	r2, [r0, #50]
+ 125 0042 2946     		mov	r1, r5
+ 126 0044 8069     		ldr	r0, [r0, #24]
+ 127 0046 FFF7FEFF 		bl	local_q7_to_q15
+ 128 004a 238E     		ldrh	r3, [r4, #48]
+ 129 004c 03EB4303 		add	r3, r3, r3, lsl #1
+ 130 0050 A26B     		ldr	r2, [r4, #56]
+ 131 0052 1168     		ldr	r1, [r2]
+ 132 0054 0027     		movs	r7, #0
+ 133 0056 0497     		str	r7, [sp, #16]
+ 134 0058 CDF80C80 		str	r8, [sp, #12]
+ 135 005c CDF808A0 		str	r10, [sp, #8]
+ 136 0060 B4F84C20 		ldrh	r2, [r4, #76]
+ 137 0064 0192     		str	r2, [sp, #4]
+ 138 0066 626D     		ldr	r2, [r4, #84]
+ 139 0068 0832     		adds	r2, r2, #8
+ 140 006a 92B2     		uxth	r2, r2
+ 141 006c 0092     		str	r2, [sp]
+ 142 006e 9BB2     		uxth	r3, r3
+ 143 0070 628E     		ldrh	r2, [r4, #50]
+ 144 0072 2846     		mov	r0, r5
+ 145 0074 FFF7FEFF 		bl	local_fully_connected_mat_q7_vec_q15_opt
+ 146 0078 228E     		ldrh	r2, [r4, #48]
+ 147 007a 02EB4203 		add	r3, r2, r2, lsl #1
+ 148 007e E16B     		ldr	r1, [r4, #60]
+ 149 0080 0968     		ldr	r1, [r1]
+ 150 0082 0497     		str	r7, [sp, #16]
+ 151 0084 CDF80C90 		str	r9, [sp, #12]
+ 152 0088 0898     		ldr	r0, [sp, #32]
+ 153 008a 0290     		str	r0, [sp, #8]
+ 154 008c B4F85000 		ldrh	r0, [r4, #80]
+ 155 0090 0190     		str	r0, [sp, #4]
+ 156 0092 606D     		ldr	r0, [r4, #84]
+ 157 0094 0830     		adds	r0, r0, #8
+ 158 0096 80B2     		uxth	r0, r0
+ 159 0098 0090     		str	r0, [sp]
+ 160 009a 9BB2     		uxth	r3, r3
+ 161 009c 0698     		ldr	r0, [sp, #24]
+ 162 009e FFF7FEFF 		bl	local_fully_connected_mat_q7_vec_q15_opt
+ 163 00a2 238E     		ldrh	r3, [r4, #48]
+ 164 00a4 08EB4302 		add	r2, r8, r3, lsl #1
+ 165 00a8 0892     		str	r2, [sp, #32]
+ 166 00aa 08EB8305 		add	r5, r8, r3, lsl #2
+ 167 00ae 0995     		str	r5, [sp, #36]
+ 168 00b0 09EB430C 		add	ip, r9, r3, lsl #1
+ 169 00b4 CDF828C0 		str	ip, [sp, #40]
+ 170 00b8 09EB830E 		add	lr, r9, r3, lsl #2
+ 171 00bc CDF82CE0 		str	lr, [sp, #44]
+ 172 00c0 06EB4305 		add	r5, r6, r3, lsl #1
+ 173 00c4 06EB830A 		add	r10, r6, r3, lsl #2
+ 174 00c8 0093     		str	r3, [sp]
+ 175 00ca 3B46     		mov	r3, r7
+ 176 00cc 3246     		mov	r2, r6
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccIF404M.s 			page 4
+
+
+ 177 00ce 4946     		mov	r1, r9
+ 178 00d0 4046     		mov	r0, r8
+ 179 00d2 FFF7FEFF 		bl	local_add_q15
+ 180 00d6 BDF81C80 		ldrh	r8, [sp, #28]
+ 181 00da 4246     		mov	r2, r8
+ 182 00dc 218E     		ldrh	r1, [r4, #48]
+ 183 00de 3046     		mov	r0, r6
+ 184 00e0 FFF7FEFF 		bl	local_sigmoid_q15
+ 185 00e4 238E     		ldrh	r3, [r4, #48]
+ 186 00e6 0093     		str	r3, [sp]
+ 187 00e8 3B46     		mov	r3, r7
+ 188 00ea 2A46     		mov	r2, r5
+ 189 00ec 0A99     		ldr	r1, [sp, #40]
+ 190 00ee 0898     		ldr	r0, [sp, #32]
+ 191 00f0 FFF7FEFF 		bl	local_add_q15
+ 192 00f4 4246     		mov	r2, r8
+ 193 00f6 218E     		ldrh	r1, [r4, #48]
+ 194 00f8 2846     		mov	r0, r5
+ 195 00fa FFF7FEFF 		bl	local_sigmoid_q15
+ 196 00fe 238E     		ldrh	r3, [r4, #48]
+ 197 0100 0093     		str	r3, [sp]
+ 198 0102 0F23     		movs	r3, #15
+ 199 0104 5246     		mov	r2, r10
+ 200 0106 0B99     		ldr	r1, [sp, #44]
+ 201 0108 2846     		mov	r0, r5
+ 202 010a FFF7FEFF 		bl	local_mult_q15
+ 203 010e 238E     		ldrh	r3, [r4, #48]
+ 204 0110 0093     		str	r3, [sp]
+ 205 0112 3B46     		mov	r3, r7
+ 206 0114 2A46     		mov	r2, r5
+ 207 0116 5146     		mov	r1, r10
+ 208 0118 0998     		ldr	r0, [sp, #36]
+ 209 011a FFF7FEFF 		bl	local_add_q15
+ 210 011e 4246     		mov	r2, r8
+ 211 0120 218E     		ldrh	r1, [r4, #48]
+ 212 0122 2846     		mov	r0, r5
+ 213 0124 FFF7FEFF 		bl	local_tanh_q15
+ 214 0128 238E     		ldrh	r3, [r4, #48]
+ 215 012a 0093     		str	r3, [sp]
+ 216 012c 0F23     		movs	r3, #15
+ 217 012e 5246     		mov	r2, r10
+ 218 0130 0699     		ldr	r1, [sp, #24]
+ 219 0132 3046     		mov	r0, r6
+ 220 0134 FFF7FEFF 		bl	local_mult_q15
+ 221 0138 238E     		ldrh	r3, [r4, #48]
+ 222 013a 0F22     		movs	r2, #15
+ 223 013c 5946     		mov	r1, fp
+ 224 013e 3046     		mov	r0, r6
+ 225 0140 FFF7FEFF 		bl	local_1_minor_z_q15
+ 226 0144 238E     		ldrh	r3, [r4, #48]
+ 227 0146 0093     		str	r3, [sp]
+ 228 0148 0F23     		movs	r3, #15
+ 229 014a 3246     		mov	r2, r6
+ 230 014c 2946     		mov	r1, r5
+ 231 014e 5846     		mov	r0, fp
+ 232 0150 FFF7FEFF 		bl	local_mult_q15
+ 233 0154 238E     		ldrh	r3, [r4, #48]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccIF404M.s 			page 5
+
+
+ 234 0156 0093     		str	r3, [sp]
+ 235 0158 3B46     		mov	r3, r7
+ 236 015a 5A46     		mov	r2, fp
+ 237 015c 3146     		mov	r1, r6
+ 238 015e 5046     		mov	r0, r10
+ 239 0160 FFF7FEFF 		bl	local_add_q15
+ 240 0164 238E     		ldrh	r3, [r4, #48]
+ 241 0166 0822     		movs	r2, #8
+ 242 0168 E169     		ldr	r1, [r4, #28]
+ 243 016a 5846     		mov	r0, fp
+ 244 016c FFF7FEFF 		bl	local_q15_to_q7
+ 245 0170 3846     		mov	r0, r7
+ 246 0172 0DB0     		add	sp, sp, #52
+ 247              		@ sp needed
+ 248 0174 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 250              		.section	.text.gru_cell_s,"ax",%progbits
+ 251              		.align	1
+ 252              		.global	gru_cell_s
+ 253              		.syntax unified
+ 254              		.thumb
+ 255              		.thumb_func
+ 257              	gru_cell_s:
+ 258              		@ args = 0, pretend = 0, frame = 0
+ 259              		@ frame_needed = 0, uses_anonymous_args = 0
+ 260 0000 10B5     		push	{r4, lr}
+ 261 0002 0446     		mov	r4, r0
+ 262 0004 5820     		movs	r0, #88
+ 263 0006 FFF7FEFF 		bl	nnom_mem
+ 264 000a 0346     		mov	r3, r0
+ 265 000c A0B1     		cbz	r0, .L6
+ 266 000e 0B4A     		ldr	r2, .L9
+ 267 0010 0260     		str	r2, [r0]
+ 268 0012 0B4A     		ldr	r2, .L9+4
+ 269 0014 4260     		str	r2, [r0, #4]
+ 270 0016 0B4A     		ldr	r2, .L9+8
+ 271 0018 8260     		str	r2, [r0, #8]
+ 272 001a 0461     		str	r4, [r0, #16]
+ 273 001c 228B     		ldrh	r2, [r4, #24]
+ 274 001e 0286     		strh	r2, [r0, #48]	@ movhi
+ 275 0020 0222     		movs	r2, #2
+ 276 0022 0275     		strb	r2, [r0, #20]
+ 277 0024 E268     		ldr	r2, [r4, #12]
+ 278 0026 0264     		str	r2, [r0, #64]
+ 279 0028 6268     		ldr	r2, [r4, #4]
+ 280 002a 8263     		str	r2, [r0, #56]
+ 281 002c A268     		ldr	r2, [r4, #8]
+ 282 002e C263     		str	r2, [r0, #60]
+ 283 0030 6269     		ldr	r2, [r4, #20]
+ 284 0032 8264     		str	r2, [r0, #72]
+ 285 0034 2269     		ldr	r2, [r4, #16]
+ 286 0036 4264     		str	r2, [r0, #68]
+ 287              	.L6:
+ 288 0038 1846     		mov	r0, r3
+ 289 003a 10BD     		pop	{r4, pc}
+ 290              	.L10:
+ 291              		.align	2
+ 292              	.L9:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccIF404M.s 			page 6
+
+
+ 293 003c 00000000 		.word	gru_cell_run
+ 294 0040 00000000 		.word	gru_cell_build
+ 295 0044 00000000 		.word	gru_cell_free
+ 297              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccIF404M.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 nnom_gru_cell.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccIF404M.s:16     .text.gru_cell_free:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccIF404M.s:22     .text.gru_cell_free:00000000 gru_cell_free
+C:\Users\ihavenoK\AppData\Local\Temp\ccIF404M.s:30     .text.gru_cell_build:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccIF404M.s:36     .text.gru_cell_build:00000000 gru_cell_build
+C:\Users\ihavenoK\AppData\Local\Temp\ccIF404M.s:93     .text.gru_cell_run:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccIF404M.s:99     .text.gru_cell_run:00000000 gru_cell_run
+C:\Users\ihavenoK\AppData\Local\Temp\ccIF404M.s:251    .text.gru_cell_s:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccIF404M.s:257    .text.gru_cell_s:00000000 gru_cell_s
+C:\Users\ihavenoK\AppData\Local\Temp\ccIF404M.s:293    .text.gru_cell_s:0000003c $d
+
+UNDEFINED SYMBOLS
+local_q7_to_q15
+local_fully_connected_mat_q7_vec_q15_opt
+local_add_q15
+local_sigmoid_q15
+local_mult_q15
+local_tanh_q15
+local_1_minor_z_q15
+local_q15_to_q7
+nnom_mem

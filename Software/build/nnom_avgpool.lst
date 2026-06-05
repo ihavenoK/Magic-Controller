@@ -1,0 +1,245 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccSEXjLh.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"nnom_avgpool.c"
+  14              		.text
+  15              		.section	.text.avgpool_build,"ax",%progbits
+  16              		.align	1
+  17              		.global	avgpool_build
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	avgpool_build:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 08B5     		push	{r3, lr}
+  26 0002 FFF7FEFF 		bl	maxpool_build
+  27 0006 0020     		movs	r0, #0
+  28 0008 08BD     		pop	{r3, pc}
+  30              		.section	.text.avgpool_run,"ax",%progbits
+  31              		.align	1
+  32              		.global	avgpool_run
+  33              		.syntax unified
+  34              		.thumb
+  35              		.thumb_func
+  37              	avgpool_run:
+  38              		@ args = 0, pretend = 0, frame = 0
+  39              		@ frame_needed = 0, uses_anonymous_args = 0
+  40 0000 70B5     		push	{r4, r5, r6, lr}
+  41 0002 8CB0     		sub	sp, sp, #48
+  42 0004 8446     		mov	ip, r0
+  43 0006 436A     		ldr	r3, [r0, #36]
+  44 0008 DC68     		ldr	r4, [r3, #12]
+  45 000a 637C     		ldrb	r3, [r4, #17]	@ zero_extendqisi2
+  46 000c 012B     		cmp	r3, #1
+  47 000e 2DD0     		beq	.L7
+  48 0010 6368     		ldr	r3, [r4, #4]
+  49 0012 5E88     		ldrh	r6, [r3, #2]
+  50 0014 1D88     		ldrh	r5, [r3]
+  51              	.L4:
+  52 0016 DCF82030 		ldr	r3, [ip, #32]
+  53 001a D868     		ldr	r0, [r3, #12]
+  54 001c 837C     		ldrb	r3, [r0, #18]	@ zero_extendqisi2
+  55 001e 102B     		cmp	r3, #16
+  56 0020 27D0     		beq	.L9
+  57 0022 4168     		ldr	r1, [r0, #4]
+  58 0024 8B88     		ldrh	r3, [r1, #4]
+  59 0026 0A88     		ldrh	r2, [r1]
+  60 0028 4988     		ldrh	r1, [r1, #2]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccSEXjLh.s 			page 2
+
+
+  61 002a 0068     		ldr	r0, [r0]
+  62 002c 2468     		ldr	r4, [r4]
+  63 002e 0A94     		str	r4, [sp, #40]
+  64 0030 0024     		movs	r4, #0
+  65 0032 0994     		str	r4, [sp, #36]
+  66 0034 BCF84440 		ldrh	r4, [ip, #68]
+  67 0038 0894     		str	r4, [sp, #32]
+  68 003a 0795     		str	r5, [sp, #28]
+  69 003c 0696     		str	r6, [sp, #24]
+  70 003e BCF83640 		ldrh	r4, [ip, #54]
+  71 0042 0594     		str	r4, [sp, #20]
+  72 0044 BCF83840 		ldrh	r4, [ip, #56]
+  73 0048 0494     		str	r4, [sp, #16]
+  74 004a BCF83C40 		ldrh	r4, [ip, #60]
+  75 004e 0394     		str	r4, [sp, #12]
+  76 0050 BCF83E40 		ldrh	r4, [ip, #62]
+  77 0054 0294     		str	r4, [sp, #8]
+  78 0056 BCF83040 		ldrh	r4, [ip, #48]
+  79 005a 0194     		str	r4, [sp, #4]
+  80 005c BCF83240 		ldrh	r4, [ip, #50]
+  81 0060 0094     		str	r4, [sp]
+  82 0062 FFF7FEFF 		bl	local_avepool_q7_HWC
+  83              	.L6:
+  84 0066 0020     		movs	r0, #0
+  85 0068 0CB0     		add	sp, sp, #48
+  86              		@ sp needed
+  87 006a 70BD     		pop	{r4, r5, r6, pc}
+  88              	.L7:
+  89 006c 0125     		movs	r5, #1
+  90 006e 2E46     		mov	r6, r5
+  91 0070 D1E7     		b	.L4
+  92              	.L9:
+  93 0072 4168     		ldr	r1, [r0, #4]
+  94 0074 8B88     		ldrh	r3, [r1, #4]
+  95 0076 0A88     		ldrh	r2, [r1]
+  96 0078 4988     		ldrh	r1, [r1, #2]
+  97 007a 0068     		ldr	r0, [r0]
+  98 007c 2468     		ldr	r4, [r4]
+  99 007e 0A94     		str	r4, [sp, #40]
+ 100 0080 0024     		movs	r4, #0
+ 101 0082 0994     		str	r4, [sp, #36]
+ 102 0084 BCF84440 		ldrh	r4, [ip, #68]
+ 103 0088 0894     		str	r4, [sp, #32]
+ 104 008a 0795     		str	r5, [sp, #28]
+ 105 008c 0696     		str	r6, [sp, #24]
+ 106 008e BCF83640 		ldrh	r4, [ip, #54]
+ 107 0092 0594     		str	r4, [sp, #20]
+ 108 0094 BCF83840 		ldrh	r4, [ip, #56]
+ 109 0098 0494     		str	r4, [sp, #16]
+ 110 009a BCF83C40 		ldrh	r4, [ip, #60]
+ 111 009e 0394     		str	r4, [sp, #12]
+ 112 00a0 BCF83E40 		ldrh	r4, [ip, #62]
+ 113 00a4 0294     		str	r4, [sp, #8]
+ 114 00a6 BCF83040 		ldrh	r4, [ip, #48]
+ 115 00aa 0194     		str	r4, [sp, #4]
+ 116 00ac BCF83240 		ldrh	r4, [ip, #50]
+ 117 00b0 0094     		str	r4, [sp]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccSEXjLh.s 			page 3
+
+
+ 118 00b2 FFF7FEFF 		bl	local_avepool_q15_HWC
+ 119 00b6 D6E7     		b	.L6
+ 121              		.section	.text.AvgPool,"ax",%progbits
+ 122              		.align	1
+ 123              		.global	AvgPool
+ 124              		.syntax unified
+ 125              		.thumb
+ 126              		.thumb_func
+ 128              	AvgPool:
+ 129              		@ args = 4, pretend = 0, frame = 16
+ 130              		@ frame_needed = 0, uses_anonymous_args = 0
+ 131 0000 00B5     		push	{lr}
+ 132 0002 87B0     		sub	sp, sp, #28
+ 133 0004 0DF1100C 		add	ip, sp, #16
+ 134 0008 8CE80300 		stm	ip, {r0, r1}
+ 135 000c 02A9     		add	r1, sp, #8
+ 136 000e 81E80C00 		stm	r1, {r2, r3}
+ 137 0012 9DF82030 		ldrb	r3, [sp, #32]	@ zero_extendqisi2
+ 138 0016 0093     		str	r3, [sp]
+ 139 0018 91E80C00 		ldm	r1, {r2, r3}
+ 140 001c 9CE80300 		ldm	ip, {r0, r1}
+ 141 0020 FFF7FEFF 		bl	MaxPool
+ 142 0024 0346     		mov	r3, r0
+ 143 0026 28B1     		cbz	r0, .L10
+ 144 0028 1522     		movs	r2, #21
+ 145 002a 0277     		strb	r2, [r0, #28]
+ 146 002c 034A     		ldr	r2, .L13
+ 147 002e 4260     		str	r2, [r0, #4]
+ 148 0030 034A     		ldr	r2, .L13+4
+ 149 0032 8260     		str	r2, [r0, #8]
+ 150              	.L10:
+ 151 0034 1846     		mov	r0, r3
+ 152 0036 07B0     		add	sp, sp, #28
+ 153              		@ sp needed
+ 154 0038 5DF804FB 		ldr	pc, [sp], #4
+ 155              	.L14:
+ 156              		.align	2
+ 157              	.L13:
+ 158 003c 00000000 		.word	avgpool_run
+ 159 0040 00000000 		.word	avgpool_build
+ 161              		.section	.text.avgpool_s,"ax",%progbits
+ 162              		.align	1
+ 163              		.global	avgpool_s
+ 164              		.syntax unified
+ 165              		.thumb
+ 166              		.thumb_func
+ 168              	avgpool_s:
+ 169              		@ args = 0, pretend = 0, frame = 32
+ 170              		@ frame_needed = 0, uses_anonymous_args = 0
+ 171 0000 70B5     		push	{r4, r5, r6, lr}
+ 172 0002 8AB0     		sub	sp, sp, #40
+ 173 0004 0446     		mov	r4, r0
+ 174 0006 90F90C30 		ldrsb	r3, [r0, #12]
+ 175 000a 012B     		cmp	r3, #1
+ 176 000c 1FD0     		beq	.L20
+ 177 000e 06AD     		add	r5, sp, #24
+ 178 0010 90F90920 		ldrsb	r2, [r0, #9]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccSEXjLh.s 			page 4
+
+
+ 179 0014 90F90810 		ldrsb	r1, [r0, #8]
+ 180 0018 2846     		mov	r0, r5
+ 181 001a FFF7FEFF 		bl	kernel
+ 182 001e 08AE     		add	r6, sp, #32
+ 183 0020 94F90B20 		ldrsb	r2, [r4, #11]
+ 184 0024 94F90A10 		ldrsb	r1, [r4, #10]
+ 185 0028 3046     		mov	r0, r6
+ 186 002a FFF7FEFF 		bl	stride
+ 187 002e 2379     		ldrb	r3, [r4, #4]	@ zero_extendqisi2
+ 188 0030 0093     		str	r3, [sp]
+ 189 0032 96E80C00 		ldm	r6, {r2, r3}
+ 190 0036 95E80300 		ldm	r5, {r0, r1}
+ 191 003a FFF7FEFF 		bl	AvgPool
+ 192              	.L17:
+ 193 003e 20B1     		cbz	r0, .L15
+ 194 0040 8461     		str	r4, [r0, #24]
+ 195 0042 B4F90630 		ldrsh	r3, [r4, #6]
+ 196 0046 A0F84430 		strh	r3, [r0, #68]	@ movhi
+ 197              	.L15:
+ 198 004a 0AB0     		add	sp, sp, #40
+ 199              		@ sp needed
+ 200 004c 70BD     		pop	{r4, r5, r6, pc}
+ 201              	.L20:
+ 202 004e 02AD     		add	r5, sp, #8
+ 203 0050 90F90820 		ldrsb	r2, [r0, #8]
+ 204 0054 0121     		movs	r1, #1
+ 205 0056 2846     		mov	r0, r5
+ 206 0058 FFF7FEFF 		bl	kernel
+ 207 005c 04AE     		add	r6, sp, #16
+ 208 005e 94F90A20 		ldrsb	r2, [r4, #10]
+ 209 0062 0121     		movs	r1, #1
+ 210 0064 3046     		mov	r0, r6
+ 211 0066 FFF7FEFF 		bl	stride
+ 212 006a 2379     		ldrb	r3, [r4, #4]	@ zero_extendqisi2
+ 213 006c 0093     		str	r3, [sp]
+ 214 006e 96E80C00 		ldm	r6, {r2, r3}
+ 215 0072 95E80300 		ldm	r5, {r0, r1}
+ 216 0076 FFF7FEFF 		bl	AvgPool
+ 217 007a E0E7     		b	.L17
+ 219              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccSEXjLh.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 nnom_avgpool.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccSEXjLh.s:16     .text.avgpool_build:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccSEXjLh.s:22     .text.avgpool_build:00000000 avgpool_build
+C:\Users\ihavenoK\AppData\Local\Temp\ccSEXjLh.s:31     .text.avgpool_run:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccSEXjLh.s:37     .text.avgpool_run:00000000 avgpool_run
+C:\Users\ihavenoK\AppData\Local\Temp\ccSEXjLh.s:122    .text.AvgPool:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccSEXjLh.s:128    .text.AvgPool:00000000 AvgPool
+C:\Users\ihavenoK\AppData\Local\Temp\ccSEXjLh.s:158    .text.AvgPool:0000003c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccSEXjLh.s:162    .text.avgpool_s:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccSEXjLh.s:168    .text.avgpool_s:00000000 avgpool_s
+
+UNDEFINED SYMBOLS
+maxpool_build
+local_avepool_q7_HWC
+local_avepool_q15_HWC
+MaxPool
+kernel
+stride

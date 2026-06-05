@@ -1,0 +1,215 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccy1BFey.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"nnom_cropping.c"
+  14              		.text
+  15              		.section	.text.cropping_build,"ax",%progbits
+  16              		.align	1
+  17              		.global	cropping_build
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	cropping_build:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 70B5     		push	{r4, r5, r6, lr}
+  26 0002 0446     		mov	r4, r0
+  27 0004 036A     		ldr	r3, [r0, #32]
+  28 0006 1A68     		ldr	r2, [r3]
+  29 0008 D268     		ldr	r2, [r2, #12]
+  30 000a DA60     		str	r2, [r3, #12]
+  31 000c 036A     		ldr	r3, [r0, #32]
+  32 000e D868     		ldr	r0, [r3, #12]
+  33 0010 467C     		ldrb	r6, [r0, #17]	@ zero_extendqisi2
+  34 0012 FFF7FEFF 		bl	tensor_get_num_channel
+  35 0016 0246     		mov	r2, r0
+  36 0018 656A     		ldr	r5, [r4, #36]
+  37 001a 3146     		mov	r1, r6
+  38 001c 0020     		movs	r0, #0
+  39 001e FFF7FEFF 		bl	new_tensor
+  40 0022 E860     		str	r0, [r5, #12]
+  41 0024 226A     		ldr	r2, [r4, #32]
+  42 0026 636A     		ldr	r3, [r4, #36]
+  43 0028 D168     		ldr	r1, [r2, #12]
+  44 002a D868     		ldr	r0, [r3, #12]
+  45 002c FFF7FEFF 		bl	tensor_cpy_attr
+  46 0030 236A     		ldr	r3, [r4, #32]
+  47 0032 DB68     		ldr	r3, [r3, #12]
+  48 0034 5A68     		ldr	r2, [r3, #4]
+  49 0036 5188     		ldrh	r1, [r2, #2]
+  50 0038 A38E     		ldrh	r3, [r4, #52]
+  51 003a E08E     		ldrh	r0, [r4, #54]
+  52 003c 0344     		add	r3, r3, r0
+  53 003e 9942     		cmp	r1, r3
+  54 0040 21DD     		ble	.L3
+  55 0042 1388     		ldrh	r3, [r2]
+  56 0044 228E     		ldrh	r2, [r4, #48]
+  57 0046 618E     		ldrh	r1, [r4, #50]
+  58 0048 5018     		adds	r0, r2, r1
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccy1BFey.s 			page 2
+
+
+  59 004a 8342     		cmp	r3, r0
+  60 004c 1EDD     		ble	.L4
+  61 004e 606A     		ldr	r0, [r4, #36]
+  62 0050 C068     		ldr	r0, [r0, #12]
+  63 0052 4068     		ldr	r0, [r0, #4]
+  64 0054 0A44     		add	r2, r2, r1
+  65 0056 9B1A     		subs	r3, r3, r2
+  66 0058 0380     		strh	r3, [r0]	@ movhi
+  67 005a 636A     		ldr	r3, [r4, #36]
+  68 005c DB68     		ldr	r3, [r3, #12]
+  69 005e 5968     		ldr	r1, [r3, #4]
+  70 0060 236A     		ldr	r3, [r4, #32]
+  71 0062 DB68     		ldr	r3, [r3, #12]
+  72 0064 5B68     		ldr	r3, [r3, #4]
+  73 0066 A28E     		ldrh	r2, [r4, #52]
+  74 0068 E08E     		ldrh	r0, [r4, #54]
+  75 006a 0244     		add	r2, r2, r0
+  76 006c 5B88     		ldrh	r3, [r3, #2]
+  77 006e 9B1A     		subs	r3, r3, r2
+  78 0070 4B80     		strh	r3, [r1, #2]	@ movhi
+  79 0072 636A     		ldr	r3, [r4, #36]
+  80 0074 DB68     		ldr	r3, [r3, #12]
+  81 0076 5B68     		ldr	r3, [r3, #4]
+  82 0078 226A     		ldr	r2, [r4, #32]
+  83 007a D268     		ldr	r2, [r2, #12]
+  84 007c 5268     		ldr	r2, [r2, #4]
+  85 007e 9288     		ldrh	r2, [r2, #4]
+  86 0080 9A80     		strh	r2, [r3, #4]	@ movhi
+  87 0082 0020     		movs	r0, #0
+  88              	.L2:
+  89 0084 70BD     		pop	{r4, r5, r6, pc}
+  90              	.L3:
+  91 0086 4FF0FF30 		mov	r0, #-1
+  92 008a FBE7     		b	.L2
+  93              	.L4:
+  94 008c 4FF0FF30 		mov	r0, #-1
+  95 0090 F8E7     		b	.L2
+  97              		.section	.text.cropping_run,"ax",%progbits
+  98              		.align	1
+  99              		.global	cropping_run
+ 100              		.syntax unified
+ 101              		.thumb
+ 102              		.thumb_func
+ 104              	cropping_run:
+ 105              		@ args = 0, pretend = 0, frame = 0
+ 106              		@ frame_needed = 0, uses_anonymous_args = 0
+ 107 0000 70B5     		push	{r4, r5, r6, lr}
+ 108 0002 88B0     		sub	sp, sp, #32
+ 109 0004 8446     		mov	ip, r0
+ 110 0006 036A     		ldr	r3, [r0, #32]
+ 111 0008 D868     		ldr	r0, [r3, #12]
+ 112 000a 4168     		ldr	r1, [r0, #4]
+ 113 000c DCF82430 		ldr	r3, [ip, #36]
+ 114 0010 DC68     		ldr	r4, [r3, #12]
+ 115 0012 6568     		ldr	r5, [r4, #4]
+ 116 0014 8B88     		ldrh	r3, [r1, #4]
+ 117 0016 0A88     		ldrh	r2, [r1]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccy1BFey.s 			page 3
+
+
+ 118 0018 4988     		ldrh	r1, [r1, #2]
+ 119 001a 0068     		ldr	r0, [r0]
+ 120 001c 2E88     		ldrh	r6, [r5]
+ 121 001e 0696     		str	r6, [sp, #24]
+ 122 0020 6D88     		ldrh	r5, [r5, #2]
+ 123 0022 0595     		str	r5, [sp, #20]
+ 124 0024 2468     		ldr	r4, [r4]
+ 125 0026 0494     		str	r4, [sp, #16]
+ 126 0028 BCF83640 		ldrh	r4, [ip, #54]
+ 127 002c 0394     		str	r4, [sp, #12]
+ 128 002e BCF83440 		ldrh	r4, [ip, #52]
+ 129 0032 0294     		str	r4, [sp, #8]
+ 130 0034 BCF83240 		ldrh	r4, [ip, #50]
+ 131 0038 0194     		str	r4, [sp, #4]
+ 132 003a BCF83040 		ldrh	r4, [ip, #48]
+ 133 003e 0094     		str	r4, [sp]
+ 134 0040 FFF7FEFF 		bl	local_cropping_HWC_q7
+ 135 0044 0020     		movs	r0, #0
+ 136 0046 08B0     		add	sp, sp, #32
+ 137              		@ sp needed
+ 138 0048 70BD     		pop	{r4, r5, r6, pc}
+ 140              		.section	.text.Cropping,"ax",%progbits
+ 141              		.align	1
+ 142              		.global	Cropping
+ 143              		.syntax unified
+ 144              		.thumb
+ 145              		.thumb_func
+ 147              	Cropping:
+ 148              		@ args = 0, pretend = 0, frame = 8
+ 149              		@ frame_needed = 0, uses_anonymous_args = 0
+ 150 0000 00B5     		push	{lr}
+ 151 0002 83B0     		sub	sp, sp, #12
+ 152 0004 CDE90001 		strd	r0, r1, [sp]
+ 153 0008 DDE90001 		ldrd	r0, r1, [sp]
+ 154 000c FFF7FEFF 		bl	ZeroPadding
+ 155 0010 0A22     		movs	r2, #10
+ 156 0012 0277     		strb	r2, [r0, #28]
+ 157 0014 034A     		ldr	r2, .L10
+ 158 0016 4260     		str	r2, [r0, #4]
+ 159 0018 034A     		ldr	r2, .L10+4
+ 160 001a 8260     		str	r2, [r0, #8]
+ 161 001c 03B0     		add	sp, sp, #12
+ 162              		@ sp needed
+ 163 001e 5DF804FB 		ldr	pc, [sp], #4
+ 164              	.L11:
+ 165 0022 00BF     		.align	2
+ 166              	.L10:
+ 167 0024 00000000 		.word	cropping_run
+ 168 0028 00000000 		.word	cropping_build
+ 170              		.section	.text.cropping_s,"ax",%progbits
+ 171              		.align	1
+ 172              		.global	cropping_s
+ 173              		.syntax unified
+ 174              		.thumb
+ 175              		.thumb_func
+ 177              	cropping_s:
+ 178              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccy1BFey.s 			page 4
+
+
+ 179              		@ frame_needed = 0, uses_anonymous_args = 0
+ 180 0000 10B5     		push	{r4, lr}
+ 181 0002 0446     		mov	r4, r0
+ 182 0004 031D     		adds	r3, r0, #4
+ 183 0006 93E80300 		ldm	r3, {r0, r1}
+ 184 000a FFF7FEFF 		bl	Cropping
+ 185 000e 00B1     		cbz	r0, .L12
+ 186 0010 8461     		str	r4, [r0, #24]
+ 187              	.L12:
+ 188 0012 10BD     		pop	{r4, pc}
+ 190              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccy1BFey.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 nnom_cropping.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccy1BFey.s:16     .text.cropping_build:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccy1BFey.s:22     .text.cropping_build:00000000 cropping_build
+C:\Users\ihavenoK\AppData\Local\Temp\ccy1BFey.s:98     .text.cropping_run:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccy1BFey.s:104    .text.cropping_run:00000000 cropping_run
+C:\Users\ihavenoK\AppData\Local\Temp\ccy1BFey.s:141    .text.Cropping:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccy1BFey.s:147    .text.Cropping:00000000 Cropping
+C:\Users\ihavenoK\AppData\Local\Temp\ccy1BFey.s:167    .text.Cropping:00000024 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccy1BFey.s:171    .text.cropping_s:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccy1BFey.s:177    .text.cropping_s:00000000 cropping_s
+
+UNDEFINED SYMBOLS
+tensor_get_num_channel
+new_tensor
+tensor_cpy_attr
+local_cropping_HWC_q7
+ZeroPadding

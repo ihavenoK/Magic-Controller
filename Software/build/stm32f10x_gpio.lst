@@ -1,0 +1,577 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f10x_gpio.c"
+  14              		.text
+  15              		.section	.text.GPIO_DeInit,"ax",%progbits
+  16              		.align	1
+  17              		.global	GPIO_DeInit
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	GPIO_DeInit:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 08B5     		push	{r3, lr}
+  26 0002 2B4B     		ldr	r3, .L17
+  27 0004 9842     		cmp	r0, r3
+  28 0006 12D0     		beq	.L10
+  29 0008 2A4B     		ldr	r3, .L17+4
+  30 000a 9842     		cmp	r0, r3
+  31 000c 18D0     		beq	.L11
+  32 000e 2A4B     		ldr	r3, .L17+8
+  33 0010 9842     		cmp	r0, r3
+  34 0012 1ED0     		beq	.L12
+  35 0014 294B     		ldr	r3, .L17+12
+  36 0016 9842     		cmp	r0, r3
+  37 0018 24D0     		beq	.L13
+  38 001a 294B     		ldr	r3, .L17+16
+  39 001c 9842     		cmp	r0, r3
+  40 001e 2AD0     		beq	.L14
+  41 0020 284B     		ldr	r3, .L17+20
+  42 0022 9842     		cmp	r0, r3
+  43 0024 30D0     		beq	.L15
+  44 0026 284B     		ldr	r3, .L17+24
+  45 0028 9842     		cmp	r0, r3
+  46 002a 36D0     		beq	.L16
+  47              	.L1:
+  48 002c 08BD     		pop	{r3, pc}
+  49              	.L10:
+  50 002e 0121     		movs	r1, #1
+  51 0030 0420     		movs	r0, #4
+  52 0032 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  53 0036 0021     		movs	r1, #0
+  54 0038 0420     		movs	r0, #4
+  55 003a FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  56 003e F5E7     		b	.L1
+  57              	.L11:
+  58 0040 0121     		movs	r1, #1
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s 			page 2
+
+
+  59 0042 0820     		movs	r0, #8
+  60 0044 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  61 0048 0021     		movs	r1, #0
+  62 004a 0820     		movs	r0, #8
+  63 004c FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  64 0050 ECE7     		b	.L1
+  65              	.L12:
+  66 0052 0121     		movs	r1, #1
+  67 0054 1020     		movs	r0, #16
+  68 0056 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  69 005a 0021     		movs	r1, #0
+  70 005c 1020     		movs	r0, #16
+  71 005e FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  72 0062 E3E7     		b	.L1
+  73              	.L13:
+  74 0064 0121     		movs	r1, #1
+  75 0066 2020     		movs	r0, #32
+  76 0068 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  77 006c 0021     		movs	r1, #0
+  78 006e 2020     		movs	r0, #32
+  79 0070 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  80 0074 DAE7     		b	.L1
+  81              	.L14:
+  82 0076 0121     		movs	r1, #1
+  83 0078 4020     		movs	r0, #64
+  84 007a FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  85 007e 0021     		movs	r1, #0
+  86 0080 4020     		movs	r0, #64
+  87 0082 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  88 0086 D1E7     		b	.L1
+  89              	.L15:
+  90 0088 0121     		movs	r1, #1
+  91 008a 8020     		movs	r0, #128
+  92 008c FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  93 0090 0021     		movs	r1, #0
+  94 0092 8020     		movs	r0, #128
+  95 0094 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  96 0098 C8E7     		b	.L1
+  97              	.L16:
+  98 009a 0121     		movs	r1, #1
+  99 009c 4FF48070 		mov	r0, #256
+ 100 00a0 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 101 00a4 0021     		movs	r1, #0
+ 102 00a6 4FF48070 		mov	r0, #256
+ 103 00aa FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 104 00ae BDE7     		b	.L1
+ 105              	.L18:
+ 106              		.align	2
+ 107              	.L17:
+ 108 00b0 00080140 		.word	1073809408
+ 109 00b4 000C0140 		.word	1073810432
+ 110 00b8 00100140 		.word	1073811456
+ 111 00bc 00140140 		.word	1073812480
+ 112 00c0 00180140 		.word	1073813504
+ 113 00c4 001C0140 		.word	1073814528
+ 114 00c8 00200140 		.word	1073815552
+ 116              		.section	.text.GPIO_AFIODeInit,"ax",%progbits
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s 			page 3
+
+
+ 117              		.align	1
+ 118              		.global	GPIO_AFIODeInit
+ 119              		.syntax unified
+ 120              		.thumb
+ 121              		.thumb_func
+ 123              	GPIO_AFIODeInit:
+ 124              		@ args = 0, pretend = 0, frame = 0
+ 125              		@ frame_needed = 0, uses_anonymous_args = 0
+ 126 0000 08B5     		push	{r3, lr}
+ 127 0002 0121     		movs	r1, #1
+ 128 0004 0846     		mov	r0, r1
+ 129 0006 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 130 000a 0021     		movs	r1, #0
+ 131 000c 0120     		movs	r0, #1
+ 132 000e FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+ 133 0012 08BD     		pop	{r3, pc}
+ 135              		.section	.text.GPIO_Init,"ax",%progbits
+ 136              		.align	1
+ 137              		.global	GPIO_Init
+ 138              		.syntax unified
+ 139              		.thumb
+ 140              		.thumb_func
+ 142              	GPIO_Init:
+ 143              		@ args = 0, pretend = 0, frame = 0
+ 144              		@ frame_needed = 0, uses_anonymous_args = 0
+ 145 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 146 0004 CB78     		ldrb	r3, [r1, #3]	@ zero_extendqisi2
+ 147 0006 03F00F0E 		and	lr, r3, #15
+ 148 000a 13F0100F 		tst	r3, #16
+ 149 000e 1CBF     		itt	ne
+ 150 0010 8B78     		ldrbne	r3, [r1, #2]	@ zero_extendqisi2
+ 151 0012 4EEA030E 		orrne	lr, lr, r3
+ 152 0016 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
+ 153 0018 F3B1     		cbz	r3, .L23
+ 154 001a 0568     		ldr	r5, [r0]
+ 155 001c 0023     		movs	r3, #0
+ 156 001e 0126     		movs	r6, #1
+ 157 0020 0F27     		movs	r7, #15
+ 158 0022 03E0     		b	.L26
+ 159              	.L35:
+ 160 0024 4461     		str	r4, [r0, #20]
+ 161              	.L24:
+ 162 0026 0133     		adds	r3, r3, #1
+ 163 0028 082B     		cmp	r3, #8
+ 164 002a 14D0     		beq	.L34
+ 165              	.L26:
+ 166 002c 06FA03F4 		lsl	r4, r6, r3
+ 167 0030 0A88     		ldrh	r2, [r1]
+ 168 0032 34EA0202 		bics	r2, r4, r2
+ 169 0036 F6D1     		bne	.L24
+ 170 0038 9A00     		lsls	r2, r3, #2
+ 171 003a 07FA02FC 		lsl	ip, r7, r2
+ 172 003e 25EA0C05 		bic	r5, r5, ip
+ 173 0042 0EFA02F2 		lsl	r2, lr, r2
+ 174 0046 1543     		orrs	r5, r5, r2
+ 175 0048 CA78     		ldrb	r2, [r1, #3]	@ zero_extendqisi2
+ 176 004a 282A     		cmp	r2, #40
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s 			page 4
+
+
+ 177 004c EAD0     		beq	.L35
+ 178 004e 482A     		cmp	r2, #72
+ 179 0050 08BF     		it	eq
+ 180 0052 0461     		streq	r4, [r0, #16]
+ 181 0054 E7E7     		b	.L24
+ 182              	.L34:
+ 183 0056 0560     		str	r5, [r0]
+ 184              	.L23:
+ 185 0058 0B88     		ldrh	r3, [r1]
+ 186 005a FF2B     		cmp	r3, #255
+ 187 005c 25D9     		bls	.L21
+ 188 005e D0F80480 		ldr	r8, [r0, #4]
+ 189 0062 0023     		movs	r3, #0
+ 190 0064 0126     		movs	r6, #1
+ 191 0066 0F27     		movs	r7, #15
+ 192 0068 02E0     		b	.L30
+ 193              	.L28:
+ 194 006a 0133     		adds	r3, r3, #1
+ 195 006c 082B     		cmp	r3, #8
+ 196 006e 1AD0     		beq	.L36
+ 197              	.L30:
+ 198 0070 03F10802 		add	r2, r3, #8
+ 199 0074 06FA02F2 		lsl	r2, r6, r2
+ 200 0078 B1F800C0 		ldrh	ip, [r1]
+ 201 007c 32EA0C0C 		bics	ip, r2, ip
+ 202 0080 F3D1     		bne	.L28
+ 203 0082 9C00     		lsls	r4, r3, #2
+ 204 0084 07FA04F5 		lsl	r5, r7, r4
+ 205 0088 28EA0505 		bic	r5, r8, r5
+ 206 008c 0EFA04F4 		lsl	r4, lr, r4
+ 207 0090 44EA0508 		orr	r8, r4, r5
+ 208 0094 CC78     		ldrb	r4, [r1, #3]	@ zero_extendqisi2
+ 209 0096 282C     		cmp	r4, #40
+ 210 0098 08BF     		it	eq
+ 211 009a 4261     		streq	r2, [r0, #20]
+ 212 009c CC78     		ldrb	r4, [r1, #3]	@ zero_extendqisi2
+ 213 009e 482C     		cmp	r4, #72
+ 214 00a0 08BF     		it	eq
+ 215 00a2 0261     		streq	r2, [r0, #16]
+ 216 00a4 E1E7     		b	.L28
+ 217              	.L36:
+ 218 00a6 C0F80480 		str	r8, [r0, #4]
+ 219              	.L21:
+ 220 00aa BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 222              		.section	.text.GPIO_StructInit,"ax",%progbits
+ 223              		.align	1
+ 224              		.global	GPIO_StructInit
+ 225              		.syntax unified
+ 226              		.thumb
+ 227              		.thumb_func
+ 229              	GPIO_StructInit:
+ 230              		@ args = 0, pretend = 0, frame = 0
+ 231              		@ frame_needed = 0, uses_anonymous_args = 0
+ 232              		@ link register save eliminated.
+ 233 0000 4FF6FF73 		movw	r3, #65535
+ 234 0004 0380     		strh	r3, [r0]	@ movhi
+ 235 0006 0223     		movs	r3, #2
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s 			page 5
+
+
+ 236 0008 8370     		strb	r3, [r0, #2]
+ 237 000a 0423     		movs	r3, #4
+ 238 000c C370     		strb	r3, [r0, #3]
+ 239 000e 7047     		bx	lr
+ 241              		.section	.text.GPIO_ReadInputDataBit,"ax",%progbits
+ 242              		.align	1
+ 243              		.global	GPIO_ReadInputDataBit
+ 244              		.syntax unified
+ 245              		.thumb
+ 246              		.thumb_func
+ 248              	GPIO_ReadInputDataBit:
+ 249              		@ args = 0, pretend = 0, frame = 0
+ 250              		@ frame_needed = 0, uses_anonymous_args = 0
+ 251              		@ link register save eliminated.
+ 252 0000 8068     		ldr	r0, [r0, #8]
+ 253 0002 0840     		ands	r0, r0, r1
+ 254 0004 0038     		subs	r0, r0, #0
+ 255 0006 18BF     		it	ne
+ 256 0008 0120     		movne	r0, #1
+ 257 000a 7047     		bx	lr
+ 259              		.section	.text.GPIO_ReadInputData,"ax",%progbits
+ 260              		.align	1
+ 261              		.global	GPIO_ReadInputData
+ 262              		.syntax unified
+ 263              		.thumb
+ 264              		.thumb_func
+ 266              	GPIO_ReadInputData:
+ 267              		@ args = 0, pretend = 0, frame = 0
+ 268              		@ frame_needed = 0, uses_anonymous_args = 0
+ 269              		@ link register save eliminated.
+ 270 0000 8068     		ldr	r0, [r0, #8]
+ 271 0002 80B2     		uxth	r0, r0
+ 272 0004 7047     		bx	lr
+ 274              		.section	.text.GPIO_ReadOutputDataBit,"ax",%progbits
+ 275              		.align	1
+ 276              		.global	GPIO_ReadOutputDataBit
+ 277              		.syntax unified
+ 278              		.thumb
+ 279              		.thumb_func
+ 281              	GPIO_ReadOutputDataBit:
+ 282              		@ args = 0, pretend = 0, frame = 0
+ 283              		@ frame_needed = 0, uses_anonymous_args = 0
+ 284              		@ link register save eliminated.
+ 285 0000 C068     		ldr	r0, [r0, #12]
+ 286 0002 0840     		ands	r0, r0, r1
+ 287 0004 0038     		subs	r0, r0, #0
+ 288 0006 18BF     		it	ne
+ 289 0008 0120     		movne	r0, #1
+ 290 000a 7047     		bx	lr
+ 292              		.section	.text.GPIO_ReadOutputData,"ax",%progbits
+ 293              		.align	1
+ 294              		.global	GPIO_ReadOutputData
+ 295              		.syntax unified
+ 296              		.thumb
+ 297              		.thumb_func
+ 299              	GPIO_ReadOutputData:
+ 300              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s 			page 6
+
+
+ 301              		@ frame_needed = 0, uses_anonymous_args = 0
+ 302              		@ link register save eliminated.
+ 303 0000 C068     		ldr	r0, [r0, #12]
+ 304 0002 80B2     		uxth	r0, r0
+ 305 0004 7047     		bx	lr
+ 307              		.section	.text.GPIO_SetBits,"ax",%progbits
+ 308              		.align	1
+ 309              		.global	GPIO_SetBits
+ 310              		.syntax unified
+ 311              		.thumb
+ 312              		.thumb_func
+ 314              	GPIO_SetBits:
+ 315              		@ args = 0, pretend = 0, frame = 0
+ 316              		@ frame_needed = 0, uses_anonymous_args = 0
+ 317              		@ link register save eliminated.
+ 318 0000 0161     		str	r1, [r0, #16]
+ 319 0002 7047     		bx	lr
+ 321              		.section	.text.GPIO_ResetBits,"ax",%progbits
+ 322              		.align	1
+ 323              		.global	GPIO_ResetBits
+ 324              		.syntax unified
+ 325              		.thumb
+ 326              		.thumb_func
+ 328              	GPIO_ResetBits:
+ 329              		@ args = 0, pretend = 0, frame = 0
+ 330              		@ frame_needed = 0, uses_anonymous_args = 0
+ 331              		@ link register save eliminated.
+ 332 0000 4161     		str	r1, [r0, #20]
+ 333 0002 7047     		bx	lr
+ 335              		.section	.text.GPIO_WriteBit,"ax",%progbits
+ 336              		.align	1
+ 337              		.global	GPIO_WriteBit
+ 338              		.syntax unified
+ 339              		.thumb
+ 340              		.thumb_func
+ 342              	GPIO_WriteBit:
+ 343              		@ args = 0, pretend = 0, frame = 0
+ 344              		@ frame_needed = 0, uses_anonymous_args = 0
+ 345              		@ link register save eliminated.
+ 346 0000 0AB1     		cbz	r2, .L45
+ 347 0002 0161     		str	r1, [r0, #16]
+ 348 0004 7047     		bx	lr
+ 349              	.L45:
+ 350 0006 4161     		str	r1, [r0, #20]
+ 351 0008 7047     		bx	lr
+ 353              		.section	.text.GPIO_Write,"ax",%progbits
+ 354              		.align	1
+ 355              		.global	GPIO_Write
+ 356              		.syntax unified
+ 357              		.thumb
+ 358              		.thumb_func
+ 360              	GPIO_Write:
+ 361              		@ args = 0, pretend = 0, frame = 0
+ 362              		@ frame_needed = 0, uses_anonymous_args = 0
+ 363              		@ link register save eliminated.
+ 364 0000 C160     		str	r1, [r0, #12]
+ 365 0002 7047     		bx	lr
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s 			page 7
+
+
+ 367              		.section	.text.GPIO_PinLockConfig,"ax",%progbits
+ 368              		.align	1
+ 369              		.global	GPIO_PinLockConfig
+ 370              		.syntax unified
+ 371              		.thumb
+ 372              		.thumb_func
+ 374              	GPIO_PinLockConfig:
+ 375              		@ args = 0, pretend = 0, frame = 0
+ 376              		@ frame_needed = 0, uses_anonymous_args = 0
+ 377              		@ link register save eliminated.
+ 378 0000 41F48033 		orr	r3, r1, #65536
+ 379 0004 8361     		str	r3, [r0, #24]
+ 380 0006 8161     		str	r1, [r0, #24]
+ 381 0008 8361     		str	r3, [r0, #24]
+ 382 000a 8369     		ldr	r3, [r0, #24]
+ 383 000c 8369     		ldr	r3, [r0, #24]
+ 384 000e 7047     		bx	lr
+ 386              		.section	.text.GPIO_EventOutputConfig,"ax",%progbits
+ 387              		.align	1
+ 388              		.global	GPIO_EventOutputConfig
+ 389              		.syntax unified
+ 390              		.thumb
+ 391              		.thumb_func
+ 393              	GPIO_EventOutputConfig:
+ 394              		@ args = 0, pretend = 0, frame = 0
+ 395              		@ frame_needed = 0, uses_anonymous_args = 0
+ 396              		@ link register save eliminated.
+ 397 0000 054A     		ldr	r2, .L50
+ 398 0002 1368     		ldr	r3, [r2]
+ 399 0004 23F07F03 		bic	r3, r3, #127
+ 400 0008 1B04     		lsls	r3, r3, #16
+ 401 000a 1B0C     		lsrs	r3, r3, #16
+ 402 000c 0B43     		orrs	r3, r3, r1
+ 403 000e 43EA0013 		orr	r3, r3, r0, lsl #4
+ 404 0012 1360     		str	r3, [r2]
+ 405 0014 7047     		bx	lr
+ 406              	.L51:
+ 407 0016 00BF     		.align	2
+ 408              	.L50:
+ 409 0018 00000140 		.word	1073807360
+ 411              		.section	.text.GPIO_EventOutputCmd,"ax",%progbits
+ 412              		.align	1
+ 413              		.global	GPIO_EventOutputCmd
+ 414              		.syntax unified
+ 415              		.thumb
+ 416              		.thumb_func
+ 418              	GPIO_EventOutputCmd:
+ 419              		@ args = 0, pretend = 0, frame = 0
+ 420              		@ frame_needed = 0, uses_anonymous_args = 0
+ 421              		@ link register save eliminated.
+ 422 0000 014B     		ldr	r3, .L53
+ 423 0002 D861     		str	r0, [r3, #28]
+ 424 0004 7047     		bx	lr
+ 425              	.L54:
+ 426 0006 00BF     		.align	2
+ 427              	.L53:
+ 428 0008 00002042 		.word	1109393408
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s 			page 8
+
+
+ 430              		.section	.text.GPIO_PinRemapConfig,"ax",%progbits
+ 431              		.align	1
+ 432              		.global	GPIO_PinRemapConfig
+ 433              		.syntax unified
+ 434              		.thumb
+ 435              		.thumb_func
+ 437              	GPIO_PinRemapConfig:
+ 438              		@ args = 0, pretend = 0, frame = 0
+ 439              		@ frame_needed = 0, uses_anonymous_args = 0
+ 440              		@ link register save eliminated.
+ 441 0000 30B4     		push	{r4, r5}
+ 442 0002 0028     		cmp	r0, #0
+ 443 0004 194B     		ldr	r3, .L66
+ 444 0006 B4BF     		ite	lt
+ 445 0008 DB69     		ldrlt	r3, [r3, #28]
+ 446 000a 5B68     		ldrge	r3, [r3, #4]
+ 447 000c 82B2     		uxth	r2, r0
+ 448 000e 00F4401C 		and	ip, r0, #3145728
+ 449 0012 BCF5401F 		cmp	ip, #3145728
+ 450 0016 0BD0     		beq	.L65
+ 451 0018 10F4801F 		tst	r0, #1048576
+ 452 001c 1BD0     		beq	.L60
+ 453 001e C0F30345 		ubfx	r5, r0, #16, #4
+ 454 0022 0324     		movs	r4, #3
+ 455 0024 AC40     		lsls	r4, r4, r5
+ 456 0026 23EA0403 		bic	r3, r3, r4
+ 457 002a 43F07063 		orr	r3, r3, #251658240
+ 458 002e 06E0     		b	.L59
+ 459              	.L65:
+ 460 0030 23F07063 		bic	r3, r3, #251658240
+ 461 0034 0D4D     		ldr	r5, .L66
+ 462 0036 6C68     		ldr	r4, [r5, #4]
+ 463 0038 24F07064 		bic	r4, r4, #251658240
+ 464 003c 6C60     		str	r4, [r5, #4]
+ 465              	.L59:
+ 466 003e 19B1     		cbz	r1, .L61
+ 467 0040 410D     		lsrs	r1, r0, #21
+ 468 0042 0901     		lsls	r1, r1, #4
+ 469 0044 8A40     		lsls	r2, r2, r1
+ 470 0046 1343     		orrs	r3, r3, r2
+ 471              	.L61:
+ 472 0048 0028     		cmp	r0, #0
+ 473 004a 084A     		ldr	r2, .L66
+ 474 004c B4BF     		ite	lt
+ 475 004e D361     		strlt	r3, [r2, #28]
+ 476 0050 5360     		strge	r3, [r2, #4]
+ 477 0052 30BC     		pop	{r4, r5}
+ 478 0054 7047     		bx	lr
+ 479              	.L60:
+ 480 0056 4FEA505C 		lsr	ip, r0, #21
+ 481 005a 4FEA0C1C 		lsl	ip, ip, #4
+ 482 005e 02FA0CFC 		lsl	ip, r2, ip
+ 483 0062 23EA0C03 		bic	r3, r3, ip
+ 484 0066 43F07063 		orr	r3, r3, #251658240
+ 485 006a E8E7     		b	.L59
+ 486              	.L67:
+ 487              		.align	2
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s 			page 9
+
+
+ 488              	.L66:
+ 489 006c 00000140 		.word	1073807360
+ 491              		.section	.text.GPIO_EXTILineConfig,"ax",%progbits
+ 492              		.align	1
+ 493              		.global	GPIO_EXTILineConfig
+ 494              		.syntax unified
+ 495              		.thumb
+ 496              		.thumb_func
+ 498              	GPIO_EXTILineConfig:
+ 499              		@ args = 0, pretend = 0, frame = 0
+ 500              		@ frame_needed = 0, uses_anonymous_args = 0
+ 501              		@ link register save eliminated.
+ 502 0000 01F00303 		and	r3, r1, #3
+ 503 0004 9B00     		lsls	r3, r3, #2
+ 504 0006 01F0FC01 		and	r1, r1, #252
+ 505 000a 01F18041 		add	r1, r1, #1073741824
+ 506 000e 01F58031 		add	r1, r1, #65536
+ 507 0012 8A68     		ldr	r2, [r1, #8]
+ 508 0014 4FF00F0C 		mov	ip, #15
+ 509 0018 0CFA03FC 		lsl	ip, ip, r3
+ 510 001c 22EA0C02 		bic	r2, r2, ip
+ 511 0020 8A60     		str	r2, [r1, #8]
+ 512 0022 8A68     		ldr	r2, [r1, #8]
+ 513 0024 9840     		lsls	r0, r0, r3
+ 514 0026 1043     		orrs	r0, r0, r2
+ 515 0028 8860     		str	r0, [r1, #8]
+ 516 002a 7047     		bx	lr
+ 518              		.section	.text.GPIO_ETH_MediaInterfaceConfig,"ax",%progbits
+ 519              		.align	1
+ 520              		.global	GPIO_ETH_MediaInterfaceConfig
+ 521              		.syntax unified
+ 522              		.thumb
+ 523              		.thumb_func
+ 525              	GPIO_ETH_MediaInterfaceConfig:
+ 526              		@ args = 0, pretend = 0, frame = 0
+ 527              		@ frame_needed = 0, uses_anonymous_args = 0
+ 528              		@ link register save eliminated.
+ 529 0000 014B     		ldr	r3, .L70
+ 530 0002 C3F8DC00 		str	r0, [r3, #220]
+ 531 0006 7047     		bx	lr
+ 532              	.L71:
+ 533              		.align	2
+ 534              	.L70:
+ 535 0008 00002042 		.word	1109393408
+ 537              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f10x_gpio.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:16     .text.GPIO_DeInit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:22     .text.GPIO_DeInit:00000000 GPIO_DeInit
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:108    .text.GPIO_DeInit:000000b0 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:117    .text.GPIO_AFIODeInit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:123    .text.GPIO_AFIODeInit:00000000 GPIO_AFIODeInit
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:136    .text.GPIO_Init:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:142    .text.GPIO_Init:00000000 GPIO_Init
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:223    .text.GPIO_StructInit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:229    .text.GPIO_StructInit:00000000 GPIO_StructInit
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:242    .text.GPIO_ReadInputDataBit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:248    .text.GPIO_ReadInputDataBit:00000000 GPIO_ReadInputDataBit
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:260    .text.GPIO_ReadInputData:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:266    .text.GPIO_ReadInputData:00000000 GPIO_ReadInputData
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:275    .text.GPIO_ReadOutputDataBit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:281    .text.GPIO_ReadOutputDataBit:00000000 GPIO_ReadOutputDataBit
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:293    .text.GPIO_ReadOutputData:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:299    .text.GPIO_ReadOutputData:00000000 GPIO_ReadOutputData
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:308    .text.GPIO_SetBits:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:314    .text.GPIO_SetBits:00000000 GPIO_SetBits
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:322    .text.GPIO_ResetBits:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:328    .text.GPIO_ResetBits:00000000 GPIO_ResetBits
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:336    .text.GPIO_WriteBit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:342    .text.GPIO_WriteBit:00000000 GPIO_WriteBit
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:354    .text.GPIO_Write:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:360    .text.GPIO_Write:00000000 GPIO_Write
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:368    .text.GPIO_PinLockConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:374    .text.GPIO_PinLockConfig:00000000 GPIO_PinLockConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:387    .text.GPIO_EventOutputConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:393    .text.GPIO_EventOutputConfig:00000000 GPIO_EventOutputConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:409    .text.GPIO_EventOutputConfig:00000018 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:412    .text.GPIO_EventOutputCmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:418    .text.GPIO_EventOutputCmd:00000000 GPIO_EventOutputCmd
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:428    .text.GPIO_EventOutputCmd:00000008 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:431    .text.GPIO_PinRemapConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:437    .text.GPIO_PinRemapConfig:00000000 GPIO_PinRemapConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:489    .text.GPIO_PinRemapConfig:0000006c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:492    .text.GPIO_EXTILineConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:498    .text.GPIO_EXTILineConfig:00000000 GPIO_EXTILineConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:519    .text.GPIO_ETH_MediaInterfaceConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:525    .text.GPIO_ETH_MediaInterfaceConfig:00000000 GPIO_ETH_MediaInterfaceConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccRkS9Pe.s:535    .text.GPIO_ETH_MediaInterfaceConfig:00000008 $d
+
+UNDEFINED SYMBOLS
+RCC_APB2PeriphResetCmd

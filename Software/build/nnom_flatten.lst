@@ -1,0 +1,159 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDZ4HRS.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"nnom_flatten.c"
+  14              		.text
+  15              		.section	.text.flatten_run,"ax",%progbits
+  16              		.align	1
+  17              		.global	flatten_run
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	flatten_run:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25              		@ link register save eliminated.
+  26 0000 0020     		movs	r0, #0
+  27 0002 7047     		bx	lr
+  29              		.section	.text.flatten_build,"ax",%progbits
+  30              		.align	1
+  31              		.global	flatten_build
+  32              		.syntax unified
+  33              		.thumb
+  34              		.thumb_func
+  36              	flatten_build:
+  37              		@ args = 0, pretend = 0, frame = 8
+  38              		@ frame_needed = 0, uses_anonymous_args = 0
+  39 0000 70B5     		push	{r4, r5, r6, lr}
+  40 0002 84B0     		sub	sp, sp, #16
+  41 0004 0446     		mov	r4, r0
+  42 0006 036A     		ldr	r3, [r0, #32]
+  43 0008 1A68     		ldr	r2, [r3]
+  44 000a D268     		ldr	r2, [r2, #12]
+  45 000c DA60     		str	r2, [r3, #12]
+  46 000e 036A     		ldr	r3, [r0, #32]
+  47 0010 D868     		ldr	r0, [r3, #12]
+  48 0012 467C     		ldrb	r6, [r0, #17]	@ zero_extendqisi2
+  49 0014 FFF7FEFF 		bl	tensor_get_num_channel
+  50 0018 0246     		mov	r2, r0
+  51 001a 656A     		ldr	r5, [r4, #36]
+  52 001c 3146     		mov	r1, r6
+  53 001e 0020     		movs	r0, #0
+  54 0020 FFF7FEFF 		bl	new_tensor
+  55 0024 E860     		str	r0, [r5, #12]
+  56 0026 236A     		ldr	r3, [r4, #32]
+  57 0028 D868     		ldr	r0, [r3, #12]
+  58 002a FFF7FEFF 		bl	tensor_size
+  59 002e ADF80C00 		strh	r0, [sp, #12]	@ movhi
+  60 0032 236A     		ldr	r3, [r4, #32]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDZ4HRS.s 			page 2
+
+
+  61 0034 DB68     		ldr	r3, [r3, #12]
+  62 0036 DA68     		ldr	r2, [r3, #12]
+  63 0038 9968     		ldr	r1, [r3, #8]
+  64 003a 636A     		ldr	r3, [r4, #36]
+  65 003c D868     		ldr	r0, [r3, #12]
+  66 003e 0823     		movs	r3, #8
+  67 0040 0193     		str	r3, [sp, #4]
+  68 0042 0123     		movs	r3, #1
+  69 0044 0093     		str	r3, [sp]
+  70 0046 03AB     		add	r3, sp, #12
+  71 0048 FFF7FEFF 		bl	tensor_set_attr
+  72 004c 0020     		movs	r0, #0
+  73 004e 04B0     		add	sp, sp, #16
+  74              		@ sp needed
+  75 0050 70BD     		pop	{r4, r5, r6, pc}
+  77              		.section	.text.Flatten,"ax",%progbits
+  78              		.align	1
+  79              		.global	Flatten
+  80              		.syntax unified
+  81              		.thumb
+  82              		.thumb_func
+  84              	Flatten:
+  85              		@ args = 0, pretend = 0, frame = 0
+  86              		@ frame_needed = 0, uses_anonymous_args = 0
+  87 0000 10B5     		push	{r4, lr}
+  88 0002 6820     		movs	r0, #104
+  89 0004 FFF7FEFF 		bl	nnom_mem
+  90 0008 0446     		mov	r4, r0
+  91 000a B0B1     		cbz	r0, .L4
+  92 000c 1A23     		movs	r3, #26
+  93 000e 0377     		strb	r3, [r0, #28]
+  94 0010 0B4B     		ldr	r3, .L7
+  95 0012 4360     		str	r3, [r0, #4]
+  96 0014 0B4B     		ldr	r3, .L7+4
+  97 0016 8360     		str	r3, [r0, #8]
+  98 0018 0123     		movs	r3, #1
+  99 001a 80F84830 		strb	r3, [r0, #72]
+ 100 001e 0023     		movs	r3, #0
+ 101 0020 80F86430 		strb	r3, [r0, #100]
+ 102 0024 00F13001 		add	r1, r0, #48
+ 103 0028 FFF7FEFF 		bl	io_init
+ 104 002c 2062     		str	r0, [r4, #32]
+ 105 002e 04F14C01 		add	r1, r4, #76
+ 106 0032 2046     		mov	r0, r4
+ 107 0034 FFF7FEFF 		bl	io_init
+ 108 0038 6062     		str	r0, [r4, #36]
+ 109              	.L4:
+ 110 003a 2046     		mov	r0, r4
+ 111 003c 10BD     		pop	{r4, pc}
+ 112              	.L8:
+ 113 003e 00BF     		.align	2
+ 114              	.L7:
+ 115 0040 00000000 		.word	flatten_run
+ 116 0044 00000000 		.word	flatten_build
+ 118              		.section	.text.flatten_s,"ax",%progbits
+ 119              		.align	1
+ 120              		.global	flatten_s
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDZ4HRS.s 			page 3
+
+
+ 121              		.syntax unified
+ 122              		.thumb
+ 123              		.thumb_func
+ 125              	flatten_s:
+ 126              		@ args = 0, pretend = 0, frame = 0
+ 127              		@ frame_needed = 0, uses_anonymous_args = 0
+ 128 0000 10B5     		push	{r4, lr}
+ 129 0002 0446     		mov	r4, r0
+ 130 0004 FFF7FEFF 		bl	Flatten
+ 131 0008 00B1     		cbz	r0, .L9
+ 132 000a 8461     		str	r4, [r0, #24]
+ 133              	.L9:
+ 134 000c 10BD     		pop	{r4, pc}
+ 136              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccDZ4HRS.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 nnom_flatten.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccDZ4HRS.s:16     .text.flatten_run:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDZ4HRS.s:22     .text.flatten_run:00000000 flatten_run
+C:\Users\ihavenoK\AppData\Local\Temp\ccDZ4HRS.s:30     .text.flatten_build:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDZ4HRS.s:36     .text.flatten_build:00000000 flatten_build
+C:\Users\ihavenoK\AppData\Local\Temp\ccDZ4HRS.s:78     .text.Flatten:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDZ4HRS.s:84     .text.Flatten:00000000 Flatten
+C:\Users\ihavenoK\AppData\Local\Temp\ccDZ4HRS.s:115    .text.Flatten:00000040 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccDZ4HRS.s:119    .text.flatten_s:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccDZ4HRS.s:125    .text.flatten_s:00000000 flatten_s
+
+UNDEFINED SYMBOLS
+tensor_get_num_channel
+new_tensor
+tensor_size
+tensor_set_attr
+nnom_mem
+io_init

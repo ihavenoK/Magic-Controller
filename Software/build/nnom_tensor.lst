@@ -1,0 +1,566 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"nnom_tensor.c"
+  14              		.text
+  15              		.section	.text.tensor_size,"ax",%progbits
+  16              		.align	1
+  17              		.global	tensor_size
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	tensor_size:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25              		@ link register save eliminated.
+  26 0000 0346     		mov	r3, r0
+  27 0002 70B1     		cbz	r0, .L4
+  28 0004 4168     		ldr	r1, [r0, #4]
+  29 0006 0888     		ldrh	r0, [r1]
+  30 0008 5A7C     		ldrb	r2, [r3, #17]	@ zero_extendqisi2
+  31 000a 012A     		cmp	r2, #1
+  32 000c 0AD9     		bls	.L1
+  33 000e 8B1C     		adds	r3, r1, #2
+  34 0010 01EB4201 		add	r1, r1, r2, lsl #1
+  35              	.L3:
+  36 0014 33F8022B 		ldrh	r2, [r3], #2
+  37 0018 02FB00F0 		mul	r0, r2, r0
+  38 001c 8B42     		cmp	r3, r1
+  39 001e F9D1     		bne	.L3
+  40 0020 7047     		bx	lr
+  41              	.L4:
+  42 0022 0020     		movs	r0, #0
+  43              	.L1:
+  44 0024 7047     		bx	lr
+  46              		.section	.text.tensor_size_byte,"ax",%progbits
+  47              		.align	1
+  48              		.global	tensor_size_byte
+  49              		.syntax unified
+  50              		.thumb
+  51              		.thumb_func
+  53              	tensor_size_byte:
+  54              		@ args = 0, pretend = 0, frame = 0
+  55              		@ frame_needed = 0, uses_anonymous_args = 0
+  56 0000 10B5     		push	{r4, lr}
+  57 0002 0446     		mov	r4, r0
+  58 0004 FFF7FEFF 		bl	tensor_size
+  59 0008 A37C     		ldrb	r3, [r4, #18]	@ zero_extendqisi2
+  60 000a 03FB00F0 		mul	r0, r3, r0
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s 			page 2
+
+
+  61 000e C008     		lsrs	r0, r0, #3
+  62 0010 10BD     		pop	{r4, pc}
+  64              		.section	.text.tensor_get_num_channel,"ax",%progbits
+  65              		.align	1
+  66              		.global	tensor_get_num_channel
+  67              		.syntax unified
+  68              		.thumb
+  69              		.thumb_func
+  71              	tensor_get_num_channel:
+  72              		@ args = 0, pretend = 0, frame = 0
+  73              		@ frame_needed = 0, uses_anonymous_args = 0
+  74              		@ link register save eliminated.
+  75 0000 437C     		ldrb	r3, [r0, #17]	@ zero_extendqisi2
+  76 0002 03F10043 		add	r3, r3, #-2147483648
+  77 0006 013B     		subs	r3, r3, #1
+  78 0008 4268     		ldr	r2, [r0, #4]
+  79 000a 32F81300 		ldrh	r0, [r2, r3, lsl #1]
+  80 000e 7047     		bx	lr
+  82              		.section	.rodata.new_tensor.str1.4,"aMS",%progbits,1
+  83              		.align	2
+  84              	.LC0:
+  85 0000 4552524F 		.ascii	"ERROR: tensor type not specified\000"
+  85      523A2074 
+  85      656E736F 
+  85      72207479 
+  85      7065206E 
+  86              		.section	.text.new_tensor,"ax",%progbits
+  87              		.align	1
+  88              		.global	new_tensor
+  89              		.syntax unified
+  90              		.thumb
+  91              		.thumb_func
+  93              	new_tensor:
+  94              		@ args = 0, pretend = 0, frame = 0
+  95              		@ frame_needed = 0, uses_anonymous_args = 0
+  96 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+  97 0004 0546     		mov	r5, r0
+  98 0006 8846     		mov	r8, r1
+  99 0008 1646     		mov	r6, r2
+ 100 000a 0128     		cmp	r0, #1
+ 101 000c 01D0     		beq	.L10
+ 102 000e 0126     		movs	r6, #1
+ 103 0010 18BB     		cbnz	r0, .L14
+ 104              	.L10:
+ 105 0012 0421     		movs	r1, #4
+ 106 0014 1420     		movs	r0, #20
+ 107 0016 FFF7FEFF 		bl	nnom_alignto
+ 108 001a 0446     		mov	r4, r0
+ 109 001c 4FEA4809 		lsl	r9, r8, #1
+ 110 0020 0421     		movs	r1, #4
+ 111 0022 4846     		mov	r0, r9
+ 112 0024 FFF7FEFF 		bl	nnom_alignto
+ 113 0028 2044     		add	r0, r0, r4
+ 114 002a 00EBC600 		add	r0, r0, r6, lsl #3
+ 115 002e FFF7FEFF 		bl	nnom_mem
+ 116 0032 0446     		mov	r4, r0
+ 117 0034 70B1     		cbz	r0, .L9
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s 			page 3
+
+
+ 118 0036 00F11407 		add	r7, r0, #20
+ 119 003a 4760     		str	r7, [r0, #4]
+ 120 003c 0421     		movs	r1, #4
+ 121 003e 4846     		mov	r0, r9
+ 122 0040 FFF7FEFF 		bl	nnom_alignto
+ 123 0044 0744     		add	r7, r7, r0
+ 124 0046 A760     		str	r7, [r4, #8]
+ 125 0048 07EB8607 		add	r7, r7, r6, lsl #2
+ 126 004c E760     		str	r7, [r4, #12]
+ 127 004e 84F81180 		strb	r8, [r4, #17]
+ 128 0052 2574     		strb	r5, [r4, #16]
+ 129              	.L9:
+ 130 0054 2046     		mov	r0, r4
+ 131 0056 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 132              	.L14:
+ 133 005a 0248     		ldr	r0, .L15
+ 134 005c FFF7FEFF 		bl	puts
+ 135 0060 0024     		movs	r4, #0
+ 136 0062 F7E7     		b	.L9
+ 137              	.L16:
+ 138              		.align	2
+ 139              	.L15:
+ 140 0064 00000000 		.word	.LC0
+ 142              		.section	.text.delete_tensor,"ax",%progbits
+ 143              		.align	1
+ 144              		.global	delete_tensor
+ 145              		.syntax unified
+ 146              		.thumb
+ 147              		.thumb_func
+ 149              	delete_tensor:
+ 150              		@ args = 0, pretend = 0, frame = 0
+ 151              		@ frame_needed = 0, uses_anonymous_args = 0
+ 152 0000 18B1     		cbz	r0, .L20
+ 153 0002 08B5     		push	{r3, lr}
+ 154 0004 FFF7FEFF 		bl	nnom_free
+ 155 0008 08BD     		pop	{r3, pc}
+ 156              	.L20:
+ 157 000a 7047     		bx	lr
+ 159              		.section	.text.tensor_set_attr_v,"ax",%progbits
+ 160              		.align	1
+ 161              		.global	tensor_set_attr_v
+ 162              		.syntax unified
+ 163              		.thumb
+ 164              		.thumb_func
+ 166              	tensor_set_attr_v:
+ 167              		@ args = 8, pretend = 0, frame = 0
+ 168              		@ frame_needed = 0, uses_anonymous_args = 0
+ 169 0000 70B5     		push	{r4, r5, r6, lr}
+ 170 0002 0446     		mov	r4, r0
+ 171 0004 0E46     		mov	r6, r1
+ 172 0006 1546     		mov	r5, r2
+ 173 0008 049A     		ldr	r2, [sp, #16]
+ 174 000a 4274     		strb	r2, [r0, #17]
+ 175 000c 5200     		lsls	r2, r2, #1
+ 176 000e 1946     		mov	r1, r3
+ 177 0010 4068     		ldr	r0, [r0, #4]
+ 178 0012 FFF7FEFF 		bl	memcpy
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s 			page 4
+
+
+ 179 0016 9DF81430 		ldrb	r3, [sp, #20]	@ zero_extendqisi2
+ 180 001a A374     		strb	r3, [r4, #18]
+ 181 001c A368     		ldr	r3, [r4, #8]
+ 182 001e 1E60     		str	r6, [r3]
+ 183 0020 E368     		ldr	r3, [r4, #12]
+ 184 0022 1D60     		str	r5, [r3]
+ 185 0024 2046     		mov	r0, r4
+ 186 0026 70BD     		pop	{r4, r5, r6, pc}
+ 188              		.section	.text.tensor_set_attr,"ax",%progbits
+ 189              		.align	1
+ 190              		.global	tensor_set_attr
+ 191              		.syntax unified
+ 192              		.thumb
+ 193              		.thumb_func
+ 195              	tensor_set_attr:
+ 196              		@ args = 8, pretend = 0, frame = 0
+ 197              		@ frame_needed = 0, uses_anonymous_args = 0
+ 198 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 199 0002 0446     		mov	r4, r0
+ 200 0004 0E46     		mov	r6, r1
+ 201 0006 1546     		mov	r5, r2
+ 202 0008 069A     		ldr	r2, [sp, #24]
+ 203 000a 4274     		strb	r2, [r0, #17]
+ 204 000c 5200     		lsls	r2, r2, #1
+ 205 000e 1946     		mov	r1, r3
+ 206 0010 4068     		ldr	r0, [r0, #4]
+ 207 0012 FFF7FEFF 		bl	memcpy
+ 208 0016 237C     		ldrb	r3, [r4, #16]	@ zero_extendqisi2
+ 209 0018 012B     		cmp	r3, #1
+ 210 001a 0FD0     		beq	.L29
+ 211 001c 0427     		movs	r7, #4
+ 212              	.L26:
+ 213 001e 9DF81C30 		ldrb	r3, [sp, #28]	@ zero_extendqisi2
+ 214 0022 A374     		strb	r3, [r4, #18]
+ 215 0024 3A46     		mov	r2, r7
+ 216 0026 3146     		mov	r1, r6
+ 217 0028 A068     		ldr	r0, [r4, #8]
+ 218 002a FFF7FEFF 		bl	memcpy
+ 219 002e 3A46     		mov	r2, r7
+ 220 0030 2946     		mov	r1, r5
+ 221 0032 E068     		ldr	r0, [r4, #12]
+ 222 0034 FFF7FEFF 		bl	memcpy
+ 223 0038 2046     		mov	r0, r4
+ 224 003a F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 225              	.L29:
+ 226 003c 2046     		mov	r0, r4
+ 227 003e FFF7FEFF 		bl	tensor_get_num_channel
+ 228 0042 8700     		lsls	r7, r0, #2
+ 229 0044 EBE7     		b	.L26
+ 231              		.section	.text.tensor_cpy_attr,"ax",%progbits
+ 232              		.align	1
+ 233              		.global	tensor_cpy_attr
+ 234              		.syntax unified
+ 235              		.thumb
+ 236              		.thumb_func
+ 238              	tensor_cpy_attr:
+ 239              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s 			page 5
+
+
+ 240              		@ frame_needed = 0, uses_anonymous_args = 0
+ 241 0000 0A8A     		ldrh	r2, [r1, #16]
+ 242 0002 038A     		ldrh	r3, [r0, #16]
+ 243 0004 9A42     		cmp	r2, r3
+ 244 0006 20D1     		bne	.L33
+ 245 0008 70B5     		push	{r4, r5, r6, lr}
+ 246 000a 0446     		mov	r4, r0
+ 247 000c 0D46     		mov	r5, r1
+ 248 000e 0B7C     		ldrb	r3, [r1, #16]	@ zero_extendqisi2
+ 249 0010 012B     		cmp	r3, #1
+ 250 0012 15D0     		beq	.L39
+ 251 0014 0426     		movs	r6, #4
+ 252              	.L32:
+ 253 0016 AB7C     		ldrb	r3, [r5, #18]	@ zero_extendqisi2
+ 254 0018 A374     		strb	r3, [r4, #18]
+ 255 001a 3246     		mov	r2, r6
+ 256 001c A968     		ldr	r1, [r5, #8]
+ 257 001e A068     		ldr	r0, [r4, #8]
+ 258 0020 FFF7FEFF 		bl	memcpy
+ 259 0024 3246     		mov	r2, r6
+ 260 0026 E968     		ldr	r1, [r5, #12]
+ 261 0028 E068     		ldr	r0, [r4, #12]
+ 262 002a FFF7FEFF 		bl	memcpy
+ 263 002e 6A7C     		ldrb	r2, [r5, #17]	@ zero_extendqisi2
+ 264 0030 6274     		strb	r2, [r4, #17]
+ 265 0032 5200     		lsls	r2, r2, #1
+ 266 0034 6968     		ldr	r1, [r5, #4]
+ 267 0036 6068     		ldr	r0, [r4, #4]
+ 268 0038 FFF7FEFF 		bl	memcpy
+ 269 003c 2046     		mov	r0, r4
+ 270 003e 70BD     		pop	{r4, r5, r6, pc}
+ 271              	.L39:
+ 272 0040 0846     		mov	r0, r1
+ 273 0042 FFF7FEFF 		bl	tensor_get_num_channel
+ 274 0046 8600     		lsls	r6, r0, #2
+ 275 0048 E5E7     		b	.L32
+ 276              	.L33:
+ 277 004a 0020     		movs	r0, #0
+ 278 004c 7047     		bx	lr
+ 280              		.section	.text.tensor_hwc2chw_q7,"ax",%progbits
+ 281              		.align	1
+ 282              		.global	tensor_hwc2chw_q7
+ 283              		.syntax unified
+ 284              		.thumb
+ 285              		.thumb_func
+ 287              	tensor_hwc2chw_q7:
+ 288              		@ args = 0, pretend = 0, frame = 0
+ 289              		@ frame_needed = 0, uses_anonymous_args = 0
+ 290 0000 70B5     		push	{r4, r5, r6, lr}
+ 291 0002 0068     		ldr	r0, [r0]
+ 292 0004 0E68     		ldr	r6, [r1]
+ 293 0006 4B68     		ldr	r3, [r1, #4]
+ 294 0008 9B88     		ldrh	r3, [r3, #4]
+ 295 000a 6BB3     		cbz	r3, .L40
+ 296 000c 8E46     		mov	lr, r1
+ 297 000e 0025     		movs	r5, #0
+ 298 0010 21E0     		b	.L41
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s 			page 6
+
+
+ 299              	.L43:
+ 300 0012 0CFB0323 		mla	r3, ip, r3, r2
+ 301 0016 8988     		ldrh	r1, [r1, #4]
+ 302 0018 01FB03F3 		mul	r3, r1, r3
+ 303 001c E356     		ldrsb	r3, [r4, r3]
+ 304 001e 00F8013B 		strb	r3, [r0], #1
+ 305 0022 0132     		adds	r2, r2, #1
+ 306 0024 DEF80410 		ldr	r1, [lr, #4]
+ 307 0028 4B88     		ldrh	r3, [r1, #2]
+ 308 002a 9342     		cmp	r3, r2
+ 309 002c F1DC     		bgt	.L43
+ 310              	.L45:
+ 311 002e 0CF1010C 		add	ip, ip, #1
+ 312 0032 DEF80430 		ldr	r3, [lr, #4]
+ 313 0036 1B88     		ldrh	r3, [r3]
+ 314 0038 6345     		cmp	r3, ip
+ 315 003a 06DD     		ble	.L44
+ 316              	.L46:
+ 317 003c DEF80410 		ldr	r1, [lr, #4]
+ 318 0040 4B88     		ldrh	r3, [r1, #2]
+ 319 0042 0022     		movs	r2, #0
+ 320 0044 002B     		cmp	r3, #0
+ 321 0046 E4D1     		bne	.L43
+ 322 0048 F1E7     		b	.L45
+ 323              	.L44:
+ 324 004a 0135     		adds	r5, r5, #1
+ 325 004c DEF80430 		ldr	r3, [lr, #4]
+ 326 0050 9B88     		ldrh	r3, [r3, #4]
+ 327 0052 AB42     		cmp	r3, r5
+ 328 0054 08DD     		ble	.L40
+ 329              	.L41:
+ 330 0056 DEF80430 		ldr	r3, [lr, #4]
+ 331 005a 1B88     		ldrh	r3, [r3]
+ 332 005c 002B     		cmp	r3, #0
+ 333 005e F4D0     		beq	.L44
+ 334 0060 4FF0000C 		mov	ip, #0
+ 335 0064 7419     		adds	r4, r6, r5
+ 336 0066 E9E7     		b	.L46
+ 337              	.L40:
+ 338 0068 70BD     		pop	{r4, r5, r6, pc}
+ 340              		.section	.text.tensor_chw2hwc_q7,"ax",%progbits
+ 341              		.align	1
+ 342              		.global	tensor_chw2hwc_q7
+ 343              		.syntax unified
+ 344              		.thumb
+ 345              		.thumb_func
+ 347              	tensor_chw2hwc_q7:
+ 348              		@ args = 0, pretend = 0, frame = 0
+ 349              		@ frame_needed = 0, uses_anonymous_args = 0
+ 350 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 351 0002 8C46     		mov	ip, r1
+ 352 0004 0168     		ldr	r1, [r0]
+ 353 0006 DCF80070 		ldr	r7, [ip]
+ 354 000a DCF80430 		ldr	r3, [ip, #4]
+ 355 000e 1A88     		ldrh	r2, [r3]
+ 356 0010 B3F802E0 		ldrh	lr, [r3, #2]
+ 357 0014 02FB0EFE 		mul	lr, r2, lr
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s 			page 7
+
+
+ 358 0018 5AB3     		cbz	r2, .L52
+ 359 001a 0026     		movs	r6, #0
+ 360 001c 1EE0     		b	.L59
+ 361              	.L57:
+ 362 001e 2A19     		adds	r2, r5, r4
+ 363 0020 0023     		movs	r3, #0
+ 364              	.L56:
+ 365 0022 92F90000 		ldrsb	r0, [r2]
+ 366 0026 01F8010B 		strb	r0, [r1], #1
+ 367 002a 0133     		adds	r3, r3, #1
+ 368 002c 7244     		add	r2, r2, lr
+ 369 002e DCF80400 		ldr	r0, [ip, #4]
+ 370 0032 8088     		ldrh	r0, [r0, #4]
+ 371 0034 9842     		cmp	r0, r3
+ 372 0036 F4DC     		bgt	.L56
+ 373              	.L58:
+ 374 0038 0134     		adds	r4, r4, #1
+ 375 003a DCF80430 		ldr	r3, [ip, #4]
+ 376 003e 5B88     		ldrh	r3, [r3, #2]
+ 377 0040 A342     		cmp	r3, r4
+ 378 0042 05DD     		ble	.L55
+ 379              	.L54:
+ 380 0044 DCF80430 		ldr	r3, [ip, #4]
+ 381 0048 9B88     		ldrh	r3, [r3, #4]
+ 382 004a 002B     		cmp	r3, #0
+ 383 004c E7D1     		bne	.L57
+ 384 004e F3E7     		b	.L58
+ 385              	.L55:
+ 386 0050 0136     		adds	r6, r6, #1
+ 387 0052 DCF80430 		ldr	r3, [ip, #4]
+ 388 0056 1A88     		ldrh	r2, [r3]
+ 389 0058 B242     		cmp	r2, r6
+ 390 005a 0ADD     		ble	.L52
+ 391              	.L59:
+ 392 005c 5B88     		ldrh	r3, [r3, #2]
+ 393 005e 06FB03F3 		mul	r3, r6, r3
+ 394 0062 DCF80420 		ldr	r2, [ip, #4]
+ 395 0066 5288     		ldrh	r2, [r2, #2]
+ 396 0068 002A     		cmp	r2, #0
+ 397 006a F1D0     		beq	.L55
+ 398 006c 0024     		movs	r4, #0
+ 399 006e FD18     		adds	r5, r7, r3
+ 400 0070 E8E7     		b	.L54
+ 401              	.L52:
+ 402 0072 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 404              		.section	.text.hwc2chw_q7,"ax",%progbits
+ 405              		.align	1
+ 406              		.global	hwc2chw_q7
+ 407              		.syntax unified
+ 408              		.thumb
+ 409              		.thumb_func
+ 411              	hwc2chw_q7:
+ 412              		@ args = 0, pretend = 0, frame = 8
+ 413              		@ frame_needed = 0, uses_anonymous_args = 0
+ 414 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 415 0004 82B0     		sub	sp, sp, #8
+ 416 0006 02AC     		add	r4, sp, #8
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s 			page 8
+
+
+ 417 0008 04E90300 		stmdb	r4, {r0, r1}
+ 418 000c BDF80080 		ldrh	r8, [sp]
+ 419 0010 BDF80240 		ldrh	r4, [sp, #2]
+ 420 0014 BDF80400 		ldrh	r0, [sp, #4]
+ 421 0018 18B3     		cbz	r0, .L64
+ 422 001a 1746     		mov	r7, r2
+ 423 001c 1D46     		mov	r5, r3
+ 424 001e 0026     		movs	r6, #0
+ 425 0020 19E0     		b	.L65
+ 426              	.L69:
+ 427 0022 0EFB04F3 		mul	r3, lr, r4
+ 428 0026 00FB0363 		mla	r3, r0, r3, r6
+ 429 002a 3B44     		add	r3, r3, r7
+ 430 002c 05EB040C 		add	ip, r5, r4
+ 431 0030 2A46     		mov	r2, r5
+ 432              	.L67:
+ 433 0032 93F90010 		ldrsb	r1, [r3]
+ 434 0036 02F8011B 		strb	r1, [r2], #1
+ 435 003a 0344     		add	r3, r3, r0
+ 436 003c 6245     		cmp	r2, ip
+ 437 003e F8D1     		bne	.L67
+ 438 0040 2544     		add	r5, r5, r4
+ 439              	.L70:
+ 440 0042 0EF1010E 		add	lr, lr, #1
+ 441 0046 C645     		cmp	lr, r8
+ 442 0048 02DA     		bge	.L68
+ 443              	.L71:
+ 444 004a 002C     		cmp	r4, #0
+ 445 004c E9D1     		bne	.L69
+ 446 004e F8E7     		b	.L70
+ 447              	.L68:
+ 448 0050 0136     		adds	r6, r6, #1
+ 449 0052 8642     		cmp	r6, r0
+ 450 0054 05D0     		beq	.L64
+ 451              	.L65:
+ 452 0056 B8F1000F 		cmp	r8, #0
+ 453 005a F9D0     		beq	.L68
+ 454 005c 4FF0000E 		mov	lr, #0
+ 455 0060 F3E7     		b	.L71
+ 456              	.L64:
+ 457 0062 02B0     		add	sp, sp, #8
+ 458              		@ sp needed
+ 459 0064 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 461              		.section	.text.chw2hwc_q7,"ax",%progbits
+ 462              		.align	1
+ 463              		.global	chw2hwc_q7
+ 464              		.syntax unified
+ 465              		.thumb
+ 466              		.thumb_func
+ 468              	chw2hwc_q7:
+ 469              		@ args = 0, pretend = 0, frame = 8
+ 470              		@ frame_needed = 0, uses_anonymous_args = 0
+ 471 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 472 0004 83B0     		sub	sp, sp, #12
+ 473 0006 02AC     		add	r4, sp, #8
+ 474 0008 04E90300 		stmdb	r4, {r0, r1}
+ 475 000c BDF80450 		ldrh	r5, [sp, #4]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s 			page 9
+
+
+ 476 0010 BDF80260 		ldrh	r6, [sp, #2]
+ 477 0014 BDF800B0 		ldrh	fp, [sp]
+ 478 0018 0BFB06FC 		mul	ip, fp, r6
+ 479 001c BBF1000F 		cmp	fp, #0
+ 480 0020 24D0     		beq	.L76
+ 481 0022 9146     		mov	r9, r2
+ 482 0024 1C46     		mov	r4, r3
+ 483 0026 4FF0000A 		mov	r10, #0
+ 484 002a D046     		mov	r8, r10
+ 485 002c 17E0     		b	.L83
+ 486              	.L81:
+ 487 002e 07EB0E02 		add	r2, r7, lr
+ 488 0032 6019     		adds	r0, r4, r5
+ 489 0034 2346     		mov	r3, r4
+ 490              	.L80:
+ 491 0036 92F90010 		ldrsb	r1, [r2]
+ 492 003a 03F8011B 		strb	r1, [r3], #1
+ 493 003e 6244     		add	r2, r2, ip
+ 494 0040 8342     		cmp	r3, r0
+ 495 0042 F8D1     		bne	.L80
+ 496 0044 2C44     		add	r4, r4, r5
+ 497              	.L82:
+ 498 0046 0EF1010E 		add	lr, lr, #1
+ 499 004a 7645     		cmp	r6, lr
+ 500 004c 02D0     		beq	.L79
+ 501              	.L78:
+ 502 004e 002D     		cmp	r5, #0
+ 503 0050 EDD1     		bne	.L81
+ 504 0052 F8E7     		b	.L82
+ 505              	.L79:
+ 506 0054 08F10108 		add	r8, r8, #1
+ 507 0058 B244     		add	r10, r10, r6
+ 508 005a C345     		cmp	fp, r8
+ 509 005c 06D0     		beq	.L76
+ 510              	.L83:
+ 511 005e 002E     		cmp	r6, #0
+ 512 0060 F8D0     		beq	.L79
+ 513 0062 4FF0000E 		mov	lr, #0
+ 514 0066 09EB0A07 		add	r7, r9, r10
+ 515 006a F0E7     		b	.L78
+ 516              	.L76:
+ 517 006c 03B0     		add	sp, sp, #12
+ 518              		@ sp needed
+ 519 006e BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 521              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 nnom_tensor.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s:16     .text.tensor_size:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s:22     .text.tensor_size:00000000 tensor_size
+C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s:47     .text.tensor_size_byte:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s:53     .text.tensor_size_byte:00000000 tensor_size_byte
+C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s:65     .text.tensor_get_num_channel:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s:71     .text.tensor_get_num_channel:00000000 tensor_get_num_channel
+C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s:83     .rodata.new_tensor.str1.4:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s:87     .text.new_tensor:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s:93     .text.new_tensor:00000000 new_tensor
+C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s:140    .text.new_tensor:00000064 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s:143    .text.delete_tensor:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s:149    .text.delete_tensor:00000000 delete_tensor
+C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s:160    .text.tensor_set_attr_v:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s:166    .text.tensor_set_attr_v:00000000 tensor_set_attr_v
+C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s:189    .text.tensor_set_attr:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s:195    .text.tensor_set_attr:00000000 tensor_set_attr
+C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s:232    .text.tensor_cpy_attr:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s:238    .text.tensor_cpy_attr:00000000 tensor_cpy_attr
+C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s:281    .text.tensor_hwc2chw_q7:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s:287    .text.tensor_hwc2chw_q7:00000000 tensor_hwc2chw_q7
+C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s:341    .text.tensor_chw2hwc_q7:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s:347    .text.tensor_chw2hwc_q7:00000000 tensor_chw2hwc_q7
+C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s:405    .text.hwc2chw_q7:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s:411    .text.hwc2chw_q7:00000000 hwc2chw_q7
+C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s:462    .text.chw2hwc_q7:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccMiJt40.s:468    .text.chw2hwc_q7:00000000 chw2hwc_q7
+
+UNDEFINED SYMBOLS
+nnom_alignto
+nnom_mem
+puts
+nnom_free
+memcpy

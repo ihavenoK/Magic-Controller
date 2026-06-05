@@ -1,0 +1,299 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccecQVnk.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"nnom_input.c"
+  14              		.text
+  15              		.section	.text.input_build,"ax",%progbits
+  16              		.align	1
+  17              		.global	input_build
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	input_build:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 70B5     		push	{r4, r5, r6, lr}
+  26 0002 0446     		mov	r4, r0
+  27 0004 036A     		ldr	r3, [r0, #32]
+  28 0006 D868     		ldr	r0, [r3, #12]
+  29 0008 467C     		ldrb	r6, [r0, #17]	@ zero_extendqisi2
+  30 000a FFF7FEFF 		bl	tensor_get_num_channel
+  31 000e 0246     		mov	r2, r0
+  32 0010 656A     		ldr	r5, [r4, #36]
+  33 0012 3146     		mov	r1, r6
+  34 0014 0020     		movs	r0, #0
+  35 0016 FFF7FEFF 		bl	new_tensor
+  36 001a E860     		str	r0, [r5, #12]
+  37 001c 226A     		ldr	r2, [r4, #32]
+  38 001e 636A     		ldr	r3, [r4, #36]
+  39 0020 D168     		ldr	r1, [r2, #12]
+  40 0022 D868     		ldr	r0, [r3, #12]
+  41 0024 FFF7FEFF 		bl	tensor_cpy_attr
+  42 0028 0020     		movs	r0, #0
+  43 002a 70BD     		pop	{r4, r5, r6, pc}
+  45              		.section	.text.input_run,"ax",%progbits
+  46              		.align	1
+  47              		.global	input_run
+  48              		.syntax unified
+  49              		.thumb
+  50              		.thumb_func
+  52              	input_run:
+  53              		@ args = 0, pretend = 0, frame = 0
+  54              		@ frame_needed = 0, uses_anonymous_args = 0
+  55 0000 38B5     		push	{r3, r4, r5, lr}
+  56 0002 0346     		mov	r3, r0
+  57 0004 026A     		ldr	r2, [r0, #32]
+  58 0006 D068     		ldr	r0, [r2, #12]
+  59 0008 0468     		ldr	r4, [r0]
+  60 000a DD6B     		ldr	r5, [r3, #60]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccecQVnk.s 			page 2
+
+
+  61 000c FFF7FEFF 		bl	tensor_size
+  62 0010 0246     		mov	r2, r0
+  63 0012 2946     		mov	r1, r5
+  64 0014 2046     		mov	r0, r4
+  65 0016 FFF7FEFF 		bl	memcpy
+  66 001a 0020     		movs	r0, #0
+  67 001c 38BD     		pop	{r3, r4, r5, pc}
+  69              		.section	.text.input_s,"ax",%progbits
+  70              		.align	1
+  71              		.global	input_s
+  72              		.syntax unified
+  73              		.thumb
+  74              		.thumb_func
+  76              	input_s:
+  77              		@ args = 0, pretend = 0, frame = 16
+  78              		@ frame_needed = 0, uses_anonymous_args = 0
+  79 0000 70B5     		push	{r4, r5, r6, lr}
+  80 0002 86B0     		sub	sp, sp, #24
+  81 0004 0546     		mov	r5, r0
+  82 0006 7820     		movs	r0, #120
+  83 0008 FFF7FEFF 		bl	nnom_mem
+  84 000c 0446     		mov	r4, r0
+  85 000e 0028     		cmp	r0, #0
+  86 0010 4ED0     		beq	.L5
+  87 0012 0223     		movs	r3, #2
+  88 0014 0377     		strb	r3, [r0, #28]
+  89 0016 354B     		ldr	r3, .L13
+  90 0018 4360     		str	r3, [r0, #4]
+  91 001a 354B     		ldr	r3, .L13+4
+  92 001c 8360     		str	r3, [r0, #8]
+  93 001e 0123     		movs	r3, #1
+  94 0020 80F85830 		strb	r3, [r0, #88]
+  95 0024 0023     		movs	r3, #0
+  96 0026 80F87430 		strb	r3, [r0, #116]
+  97 002a 00F14001 		add	r1, r0, #64
+  98 002e FFF7FEFF 		bl	io_init
+  99 0032 2062     		str	r0, [r4, #32]
+ 100 0034 04F15C01 		add	r1, r4, #92
+ 101 0038 2046     		mov	r0, r4
+ 102 003a FFF7FEFF 		bl	io_init
+ 103 003e 6062     		str	r0, [r4, #36]
+ 104 0040 6B68     		ldr	r3, [r5, #4]
+ 105 0042 5A7C     		ldrb	r2, [r3, #17]	@ zero_extendqisi2
+ 106 0044 012A     		cmp	r2, #1
+ 107 0046 36D0     		beq	.L11
+ 108 0048 022A     		cmp	r2, #2
+ 109 004a 41D0     		beq	.L12
+ 110 004c 5968     		ldr	r1, [r3, #4]
+ 111 004e 02AE     		add	r6, sp, #8
+ 112 0050 8B88     		ldrh	r3, [r1, #4]
+ 113 0052 4A88     		ldrh	r2, [r1, #2]
+ 114 0054 0988     		ldrh	r1, [r1]
+ 115 0056 3046     		mov	r0, r6
+ 116 0058 FFF7FEFF 		bl	shape
+ 117 005c 0298     		ldr	r0, [sp, #8]	@ unaligned
+ 118 005e 2063     		str	r0, [r4, #48]
+ 119 0060 BDF80C30 		ldrh	r3, [sp, #12]	@ unaligned
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccecQVnk.s 			page 3
+
+
+ 120 0064 A386     		strh	r3, [r4, #52]	@ unaligned
+ 121              	.L8:
+ 122 0066 6B68     		ldr	r3, [r5, #4]
+ 123 0068 1B68     		ldr	r3, [r3]
+ 124 006a E363     		str	r3, [r4, #60]
+ 125 006c 6B68     		ldr	r3, [r5, #4]
+ 126 006e 9B68     		ldr	r3, [r3, #8]
+ 127 0070 1B68     		ldr	r3, [r3]
+ 128 0072 A363     		str	r3, [r4, #56]
+ 129 0074 238E     		ldrh	r3, [r4, #48]
+ 130 0076 ADF81030 		strh	r3, [sp, #16]	@ movhi
+ 131 007a 638E     		ldrh	r3, [r4, #50]
+ 132 007c ADF81230 		strh	r3, [sp, #18]	@ movhi
+ 133 0080 A38E     		ldrh	r3, [r4, #52]
+ 134 0082 ADF81430 		strh	r3, [sp, #20]	@ movhi
+ 135 0086 6868     		ldr	r0, [r5, #4]
+ 136 0088 FFF7FEFF 		bl	tensor_get_num_channel
+ 137 008c 0246     		mov	r2, r0
+ 138 008e 256A     		ldr	r5, [r4, #32]
+ 139 0090 0321     		movs	r1, #3
+ 140 0092 0020     		movs	r0, #0
+ 141 0094 FFF7FEFF 		bl	new_tensor
+ 142 0098 E860     		str	r0, [r5, #12]
+ 143 009a A16B     		ldr	r1, [r4, #56]
+ 144 009c 236A     		ldr	r3, [r4, #32]
+ 145 009e D868     		ldr	r0, [r3, #12]
+ 146 00a0 0823     		movs	r3, #8
+ 147 00a2 0193     		str	r3, [sp, #4]
+ 148 00a4 0323     		movs	r3, #3
+ 149 00a6 0093     		str	r3, [sp]
+ 150 00a8 04AB     		add	r3, sp, #16
+ 151 00aa 0022     		movs	r2, #0
+ 152 00ac FFF7FEFF 		bl	tensor_set_attr_v
+ 153              	.L5:
+ 154 00b0 2046     		mov	r0, r4
+ 155 00b2 06B0     		add	sp, sp, #24
+ 156              		@ sp needed
+ 157 00b4 70BD     		pop	{r4, r5, r6, pc}
+ 158              	.L11:
+ 159 00b6 02AE     		add	r6, sp, #8
+ 160 00b8 5B68     		ldr	r3, [r3, #4]
+ 161 00ba 1B88     		ldrh	r3, [r3]
+ 162 00bc 1146     		mov	r1, r2
+ 163 00be 3046     		mov	r0, r6
+ 164 00c0 FFF7FEFF 		bl	shape
+ 165 00c4 0298     		ldr	r0, [sp, #8]	@ unaligned
+ 166 00c6 2063     		str	r0, [r4, #48]
+ 167 00c8 BDF80C30 		ldrh	r3, [sp, #12]	@ unaligned
+ 168 00cc A386     		strh	r3, [r4, #52]	@ unaligned
+ 169 00ce CAE7     		b	.L8
+ 170              	.L12:
+ 171 00d0 5A68     		ldr	r2, [r3, #4]
+ 172 00d2 02AE     		add	r6, sp, #8
+ 173 00d4 5388     		ldrh	r3, [r2, #2]
+ 174 00d6 1288     		ldrh	r2, [r2]
+ 175 00d8 0121     		movs	r1, #1
+ 176 00da 3046     		mov	r0, r6
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccecQVnk.s 			page 4
+
+
+ 177 00dc FFF7FEFF 		bl	shape
+ 178 00e0 0298     		ldr	r0, [sp, #8]	@ unaligned
+ 179 00e2 2063     		str	r0, [r4, #48]
+ 180 00e4 BDF80C30 		ldrh	r3, [sp, #12]	@ unaligned
+ 181 00e8 A386     		strh	r3, [r4, #52]	@ unaligned
+ 182 00ea BCE7     		b	.L8
+ 183              	.L14:
+ 184              		.align	2
+ 185              	.L13:
+ 186 00ec 00000000 		.word	input_run
+ 187 00f0 00000000 		.word	input_build
+ 189              		.section	.text.Input,"ax",%progbits
+ 190              		.align	1
+ 191              		.global	Input
+ 192              		.syntax unified
+ 193              		.thumb
+ 194              		.thumb_func
+ 196              	Input:
+ 197              		@ args = 0, pretend = 0, frame = 16
+ 198              		@ frame_needed = 0, uses_anonymous_args = 0
+ 199 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 200 0002 87B0     		sub	sp, sp, #28
+ 201 0004 02AB     		add	r3, sp, #8
+ 202 0006 83E80300 		stm	r3, {r0, r1}
+ 203 000a 1546     		mov	r5, r2
+ 204 000c BDF80C70 		ldrh	r7, [sp, #12]
+ 205 0010 7820     		movs	r0, #120
+ 206 0012 FFF7FEFF 		bl	nnom_mem
+ 207 0016 0446     		mov	r4, r0
+ 208 0018 0028     		cmp	r0, #0
+ 209 001a 3AD0     		beq	.L15
+ 210 001c 0223     		movs	r3, #2
+ 211 001e 0377     		strb	r3, [r0, #28]
+ 212 0020 1D4B     		ldr	r3, .L18
+ 213 0022 4360     		str	r3, [r0, #4]
+ 214 0024 1D4B     		ldr	r3, .L18+4
+ 215 0026 8360     		str	r3, [r0, #8]
+ 216 0028 0123     		movs	r3, #1
+ 217 002a 80F85830 		strb	r3, [r0, #88]
+ 218 002e 0026     		movs	r6, #0
+ 219 0030 80F87460 		strb	r6, [r0, #116]
+ 220 0034 00F14001 		add	r1, r0, #64
+ 221 0038 FFF7FEFF 		bl	io_init
+ 222 003c 2062     		str	r0, [r4, #32]
+ 223 003e 04F15C01 		add	r1, r4, #92
+ 224 0042 2046     		mov	r0, r4
+ 225 0044 FFF7FEFF 		bl	io_init
+ 226 0048 6062     		str	r0, [r4, #36]
+ 227 004a 02AB     		add	r3, sp, #8
+ 228 004c 93E80300 		ldm	r3, {r0, r1}
+ 229 0050 2063     		str	r0, [r4, #48]
+ 230 0052 A186     		strh	r1, [r4, #52]	@ movhi
+ 231 0054 E563     		str	r5, [r4, #60]
+ 232 0056 0723     		movs	r3, #7
+ 233 0058 A363     		str	r3, [r4, #56]
+ 234 005a BDF80830 		ldrh	r3, [sp, #8]
+ 235 005e ADF81030 		strh	r3, [sp, #16]	@ movhi
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccecQVnk.s 			page 5
+
+
+ 236 0062 BDF80A30 		ldrh	r3, [sp, #10]
+ 237 0066 ADF81230 		strh	r3, [sp, #18]	@ movhi
+ 238 006a ADF81470 		strh	r7, [sp, #20]	@ movhi
+ 239 006e 256A     		ldr	r5, [r4, #32]
+ 240 0070 3A46     		mov	r2, r7
+ 241 0072 0321     		movs	r1, #3
+ 242 0074 3046     		mov	r0, r6
+ 243 0076 FFF7FEFF 		bl	new_tensor
+ 244 007a E860     		str	r0, [r5, #12]
+ 245 007c A16B     		ldr	r1, [r4, #56]
+ 246 007e 236A     		ldr	r3, [r4, #32]
+ 247 0080 D868     		ldr	r0, [r3, #12]
+ 248 0082 0823     		movs	r3, #8
+ 249 0084 0193     		str	r3, [sp, #4]
+ 250 0086 0323     		movs	r3, #3
+ 251 0088 0093     		str	r3, [sp]
+ 252 008a 04AB     		add	r3, sp, #16
+ 253 008c 3246     		mov	r2, r6
+ 254 008e FFF7FEFF 		bl	tensor_set_attr_v
+ 255              	.L15:
+ 256 0092 2046     		mov	r0, r4
+ 257 0094 07B0     		add	sp, sp, #28
+ 258              		@ sp needed
+ 259 0096 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 260              	.L19:
+ 261              		.align	2
+ 262              	.L18:
+ 263 0098 00000000 		.word	input_run
+ 264 009c 00000000 		.word	input_build
+ 266              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccecQVnk.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 nnom_input.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccecQVnk.s:16     .text.input_build:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccecQVnk.s:22     .text.input_build:00000000 input_build
+C:\Users\ihavenoK\AppData\Local\Temp\ccecQVnk.s:46     .text.input_run:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccecQVnk.s:52     .text.input_run:00000000 input_run
+C:\Users\ihavenoK\AppData\Local\Temp\ccecQVnk.s:70     .text.input_s:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccecQVnk.s:76     .text.input_s:00000000 input_s
+C:\Users\ihavenoK\AppData\Local\Temp\ccecQVnk.s:186    .text.input_s:000000ec $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccecQVnk.s:190    .text.Input:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccecQVnk.s:196    .text.Input:00000000 Input
+C:\Users\ihavenoK\AppData\Local\Temp\ccecQVnk.s:263    .text.Input:00000098 $d
+
+UNDEFINED SYMBOLS
+tensor_get_num_channel
+new_tensor
+tensor_cpy_attr
+tensor_size
+memcpy
+nnom_mem
+io_init
+shape
+tensor_set_attr_v

@@ -1,0 +1,137 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccJIUJq6.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"nnom_reshape.c"
+  14              		.text
+  15              		.section	.text.reshape_run,"ax",%progbits
+  16              		.align	1
+  17              		.global	reshape_run
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	reshape_run:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25              		@ link register save eliminated.
+  26 0000 0020     		movs	r0, #0
+  27 0002 7047     		bx	lr
+  29              		.section	.text.reshape_build,"ax",%progbits
+  30              		.align	1
+  31              		.global	reshape_build
+  32              		.syntax unified
+  33              		.thumb
+  34              		.thumb_func
+  36              	reshape_build:
+  37              		@ args = 0, pretend = 0, frame = 0
+  38              		@ frame_needed = 0, uses_anonymous_args = 0
+  39 0000 30B5     		push	{r4, r5, lr}
+  40 0002 83B0     		sub	sp, sp, #12
+  41 0004 0446     		mov	r4, r0
+  42 0006 036A     		ldr	r3, [r0, #32]
+  43 0008 1A68     		ldr	r2, [r3]
+  44 000a D268     		ldr	r2, [r2, #12]
+  45 000c DA60     		str	r2, [r3, #12]
+  46 000e 90F83410 		ldrb	r1, [r0, #52]	@ zero_extendqisi2
+  47 0012 456A     		ldr	r5, [r0, #36]
+  48 0014 01F10043 		add	r3, r1, #-2147483648
+  49 0018 013B     		subs	r3, r3, #1
+  50 001a 026B     		ldr	r2, [r0, #48]
+  51 001c 32F81320 		ldrh	r2, [r2, r3, lsl #1]
+  52 0020 0020     		movs	r0, #0
+  53 0022 FFF7FEFF 		bl	new_tensor
+  54 0026 E860     		str	r0, [r5, #12]
+  55 0028 236A     		ldr	r3, [r4, #32]
+  56 002a DB68     		ldr	r3, [r3, #12]
+  57 002c DA68     		ldr	r2, [r3, #12]
+  58 002e 9968     		ldr	r1, [r3, #8]
+  59 0030 636A     		ldr	r3, [r4, #36]
+  60 0032 D868     		ldr	r0, [r3, #12]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccJIUJq6.s 			page 2
+
+
+  61 0034 0823     		movs	r3, #8
+  62 0036 0193     		str	r3, [sp, #4]
+  63 0038 94F83430 		ldrb	r3, [r4, #52]	@ zero_extendqisi2
+  64 003c 0093     		str	r3, [sp]
+  65 003e 236B     		ldr	r3, [r4, #48]
+  66 0040 FFF7FEFF 		bl	tensor_set_attr
+  67 0044 0020     		movs	r0, #0
+  68 0046 03B0     		add	sp, sp, #12
+  69              		@ sp needed
+  70 0048 30BD     		pop	{r4, r5, pc}
+  72              		.section	.text.reshape_s,"ax",%progbits
+  73              		.align	1
+  74              		.global	reshape_s
+  75              		.syntax unified
+  76              		.thumb
+  77              		.thumb_func
+  79              	reshape_s:
+  80              		@ args = 0, pretend = 0, frame = 0
+  81              		@ frame_needed = 0, uses_anonymous_args = 0
+  82 0000 38B5     		push	{r3, r4, r5, lr}
+  83 0002 0546     		mov	r5, r0
+  84 0004 7020     		movs	r0, #112
+  85 0006 FFF7FEFF 		bl	nnom_mem
+  86 000a 0446     		mov	r4, r0
+  87 000c E0B1     		cbz	r0, .L4
+  88 000e 1B23     		movs	r3, #27
+  89 0010 0377     		strb	r3, [r0, #28]
+  90 0012 0E4B     		ldr	r3, .L7
+  91 0014 4360     		str	r3, [r0, #4]
+  92 0016 0E4B     		ldr	r3, .L7+4
+  93 0018 8360     		str	r3, [r0, #8]
+  94 001a 0123     		movs	r3, #1
+  95 001c 80F85030 		strb	r3, [r0, #80]
+  96 0020 0023     		movs	r3, #0
+  97 0022 80F86C30 		strb	r3, [r0, #108]
+  98 0026 8561     		str	r5, [r0, #24]
+  99 0028 6B68     		ldr	r3, [r5, #4]
+ 100 002a 0363     		str	r3, [r0, #48]
+ 101 002c 2B7A     		ldrb	r3, [r5, #8]	@ zero_extendqisi2
+ 102 002e 80F83430 		strb	r3, [r0, #52]
+ 103 0032 00F13801 		add	r1, r0, #56
+ 104 0036 FFF7FEFF 		bl	io_init
+ 105 003a 2062     		str	r0, [r4, #32]
+ 106 003c 04F15401 		add	r1, r4, #84
+ 107 0040 2046     		mov	r0, r4
+ 108 0042 FFF7FEFF 		bl	io_init
+ 109 0046 6062     		str	r0, [r4, #36]
+ 110              	.L4:
+ 111 0048 2046     		mov	r0, r4
+ 112 004a 38BD     		pop	{r3, r4, r5, pc}
+ 113              	.L8:
+ 114              		.align	2
+ 115              	.L7:
+ 116 004c 00000000 		.word	reshape_run
+ 117 0050 00000000 		.word	reshape_build
+ 119              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccJIUJq6.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 nnom_reshape.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccJIUJq6.s:16     .text.reshape_run:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJIUJq6.s:22     .text.reshape_run:00000000 reshape_run
+C:\Users\ihavenoK\AppData\Local\Temp\ccJIUJq6.s:30     .text.reshape_build:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJIUJq6.s:36     .text.reshape_build:00000000 reshape_build
+C:\Users\ihavenoK\AppData\Local\Temp\ccJIUJq6.s:73     .text.reshape_s:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccJIUJq6.s:79     .text.reshape_s:00000000 reshape_s
+C:\Users\ihavenoK\AppData\Local\Temp\ccJIUJq6.s:116    .text.reshape_s:0000004c $d
+
+UNDEFINED SYMBOLS
+new_tensor
+tensor_set_attr
+nnom_mem
+io_init

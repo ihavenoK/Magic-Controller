@@ -1,0 +1,408 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccYyuEL0.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"nnom_dense.c"
+  14              		.text
+  15              		.section	.text.dense_build,"ax",%progbits
+  16              		.align	1
+  17              		.global	dense_build
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	dense_build:
+  23              		@ args = 0, pretend = 0, frame = 8
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 30B5     		push	{r4, r5, lr}
+  26 0002 85B0     		sub	sp, sp, #20
+  27 0004 0446     		mov	r4, r0
+  28 0006 036A     		ldr	r3, [r0, #32]
+  29 0008 1A68     		ldr	r2, [r3]
+  30 000a D268     		ldr	r2, [r2, #12]
+  31 000c DA60     		str	r2, [r3, #12]
+  32 000e 036A     		ldr	r3, [r0, #32]
+  33 0010 D868     		ldr	r0, [r3, #12]
+  34 0012 437C     		ldrb	r3, [r0, #17]	@ zero_extendqisi2
+  35 0014 032B     		cmp	r3, #3
+  36 0016 46D0     		beq	.L6
+  37 0018 FFF7FEFF 		bl	tensor_get_num_channel
+  38 001c 0246     		mov	r2, r0
+  39 001e 656A     		ldr	r5, [r4, #36]
+  40 0020 0121     		movs	r1, #1
+  41 0022 0020     		movs	r0, #0
+  42 0024 FFF7FEFF 		bl	new_tensor
+  43 0028 E860     		str	r0, [r5, #12]
+  44 002a 236B     		ldr	r3, [r4, #48]
+  45 002c ADF80C30 		strh	r3, [sp, #12]	@ movhi
+  46 0030 636B     		ldr	r3, [r4, #52]
+  47 0032 DA68     		ldr	r2, [r3, #12]
+  48 0034 9968     		ldr	r1, [r3, #8]
+  49 0036 636A     		ldr	r3, [r4, #36]
+  50 0038 D868     		ldr	r0, [r3, #12]
+  51 003a 0823     		movs	r3, #8
+  52 003c 0193     		str	r3, [sp, #4]
+  53 003e 0123     		movs	r3, #1
+  54 0040 0093     		str	r3, [sp]
+  55 0042 03AB     		add	r3, sp, #12
+  56 0044 FFF7FEFF 		bl	tensor_set_attr
+  57              	.L3:
+  58 0048 636A     		ldr	r3, [r4, #36]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccYyuEL0.s 			page 2
+
+
+  59 004a DB68     		ldr	r3, [r3, #12]
+  60 004c 9A68     		ldr	r2, [r3, #8]
+  61 004e 236A     		ldr	r3, [r4, #32]
+  62 0050 DB68     		ldr	r3, [r3, #12]
+  63 0052 9B68     		ldr	r3, [r3, #8]
+  64 0054 616B     		ldr	r1, [r4, #52]
+  65 0056 8968     		ldr	r1, [r1, #8]
+  66 0058 1B68     		ldr	r3, [r3]
+  67 005a 0968     		ldr	r1, [r1]
+  68 005c 0B44     		add	r3, r3, r1
+  69 005e E16B     		ldr	r1, [r4, #60]
+  70 0060 0968     		ldr	r1, [r1]
+  71 0062 5B1A     		subs	r3, r3, r1
+  72 0064 1360     		str	r3, [r2]
+  73 0066 6369     		ldr	r3, [r4, #20]
+  74 0068 3BB1     		cbz	r3, .L4
+  75 006a 626A     		ldr	r2, [r4, #36]
+  76 006c D268     		ldr	r2, [r2, #12]
+  77 006e 9568     		ldr	r5, [r2, #8]
+  78 0070 2968     		ldr	r1, [r5]
+  79 0072 187A     		ldrb	r0, [r3, #8]	@ zero_extendqisi2
+  80 0074 FFF7FEFF 		bl	act_get_dec_bit
+  81 0078 2860     		str	r0, [r5]
+  82              	.L4:
+  83 007a 236A     		ldr	r3, [r4, #32]
+  84 007c D868     		ldr	r0, [r3, #12]
+  85 007e FFF7FEFF 		bl	tensor_size
+  86 0082 2369     		ldr	r3, [r4, #16]
+  87 0084 4000     		lsls	r0, r0, #1
+  88 0086 5860     		str	r0, [r3, #4]
+  89 0088 236A     		ldr	r3, [r4, #32]
+  90 008a D868     		ldr	r0, [r3, #12]
+  91 008c FFF7FEFF 		bl	tensor_size
+  92 0090 0546     		mov	r5, r0
+  93 0092 636A     		ldr	r3, [r4, #36]
+  94 0094 D868     		ldr	r0, [r3, #12]
+  95 0096 FFF7FEFF 		bl	tensor_size
+  96 009a 00FB05F5 		mul	r5, r0, r5
+  97 009e A562     		str	r5, [r4, #40]
+  98 00a0 0020     		movs	r0, #0
+  99 00a2 05B0     		add	sp, sp, #20
+ 100              		@ sp needed
+ 101 00a4 30BD     		pop	{r4, r5, pc}
+ 102              	.L6:
+ 103 00a6 656A     		ldr	r5, [r4, #36]
+ 104 00a8 0022     		movs	r2, #0
+ 105 00aa 0121     		movs	r1, #1
+ 106 00ac 1046     		mov	r0, r2
+ 107 00ae FFF7FEFF 		bl	new_tensor
+ 108 00b2 E860     		str	r0, [r5, #12]
+ 109 00b4 0123     		movs	r3, #1
+ 110 00b6 ADF80C30 		strh	r3, [sp, #12]	@ movhi
+ 111 00ba 236B     		ldr	r3, [r4, #48]
+ 112 00bc ADF80E30 		strh	r3, [sp, #14]	@ movhi
+ 113 00c0 636B     		ldr	r3, [r4, #52]
+ 114 00c2 DA68     		ldr	r2, [r3, #12]
+ 115 00c4 9968     		ldr	r1, [r3, #8]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccYyuEL0.s 			page 3
+
+
+ 116 00c6 636A     		ldr	r3, [r4, #36]
+ 117 00c8 D868     		ldr	r0, [r3, #12]
+ 118 00ca 0823     		movs	r3, #8
+ 119 00cc 0193     		str	r3, [sp, #4]
+ 120 00ce 0223     		movs	r3, #2
+ 121 00d0 0093     		str	r3, [sp]
+ 122 00d2 03AB     		add	r3, sp, #12
+ 123 00d4 FFF7FEFF 		bl	tensor_set_attr
+ 124 00d8 B6E7     		b	.L3
+ 126              		.section	.text.dense_free,"ax",%progbits
+ 127              		.align	1
+ 128              		.global	dense_free
+ 129              		.syntax unified
+ 130              		.thumb
+ 131              		.thumb_func
+ 133              	dense_free:
+ 134              		@ args = 0, pretend = 0, frame = 0
+ 135              		@ frame_needed = 0, uses_anonymous_args = 0
+ 136 0000 8369     		ldr	r3, [r0, #24]
+ 137 0002 0BB1     		cbz	r3, .L13
+ 138 0004 0020     		movs	r0, #0
+ 139 0006 7047     		bx	lr
+ 140              	.L13:
+ 141 0008 10B5     		push	{r4, lr}
+ 142 000a 0446     		mov	r4, r0
+ 143 000c 406B     		ldr	r0, [r0, #52]
+ 144 000e FFF7FEFF 		bl	delete_tensor
+ 145 0012 A06B     		ldr	r0, [r4, #56]
+ 146 0014 FFF7FEFF 		bl	delete_tensor
+ 147 0018 0020     		movs	r0, #0
+ 148 001a 10BD     		pop	{r4, pc}
+ 150              		.section	.text.dense_run,"ax",%progbits
+ 151              		.align	1
+ 152              		.global	dense_run
+ 153              		.syntax unified
+ 154              		.thumb
+ 155              		.thumb_func
+ 157              	dense_run:
+ 158              		@ args = 0, pretend = 0, frame = 0
+ 159              		@ frame_needed = 0, uses_anonymous_args = 0
+ 160 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 161 0004 86B0     		sub	sp, sp, #24
+ 162 0006 0446     		mov	r4, r0
+ 163 0008 036C     		ldr	r3, [r0, #64]
+ 164 000a 1D68     		ldr	r5, [r3]
+ 165 000c C36B     		ldr	r3, [r0, #60]
+ 166 000e 1E68     		ldr	r6, [r3]
+ 167 0010 036A     		ldr	r3, [r0, #32]
+ 168 0012 D868     		ldr	r0, [r3, #12]
+ 169 0014 0768     		ldr	r7, [r0]
+ 170 0016 636B     		ldr	r3, [r4, #52]
+ 171 0018 D3F80080 		ldr	r8, [r3]
+ 172 001c FFF7FEFF 		bl	tensor_size
+ 173 0020 636A     		ldr	r3, [r4, #36]
+ 174 0022 D968     		ldr	r1, [r3, #12]
+ 175 0024 4B7C     		ldrb	r3, [r1, #17]	@ zero_extendqisi2
+ 176 0026 03F10043 		add	r3, r3, #-2147483648
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccYyuEL0.s 			page 4
+
+
+ 177 002a 013B     		subs	r3, r3, #1
+ 178 002c 4A68     		ldr	r2, [r1, #4]
+ 179 002e 32F81330 		ldrh	r3, [r2, r3, lsl #1]
+ 180 0032 2269     		ldr	r2, [r4, #16]
+ 181 0034 1268     		ldr	r2, [r2]
+ 182 0036 1268     		ldr	r2, [r2]
+ 183 0038 0492     		str	r2, [sp, #16]
+ 184 003a 0A68     		ldr	r2, [r1]
+ 185 003c 0392     		str	r2, [sp, #12]
+ 186 003e A26B     		ldr	r2, [r4, #56]
+ 187 0040 1268     		ldr	r2, [r2]
+ 188 0042 0292     		str	r2, [sp, #8]
+ 189 0044 B6B2     		uxth	r6, r6
+ 190 0046 0196     		str	r6, [sp, #4]
+ 191 0048 ADB2     		uxth	r5, r5
+ 192 004a 0095     		str	r5, [sp]
+ 193 004c 82B2     		uxth	r2, r0
+ 194 004e 4146     		mov	r1, r8
+ 195 0050 3846     		mov	r0, r7
+ 196 0052 FFF7FEFF 		bl	local_fully_connected_q7_opt
+ 197 0056 0020     		movs	r0, #0
+ 198 0058 06B0     		add	sp, sp, #24
+ 199              		@ sp needed
+ 200 005a BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 202              		.section	.text.dense_s,"ax",%progbits
+ 203              		.align	1
+ 204              		.global	dense_s
+ 205              		.syntax unified
+ 206              		.thumb
+ 207              		.thumb_func
+ 209              	dense_s:
+ 210              		@ args = 0, pretend = 0, frame = 0
+ 211              		@ frame_needed = 0, uses_anonymous_args = 0
+ 212 0000 38B5     		push	{r3, r4, r5, lr}
+ 213 0002 0546     		mov	r5, r0
+ 214 0004 8820     		movs	r0, #136
+ 215 0006 FFF7FEFF 		bl	nnom_mem
+ 216 000a 0446     		mov	r4, r0
+ 217 000c 48B3     		cbz	r0, .L16
+ 218 000e 0823     		movs	r3, #8
+ 219 0010 0377     		strb	r3, [r0, #28]
+ 220 0012 0123     		movs	r3, #1
+ 221 0014 80F85C30 		strb	r3, [r0, #92]
+ 222 0018 80F87830 		strb	r3, [r0, #120]
+ 223 001c 80F88430 		strb	r3, [r0, #132]
+ 224 0020 00F14401 		add	r1, r0, #68
+ 225 0024 FFF7FEFF 		bl	io_init
+ 226 0028 2062     		str	r0, [r4, #32]
+ 227 002a 04F16001 		add	r1, r4, #96
+ 228 002e 2046     		mov	r0, r4
+ 229 0030 FFF7FEFF 		bl	io_init
+ 230 0034 6062     		str	r0, [r4, #36]
+ 231 0036 04F17C03 		add	r3, r4, #124
+ 232 003a 2361     		str	r3, [r4, #16]
+ 233 003c 0A4B     		ldr	r3, .L19
+ 234 003e 6360     		str	r3, [r4, #4]
+ 235 0040 0A4B     		ldr	r3, .L19+4
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccYyuEL0.s 			page 5
+
+
+ 236 0042 A360     		str	r3, [r4, #8]
+ 237 0044 0A4B     		ldr	r3, .L19+8
+ 238 0046 E360     		str	r3, [r4, #12]
+ 239 0048 A868     		ldr	r0, [r5, #8]
+ 240 004a FFF7FEFF 		bl	tensor_get_num_channel
+ 241 004e 2063     		str	r0, [r4, #48]
+ 242 0050 EB68     		ldr	r3, [r5, #12]
+ 243 0052 A363     		str	r3, [r4, #56]
+ 244 0054 AB68     		ldr	r3, [r5, #8]
+ 245 0056 6363     		str	r3, [r4, #52]
+ 246 0058 2B69     		ldr	r3, [r5, #16]
+ 247 005a E363     		str	r3, [r4, #60]
+ 248 005c 6B69     		ldr	r3, [r5, #20]
+ 249 005e 2364     		str	r3, [r4, #64]
+ 250 0060 A561     		str	r5, [r4, #24]
+ 251              	.L16:
+ 252 0062 2046     		mov	r0, r4
+ 253 0064 38BD     		pop	{r3, r4, r5, pc}
+ 254              	.L20:
+ 255 0066 00BF     		.align	2
+ 256              	.L19:
+ 257 0068 00000000 		.word	dense_run
+ 258 006c 00000000 		.word	dense_build
+ 259 0070 00000000 		.word	dense_free
+ 261              		.section	.text.Dense,"ax",%progbits
+ 262              		.align	1
+ 263              		.global	Dense
+ 264              		.syntax unified
+ 265              		.thumb
+ 266              		.thumb_func
+ 268              	Dense:
+ 269              		@ args = 0, pretend = 0, frame = 8
+ 270              		@ frame_needed = 0, uses_anonymous_args = 0
+ 271 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+ 272 0004 82B0     		sub	sp, sp, #8
+ 273 0006 0546     		mov	r5, r0
+ 274 0008 0F46     		mov	r7, r1
+ 275 000a 1646     		mov	r6, r2
+ 276 000c 8820     		movs	r0, #136
+ 277 000e FFF7FEFF 		bl	nnom_mem
+ 278 0012 0446     		mov	r4, r0
+ 279 0014 0028     		cmp	r0, #0
+ 280 0016 69D0     		beq	.L21
+ 281 0018 4FF00809 		mov	r9, #8
+ 282 001c 80F81C90 		strb	r9, [r0, #28]
+ 283 0020 4FF00108 		mov	r8, #1
+ 284 0024 80F85C80 		strb	r8, [r0, #92]
+ 285 0028 80F87880 		strb	r8, [r0, #120]
+ 286 002c 80F88480 		strb	r8, [r0, #132]
+ 287 0030 00F14401 		add	r1, r0, #68
+ 288 0034 FFF7FEFF 		bl	io_init
+ 289 0038 2062     		str	r0, [r4, #32]
+ 290 003a 04F16001 		add	r1, r4, #96
+ 291 003e 2046     		mov	r0, r4
+ 292 0040 FFF7FEFF 		bl	io_init
+ 293 0044 6062     		str	r0, [r4, #36]
+ 294 0046 04F17C03 		add	r3, r4, #124
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccYyuEL0.s 			page 6
+
+
+ 295 004a 2361     		str	r3, [r4, #16]
+ 296 004c 294B     		ldr	r3, .L24
+ 297 004e 6360     		str	r3, [r4, #4]
+ 298 0050 294B     		ldr	r3, .L24+4
+ 299 0052 A360     		str	r3, [r4, #8]
+ 300 0054 2563     		str	r5, [r4, #48]
+ 301 0056 2A46     		mov	r2, r5
+ 302 0058 0221     		movs	r1, #2
+ 303 005a 0020     		movs	r0, #0
+ 304 005c FFF7FEFF 		bl	new_tensor
+ 305 0060 6063     		str	r0, [r4, #52]
+ 306 0062 2A46     		mov	r2, r5
+ 307 0064 4146     		mov	r1, r8
+ 308 0066 0020     		movs	r0, #0
+ 309 0068 FFF7FEFF 		bl	new_tensor
+ 310 006c A063     		str	r0, [r4, #56]
+ 311 006e 4FF00008 		mov	r8, #0
+ 312 0072 ADF80480 		strh	r8, [sp, #4]	@ movhi
+ 313 0076 ADB2     		uxth	r5, r5
+ 314 0078 ADF80650 		strh	r5, [sp, #6]	@ movhi
+ 315 007c 636B     		ldr	r3, [r4, #52]
+ 316 007e DB68     		ldr	r3, [r3, #12]
+ 317 0080 C3F80080 		str	r8, [r3]
+ 318 0084 636B     		ldr	r3, [r4, #52]
+ 319 0086 9B68     		ldr	r3, [r3, #8]
+ 320 0088 C3F80080 		str	r8, [r3]
+ 321 008c 636B     		ldr	r3, [r4, #52]
+ 322 008e 57F8042B 		ldr	r2, [r7], #4
+ 323 0092 1A60     		str	r2, [r3]
+ 324 0094 636B     		ldr	r3, [r4, #52]
+ 325 0096 83F81290 		strb	r9, [r3, #18]
+ 326 009a 636B     		ldr	r3, [r4, #52]
+ 327 009c 83F81080 		strb	r8, [r3, #16]
+ 328 00a0 636B     		ldr	r3, [r4, #52]
+ 329 00a2 5A7C     		ldrb	r2, [r3, #17]	@ zero_extendqisi2
+ 330 00a4 0DF1040A 		add	r10, sp, #4
+ 331 00a8 5200     		lsls	r2, r2, #1
+ 332 00aa 5146     		mov	r1, r10
+ 333 00ac 5868     		ldr	r0, [r3, #4]
+ 334 00ae FFF7FEFF 		bl	memcpy
+ 335 00b2 ADF80450 		strh	r5, [sp, #4]	@ movhi
+ 336 00b6 A36B     		ldr	r3, [r4, #56]
+ 337 00b8 DB68     		ldr	r3, [r3, #12]
+ 338 00ba C3F80080 		str	r8, [r3]
+ 339 00be A36B     		ldr	r3, [r4, #56]
+ 340 00c0 9B68     		ldr	r3, [r3, #8]
+ 341 00c2 C3F80080 		str	r8, [r3]
+ 342 00c6 A36B     		ldr	r3, [r4, #56]
+ 343 00c8 56F8042B 		ldr	r2, [r6], #4
+ 344 00cc 1A60     		str	r2, [r3]
+ 345 00ce A36B     		ldr	r3, [r4, #56]
+ 346 00d0 83F81290 		strb	r9, [r3, #18]
+ 347 00d4 636B     		ldr	r3, [r4, #52]
+ 348 00d6 83F81080 		strb	r8, [r3, #16]
+ 349 00da A36B     		ldr	r3, [r4, #56]
+ 350 00dc 5A7C     		ldrb	r2, [r3, #17]	@ zero_extendqisi2
+ 351 00de 5200     		lsls	r2, r2, #1
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccYyuEL0.s 			page 7
+
+
+ 352 00e0 5146     		mov	r1, r10
+ 353 00e2 5868     		ldr	r0, [r3, #4]
+ 354 00e4 FFF7FEFF 		bl	memcpy
+ 355 00e8 E763     		str	r7, [r4, #60]
+ 356 00ea 2664     		str	r6, [r4, #64]
+ 357              	.L21:
+ 358 00ec 2046     		mov	r0, r4
+ 359 00ee 02B0     		add	sp, sp, #8
+ 360              		@ sp needed
+ 361 00f0 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 362              	.L25:
+ 363              		.align	2
+ 364              	.L24:
+ 365 00f4 00000000 		.word	dense_run
+ 366 00f8 00000000 		.word	dense_build
+ 368              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccYyuEL0.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 nnom_dense.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccYyuEL0.s:16     .text.dense_build:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccYyuEL0.s:22     .text.dense_build:00000000 dense_build
+C:\Users\ihavenoK\AppData\Local\Temp\ccYyuEL0.s:127    .text.dense_free:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccYyuEL0.s:133    .text.dense_free:00000000 dense_free
+C:\Users\ihavenoK\AppData\Local\Temp\ccYyuEL0.s:151    .text.dense_run:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccYyuEL0.s:157    .text.dense_run:00000000 dense_run
+C:\Users\ihavenoK\AppData\Local\Temp\ccYyuEL0.s:203    .text.dense_s:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccYyuEL0.s:209    .text.dense_s:00000000 dense_s
+C:\Users\ihavenoK\AppData\Local\Temp\ccYyuEL0.s:257    .text.dense_s:00000068 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccYyuEL0.s:262    .text.Dense:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccYyuEL0.s:268    .text.Dense:00000000 Dense
+C:\Users\ihavenoK\AppData\Local\Temp\ccYyuEL0.s:365    .text.Dense:000000f4 $d
+
+UNDEFINED SYMBOLS
+tensor_get_num_channel
+new_tensor
+tensor_set_attr
+act_get_dec_bit
+tensor_size
+delete_tensor
+local_fully_connected_q7_opt
+nnom_mem
+io_init
+memcpy

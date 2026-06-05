@@ -1,0 +1,331 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccLvdz4o.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"nnom_dw_conv2d.c"
+  14              		.text
+  15              		.section	.text.dw_conv2d_build,"ax",%progbits
+  16              		.align	1
+  17              		.global	dw_conv2d_build
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	dw_conv2d_build:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 70B5     		push	{r4, r5, r6, lr}
+  26 0002 82B0     		sub	sp, sp, #8
+  27 0004 0446     		mov	r4, r0
+  28 0006 036A     		ldr	r3, [r0, #32]
+  29 0008 1A68     		ldr	r2, [r3]
+  30 000a D268     		ldr	r2, [r2, #12]
+  31 000c DA60     		str	r2, [r3, #12]
+  32 000e 036A     		ldr	r3, [r0, #32]
+  33 0010 D868     		ldr	r0, [r3, #12]
+  34 0012 467C     		ldrb	r6, [r0, #17]	@ zero_extendqisi2
+  35 0014 FFF7FEFF 		bl	tensor_get_num_channel
+  36 0018 656A     		ldr	r5, [r4, #36]
+  37 001a E26C     		ldr	r2, [r4, #76]
+  38 001c 00FB02F2 		mul	r2, r0, r2
+  39 0020 3146     		mov	r1, r6
+  40 0022 0020     		movs	r0, #0
+  41 0024 FFF7FEFF 		bl	new_tensor
+  42 0028 E860     		str	r0, [r5, #12]
+  43 002a 226A     		ldr	r2, [r4, #32]
+  44 002c 636A     		ldr	r3, [r4, #36]
+  45 002e D168     		ldr	r1, [r2, #12]
+  46 0030 D868     		ldr	r0, [r3, #12]
+  47 0032 FFF7FEFF 		bl	tensor_cpy_attr
+  48 0036 636A     		ldr	r3, [r4, #36]
+  49 0038 DB68     		ldr	r3, [r3, #12]
+  50 003a 9A68     		ldr	r2, [r3, #8]
+  51 003c 236A     		ldr	r3, [r4, #32]
+  52 003e DB68     		ldr	r3, [r3, #12]
+  53 0040 9B68     		ldr	r3, [r3, #8]
+  54 0042 216D     		ldr	r1, [r4, #80]
+  55 0044 8968     		ldr	r1, [r1, #8]
+  56 0046 1B68     		ldr	r3, [r3]
+  57 0048 0968     		ldr	r1, [r1]
+  58 004a 0B44     		add	r3, r3, r1
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccLvdz4o.s 			page 2
+
+
+  59 004c A16D     		ldr	r1, [r4, #88]
+  60 004e 0968     		ldr	r1, [r1]
+  61 0050 5B1A     		subs	r3, r3, r1
+  62 0052 1360     		str	r3, [r2]
+  63 0054 6369     		ldr	r3, [r4, #20]
+  64 0056 3BB1     		cbz	r3, .L2
+  65 0058 626A     		ldr	r2, [r4, #36]
+  66 005a D268     		ldr	r2, [r2, #12]
+  67 005c 9568     		ldr	r5, [r2, #8]
+  68 005e 2968     		ldr	r1, [r5]
+  69 0060 187A     		ldrb	r0, [r3, #8]	@ zero_extendqisi2
+  70 0062 FFF7FEFF 		bl	act_get_dec_bit
+  71 0066 2860     		str	r0, [r5]
+  72              	.L2:
+  73 0068 236A     		ldr	r3, [r4, #32]
+  74 006a DB68     		ldr	r3, [r3, #12]
+  75 006c 5B68     		ldr	r3, [r3, #4]
+  76 006e 1888     		ldrh	r0, [r3]
+  77 0070 B4F84230 		ldrh	r3, [r4, #66]
+  78 0074 0093     		str	r3, [sp]
+  79 0076 E38E     		ldrh	r3, [r4, #54]
+  80 0078 94F84820 		ldrb	r2, [r4, #72]	@ zero_extendqisi2
+  81 007c 218E     		ldrh	r1, [r4, #48]
+  82 007e FFF7FEFF 		bl	conv_output_length
+  83 0082 636A     		ldr	r3, [r4, #36]
+  84 0084 DB68     		ldr	r3, [r3, #12]
+  85 0086 5B68     		ldr	r3, [r3, #4]
+  86 0088 1880     		strh	r0, [r3]	@ movhi
+  87 008a 236A     		ldr	r3, [r4, #32]
+  88 008c DB68     		ldr	r3, [r3, #12]
+  89 008e 5B68     		ldr	r3, [r3, #4]
+  90 0090 5888     		ldrh	r0, [r3, #2]
+  91 0092 B4F84430 		ldrh	r3, [r4, #68]
+  92 0096 0093     		str	r3, [sp]
+  93 0098 238F     		ldrh	r3, [r4, #56]
+  94 009a 94F84820 		ldrb	r2, [r4, #72]	@ zero_extendqisi2
+  95 009e 618E     		ldrh	r1, [r4, #50]
+  96 00a0 FFF7FEFF 		bl	conv_output_length
+  97 00a4 636A     		ldr	r3, [r4, #36]
+  98 00a6 DB68     		ldr	r3, [r3, #12]
+  99 00a8 5B68     		ldr	r3, [r3, #4]
+ 100 00aa 5880     		strh	r0, [r3, #2]	@ movhi
+ 101 00ac 636A     		ldr	r3, [r4, #36]
+ 102 00ae DB68     		ldr	r3, [r3, #12]
+ 103 00b0 5A68     		ldr	r2, [r3, #4]
+ 104 00b2 236A     		ldr	r3, [r4, #32]
+ 105 00b4 DB68     		ldr	r3, [r3, #12]
+ 106 00b6 5B68     		ldr	r3, [r3, #4]
+ 107 00b8 E16C     		ldr	r1, [r4, #76]
+ 108 00ba 9B88     		ldrh	r3, [r3, #4]
+ 109 00bc 01FB03F3 		mul	r3, r1, r3
+ 110 00c0 9380     		strh	r3, [r2, #4]	@ movhi
+ 111 00c2 94F84830 		ldrb	r3, [r4, #72]	@ zero_extendqisi2
+ 112 00c6 012B     		cmp	r3, #1
+ 113 00c8 0DD0     		beq	.L5
+ 114              	.L3:
+ 115 00ca 658E     		ldrh	r5, [r4, #50]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccLvdz4o.s 			page 3
+
+
+ 116 00cc 238E     		ldrh	r3, [r4, #48]
+ 117 00ce 03FB05F5 		mul	r5, r3, r5
+ 118 00d2 636A     		ldr	r3, [r4, #36]
+ 119 00d4 D868     		ldr	r0, [r3, #12]
+ 120 00d6 FFF7FEFF 		bl	tensor_size
+ 121 00da 00FB05F5 		mul	r5, r0, r5
+ 122 00de A562     		str	r5, [r4, #40]
+ 123 00e0 0020     		movs	r0, #0
+ 124 00e2 02B0     		add	sp, sp, #8
+ 125              		@ sp needed
+ 126 00e4 70BD     		pop	{r4, r5, r6, pc}
+ 127              	.L5:
+ 128 00e6 638E     		ldrh	r3, [r4, #50]
+ 129 00e8 013B     		subs	r3, r3, #1
+ 130 00ea B4F84420 		ldrh	r2, [r4, #68]
+ 131 00ee 02FB03F3 		mul	r3, r2, r3
+ 132 00f2 03EBD373 		add	r3, r3, r3, lsr #31
+ 133 00f6 5B10     		asrs	r3, r3, #1
+ 134 00f8 E387     		strh	r3, [r4, #62]	@ movhi
+ 135 00fa 238E     		ldrh	r3, [r4, #48]
+ 136 00fc 013B     		subs	r3, r3, #1
+ 137 00fe B4F84220 		ldrh	r2, [r4, #66]
+ 138 0102 02FB03F3 		mul	r3, r2, r3
+ 139 0106 03EBD373 		add	r3, r3, r3, lsr #31
+ 140 010a 5B10     		asrs	r3, r3, #1
+ 141 010c A387     		strh	r3, [r4, #60]	@ movhi
+ 142 010e 0023     		movs	r3, #0
+ 143 0110 A4F84030 		strh	r3, [r4, #64]	@ movhi
+ 144 0114 D9E7     		b	.L3
+ 146              		.section	.text.dw_conv2d_run,"ax",%progbits
+ 147              		.align	1
+ 148              		.global	dw_conv2d_run
+ 149              		.syntax unified
+ 150              		.thumb
+ 151              		.thumb_func
+ 153              	dw_conv2d_run:
+ 154              		@ args = 0, pretend = 0, frame = 0
+ 155              		@ frame_needed = 0, uses_anonymous_args = 0
+ 156 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 157 0002 95B0     		sub	sp, sp, #84
+ 158 0004 8446     		mov	ip, r0
+ 159 0006 036A     		ldr	r3, [r0, #32]
+ 160 0008 D868     		ldr	r0, [r3, #12]
+ 161 000a 4168     		ldr	r1, [r0, #4]
+ 162 000c DCF85060 		ldr	r6, [ip, #80]
+ 163 0010 DCF82430 		ldr	r3, [ip, #36]
+ 164 0014 DF68     		ldr	r7, [r3, #12]
+ 165 0016 7D68     		ldr	r5, [r7, #4]
+ 166 0018 8B88     		ldrh	r3, [r1, #4]
+ 167 001a 0A88     		ldrh	r2, [r1]
+ 168 001c 4988     		ldrh	r1, [r1, #2]
+ 169 001e 0068     		ldr	r0, [r0]
+ 170 0020 0024     		movs	r4, #0
+ 171 0022 1294     		str	r4, [sp, #72]
+ 172 0024 1194     		str	r4, [sp, #68]
+ 173 0026 B5F800E0 		ldrh	lr, [r5]
+ 174 002a CDF840E0 		str	lr, [sp, #64]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccLvdz4o.s 			page 4
+
+
+ 175 002e B5F802E0 		ldrh	lr, [r5, #2]
+ 176 0032 CDF83CE0 		str	lr, [sp, #60]
+ 177 0036 3F68     		ldr	r7, [r7]
+ 178 0038 0E97     		str	r7, [sp, #56]
+ 179 003a 377C     		ldrb	r7, [r6, #16]	@ zero_extendqisi2
+ 180 003c 0D97     		str	r7, [sp, #52]
+ 181 003e DCF85870 		ldr	r7, [ip, #88]
+ 182 0042 0C97     		str	r7, [sp, #48]
+ 183 0044 DCF85C70 		ldr	r7, [ip, #92]
+ 184 0048 0B97     		str	r7, [sp, #44]
+ 185 004a DCF85470 		ldr	r7, [ip, #84]
+ 186 004e 3F68     		ldr	r7, [r7]
+ 187 0050 0A97     		str	r7, [sp, #40]
+ 188 0052 BCF84270 		ldrh	r7, [ip, #66]
+ 189 0056 0997     		str	r7, [sp, #36]
+ 190 0058 BCF84470 		ldrh	r7, [ip, #68]
+ 191 005c 0897     		str	r7, [sp, #32]
+ 192 005e BCF83670 		ldrh	r7, [ip, #54]
+ 193 0062 0797     		str	r7, [sp, #28]
+ 194 0064 BCF83870 		ldrh	r7, [ip, #56]
+ 195 0068 0697     		str	r7, [sp, #24]
+ 196 006a BCF83C70 		ldrh	r7, [ip, #60]
+ 197 006e 0597     		str	r7, [sp, #20]
+ 198 0070 BCF83E70 		ldrh	r7, [ip, #62]
+ 199 0074 0497     		str	r7, [sp, #16]
+ 200 0076 BCF83070 		ldrh	r7, [ip, #48]
+ 201 007a 0397     		str	r7, [sp, #12]
+ 202 007c BCF83270 		ldrh	r7, [ip, #50]
+ 203 0080 0297     		str	r7, [sp, #8]
+ 204 0082 AD88     		ldrh	r5, [r5, #4]
+ 205 0084 0195     		str	r5, [sp, #4]
+ 206 0086 3568     		ldr	r5, [r6]
+ 207 0088 0095     		str	r5, [sp]
+ 208 008a FFF7FEFF 		bl	local_depthwise_separable_conv_HWC_q7_nonsquare
+ 209 008e 2046     		mov	r0, r4
+ 210 0090 15B0     		add	sp, sp, #84
+ 211              		@ sp needed
+ 212 0092 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 214              		.section	.text.dw_conv2d_s,"ax",%progbits
+ 215              		.align	1
+ 216              		.global	dw_conv2d_s
+ 217              		.syntax unified
+ 218              		.thumb
+ 219              		.thumb_func
+ 221              	dw_conv2d_s:
+ 222              		@ args = 0, pretend = 0, frame = 0
+ 223              		@ frame_needed = 0, uses_anonymous_args = 0
+ 224 0000 08B5     		push	{r3, lr}
+ 225 0002 FFF7FEFF 		bl	conv2d_s
+ 226 0006 0346     		mov	r3, r0
+ 227 0008 28B1     		cbz	r0, .L8
+ 228 000a 0522     		movs	r2, #5
+ 229 000c 0277     		strb	r2, [r0, #28]
+ 230 000e 034A     		ldr	r2, .L11
+ 231 0010 4260     		str	r2, [r0, #4]
+ 232 0012 034A     		ldr	r2, .L11+4
+ 233 0014 8260     		str	r2, [r0, #8]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccLvdz4o.s 			page 5
+
+
+ 234              	.L8:
+ 235 0016 1846     		mov	r0, r3
+ 236 0018 08BD     		pop	{r3, pc}
+ 237              	.L12:
+ 238 001a 00BF     		.align	2
+ 239              	.L11:
+ 240 001c 00000000 		.word	dw_conv2d_run
+ 241 0020 00000000 		.word	dw_conv2d_build
+ 243              		.section	.text.DW_Conv2D,"ax",%progbits
+ 244              		.align	1
+ 245              		.global	DW_Conv2D
+ 246              		.syntax unified
+ 247              		.thumb
+ 248              		.thumb_func
+ 250              	DW_Conv2D:
+ 251              		@ args = 32, pretend = 8, frame = 8
+ 252              		@ frame_needed = 0, uses_anonymous_args = 0
+ 253 0000 82B0     		sub	sp, sp, #8
+ 254 0002 00B5     		push	{lr}
+ 255 0004 89B0     		sub	sp, sp, #36
+ 256 0006 8646     		mov	lr, r0
+ 257 0008 0DF1180C 		add	ip, sp, #24
+ 258 000c 8CE80600 		stm	ip, {r1, r2}
+ 259 0010 119A     		ldr	r2, [sp, #68]
+ 260 0012 0592     		str	r2, [sp, #20]
+ 261 0014 109A     		ldr	r2, [sp, #64]
+ 262 0016 0492     		str	r2, [sp, #16]
+ 263 0018 9DF83C20 		ldrb	r2, [sp, #60]	@ zero_extendqisi2
+ 264 001c 0392     		str	r2, [sp, #12]
+ 265 001e 0DAA     		add	r2, sp, #52
+ 266 0020 92E80300 		ldm	r2, {r0, r1}
+ 267 0024 0190     		str	r0, [sp, #4]
+ 268 0026 ADF80810 		strh	r1, [sp, #8]	@ movhi
+ 269 002a BDF83020 		ldrh	r2, [sp, #48]
+ 270 002e ADF80020 		strh	r2, [sp]	@ movhi
+ 271 0032 9CE80600 		ldm	ip, {r1, r2}
+ 272 0036 7046     		mov	r0, lr
+ 273 0038 FFF7FEFF 		bl	Conv2D
+ 274 003c 0346     		mov	r3, r0
+ 275 003e 28B1     		cbz	r0, .L13
+ 276 0040 0522     		movs	r2, #5
+ 277 0042 0277     		strb	r2, [r0, #28]
+ 278 0044 044A     		ldr	r2, .L16
+ 279 0046 4260     		str	r2, [r0, #4]
+ 280 0048 044A     		ldr	r2, .L16+4
+ 281 004a 8260     		str	r2, [r0, #8]
+ 282              	.L13:
+ 283 004c 1846     		mov	r0, r3
+ 284 004e 09B0     		add	sp, sp, #36
+ 285              		@ sp needed
+ 286 0050 5DF804EB 		ldr	lr, [sp], #4
+ 287 0054 02B0     		add	sp, sp, #8
+ 288 0056 7047     		bx	lr
+ 289              	.L17:
+ 290              		.align	2
+ 291              	.L16:
+ 292 0058 00000000 		.word	dw_conv2d_run
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccLvdz4o.s 			page 6
+
+
+ 293 005c 00000000 		.word	dw_conv2d_build
+ 295              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccLvdz4o.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 nnom_dw_conv2d.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccLvdz4o.s:16     .text.dw_conv2d_build:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccLvdz4o.s:22     .text.dw_conv2d_build:00000000 dw_conv2d_build
+C:\Users\ihavenoK\AppData\Local\Temp\ccLvdz4o.s:147    .text.dw_conv2d_run:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccLvdz4o.s:153    .text.dw_conv2d_run:00000000 dw_conv2d_run
+C:\Users\ihavenoK\AppData\Local\Temp\ccLvdz4o.s:215    .text.dw_conv2d_s:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccLvdz4o.s:221    .text.dw_conv2d_s:00000000 dw_conv2d_s
+C:\Users\ihavenoK\AppData\Local\Temp\ccLvdz4o.s:240    .text.dw_conv2d_s:0000001c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccLvdz4o.s:244    .text.DW_Conv2D:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccLvdz4o.s:250    .text.DW_Conv2D:00000000 DW_Conv2D
+C:\Users\ihavenoK\AppData\Local\Temp\ccLvdz4o.s:292    .text.DW_Conv2D:00000058 $d
+
+UNDEFINED SYMBOLS
+tensor_get_num_channel
+new_tensor
+tensor_cpy_attr
+act_get_dec_bit
+conv_output_length
+tensor_size
+local_depthwise_separable_conv_HWC_q7_nonsquare
+conv2d_s
+Conv2D

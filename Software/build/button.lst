@@ -1,0 +1,338 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc9Jz2h7.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"button.c"
+  14              		.text
+  15              		.section	.text.Button_Status_Clear,"ax",%progbits
+  16              		.align	1
+  17              		.global	Button_Status_Clear
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	Button_Status_Clear:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25              		@ link register save eliminated.
+  26 0000 014B     		ldr	r3, .L2
+  27 0002 0022     		movs	r2, #0
+  28 0004 1A70     		strb	r2, [r3]
+  29 0006 7047     		bx	lr
+  30              	.L3:
+  31              		.align	2
+  32              	.L2:
+  33 0008 00000000 		.word	Button
+  35              		.section	.text.EXTI0_IRQHandler,"ax",%progbits
+  36              		.align	1
+  37              		.global	EXTI0_IRQHandler
+  38              		.syntax unified
+  39              		.thumb
+  40              		.thumb_func
+  42              	EXTI0_IRQHandler:
+  43              		@ args = 0, pretend = 0, frame = 0
+  44              		@ frame_needed = 0, uses_anonymous_args = 0
+  45 0000 08B5     		push	{r3, lr}
+  46 0002 0120     		movs	r0, #1
+  47 0004 FFF7FEFF 		bl	EXTI_GetITStatus
+  48 0008 0128     		cmp	r0, #1
+  49 000a 00D0     		beq	.L8
+  50              	.L4:
+  51 000c 08BD     		pop	{r3, pc}
+  52              	.L8:
+  53 000e 064B     		ldr	r3, .L10
+  54 0010 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  55 0012 1BB1     		cbz	r3, .L9
+  56              	.L6:
+  57 0014 0120     		movs	r0, #1
+  58 0016 FFF7FEFF 		bl	EXTI_ClearITPendingBit
+  59 001a F7E7     		b	.L4
+  60              	.L9:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc9Jz2h7.s 			page 2
+
+
+  61 001c 0121     		movs	r1, #1
+  62 001e 0348     		ldr	r0, .L10+4
+  63 0020 FFF7FEFF 		bl	TIM_Cmd
+  64 0024 F6E7     		b	.L6
+  65              	.L11:
+  66 0026 00BF     		.align	2
+  67              	.L10:
+  68 0028 00000000 		.word	Button
+  69 002c 00080040 		.word	1073743872
+  71              		.section	.text.TIM4_IRQHandler,"ax",%progbits
+  72              		.align	1
+  73              		.global	TIM4_IRQHandler
+  74              		.syntax unified
+  75              		.thumb
+  76              		.thumb_func
+  78              	TIM4_IRQHandler:
+  79              		@ args = 0, pretend = 0, frame = 0
+  80              		@ frame_needed = 0, uses_anonymous_args = 0
+  81 0000 10B5     		push	{r4, lr}
+  82 0002 0121     		movs	r1, #1
+  83 0004 2948     		ldr	r0, .L22
+  84 0006 FFF7FEFF 		bl	TIM_GetITStatus
+  85 000a 0128     		cmp	r0, #1
+  86 000c 00D0     		beq	.L19
+  87              	.L12:
+  88 000e 10BD     		pop	{r4, pc}
+  89              	.L19:
+  90 0010 0121     		movs	r1, #1
+  91 0012 2748     		ldr	r0, .L22+4
+  92 0014 FFF7FEFF 		bl	GPIO_ReadInputDataBit
+  93 0018 0446     		mov	r4, r0
+  94 001a 264B     		ldr	r3, .L22+8
+  95 001c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  96 001e 8342     		cmp	r3, r0
+  97 0020 0AD0     		beq	.L20
+  98              	.L14:
+  99 0022 244B     		ldr	r3, .L22+8
+ 100 0024 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 101 0026 A342     		cmp	r3, r4
+ 102 0028 18D0     		beq	.L21
+ 103              	.L15:
+ 104 002a 224B     		ldr	r3, .L22+8
+ 105 002c 1C70     		strb	r4, [r3]
+ 106 002e 0121     		movs	r1, #1
+ 107 0030 1E48     		ldr	r0, .L22
+ 108 0032 FFF7FEFF 		bl	TIM_ClearITPendingBit
+ 109 0036 EAE7     		b	.L12
+ 110              	.L20:
+ 111 0038 0028     		cmp	r0, #0
+ 112 003a F2D1     		bne	.L14
+ 113 003c 1E4A     		ldr	r2, .L22+12
+ 114 003e 1388     		ldrh	r3, [r2]
+ 115 0040 0133     		adds	r3, r3, #1
+ 116 0042 9BB2     		uxth	r3, r3
+ 117 0044 1380     		strh	r3, [r2]	@ movhi
+ 118 0046 1388     		ldrh	r3, [r2]
+ 119 0048 9BB2     		uxth	r3, r3
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc9Jz2h7.s 			page 3
+
+
+ 120 004a 41F28732 		movw	r2, #4999
+ 121 004e 9342     		cmp	r3, r2
+ 122 0050 EBD9     		bls	.L15
+ 123 0052 194B     		ldr	r3, .L22+12
+ 124 0054 4FF4FA72 		mov	r2, #500
+ 125 0058 1A80     		strh	r2, [r3]	@ movhi
+ 126 005a E6E7     		b	.L15
+ 127              	.L21:
+ 128 005c 012C     		cmp	r4, #1
+ 129 005e E4D1     		bne	.L15
+ 130 0060 164A     		ldr	r2, .L22+16
+ 131 0062 1388     		ldrh	r3, [r2]
+ 132 0064 0133     		adds	r3, r3, #1
+ 133 0066 9BB2     		uxth	r3, r3
+ 134 0068 1380     		strh	r3, [r2]	@ movhi
+ 135 006a 134B     		ldr	r3, .L22+12
+ 136 006c 1B88     		ldrh	r3, [r3]
+ 137 006e 9BB2     		uxth	r3, r3
+ 138 0070 B3F5FA7F 		cmp	r3, #500
+ 139 0074 10D3     		bcc	.L16
+ 140 0076 124B     		ldr	r3, .L22+20
+ 141 0078 0322     		movs	r2, #3
+ 142 007a 1A70     		strb	r2, [r3]
+ 143              	.L17:
+ 144 007c 0F4B     		ldr	r3, .L22+16
+ 145 007e 1B88     		ldrh	r3, [r3]
+ 146 0080 9BB2     		uxth	r3, r3
+ 147 0082 092B     		cmp	r3, #9
+ 148 0084 D1D9     		bls	.L15
+ 149 0086 0021     		movs	r1, #0
+ 150 0088 0B4B     		ldr	r3, .L22+12
+ 151 008a 1980     		strh	r1, [r3]	@ movhi
+ 152 008c 0B4B     		ldr	r3, .L22+16
+ 153 008e 1980     		strh	r1, [r3]	@ movhi
+ 154 0090 0648     		ldr	r0, .L22
+ 155 0092 FFF7FEFF 		bl	TIM_Cmd
+ 156 0096 C8E7     		b	.L15
+ 157              	.L16:
+ 158 0098 074B     		ldr	r3, .L22+12
+ 159 009a 1B88     		ldrh	r3, [r3]
+ 160 009c 9BB2     		uxth	r3, r3
+ 161 009e 092B     		cmp	r3, #9
+ 162 00a0 ECD9     		bls	.L17
+ 163 00a2 074B     		ldr	r3, .L22+20
+ 164 00a4 0222     		movs	r2, #2
+ 165 00a6 1A70     		strb	r2, [r3]
+ 166 00a8 E8E7     		b	.L17
+ 167              	.L23:
+ 168 00aa 00BF     		.align	2
+ 169              	.L22:
+ 170 00ac 00080040 		.word	1073743872
+ 171 00b0 00080140 		.word	1073809408
+ 172 00b4 00000000 		.word	previous_status
+ 173 00b8 00000000 		.word	time_hold_count_ms
+ 174 00bc 00000000 		.word	time_release_count_ms
+ 175 00c0 00000000 		.word	Button
+ 177              		.section	.rodata.Button_Init.str1.4,"aMS",%progbits,1
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc9Jz2h7.s 			page 4
+
+
+ 178              		.align	2
+ 179              	.LC0:
+ 180 0000 42757474 		.ascii	"Button_Init\000"
+ 180      6F6E5F49 
+ 180      6E697400 
+ 181              		.section	.text.Button_Init,"ax",%progbits
+ 182              		.align	1
+ 183              		.global	Button_Init
+ 184              		.syntax unified
+ 185              		.thumb
+ 186              		.thumb_func
+ 188              	Button_Init:
+ 189              		@ args = 0, pretend = 0, frame = 32
+ 190              		@ frame_needed = 0, uses_anonymous_args = 0
+ 191 0000 70B5     		push	{r4, r5, r6, lr}
+ 192 0002 88B0     		sub	sp, sp, #32
+ 193 0004 0121     		movs	r1, #1
+ 194 0006 0420     		movs	r0, #4
+ 195 0008 FFF7FEFF 		bl	RCC_APB2PeriphClockCmd
+ 196 000c 0121     		movs	r1, #1
+ 197 000e 0420     		movs	r0, #4
+ 198 0010 FFF7FEFF 		bl	RCC_APB1PeriphClockCmd
+ 199 0014 0124     		movs	r4, #1
+ 200 0016 ADF81C40 		strh	r4, [sp, #28]	@ movhi
+ 201 001a 4823     		movs	r3, #72
+ 202 001c 8DF81F30 		strb	r3, [sp, #31]
+ 203 0020 0326     		movs	r6, #3
+ 204 0022 8DF81E60 		strb	r6, [sp, #30]
+ 205 0026 07A9     		add	r1, sp, #28
+ 206 0028 2648     		ldr	r0, .L26
+ 207 002a FFF7FEFF 		bl	GPIO_Init
+ 208 002e 0294     		str	r4, [sp, #8]
+ 209 0030 8DF80E40 		strb	r4, [sp, #14]
+ 210 0034 0025     		movs	r5, #0
+ 211 0036 8DF80C50 		strb	r5, [sp, #12]
+ 212 003a 1023     		movs	r3, #16
+ 213 003c 8DF80D30 		strb	r3, [sp, #13]
+ 214 0040 02A8     		add	r0, sp, #8
+ 215 0042 FFF7FEFF 		bl	EXTI_Init
+ 216 0046 0623     		movs	r3, #6
+ 217 0048 8DF80430 		strb	r3, [sp, #4]
+ 218 004c 8DF80740 		strb	r4, [sp, #7]
+ 219 0050 8DF80560 		strb	r6, [sp, #5]
+ 220 0054 8DF80660 		strb	r6, [sp, #6]
+ 221 0058 01AE     		add	r6, sp, #4
+ 222 005a 3046     		mov	r0, r6
+ 223 005c FFF7FEFF 		bl	NVIC_Init
+ 224 0060 40F60F63 		movw	r3, #3599
+ 225 0064 ADF81030 		strh	r3, [sp, #16]	@ movhi
+ 226 0068 ADF81250 		strh	r5, [sp, #18]	@ movhi
+ 227 006c 1323     		movs	r3, #19
+ 228 006e ADF81430 		strh	r3, [sp, #20]	@ movhi
+ 229 0072 ADF81650 		strh	r5, [sp, #22]	@ movhi
+ 230 0076 144D     		ldr	r5, .L26+4
+ 231 0078 04A9     		add	r1, sp, #16
+ 232 007a 2846     		mov	r0, r5
+ 233 007c FFF7FEFF 		bl	TIM_TimeBaseInit
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc9Jz2h7.s 			page 5
+
+
+ 234 0080 2146     		mov	r1, r4
+ 235 0082 2846     		mov	r0, r5
+ 236 0084 FFF7FEFF 		bl	TIM_ClearFlag
+ 237 0088 2246     		mov	r2, r4
+ 238 008a 2146     		mov	r1, r4
+ 239 008c 2846     		mov	r0, r5
+ 240 008e FFF7FEFF 		bl	TIM_ITConfig
+ 241 0092 4FF4A060 		mov	r0, #1280
+ 242 0096 FFF7FEFF 		bl	NVIC_PriorityGroupConfig
+ 243 009a 1E23     		movs	r3, #30
+ 244 009c 8DF80430 		strb	r3, [sp, #4]
+ 245 00a0 8DF80740 		strb	r4, [sp, #7]
+ 246 00a4 0423     		movs	r3, #4
+ 247 00a6 8DF80530 		strb	r3, [sp, #5]
+ 248 00aa 8DF80630 		strb	r3, [sp, #6]
+ 249 00ae 3046     		mov	r0, r6
+ 250 00b0 FFF7FEFF 		bl	NVIC_Init
+ 251 00b4 0548     		ldr	r0, .L26+8
+ 252 00b6 FFF7FEFF 		bl	puts
+ 253 00ba 054B     		ldr	r3, .L26+12
+ 254 00bc 054A     		ldr	r2, .L26+16
+ 255 00be 5A60     		str	r2, [r3, #4]
+ 256 00c0 08B0     		add	sp, sp, #32
+ 257              		@ sp needed
+ 258 00c2 70BD     		pop	{r4, r5, r6, pc}
+ 259              	.L27:
+ 260              		.align	2
+ 261              	.L26:
+ 262 00c4 00080140 		.word	1073809408
+ 263 00c8 00080040 		.word	1073743872
+ 264 00cc 00000000 		.word	.LC0
+ 265 00d0 00000000 		.word	Button
+ 266 00d4 00000000 		.word	Button_Status_Clear
+ 268              		.section	.bss.previous_status,"aw",%nobits
+ 271              	previous_status:
+ 272 0000 00       		.space	1
+ 273              		.section	.bss.time_hold_count_ms,"aw",%nobits
+ 274              		.align	1
+ 277              	time_hold_count_ms:
+ 278 0000 0000     		.space	2
+ 279              		.section	.bss.time_release_count_ms,"aw",%nobits
+ 280              		.align	1
+ 283              	time_release_count_ms:
+ 284 0000 0000     		.space	2
+ 285              		.global	Button
+ 286              		.section	.bss.Button,"aw",%nobits
+ 287              		.align	2
+ 290              	Button:
+ 291 0000 00000000 		.space	8
+ 291      00000000 
+ 292              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc9Jz2h7.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 button.c
+C:\Users\ihavenoK\AppData\Local\Temp\cc9Jz2h7.s:16     .text.Button_Status_Clear:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc9Jz2h7.s:22     .text.Button_Status_Clear:00000000 Button_Status_Clear
+C:\Users\ihavenoK\AppData\Local\Temp\cc9Jz2h7.s:33     .text.Button_Status_Clear:00000008 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc9Jz2h7.s:290    .bss.Button:00000000 Button
+C:\Users\ihavenoK\AppData\Local\Temp\cc9Jz2h7.s:36     .text.EXTI0_IRQHandler:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc9Jz2h7.s:42     .text.EXTI0_IRQHandler:00000000 EXTI0_IRQHandler
+C:\Users\ihavenoK\AppData\Local\Temp\cc9Jz2h7.s:68     .text.EXTI0_IRQHandler:00000028 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc9Jz2h7.s:72     .text.TIM4_IRQHandler:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc9Jz2h7.s:78     .text.TIM4_IRQHandler:00000000 TIM4_IRQHandler
+C:\Users\ihavenoK\AppData\Local\Temp\cc9Jz2h7.s:170    .text.TIM4_IRQHandler:000000ac $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc9Jz2h7.s:271    .bss.previous_status:00000000 previous_status
+C:\Users\ihavenoK\AppData\Local\Temp\cc9Jz2h7.s:277    .bss.time_hold_count_ms:00000000 time_hold_count_ms
+C:\Users\ihavenoK\AppData\Local\Temp\cc9Jz2h7.s:283    .bss.time_release_count_ms:00000000 time_release_count_ms
+C:\Users\ihavenoK\AppData\Local\Temp\cc9Jz2h7.s:178    .rodata.Button_Init.str1.4:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc9Jz2h7.s:182    .text.Button_Init:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc9Jz2h7.s:188    .text.Button_Init:00000000 Button_Init
+C:\Users\ihavenoK\AppData\Local\Temp\cc9Jz2h7.s:262    .text.Button_Init:000000c4 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc9Jz2h7.s:272    .bss.previous_status:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc9Jz2h7.s:274    .bss.time_hold_count_ms:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc9Jz2h7.s:280    .bss.time_release_count_ms:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc9Jz2h7.s:287    .bss.Button:00000000 $d
+
+UNDEFINED SYMBOLS
+EXTI_GetITStatus
+EXTI_ClearITPendingBit
+TIM_Cmd
+TIM_GetITStatus
+GPIO_ReadInputDataBit
+TIM_ClearITPendingBit
+RCC_APB2PeriphClockCmd
+RCC_APB1PeriphClockCmd
+GPIO_Init
+EXTI_Init
+NVIC_Init
+TIM_TimeBaseInit
+TIM_ClearFlag
+TIM_ITConfig
+NVIC_PriorityGroupConfig
+puts

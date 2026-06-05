@@ -1,0 +1,860 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f10x_usart.c"
+  14              		.text
+  15              		.section	.text.USART_DeInit,"ax",%progbits
+  16              		.align	1
+  17              		.global	USART_DeInit
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	USART_DeInit:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 08B5     		push	{r3, lr}
+  26 0002 234B     		ldr	r3, .L13
+  27 0004 9842     		cmp	r0, r3
+  28 0006 0CD0     		beq	.L8
+  29 0008 224B     		ldr	r3, .L13+4
+  30 000a 9842     		cmp	r0, r3
+  31 000c 14D0     		beq	.L9
+  32 000e 224B     		ldr	r3, .L13+8
+  33 0010 9842     		cmp	r0, r3
+  34 0012 1CD0     		beq	.L10
+  35 0014 214B     		ldr	r3, .L13+12
+  36 0016 9842     		cmp	r0, r3
+  37 0018 24D0     		beq	.L11
+  38 001a 214B     		ldr	r3, .L13+16
+  39 001c 9842     		cmp	r0, r3
+  40 001e 2CD0     		beq	.L12
+  41              	.L1:
+  42 0020 08BD     		pop	{r3, pc}
+  43              	.L8:
+  44 0022 0121     		movs	r1, #1
+  45 0024 4FF48040 		mov	r0, #16384
+  46 0028 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  47 002c 0021     		movs	r1, #0
+  48 002e 4FF48040 		mov	r0, #16384
+  49 0032 FFF7FEFF 		bl	RCC_APB2PeriphResetCmd
+  50 0036 F3E7     		b	.L1
+  51              	.L9:
+  52 0038 0121     		movs	r1, #1
+  53 003a 4FF40030 		mov	r0, #131072
+  54 003e FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  55 0042 0021     		movs	r1, #0
+  56 0044 4FF40030 		mov	r0, #131072
+  57 0048 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  58 004c E8E7     		b	.L1
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s 			page 2
+
+
+  59              	.L10:
+  60 004e 0121     		movs	r1, #1
+  61 0050 4FF48020 		mov	r0, #262144
+  62 0054 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  63 0058 0021     		movs	r1, #0
+  64 005a 4FF48020 		mov	r0, #262144
+  65 005e FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  66 0062 DDE7     		b	.L1
+  67              	.L11:
+  68 0064 0121     		movs	r1, #1
+  69 0066 4FF40020 		mov	r0, #524288
+  70 006a FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  71 006e 0021     		movs	r1, #0
+  72 0070 4FF40020 		mov	r0, #524288
+  73 0074 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  74 0078 D2E7     		b	.L1
+  75              	.L12:
+  76 007a 0121     		movs	r1, #1
+  77 007c 4FF48010 		mov	r0, #1048576
+  78 0080 FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  79 0084 0021     		movs	r1, #0
+  80 0086 4FF48010 		mov	r0, #1048576
+  81 008a FFF7FEFF 		bl	RCC_APB1PeriphResetCmd
+  82 008e C7E7     		b	.L1
+  83              	.L14:
+  84              		.align	2
+  85              	.L13:
+  86 0090 00380140 		.word	1073821696
+  87 0094 00440040 		.word	1073759232
+  88 0098 00480040 		.word	1073760256
+  89 009c 004C0040 		.word	1073761280
+  90 00a0 00500040 		.word	1073762304
+  92              		.section	.text.USART_Init,"ax",%progbits
+  93              		.align	1
+  94              		.global	USART_Init
+  95              		.syntax unified
+  96              		.thumb
+  97              		.thumb_func
+  99              	USART_Init:
+ 100              		@ args = 0, pretend = 0, frame = 24
+ 101              		@ frame_needed = 0, uses_anonymous_args = 0
+ 102 0000 30B5     		push	{r4, r5, lr}
+ 103 0002 87B0     		sub	sp, sp, #28
+ 104 0004 0446     		mov	r4, r0
+ 105 0006 0D46     		mov	r5, r1
+ 106 0008 038A     		ldrh	r3, [r0, #16]
+ 107 000a 9BB2     		uxth	r3, r3
+ 108 000c 23F44053 		bic	r3, r3, #12288
+ 109 0010 CA88     		ldrh	r2, [r1, #6]
+ 110 0012 1343     		orrs	r3, r3, r2
+ 111 0014 0382     		strh	r3, [r0, #16]	@ movhi
+ 112 0016 8389     		ldrh	r3, [r0, #12]
+ 113 0018 9BB2     		uxth	r3, r3
+ 114 001a 23F4B053 		bic	r3, r3, #5632
+ 115 001e 23F00C03 		bic	r3, r3, #12
+ 116 0022 8A88     		ldrh	r2, [r1, #4]
+ 117 0024 1343     		orrs	r3, r3, r2
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s 			page 3
+
+
+ 118 0026 0A89     		ldrh	r2, [r1, #8]
+ 119 0028 1343     		orrs	r3, r3, r2
+ 120 002a 4A89     		ldrh	r2, [r1, #10]
+ 121 002c 1343     		orrs	r3, r3, r2
+ 122 002e 9BB2     		uxth	r3, r3
+ 123 0030 8381     		strh	r3, [r0, #12]	@ movhi
+ 124 0032 838A     		ldrh	r3, [r0, #20]
+ 125 0034 9BB2     		uxth	r3, r3
+ 126 0036 23F44073 		bic	r3, r3, #768
+ 127 003a 8A89     		ldrh	r2, [r1, #12]
+ 128 003c 1343     		orrs	r3, r3, r2
+ 129 003e 8382     		strh	r3, [r0, #20]	@ movhi
+ 130 0040 01A8     		add	r0, sp, #4
+ 131 0042 FFF7FEFF 		bl	RCC_GetClocksFreq
+ 132 0046 194B     		ldr	r3, .L24
+ 133 0048 9C42     		cmp	r4, r3
+ 134 004a 0CBF     		ite	eq
+ 135 004c 049B     		ldreq	r3, [sp, #16]
+ 136 004e 039B     		ldrne	r3, [sp, #12]
+ 137 0050 A289     		ldrh	r2, [r4, #12]
+ 138 0052 12F4004F 		tst	r2, #32768
+ 139 0056 03EB8303 		add	r3, r3, r3, lsl #2
+ 140 005a 03EB8303 		add	r3, r3, r3, lsl #2
+ 141 005e 2A68     		ldr	r2, [r5]
+ 142 0060 14BF     		ite	ne
+ 143 0062 5200     		lslne	r2, r2, #1
+ 144 0064 9200     		lsleq	r2, r2, #2
+ 145 0066 B3FBF2F3 		udiv	r3, r3, r2
+ 146 006a 114A     		ldr	r2, .L24+4
+ 147 006c A2FB0312 		umull	r1, r2, r2, r3
+ 148 0070 5209     		lsrs	r2, r2, #5
+ 149 0072 1101     		lsls	r1, r2, #4
+ 150 0074 6420     		movs	r0, #100
+ 151 0076 00FB1233 		mls	r3, r0, r2, r3
+ 152 007a A289     		ldrh	r2, [r4, #12]
+ 153 007c 12F4004F 		tst	r2, #32768
+ 154 0080 0BD1     		bne	.L23
+ 155 0082 1B01     		lsls	r3, r3, #4
+ 156 0084 3233     		adds	r3, r3, #50
+ 157 0086 0A4A     		ldr	r2, .L24+4
+ 158 0088 A2FB0323 		umull	r2, r3, r2, r3
+ 159 008c C3F34313 		ubfx	r3, r3, #5, #4
+ 160 0090 0B43     		orrs	r3, r3, r1
+ 161              	.L21:
+ 162 0092 9BB2     		uxth	r3, r3
+ 163 0094 2381     		strh	r3, [r4, #8]	@ movhi
+ 164 0096 07B0     		add	sp, sp, #28
+ 165              		@ sp needed
+ 166 0098 30BD     		pop	{r4, r5, pc}
+ 167              	.L23:
+ 168 009a DB00     		lsls	r3, r3, #3
+ 169 009c 3233     		adds	r3, r3, #50
+ 170 009e 044A     		ldr	r2, .L24+4
+ 171 00a0 A2FB0323 		umull	r2, r3, r2, r3
+ 172 00a4 C3F34213 		ubfx	r3, r3, #5, #3
+ 173 00a8 0B43     		orrs	r3, r3, r1
+ 174 00aa F2E7     		b	.L21
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s 			page 4
+
+
+ 175              	.L25:
+ 176              		.align	2
+ 177              	.L24:
+ 178 00ac 00380140 		.word	1073821696
+ 179 00b0 1F85EB51 		.word	1374389535
+ 181              		.section	.text.USART_StructInit,"ax",%progbits
+ 182              		.align	1
+ 183              		.global	USART_StructInit
+ 184              		.syntax unified
+ 185              		.thumb
+ 186              		.thumb_func
+ 188              	USART_StructInit:
+ 189              		@ args = 0, pretend = 0, frame = 0
+ 190              		@ frame_needed = 0, uses_anonymous_args = 0
+ 191              		@ link register save eliminated.
+ 192 0000 4FF41653 		mov	r3, #9600
+ 193 0004 0360     		str	r3, [r0]
+ 194 0006 0023     		movs	r3, #0
+ 195 0008 8380     		strh	r3, [r0, #4]	@ movhi
+ 196 000a C380     		strh	r3, [r0, #6]	@ movhi
+ 197 000c 0381     		strh	r3, [r0, #8]	@ movhi
+ 198 000e 0C22     		movs	r2, #12
+ 199 0010 4281     		strh	r2, [r0, #10]	@ movhi
+ 200 0012 8381     		strh	r3, [r0, #12]	@ movhi
+ 201 0014 7047     		bx	lr
+ 203              		.section	.text.USART_ClockInit,"ax",%progbits
+ 204              		.align	1
+ 205              		.global	USART_ClockInit
+ 206              		.syntax unified
+ 207              		.thumb
+ 208              		.thumb_func
+ 210              	USART_ClockInit:
+ 211              		@ args = 0, pretend = 0, frame = 0
+ 212              		@ frame_needed = 0, uses_anonymous_args = 0
+ 213              		@ link register save eliminated.
+ 214 0000 028A     		ldrh	r2, [r0, #16]
+ 215 0002 92B2     		uxth	r2, r2
+ 216 0004 0B88     		ldrh	r3, [r1]
+ 217 0006 B1F802C0 		ldrh	ip, [r1, #2]
+ 218 000a 43EA0C03 		orr	r3, r3, ip
+ 219 000e B1F804C0 		ldrh	ip, [r1, #4]
+ 220 0012 43EA0C03 		orr	r3, r3, ip
+ 221 0016 C988     		ldrh	r1, [r1, #6]
+ 222 0018 0B43     		orrs	r3, r3, r1
+ 223 001a 22F47062 		bic	r2, r2, #3840
+ 224 001e 1343     		orrs	r3, r3, r2
+ 225 0020 9BB2     		uxth	r3, r3
+ 226 0022 0382     		strh	r3, [r0, #16]	@ movhi
+ 227 0024 7047     		bx	lr
+ 229              		.section	.text.USART_ClockStructInit,"ax",%progbits
+ 230              		.align	1
+ 231              		.global	USART_ClockStructInit
+ 232              		.syntax unified
+ 233              		.thumb
+ 234              		.thumb_func
+ 236              	USART_ClockStructInit:
+ 237              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s 			page 5
+
+
+ 238              		@ frame_needed = 0, uses_anonymous_args = 0
+ 239              		@ link register save eliminated.
+ 240 0000 0023     		movs	r3, #0
+ 241 0002 0380     		strh	r3, [r0]	@ movhi
+ 242 0004 4380     		strh	r3, [r0, #2]	@ movhi
+ 243 0006 8380     		strh	r3, [r0, #4]	@ movhi
+ 244 0008 C380     		strh	r3, [r0, #6]	@ movhi
+ 245 000a 7047     		bx	lr
+ 247              		.section	.text.USART_Cmd,"ax",%progbits
+ 248              		.align	1
+ 249              		.global	USART_Cmd
+ 250              		.syntax unified
+ 251              		.thumb
+ 252              		.thumb_func
+ 254              	USART_Cmd:
+ 255              		@ args = 0, pretend = 0, frame = 0
+ 256              		@ frame_needed = 0, uses_anonymous_args = 0
+ 257              		@ link register save eliminated.
+ 258 0000 29B1     		cbz	r1, .L30
+ 259 0002 8389     		ldrh	r3, [r0, #12]
+ 260 0004 9BB2     		uxth	r3, r3
+ 261 0006 43F40053 		orr	r3, r3, #8192
+ 262 000a 8381     		strh	r3, [r0, #12]	@ movhi
+ 263 000c 7047     		bx	lr
+ 264              	.L30:
+ 265 000e 8389     		ldrh	r3, [r0, #12]
+ 266 0010 23F40053 		bic	r3, r3, #8192
+ 267 0014 1B04     		lsls	r3, r3, #16
+ 268 0016 1B0C     		lsrs	r3, r3, #16
+ 269 0018 8381     		strh	r3, [r0, #12]	@ movhi
+ 270 001a 7047     		bx	lr
+ 272              		.section	.text.USART_ITConfig,"ax",%progbits
+ 273              		.align	1
+ 274              		.global	USART_ITConfig
+ 275              		.syntax unified
+ 276              		.thumb
+ 277              		.thumb_func
+ 279              	USART_ITConfig:
+ 280              		@ args = 0, pretend = 0, frame = 0
+ 281              		@ frame_needed = 0, uses_anonymous_args = 0
+ 282              		@ link register save eliminated.
+ 283 0000 C1F3421C 		ubfx	ip, r1, #5, #3
+ 284 0004 01F01F01 		and	r1, r1, #31
+ 285 0008 0123     		movs	r3, #1
+ 286 000a 8B40     		lsls	r3, r3, r1
+ 287 000c BCF1010F 		cmp	ip, #1
+ 288 0010 09D0     		beq	.L38
+ 289 0012 BCF1020F 		cmp	ip, #2
+ 290 0016 0CBF     		ite	eq
+ 291 0018 1030     		addeq	r0, r0, #16
+ 292 001a 1430     		addne	r0, r0, #20
+ 293              	.L34:
+ 294 001c 2AB1     		cbz	r2, .L36
+ 295 001e 0268     		ldr	r2, [r0]
+ 296 0020 1343     		orrs	r3, r3, r2
+ 297 0022 0360     		str	r3, [r0]
+ 298 0024 7047     		bx	lr
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s 			page 6
+
+
+ 299              	.L38:
+ 300 0026 0C30     		adds	r0, r0, #12
+ 301 0028 F8E7     		b	.L34
+ 302              	.L36:
+ 303 002a 0268     		ldr	r2, [r0]
+ 304 002c 22EA0303 		bic	r3, r2, r3
+ 305 0030 0360     		str	r3, [r0]
+ 306 0032 7047     		bx	lr
+ 308              		.section	.text.USART_DMACmd,"ax",%progbits
+ 309              		.align	1
+ 310              		.global	USART_DMACmd
+ 311              		.syntax unified
+ 312              		.thumb
+ 313              		.thumb_func
+ 315              	USART_DMACmd:
+ 316              		@ args = 0, pretend = 0, frame = 0
+ 317              		@ frame_needed = 0, uses_anonymous_args = 0
+ 318              		@ link register save eliminated.
+ 319 0000 22B1     		cbz	r2, .L40
+ 320 0002 838A     		ldrh	r3, [r0, #20]
+ 321 0004 9BB2     		uxth	r3, r3
+ 322 0006 0B43     		orrs	r3, r3, r1
+ 323 0008 8382     		strh	r3, [r0, #20]	@ movhi
+ 324 000a 7047     		bx	lr
+ 325              	.L40:
+ 326 000c 838A     		ldrh	r3, [r0, #20]
+ 327 000e 9BB2     		uxth	r3, r3
+ 328 0010 23EA0103 		bic	r3, r3, r1
+ 329 0014 8382     		strh	r3, [r0, #20]	@ movhi
+ 330 0016 7047     		bx	lr
+ 332              		.section	.text.USART_SetAddress,"ax",%progbits
+ 333              		.align	1
+ 334              		.global	USART_SetAddress
+ 335              		.syntax unified
+ 336              		.thumb
+ 337              		.thumb_func
+ 339              	USART_SetAddress:
+ 340              		@ args = 0, pretend = 0, frame = 0
+ 341              		@ frame_needed = 0, uses_anonymous_args = 0
+ 342              		@ link register save eliminated.
+ 343 0000 038A     		ldrh	r3, [r0, #16]
+ 344 0002 23F00F03 		bic	r3, r3, #15
+ 345 0006 1B04     		lsls	r3, r3, #16
+ 346 0008 1B0C     		lsrs	r3, r3, #16
+ 347 000a 0382     		strh	r3, [r0, #16]	@ movhi
+ 348 000c 038A     		ldrh	r3, [r0, #16]
+ 349 000e 9BB2     		uxth	r3, r3
+ 350 0010 1943     		orrs	r1, r1, r3
+ 351 0012 0182     		strh	r1, [r0, #16]	@ movhi
+ 352 0014 7047     		bx	lr
+ 354              		.section	.text.USART_WakeUpConfig,"ax",%progbits
+ 355              		.align	1
+ 356              		.global	USART_WakeUpConfig
+ 357              		.syntax unified
+ 358              		.thumb
+ 359              		.thumb_func
+ 361              	USART_WakeUpConfig:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s 			page 7
+
+
+ 362              		@ args = 0, pretend = 0, frame = 0
+ 363              		@ frame_needed = 0, uses_anonymous_args = 0
+ 364              		@ link register save eliminated.
+ 365 0000 8389     		ldrh	r3, [r0, #12]
+ 366 0002 23F40063 		bic	r3, r3, #2048
+ 367 0006 1B04     		lsls	r3, r3, #16
+ 368 0008 1B0C     		lsrs	r3, r3, #16
+ 369 000a 8381     		strh	r3, [r0, #12]	@ movhi
+ 370 000c 8389     		ldrh	r3, [r0, #12]
+ 371 000e 9BB2     		uxth	r3, r3
+ 372 0010 0B43     		orrs	r3, r3, r1
+ 373 0012 8381     		strh	r3, [r0, #12]	@ movhi
+ 374 0014 7047     		bx	lr
+ 376              		.section	.text.USART_ReceiverWakeUpCmd,"ax",%progbits
+ 377              		.align	1
+ 378              		.global	USART_ReceiverWakeUpCmd
+ 379              		.syntax unified
+ 380              		.thumb
+ 381              		.thumb_func
+ 383              	USART_ReceiverWakeUpCmd:
+ 384              		@ args = 0, pretend = 0, frame = 0
+ 385              		@ frame_needed = 0, uses_anonymous_args = 0
+ 386              		@ link register save eliminated.
+ 387 0000 29B1     		cbz	r1, .L45
+ 388 0002 8389     		ldrh	r3, [r0, #12]
+ 389 0004 9BB2     		uxth	r3, r3
+ 390 0006 43F00203 		orr	r3, r3, #2
+ 391 000a 8381     		strh	r3, [r0, #12]	@ movhi
+ 392 000c 7047     		bx	lr
+ 393              	.L45:
+ 394 000e 8389     		ldrh	r3, [r0, #12]
+ 395 0010 23F00203 		bic	r3, r3, #2
+ 396 0014 1B04     		lsls	r3, r3, #16
+ 397 0016 1B0C     		lsrs	r3, r3, #16
+ 398 0018 8381     		strh	r3, [r0, #12]	@ movhi
+ 399 001a 7047     		bx	lr
+ 401              		.section	.text.USART_LINBreakDetectLengthConfig,"ax",%progbits
+ 402              		.align	1
+ 403              		.global	USART_LINBreakDetectLengthConfig
+ 404              		.syntax unified
+ 405              		.thumb
+ 406              		.thumb_func
+ 408              	USART_LINBreakDetectLengthConfig:
+ 409              		@ args = 0, pretend = 0, frame = 0
+ 410              		@ frame_needed = 0, uses_anonymous_args = 0
+ 411              		@ link register save eliminated.
+ 412 0000 038A     		ldrh	r3, [r0, #16]
+ 413 0002 23F02003 		bic	r3, r3, #32
+ 414 0006 1B04     		lsls	r3, r3, #16
+ 415 0008 1B0C     		lsrs	r3, r3, #16
+ 416 000a 0382     		strh	r3, [r0, #16]	@ movhi
+ 417 000c 038A     		ldrh	r3, [r0, #16]
+ 418 000e 9BB2     		uxth	r3, r3
+ 419 0010 0B43     		orrs	r3, r3, r1
+ 420 0012 0382     		strh	r3, [r0, #16]	@ movhi
+ 421 0014 7047     		bx	lr
+ 423              		.section	.text.USART_LINCmd,"ax",%progbits
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s 			page 8
+
+
+ 424              		.align	1
+ 425              		.global	USART_LINCmd
+ 426              		.syntax unified
+ 427              		.thumb
+ 428              		.thumb_func
+ 430              	USART_LINCmd:
+ 431              		@ args = 0, pretend = 0, frame = 0
+ 432              		@ frame_needed = 0, uses_anonymous_args = 0
+ 433              		@ link register save eliminated.
+ 434 0000 29B1     		cbz	r1, .L49
+ 435 0002 038A     		ldrh	r3, [r0, #16]
+ 436 0004 9BB2     		uxth	r3, r3
+ 437 0006 43F48043 		orr	r3, r3, #16384
+ 438 000a 0382     		strh	r3, [r0, #16]	@ movhi
+ 439 000c 7047     		bx	lr
+ 440              	.L49:
+ 441 000e 038A     		ldrh	r3, [r0, #16]
+ 442 0010 23F48043 		bic	r3, r3, #16384
+ 443 0014 1B04     		lsls	r3, r3, #16
+ 444 0016 1B0C     		lsrs	r3, r3, #16
+ 445 0018 0382     		strh	r3, [r0, #16]	@ movhi
+ 446 001a 7047     		bx	lr
+ 448              		.section	.text.USART_SendData,"ax",%progbits
+ 449              		.align	1
+ 450              		.global	USART_SendData
+ 451              		.syntax unified
+ 452              		.thumb
+ 453              		.thumb_func
+ 455              	USART_SendData:
+ 456              		@ args = 0, pretend = 0, frame = 0
+ 457              		@ frame_needed = 0, uses_anonymous_args = 0
+ 458              		@ link register save eliminated.
+ 459 0000 C1F30801 		ubfx	r1, r1, #0, #9
+ 460 0004 8180     		strh	r1, [r0, #4]	@ movhi
+ 461 0006 7047     		bx	lr
+ 463              		.section	.text.USART_ReceiveData,"ax",%progbits
+ 464              		.align	1
+ 465              		.global	USART_ReceiveData
+ 466              		.syntax unified
+ 467              		.thumb
+ 468              		.thumb_func
+ 470              	USART_ReceiveData:
+ 471              		@ args = 0, pretend = 0, frame = 0
+ 472              		@ frame_needed = 0, uses_anonymous_args = 0
+ 473              		@ link register save eliminated.
+ 474 0000 8088     		ldrh	r0, [r0, #4]
+ 475 0002 C0F30800 		ubfx	r0, r0, #0, #9
+ 476 0006 7047     		bx	lr
+ 478              		.section	.text.USART_SendBreak,"ax",%progbits
+ 479              		.align	1
+ 480              		.global	USART_SendBreak
+ 481              		.syntax unified
+ 482              		.thumb
+ 483              		.thumb_func
+ 485              	USART_SendBreak:
+ 486              		@ args = 0, pretend = 0, frame = 0
+ 487              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s 			page 9
+
+
+ 488              		@ link register save eliminated.
+ 489 0000 8389     		ldrh	r3, [r0, #12]
+ 490 0002 9BB2     		uxth	r3, r3
+ 491 0004 43F00103 		orr	r3, r3, #1
+ 492 0008 8381     		strh	r3, [r0, #12]	@ movhi
+ 493 000a 7047     		bx	lr
+ 495              		.section	.text.USART_SetGuardTime,"ax",%progbits
+ 496              		.align	1
+ 497              		.global	USART_SetGuardTime
+ 498              		.syntax unified
+ 499              		.thumb
+ 500              		.thumb_func
+ 502              	USART_SetGuardTime:
+ 503              		@ args = 0, pretend = 0, frame = 0
+ 504              		@ frame_needed = 0, uses_anonymous_args = 0
+ 505              		@ link register save eliminated.
+ 506 0000 038B     		ldrh	r3, [r0, #24]
+ 507 0002 DBB2     		uxtb	r3, r3
+ 508 0004 0383     		strh	r3, [r0, #24]	@ movhi
+ 509 0006 038B     		ldrh	r3, [r0, #24]
+ 510 0008 9BB2     		uxth	r3, r3
+ 511 000a 43EA0123 		orr	r3, r3, r1, lsl #8
+ 512 000e 0383     		strh	r3, [r0, #24]	@ movhi
+ 513 0010 7047     		bx	lr
+ 515              		.section	.text.USART_SetPrescaler,"ax",%progbits
+ 516              		.align	1
+ 517              		.global	USART_SetPrescaler
+ 518              		.syntax unified
+ 519              		.thumb
+ 520              		.thumb_func
+ 522              	USART_SetPrescaler:
+ 523              		@ args = 0, pretend = 0, frame = 0
+ 524              		@ frame_needed = 0, uses_anonymous_args = 0
+ 525              		@ link register save eliminated.
+ 526 0000 038B     		ldrh	r3, [r0, #24]
+ 527 0002 03F47F43 		and	r3, r3, #65280
+ 528 0006 0383     		strh	r3, [r0, #24]	@ movhi
+ 529 0008 038B     		ldrh	r3, [r0, #24]
+ 530 000a 9BB2     		uxth	r3, r3
+ 531 000c 1943     		orrs	r1, r1, r3
+ 532 000e 0183     		strh	r1, [r0, #24]	@ movhi
+ 533 0010 7047     		bx	lr
+ 535              		.section	.text.USART_SmartCardCmd,"ax",%progbits
+ 536              		.align	1
+ 537              		.global	USART_SmartCardCmd
+ 538              		.syntax unified
+ 539              		.thumb
+ 540              		.thumb_func
+ 542              	USART_SmartCardCmd:
+ 543              		@ args = 0, pretend = 0, frame = 0
+ 544              		@ frame_needed = 0, uses_anonymous_args = 0
+ 545              		@ link register save eliminated.
+ 546 0000 29B1     		cbz	r1, .L57
+ 547 0002 838A     		ldrh	r3, [r0, #20]
+ 548 0004 9BB2     		uxth	r3, r3
+ 549 0006 43F02003 		orr	r3, r3, #32
+ 550 000a 8382     		strh	r3, [r0, #20]	@ movhi
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s 			page 10
+
+
+ 551 000c 7047     		bx	lr
+ 552              	.L57:
+ 553 000e 838A     		ldrh	r3, [r0, #20]
+ 554 0010 23F02003 		bic	r3, r3, #32
+ 555 0014 1B04     		lsls	r3, r3, #16
+ 556 0016 1B0C     		lsrs	r3, r3, #16
+ 557 0018 8382     		strh	r3, [r0, #20]	@ movhi
+ 558 001a 7047     		bx	lr
+ 560              		.section	.text.USART_SmartCardNACKCmd,"ax",%progbits
+ 561              		.align	1
+ 562              		.global	USART_SmartCardNACKCmd
+ 563              		.syntax unified
+ 564              		.thumb
+ 565              		.thumb_func
+ 567              	USART_SmartCardNACKCmd:
+ 568              		@ args = 0, pretend = 0, frame = 0
+ 569              		@ frame_needed = 0, uses_anonymous_args = 0
+ 570              		@ link register save eliminated.
+ 571 0000 29B1     		cbz	r1, .L60
+ 572 0002 838A     		ldrh	r3, [r0, #20]
+ 573 0004 9BB2     		uxth	r3, r3
+ 574 0006 43F01003 		orr	r3, r3, #16
+ 575 000a 8382     		strh	r3, [r0, #20]	@ movhi
+ 576 000c 7047     		bx	lr
+ 577              	.L60:
+ 578 000e 838A     		ldrh	r3, [r0, #20]
+ 579 0010 23F01003 		bic	r3, r3, #16
+ 580 0014 1B04     		lsls	r3, r3, #16
+ 581 0016 1B0C     		lsrs	r3, r3, #16
+ 582 0018 8382     		strh	r3, [r0, #20]	@ movhi
+ 583 001a 7047     		bx	lr
+ 585              		.section	.text.USART_HalfDuplexCmd,"ax",%progbits
+ 586              		.align	1
+ 587              		.global	USART_HalfDuplexCmd
+ 588              		.syntax unified
+ 589              		.thumb
+ 590              		.thumb_func
+ 592              	USART_HalfDuplexCmd:
+ 593              		@ args = 0, pretend = 0, frame = 0
+ 594              		@ frame_needed = 0, uses_anonymous_args = 0
+ 595              		@ link register save eliminated.
+ 596 0000 29B1     		cbz	r1, .L63
+ 597 0002 838A     		ldrh	r3, [r0, #20]
+ 598 0004 9BB2     		uxth	r3, r3
+ 599 0006 43F00803 		orr	r3, r3, #8
+ 600 000a 8382     		strh	r3, [r0, #20]	@ movhi
+ 601 000c 7047     		bx	lr
+ 602              	.L63:
+ 603 000e 838A     		ldrh	r3, [r0, #20]
+ 604 0010 23F00803 		bic	r3, r3, #8
+ 605 0014 1B04     		lsls	r3, r3, #16
+ 606 0016 1B0C     		lsrs	r3, r3, #16
+ 607 0018 8382     		strh	r3, [r0, #20]	@ movhi
+ 608 001a 7047     		bx	lr
+ 610              		.section	.text.USART_OverSampling8Cmd,"ax",%progbits
+ 611              		.align	1
+ 612              		.global	USART_OverSampling8Cmd
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s 			page 11
+
+
+ 613              		.syntax unified
+ 614              		.thumb
+ 615              		.thumb_func
+ 617              	USART_OverSampling8Cmd:
+ 618              		@ args = 0, pretend = 0, frame = 0
+ 619              		@ frame_needed = 0, uses_anonymous_args = 0
+ 620              		@ link register save eliminated.
+ 621 0000 39B1     		cbz	r1, .L66
+ 622 0002 8389     		ldrh	r3, [r0, #12]
+ 623 0004 6FEA4343 		mvn	r3, r3, lsl #17
+ 624 0008 6FEA5343 		mvn	r3, r3, lsr #17
+ 625 000c 9BB2     		uxth	r3, r3
+ 626 000e 8381     		strh	r3, [r0, #12]	@ movhi
+ 627 0010 7047     		bx	lr
+ 628              	.L66:
+ 629 0012 8389     		ldrh	r3, [r0, #12]
+ 630 0014 C3F30E03 		ubfx	r3, r3, #0, #15
+ 631 0018 8381     		strh	r3, [r0, #12]	@ movhi
+ 632 001a 7047     		bx	lr
+ 634              		.section	.text.USART_OneBitMethodCmd,"ax",%progbits
+ 635              		.align	1
+ 636              		.global	USART_OneBitMethodCmd
+ 637              		.syntax unified
+ 638              		.thumb
+ 639              		.thumb_func
+ 641              	USART_OneBitMethodCmd:
+ 642              		@ args = 0, pretend = 0, frame = 0
+ 643              		@ frame_needed = 0, uses_anonymous_args = 0
+ 644              		@ link register save eliminated.
+ 645 0000 29B1     		cbz	r1, .L69
+ 646 0002 838A     		ldrh	r3, [r0, #20]
+ 647 0004 9BB2     		uxth	r3, r3
+ 648 0006 43F40063 		orr	r3, r3, #2048
+ 649 000a 8382     		strh	r3, [r0, #20]	@ movhi
+ 650 000c 7047     		bx	lr
+ 651              	.L69:
+ 652 000e 838A     		ldrh	r3, [r0, #20]
+ 653 0010 23F40063 		bic	r3, r3, #2048
+ 654 0014 1B04     		lsls	r3, r3, #16
+ 655 0016 1B0C     		lsrs	r3, r3, #16
+ 656 0018 8382     		strh	r3, [r0, #20]	@ movhi
+ 657 001a 7047     		bx	lr
+ 659              		.section	.text.USART_IrDAConfig,"ax",%progbits
+ 660              		.align	1
+ 661              		.global	USART_IrDAConfig
+ 662              		.syntax unified
+ 663              		.thumb
+ 664              		.thumb_func
+ 666              	USART_IrDAConfig:
+ 667              		@ args = 0, pretend = 0, frame = 0
+ 668              		@ frame_needed = 0, uses_anonymous_args = 0
+ 669              		@ link register save eliminated.
+ 670 0000 838A     		ldrh	r3, [r0, #20]
+ 671 0002 23F00403 		bic	r3, r3, #4
+ 672 0006 1B04     		lsls	r3, r3, #16
+ 673 0008 1B0C     		lsrs	r3, r3, #16
+ 674 000a 8382     		strh	r3, [r0, #20]	@ movhi
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s 			page 12
+
+
+ 675 000c 838A     		ldrh	r3, [r0, #20]
+ 676 000e 9BB2     		uxth	r3, r3
+ 677 0010 0B43     		orrs	r3, r3, r1
+ 678 0012 8382     		strh	r3, [r0, #20]	@ movhi
+ 679 0014 7047     		bx	lr
+ 681              		.section	.text.USART_IrDACmd,"ax",%progbits
+ 682              		.align	1
+ 683              		.global	USART_IrDACmd
+ 684              		.syntax unified
+ 685              		.thumb
+ 686              		.thumb_func
+ 688              	USART_IrDACmd:
+ 689              		@ args = 0, pretend = 0, frame = 0
+ 690              		@ frame_needed = 0, uses_anonymous_args = 0
+ 691              		@ link register save eliminated.
+ 692 0000 29B1     		cbz	r1, .L73
+ 693 0002 838A     		ldrh	r3, [r0, #20]
+ 694 0004 9BB2     		uxth	r3, r3
+ 695 0006 43F00203 		orr	r3, r3, #2
+ 696 000a 8382     		strh	r3, [r0, #20]	@ movhi
+ 697 000c 7047     		bx	lr
+ 698              	.L73:
+ 699 000e 838A     		ldrh	r3, [r0, #20]
+ 700 0010 23F00203 		bic	r3, r3, #2
+ 701 0014 1B04     		lsls	r3, r3, #16
+ 702 0016 1B0C     		lsrs	r3, r3, #16
+ 703 0018 8382     		strh	r3, [r0, #20]	@ movhi
+ 704 001a 7047     		bx	lr
+ 706              		.section	.text.USART_GetFlagStatus,"ax",%progbits
+ 707              		.align	1
+ 708              		.global	USART_GetFlagStatus
+ 709              		.syntax unified
+ 710              		.thumb
+ 711              		.thumb_func
+ 713              	USART_GetFlagStatus:
+ 714              		@ args = 0, pretend = 0, frame = 0
+ 715              		@ frame_needed = 0, uses_anonymous_args = 0
+ 716              		@ link register save eliminated.
+ 717 0000 0388     		ldrh	r3, [r0]
+ 718 0002 01EA0300 		and	r0, r1, r3
+ 719 0006 0038     		subs	r0, r0, #0
+ 720 0008 18BF     		it	ne
+ 721 000a 0120     		movne	r0, #1
+ 722 000c 7047     		bx	lr
+ 724              		.section	.text.USART_ClearFlag,"ax",%progbits
+ 725              		.align	1
+ 726              		.global	USART_ClearFlag
+ 727              		.syntax unified
+ 728              		.thumb
+ 729              		.thumb_func
+ 731              	USART_ClearFlag:
+ 732              		@ args = 0, pretend = 0, frame = 0
+ 733              		@ frame_needed = 0, uses_anonymous_args = 0
+ 734              		@ link register save eliminated.
+ 735 0000 C943     		mvns	r1, r1
+ 736 0002 89B2     		uxth	r1, r1
+ 737 0004 0180     		strh	r1, [r0]	@ movhi
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s 			page 13
+
+
+ 738 0006 7047     		bx	lr
+ 740              		.section	.text.USART_GetITStatus,"ax",%progbits
+ 741              		.align	1
+ 742              		.global	USART_GetITStatus
+ 743              		.syntax unified
+ 744              		.thumb
+ 745              		.thumb_func
+ 747              	USART_GetITStatus:
+ 748              		@ args = 0, pretend = 0, frame = 0
+ 749              		@ frame_needed = 0, uses_anonymous_args = 0
+ 750              		@ link register save eliminated.
+ 751 0000 C1F34212 		ubfx	r2, r1, #5, #3
+ 752 0004 01F01F0C 		and	ip, r1, #31
+ 753 0008 0123     		movs	r3, #1
+ 754 000a 03FA0CF3 		lsl	r3, r3, ip
+ 755 000e 012A     		cmp	r2, #1
+ 756 0010 10D0     		beq	.L83
+ 757 0012 022A     		cmp	r2, #2
+ 758 0014 0CBF     		ite	eq
+ 759 0016 028A     		ldrheq	r2, [r0, #16]
+ 760 0018 828A     		ldrhne	r2, [r0, #20]
+ 761 001a 92B2     		uxth	r2, r2
+ 762 001c 1340     		ands	r3, r3, r2
+ 763              	.L79:
+ 764 001e 0088     		ldrh	r0, [r0]
+ 765 0020 80B2     		uxth	r0, r0
+ 766 0022 5BB1     		cbz	r3, .L82
+ 767 0024 090A     		lsrs	r1, r1, #8
+ 768 0026 0123     		movs	r3, #1
+ 769 0028 8B40     		lsls	r3, r3, r1
+ 770 002a 1840     		ands	r0, r0, r3
+ 771 002c 0038     		subs	r0, r0, #0
+ 772 002e 18BF     		it	ne
+ 773 0030 0120     		movne	r0, #1
+ 774 0032 7047     		bx	lr
+ 775              	.L83:
+ 776 0034 8289     		ldrh	r2, [r0, #12]
+ 777 0036 92B2     		uxth	r2, r2
+ 778 0038 1340     		ands	r3, r3, r2
+ 779 003a F0E7     		b	.L79
+ 780              	.L82:
+ 781 003c 0020     		movs	r0, #0
+ 782 003e 7047     		bx	lr
+ 784              		.section	.text.USART_ClearITPendingBit,"ax",%progbits
+ 785              		.align	1
+ 786              		.global	USART_ClearITPendingBit
+ 787              		.syntax unified
+ 788              		.thumb
+ 789              		.thumb_func
+ 791              	USART_ClearITPendingBit:
+ 792              		@ args = 0, pretend = 0, frame = 0
+ 793              		@ frame_needed = 0, uses_anonymous_args = 0
+ 794              		@ link register save eliminated.
+ 795 0000 090A     		lsrs	r1, r1, #8
+ 796 0002 0123     		movs	r3, #1
+ 797 0004 8B40     		lsls	r3, r3, r1
+ 798 0006 DB43     		mvns	r3, r3
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s 			page 14
+
+
+ 799 0008 9BB2     		uxth	r3, r3
+ 800 000a 0380     		strh	r3, [r0]	@ movhi
+ 801 000c 7047     		bx	lr
+ 803              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s 			page 15
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f10x_usart.c
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:16     .text.USART_DeInit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:22     .text.USART_DeInit:00000000 USART_DeInit
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:86     .text.USART_DeInit:00000090 $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:93     .text.USART_Init:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:99     .text.USART_Init:00000000 USART_Init
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:178    .text.USART_Init:000000ac $d
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:182    .text.USART_StructInit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:188    .text.USART_StructInit:00000000 USART_StructInit
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:204    .text.USART_ClockInit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:210    .text.USART_ClockInit:00000000 USART_ClockInit
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:230    .text.USART_ClockStructInit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:236    .text.USART_ClockStructInit:00000000 USART_ClockStructInit
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:248    .text.USART_Cmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:254    .text.USART_Cmd:00000000 USART_Cmd
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:273    .text.USART_ITConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:279    .text.USART_ITConfig:00000000 USART_ITConfig
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:309    .text.USART_DMACmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:315    .text.USART_DMACmd:00000000 USART_DMACmd
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:333    .text.USART_SetAddress:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:339    .text.USART_SetAddress:00000000 USART_SetAddress
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:355    .text.USART_WakeUpConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:361    .text.USART_WakeUpConfig:00000000 USART_WakeUpConfig
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:377    .text.USART_ReceiverWakeUpCmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:383    .text.USART_ReceiverWakeUpCmd:00000000 USART_ReceiverWakeUpCmd
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:402    .text.USART_LINBreakDetectLengthConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:408    .text.USART_LINBreakDetectLengthConfig:00000000 USART_LINBreakDetectLengthConfig
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:424    .text.USART_LINCmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:430    .text.USART_LINCmd:00000000 USART_LINCmd
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:449    .text.USART_SendData:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:455    .text.USART_SendData:00000000 USART_SendData
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:464    .text.USART_ReceiveData:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:470    .text.USART_ReceiveData:00000000 USART_ReceiveData
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:479    .text.USART_SendBreak:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:485    .text.USART_SendBreak:00000000 USART_SendBreak
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:496    .text.USART_SetGuardTime:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:502    .text.USART_SetGuardTime:00000000 USART_SetGuardTime
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:516    .text.USART_SetPrescaler:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:522    .text.USART_SetPrescaler:00000000 USART_SetPrescaler
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:536    .text.USART_SmartCardCmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:542    .text.USART_SmartCardCmd:00000000 USART_SmartCardCmd
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:561    .text.USART_SmartCardNACKCmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:567    .text.USART_SmartCardNACKCmd:00000000 USART_SmartCardNACKCmd
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:586    .text.USART_HalfDuplexCmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:592    .text.USART_HalfDuplexCmd:00000000 USART_HalfDuplexCmd
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:611    .text.USART_OverSampling8Cmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:617    .text.USART_OverSampling8Cmd:00000000 USART_OverSampling8Cmd
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:635    .text.USART_OneBitMethodCmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:641    .text.USART_OneBitMethodCmd:00000000 USART_OneBitMethodCmd
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:660    .text.USART_IrDAConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:666    .text.USART_IrDAConfig:00000000 USART_IrDAConfig
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:682    .text.USART_IrDACmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:688    .text.USART_IrDACmd:00000000 USART_IrDACmd
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:707    .text.USART_GetFlagStatus:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:713    .text.USART_GetFlagStatus:00000000 USART_GetFlagStatus
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:725    .text.USART_ClearFlag:00000000 $t
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s 			page 16
+
+
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:731    .text.USART_ClearFlag:00000000 USART_ClearFlag
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:741    .text.USART_GetITStatus:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:747    .text.USART_GetITStatus:00000000 USART_GetITStatus
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:785    .text.USART_ClearITPendingBit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\cc64J4vp.s:791    .text.USART_ClearITPendingBit:00000000 USART_ClearITPendingBit
+
+UNDEFINED SYMBOLS
+RCC_APB2PeriphResetCmd
+RCC_APB1PeriphResetCmd
+RCC_GetClocksFreq

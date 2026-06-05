@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyberry Potter 学习指南 — 从零啃穿一块跑 CNN 的 STM32</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-alt: #f8f9fa;
+    --text: #1a1a2e;
+    --text-muted: #6b7280;
+    --primary: #2563eb;
+    --primary-light: #eff6ff;
+    --border: #e5e7eb;
+    --code-bg: #1e293b;
+    --code-fg: #e2e8f0;
+    --sidebar-bg: #0f172a;
+    --sidebar-text: #94a3b8;
+    --sidebar-active: #38bdf8;
+    --tag-bg: #dbeafe;
+    --tag-fg: #1e40af;
+    --warning-bg: #fffbeb;
+    --warning-border: #f59e0b;
+    --tip-bg: #f0fdf4;
+    --tip-border: #22c55e;
+    --info-bg: #eff6ff;
+    --info-border: #3b82f6;
+    --danger-bg: #fef2f2;
+    --danger-border: #ef4444;
+    --radius: 8px;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+    color: var(--text);
+    line-height: 1.75;
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    width: 280px;
+    min-width: 280px;
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    overflow-y: auto;
+    padding: 28px 0 40px;
+    z-index: 100;
+    font-size: 14px;
+    scrollbar-width: thin;
+    scrollbar-color: #334155 transparent;
+  }
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-thumb { background: #334155; border-radius: 2px; }
+
+  .sidebar .logo {
+    padding: 0 24px 24px;
+    border-bottom: 1px solid #1e293b;
+    margin-bottom: 16px;
+  }
+  .sidebar .logo h1 {
+    font-size: 18px; font-weight: 700;
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .sidebar .logo span {
+    font-size: 12px; color: #64748b; display: block; margin-top: 4px;
+  }
+
+  .sidebar nav { padding: 0 12px; }
+  .sidebar .nav-section {
+    margin-bottom: 6px;
+  }
+  .sidebar .nav-section > summary {
+    padding: 8px 12px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #cbd5e1;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 6px;
+    transition: background 0.15s;
+    list-style: none;
+  }
+  .sidebar .nav-section > summary::-webkit-details-marker { display:none; }
+  .sidebar .nav-section > summary:hover { background: #1e293b; }
+  .sidebar .nav-section a {
+    display: block;
+    padding: 6px 12px 6px 28px;
+    color: #94a3b8;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 13px;
+    border-left: 2px solid transparent;
+    transition: all 0.15s;
+  }
+  .sidebar .nav-section a:hover { color: #e2e8f0; background: #1e293b; }
+  .sidebar .nav-section a.active {
+    color: var(--sidebar-active);
+    background: rgba(56,189,248,0.08);
+    border-left-color: var(--sidebar-active);
+  }
+
+  /* ── Main content ── */
+  .main {
+    margin-left: 280px;
+    flex: 1;
+    max-width: 900px;
+    padding: 48px 64px 80px;
+  }
+  .main h1 {
+    font-size: 36px; font-weight: 800;
+    background: linear-gradient(135deg, #0f172a 0%, #2563eb 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  .main .subtitle {
+    font-size: 16px; color: var(--text-muted); margin-bottom: 40px;
+  }
+
+  .main h2 {
+    font-size: 24px; font-weight: 700;
+    margin: 48px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border);
+  }
+  .main h3 {
+    font-size: 18px; font-weight: 600;
+    margin: 32px 0 12px;
+    color: var(--primary);
+  }
+  .main h4 {
+    font-size: 15px; font-weight: 600;
+    margin: 24px 0 8px;
+    color: #334155;
+  }
+  .main p { margin-bottom: 14px; }
+  .main ul, .main ol { margin: 0 0 14px 24px; }
+  .main li { margin-bottom: 6px; }
+
+  .main a { color: var(--primary); text-decoration: none; }
+  .main a:hover { text-decoration: underline; }
+
+  /* ── Code blocks ── */
+  pre {
+    background: var(--code-bg);
+    color: var(--code-fg);
+    padding: 20px 24px;
+    border-radius: var(--radius);
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 16px 0;
+    font-family: "Cascadia Code", "Fira Code", "JetBrains Mono", monospace;
+  }
+  pre .kw { color: #c084fc; }       /* keyword */
+  pre .dt { color: #60a5fa; }       /* type */
+  pre .fn { color: #fbbf24; }       /* function */
+  pre .str { color: #4ade80; }      /* string */
+  pre .cm { color: #64748b; font-style: italic; }  /* comment */
+  pre .nu { color: #fb923c; }       /* number */
+  pre .pp { color: #f472b6; }       /* preprocessor */
+  pre .op { color: #67e8f9; }       /* operator */
+  code {
+    background: var(--bg-alt);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    font-family: "Cascadia Code", "Fira Code", monospace;
+  }
+  pre code { background: none; padding: 0; font-size: inherit; }
+
+  /* ── Callouts ── */
+  .callout {
+    padding: 14px 20px; border-radius: var(--radius);
+    margin: 16px 0; border-left: 4px solid;
+    font-size: 14px;
+  }
+  .callout.tip { background: var(--tip-bg); border-color: var(--tip-border); }
+  .callout.warn { background: var(--warning-bg); border-color: var(--warning-border); }
+  .callout.info { background: var(--info-bg); border-color: var(--info-border); }
+  .callout.danger { background: var(--danger-bg); border-color: var(--danger-border); }
+  .callout strong { display: block; margin-bottom: 4px; }
+
+  /* ── Tables ── */
+  table {
+    width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px;
+  }
+  th, td {
+    padding: 10px 14px; text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  th { background: var(--bg-alt); font-weight: 600; white-space: nowrap; }
+  tr:hover { background: var(--bg-alt); }
+
+  /* ── Tags ── */
+  .tag {
+    display: inline-block; padding: 2px 10px; border-radius: 12px;
+    font-size: 12px; font-weight: 500;
+    background: var(--tag-bg); color: var(--tag-fg);
+  }
+
+  /* ── Step numbers ── */
+  .step {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--primary); color: white;
+    font-size: 14px; font-weight: 700;
+    margin-right: 8px; flex-shrink: 0;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .sidebar { display: none; }
+    .main { margin-left: 0; padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="logo">
+    <h1>Cyberry Potter</h1>
+    <span>学习指南 v1.0</span>
+  </div>
+  <nav>
+    <details class="nav-section" open>
+      <summary>开始之前</summary>
+      <a href="#preface">前言</a>
+      <a href="#prerequisites">前置知识清单</a>
+      <a href="#quick-look">30 秒读懂架构</a>
+    </details>
+    <details class="nav-section" open>
+      <summary>第一阶段 · 底层</summary>
+      <a href="#p1-overview">项目结构巡览</a>
+      <a href="#p1-config">编译开关 config.h</a>
+      <a href="#p1-hw">硬件模块拆解</a>
+      <a href="#p1-init">系统初始化流程</a>
+    </details>
+    <details class="nav-section" open>
+      <summary>第二阶段 · 数据</summary>
+      <a href="#p2-imu">MPU6050 驱动与采样</a>
+      <a href="#p2-isr">中断驱动的采样环</a>
+      <a href="#p2-datastruct">数据结构 IMU_t</a>
+      <a href="#p2-timing">时序与窗口设计</a>
+    </details>
+    <details class="nav-section" open>
+      <summary>第三阶段 · 推理</summary>
+      <a href="#p3-nnom">NNOM 框架入门</a>
+      <a href="#p3-model">模型加载</a>
+      <a href="#p3-feed">数据喂入与量化</a>
+      <a href="#p3-forward">前向推理 model_run</a>
+      <a href="#p3-output">输出解码</a>
+    </details>
+    <details class="nav-section" open>
+      <summary>第四阶段 · 训练</summary>
+      <a href="#p4-pipeline">训练管道概览</a>
+      <a href="#p4-collect">数据采集模式</a>
+      <a href="#p4-keras">Keras 1D-CNN</a>
+      <a href="#p4-convert">NNOM 模型转换</a>
+      <a href="#p4-deploy">部署到 STM32</a>
+    </details>
+    <details class="nav-section" open>
+      <summary>第五阶段 · 集成</summary>
+      <a href="#p5-mainloop">主循环状态机</a>
+      <a href="#p5-module">Module 函数表模式</a>
+      <a href="#p5-ir">红外协议与编码</a>
+      <a href="#p5-mode">系统模式切换</a>
+    </details>
+    <details class="nav-section" open>
+      <summary>动手练习</summary>
+      <a href="#ex-all">六个逐步练习</a>
+    </details>
+    <details class="nav-section" open>
+      <summary>调试 &amp; 附录</summary>
+      <a href="#debug">调试技巧</a>
+      <a href="#files">核心文件速查表</a>
+      <a href="#pitfalls">常见踩坑记录</a>
+    </details>
+  </nav>
+</aside>
+
+<main class="main">
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h1>Cyberry Potter 学习指南</h1>
+<p class="subtitle">从零啃穿一块跑 CNN 的 STM32 —— 按数据流顺序，逐层击穿</p>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="preface">前言</h2>
+
+<p>
+  这是一个「麻雀虽小、五脏俱全」的项目。你手里拿着的，是在一块 <strong>72MHz Cortex-M3、只有 20KB SRAM</strong> 的芯片上跑卷积神经网络的完整实现。
+  没有什么 NPU，没有什么 TFLite Micro，就是纯 C 实现的 NNOM + 一个自训练的 1D-CNN。
+</p>
+
+<p><strong>这份指南的核心理念：</strong></p>
+<ul>
+  <li>不是按文件读，而是按<strong>数据流</strong>读 — IMU 数据从哪来、经过什么变换、最终怎么变成红外信号</li>
+  <li>不是泛泛讲概念，每个阶段都有<strong>可执行的练习</strong></li>
+  <li>读懂 20% 的核心代码，就能理解 80% 的系统</li>
+</ul>
+
+<div class="callout tip">
+  <strong>💡 建议的学习方式</strong>
+  打开 Keil 工程 + 这份指南，边看边搜。遇到不懂的外设寄存器，直接查 STM32F103 参考手册。
+  每个阶段控制在 1-2 小时内完成。
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="prerequisites">前置知识清单</h2>
+
+<p>在开始之前，确认你能回答以下问题。如果某条卡住了，花 15 分钟补一下再回来：</p>
+
+<table>
+  <tr><th>领域</th><th>你需要知道的</th><th>补救资源</th></tr>
+  <tr>
+    <td>C 语言</td>
+    <td>指针、结构体、枚举、函数指针、<code>extern</code>、预编译宏</td>
+    <td>《C 程序设计语言》前 6 章</td>
+  </tr>
+  <tr>
+    <td>STM32</td>
+    <td>GPIO 推挽/开漏、I2C 读写时序、UART 配置、EXTI 外部中断、定时器 PWM</td>
+    <td>正点原子 STM32F1 教程（前 10 讲）</td>
+  </tr>
+  <tr>
+    <td>信号处理</td>
+    <td>采样率、奈奎斯特、低通滤波、量化（float→int8）</td>
+    <td>任何信号处理入门第 1-3 章</td>
+  </tr>
+  <tr>
+    <td>机器学习</td>
+    <td>什么是卷积、Softmax 输出是什么、训练 vs 推理的区别</td>
+    <td>3Blue1Brown 神经网络系列前 3 集</td>
+  </tr>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="quick-look">30 秒读懂架构</h2>
+
+<pre><span class="cm">/*
+ * Cyberry Potter 数据流
+ *
+ *  MPU6050 ──[I2C @200Hz]──▶ IMU.acc[150][3]
+ *             (DMP 姿态解算)    IMU.gyro[150][3]
+ *                                    │
+ *                          ┌─────────▼─────────┐
+ *                          │ model_feed_data() │  float → int8 量化
+ *                          │  nnom_input_data  │
+ *                          └─────────┬─────────┘
+ *                                    │
+ *                          ┌─────────▼─────────┐
+ *                          │   model_run()     │  NNOM 1D-CNN 前向
+ *                          │  nnom_output_data │  [13] 维 Softmax
+ *                          └─────────┬─────────┘
+ *                                    │
+ *                          ┌─────────▼─────────┐
+ *                          │  argmax + 阈值    │  最大概率 > 63
+ *                          │  model_output     │  排除 NoMotion
+ *                          └─────────┬─────────┘
+ *                                    │
+ *                    ┌───────────────┼───────────────┐
+ *                    ▼                               ▼
+ *            Module.Mode0_Handler()         Module.Mode1_Handler()
+ *            (红外发射 / 其他业务)           (红外学习 / 其他业务)
+ */</span></pre>
+
+<div class="callout info">
+  <strong>核心路径只有 6 个函数调用</strong>
+  <code>IMU.Sample_Start()</code> → <code>IMU_Get_Data()</code> × 150 → <code>model_feed_data()</code> → <code>model_run()</code> → <code>argmax</code> → <code>Module.Mode0_Handler()</code>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="p1-overview">第一阶段 · 项目结构巡览</h2>
+
+<div class="callout warn">
+  <strong>📁 重要：实际目录结构与代码注释中的描述不完全一致</strong>
+  以下路径均为已验证的实际路径。不要根据文件名猜测，直接打开对应的 .c 文件跟读。
+</div>
+
+<h3>实际目录树</h3>
+
+<pre>D:\32\电子法棒\
+├── Software/
+│   ├── MainBoard/           ← ★ 主固件，核心学习目标
+│   │   ├── main.c           # 主函数 + model_get_output()
+│   │   ├── CyberryPotter.c  # 系统初始化 + 模块调度
+│   │   ├── CyberryPotter.h  # 所有枚举、结构体、外部声明
+│   │   ├── config.h         # 编译开关（模式选择）
+│   │   ├── IMU.c / IMU.h    # IMU 采样逻辑
+│   │   ├── MPU6050.c/.h     # MPU6050 底层 I2C 驱动
+│   │   ├── IIC.c / IIC.h    # 软件 I2C 实现
+│   │   ├── USART.c/.h       # 串口驱动
+│   │   ├── Delay.c/.h       # 延时函数
+│   │   ├── LED.c/.h         # LED 控制
+│   │   ├── button.c/.h      # 按键状态机
+│   │   ├── new_study_IR.c/.h # 红外学习子板通信
+│   │   ├── protocol.c/.h    # 红外协议数据包
+│   │   ├── SPI.c/.h         # SPI（激光模块用）
+│   │   └── eMPL/            # InvenSense DMP 库
+│   ├── Module/              ← ★ 11 个可插拔功能模块
+│   │   ├── module0.c/.h     # 红外遥控发射/学习（主要使用）
+│   │   ├── module1~10.c/.h  # 预留给其他应用场景
+│   ├── CNN/                 # NNOM 库源码（只读参考）
+│   └── Project/             # Keil 工程文件
+├── NNOM_Demo/               # NNOM 官方入门例程（推荐先跑）
+├── Upper_computer/           # 上位机（已编译的 .exe）
+├── hardware/                 # 立创 EDA + BOM + Gerber
+└── 3D_print/                 # 外壳 3D 模型
+</pre>
+
+<h3>阅读顺序建议</h3>
+
+<div class="callout tip">
+  <strong>不要从头读到尾。</strong>按这个顺序跳读，效率最高：
+  <code>config.h</code> → <code>CyberryPotter.h</code> → <code>main.c</code> → <code>CyberryPotter.c</code> → <code>IMU.c</code> → <code>module0.c</code>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="p1-config">编译开关 config.h</h2>
+
+<p><code>config.h</code> 只有 30 行，但却是理解整个系统行为的钥匙。绝大多数运行时逻辑都由编译期宏控制：</p>
+
+<pre><span class="kw">#define</span> <span class="pp">SYSTEM_FREQUENCY</span> (<span class="nu">72000000</span>)
+<span class="kw">#define</span> <span class="pp">SERIAL_DEBUG</span>               <span class="cm">// 开启串口调试输出</span>
+<span class="kw">#define</span> <span class="pp">SERIAL_DEBUG_3_SUBDIVISION</span> <span class="cm">// 只用陀螺仪 3 轴喂模型</span>
+<span class="cm">//#define SERIAL_DEBUG_6_SUBDIVISION // 用 6 轴（加速度+陀螺仪）</span>
+<span class="cm">//#define SYSTEM_MODE_DATA_COLLECT  // 数据采集模式（不跑推理）</span></pre>
+
+<table>
+  <tr><th>宏</th><th>作用</th><th>影响哪些代码</th></tr>
+  <tr>
+    <td><code>SERIAL_DEBUG</code></td>
+    <td>启用 printf 调试输出</td>
+    <td>main.c (输出各类概率), CyberryPotter.c (模式切换日志), module0.c</td>
+  </tr>
+  <tr>
+    <td><code>SERIAL_DEBUG_3_SUBDIVISION</code></td>
+    <td>仅用陀螺仪 Roll/Pitch/Yaw 作为 CNN 输入</td>
+    <td>main.c <code>model_feed_data()</code> — 每个采样点 3 个值</td>
+  </tr>
+  <tr>
+    <td><code>SERIAL_DEBUG_6_SUBDIVISION</code></td>
+    <td>用 6 轴全体数据<br><small>(AccX/Y/Z + GyroR/P/Y)</small></td>
+    <td>main.c <code>model_feed_data_subdivisions()</code> — 每个采样点 6 个值<br><small>需要重新训练模型，weights.h 尺寸翻倍</small></td>
+  </tr>
+  <tr>
+    <td><code>SYSTEM_MODE_DATA_COLLECT</code></td>
+    <td>跳过推理，把 IMU 原始数据直接发到串口</td>
+    <td>main.c (跳过 model_get_output), CyberryPotter.c (EXTI 里调用 IMU_Data_Print)</td>
+  </tr>
+  <tr>
+    <td><code>NNOM_USING_STATIC_MEMORY</code></td>
+    <td>使用静态内存池</td>
+    <td>main.c — 预分配 10KB static_buf 给 NNOM</td>
+  </tr>
+</table>
+
+<div class="callout warn">
+  <strong>⚠️ 关键认知</strong>
+  <code>SERIAL_DEBUG_3_SUBDIVISION</code> 和 <code>SERIAL_DEBUG_6_SUBDIVISION</code> 不能同时开启。
+  它们决定了 CNN 输入层的维度，也决定了 weights.h 的文件大小和模型结构必须匹配。
+  如果你切换了这两个宏，必须换对应的 weights.h + params.h。
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="p1-hw">硬件模块拆解</h2>
+
+<table>
+  <tr><th>模块</th><th>芯片/型号</th><th>接口</th><th>在代码中的文件</th></tr>
+  <tr><td>MCU</td><td>STM32F103C8T6</td><td>—</td><td>config.h (时钟定义)</td></tr>
+  <tr><td>6 轴 IMU</td><td>MPU6050</td><td>I2C (PB6/PB7)</td><td>MPU6050.c, IIC.c, inv_mpu.c</td></tr>
+  <tr><td>IMU 中断</td><td>MPU6050 INT 引脚</td><td>PB5 → EXTI Line5</td><td>CyberryPotter.c (EXTI9_5_IRQHandler)</td></tr>
+  <tr><td>按键 0</td><td>轻触开关</td><td>PB0 → EXTI Line0</td><td>button.c</td></tr>
+  <tr><td>按键 1</td><td>轻触开关</td><td>PA0</td><td>button.c</td></tr>
+  <tr><td>LED</td><td>GPIO</td><td>PA4</td><td>LED.c</td></tr>
+  <tr><td>红外接收</td><td>VS1838B</td><td>PB1 ← 子板 UART2</td><td>protocol.c（红外学习子板通讯协议）</td></tr>
+  <tr><td>红外发射子板</td><td>STM8S003F3P6</td><td>PA2/PA3 → UART2</td><td>new_study_IR.c（子板串口通信 + 模式 5 自定义编码）</td></tr>
+  <tr><td>OLED 显示</td><td>0.91" SSD1306</td><td>I2C (PB8/PB9, 可选)</td><td>SPI.c</td></tr>
+  <tr><td>激光</td><td>GPIO</td><td>PC13 (可选, LASER_ENABLE)</td><td>SPI.c</td></tr>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="p1-init">系统初始化流程</h2>
+
+<pre><span class="cm">// main.c — main() 的第一件事
+</span><span class="dt">int</span> <span class="fn">main</span>(<span class="dt">void</span>)
+{
+    <span class="fn">System_Init</span>();    <span class="cm">// ← 从这里进去</span>
+    <span class="fn">nnom_model_create</span>();
+    <span class="kw">while</span>(<span class="nu">1</span>) { ... }
+}</pre>
+
+<p>追踪 <code>System_Init()</code> → <code>CyberryPotter.c</code>：</p>
+
+<pre><span class="dt">void</span> <span class="fn">System_Init</span>(<span class="dt">void</span>)
+{
+    <span class="fn">USART1_Init</span>();          <span class="cm">// 调试串口 PA9/PA10, 115200bps</span>
+    <span class="fn">LED_Init</span>();             <span class="cm">// PA4 推挽输出</span>
+    <span class="fn">Button_Init</span>();          <span class="cm">// PB0/PA0, 配置 EXTI 中断</span>
+    <span class="fn">IMU_Init</span>();             <span class="cm">// I2C 初始化 → MPU6050 寄存器配置 → DMP 启动</span>
+    Module.<span class="fn">Mode0_Handler</span> = &amp;<span class="fn">Module_None_Mode0_Handler</span>;  <span class="cm">// 默认空处理</span>
+    Module.<span class="fn">Mode1_Handler</span> = &amp;<span class="fn">Module_None_Mode1_Handler</span>;
+    Module.Type = Module_Type_0; <span class="cm">// ★ 硬编码：使用模块 0（红外遥控）</span>
+    <span class="fn">Module_Init</span>();          <span class="cm">// 根据 Module.Type 调用对应 moduleX_Init()</span>
+}
+</pre>
+
+<p>初始化完成后，系统处于 <strong>System_Mode = SYSTEM_MODE_0</strong>、<strong>IMU 空闲</strong>、等待按键触发。</p>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="p2-imu">第二阶段 · MPU6050 驱动与采样</h2>
+
+<h3>驱动层次</h3>
+
+<p>MPU6050 的代码分三层，从底到高：</p>
+
+<pre>┌──────────────────────────┐
+│  <span class="fn">IMU_Get_Data</span>(index)     │  ← 最上层：每中断读一个采样点
+│  IMU.c                   │     存入 IMU.acc[i][3] / IMU.gyro[i][3]
+├──────────────────────────┤
+│  MPU6050 DMP (eMPL/)     │  ← 中间层：姿态解算引擎
+│  inv_mpu.c               │     FIFO 读取 → 四元数 → 欧拉角
+├──────────────────────────┤
+│  IIC.c                   │  ← 底层：软件模拟 I2C
+│  PB6=SCL, PB7=SDA        │     Start/Stop/ACK/Read/Write
+└──────────────────────────┘</pre>
+
+<div class="callout info">
+  <strong>为什么用 DMP？</strong>
+  DMP（Digital Motion Processor）是 MPU6050 内部的硬件姿态引擎。它把 6 轴原始数据融合成四元数，
+  再转成欧拉角（Roll/Pitch/Yaw）。如果不使用 DMP，你就得自己写卡尔曼滤波或互补滤波。
+  DMP 减少了 MCU 的计算负担，这对只有 72MHz 的 F103 来说很重要。
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="p2-isr">中断驱动的采样环</h2>
+
+<p>这是整个系统最关键的中断服务函数，在 <code>CyberryPotter.c</code> 中：</p>
+
+<pre><span class="dt">void</span> EXTI9_5_IRQHandler(<span class="dt">void</span>)
+{
+    <span class="dt">static uint8_t</span> i = <span class="nu">0</span>;
+    <span class="kw">if</span>(<span class="fn">EXTI_GetITStatus</span>(EXTI_Line5) == SET) {  <span class="cm">// MPU6050 INT → PB5</span>
+        <span class="fn">IMU_Get_Data</span>(i);    <span class="cm">// 读 DMP FIFO，存到 IMU.acc[i]/IMU.gyro[i]</span>
+        i++;
+        <span class="kw">if</span>(i >= <span class="pp">IMU_SEQUENCE_LENGTH_MAX</span>) {  <span class="cm">// 满了 150 个点</span>
+            i = <span class="nu">0</span>;
+            IMU.<span class="fn">Sample_Stop</span>();  <span class="cm">// IMU.status → IMU_Sampled</span>
+            <span class="cm">// 如果是数据采集模式，打印原始数据到串口</span>
+        }
+        <span class="fn">EXTI_ClearITPendingBit</span>(EXTI_Line5);
+    }
+}</pre>
+
+<table>
+  <tr><th>问题</th><th>答案</th></tr>
+  <tr><td>为什么是 EXTI Line5？</td><td>MPU6050 的 INT 引脚连到 STM32 的 PB5，对应 EXTI Line5。MPU6050 DMP 每完成一次数据融合就产生一个脉冲</td></tr>
+  <tr><td>DMP 输出频率是多少？</td><td>MPU6050 配置为 <strong>200Hz</strong>（由 DMP 固件设定），所以每 5ms 触发一次中断</td></tr>
+  <tr><td>为什么是 150 个点？</td><td><code>IMU_SEQUENCE_LENGTH_MAX = 150</code>，配合 200Hz = 750ms 的采样窗口。实际上 <code>IMU_SAMPLING_TIME_MS</code> 定义为 1500ms。两处为何不一致？查看原代码逻辑，EXTI 中断以 DMP 200Hz 触发，150 点=750ms，而 1500ms 是定时器超时保护</td></tr>
+  <tr><td>i 用 static 有什么问题吗？</td><td>有！如果采样中途被打断，static i 会保留旧值。但这里中断优先级固定，且采样时禁用了 EXTI0（按键），所以实际上安全</td></tr>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="p2-datastruct">数据结构 IMU_t</h2>
+
+<p>理解这个结构体，就理解了整个数据缓冲区的设计：</p>
+
+<pre><span class="kw">typedef</span> <span class="kw">struct</span> <span class="dt">IMU_t</span> {
+    <span class="dt">eIMU_STATUS</span> status;                              <span class="cm">// Idle / Sampling / Sampled</span>
+    <span class="dt">void</span> (*<span class="fn">Sample_Start</span>)(<span class="dt">void</span>);                       <span class="cm">// 开始采样（清零计数器等）</span>
+    <span class="dt">void</span> (*<span class="fn">Sample_Stop</span>)(<span class="dt">void</span>);                        <span class="cm">// 结束采样（置状态 + 打印数据）</span>
+    <span class="dt">float</span> acc[<span class="pp">IMU_SEQUENCE_LENGTH_MAX</span>][<span class="nu">3</span>];     <span class="cm">// 150 × 3 = 1800 字节（float×4 = 7200B）</span>
+    <span class="dt">float</span> gyro[<span class="pp">IMU_SEQUENCE_LENGTH_MAX</span>][<span class="nu">3</span>];    <span class="cm">// 150 × 3 = 1800 字节</span>
+} <span class="dt">IMU_t</span>;
+<span class="kw">extern</span> <span class="kw">struct</span> <span class="dt">IMU_t</span> IMU;  <span class="cm">// 全局唯一实例</span></pre>
+
+<div class="callout danger">
+  <strong>内存开销计算</strong>
+  acc: 150 × 3 × 4 bytes = 1800 字节<br>
+  gyro: 150 × 3 × 4 bytes = 1800 字节<br>
+  <strong>合计约 3.6KB</strong>，占 STM32F103C8T6 总 SRAM（20KB）的 <strong>18%</strong>。<br>
+  加上 NNOM 模型（约 10KB 静态缓冲），只剩约 6KB 给栈和全局变量。<br>
+  这就是为什么不能在函数内部开大数组——栈空间非常紧张。
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="p2-timing">时序与窗口设计</h2>
+
+<pre>
+时间轴 →
+  ═══0ms═══════════════════════════════════750ms════════800ms═══
+
+  [按键按下]                               [最后一个中断]   [推理]
+  EXTI_Line0 触发                         EXTI_Line5      main()
+  → IMU.Sample_Start()                    → IMU_Sampled   → model_get
+  → i=0, status=Sampling                                   _output()
+       │
+       ├── EXTI Line5 × 150 次 ──────────────▶
+       │   IMU_Get_Data(0) ... IMU_Get_Data(149)
+       │   每次填充 acc[i][AccX/Y/Z], gyro[i][Roll/Pitch/Yaw]
+       │
+       ▼
+  IMU.status = IMU_Sampled  → 主循环检测到 → 运行推理
+</pre>
+
+<p><strong>为什么选 150 点 × 200Hz？</strong></p>
+<ul>
+  <li>200Hz 采样足够捕获人体手势的运动频率（手部运动主频一般 &lt;20Hz）</li>
+  <li>750ms 窗口够长覆盖一个完整手势（挥手画圈大约 500-800ms）</li>
+  <li>150 点 × 6 维 = 900 个值，1D-CNN 刚好能消化</li>
+</ul>
+
+<div class="callout warn">
+  <strong>⚠️ 静止校准</strong>
+  上电后 1 秒内法棒必须保持静止。这段时间 DMP 在自动校准陀螺仪零偏。
+  如果这 1 秒内移动了，后续所有姿态角都会有偏移，识别率会大打折扣。
+  这部分逻辑在 DMP 固件内部，不在用户代码中。
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="p3-nnom">第三阶段 · NNOM 框架入门</h2>
+
+<p>
+  NNOM（<em>Neural Network on Microcontroller</em>）是一个纯 ANSI C 实现的神经网络推理框架。
+  它不需要动态内存分配、不需要操作系统、不需要文件系统。
+  <strong>只需要一个数组和几个函数调用。</strong>
+</p>
+
+<h3>NNOM 的基本使用模式</h3>
+
+<pre><span class="cm">// 1. 分配静态内存（可选，10KB 足够本项目）</span>
+<span class="dt">uint8_t</span> static_buf[<span class="nu">1024</span> * <span class="nu">10</span>];
+<span class="fn">nnom_set_static_buf</span>(static_buf, <span class="kw">sizeof</span>(static_buf));
+
+<span class="cm">// 2. 从 weights.h 创建模型（模型结构和权重在编译期确定）</span>
+nnom_model_t *model = <span class="fn">nnom_model_create</span>();
+
+<span class="cm">// 3. 填数据到输入缓冲区</span>
+<span class="kw">for</span>(<span class="dt">int</span> i=<span class="nu">0</span>; i&lt;INPUT_SIZE; i++)
+    nnom_input_data[i] = (<span class="dt">int8_t</span>)<span class="fn">round</span>(raw_data[i] * scale);
+
+<span class="cm">// 4. 执行推理</span>
+<span class="fn">model_run</span>(model);
+
+<span class="cm">// 5. 读取输出（单次调用后 nnom_output_data 已填充）</span>
+<span class="dt">int</span> result = <span class="fn">argmax</span>(nnom_output_data, <span class="nu">13</span>);
+</pre>
+
+<p><strong>你需要知道的 NNOM 全局变量（在 weights.h 或 params.h 中声明）：</strong></p>
+
+<table>
+  <tr><th>变量</th><th>类型</th><th>含义</th></tr>
+  <tr><td><code>nnom_input_data</code></td><td><code>int8_t*</code></td><td>输入缓冲区指针，由 NNOM 管理</td></tr>
+  <tr><td><code>nnom_output_data</code></td><td><code>int8_t*</code></td><td>输出缓冲区指针，13 个 int8_t 值</td></tr>
+  <tr><td><code>INPUT_1_OUTPUT_DEC</code></td><td><code>#define</code></td><td>量化的小数位数，计算 scale = 2^DEC</td></tr>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="p3-model">模型加载</h2>
+
+<p>
+  <code>nnom_model_create()</code> 是一个看起来很简单的函数，但它背后读的是 <code>weights.h</code> 里生成的结构体。
+  看 <code>weights.h</code> 内部（不用深究细节）：</p>
+
+<pre><span class="cm">// weights.h — 由 NNOM 脚本自动生成，不要手动修改</span>
+<span class="kw">static</span> <span class="dt">int8_t</span> conv1_w[] = { ... };        <span class="cm">// 第一层卷积权重</span>
+<span class="kw">static</span> <span class="dt">int32_t</span> conv1_b[] = { ... };       <span class="cm">// 第一层偏置</span>
+<span class="kw">static</span> <span class="dt">int8_t</span> dense_w[] = { ... };        <span class="cm">// 全连接层权重</span>
+<span class="cm">// ... 更多层</span>
+<span class="kw">nnom_model_t</span> nnom_model = { ... };       <span class="cm">// 模型结构描述</span></pre>
+
+<p>调用 <code>nnom_model_create()</code> 时，NNOM 会：
+  <ol>
+    <li>解析 <code>nnom_model</code> 结构，知道有几层、每层是什么类型</li>
+    <li>计算每层需要的内存，从 <code>static_buf</code> 中分配</li>
+    <li>初始化各层的权重指针，指向 <code>weights.h</code> 中的静态数组</li>
+  </ol>
+</p>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="p3-feed">数据喂入与量化</h2>
+
+<p>这是 <code>model_feed_data()</code> — 项目中最重要的数据变换函数：</p>
+
+<pre><span class="kw">#define</span> <span class="pp">QUANTIFICATION_SCALE</span> (<span class="fn">pow</span>(<span class="nu">2</span>, <span class="pp">INPUT_1_OUTPUT_DEC</span>))
+
+<span class="dt">void</span> <span class="fn">model_feed_data</span>(<span class="dt">void</span>)
+{
+    <span class="kw">const double</span> scale = <span class="pp">QUANTIFICATION_SCALE</span>;
+    <span class="kw">for</span>(<span class="dt">int</span> i = <span class="nu">0</span>; i &lt; <span class="pp">IMU_SEQUENCE_LENGTH_MAX</span>; i++) {
+        <span class="cm">// 只喂陀螺仪 3 轴：Roll, Pitch, Yaw</span>
+        nnom_input_data[i*<span class="nu">3</span>  ] = (<span class="dt">int8_t</span>)<span class="fn">round</span>(IMU.gyro[i][Roll]  * scale);
+        nnom_input_data[i*<span class="nu">3</span>+<span class="nu">1</span>] = (<span class="dt">int8_t</span>)<span class="fn">round</span>(IMU.gyro[i][Pitch] * scale);
+        nnom_input_data[i*<span class="nu">3</span>+<span class="nu">2</span>] = (<span class="dt">int8_t</span>)<span class="fn">round</span>(IMU.gyro[i][Yaw]   * scale);
+    }
+}</pre>
+
+<table>
+  <tr><th>步骤</th><th>含义</th></tr>
+  <tr><td><code>IMU.gyro[i][Roll]</code></td><td>第 i 个采样点的 Roll 角（弧度），DMP 已解算好</td></tr>
+  <tr><td><code>* scale</code></td><td>放大到 int8 范围。例如 DEC=6 → scale=64，1 弧度 → 64 → int8 存为 64</td></tr>
+  <tr><td><code>(int8_t)round(...)</code></td><td>四舍五入量化，丢掉小数。浮点 1.234 弧度 → int8 = 79</td></tr>
+  <tr><td><code>nnom_input_data[i*3+...]</code></td><td>按 [点0_Roll, 点0_Pitch, 点0_Yaw, 点1_Roll, ...] 顺序排列<br>最终形状：<strong>[150, 3] → [450]</strong> 的一维数组</td></tr>
+</table>
+
+<div class="callout tip">
+  <strong>💡 为什么只用陀螺仪不用加速度？</strong>
+  手势识别关注的是<strong>旋转轨迹</strong>（角速度积分→角度），而加速度反映的是线运动。
+  画圆圈这个动作，陀螺仪的角度变化模式比加速度更加区分度高。
+  如果识别「上下挥动」这种线性手势，6 轴模式可能更好——这就是为什么项目提供了两种模式。
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="p3-forward">前向推理 model_run</h2>
+
+<p>
+  <code>model_run(model)</code> 一行调用，背后是完整的 CNN 前向传播。
+  对本项目而言，模型做的是：
+</p>
+
+<pre>输入 [450] int8
+    │
+    ▼ Reshape → [150, 3]
+1D Conv(3→8, kernel=3, stride=1, padding=same)
+    │ ReLU
+    ▼ [150, 8]
+MaxPooling(pool=2, stride=2)
+    │
+    ▼ [75, 8]
+1D Conv(8→16, kernel=3) → ReLU → MaxPooling
+    │
+    ▼ [37, 16]
+Flatten → [592]
+    │
+    ▼ Dense(592 → 13)
+Softmax → [13] int8
+    │
+    ▼ nnom_output_data[0..12]
+</pre>
+
+<div class="callout info">
+  <strong>模型压缩要点</strong>
+  1D CNN 比 2D CNN 小得多，因为卷积核是 1D 的（3×通道数 而不是 3×3×通道数）。
+  输入维度 [150,3] 也非常小。加上全程 int8 量化，模型总大小 ≈ 20KB，
+  这就是为什么能在 STM32F103 上跑。
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="p3-output">输出解码 — model_get_output()</h2>
+
+<pre><span class="kw">#define</span> <span class="pp">OUPUT_THRESHOLD</span> <span class="nu">63</span>  <span class="cm">// 127 的一半，低于此值视为不可识别</span>
+
+<span class="dt">Model_Output_t</span> <span class="fn">model_get_output</span>(<span class="dt">void</span>)
+{
+    <span class="fn">model_feed_data</span>();        <span class="cm">// 步骤 1: 量化喂数据</span>
+    <span class="fn">model_run</span>(model);           <span class="cm">// 步骤 2: 前向推理</span>
+
+    <span class="dt">int8_t</span> max_output = -<span class="nu">128</span>;
+    <span class="dt">int</span> ret = <span class="nu">0</span>;
+    <span class="kw">for</span>(<span class="dt">int</span> i = <span class="nu">0</span>; i &lt; <span class="nu">13</span>; i++) {      <span class="cm">// 步骤 3: argmax</span>
+        <span class="kw">if</span>(nnom_output_data[i] &gt;= max_output) {
+            max_output = nnom_output_data[i];
+            ret = i;
+        }
+    }
+    <span class="kw">if</span>(max_output &lt; <span class="pp">OUPUT_THRESHOLD</span> || ret == NoMotion)  <span class="cm">// 步骤 4: 阈值过滤</span>
+        ret = Unrecognized;
+
+    <span class="kw">return</span> ret;  <span class="cm">// -1=Unrecognized, 0~12=各类手势</span>
+}</pre>
+
+<p><strong>为什么 int8 输出值的阈值是 63？</strong></p>
+<p>
+  Softmax 输出归一化到 int8 范围 [-128, 127]。如果 13 个类别的概率全相等，每个 ≈ 127/13 ≈ 10。
+  只有当某个类的置信度明显高于随机水平（>63，即 127 的一半），才认为有效。
+  小于 63 说明模型对任何类别都没把握 → 输出 Unrecognized。
+</p>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="p4-pipeline">第四阶段 · 训练管道概览</h2>
+
+<pre>┌─────────────────────────────────────────────────────┐
+│  PC 端                                     STM32 端 │
+│                                                      │
+│  ① 采集模式               ② 上位机训练                │
+│  ┌──────────┐            ┌──────────────┐            │
+│  │ IMU 原始  │ ──串口──▶ │ Keras 1D-CNN │            │
+│  │ 数据流   │            │ 训练 .h5     │            │
+│  └──────────┘            └──────┬───────┘            │
+│                                  │                    │
+│                          ③ NNOM 转换                  │
+│                          ┌──────▼───────┐            │
+│                          │ nnom 脚本    │            │
+│                          │ weights.h    │── 烧录 ──▶ │
+│                          │ params.h     │            │
+│                          └──────────────┘            │
+└─────────────────────────────────────────────────────┘</pre>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="p4-collect">数据采集模式</h2>
+
+<p>启用 <code>SYSTEM_MODE_DATA_COLLECT</code> 宏后，法棒变为「数据采集器」：</p>
+
+<ol>
+  <li>按键触发采样（和正常模式一样）</li>
+  <li>但 <code>main()</code> 中的 <code>model_get_output()</code> 被跳过</li>
+  <li>EXTI 中断在采样完成后调用 <code>IMU_Data_Print()</code></li>
+  <li>IMU_Data_Print 以 <code>"IMU\n"</code> 为帧头，逐行打印 acc 和 gyro 原始数据</li>
+  <li>上位机通过串口接收，带时间戳标注手势类别</li>
+</ul>
+
+<div class="callout warn">
+  <strong>⚠️ 注意</strong>
+  上位机是编译好的 <code>.exe</code>（Python + PyQt5 打包），位置在：<br>
+  <code>Upper_computer/Acceptance_of_data/Acceptance_of_data.exe</code>（采集）<br>
+  <code>Upper_computer/Train_model/Train_model.exe</code>（训练）<br>
+  源码没有随项目提供。如果你需要修改上位机逻辑，需要联系原作者或自己基于 PyQt5 重新开发。
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="p4-keras">Keras 1D-CNN 模型结构</h2>
+
+<p>虽然训练源码不在项目中，但从 <code>weights.h</code> 和 NNOM 结构体可以反推模型架构：</p>
+
+<pre><span class="cm"># 推测的 Keras 模型（基于 NNOM 模型结构反推）</span>
+model = Sequential([
+    <span class="cm"># 输入: (150, 3) — 150 个采样点 × 3 轴陀螺仪</span>
+    Conv1D(<span class="nu">8</span>, <span class="nu">3</span>, padding=<span class="str">'same'</span>, input_shape=(<span class="nu">150</span>, <span class="nu">3</span>)),
+    ReLU(),
+    MaxPooling1D(<span class="nu">2</span>),           <span class="cm"># → (75, 8)</span>
+
+    Conv1D(<span class="nu">16</span>, <span class="nu">3</span>, padding=<span class="str">'same'</span>),
+    ReLU(),
+    MaxPooling1D(<span class="nu">2</span>),           <span class="cm"># → (37, 16)</span>
+
+    Flatten(),                     <span class="cm"># → (592)</span>
+    Dense(<span class="nu">13</span>, activation=<span class="str">'softmax'</span>) <span class="cm"># → 13 分类输出</span>
+])
+</pre>
+
+<div class="callout info">
+  <strong>1D-CNN 为什么适用？</strong>
+  手势数据是<strong>时序序列</strong>——150 个时间点 × 3 个通道（Roll/Pitch/Yaw）。
+  1D 卷积在时间轴上滑动，捕捉局部的运动模式（比如「上升→下降→上升」的三连击）。
+  这本质上和语音识别、心电图分类是一类问题。
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="p4-convert">NNOM 模型转换</h2>
+
+<p>
+  NNOM 提供 Python 脚本（在 <code>NNOM_Demo/CNN/nnom-master/scripts/</code> 目录下），
+  核心转换流程：
+</p>
+
+<pre><span class="cm"># step1: 训练好的 Keras 模型</span>
+model.save(<span class="str">'gesture_model.h5'</span>)
+
+<span class="cm"># step2: NNOM 转换脚本（命令行）</span>
+python generate_model.py --model gesture_model.h5 --output weights.h</pre>
+
+<p>转换脚本做了三件事：</p>
+<ol>
+  <li>读取 Keras 模型结构和权重</li>
+  <li>将 float32 权重量化到 int8</li>
+  <li>生成 C 代码（权重数组 + 模型结构体）</li>
+</ol>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="p4-deploy">部署到 STM32</h2>
+
+<pre>将生成的 <span class="kw">weights.h</span> 和 <span class="kw">params.h</span> 复制到
+Software/MainBoard/ 目录（覆盖旧文件）
+→ 重新编译 Keil 工程 → 烧录
+</pre>
+
+<p><strong>一个字都不能改。</strong><code>weights.h</code> 的工具链耦合很强：</p>
+<ul>
+  <li>模型结构变了 → <code>model_feed_data()</code> 的输入格式要同步改</li>
+  <li>输出类别数变了 → <code>model_get_output()</code> 的循环和 eModel_Output 枚举要同步改</li>
+  <li>量化参数（INPUT_1_OUTPUT_DEC）变了 → 宏定义要同步改</li>
+</ul>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="p5-mainloop">第五阶段 · 主循环状态机</h2>
+
+<p><code>main.c</code> 中 <code>while(1)</code> 的核心逻辑可以画成状态机：</p>
+
+<pre>
+   ┌─────────────────────────────────────────┐
+   │               IDLE 状态                  │
+   │   IMU_Idle, 等待按键                     │
+   └──────┬──────────────┬───────────────────┘
+          │              │
+     短按 KEY0       长按 KEY0
+   (BUTTON_HOLD)   (BUTTON_HOLD_LONG)
+          │              │
+          ▼              ▼
+   ┌──────────────┐  ┌──────────────────┐
+   │ SAMPLING     │  │ MODE_SWITCH      │
+   │ 启动 EXT 中断 │  │ 切换 System_Mode │
+   │ 等 150 点    │  │ 0→1→(2)→0       │
+   │ 等待完成     │  └──────────────────┘
+   └──────┬───────┘
+          │ IMU_Sampled
+          ▼
+   ┌──────────────┐
+   │ INFER        │
+   │ model_get_   │
+   │ output()     │
+   └──────┬───────┘
+          │ model_output != Unrecognized
+          ▼
+   ┌──────────────┐
+   │ DISPATCH     │
+   │ Module.ModeX │
+   │ _Handler()   │──▶ 红外发射/学习
+   └──────────────┘
+</pre>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="p5-module">Module 函数表模式</h2>
+
+<p>这是一种经典的嵌入式设计模式 — <strong>用结构体封装多态行为</strong>：</p>
+
+<pre><span class="kw">typedef</span> <span class="kw">struct</span> <span class="dt">Module_t</span> {
+    <span class="dt">eModule_Type</span> Type;                       <span class="cm">// 当前激活的模块类型</span>
+    <span class="dt">void</span> (*<span class="fn">Mode0_Handler</span>)(<span class="dt">void</span>);           <span class="cm">// 函数指针：模式 0 的处理</span>
+    <span class="dt">void</span> (*<span class="fn">Mode1_Handler</span>)(<span class="dt">void</span>);           <span class="cm">// 函数指针：模式 1 的处理</span>
+} <span class="dt">Module_t</span>;
+</pre>
+
+<p>在 <code>Module_Init()</code> 中，根据 <code>Module.Type</code> 的值，将 <code>Mode0_Handler</code> 和 <code>Mode1_Handler</code>
+  指向不同模块的处理函数。调用时只需要：</p>
+
+<pre>Module.<span class="fn">Mode0_Handler</span>();  <span class="cm">// 无论是红外发射还是 LED 闪烁，调用方不需要知道细节</span></pre>
+
+<p>这就是 <strong>策略模式</strong> 在 C 语言中的实现。优点：
+  新增功能模块只需写一个新的 <code>moduleX.c</code>，在 <code>Module_Init()</code> 中加一个 case，
+  main 循环完全不需要改动。
+</p>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="p5-ir">红外协议与编码 — module0 详解</h2>
+
+<p><code>module0.c</code> 是最核心的模块，实现红外遥控功能。它的架构也很清晰：</p>
+
+<pre>module0.c 内部组件：
+
+  model_names[]    → 模型输出索引 → 手势名称映射表（调试用）
+  model_indices[]  → 模型输出索引 → 红外信号索引映射表
+
+  Mode0_Handler → handle_ir_signal(0) → IR_Send_Pack()
+                                      → Uart_Send() 发送到红外子板
+  Mode1_Handler → handle_ir_signal(1) → IR_Learn_Pack()
+                                      → Uart_Send() 发送学习指令到红外子板
+</pre>
+
+<p><strong>红外子板</strong>（独立 STM8 MCU）：</p>
+<ul>
+  <li>通过 UART2（PA2/PA3）与主控通信</li>
+  <li>收到发射指令 → 调制 38KHz 载波 → 驱动 IR LED 发射 NEC 协议红外信号</li>
+  <li>收到学习指令 → VS1838B 接收外部遥控器信号 → 解码存储 → 回传编码数据给主控</li>
+</ul>
+
+<div class="callout info">
+  <strong>子板通信协议</strong>
+  由 <code>new_study_IR.c</code> 和 <code>protocol.c</code> 实现，通过 UART2 发送特定格式的二进制数据包。
+  电机子板（Module 5）也使用同一子板通过 SPI1 通信。
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="p5-mode">系统模式切换</h2>
+
+<pre><span class="kw">typedef</span> <span class="kw">enum</span> <span class="dt">eSystem_Mode</span> {
+    SYSTEM_MODE_0 = <span class="nu">0</span>,   <span class="cm">// 默认：红外发射模式</span>
+    SYSTEM_MODE_1 = <span class="nu">1</span>,   <span class="cm">// 红外学习模式</span>
+    SYSTEM_MODE_2 = <span class="nu">2</span>    <span class="cm">// 激光模式（可选，需 LASER_ENABLE）</span>
+} <span class="dt">eSystem_Mode</span>;
+</pre>
+
+<p>长按 KEY0 → <code>Cyberry_Potter_System_Status_Update()</code> → 循环切换：</p>
+
+<pre>MODE_0 → MODE_1 → (MODE_2, 可选) → MODE_0 → ...</pre>
+
+<p>
+  切换后，主循环依旧调用相同的 <code>Module.Mode0_Handler()</code>/<code>Module.Mode1_Handler()</code>，
+  但模块内部的 <code>handle_ir_signal()</code> 会根据 <code>mode</code> 参数（来自系统模式）
+  分发到红外发射或红外学习逻辑。
+</p>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="ex-all">六个逐步练习</h2>
+
+<p>按难度递进，每个练习都要求你实际动手改代码。</p>
+
+<h3><span class="step">1</span>追踪一次完整的识别流程</h3>
+
+<p><strong>目标：</strong>画一张你自己的数据流图</p>
+<p><strong>方法：</strong>从 <code>main.c:33</code> 按下按键开始，用纸笔或注释追踪每一步（函数调用、变量变化），直到红外发射。每个关键变量画一个箭头。</p>
+<p><strong>检查点：</strong>你的图里至少包含：<code>IMU.Sample_Start</code> → <code>IMU_Get_Data</code> ×150 → <code>model_feed_data</code> → <code>model_run</code> → <code>nnom_output_data</code> → <code>argmax</code> → <code>model_output</code> → <code>Module.Mode0_Handler</code></p>
+
+<h3><span class="step">2</span>修改 LED 反馈：识别结果用不同闪烁次数区分</h3>
+
+<p><strong>目标：</strong>每种手势对应不同的 LED 闪烁次数</p>
+<p><strong>修改位置：</strong><code>module0.c</code> 的 <code>handle_ir_signal()</code></p>
+<p><strong>提示：</strong>不要用 BLINK_5HZ 和 BLINK_2HZ 这种固定模式。自己写一个函数 <code>blink_n_times(int n)</code>，根据 <code>model_output</code> 的值闪烁对应次数。</p>
+
+<h3><span class="step">3</span>实现一个新的 Module：RGB 状态指示器</h3>
+
+<p><strong>目标：</strong>写一个 <code>module11.c</code>，用 GPIO 控制 RGB LED，不同手势显示不同颜色</p>
+<p><strong>步骤：</strong>
+  <ol>
+    <li>在 <code>Module/</code> 下创建 <code>module11.c</code> 和 <code>module11.h</code></li>
+    <li>实现 <code>Module11_Init()</code>、<code>Module11_Mode0_Handler()</code></li>
+    <li>在 <code>CyberryPotter.h</code> 添加 <code>#include "module11.h"</code></li>
+    <li>在 <code>eModule_Type</code> 枚举中添加 <code>Module_Type_11</code></li>
+    <li>在 <code>Module_Init()</code> 的 switch 中添加对应 case</li>
+    <li>修改 main.c 中 <code>Module.Type = Module_Type_11</code></li>
+  </ol>
+</p>
+
+<h3><span class="step">4</span>分析内存占用</h3>
+
+<p><strong>目标：</strong>列出系统中每个大块的内存分配，计算总 SRAM 占用</p>
+<p><strong>提示：</strong>搜索代码中的 static 数组、全局结构体、以及 <code>nnom_set_static_buf</code> 的缓冲区。用 Keil 编译后查看 map 文件中的 <code>.bss</code> 和 <code>.data</code> 段。</p>
+
+<h3><span class="step">5</span>切换数据源：从陀螺仪 3 轴切换到 6 轴</h3>
+
+<p><strong>目标：</strong>理解配置切换对模型的影响</p>
+<p><strong>步骤：</strong>
+  <ol>
+    <li>在 <code>config.h</code> 中注释掉 <code>SERIAL_DEBUG_3_SUBDIVISION</code>，取消注释 <code>SERIAL_DEBUG_6_SUBDIVISION</code></li>
+    <li>尝试编译 — 大概率会报错（因为 weights.h 维度不匹配）</li>
+    <li>理解为什么出错后，改回原配置</li>
+  </ol>
+</p>
+<div class="callout tip">
+  <strong>💡 这个练习的重点不是改成功，而是理解：模型结构、weights.h、model_feed_data() 三者必须一致。</strong>
+</div>
+
+<h3><span class="step">6</span>NNOM_Demo 跑通 CNN 例程</h3>
+
+<p><strong>目标：</strong>独立使用 NNOM 框架训练并部署一个最小模型</p>
+<p><strong>步骤：</strong>
+  <ol>
+    <li>进入 <code>NNOM_Demo/CNN/nnom-master/examples/</code></li>
+    <li>找一个最简单的例子（如 MNIST 手写数字识别），在 PC 上用 Keil 模拟器跑通</li>
+    <li>理解 <code>nnom_model_create()</code> / <code>model_run()</code> 的通用用法</li>
+  </ol>
+</p>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="debug">调试技巧</h2>
+
+<h3>串口调试三板斧</h3>
+
+<table>
+  <tr><th>场景</th><th>方法</th></tr>
+  <tr>
+    <td>看 IMU 原始数据</td>
+    <td>开启 <code>SYSTEM_MODE_DATA_COLLECT</code>，用 XCOM 接收，观察数据范围是否合理（Roll/Pitch/Yaw 应该在 -π 到 π 之间）</td>
+  </tr>
+  <tr>
+    <td>看 CNN 输出概率</td>
+    <td>开启 <code>SERIAL_DEBUG</code>，每个手势识别后会打印 13 个类别的概率百分比</td>
+  </tr>
+  <tr>
+    <td>追系统状态</td>
+    <td><code>printf("SYSTEM_MODE_%d\n", ...)</code> 在 <code>System_Status_Update()</code> 中已内置，直接看串口输出即可</td>
+  </tr>
+</table>
+
+<h3>Keil 调试器</h3>
+
+<ul>
+  <li><strong>断点打在 <code>model_run()</code> 调用前：</strong>查看 <code>nnom_input_data</code> 确认数据已正确填充</li>
+  <li><strong>断点打在 <code>model_run()</code> 调用后：</strong>查看 <code>nnom_output_data[0..12]</code> 确认推理结果</li>
+  <li><strong>Watch 窗口：</strong>添加 <code>IMU.acc</code>、<code>IMU.gyro</code>、<code>model_output</code> 实时观察</li>
+</ul>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="files">核心文件速查表</h2>
+
+<table>
+  <tr><th>文件</th><th>行数</th><th>学习优先级</th><th>涵盖知识点</th></tr>
+  <tr><td><code>MainBoard/config.h</code></td><td>30</td><td>⭐⭐⭐⭐⭐</td><td>编译期配置、条件编译</td></tr>
+  <tr><td><code>MainBoard/CyberryPotter.h</code></td><td>99</td><td>⭐⭐⭐⭐⭐</td><td>枚举、结构体、函数指针声明、模块接口</td></tr>
+  <tr><td><code>MainBoard/main.c</code></td><td>182</td><td>⭐⭐⭐⭐⭐</td><td>主循环、CNN 推理、数据量化、输出解码</td></tr>
+  <tr><td><code>MainBoard/CyberryPotter.c</code></td><td>174</td><td>⭐⭐⭐⭐</td><td>系统初始化、模块调度、EXTI 中断</td></tr>
+  <tr><td><code>Module/module0.c</code></td><td>73</td><td>⭐⭐⭐⭐</td><td>红外控制、手势名映射、子板通信</td></tr>
+  <tr><td><code>MainBoard/IMU.c</code></td><td>~80</td><td>⭐⭐⭐</td><td>采样启动/停止、数据打印</td></tr>
+  <tr><td><code>MainBoard/MPU6050.c</code></td><td>~200</td><td>⭐⭐⭐</td><td>MPU6050 寄存器、DMP 初始化</td></tr>
+  <tr><td><code>MainBoard/IIC.c</code></td><td>~100</td><td>⭐⭐</td><td>软件 I2C 时序</td></tr>
+  <tr><td><code>MainBoard/button.c</code></td><td>~80</td><td>⭐⭐</td><td>按键消抖、长按/短按检测</td></tr>
+  <tr><td><code>MainBoard/LED.c</code></td><td>~50</td><td>⭐</td><td>GPIO + 定时器 PWM 调光</td></tr>
+  <tr><td><code>MainBoard/new_study_IR.c</code></td><td>~200</td><td>⭐⭐</td><td>红外学习子板串口协议</td></tr>
+  <tr><td><code>MainBoard/protocol.c</code></td><td>~150</td><td>⭐⭐</td><td>数据包组帧/校验</td></tr>
+</table>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<h2 id="pitfalls">常见踩坑记录</h2>
+
+<div class="callout danger">
+  <strong>坑 1：MPU6050 初始化卡死</strong>
+  <p>DMP 初始化需要约 200ms。如果 I2C 总线有干扰或 MPU6050 焊接不良，<code>mpu_init()</code> 会无限等待。<br>
+  解决：检查 I2C 上拉电阻（4.7kΩ）、用示波器看 SCL/SDA 波形。</p>
+</div>
+
+<div class="callout danger">
+  <strong>坑 2：编译报 "not enough space"</strong>
+  <p>STM32F103C8T6 只有 64KB Flash。确保 Keil → Options → Target → IROM1 设为 <code>0x08000000, 0x10000</code>。<br>
+  如果还是不够，考虑用 STM32F103RCT6（256KB Flash）或裁剪模型。</p>
+</div>
+
+<div class="callout danger">
+  <strong>坑 3：识别率骤降</strong>
+  <p>上电后 1 秒内移动了法棒 → DMP 校准失败 → 姿态角偏移 → 识别率下降。<br>
+  解决：上电时保持法棒绝对静止至少 2 秒。</p>
+</div>
+
+<div class="callout danger">
+  <strong>坑 4：串口乱码</strong>
+  <p>检查波特率是否为 <strong>115200</strong>、数据位 8、停止位 1、无校验。<br>
+  如果中文乱码，检查上位机编码是否为 UTF-8。</p>
+</div>
+
+<div class="callout danger">
+  <strong>坑 5：weights.h 替换后程序 crash</strong>
+  <p>新训练的模型结构和旧的 <code>model_feed_data()</code> 不一致导致。<br>
+  检查：输入维度、输出类别数、量化参数是否匹配。</p>
+</div>
+
+<hr style="margin: 60px 0 20px; border: none; border-top: 1px solid var(--border);">
+
+<p style="text-align: center; color: var(--text-muted); font-size: 14px;">
+  Cyberry Potter 学习指南 v1.0 · 基于项目实际代码结构编写<br>
+  2026-06-05
+</p>
+
+</main>
+</body>
+</html>

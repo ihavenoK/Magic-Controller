@@ -1,0 +1,1328 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"nnom_utils.c"
+  14              		.text
+  15              		.section	.text._predict_delete_instance,"ax",%progbits
+  16              		.align	1
+  17              		.syntax unified
+  18              		.thumb
+  19              		.thumb_func
+  21              	_predict_delete_instance:
+  22              		@ args = 0, pretend = 0, frame = 0
+  23              		@ frame_needed = 0, uses_anonymous_args = 0
+  24 0000 58B1     		cbz	r0, .L4
+  25 0002 10B5     		push	{r4, lr}
+  26 0004 0446     		mov	r4, r0
+  27 0006 4068     		ldr	r0, [r0, #4]
+  28 0008 FFF7FEFF 		bl	nnom_free
+  29 000c 2068     		ldr	r0, [r4]
+  30 000e FFF7FEFF 		bl	nnom_free
+  31 0012 2046     		mov	r0, r4
+  32 0014 FFF7FEFF 		bl	nnom_free
+  33 0018 10BD     		pop	{r4, pc}
+  34              	.L4:
+  35 001a 7047     		bx	lr
+  37              		.section	.text.prediction_create,"ax",%progbits
+  38              		.align	1
+  39              		.global	prediction_create
+  40              		.syntax unified
+  41              		.thumb
+  42              		.thumb_func
+  44              	prediction_create:
+  45              		@ args = 0, pretend = 0, frame = 0
+  46              		@ frame_needed = 0, uses_anonymous_args = 0
+  47 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+  48 0004 0646     		mov	r6, r0
+  49 0006 8946     		mov	r9, r1
+  50 0008 1546     		mov	r5, r2
+  51 000a 1F46     		mov	r7, r3
+  52 000c 2820     		movs	r0, #40
+  53 000e FFF7FEFF 		bl	nnom_malloc
+  54 0012 0028     		cmp	r0, #0
+  55 0014 33D0     		beq	.L8
+  56 0016 0446     		mov	r4, r0
+  57 0018 4FEA870A 		lsl	r10, r7, #2
+  58 001c 5046     		mov	r0, r10
+  59 001e FFF7FEFF 		bl	nnom_malloc
+  60 0022 6060     		str	r0, [r4, #4]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s 			page 2
+
+
+  61 0024 05FB05F8 		mul	r8, r5, r5
+  62 0028 4FEA4808 		lsl	r8, r8, #1
+  63 002c 4046     		mov	r0, r8
+  64 002e FFF7FEFF 		bl	nnom_malloc
+  65 0032 0346     		mov	r3, r0
+  66 0034 2060     		str	r0, [r4]
+  67 0036 6068     		ldr	r0, [r4, #4]
+  68 0038 C8B1     		cbz	r0, .L9
+  69 003a C3B1     		cbz	r3, .L9
+  70 003c 5246     		mov	r2, r10
+  71 003e 0021     		movs	r1, #0
+  72 0040 FFF7FEFF 		bl	memset
+  73 0044 4246     		mov	r2, r8
+  74 0046 0021     		movs	r1, #0
+  75 0048 2068     		ldr	r0, [r4]
+  76 004a FFF7FEFF 		bl	memset
+  77 004e 2561     		str	r5, [r4, #16]
+  78 0050 6761     		str	r7, [r4, #20]
+  79 0052 0023     		movs	r3, #0
+  80 0054 A361     		str	r3, [r4, #24]
+  81 0056 A660     		str	r6, [r4, #8]
+  82 0058 E361     		str	r3, [r4, #28]
+  83 005a 2362     		str	r3, [r4, #32]
+  84 005c 6362     		str	r3, [r4, #36]
+  85 005e 86B1     		cbz	r6, .L14
+  86 0060 C4F80C90 		str	r9, [r4, #12]
+  87 0064 0023     		movs	r3, #0
+  88 0066 2362     		str	r3, [r4, #32]
+  89              	.L7:
+  90 0068 2046     		mov	r0, r4
+  91 006a BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+  92              	.L9:
+  93 006e FFF7FEFF 		bl	nnom_free
+  94 0072 2068     		ldr	r0, [r4]
+  95 0074 FFF7FEFF 		bl	nnom_free
+  96 0078 2046     		mov	r0, r4
+  97 007a FFF7FEFF 		bl	nnom_free
+  98              	.L8:
+  99 007e 0024     		movs	r4, #0
+ 100 0080 F2E7     		b	.L7
+ 101              	.L14:
+ 102 0082 2046     		mov	r0, r4
+ 103 0084 FFF7FEFF 		bl	_predict_delete_instance
+ 104 0088 3446     		mov	r4, r6
+ 105 008a EDE7     		b	.L7
+ 107              		.section	.text.prediction_run,"ax",%progbits
+ 108              		.align	1
+ 109              		.global	prediction_run
+ 110              		.syntax unified
+ 111              		.thumb
+ 112              		.thumb_func
+ 114              	prediction_run:
+ 115              		@ args = 0, pretend = 0, frame = 0
+ 116              		@ frame_needed = 0, uses_anonymous_args = 0
+ 117 0000 0028     		cmp	r0, #0
+ 118 0002 6FD0     		beq	.L30
+ 119 0004 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s 			page 3
+
+
+ 120 0008 0C46     		mov	r4, r1
+ 121 000a 1646     		mov	r6, r2
+ 122 000c 1F46     		mov	r7, r3
+ 123 000e 0546     		mov	r5, r0
+ 124 0010 8068     		ldr	r0, [r0, #8]
+ 125 0012 FFF7FEFF 		bl	model_run
+ 126 0016 D5F810C0 		ldr	ip, [r5, #16]
+ 127 001a BCF1010F 		cmp	ip, #1
+ 128 001e 4DD9     		bls	.L17
+ 129 0020 0020     		movs	r0, #0
+ 130 0022 8646     		mov	lr, r0
+ 131 0024 04E0     		b	.L20
+ 132              	.L19:
+ 133 0026 9A42     		cmp	r2, r3
+ 134 0028 0CD0     		beq	.L42
+ 135              	.L18:
+ 136 002a 0130     		adds	r0, r0, #1
+ 137 002c 8445     		cmp	ip, r0
+ 138 002e 0ED0     		beq	.L43
+ 139              	.L20:
+ 140 0030 8442     		cmp	r4, r0
+ 141 0032 FAD0     		beq	.L18
+ 142 0034 E968     		ldr	r1, [r5, #12]
+ 143 0036 0A57     		ldrsb	r2, [r1, r4]
+ 144 0038 0B56     		ldrsb	r3, [r1, r0]
+ 145 003a 9A42     		cmp	r2, r3
+ 146 003c F3DA     		bge	.L19
+ 147 003e 0EF1010E 		add	lr, lr, #1
+ 148 0042 F2E7     		b	.L18
+ 149              	.L42:
+ 150 0044 8442     		cmp	r4, r0
+ 151 0046 88BF     		it	hi
+ 152 0048 0EF1010E 		addhi	lr, lr, #1
+ 153 004c EDE7     		b	.L18
+ 154              	.L43:
+ 155 004e 6B69     		ldr	r3, [r5, #20]
+ 156 0050 7345     		cmp	r3, lr
+ 157 0052 4AD9     		bls	.L21
+ 158 0054 6A68     		ldr	r2, [r5, #4]
+ 159 0056 52F82E30 		ldr	r3, [r2, lr, lsl #2]
+ 160 005a 0133     		adds	r3, r3, #1
+ 161 005c 42F82E30 		str	r3, [r2, lr, lsl #2]
+ 162 0060 EB68     		ldr	r3, [r5, #12]
+ 163 0062 93F90000 		ldrsb	r0, [r3]
+ 164 0066 2969     		ldr	r1, [r5, #16]
+ 165 0068 0129     		cmp	r1, #1
+ 166 006a 42D8     		bhi	.L29
+ 167 006c 4FF00008 		mov	r8, #0
+ 168              	.L22:
+ 169 0070 10B3     		cbz	r0, .L32
+ 170 0072 FFF7FEFF 		bl	__aeabi_i2f
+ 171 0076 2249     		ldr	r1, .L44
+ 172 0078 FFF7FEFF 		bl	__aeabi_fdiv
+ 173              	.L25:
+ 174 007c 3860     		str	r0, [r7]	@ float
+ 175 007e C6F80080 		str	r8, [r6]
+ 176 0082 2B69     		ldr	r3, [r5, #16]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s 			page 4
+
+
+ 177 0084 03FB0488 		mla	r8, r3, r4, r8
+ 178 0088 2A68     		ldr	r2, [r5]
+ 179 008a 32F81830 		ldrh	r3, [r2, r8, lsl #1]
+ 180 008e 0133     		adds	r3, r3, #1
+ 181 0090 22F81830 		strh	r3, [r2, r8, lsl #1]	@ movhi
+ 182              	.L26:
+ 183 0094 AB69     		ldr	r3, [r5, #24]
+ 184 0096 0133     		adds	r3, r3, #1
+ 185 0098 AB61     		str	r3, [r5, #24]
+ 186 009a 0020     		movs	r0, #0
+ 187 009c BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 188              	.L23:
+ 189 00a0 9C45     		cmp	ip, r3
+ 190 00a2 E5D0     		beq	.L22
+ 191              	.L24:
+ 192 00a4 1CF9011B 		ldrsb	r1, [ip], #1
+ 193 00a8 8142     		cmp	r1, r0
+ 194 00aa F9DD     		ble	.L23
+ 195 00ac ACEB0208 		sub	r8, ip, r2
+ 196 00b0 08F1FF38 		add	r8, r8, #-1
+ 197 00b4 0846     		mov	r0, r1
+ 198 00b6 F3E7     		b	.L23
+ 199              	.L32:
+ 200 00b8 0020     		movs	r0, #0
+ 201 00ba DFE7     		b	.L25
+ 202              	.L17:
+ 203 00bc EB68     		ldr	r3, [r5, #12]
+ 204 00be 93F90000 		ldrsb	r0, [r3]
+ 205 00c2 FFF7FEFF 		bl	__aeabi_i2f
+ 206 00c6 0E49     		ldr	r1, .L44
+ 207 00c8 FFF7FEFF 		bl	__aeabi_fdiv
+ 208 00cc 3860     		str	r0, [r7]	@ float
+ 209 00ce 4FF07C51 		mov	r1, #1056964608
+ 210 00d2 FFF7FEFF 		bl	__aeabi_fcmpge
+ 211 00d6 10B1     		cbz	r0, .L36
+ 212 00d8 0123     		movs	r3, #1
+ 213 00da 3360     		str	r3, [r6]
+ 214 00dc DAE7     		b	.L26
+ 215              	.L36:
+ 216 00de 0023     		movs	r3, #0
+ 217 00e0 3360     		str	r3, [r6]
+ 218 00e2 D7E7     		b	.L26
+ 219              	.L30:
+ 220 00e4 4FF0FF30 		mov	r0, #-1
+ 221 00e8 7047     		bx	lr
+ 222              	.L21:
+ 223 00ea EB68     		ldr	r3, [r5, #12]
+ 224 00ec 93F90000 		ldrsb	r0, [r3]
+ 225 00f0 2969     		ldr	r1, [r5, #16]
+ 226              	.L29:
+ 227 00f2 03F1010C 		add	ip, r3, #1
+ 228 00f6 1A46     		mov	r2, r3
+ 229 00f8 0B44     		add	r3, r3, r1
+ 230 00fa 4FF00008 		mov	r8, #0
+ 231 00fe D1E7     		b	.L24
+ 232              	.L45:
+ 233              		.align	2
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s 			page 5
+
+
+ 234              	.L44:
+ 235 0100 0000FE42 		.word	1123942400
+ 237              		.section	.text.prediction_end,"ax",%progbits
+ 238              		.align	1
+ 239              		.global	prediction_end
+ 240              		.syntax unified
+ 241              		.thumb
+ 242              		.thumb_func
+ 244              	prediction_end:
+ 245              		@ args = 0, pretend = 0, frame = 0
+ 246              		@ frame_needed = 0, uses_anonymous_args = 0
+ 247              		@ link register save eliminated.
+ 248 0000 10B1     		cbz	r0, .L46
+ 249 0002 036A     		ldr	r3, [r0, #32]
+ 250 0004 5B42     		rsbs	r3, r3, #0
+ 251 0006 4362     		str	r3, [r0, #36]
+ 252              	.L46:
+ 253 0008 7047     		bx	lr
+ 255              		.section	.text.prediction_delete,"ax",%progbits
+ 256              		.align	1
+ 257              		.global	prediction_delete
+ 258              		.syntax unified
+ 259              		.thumb
+ 260              		.thumb_func
+ 262              	prediction_delete:
+ 263              		@ args = 0, pretend = 0, frame = 0
+ 264              		@ frame_needed = 0, uses_anonymous_args = 0
+ 265 0000 08B5     		push	{r3, lr}
+ 266 0002 FFF7FEFF 		bl	_predict_delete_instance
+ 267 0006 08BD     		pop	{r3, pc}
+ 269              		.section	.rodata.prediction_matrix.str1.4,"aMS",%progbits,1
+ 270              		.align	2
+ 271              	.LC0:
+ 272 0000 0A436F6E 		.ascii	"\012Confusion matrix:\000"
+ 272      66757369 
+ 272      6F6E206D 
+ 272      61747269 
+ 272      783A00
+ 273 0013 00       		.align	2
+ 274              	.LC1:
+ 275 0014 70726564 		.ascii	"predict\000"
+ 275      69637400 
+ 276              		.align	2
+ 277              	.LC2:
+ 278 001c 25366400 		.ascii	"%6d\000"
+ 279              		.align	2
+ 280              	.LC3:
+ 281 0020 61637475 		.ascii	"actual\000"
+ 281      616C00
+ 282 0027 00       		.align	2
+ 283              	.LC4:
+ 284 0028 20253364 		.ascii	" %3d | \000"
+ 284      207C2000 
+ 285              		.align	2
+ 286              	.LC5:
+ 287 0030 2020207C 		.ascii	"   |%4d%%\012\000"
+ 287      25346425 
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s 			page 6
+
+
+ 287      250A00
+ 288              		.section	.text.prediction_matrix,"ax",%progbits
+ 289              		.align	1
+ 290              		.global	prediction_matrix
+ 291              		.syntax unified
+ 292              		.thumb
+ 293              		.thumb_func
+ 295              	prediction_matrix:
+ 296              		@ args = 0, pretend = 0, frame = 0
+ 297              		@ frame_needed = 0, uses_anonymous_args = 0
+ 298 0000 0028     		cmp	r0, #0
+ 299 0002 53D0     		beq	.L63
+ 300 0004 2DE9F84F 		push	{r3, r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 301 0008 0546     		mov	r5, r0
+ 302 000a 2948     		ldr	r0, .L66
+ 303 000c FFF7FEFF 		bl	puts
+ 304 0010 2848     		ldr	r0, .L66+4
+ 305 0012 FFF7FEFF 		bl	printf
+ 306 0016 2B69     		ldr	r3, [r5, #16]
+ 307 0018 4BB1     		cbz	r3, .L52
+ 308 001a 0024     		movs	r4, #0
+ 309 001c 264E     		ldr	r6, .L66+8
+ 310              	.L53:
+ 311 001e 2146     		mov	r1, r4
+ 312 0020 3046     		mov	r0, r6
+ 313 0022 FFF7FEFF 		bl	printf
+ 314 0026 0134     		adds	r4, r4, #1
+ 315 0028 2B69     		ldr	r3, [r5, #16]
+ 316 002a A342     		cmp	r3, r4
+ 317 002c F7D8     		bhi	.L53
+ 318              	.L52:
+ 319 002e 0A20     		movs	r0, #10
+ 320 0030 FFF7FEFF 		bl	putchar
+ 321 0034 2148     		ldr	r0, .L66+12
+ 322 0036 FFF7FEFF 		bl	puts
+ 323 003a 2B69     		ldr	r3, [r5, #16]
+ 324 003c 7BB3     		cbz	r3, .L54
+ 325 003e 4FF00009 		mov	r9, #0
+ 326 0042 DFF87CB0 		ldr	fp, .L66+16
+ 327 0046 DFF87080 		ldr	r8, .L66+8
+ 328 004a DFF878A0 		ldr	r10, .L66+20
+ 329              	.L57:
+ 330 004e 4F46     		mov	r7, r9
+ 331 0050 4946     		mov	r1, r9
+ 332 0052 5846     		mov	r0, fp
+ 333 0054 FFF7FEFF 		bl	printf
+ 334 0058 2B69     		ldr	r3, [r5, #16]
+ 335 005a 2BB3     		cbz	r3, .L58
+ 336 005c 0024     		movs	r4, #0
+ 337 005e 2646     		mov	r6, r4
+ 338              	.L56:
+ 339 0060 03FB0743 		mla	r3, r3, r7, r4
+ 340 0064 2A68     		ldr	r2, [r5]
+ 341 0066 32F81310 		ldrh	r1, [r2, r3, lsl #1]
+ 342 006a 0E44     		add	r6, r6, r1
+ 343 006c 4046     		mov	r0, r8
+ 344 006e FFF7FEFF 		bl	printf
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s 			page 7
+
+
+ 345 0072 0134     		adds	r4, r4, #1
+ 346 0074 2B69     		ldr	r3, [r5, #16]
+ 347 0076 A342     		cmp	r3, r4
+ 348 0078 F2D8     		bhi	.L56
+ 349              	.L55:
+ 350 007a 03FB0777 		mla	r7, r3, r7, r7
+ 351 007e 2B68     		ldr	r3, [r5]
+ 352 0080 33F81710 		ldrh	r1, [r3, r7, lsl #1]
+ 353 0084 6423     		movs	r3, #100
+ 354 0086 03FB01F1 		mul	r1, r3, r1
+ 355 008a B1FBF6F1 		udiv	r1, r1, r6
+ 356 008e 5046     		mov	r0, r10
+ 357 0090 FFF7FEFF 		bl	printf
+ 358 0094 09F10109 		add	r9, r9, #1
+ 359 0098 2B69     		ldr	r3, [r5, #16]
+ 360 009a 4B45     		cmp	r3, r9
+ 361 009c D7D8     		bhi	.L57
+ 362              	.L54:
+ 363 009e 0A20     		movs	r0, #10
+ 364 00a0 FFF7FEFF 		bl	putchar
+ 365 00a4 BDE8F88F 		pop	{r3, r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 366              	.L58:
+ 367 00a8 1E46     		mov	r6, r3
+ 368 00aa E6E7     		b	.L55
+ 369              	.L63:
+ 370 00ac 7047     		bx	lr
+ 371              	.L67:
+ 372 00ae 00BF     		.align	2
+ 373              	.L66:
+ 374 00b0 00000000 		.word	.LC0
+ 375 00b4 14000000 		.word	.LC1
+ 376 00b8 1C000000 		.word	.LC2
+ 377 00bc 20000000 		.word	.LC3
+ 378 00c0 28000000 		.word	.LC4
+ 379 00c4 30000000 		.word	.LC5
+ 381              		.section	.rodata.prediction_top_k.str1.4,"aMS",%progbits,1
+ 382              		.align	2
+ 383              	.LC6:
+ 384 0000 546F7020 		.ascii	"Top %d Accuracy: %d.%02d%% \012\000"
+ 384      25642041 
+ 384      63637572 
+ 384      6163793A 
+ 384      2025642E 
+ 385 001d 000000   		.align	2
+ 386              	.LC7:
+ 387 0020 546F7020 		.ascii	"Top %d Accuracy: 100%% \012\000"
+ 387      25642041 
+ 387      63637572 
+ 387      6163793A 
+ 387      20313030 
+ 388              		.section	.text.prediction_top_k,"ax",%progbits
+ 389              		.align	1
+ 390              		.global	prediction_top_k
+ 391              		.syntax unified
+ 392              		.thumb
+ 393              		.thumb_func
+ 395              	prediction_top_k:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s 			page 8
+
+
+ 396              		@ args = 0, pretend = 0, frame = 0
+ 397              		@ frame_needed = 0, uses_anonymous_args = 0
+ 398 0000 A8B3     		cbz	r0, .L75
+ 399 0002 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+ 400 0006 0646     		mov	r6, r0
+ 401 0008 4369     		ldr	r3, [r0, #20]
+ 402 000a 73B3     		cbz	r3, .L68
+ 403 000c 0127     		movs	r7, #1
+ 404 000e 0025     		movs	r5, #0
+ 405 0010 2C46     		mov	r4, r5
+ 406 0012 DFF85CA0 		ldr	r10, .L79
+ 407 0016 DFF85C90 		ldr	r9, .L79+4
+ 408 001a DFF85C80 		ldr	r8, .L79+8
+ 409 001e 18E0     		b	.L72
+ 410              	.L78:
+ 411 0020 42F21071 		movw	r1, #10000
+ 412 0024 04FB01F1 		mul	r1, r4, r1
+ 413 0028 B1FBF2F1 		udiv	r1, r1, r2
+ 414 002c A9FB0103 		umull	r0, r3, r9, r1
+ 415 0030 5B09     		lsrs	r3, r3, #5
+ 416 0032 6420     		movs	r0, #100
+ 417 0034 00FB04FC 		mul	ip, r0, r4
+ 418 0038 00FB1313 		mls	r3, r0, r3, r1
+ 419 003c BCFBF2F2 		udiv	r2, ip, r2
+ 420 0040 3946     		mov	r1, r7
+ 421 0042 4046     		mov	r0, r8
+ 422 0044 FFF7FEFF 		bl	printf
+ 423              	.L71:
+ 424 0048 0135     		adds	r5, r5, #1
+ 425 004a 0137     		adds	r7, r7, #1
+ 426 004c 7369     		ldr	r3, [r6, #20]
+ 427 004e AB42     		cmp	r3, r5
+ 428 0050 0BD9     		bls	.L68
+ 429              	.L72:
+ 430 0052 7368     		ldr	r3, [r6, #4]
+ 431 0054 53F82530 		ldr	r3, [r3, r5, lsl #2]
+ 432 0058 1C44     		add	r4, r4, r3
+ 433 005a B269     		ldr	r2, [r6, #24]
+ 434 005c A242     		cmp	r2, r4
+ 435 005e DFD1     		bne	.L78
+ 436 0060 3946     		mov	r1, r7
+ 437 0062 5046     		mov	r0, r10
+ 438 0064 FFF7FEFF 		bl	printf
+ 439 0068 EEE7     		b	.L71
+ 440              	.L68:
+ 441 006a BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 442              	.L75:
+ 443 006e 7047     		bx	lr
+ 444              	.L80:
+ 445              		.align	2
+ 446              	.L79:
+ 447 0070 20000000 		.word	.LC7
+ 448 0074 1F85EB51 		.word	1374389535
+ 449 0078 00000000 		.word	.LC6
+ 451              		.section	.rodata.prediction_summary.str1.4,"aMS",%progbits,1
+ 452              		.align	2
+ 453              	.LC8:
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s 			page 9
+
+
+ 454 0000 0A507265 		.ascii	"\012Prediction summary:\000"
+ 454      64696374 
+ 454      696F6E20 
+ 454      73756D6D 
+ 454      6172793A 
+ 455 0015 000000   		.align	2
+ 456              	.LC9:
+ 457 0018 54657374 		.ascii	"Test frames: %d\012\000"
+ 457      20667261 
+ 457      6D65733A 
+ 457      2025640A 
+ 457      00
+ 458 0029 000000   		.align	2
+ 459              	.LC10:
+ 460 002c 54657374 		.ascii	"Test running time: %d sec\012\000"
+ 460      2072756E 
+ 460      6E696E67 
+ 460      2074696D 
+ 460      653A2025 
+ 461 0047 00       		.align	2
+ 462              	.LC11:
+ 463 0048 4D6F6465 		.ascii	"Model running time: %d ms\012\000"
+ 463      6C207275 
+ 463      6E6E696E 
+ 463      67207469 
+ 463      6D653A20 
+ 464 0063 00       		.align	2
+ 465              	.LC12:
+ 466 0064 41766572 		.ascii	"Average prediction time: %d us\012\000"
+ 466      61676520 
+ 466      70726564 
+ 466      69637469 
+ 466      6F6E2074 
+ 467              		.align	2
+ 468              	.LC13:
+ 469 0084 41766572 		.ascii	"Average effeciency: %d.%02d ops/us\012\000"
+ 469      61676520 
+ 469      65666665 
+ 469      6369656E 
+ 469      63793A20 
+ 470              		.align	2
+ 471              	.LC14:
+ 472 00a8 41766572 		.ascii	"Average frame rate: %d.%d Hz\012\000"
+ 472      61676520 
+ 472      6672616D 
+ 472      65207261 
+ 472      74653A20 
+ 473              		.section	.text.prediction_summary,"ax",%progbits
+ 474              		.align	1
+ 475              		.global	prediction_summary
+ 476              		.syntax unified
+ 477              		.thumb
+ 478              		.thumb_func
+ 480              	prediction_summary:
+ 481              		@ args = 0, pretend = 0, frame = 0
+ 482              		@ frame_needed = 0, uses_anonymous_args = 0
+ 483 0000 0028     		cmp	r0, #0
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s 			page 10
+
+
+ 484 0002 00F08180 		beq	.L86
+ 485 0006 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 486 000a 0446     		mov	r4, r0
+ 487 000c 3F48     		ldr	r0, .L92
+ 488 000e FFF7FEFF 		bl	puts
+ 489 0012 A169     		ldr	r1, [r4, #24]
+ 490 0014 3E48     		ldr	r0, .L92+4
+ 491 0016 FFF7FEFF 		bl	printf
+ 492 001a 616A     		ldr	r1, [r4, #36]
+ 493 001c 3D4B     		ldr	r3, .L92+8
+ 494 001e A3FB0131 		umull	r3, r1, r3, r1
+ 495 0022 8909     		lsrs	r1, r1, #6
+ 496 0024 3C48     		ldr	r0, .L92+12
+ 497 0026 FFF7FEFF 		bl	printf
+ 498 002a E169     		ldr	r1, [r4, #28]
+ 499 002c 3B48     		ldr	r0, .L92+16
+ 500 002e FFF7FEFF 		bl	printf
+ 501 0032 A369     		ldr	r3, [r4, #24]
+ 502 0034 33B9     		cbnz	r3, .L89
+ 503              	.L83:
+ 504 0036 E769     		ldr	r7, [r4, #28]
+ 505 0038 7FB9     		cbnz	r7, .L90
+ 506              	.L84:
+ 507 003a 2369     		ldr	r3, [r4, #16]
+ 508 003c 012B     		cmp	r3, #1
+ 509 003e 5CD8     		bhi	.L91
+ 510              	.L81:
+ 511 0040 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 512              	.L89:
+ 513 0044 E169     		ldr	r1, [r4, #28]
+ 514 0046 4FF47A72 		mov	r2, #1000
+ 515 004a 02FB01F1 		mul	r1, r2, r1
+ 516 004e B1FBF3F1 		udiv	r1, r1, r3
+ 517 0052 3348     		ldr	r0, .L92+20
+ 518 0054 FFF7FEFF 		bl	printf
+ 519 0058 EDE7     		b	.L83
+ 520              	.L90:
+ 521 005a A368     		ldr	r3, [r4, #8]
+ 522 005c D3F88060 		ldr	r6, [r3, #128]
+ 523 0060 4FF00008 		mov	r8, #0
+ 524 0064 A569     		ldr	r5, [r4, #24]
+ 525 0066 A6FB0556 		umull	r5, r6, r6, r5
+ 526 006a 4FF47A73 		mov	r3, #1000
+ 527 006e 03FB07F7 		mul	r7, r3, r7
+ 528 0072 6819     		adds	r0, r5, r5
+ 529 0074 46EB0601 		adc	r1, r6, r6
+ 530 0078 4019     		adds	r0, r0, r5
+ 531 007a 46EB0101 		adc	r1, r6, r1
+ 532 007e 4B01     		lsls	r3, r1, #5
+ 533 0080 43EAD063 		orr	r3, r3, r0, lsr #27
+ 534 0084 4201     		lsls	r2, r0, #5
+ 535 0086 8018     		adds	r0, r0, r2
+ 536 0088 41EB0301 		adc	r1, r1, r3
+ 537 008c 4019     		adds	r0, r0, r5
+ 538 008e 3A46     		mov	r2, r7
+ 539 0090 4346     		mov	r3, r8
+ 540 0092 46EB0101 		adc	r1, r6, r1
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s 			page 11
+
+
+ 541 0096 FFF7FEFF 		bl	__aeabi_uldivmod
+ 542 009a 224A     		ldr	r2, .L92+24
+ 543 009c 82FB0032 		smull	r3, r2, r2, r0
+ 544 00a0 C317     		asrs	r3, r0, #31
+ 545 00a2 C3EB6213 		rsb	r3, r3, r2, asr #5
+ 546 00a6 6422     		movs	r2, #100
+ 547 00a8 02FB1309 		mls	r9, r2, r3, r0
+ 548 00ac 3A46     		mov	r2, r7
+ 549 00ae 4346     		mov	r3, r8
+ 550 00b0 2846     		mov	r0, r5
+ 551 00b2 3146     		mov	r1, r6
+ 552 00b4 FFF7FEFF 		bl	__aeabi_uldivmod
+ 553 00b8 0146     		mov	r1, r0
+ 554 00ba 4A46     		mov	r2, r9
+ 555 00bc 1A48     		ldr	r0, .L92+28
+ 556 00be FFF7FEFF 		bl	printf
+ 557 00c2 E169     		ldr	r1, [r4, #28]
+ 558 00c4 0029     		cmp	r1, #0
+ 559 00c6 B8D0     		beq	.L84
+ 560 00c8 A369     		ldr	r3, [r4, #24]
+ 561 00ca 002B     		cmp	r3, #0
+ 562 00cc B5D0     		beq	.L84
+ 563 00ce B1FBF3F1 		udiv	r1, r1, r3
+ 564 00d2 42F21072 		movw	r2, #10000
+ 565 00d6 B2FBF1F2 		udiv	r2, r2, r1
+ 566 00da 144B     		ldr	r3, .L92+32
+ 567 00dc A3FB0203 		umull	r0, r3, r3, r2
+ 568 00e0 DB08     		lsrs	r3, r3, #3
+ 569 00e2 03EB8303 		add	r3, r3, r3, lsl #2
+ 570 00e6 A2EB4302 		sub	r2, r2, r3, lsl #1
+ 571 00ea 4FF47A73 		mov	r3, #1000
+ 572 00ee B3FBF1F1 		udiv	r1, r3, r1
+ 573 00f2 0F48     		ldr	r0, .L92+36
+ 574 00f4 FFF7FEFF 		bl	printf
+ 575 00f8 9FE7     		b	.L84
+ 576              	.L91:
+ 577 00fa 2046     		mov	r0, r4
+ 578 00fc FFF7FEFF 		bl	prediction_top_k
+ 579 0100 2046     		mov	r0, r4
+ 580 0102 FFF7FEFF 		bl	prediction_matrix
+ 581 0106 9BE7     		b	.L81
+ 582              	.L86:
+ 583 0108 7047     		bx	lr
+ 584              	.L93:
+ 585 010a 00BF     		.align	2
+ 586              	.L92:
+ 587 010c 00000000 		.word	.LC8
+ 588 0110 18000000 		.word	.LC9
+ 589 0114 D34D6210 		.word	274877907
+ 590 0118 2C000000 		.word	.LC10
+ 591 011c 48000000 		.word	.LC11
+ 592 0120 64000000 		.word	.LC12
+ 593 0124 1F85EB51 		.word	1374389535
+ 594 0128 84000000 		.word	.LC13
+ 595 012c CDCCCCCC 		.word	-858993459
+ 596 0130 A8000000 		.word	.LC14
+ 598              		.section	.text.nnom_predict,"ax",%progbits
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s 			page 12
+
+
+ 599              		.align	1
+ 600              		.global	nnom_predict
+ 601              		.syntax unified
+ 602              		.thumb
+ 603              		.thumb_func
+ 605              	nnom_predict:
+ 606              		@ args = 0, pretend = 0, frame = 0
+ 607              		@ frame_needed = 0, uses_anonymous_args = 0
+ 608 0000 0028     		cmp	r0, #0
+ 609 0002 4ED0     		beq	.L103
+ 610 0004 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+ 611 0008 8846     		mov	r8, r1
+ 612 000a 9146     		mov	r9, r2
+ 613 000c 0746     		mov	r7, r0
+ 614 000e FFF7FEFF 		bl	model_run
+ 615 0012 7B68     		ldr	r3, [r7, #4]
+ 616 0014 5B6A     		ldr	r3, [r3, #36]
+ 617 0016 D868     		ldr	r0, [r3, #12]
+ 618 0018 0668     		ldr	r6, [r0]
+ 619 001a FFF7FEFF 		bl	tensor_size
+ 620 001e 0128     		cmp	r0, #1
+ 621 0020 28D9     		bls	.L96
+ 622 0022 96F90050 		ldrsb	r5, [r6]
+ 623 0026 0124     		movs	r4, #1
+ 624 0028 4FF0000A 		mov	r10, #0
+ 625 002c 08E0     		b	.L97
+ 626              	.L99:
+ 627 002e 16F9013F 		ldrsb	r3, [r6, #1]!
+ 628 0032 AB42     		cmp	r3, r5
+ 629 0034 C8BF     		it	gt
+ 630 0036 A246     		movgt	r10, r4
+ 631 0038 9D42     		cmp	r5, r3
+ 632 003a B8BF     		it	lt
+ 633 003c 1D46     		movlt	r5, r3
+ 634 003e 0134     		adds	r4, r4, #1
+ 635              	.L97:
+ 636 0040 7B68     		ldr	r3, [r7, #4]
+ 637 0042 5B6A     		ldr	r3, [r3, #36]
+ 638 0044 D868     		ldr	r0, [r3, #12]
+ 639 0046 FFF7FEFF 		bl	tensor_size
+ 640 004a A042     		cmp	r0, r4
+ 641 004c EFD8     		bhi	.L99
+ 642 004e C8F800A0 		str	r10, [r8]
+ 643 0052 55B1     		cbz	r5, .L100
+ 644 0054 2846     		mov	r0, r5
+ 645 0056 FFF7FEFF 		bl	__aeabi_i2f
+ 646 005a 1349     		ldr	r1, .L110
+ 647 005c FFF7FEFF 		bl	__aeabi_fdiv
+ 648 0060 C9F80000 		str	r0, [r9]	@ float
+ 649 0064 0020     		movs	r0, #0
+ 650              	.L95:
+ 651 0066 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 652              	.L100:
+ 653 006a 0023     		movs	r3, #0
+ 654 006c C9F80030 		str	r3, [r9]	@ float
+ 655 0070 0020     		movs	r0, #0
+ 656 0072 F8E7     		b	.L95
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s 			page 13
+
+
+ 657              	.L96:
+ 658 0074 96F90000 		ldrsb	r0, [r6]
+ 659 0078 FFF7FEFF 		bl	__aeabi_i2f
+ 660 007c 0A49     		ldr	r1, .L110
+ 661 007e FFF7FEFF 		bl	__aeabi_fdiv
+ 662 0082 C9F80000 		str	r0, [r9]	@ float
+ 663 0086 4FF07C51 		mov	r1, #1056964608
+ 664 008a FFF7FEFF 		bl	__aeabi_fcmpge
+ 665 008e 20B1     		cbz	r0, .L105
+ 666 0090 0123     		movs	r3, #1
+ 667 0092 C8F80030 		str	r3, [r8]
+ 668 0096 0020     		movs	r0, #0
+ 669 0098 E5E7     		b	.L95
+ 670              	.L105:
+ 671 009a 0020     		movs	r0, #0
+ 672 009c C8F80000 		str	r0, [r8]
+ 673 00a0 E1E7     		b	.L95
+ 674              	.L103:
+ 675 00a2 4FF0FF30 		mov	r0, #-1
+ 676 00a6 7047     		bx	lr
+ 677              	.L111:
+ 678              		.align	2
+ 679              	.L110:
+ 680 00a8 0000FE42 		.word	1123942400
+ 682              		.section	.rodata.model_stat.str1.4,"aMS",%progbits,1
+ 683              		.align	2
+ 684              	.LC15:
+ 685 0000 0A507269 		.ascii	"\012Print running stat..\000"
+ 685      6E742072 
+ 685      756E6E69 
+ 685      6E672073 
+ 685      7461742E 
+ 686 0016 0000     		.align	2
+ 687              	.LC16:
+ 688 0018 4C617965 		.ascii	"Layer(#)        -   Time(us)     ops(MACs)   ops/us"
+ 688      72282329 
+ 688      20202020 
+ 688      20202020 
+ 688      2D202020 
+ 689 004b 2000     		.ascii	" \000"
+ 690 004d 000000   		.align	2
+ 691              	.LC17:
+ 692 0050 2D2D2D2D 		.ascii	"---------------------------------------------------"
+ 692      2D2D2D2D 
+ 692      2D2D2D2D 
+ 692      2D2D2D2D 
+ 692      2D2D2D2D 
+ 693 0083 2D2D2D2D 		.ascii	"-----\000"
+ 693      2D00
+ 694 0089 000000   		.align	2
+ 695              	.LC18:
+ 696 008c 23252D33 		.ascii	"#%-3d\000"
+ 696      6400
+ 697 0092 0000     		.align	2
+ 698              	.LC19:
+ 699 0094 252D3130 		.ascii	"%-10s - \000"
+ 699      73202D20 
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s 			page 14
+
+
+ 699      00
+ 700 009d 000000   		.align	2
+ 701              	.LC20:
+ 702 00a0 252D3373 		.ascii	"%-3s/\000"
+ 702      2F00
+ 703 00a6 0000     		.align	2
+ 704              	.LC21:
+ 705 00a8 252D3673 		.ascii	"%-6s - \000"
+ 705      202D2000 
+ 706              		.align	2
+ 707              	.LC22:
+ 708 00b0 20253864 		.ascii	" %8d      \000"
+ 708      20202020 
+ 708      202000
+ 709 00bb 00       		.align	2
+ 710              	.LC23:
+ 711 00bc 20202020 		.ascii	"            \000"
+ 711      20202020 
+ 711      20202020 
+ 711      00
+ 712 00c9 000000   		.align	2
+ 713              	.LC24:
+ 714 00cc 25376420 		.ascii	"%7d     \000"
+ 714      20202020 
+ 714      00
+ 715 00d5 000000   		.align	2
+ 716              	.LC25:
+ 717 00d8 2536646B 		.ascii	"%6dk     \000"
+ 717      20202020 
+ 717      2000
+ 718 00e2 0000     		.align	2
+ 719              	.LC26:
+ 720 00e4 2533642E 		.ascii	"%3d.%02dM     \000"
+ 720      25303264 
+ 720      4D202020 
+ 720      202000
+ 721 00f3 00       		.align	2
+ 722              	.LC27:
+ 723 00f4 2533642E 		.ascii	"%3d.%02dG     \000"
+ 723      25303264 
+ 723      47202020 
+ 723      202000
+ 724 0103 00       		.align	2
+ 725              	.LC28:
+ 726 0104 25642E25 		.ascii	"%d.%02d\012\000"
+ 726      3032640A 
+ 726      00
+ 727 010d 000000   		.align	2
+ 728              	.LC29:
+ 729 0110 0A53756D 		.ascii	"\012Summary:\000"
+ 729      6D617279 
+ 729      3A00
+ 730 011a 0000     		.align	2
+ 731              	.LC30:
+ 732 011c 546F7461 		.ascii	"Total ops (MAC): %d\000"
+ 732      6C206F70 
+ 732      7320284D 
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s 			page 15
+
+
+ 732      4143293A 
+ 732      20256400 
+ 733              		.align	2
+ 734              	.LC31:
+ 735 0130 2825642E 		.ascii	"(%d.%02dM)\012\000"
+ 735      25303264 
+ 735      4D290A00 
+ 736              		.align	2
+ 737              	.LC32:
+ 738 013c 50726564 		.ascii	"Prediction time :%dus\012\000"
+ 738      69637469 
+ 738      6F6E2074 
+ 738      696D6520 
+ 738      3A256475 
+ 739 0153 00       		.align	2
+ 740              	.LC33:
+ 741 0154 45666669 		.ascii	"Efficiency %d.%02d ops/us\012\000"
+ 741      6369656E 
+ 741      63792025 
+ 741      642E2530 
+ 741      3264206F 
+ 742 016f 00       		.align	2
+ 743              	.LC34:
+ 744 0170 546F7461 		.ascii	"Total memory:%d\012\000"
+ 744      6C206D65 
+ 744      6D6F7279 
+ 744      3A25640A 
+ 744      00
+ 745              		.section	.text.model_stat,"ax",%progbits
+ 746              		.align	1
+ 747              		.global	model_stat
+ 748              		.syntax unified
+ 749              		.thumb
+ 750              		.thumb_func
+ 752              	model_stat:
+ 753              		@ args = 0, pretend = 0, frame = 0
+ 754              		@ frame_needed = 0, uses_anonymous_args = 0
+ 755 0000 0028     		cmp	r0, #0
+ 756 0002 00F0C680 		beq	.L128
+ 757 0006 2DE9F84F 		push	{r3, r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 758 000a 0468     		ldr	r4, [r0]
+ 759 000c 6148     		ldr	r0, .L136
+ 760 000e FFF7FEFF 		bl	puts
+ 761 0012 6148     		ldr	r0, .L136+4
+ 762 0014 FFF7FEFF 		bl	puts
+ 763 0018 6048     		ldr	r0, .L136+8
+ 764 001a FFF7FEFF 		bl	puts
+ 765 001e 0025     		movs	r5, #0
+ 766 0020 2F46     		mov	r7, r5
+ 767 0022 2E46     		mov	r6, r5
+ 768 0024 DFF87881 		ldr	r8, .L136+12
+ 769 0028 DFF878B1 		ldr	fp, .L136+16
+ 770 002c DFF878A1 		ldr	r10, .L136+20
+ 771 0030 DFF87891 		ldr	r9, .L136+24
+ 772 0034 1AE0     		b	.L114
+ 773              	.L115:
+ 774 0036 5E49     		ldr	r1, .L136+28
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s 			page 16
+
+
+ 775 0038 5E48     		ldr	r0, .L136+32
+ 776 003a FFF7FEFF 		bl	printf
+ 777 003e 236B     		ldr	r3, [r4, #48]
+ 778 0040 197D     		ldrb	r1, [r3, #20]	@ zero_extendqisi2
+ 779 0042 5D4B     		ldr	r3, .L136+36
+ 780 0044 03EBC101 		add	r1, r3, r1, lsl #3
+ 781 0048 5C48     		ldr	r0, .L136+40
+ 782 004a FFF7FEFF 		bl	printf
+ 783 004e 23E0     		b	.L116
+ 784              	.L132:
+ 785 0050 5B48     		ldr	r0, .L136+44
+ 786 0052 FFF7FEFF 		bl	printf
+ 787              	.L118:
+ 788 0056 A36A     		ldr	r3, [r4, #40]
+ 789 0058 13B1     		cbz	r3, .L122
+ 790 005a E16A     		ldr	r1, [r4, #44]
+ 791 005c 0029     		cmp	r1, #0
+ 792 005e 54D1     		bne	.L131
+ 793              	.L122:
+ 794 0060 0A20     		movs	r0, #10
+ 795 0062 FFF7FEFF 		bl	putchar
+ 796              	.L123:
+ 797 0066 2468     		ldr	r4, [r4]
+ 798 0068 002C     		cmp	r4, #0
+ 799 006a 5FD0     		beq	.L124
+ 800              	.L114:
+ 801 006c 002C     		cmp	r4, #0
+ 802 006e 5DD0     		beq	.L124
+ 803 0070 0135     		adds	r5, r5, #1
+ 804 0072 2946     		mov	r1, r5
+ 805 0074 5348     		ldr	r0, .L136+48
+ 806 0076 FFF7FEFF 		bl	printf
+ 807 007a A36A     		ldr	r3, [r4, #40]
+ 808 007c 1E44     		add	r6, r6, r3
+ 809 007e E36A     		ldr	r3, [r4, #44]
+ 810 0080 1F44     		add	r7, r7, r3
+ 811 0082 217F     		ldrb	r1, [r4, #28]	@ zero_extendqisi2
+ 812 0084 0B29     		cmp	r1, #11
+ 813 0086 D6D0     		beq	.L115
+ 814 0088 01EB4101 		add	r1, r1, r1, lsl #1
+ 815 008c 4E4B     		ldr	r3, .L136+52
+ 816 008e 03EB8101 		add	r1, r3, r1, lsl #2
+ 817 0092 4E48     		ldr	r0, .L136+56
+ 818 0094 FFF7FEFF 		bl	printf
+ 819              	.L116:
+ 820 0098 E16A     		ldr	r1, [r4, #44]
+ 821 009a 4D48     		ldr	r0, .L136+60
+ 822 009c FFF7FEFF 		bl	printf
+ 823 00a0 A36A     		ldr	r3, [r4, #40]
+ 824 00a2 002B     		cmp	r3, #0
+ 825 00a4 D4D0     		beq	.L132
+ 826 00a6 42F20F72 		movw	r2, #9999
+ 827 00aa 9342     		cmp	r3, r2
+ 828 00ac 12D9     		bls	.L133
+ 829 00ae 494A     		ldr	r2, .L136+64
+ 830 00b0 9342     		cmp	r3, r2
+ 831 00b2 14D9     		bls	.L134
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s 			page 17
+
+
+ 832 00b4 4345     		cmp	r3, r8
+ 833 00b6 1AD8     		bhi	.L121
+ 834 00b8 A9FB0321 		umull	r2, r1, r9, r3
+ 835 00bc 890C     		lsrs	r1, r1, #18
+ 836 00be 464A     		ldr	r2, .L136+68
+ 837 00c0 02FB1132 		mls	r2, r2, r1, r3
+ 838 00c4 454B     		ldr	r3, .L136+72
+ 839 00c6 A3FB0232 		umull	r3, r2, r3, r2
+ 840 00ca 520B     		lsrs	r2, r2, #13
+ 841 00cc 4448     		ldr	r0, .L136+76
+ 842 00ce FFF7FEFF 		bl	printf
+ 843 00d2 C0E7     		b	.L118
+ 844              	.L133:
+ 845 00d4 1946     		mov	r1, r3
+ 846 00d6 4348     		ldr	r0, .L136+80
+ 847 00d8 FFF7FEFF 		bl	printf
+ 848 00dc BBE7     		b	.L118
+ 849              	.L134:
+ 850 00de 424A     		ldr	r2, .L136+84
+ 851 00e0 A2FB0323 		umull	r2, r3, r2, r3
+ 852 00e4 9909     		lsrs	r1, r3, #6
+ 853 00e6 4148     		ldr	r0, .L136+88
+ 854 00e8 FFF7FEFF 		bl	printf
+ 855 00ec B3E7     		b	.L118
+ 856              	.L121:
+ 857 00ee 590A     		lsrs	r1, r3, #9
+ 858 00f0 3F4A     		ldr	r2, .L136+92
+ 859 00f2 A2FB0121 		umull	r2, r1, r2, r1
+ 860 00f6 C909     		lsrs	r1, r1, #7
+ 861 00f8 0BFB1132 		mls	r2, fp, r1, r3
+ 862 00fc AAFB0232 		umull	r3, r2, r10, r2
+ 863 0100 920D     		lsrs	r2, r2, #22
+ 864 0102 3C48     		ldr	r0, .L136+96
+ 865 0104 FFF7FEFF 		bl	printf
+ 866 0108 A5E7     		b	.L118
+ 867              	.L131:
+ 868 010a 6422     		movs	r2, #100
+ 869 010c 02FB03FC 		mul	ip, r2, r3
+ 870 0110 BCFBF1FC 		udiv	ip, ip, r1
+ 871 0114 3848     		ldr	r0, .L136+100
+ 872 0116 A0FB0CE0 		umull	lr, r0, r0, ip
+ 873 011a 4009     		lsrs	r0, r0, #5
+ 874 011c 02FB10C2 		mls	r2, r2, r0, ip
+ 875 0120 B3FBF1F1 		udiv	r1, r3, r1
+ 876 0124 3548     		ldr	r0, .L136+104
+ 877 0126 FFF7FEFF 		bl	printf
+ 878 012a 9CE7     		b	.L123
+ 879              	.L124:
+ 880 012c 3448     		ldr	r0, .L136+108
+ 881 012e FFF7FEFF 		bl	puts
+ 882 0132 3146     		mov	r1, r6
+ 883 0134 3348     		ldr	r0, .L136+112
+ 884 0136 FFF7FEFF 		bl	printf
+ 885 013a 1C49     		ldr	r1, .L136+24
+ 886 013c A1FB0631 		umull	r3, r1, r1, r6
+ 887 0140 890C     		lsrs	r1, r1, #18
+ 888 0142 254A     		ldr	r2, .L136+68
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s 			page 18
+
+
+ 889 0144 02FB1162 		mls	r2, r2, r1, r6
+ 890 0148 244B     		ldr	r3, .L136+72
+ 891 014a A3FB0232 		umull	r3, r2, r3, r2
+ 892 014e 520B     		lsrs	r2, r2, #13
+ 893 0150 2D48     		ldr	r0, .L136+116
+ 894 0152 FFF7FEFF 		bl	printf
+ 895 0156 3946     		mov	r1, r7
+ 896 0158 2C48     		ldr	r0, .L136+120
+ 897 015a FFF7FEFF 		bl	printf
+ 898 015e 3FB9     		cbnz	r7, .L135
+ 899              	.L126:
+ 900 0160 FFF7FEFF 		bl	nnom_mem_stat
+ 901 0164 0146     		mov	r1, r0
+ 902 0166 2A48     		ldr	r0, .L136+124
+ 903 0168 FFF7FEFF 		bl	printf
+ 904 016c BDE8F88F 		pop	{r3, r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 905              	.L135:
+ 906 0170 6421     		movs	r1, #100
+ 907 0172 01FB06F2 		mul	r2, r1, r6
+ 908 0176 B2FBF7F2 		udiv	r2, r2, r7
+ 909 017a 1F4B     		ldr	r3, .L136+100
+ 910 017c A3FB0203 		umull	r0, r3, r3, r2
+ 911 0180 5B09     		lsrs	r3, r3, #5
+ 912 0182 01FB1322 		mls	r2, r1, r3, r2
+ 913 0186 B6FBF7F1 		udiv	r1, r6, r7
+ 914 018a 2248     		ldr	r0, .L136+128
+ 915 018c FFF7FEFF 		bl	printf
+ 916 0190 E6E7     		b	.L126
+ 917              	.L128:
+ 918 0192 7047     		bx	lr
+ 919              	.L137:
+ 920              		.align	2
+ 921              	.L136:
+ 922 0194 00000000 		.word	.LC15
+ 923 0198 18000000 		.word	.LC16
+ 924 019c 50000000 		.word	.LC17
+ 925 01a0 FFC99A3B 		.word	999999999
+ 926 01a4 00CA9A3B 		.word	1000000000
+ 927 01a8 6BCA5F6B 		.word	1801439851
+ 928 01ac 83DE1B43 		.word	1125899907
+ 929 01b0 84000000 		.word	default_layer_names+132
+ 930 01b4 A0000000 		.word	.LC20
+ 931 01b8 00000000 		.word	default_cell_names
+ 932 01bc A8000000 		.word	.LC21
+ 933 01c0 BC000000 		.word	.LC23
+ 934 01c4 8C000000 		.word	.LC18
+ 935 01c8 00000000 		.word	default_layer_names
+ 936 01cc 94000000 		.word	.LC19
+ 937 01d0 B0000000 		.word	.LC22
+ 938 01d4 3F420F00 		.word	999999
+ 939 01d8 40420F00 		.word	1000000
+ 940 01dc 5917B7D1 		.word	-776530087
+ 941 01e0 E4000000 		.word	.LC26
+ 942 01e4 CC000000 		.word	.LC24
+ 943 01e8 D34D6210 		.word	274877907
+ 944 01ec D8000000 		.word	.LC25
+ 945 01f0 834B0400 		.word	281475
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s 			page 19
+
+
+ 946 01f4 F4000000 		.word	.LC27
+ 947 01f8 1F85EB51 		.word	1374389535
+ 948 01fc 04010000 		.word	.LC28
+ 949 0200 10010000 		.word	.LC29
+ 950 0204 1C010000 		.word	.LC30
+ 951 0208 30010000 		.word	.LC31
+ 952 020c 3C010000 		.word	.LC32
+ 953 0210 70010000 		.word	.LC34
+ 954 0214 54010000 		.word	.LC33
+ 956              		.section	.rodata.model_io_format.str1.4,"aMS",%progbits,1
+ 957              		.align	2
+ 958              	.LC35:
+ 959 0000 0A507269 		.ascii	"\012Print layer input/output..\000"
+ 959      6E74206C 
+ 959      61796572 
+ 959      20696E70 
+ 959      75742F6F 
+ 960              		.align	2
+ 961              	.LC36:
+ 962 001c 4C617965 		.ascii	"Layer(#)        -  Input(Qnm)  Output(Qnm)   Oshape"
+ 962      72282329 
+ 962      20202020 
+ 962      20202020 
+ 962      2D202049 
+ 963 004f 2000     		.ascii	" \000"
+ 964 0051 000000   		.align	2
+ 965              	.LC37:
+ 966 0054 2D2D2D2D 		.ascii	"---------------------------------------------------"
+ 966      2D2D2D2D 
+ 966      2D2D2D2D 
+ 966      2D2D2D2D 
+ 966      2D2D2D2D 
+ 967 0087 2D2D2D2D 		.ascii	"-------\000"
+ 967      2D2D2D00 
+ 968 008f 00       		.align	2
+ 969              	.LC38:
+ 970 0090 20202532 		.ascii	"  %2d.%2d\000"
+ 970      642E2532 
+ 970      6400
+ 971 009a 0000     		.align	2
+ 972              	.LC39:
+ 973 009c 20202020 		.ascii	"     %2d.%2d\000"
+ 973      20253264 
+ 973      2E253264 
+ 973      00
+ 974 00a9 000000   		.align	2
+ 975              	.LC40:
+ 976 00ac 20202020 		.ascii	"      (\000"
+ 976      20202800 
+ 977              		.align	2
+ 978              	.LC41:
+ 979 00b4 2534642C 		.ascii	"%4d,\000"
+ 979      00
+ 980 00b9 000000   		.align	2
+ 981              	.LC42:
+ 982 00bc 20202020 		.ascii	"     \000"
+ 982      2000
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s 			page 20
+
+
+ 983 00c2 0000     		.align	2
+ 984              	.LC43:
+ 985 00c4 2900     		.ascii	")\000"
+ 986              		.section	.text.model_io_format,"ax",%progbits
+ 987              		.align	1
+ 988              		.global	model_io_format
+ 989              		.syntax unified
+ 990              		.thumb
+ 991              		.thumb_func
+ 993              	model_io_format:
+ 994              		@ args = 0, pretend = 0, frame = 0
+ 995              		@ frame_needed = 0, uses_anonymous_args = 0
+ 996 0000 0028     		cmp	r0, #0
+ 997 0002 62D0     		beq	.L149
+ 998 0004 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+ 999 0008 0568     		ldr	r5, [r0]
+ 1000 000a 3048     		ldr	r0, .L153
+ 1001 000c FFF7FEFF 		bl	puts
+ 1002 0010 2F48     		ldr	r0, .L153+4
+ 1003 0012 FFF7FEFF 		bl	puts
+ 1004 0016 2F48     		ldr	r0, .L153+8
+ 1005 0018 FFF7FEFF 		bl	puts
+ 1006 001c 0026     		movs	r6, #0
+ 1007 001e DFF8B890 		ldr	r9, .L153+12
+ 1008 0022 DFF8B8A0 		ldr	r10, .L153+16
+ 1009 0026 DFF8B880 		ldr	r8, .L153+20
+ 1010 002a 2E4F     		ldr	r7, .L153+24
+ 1011 002c 23E0     		b	.L140
+ 1012              	.L141:
+ 1013 002e 5146     		mov	r1, r10
+ 1014 0030 2D48     		ldr	r0, .L153+28
+ 1015 0032 FFF7FEFF 		bl	printf
+ 1016 0036 2B6B     		ldr	r3, [r5, #48]
+ 1017 0038 197D     		ldrb	r1, [r3, #20]	@ zero_extendqisi2
+ 1018 003a 2C4B     		ldr	r3, .L153+32
+ 1019 003c 03EBC101 		add	r1, r3, r1, lsl #3
+ 1020 0040 2B48     		ldr	r0, .L153+36
+ 1021 0042 FFF7FEFF 		bl	printf
+ 1022 0046 27E0     		b	.L142
+ 1023              	.L143:
+ 1024 0048 4046     		mov	r0, r8
+ 1025 004a FFF7FEFF 		bl	printf
+ 1026              	.L144:
+ 1027 004e 0134     		adds	r4, r4, #1
+ 1028 0050 032C     		cmp	r4, #3
+ 1029 0052 0BD0     		beq	.L152
+ 1030              	.L145:
+ 1031 0054 6B6A     		ldr	r3, [r5, #36]
+ 1032 0056 DB68     		ldr	r3, [r3, #12]
+ 1033 0058 5A7C     		ldrb	r2, [r3, #17]	@ zero_extendqisi2
+ 1034 005a A242     		cmp	r2, r4
+ 1035 005c F4DD     		ble	.L143
+ 1036 005e 5B68     		ldr	r3, [r3, #4]
+ 1037 0060 33F81410 		ldrh	r1, [r3, r4, lsl #1]
+ 1038 0064 3846     		mov	r0, r7
+ 1039 0066 FFF7FEFF 		bl	printf
+ 1040 006a F0E7     		b	.L144
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s 			page 21
+
+
+ 1041              	.L152:
+ 1042 006c 2148     		ldr	r0, .L153+40
+ 1043 006e FFF7FEFF 		bl	puts
+ 1044 0072 2D68     		ldr	r5, [r5]
+ 1045 0074 3DB3     		cbz	r5, .L138
+ 1046              	.L140:
+ 1047 0076 35B3     		cbz	r5, .L138
+ 1048 0078 0136     		adds	r6, r6, #1
+ 1049 007a 3146     		mov	r1, r6
+ 1050 007c 4846     		mov	r0, r9
+ 1051 007e FFF7FEFF 		bl	printf
+ 1052 0082 297F     		ldrb	r1, [r5, #28]	@ zero_extendqisi2
+ 1053 0084 0B29     		cmp	r1, #11
+ 1054 0086 D2D0     		beq	.L141
+ 1055 0088 01EB4101 		add	r1, r1, r1, lsl #1
+ 1056 008c 1A4B     		ldr	r3, .L153+44
+ 1057 008e 03EB8101 		add	r1, r3, r1, lsl #2
+ 1058 0092 1A48     		ldr	r0, .L153+48
+ 1059 0094 FFF7FEFF 		bl	printf
+ 1060              	.L142:
+ 1061 0098 2B6A     		ldr	r3, [r5, #32]
+ 1062 009a DB68     		ldr	r3, [r3, #12]
+ 1063 009c 9B68     		ldr	r3, [r3, #8]
+ 1064 009e 1A68     		ldr	r2, [r3]
+ 1065 00a0 C2F10701 		rsb	r1, r2, #7
+ 1066 00a4 1648     		ldr	r0, .L153+52
+ 1067 00a6 FFF7FEFF 		bl	printf
+ 1068 00aa 6B6A     		ldr	r3, [r5, #36]
+ 1069 00ac DB68     		ldr	r3, [r3, #12]
+ 1070 00ae 9B68     		ldr	r3, [r3, #8]
+ 1071 00b0 1A68     		ldr	r2, [r3]
+ 1072 00b2 C2F10701 		rsb	r1, r2, #7
+ 1073 00b6 1348     		ldr	r0, .L153+56
+ 1074 00b8 FFF7FEFF 		bl	printf
+ 1075 00bc 1248     		ldr	r0, .L153+60
+ 1076 00be FFF7FEFF 		bl	printf
+ 1077 00c2 0024     		movs	r4, #0
+ 1078 00c4 C6E7     		b	.L145
+ 1079              	.L138:
+ 1080 00c6 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 1081              	.L149:
+ 1082 00ca 7047     		bx	lr
+ 1083              	.L154:
+ 1084              		.align	2
+ 1085              	.L153:
+ 1086 00cc 00000000 		.word	.LC35
+ 1087 00d0 1C000000 		.word	.LC36
+ 1088 00d4 54000000 		.word	.LC37
+ 1089 00d8 8C000000 		.word	.LC18
+ 1090 00dc 84000000 		.word	default_layer_names+132
+ 1091 00e0 BC000000 		.word	.LC42
+ 1092 00e4 B4000000 		.word	.LC41
+ 1093 00e8 A0000000 		.word	.LC20
+ 1094 00ec 00000000 		.word	default_cell_names
+ 1095 00f0 A8000000 		.word	.LC21
+ 1096 00f4 C4000000 		.word	.LC43
+ 1097 00f8 00000000 		.word	default_layer_names
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s 			page 22
+
+
+ 1098 00fc 94000000 		.word	.LC19
+ 1099 0100 90000000 		.word	.LC38
+ 1100 0104 9C000000 		.word	.LC39
+ 1101 0108 AC000000 		.word	.LC40
+ 1103              		.global	__aeabi_uldivmod
+ 1104              		.global	__aeabi_fcmpge
+ 1105              		.global	__aeabi_fdiv
+ 1106              		.global	__aeabi_i2f
+ 1107              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s 			page 23
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 nnom_utils.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:16     .text._predict_delete_instance:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:21     .text._predict_delete_instance:00000000 _predict_delete_instance
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:38     .text.prediction_create:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:44     .text.prediction_create:00000000 prediction_create
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:108    .text.prediction_run:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:114    .text.prediction_run:00000000 prediction_run
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:235    .text.prediction_run:00000100 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:238    .text.prediction_end:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:244    .text.prediction_end:00000000 prediction_end
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:256    .text.prediction_delete:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:262    .text.prediction_delete:00000000 prediction_delete
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:270    .rodata.prediction_matrix.str1.4:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:289    .text.prediction_matrix:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:295    .text.prediction_matrix:00000000 prediction_matrix
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:374    .text.prediction_matrix:000000b0 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:382    .rodata.prediction_top_k.str1.4:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:389    .text.prediction_top_k:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:395    .text.prediction_top_k:00000000 prediction_top_k
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:447    .text.prediction_top_k:00000070 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:452    .rodata.prediction_summary.str1.4:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:474    .text.prediction_summary:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:480    .text.prediction_summary:00000000 prediction_summary
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:587    .text.prediction_summary:0000010c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:599    .text.nnom_predict:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:605    .text.nnom_predict:00000000 nnom_predict
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:680    .text.nnom_predict:000000a8 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:683    .rodata.model_stat.str1.4:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:746    .text.model_stat:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:752    .text.model_stat:00000000 model_stat
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:922    .text.model_stat:00000194 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:957    .rodata.model_io_format.str1.4:00000000 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:987    .text.model_io_format:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:993    .text.model_io_format:00000000 model_io_format
+C:\Users\ihavenoK\AppData\Local\Temp\ccTDVw0l.s:1086   .text.model_io_format:000000cc $d
+
+UNDEFINED SYMBOLS
+nnom_free
+nnom_malloc
+memset
+model_run
+__aeabi_i2f
+__aeabi_fdiv
+__aeabi_fcmpge
+puts
+printf
+putchar
+__aeabi_uldivmod
+tensor_size
+nnom_mem_stat
+default_layer_names
+default_cell_names

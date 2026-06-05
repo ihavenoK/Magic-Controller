@@ -1,0 +1,314 @@
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f10x_bkp.c"
+  14              		.text
+  15              		.section	.text.BKP_DeInit,"ax",%progbits
+  16              		.align	1
+  17              		.global	BKP_DeInit
+  18              		.syntax unified
+  19              		.thumb
+  20              		.thumb_func
+  22              	BKP_DeInit:
+  23              		@ args = 0, pretend = 0, frame = 0
+  24              		@ frame_needed = 0, uses_anonymous_args = 0
+  25 0000 08B5     		push	{r3, lr}
+  26 0002 0120     		movs	r0, #1
+  27 0004 FFF7FEFF 		bl	RCC_BackupResetCmd
+  28 0008 0020     		movs	r0, #0
+  29 000a FFF7FEFF 		bl	RCC_BackupResetCmd
+  30 000e 08BD     		pop	{r3, pc}
+  32              		.section	.text.BKP_TamperPinLevelConfig,"ax",%progbits
+  33              		.align	1
+  34              		.global	BKP_TamperPinLevelConfig
+  35              		.syntax unified
+  36              		.thumb
+  37              		.thumb_func
+  39              	BKP_TamperPinLevelConfig:
+  40              		@ args = 0, pretend = 0, frame = 0
+  41              		@ frame_needed = 0, uses_anonymous_args = 0
+  42              		@ link register save eliminated.
+  43 0000 014B     		ldr	r3, .L4
+  44 0002 C3F80406 		str	r0, [r3, #1540]
+  45 0006 7047     		bx	lr
+  46              	.L5:
+  47              		.align	2
+  48              	.L4:
+  49 0008 00800D42 		.word	1108180992
+  51              		.section	.text.BKP_TamperPinCmd,"ax",%progbits
+  52              		.align	1
+  53              		.global	BKP_TamperPinCmd
+  54              		.syntax unified
+  55              		.thumb
+  56              		.thumb_func
+  58              	BKP_TamperPinCmd:
+  59              		@ args = 0, pretend = 0, frame = 0
+  60              		@ frame_needed = 0, uses_anonymous_args = 0
+  61              		@ link register save eliminated.
+  62 0000 014B     		ldr	r3, .L7
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s 			page 2
+
+
+  63 0002 C3F80006 		str	r0, [r3, #1536]
+  64 0006 7047     		bx	lr
+  65              	.L8:
+  66              		.align	2
+  67              	.L7:
+  68 0008 00800D42 		.word	1108180992
+  70              		.section	.text.BKP_ITConfig,"ax",%progbits
+  71              		.align	1
+  72              		.global	BKP_ITConfig
+  73              		.syntax unified
+  74              		.thumb
+  75              		.thumb_func
+  77              	BKP_ITConfig:
+  78              		@ args = 0, pretend = 0, frame = 0
+  79              		@ frame_needed = 0, uses_anonymous_args = 0
+  80              		@ link register save eliminated.
+  81 0000 014B     		ldr	r3, .L10
+  82 0002 C3F88806 		str	r0, [r3, #1672]
+  83 0006 7047     		bx	lr
+  84              	.L11:
+  85              		.align	2
+  86              	.L10:
+  87 0008 00800D42 		.word	1108180992
+  89              		.section	.text.BKP_RTCOutputConfig,"ax",%progbits
+  90              		.align	1
+  91              		.global	BKP_RTCOutputConfig
+  92              		.syntax unified
+  93              		.thumb
+  94              		.thumb_func
+  96              	BKP_RTCOutputConfig:
+  97              		@ args = 0, pretend = 0, frame = 0
+  98              		@ frame_needed = 0, uses_anonymous_args = 0
+  99              		@ link register save eliminated.
+ 100 0000 044A     		ldr	r2, .L13
+ 101 0002 938D     		ldrh	r3, [r2, #44]
+ 102 0004 23F46073 		bic	r3, r3, #896
+ 103 0008 1B04     		lsls	r3, r3, #16
+ 104 000a 1B0C     		lsrs	r3, r3, #16
+ 105 000c 0343     		orrs	r3, r3, r0
+ 106 000e 9385     		strh	r3, [r2, #44]	@ movhi
+ 107 0010 7047     		bx	lr
+ 108              	.L14:
+ 109 0012 00BF     		.align	2
+ 110              	.L13:
+ 111 0014 006C0040 		.word	1073769472
+ 113              		.section	.text.BKP_SetRTCCalibrationValue,"ax",%progbits
+ 114              		.align	1
+ 115              		.global	BKP_SetRTCCalibrationValue
+ 116              		.syntax unified
+ 117              		.thumb
+ 118              		.thumb_func
+ 120              	BKP_SetRTCCalibrationValue:
+ 121              		@ args = 0, pretend = 0, frame = 0
+ 122              		@ frame_needed = 0, uses_anonymous_args = 0
+ 123              		@ link register save eliminated.
+ 124 0000 044A     		ldr	r2, .L16
+ 125 0002 938D     		ldrh	r3, [r2, #44]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s 			page 3
+
+
+ 126 0004 23F07F03 		bic	r3, r3, #127
+ 127 0008 1B04     		lsls	r3, r3, #16
+ 128 000a 1B0C     		lsrs	r3, r3, #16
+ 129 000c 1843     		orrs	r0, r0, r3
+ 130 000e 9085     		strh	r0, [r2, #44]	@ movhi
+ 131 0010 7047     		bx	lr
+ 132              	.L17:
+ 133 0012 00BF     		.align	2
+ 134              	.L16:
+ 135 0014 006C0040 		.word	1073769472
+ 137              		.section	.text.BKP_WriteBackupRegister,"ax",%progbits
+ 138              		.align	1
+ 139              		.global	BKP_WriteBackupRegister
+ 140              		.syntax unified
+ 141              		.thumb
+ 142              		.thumb_func
+ 144              	BKP_WriteBackupRegister:
+ 145              		@ args = 0, pretend = 0, frame = 8
+ 146              		@ frame_needed = 0, uses_anonymous_args = 0
+ 147              		@ link register save eliminated.
+ 148 0000 82B0     		sub	sp, sp, #8
+ 149 0002 0023     		movs	r3, #0
+ 150 0004 0193     		str	r3, [sp, #4]
+ 151 0006 044B     		ldr	r3, .L20
+ 152 0008 0193     		str	r3, [sp, #4]
+ 153 000a 019B     		ldr	r3, [sp, #4]
+ 154 000c 1844     		add	r0, r0, r3
+ 155 000e 0190     		str	r0, [sp, #4]
+ 156 0010 019B     		ldr	r3, [sp, #4]
+ 157 0012 1960     		str	r1, [r3]
+ 158 0014 02B0     		add	sp, sp, #8
+ 159              		@ sp needed
+ 160 0016 7047     		bx	lr
+ 161              	.L21:
+ 162              		.align	2
+ 163              	.L20:
+ 164 0018 006C0040 		.word	1073769472
+ 166              		.section	.text.BKP_ReadBackupRegister,"ax",%progbits
+ 167              		.align	1
+ 168              		.global	BKP_ReadBackupRegister
+ 169              		.syntax unified
+ 170              		.thumb
+ 171              		.thumb_func
+ 173              	BKP_ReadBackupRegister:
+ 174              		@ args = 0, pretend = 0, frame = 8
+ 175              		@ frame_needed = 0, uses_anonymous_args = 0
+ 176              		@ link register save eliminated.
+ 177 0000 82B0     		sub	sp, sp, #8
+ 178 0002 0023     		movs	r3, #0
+ 179 0004 0193     		str	r3, [sp, #4]
+ 180 0006 054B     		ldr	r3, .L24
+ 181 0008 0193     		str	r3, [sp, #4]
+ 182 000a 019B     		ldr	r3, [sp, #4]
+ 183 000c 1844     		add	r0, r0, r3
+ 184 000e 0190     		str	r0, [sp, #4]
+ 185 0010 019B     		ldr	r3, [sp, #4]
+ 186 0012 1888     		ldrh	r0, [r3]
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s 			page 4
+
+
+ 187 0014 80B2     		uxth	r0, r0
+ 188 0016 02B0     		add	sp, sp, #8
+ 189              		@ sp needed
+ 190 0018 7047     		bx	lr
+ 191              	.L25:
+ 192 001a 00BF     		.align	2
+ 193              	.L24:
+ 194 001c 006C0040 		.word	1073769472
+ 196              		.section	.text.BKP_GetFlagStatus,"ax",%progbits
+ 197              		.align	1
+ 198              		.global	BKP_GetFlagStatus
+ 199              		.syntax unified
+ 200              		.thumb
+ 201              		.thumb_func
+ 203              	BKP_GetFlagStatus:
+ 204              		@ args = 0, pretend = 0, frame = 0
+ 205              		@ frame_needed = 0, uses_anonymous_args = 0
+ 206              		@ link register save eliminated.
+ 207 0000 024B     		ldr	r3, .L27
+ 208 0002 D3F8A006 		ldr	r0, [r3, #1696]
+ 209 0006 C0B2     		uxtb	r0, r0
+ 210 0008 7047     		bx	lr
+ 211              	.L28:
+ 212 000a 00BF     		.align	2
+ 213              	.L27:
+ 214 000c 00800D42 		.word	1108180992
+ 216              		.section	.text.BKP_ClearFlag,"ax",%progbits
+ 217              		.align	1
+ 218              		.global	BKP_ClearFlag
+ 219              		.syntax unified
+ 220              		.thumb
+ 221              		.thumb_func
+ 223              	BKP_ClearFlag:
+ 224              		@ args = 0, pretend = 0, frame = 0
+ 225              		@ frame_needed = 0, uses_anonymous_args = 0
+ 226              		@ link register save eliminated.
+ 227 0000 034A     		ldr	r2, .L30
+ 228 0002 938E     		ldrh	r3, [r2, #52]
+ 229 0004 9BB2     		uxth	r3, r3
+ 230 0006 43F00103 		orr	r3, r3, #1
+ 231 000a 9386     		strh	r3, [r2, #52]	@ movhi
+ 232 000c 7047     		bx	lr
+ 233              	.L31:
+ 234 000e 00BF     		.align	2
+ 235              	.L30:
+ 236 0010 006C0040 		.word	1073769472
+ 238              		.section	.text.BKP_GetITStatus,"ax",%progbits
+ 239              		.align	1
+ 240              		.global	BKP_GetITStatus
+ 241              		.syntax unified
+ 242              		.thumb
+ 243              		.thumb_func
+ 245              	BKP_GetITStatus:
+ 246              		@ args = 0, pretend = 0, frame = 0
+ 247              		@ frame_needed = 0, uses_anonymous_args = 0
+ 248              		@ link register save eliminated.
+ 249 0000 024B     		ldr	r3, .L33
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s 			page 5
+
+
+ 250 0002 D3F8A406 		ldr	r0, [r3, #1700]
+ 251 0006 C0B2     		uxtb	r0, r0
+ 252 0008 7047     		bx	lr
+ 253              	.L34:
+ 254 000a 00BF     		.align	2
+ 255              	.L33:
+ 256 000c 00800D42 		.word	1108180992
+ 258              		.section	.text.BKP_ClearITPendingBit,"ax",%progbits
+ 259              		.align	1
+ 260              		.global	BKP_ClearITPendingBit
+ 261              		.syntax unified
+ 262              		.thumb
+ 263              		.thumb_func
+ 265              	BKP_ClearITPendingBit:
+ 266              		@ args = 0, pretend = 0, frame = 0
+ 267              		@ frame_needed = 0, uses_anonymous_args = 0
+ 268              		@ link register save eliminated.
+ 269 0000 034A     		ldr	r2, .L36
+ 270 0002 938E     		ldrh	r3, [r2, #52]
+ 271 0004 9BB2     		uxth	r3, r3
+ 272 0006 43F00203 		orr	r3, r3, #2
+ 273 000a 9386     		strh	r3, [r2, #52]	@ movhi
+ 274 000c 7047     		bx	lr
+ 275              	.L37:
+ 276 000e 00BF     		.align	2
+ 277              	.L36:
+ 278 0010 006C0040 		.word	1073769472
+ 280              		.ident	"GCC: (Arm GNU Toolchain 14.2.Rel1 (Build arm-14.52)) 14.2.1 20241119"
+ARM GAS  C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f10x_bkp.c
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:16     .text.BKP_DeInit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:22     .text.BKP_DeInit:00000000 BKP_DeInit
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:33     .text.BKP_TamperPinLevelConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:39     .text.BKP_TamperPinLevelConfig:00000000 BKP_TamperPinLevelConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:49     .text.BKP_TamperPinLevelConfig:00000008 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:52     .text.BKP_TamperPinCmd:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:58     .text.BKP_TamperPinCmd:00000000 BKP_TamperPinCmd
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:68     .text.BKP_TamperPinCmd:00000008 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:71     .text.BKP_ITConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:77     .text.BKP_ITConfig:00000000 BKP_ITConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:87     .text.BKP_ITConfig:00000008 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:90     .text.BKP_RTCOutputConfig:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:96     .text.BKP_RTCOutputConfig:00000000 BKP_RTCOutputConfig
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:111    .text.BKP_RTCOutputConfig:00000014 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:114    .text.BKP_SetRTCCalibrationValue:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:120    .text.BKP_SetRTCCalibrationValue:00000000 BKP_SetRTCCalibrationValue
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:135    .text.BKP_SetRTCCalibrationValue:00000014 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:138    .text.BKP_WriteBackupRegister:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:144    .text.BKP_WriteBackupRegister:00000000 BKP_WriteBackupRegister
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:164    .text.BKP_WriteBackupRegister:00000018 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:167    .text.BKP_ReadBackupRegister:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:173    .text.BKP_ReadBackupRegister:00000000 BKP_ReadBackupRegister
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:194    .text.BKP_ReadBackupRegister:0000001c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:197    .text.BKP_GetFlagStatus:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:203    .text.BKP_GetFlagStatus:00000000 BKP_GetFlagStatus
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:214    .text.BKP_GetFlagStatus:0000000c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:217    .text.BKP_ClearFlag:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:223    .text.BKP_ClearFlag:00000000 BKP_ClearFlag
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:236    .text.BKP_ClearFlag:00000010 $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:239    .text.BKP_GetITStatus:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:245    .text.BKP_GetITStatus:00000000 BKP_GetITStatus
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:256    .text.BKP_GetITStatus:0000000c $d
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:259    .text.BKP_ClearITPendingBit:00000000 $t
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:265    .text.BKP_ClearITPendingBit:00000000 BKP_ClearITPendingBit
+C:\Users\ihavenoK\AppData\Local\Temp\ccBsfCxO.s:278    .text.BKP_ClearITPendingBit:00000010 $d
+
+UNDEFINED SYMBOLS
+RCC_BackupResetCmd
