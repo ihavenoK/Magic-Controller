@@ -1,0 +1,16 @@
+# 3D打印文件
+3D_print/
+
+# 软件安装包/下载文件
+Install_package/
+
+# NNOM Demo（无关内容）
+NNOM_Demo/
+
+# 构建产物
+*.o
+*.d
+
+# 系统文件
+.DS_Store
+Thumbs.db
