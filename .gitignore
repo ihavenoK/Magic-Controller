@@ -22,6 +22,8 @@ EventRecorderStub.scvd
 
 # 工具文件
 .antigravityignore
+run_agy.bat
+keilkill.bat
 
 # CNN 训练日志 / 中间文件
 CNN/trainlog.txt
