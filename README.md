@@ -1,132 +1,214 @@
-# 关于项目
+# Magic Controller
 
-#### 9月7日更新：
+基于 STM32F103 的 TinyML 实时手势识别魔杖。使用 MPU6050 采集 6 轴惯性数据，通过 NNoM 框架在 MCU 端部署 int8 量化 CNN 模型，识别 13 种挥动动作（法术），并支持红外 RAW 信号的学习与发射——无需专用 PCB，仅用面包板与通用模块即可搭建。
 
-- 将nnom项目放入了CNN目录方便python环境安装
-- README中添加了清华镜像源安装环境的命令
+## 核心特性
 
-#### 8月2日更新：
+- **CNN 实时推理** — 2 层 Conv1D + Dense 架构，2653 个参数（10.36 KB），int8 量化后在 STM32F103 上直接运行
+- **13 种法术识别** — RightAngle、SharpAngle、Lightning、Triangle、Letter_h、letter_R、letter_W、letter_phi、Circle、UpAndDown、Horn、Wave、NoMotion
+- **红外 RAW 万能学习** — 不依赖特定协议，直接录制/回放 38kHz 载波脉冲序列，兼容市面绝大多数红外遥控器
+- **完整工具链** — 配套 Python 数据采集脚本、训练脚本、量化评估脚本、Web 串口助手
+- **低硬件门槛** — STM32F103C8T6/CBT6 最小系统板 + MPU6050 + 按键 + 5 个 LED 即可运行
 
-- 采样频率调整至100HZ
-- 卷积层从4层修改为2层
-- 卷积和池化的步长修改为3
-- 使用了新的训练数据（每种20个）
-- 识别精度得到了提升（效果优于之前每种100个数据的模型）
+## 硬件需求
 
-### 这个项目是什么
-此项目是Cyberry Potter Electromagic wand魔杖的基础工程，这个工程并不是一个完整的魔杖，只是在魔杖开发过程中的一个片段，通过这个项目你可以用最简单易取得的硬件在Stm32上部署一个卷积神经网络动作分类模型，而不需要专门制作电路板或采购一些特别的模块。你可以在这个项目中亲自训练模型，然后将模型部署在嵌入式设备上，然后根据模型输出执行不同的功能，我认为这是一个很好的学习机会。
+| 模块 | 型号/参数 | 数量 |
+|------|-----------|------|
+| MCU | STM32F103C8T6 / CBT6 最小系统板 | 1 |
+| IMU | MPU6050 (GY-521) | 1 |
+| USB 转串口 | CH340 模块 | 1 |
+| LED | 5 mm，颜色任选 | 5 |
+| 限流电阻 | 1 kΩ ~ 10 kΩ | 5 |
+| 按键 | 四脚轻触开关 | 1 |
+| 红外发射管 (可选) | 38 kHz 红外 LED | 1 |
+| 红外接收头 (可选) | VS1838B 或同类 | 1 |
 
+### 引脚连接
 
-已经实现的功能有：
+```
+MPU6050:  VCC → 3.3 V    GND → GND    SCL → PB6    SDA → PB7
+LED1-4:   PA3, PA4, PA5, PA6（各串限流电阻到 GND）
+主 LED:    PA7（串限流电阻到 GND）
+按键:      PA0 → GND（使用内部上拉，按下为低电平）
+串口:      PA9 (TX), PA10 (RX) → CH340
+红外发射:   PA15 → 红外 LED（可选）
+红外接收:   PB0  → VS1838B OUT（可选）
+```
 
-1. MPU6050读写数据
-2. 按键控制
-3. LED状态指示灯
-4. 串口通信
-5. 使用法术点亮、熄灭LED灯
-6. 在PC端使用的[数据收集](https://github.com/lyg09270/CyberryPotter_ElectromagicWand_Basic_Project/blob/main/CNN/Serial_Read.py)、[模型训练](https://github.com/lyg09270/CyberryPotter_ElectromagicWand_Basic_Project/blob/main/CNN/CNNTrainRaw.py)、[串口模型测试脚本](https://github.com/lyg09270/CyberryPotter_ElectromagicWand_Basic_Project/blob/main/CNN/CNNTestSerialRaw.py)
+## 环境配置
 
-项目使用的嵌入式机器学习库来自[nnom](https://github.com/majianjia/nnom)
+### MCU 固件开发 (Keil MDK)
 
-实验用原理图：
+- **IDE:** Keil MDK v5（请使用官网最新版）
+- **编译器:** Arm Compiler 6.22
+- **依赖包（需精确版本）:**
 
-<img src="Schematic.jpg" alt="Schematic.jpg" width="400" height="auto">
+| 包名 | 版本 | 下载 |
+|------|------|------|
+| CMSIS | 6.0.0 | [keil.arm.com](https://www.keil.arm.com/packs/cmsis-arm/versions/) |
+| CMSIS Compiler | 2.1.0 | [keil.arm.com](https://www.keil.arm.com/packs/cmsis-compiler-arm/versions/) |
+| STM32F1xx_DFP | 2.4.1 | [keil.arm.com](https://www.keil.arm.com/packs/stm32f1xx_dfp-keil/versions/) |
 
-##### 项目视频教程：[Bilibili](https://www.bilibili.com/video/BV13E421w7PY/)
+打开 `CyberryPotter.uvprojx`，Keil 会自动提示安装缺失的包，按提示操作即可。
 
+### Python 环境 (数据采集 / 模型训练)
 
+环境要求：Python 3.9，conda 或 venv 均可。
 
-在使用过程中出现问题可以在Bilibili私信我
+```bash
+# 1. 创建并激活环境
+conda create --name cyberry python=3.9
+conda activate cyberry
 
-或者联系我的邮箱：1308770968@qq.com
+# 2. 安装依赖（使用清华镜像加速）
+cd CNN
+pip install --index-url https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
+```
 
-魔杖技术交流群QQ：698619917
+核心依赖：`tensorflow-cpu==2.14.1`、`keras==2.14.0`、`numpy==1.26.4`、`scikit-learn==1.5.1`、`pyserial==3.5`、NNoM（`CNN/nnom-master/`，已内置于项目目录）。
 
+## 项目结构
 
-### 关于完整魔杖
+```
+cyberrypotter/
+├── main.c                          # 主循环：模式切换、CNN 推理、LED 控制、IR 管理
+├── User/
+│   ├── config.h                    # 全局配置（系统模式、引脚、IMU 参数、CNN 阈值）
+│   ├── CyberryPotter.h / .c        # 系统状态机、初始化、按键/IMU 中断
+│   ├── IMU.h / .c                  # MPU6050 数据采集与串口打印
+│   ├── IR.h / .c                   # 红外 RAW 收发、Flash 存储
+│   └── Delay.h / .c                # SysTick 精确延时
+├── STM32_Hardware/
+│   ├── hardware.h / .c             # 硬件初始化（RCC、GPIO、USART、TIM、NVIC）
+│   ├── IIC.h / .c                  # 软件 I2C（PB6/PB7，约 200 kHz）
+│   ├── MPU6050.h / .c / MPU6050_Reg.h  # DMP 初始化与寄存器定义
+│   └── eMPL/                       # InvenSense 官方 eMPL DMP 驱动
+├── CNN/
+│   ├── Serial_Read.py              # 数据采集脚本
+│   ├── CNNTrainRaw.py              # 模型训练 + NNoM 权重导出
+│   ├── CNNTestSerialRaw.py         # 串口实时推理测试
+│   ├── eval_quant.py               # int8 量化精度评估
+│   ├── weights.h                   # NNoM 模型图 + 量化权重
+│   ├── requirements.txt            # Python 依赖清单
+│   ├── TraningData_6_21/           # 训练数据集（约 185 条，13 类）
+│   ├── nnom-master/                # NNoM 嵌入式推理框架（v0.4.x）
+│   └── SpellsCard/                 # 13 种法术打印卡片
+├── RTE/                            # CMSIS 启动文件 + 设备配置
+├── Web串口助手.html                 # 纯前端 Web Serial API 串口工具
+└── Schematic.jpg                   # 硬件原理图
+```
 
-完整的魔杖现已完成，请参考链接：[Cyberry_Potter_Electromagic_Wand](https://github.com/lyg09270/Cyberry_Potter_Electromagic_Wand)
+## CNN 模型架构
 
+```
+Input(150, 3)          ← 150 时间步 × 3 轴加速度 (AccX, AccY, AccZ)，100 Hz 采样 1.5 s
+   │
+Conv1D(30, kernel=3, stride=3) → ReLU
+   │
+Conv1D(15, kernel=3, stride=3) → ReLU
+   │
+MaxPool1D(pool=3, stride=3)
+   │
+Flatten → Dense(13) → Dropout(0.5) → Softmax
+```
 
-# 硬件需求
+| 参数 | 值 |
+|------|-----|
+| 总参数量 | 2,653 (10.36 KB) |
+| 量化格式 | int8 per-tensor，位宽 8 bit |
+| 输入量化 | float(g) × 32 → round → clip[-128, 127] |
+| 输入分辨率 | 1/32 ≈ 0.03125 g/LSB |
+| 置信度阈值 | 103/127 (≈81%)，低于此值判为 Unrecognized |
+| val_accuracy | 96%（当前预训练权重，Epoch 96） |
 
-1. STM32f103c8t6最小系统板
-2. MPU6050模块
-3. 按键
-4. 5个LED灯（推荐添加1K-10K的限流电阻以保护眼睛）
-5. 串口转TTL模块（e.g.CH340）
+## 使用示例
 
-##### 如果想先尝试我已经训练好的模型，按照上方的原理图连接好你的单片机，打开keil进行烧录你就可以开始使用这个项目了
+### 示例一：手势识别 + 红外遥控
 
+**场景：** 将魔杖作为万能遥控器，不同挥动动作控制不同家电。
 
+**步骤：**
 
-# 关于法术
+1. **学习红外码** — 长按按键 2.5 s 进入学习模式（主 LED 熄灭）。短按切换槽位（0~12，PA3~PA6 以二进制显示当前槽位），对着红外接收头按下遥控器按键，收到信号后主 LED 快闪 4 次 → 常亮 1 s 表示学习成功。
 
-本项目可以识别12种动作（法术），你可以将法术打印成卡片来练习法术，图片存放在了[这里](https://github.com/lyg09270/CyberryPotter_ElectromagicWand_Basic_Project/tree/main/CNN/SpellsCard)
+2. **挥动识别 + 发射** — 长按按键 2.5 s 切回手势模式，短按按键后挥动魔杖，识别到法术即自动通过红外发射头重放对应槽位存储的遥控码。
 
-# 环境配置
+**代码关键路径：**
 
-#### Python环境：
+```c
+// main.c — 手势模式下的推理与 IR 发射
+if (Cyberry_Potter_Status.IMU_Status == IMU_Sampled) {
+    model_feed_data();       // 加速度数据 × 32 → int8 填入模型输入
+    model_run(model);        // NNoM 推理
+    model_output = model_get_output();  // 获取置信度最高的分类
 
-- 首先需要安装一个anaconda
+    // 自动查找 Flash 中对应法术的红外码并发射
+    if (model_output >= 0 && model_output < IR_GESTURE_COUNT) {
+        IR_Raw_Signal_t raw_sig;
+        if (IR_Flash_Load((uint8_t)model_output, &raw_sig)) {
+            IR_Send_Raw(&raw_sig);   // 38 kHz PWM 逐脉冲回放
+        }
+    }
+}
+```
 
-  - 创建一个python3.9环境
-  - `conda create --name py39_env python=3.9`
-  - 激活环境
-  - `conda activate py39_env`
-  - 切换到工程目录的CNN文件夹
-  - `cd /path/to/your/directory/CyberryPotter_ElectromagicWand_Basic_Project/CNN`
-  - 安装项目依赖
-  - `pip install -r requirements.txt`
-  - 使用清华镜像源：`pip install --index-url https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt`
-  
-  
-  
-  #### Keil环境配置：
-  
-  - keil版本：keil5(请使用keil官网下载的最新版keil否则可能会遇到一些问题)
-  
-  - 编译器版本:Arm Compiler6.22
-  
-  - 根据你的设备选用ST-Link或其他设备作为调试器
-  
-  - 项目在打开keil是可能会需要安装一些库，请根据提示安装
-  
-    
+```python
+# CNN/CNNTrainRaw.py — 模型训练核心
+model.compile(
+    optimizer=optimizers.Adam(),
+    loss=losses.CategoricalCrossentropy(),
+    metrics=['accuracy']
+)
 
-#### 需要使用的库的下载链接：(如果你无法使用keil正常安装以下包，可以从链接中下载安装）请选择下方指定的版本下载并安装
+history = model.fit(
+    x_train, y_train,
+    batch_size=80, epochs=200,
+    validation_data=(x_test, y_test),
+    callbacks=[
+        callbacks.EarlyStopping(monitor='val_loss', patience=10),
+        callbacks.ModelCheckpoint('model.h5', monitor='val_accuracy',
+                                  save_best_only=True, mode='max')
+    ]
+)
 
-1.[CMSIS6.0.0](https://www.keil.arm.com/packs/cmsis-arm/versions/)
+# 导出 NNoM int8 量化权重文件
+generate_model(model, x_test[:100], format='hwc', name='weights.h')
+```
 
-2.[CMSIS compiler 2.1.0](https://www.keil.arm.com/packs/cmsis-compiler-arm/versions/)
+### 示例二：从头训练自己的手势模型
 
-3.[Stm32F1xx_DFP2.4.1](https://www.keil.arm.com/packs/stm32f1xx_dfp-keil/versions/)
+**场景：** 自定义一套完全不同的手势集合，或在你的硬件上重新训练以获得更高精度。
 
+**步骤：**
 
+1. **修改配置进入采集模式** — 打开 `User/config.h`，取消注释 `#define SYSTEM_MODE_DATA_COLLECT`，编译烧录。
 
-#### 可能存在的问题
+2. **采集数据** — 运行 `CNN/Serial_Read.py`，选择 COM 口，按键触发后挥动魔杖，脚本自动接收 150 帧数据并保存为 `TraningData_MM_DD/ClassName_XX.txt`。
 
-编译报错：C:/Users/xxx/AppData/Local/arm/packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/misc.c:131:11: error: no member named 'IP' in 'NVIC_Type'
+3. **训练模型** — 将采集数据放入 `CNN/TraningData_6_21/`（或修改 `CNNTrainRaw.py` 第 16 行的 `DEF_SAVE_TO_PATH`），运行：
 
-这是项目使用到的STM32F1XX_DFP2.4.1版本库存在的一个问题，这个有问题的文件安装在以下目录，默认是只读的，请在这个目录下将其只读选项取消勾选
-C:/Users/xxx/AppData/Local/arm/packs/Keil/STM32F1xx_DFP/2.4.1/Device/StdPeriph_Driver/src/misc.c
-    
-（AppData文件夹默认是隐藏的，请先设置显示隐藏文件）
-    
-请将device库中将misc.c文件里的上述代码（131行）修改为
-NVIC->IPR[NVIC_InitStruct->NVIC_IRQChannel] = tmppriority;
-    
+```bash
+python CNNTrainRaw.py
+```
 
-# 如何训练
+训练完成后生成 `model.h5`（float 模型）和 `weights.h`（NNoM 量化权重）。
 
-1. 使用[脚本](https://github.com/lyg09270/CyberryPotter_ElectromagicWand_Basic_Project/blob/main/CNN/Serial_Read.py)收集数据
-   - 首先需要将config.h文件中的SYSTEM_MODE_DATA_COLLECT解除注释
-   - 完成以上操作后单片机将进入数据打印模式而非推理模式
-2. 运行[模型训练](https://github.com/lyg09270/CyberryPotter_ElectromagicWand_Basic_Project/blob/main/CNN/CNNTrainRaw.py)脚本
-   - 运行训练脚本你将得到一个.h5的模型文件和一个.h的c头文件
-   - .h5文件用于在[串口模型测试脚本](https://github.com/lyg09270/CyberryPotter_ElectromagicWand_Basic_Project/blob/main/CNN/CNNTestSerialRaw.py)对未量化的模型进行测试
-   - .h文件是单片机用于编译模型所需要的文件
+4. **部署到 MCU** — 将生成的 `weights.h` 替换 `CNN/weights.h`，注释掉 `SYSTEM_MODE_DATA_COLLECT`，重新编译烧录。
 
-# 如何继续开发
+5. **串口验证（可选）** — 运行 `CNN/CNNTestSerialRaw.py`，在 PC 端用 float 模型实时推理串口数据，与 MCU 端 int8 推理结果对比。
 
-此项目目前已经实现了动作识别的功能，并没有对其他功能进行开发，你可以在此工程的基础上对魔杖进行进一步开发
+**量化精度评估：**
+
+```bash
+python eval_quant.py
+```
+
+输出 float 精度、输入量化反推精度、MSE 及 softmax 置信度差异。当前模型：float 精度 100%（测试集 25 条），输入量化零损失，MSE = 0.000081。
+
+## 系统工作模式
+
+| 模式 | 进入方式 | 功能 |
+|------|----------|------|
+| `SYSTEM_GESTURE_IR` (默认) | 上电默认 | 短按 → IMU 采样 → CNN 推理 → LED + IR 发射 |
+| `SYSTEM_IR_LEARN` | 超长按 2.5 s | 短按切槽位 / 长按清空 / 对准遥控器自动学码 ```
+

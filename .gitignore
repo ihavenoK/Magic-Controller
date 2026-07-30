@@ -7,3 +7,22 @@
 
 # 编译产物
 Objects/
+Listings/
+
+# Keil RTE 包版本备份
+*.base@*
+
+# Keil 用户特定 IDE 配置
+CyberryPotter.uvguix.*
+DebugConfig/
+EventRecorderStub.scvd
+
+# Python 虚拟环境
+.venv/
+
+# 工具文件
+.antigravityignore
+
+# CNN 训练日志 / 中间文件
+CNN/trainlog.txt
+CNN/.layer_q_list
