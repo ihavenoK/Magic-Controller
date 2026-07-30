@@ -1,0 +1,49 @@
+{
+  "projectRoot": "D:/32/cyberrypotter",
+  "batchFiles": [
+    {
+      "path": "CNN/nnom-master/scripts/__init__.py",
+      "language": "python",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/scripts/fully_connected_opt_weight_generation.py",
+      "language": "python",
+      "sizeLines": 153,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/scripts/gen_config.py",
+      "language": "python",
+      "sizeLines": 561,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/scripts/nnom.py",
+      "language": "python",
+      "sizeLines": 1204,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/scripts/nnom_utils.py",
+      "language": "python",
+      "sizeLines": 845,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "CNN/nnom-master/scripts/__init__.py": [
+      "CNN/nnom-master/scripts/nnom.py"
+    ],
+    "CNN/nnom-master/scripts/fully_connected_opt_weight_generation.py": [],
+    "CNN/nnom-master/scripts/gen_config.py": [],
+    "CNN/nnom-master/scripts/nnom.py": [
+      "CNN/nnom-master/scripts/fully_connected_opt_weight_generation.py",
+      "CNN/nnom-master/scripts/gen_config.py"
+    ],
+    "CNN/nnom-master/scripts/nnom_utils.py": [
+      "CNN/nnom-master/scripts/fully_connected_opt_weight_generation.py"
+    ]
+  }
+}

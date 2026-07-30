@@ -1,0 +1,56 @@
+{
+  "projectRoot": "D:/32/cyberrypotter",
+  "batchFiles": [
+    {
+      "path": "STM32_Hardware/eMPL/dmpKey.h",
+      "language": "c",
+      "sizeLines": 494,
+      "fileCategory": "code"
+    },
+    {
+      "path": "STM32_Hardware/eMPL/dmpmap.h",
+      "language": "c",
+      "sizeLines": 264,
+      "fileCategory": "code"
+    },
+    {
+      "path": "STM32_Hardware/eMPL/inv_mpu.c",
+      "language": "c",
+      "sizeLines": 3297,
+      "fileCategory": "code"
+    },
+    {
+      "path": "STM32_Hardware/eMPL/inv_mpu.h",
+      "language": "c",
+      "sizeLines": 135,
+      "fileCategory": "code"
+    },
+    {
+      "path": "STM32_Hardware/eMPL/inv_mpu_dmp_motion_driver.c",
+      "language": "c",
+      "sizeLines": 1381,
+      "fileCategory": "code"
+    },
+    {
+      "path": "STM32_Hardware/eMPL/inv_mpu_dmp_motion_driver.h",
+      "language": "c",
+      "sizeLines": 97,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "STM32_Hardware/eMPL/dmpKey.h": [],
+    "STM32_Hardware/eMPL/dmpmap.h": [],
+    "STM32_Hardware/eMPL/inv_mpu.c": [
+      "STM32_Hardware/eMPL/inv_mpu.h"
+    ],
+    "STM32_Hardware/eMPL/inv_mpu.h": [],
+    "STM32_Hardware/eMPL/inv_mpu_dmp_motion_driver.c": [
+      "STM32_Hardware/eMPL/dmpKey.h",
+      "STM32_Hardware/eMPL/dmpmap.h",
+      "STM32_Hardware/eMPL/inv_mpu_dmp_motion_driver.h",
+      "STM32_Hardware/eMPL/inv_mpu.h"
+    ],
+    "STM32_Hardware/eMPL/inv_mpu_dmp_motion_driver.h": []
+  }
+}

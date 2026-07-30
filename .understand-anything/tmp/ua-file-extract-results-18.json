@@ -1,0 +1,2487 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_avgpool.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 167,
+      "nonEmptyLines": 154,
+      "functions": [
+        {
+          "name": "avgpool_build",
+          "startLine": 65,
+          "endLine": 80,
+          "params": [
+            "layer"
+          ]
+        },
+        {
+          "name": "avgpool_run",
+          "startLine": 82,
+          "endLine": 167,
+          "params": [
+            "layer"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "avgpool_build",
+          "line": 65,
+          "isDefault": false
+        },
+        {
+          "name": "avgpool_run",
+          "line": 82,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "avgpool_build",
+          "callee": "maxpool_build",
+          "lineNumber": 69
+        },
+        {
+          "caller": "avgpool_run",
+          "callee": "local_avepool_q15_CHW",
+          "lineNumber": 101
+        },
+        {
+          "caller": "avgpool_run",
+          "callee": "local_avepool_q15_HWC",
+          "lineNumber": 111
+        },
+        {
+          "caller": "avgpool_run",
+          "callee": "local_avepool_q7_CHW",
+          "lineNumber": 125
+        },
+        {
+          "caller": "avgpool_run",
+          "callee": "arm_avepool_q7_HWC",
+          "lineNumber": 141
+        },
+        {
+          "caller": "avgpool_run",
+          "callee": "local_avepool_q7_HWC",
+          "lineNumber": 154
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_baselayer.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 90,
+      "nonEmptyLines": 77,
+      "functions": [
+        {
+          "name": "default_build",
+          "startLine": 64,
+          "endLine": 80,
+          "params": [
+            "layer"
+          ]
+        },
+        {
+          "name": "default_run",
+          "startLine": 83,
+          "endLine": 90,
+          "params": [
+            "layer"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "default_build",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "default_run",
+          "line": 83,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "default_build",
+          "callee": "new_tensor",
+          "lineNumber": 71
+        },
+        {
+          "caller": "default_build",
+          "callee": "tensor_get_num_channel",
+          "lineNumber": 71
+        },
+        {
+          "caller": "default_build",
+          "callee": "tensor_cpy_attr",
+          "lineNumber": 72
+        },
+        {
+          "caller": "default_build",
+          "callee": "act_get_dec_bit",
+          "lineNumber": 76
+        },
+        {
+          "caller": "default_run",
+          "callee": "nnom_memcpy",
+          "lineNumber": 87
+        },
+        {
+          "caller": "default_run",
+          "callee": "tensor_size_byte",
+          "lineNumber": 87
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_concat.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 223,
+      "nonEmptyLines": 193,
+      "functions": [
+        {
+          "name": "concat_build",
+          "startLine": 66,
+          "endLine": 126,
+          "params": [
+            "layer"
+          ]
+        },
+        {
+          "name": "concat_run",
+          "startLine": 149,
+          "endLine": 222,
+          "params": [
+            "layer"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "concat_build",
+          "line": 66,
+          "isDefault": false
+        },
+        {
+          "name": "concat_run",
+          "line": 149,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "concat_build",
+          "callee": "new_tensor",
+          "lineNumber": 84
+        },
+        {
+          "caller": "concat_build",
+          "callee": "tensor_get_num_channel",
+          "lineNumber": 84
+        },
+        {
+          "caller": "concat_build",
+          "callee": "tensor_cpy_attr",
+          "lineNumber": 85
+        },
+        {
+          "caller": "concat_run",
+          "callee": "chw_i",
+          "lineNumber": 166
+        },
+        {
+          "caller": "concat_run",
+          "callee": "hwc_i",
+          "lineNumber": 168
+        },
+        {
+          "caller": "concat_run",
+          "callee": "chw_i",
+          "lineNumber": 179
+        },
+        {
+          "caller": "concat_run",
+          "callee": "hwc_i",
+          "lineNumber": 180
+        },
+        {
+          "caller": "concat_run",
+          "callee": "nnom_memcpy",
+          "lineNumber": 183
+        },
+        {
+          "caller": "concat_run",
+          "callee": "nnom_memcpy",
+          "lineNumber": 215
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_conv2d_trans.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 131,
+      "nonEmptyLines": 111,
+      "functions": [
+        {
+          "name": "conv_trans_output_length",
+          "startLine": 52,
+          "endLine": 58,
+          "params": [
+            "input_length",
+            "kernel_size",
+            "padding",
+            "stride_size",
+            "dilation"
+          ]
+        },
+        {
+          "name": "conv2d_trans_build",
+          "startLine": 60,
+          "endLine": 105,
+          "params": [
+            "layer"
+          ]
+        },
+        {
+          "name": "conv2d_trans_run",
+          "startLine": 108,
+          "endLine": 129,
+          "params": [
+            "layer"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "conv_trans_output_length",
+          "line": 52,
+          "isDefault": false
+        },
+        {
+          "name": "conv2d_trans_build",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "conv2d_trans_run",
+          "line": 108,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "conv_trans_output_length",
+          "callee": "MAX",
+          "lineNumber": 56
+        },
+        {
+          "caller": "conv2d_trans_build",
+          "callee": "new_tensor",
+          "lineNumber": 68
+        },
+        {
+          "caller": "conv2d_trans_build",
+          "callee": "tensor_cpy_attr",
+          "lineNumber": 70
+        },
+        {
+          "caller": "conv2d_trans_build",
+          "callee": "act_get_dec_bit",
+          "lineNumber": 76
+        },
+        {
+          "caller": "conv2d_trans_build",
+          "callee": "conv_trans_output_length",
+          "lineNumber": 79
+        },
+        {
+          "caller": "conv2d_trans_build",
+          "callee": "conv_trans_output_length",
+          "lineNumber": 80
+        },
+        {
+          "caller": "conv2d_trans_build",
+          "callee": "tensor_size",
+          "lineNumber": 103
+        },
+        {
+          "caller": "conv2d_trans_run",
+          "callee": "local_conv_trans_HWC_q7_nonsquare",
+          "lineNumber": 119
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_conv2d.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 434,
+      "nonEmptyLines": 393,
+      "functions": [
+        {
+          "name": "conv_output_length",
+          "startLine": 183,
+          "endLine": 194,
+          "params": [
+            "input_length",
+            "filter_size",
+            "padding",
+            "stride",
+            "dilation"
+          ]
+        },
+        {
+          "name": "conv2d_build",
+          "startLine": 196,
+          "endLine": 235,
+          "params": [
+            "layer"
+          ]
+        },
+        {
+          "name": "conv2d_free",
+          "startLine": 237,
+          "endLine": 247,
+          "params": [
+            "layer"
+          ]
+        },
+        {
+          "name": "conv2d_run",
+          "startLine": 250,
+          "endLine": 433,
+          "params": [
+            "layer"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "conv_output_length",
+          "line": 183,
+          "isDefault": false
+        },
+        {
+          "name": "conv2d_build",
+          "line": 196,
+          "isDefault": false
+        },
+        {
+          "name": "conv2d_free",
+          "line": 237,
+          "isDefault": false
+        },
+        {
+          "name": "conv2d_run",
+          "line": 250,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "conv2d_build",
+          "callee": "new_tensor",
+          "lineNumber": 204
+        },
+        {
+          "caller": "conv2d_build",
+          "callee": "tensor_cpy_attr",
+          "lineNumber": 206
+        },
+        {
+          "caller": "conv2d_build",
+          "callee": "act_get_dec_bit",
+          "lineNumber": 212
+        },
+        {
+          "caller": "conv2d_build",
+          "callee": "conv_output_length",
+          "lineNumber": 215
+        },
+        {
+          "caller": "conv2d_build",
+          "callee": "conv_output_length",
+          "lineNumber": 216
+        },
+        {
+          "caller": "conv2d_build",
+          "callee": "tensor_size",
+          "lineNumber": 233
+        },
+        {
+          "caller": "conv2d_free",
+          "callee": "delete_tensor",
+          "lineNumber": 243
+        },
+        {
+          "caller": "conv2d_free",
+          "callee": "delete_tensor",
+          "lineNumber": 244
+        },
+        {
+          "caller": "conv2d_run",
+          "callee": "local_convolve_CHW_q15_nonsquare",
+          "lineNumber": 257
+        },
+        {
+          "caller": "conv2d_run",
+          "callee": "local_convolve_CHW_q7_nonsquare",
+          "lineNumber": 266
+        },
+        {
+          "caller": "conv2d_run",
+          "callee": "arm_convolve_HWC_q7_RGB",
+          "lineNumber": 289
+        },
+        {
+          "caller": "conv2d_run",
+          "callee": "arm_convolve_1x1_HWC_q7_fast_nonsquare",
+          "lineNumber": 310
+        },
+        {
+          "caller": "conv2d_run",
+          "callee": "arm_convolve_HWC_q7_fast",
+          "lineNumber": 321
+        },
+        {
+          "caller": "conv2d_run",
+          "callee": "arm_convolve_HWC_q7_fast_nonsquare",
+          "lineNumber": 331
+        },
+        {
+          "caller": "conv2d_run",
+          "callee": "arm_convolve_HWC_q7_basic",
+          "lineNumber": 347
+        },
+        {
+          "caller": "conv2d_run",
+          "callee": "arm_convolve_HWC_q7_basic_nonsquare",
+          "lineNumber": 356
+        },
+        {
+          "caller": "conv2d_run",
+          "callee": "arm_convolve_HWC_q15_fast",
+          "lineNumber": 374
+        },
+        {
+          "caller": "conv2d_run",
+          "callee": "arm_convolve_HWC_q15_fast_nonsquare",
+          "lineNumber": 382
+        },
+        {
+          "caller": "conv2d_run",
+          "callee": "local_convolve_HWC_q7_nonsquare",
+          "lineNumber": 394
+        },
+        {
+          "caller": "conv2d_run",
+          "callee": "local_convolve_HWC_q15_nonsquare",
+          "lineNumber": 412
+        },
+        {
+          "caller": "conv2d_run",
+          "callee": "local_convolve_HWC_q7_nonsquare",
+          "lineNumber": 421
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_cropping.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 88,
+      "nonEmptyLines": 73,
+      "functions": [
+        {
+          "name": "cropping_build",
+          "startLine": 45,
+          "endLine": 66,
+          "params": [
+            "layer"
+          ]
+        },
+        {
+          "name": "cropping_run",
+          "startLine": 69,
+          "endLine": 88,
+          "params": [
+            "layer"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "cropping_build",
+          "line": 45,
+          "isDefault": false
+        },
+        {
+          "name": "cropping_run",
+          "line": 69,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "cropping_build",
+          "callee": "new_tensor",
+          "lineNumber": 53
+        },
+        {
+          "caller": "cropping_build",
+          "callee": "tensor_get_num_channel",
+          "lineNumber": 53
+        },
+        {
+          "caller": "cropping_build",
+          "callee": "tensor_cpy_attr",
+          "lineNumber": 55
+        },
+        {
+          "caller": "cropping_run",
+          "callee": "local_cropping_CHW_q7",
+          "lineNumber": 74
+        },
+        {
+          "caller": "cropping_run",
+          "callee": "local_cropping_HWC_q7",
+          "lineNumber": 76
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_dense.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 219,
+      "nonEmptyLines": 187,
+      "functions": [
+        {
+          "name": "dense_build",
+          "startLine": 138,
+          "endLine": 175,
+          "params": [
+            "layer"
+          ]
+        },
+        {
+          "name": "dense_free",
+          "startLine": 177,
+          "endLine": 188,
+          "params": [
+            "layer"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "dense_build",
+          "line": 138,
+          "isDefault": false
+        },
+        {
+          "name": "dense_free",
+          "line": 177,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "dense_build",
+          "callee": "new_tensor",
+          "lineNumber": 148
+        },
+        {
+          "caller": "dense_build",
+          "callee": "tensor_set_attr",
+          "lineNumber": 151
+        },
+        {
+          "caller": "dense_build",
+          "callee": "new_tensor",
+          "lineNumber": 155
+        },
+        {
+          "caller": "dense_build",
+          "callee": "tensor_get_num_channel",
+          "lineNumber": 155
+        },
+        {
+          "caller": "dense_build",
+          "callee": "tensor_set_attr",
+          "lineNumber": 158
+        },
+        {
+          "caller": "dense_build",
+          "callee": "act_get_dec_bit",
+          "lineNumber": 167
+        },
+        {
+          "caller": "dense_build",
+          "callee": "tensor_size",
+          "lineNumber": 170
+        },
+        {
+          "caller": "dense_build",
+          "callee": "tensor_size",
+          "lineNumber": 173
+        },
+        {
+          "caller": "dense_build",
+          "callee": "tensor_size",
+          "lineNumber": 173
+        },
+        {
+          "caller": "dense_free",
+          "callee": "delete_tensor",
+          "lineNumber": 183
+        },
+        {
+          "caller": "dense_free",
+          "callee": "delete_tensor",
+          "lineNumber": 184
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_dw_conv2d.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 140,
+      "nonEmptyLines": 125,
+      "functions": [
+        {
+          "name": "dw_conv2d_build",
+          "startLine": 53,
+          "endLine": 93,
+          "params": [
+            "layer"
+          ]
+        },
+        {
+          "name": "dw_conv2d_run",
+          "startLine": 95,
+          "endLine": 140,
+          "params": [
+            "layer"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "dw_conv2d_build",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "dw_conv2d_run",
+          "line": 95,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "dw_conv2d_build",
+          "callee": "new_tensor",
+          "lineNumber": 61
+        },
+        {
+          "caller": "dw_conv2d_build",
+          "callee": "tensor_get_num_channel",
+          "lineNumber": 61
+        },
+        {
+          "caller": "dw_conv2d_build",
+          "callee": "tensor_cpy_attr",
+          "lineNumber": 63
+        },
+        {
+          "caller": "dw_conv2d_build",
+          "callee": "act_get_dec_bit",
+          "lineNumber": 69
+        },
+        {
+          "caller": "dw_conv2d_build",
+          "callee": "conv_output_length",
+          "lineNumber": 72
+        },
+        {
+          "caller": "dw_conv2d_build",
+          "callee": "conv_output_length",
+          "lineNumber": 73
+        },
+        {
+          "caller": "dw_conv2d_build",
+          "callee": "tensor_size",
+          "lineNumber": 91
+        },
+        {
+          "caller": "dw_conv2d_run",
+          "callee": "arm_depthwise_separable_conv_HWC_q7_nonsquare",
+          "lineNumber": 108
+        },
+        {
+          "caller": "dw_conv2d_run",
+          "callee": "local_depthwise_separable_conv_CHW_q7_nonsquare",
+          "lineNumber": 125
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_flatten.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 84,
+      "nonEmptyLines": 72,
+      "functions": [
+        {
+          "name": "flatten_build",
+          "startLine": 63,
+          "endLine": 75,
+          "params": [
+            "layer"
+          ]
+        },
+        {
+          "name": "flatten_run",
+          "startLine": 77,
+          "endLine": 84,
+          "params": [
+            "layer"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "flatten_build",
+          "line": 63,
+          "isDefault": false
+        },
+        {
+          "name": "flatten_run",
+          "line": 77,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "flatten_build",
+          "callee": "new_tensor",
+          "lineNumber": 69
+        },
+        {
+          "caller": "flatten_build",
+          "callee": "tensor_get_num_channel",
+          "lineNumber": 69
+        },
+        {
+          "caller": "flatten_build",
+          "callee": "tensor_size",
+          "lineNumber": 71
+        },
+        {
+          "caller": "flatten_build",
+          "callee": "tensor_set_attr",
+          "lineNumber": 72
+        },
+        {
+          "caller": "flatten_run",
+          "callee": "tensor_chw2hwc_q7",
+          "lineNumber": 81
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_global_pool.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 145,
+      "nonEmptyLines": 119,
+      "functions": [
+        {
+          "name": "global_pool_build",
+          "startLine": 106,
+          "endLine": 143,
+          "params": [
+            "layer"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "global_pool_build",
+          "line": 106,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "global_pool_build",
+          "callee": "new_tensor",
+          "lineNumber": 114
+        },
+        {
+          "caller": "global_pool_build",
+          "callee": "tensor_get_num_channel",
+          "lineNumber": 114
+        },
+        {
+          "caller": "global_pool_build",
+          "callee": "tensor_get_num_channel",
+          "lineNumber": 116
+        },
+        {
+          "caller": "global_pool_build",
+          "callee": "tensor_set_attr_v",
+          "lineNumber": 117
+        },
+        {
+          "caller": "global_pool_build",
+          "callee": "act_get_dec_bit",
+          "lineNumber": 121
+        },
+        {
+          "caller": "global_pool_build",
+          "callee": "shape",
+          "lineNumber": 126
+        },
+        {
+          "caller": "global_pool_build",
+          "callee": "shape",
+          "lineNumber": 127
+        },
+        {
+          "caller": "global_pool_build",
+          "callee": "shape",
+          "lineNumber": 128
+        },
+        {
+          "caller": "global_pool_build",
+          "callee": "tensor_size",
+          "lineNumber": 140
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_gru_cell.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 338,
+      "nonEmptyLines": 285,
+      "functions": [
+        {
+          "name": "gru_cell_free",
+          "startLine": 53,
+          "endLine": 56,
+          "params": [
+            "cell"
+          ]
+        },
+        {
+          "name": "gru_cell_build",
+          "startLine": 59,
+          "endLine": 88,
+          "params": [
+            "cell"
+          ]
+        },
+        {
+          "name": "gru_cell_run",
+          "startLine": 119,
+          "endLine": 211,
+          "params": [
+            "cell"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "gru_cell_free",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "gru_cell_build",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "gru_cell_run",
+          "line": 119,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "gru_cell_run",
+          "callee": "local_q7_to_q15",
+          "lineNumber": 146
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "local_add_q15",
+          "lineNumber": 180
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "local_sigmoid_q15",
+          "lineNumber": 182
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "local_add_q15",
+          "lineNumber": 186
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "local_sigmoid_q15",
+          "lineNumber": 188
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "local_mult_q15",
+          "lineNumber": 192
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "local_add_q15",
+          "lineNumber": 194
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "local_tanh_q15",
+          "lineNumber": 196
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "local_mult_q15",
+          "lineNumber": 200
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "local_1_minor_z_q15",
+          "lineNumber": 202
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "local_mult_q15",
+          "lineNumber": 204
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "local_add_q15",
+          "lineNumber": 206
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "local_q15_to_q7",
+          "lineNumber": 209
+        },
+        {
+          "caller": "print_variable_q15",
+          "callee": "printf",
+          "lineNumber": 219
+        },
+        {
+          "caller": "print_variable_q15",
+          "callee": "printf",
+          "lineNumber": 220
+        },
+        {
+          "caller": "print_variable_q15",
+          "callee": "printf",
+          "lineNumber": 224
+        },
+        {
+          "caller": "print_variable_q15",
+          "callee": "printf",
+          "lineNumber": 225
+        },
+        {
+          "caller": "print_variable_q15",
+          "callee": "printf",
+          "lineNumber": 227
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "local_q7_to_q15",
+          "lineNumber": 261
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "print_variable_q15",
+          "lineNumber": 281
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "print_variable_q15",
+          "lineNumber": 282
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "print_variable_q15",
+          "lineNumber": 283
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "local_add_q15",
+          "lineNumber": 299
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "local_sigmoid_q15",
+          "lineNumber": 301
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "print_variable_q15",
+          "lineNumber": 302
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "local_add_q15",
+          "lineNumber": 306
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "local_sigmoid_q15",
+          "lineNumber": 308
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "print_variable_q15",
+          "lineNumber": 309
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "local_mult_q15",
+          "lineNumber": 313
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "local_add_q15",
+          "lineNumber": 315
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "local_tanh_q15",
+          "lineNumber": 317
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "print_variable_q15",
+          "lineNumber": 318
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "local_mult_q15",
+          "lineNumber": 322
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "print_variable_q15",
+          "lineNumber": 323
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "local_1_minor_z_q15",
+          "lineNumber": 325
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "print_variable_q15",
+          "lineNumber": 326
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "local_mult_q15",
+          "lineNumber": 328
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "print_variable_q15",
+          "lineNumber": 329
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "local_add_q15",
+          "lineNumber": 331
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "print_variable_q15",
+          "lineNumber": 332
+        },
+        {
+          "caller": "gru_cell_run",
+          "callee": "local_q15_to_q7",
+          "lineNumber": 335
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_input.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 145,
+      "nonEmptyLines": 125,
+      "functions": [
+        {
+          "name": "input_build",
+          "startLine": 111,
+          "endLine": 123,
+          "params": [
+            "layer"
+          ]
+        },
+        {
+          "name": "input_run",
+          "startLine": 126,
+          "endLine": 145,
+          "params": [
+            "layer"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "input_build",
+          "line": 111,
+          "isDefault": false
+        },
+        {
+          "name": "input_run",
+          "line": 126,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "input_build",
+          "callee": "new_tensor",
+          "lineNumber": 118
+        },
+        {
+          "caller": "input_build",
+          "callee": "tensor_get_num_channel",
+          "lineNumber": 118
+        },
+        {
+          "caller": "input_build",
+          "callee": "tensor_cpy_attr",
+          "lineNumber": 119
+        },
+        {
+          "caller": "input_run",
+          "callee": "hwc2chw_q7",
+          "lineNumber": 133
+        },
+        {
+          "caller": "input_run",
+          "callee": "hwc2chw_q7",
+          "lineNumber": 138
+        },
+        {
+          "caller": "input_run",
+          "callee": "nnom_memcpy",
+          "lineNumber": 142
+        },
+        {
+          "caller": "input_run",
+          "callee": "tensor_size",
+          "lineNumber": 142
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_lambda.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 81,
+      "nonEmptyLines": 69,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_lstm_cell.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 334,
+      "nonEmptyLines": 274,
+      "functions": [
+        {
+          "name": "lstm_cell_free",
+          "startLine": 57,
+          "endLine": 60,
+          "params": [
+            "cell"
+          ]
+        },
+        {
+          "name": "lstm_cell_q7_q15_build",
+          "startLine": 87,
+          "endLine": 116,
+          "params": [
+            "cell"
+          ]
+        },
+        {
+          "name": "lstm_cell_q7_q15_run",
+          "startLine": 121,
+          "endLine": 195,
+          "params": [
+            "cell"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "lstm_cell_free",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "lstm_cell_q7_q15_build",
+          "line": 87,
+          "isDefault": false
+        },
+        {
+          "name": "lstm_cell_q7_q15_run",
+          "line": 121,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "local_q7_to_q15",
+          "lineNumber": 145
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "local_fully_connected_mat_q7_vec_q15_opt",
+          "lineNumber": 157
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "local_add_q15",
+          "lineNumber": 161
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "local_sigmoid_q15",
+          "lineNumber": 170
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "local_sigmoid_q15",
+          "lineNumber": 172
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "local_sigmoid_q15",
+          "lineNumber": 174
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "local_tanh_q15",
+          "lineNumber": 178
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "local_mult_q15",
+          "lineNumber": 179
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "local_mult_q15",
+          "lineNumber": 181
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "local_add_q15",
+          "lineNumber": 183
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "nnom_memcpy",
+          "lineNumber": 187
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "local_tanh_q15",
+          "lineNumber": 188
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "local_mult_q15",
+          "lineNumber": 190
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "local_q15_to_q7",
+          "lineNumber": 193
+        },
+        {
+          "caller": "print_variable",
+          "callee": "printf",
+          "lineNumber": 202
+        },
+        {
+          "caller": "print_variable",
+          "callee": "printf",
+          "lineNumber": 203
+        },
+        {
+          "caller": "print_variable",
+          "callee": "printf",
+          "lineNumber": 207
+        },
+        {
+          "caller": "print_variable",
+          "callee": "printf",
+          "lineNumber": 208
+        },
+        {
+          "caller": "print_variable",
+          "callee": "printf",
+          "lineNumber": 210
+        },
+        {
+          "caller": "print_variable_q15",
+          "callee": "printf",
+          "lineNumber": 215
+        },
+        {
+          "caller": "print_variable_q15",
+          "callee": "printf",
+          "lineNumber": 216
+        },
+        {
+          "caller": "print_variable_q15",
+          "callee": "printf",
+          "lineNumber": 220
+        },
+        {
+          "caller": "print_variable_q15",
+          "callee": "printf",
+          "lineNumber": 221
+        },
+        {
+          "caller": "print_variable_q15",
+          "callee": "printf",
+          "lineNumber": 223
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "local_q7_to_q15",
+          "lineNumber": 259
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "print_variable_q15",
+          "lineNumber": 260
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "print_variable_q15",
+          "lineNumber": 261
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "print_variable_q15",
+          "lineNumber": 262
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "local_fully_connected_mat_q7_vec_q15_opt",
+          "lineNumber": 274
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "local_add_q15",
+          "lineNumber": 278
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "print_variable_q15",
+          "lineNumber": 280
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "print_variable_q15",
+          "lineNumber": 281
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "print_variable_q15",
+          "lineNumber": 282
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "local_sigmoid_q15",
+          "lineNumber": 291
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "local_sigmoid_q15",
+          "lineNumber": 293
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "local_sigmoid_q15",
+          "lineNumber": 295
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "print_variable_q15",
+          "lineNumber": 297
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "print_variable_q15",
+          "lineNumber": 298
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "print_variable_q15",
+          "lineNumber": 299
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "local_tanh_q15",
+          "lineNumber": 303
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "print_variable_q15",
+          "lineNumber": 304
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "local_mult_q15",
+          "lineNumber": 306
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "print_variable_q15",
+          "lineNumber": 307
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "local_mult_q15",
+          "lineNumber": 310
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "print_variable_q15",
+          "lineNumber": 311
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "local_add_q15",
+          "lineNumber": 314
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "print_variable_q15",
+          "lineNumber": 315
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "nnom_memcpy",
+          "lineNumber": 319
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "local_tanh_q15",
+          "lineNumber": 320
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "print_variable_q15",
+          "lineNumber": 321
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "local_mult_q15",
+          "lineNumber": 324
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "print_variable_q15",
+          "lineNumber": 325
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "local_q15_to_q7",
+          "lineNumber": 328
+        },
+        {
+          "caller": "lstm_cell_q7_q15_run",
+          "callee": "print_variable",
+          "lineNumber": 330
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_matrix.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 239,
+      "nonEmptyLines": 214,
+      "functions": [
+        {
+          "name": "matrix_build",
+          "startLine": 123,
+          "endLine": 142,
+          "params": [
+            "layer"
+          ]
+        },
+        {
+          "name": "add_run",
+          "startLine": 145,
+          "endLine": 175,
+          "params": [
+            "layer"
+          ]
+        },
+        {
+          "name": "sub_run",
+          "startLine": 177,
+          "endLine": 207,
+          "params": [
+            "layer"
+          ]
+        },
+        {
+          "name": "mult_run",
+          "startLine": 209,
+          "endLine": 239,
+          "params": [
+            "layer"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "matrix_build",
+          "line": 123,
+          "isDefault": false
+        },
+        {
+          "name": "add_run",
+          "line": 145,
+          "isDefault": false
+        },
+        {
+          "name": "sub_run",
+          "line": 177,
+          "isDefault": false
+        },
+        {
+          "name": "mult_run",
+          "line": 209,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "matrix_build",
+          "callee": "new_tensor",
+          "lineNumber": 133
+        },
+        {
+          "caller": "matrix_build",
+          "callee": "tensor_get_num_channel",
+          "lineNumber": 133
+        },
+        {
+          "caller": "matrix_build",
+          "callee": "tensor_cpy_attr",
+          "lineNumber": 134
+        },
+        {
+          "caller": "matrix_build",
+          "callee": "act_get_dec_bit",
+          "lineNumber": 138
+        },
+        {
+          "caller": "add_run",
+          "callee": "tensor_size",
+          "lineNumber": 149
+        },
+        {
+          "caller": "add_run",
+          "callee": "nnom_io_length",
+          "lineNumber": 151
+        },
+        {
+          "caller": "add_run",
+          "callee": "arm_add_q7",
+          "lineNumber": 159
+        },
+        {
+          "caller": "add_run",
+          "callee": "local_add_q7",
+          "lineNumber": 162
+        },
+        {
+          "caller": "add_run",
+          "callee": "local_multiple_add_q7",
+          "lineNumber": 171
+        },
+        {
+          "caller": "sub_run",
+          "callee": "tensor_size",
+          "lineNumber": 181
+        },
+        {
+          "caller": "sub_run",
+          "callee": "nnom_io_length",
+          "lineNumber": 183
+        },
+        {
+          "caller": "sub_run",
+          "callee": "arm_sub_q7",
+          "lineNumber": 192
+        },
+        {
+          "caller": "sub_run",
+          "callee": "local_sub_q7",
+          "lineNumber": 195
+        },
+        {
+          "caller": "sub_run",
+          "callee": "local_multiple_sub_q7",
+          "lineNumber": 204
+        },
+        {
+          "caller": "mult_run",
+          "callee": "tensor_size",
+          "lineNumber": 213
+        },
+        {
+          "caller": "mult_run",
+          "callee": "nnom_io_length",
+          "lineNumber": 215
+        },
+        {
+          "caller": "mult_run",
+          "callee": "arm_mult_q7",
+          "lineNumber": 224
+        },
+        {
+          "caller": "mult_run",
+          "callee": "local_mult_q7",
+          "lineNumber": 227
+        },
+        {
+          "caller": "mult_run",
+          "callee": "local_multiple_mult_q7",
+          "lineNumber": 236
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_maxpool.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 191,
+      "nonEmptyLines": 169,
+      "functions": [
+        {
+          "name": "maxpool_build",
+          "startLine": 101,
+          "endLine": 132,
+          "params": [
+            "layer"
+          ]
+        },
+        {
+          "name": "maxpool_run",
+          "startLine": 134,
+          "endLine": 191,
+          "params": [
+            "layer"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "maxpool_build",
+          "line": 101,
+          "isDefault": false
+        },
+        {
+          "name": "maxpool_run",
+          "line": 134,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "maxpool_build",
+          "callee": "new_tensor",
+          "lineNumber": 109
+        },
+        {
+          "caller": "maxpool_build",
+          "callee": "tensor_get_num_channel",
+          "lineNumber": 109
+        },
+        {
+          "caller": "maxpool_build",
+          "callee": "tensor_cpy_attr",
+          "lineNumber": 111
+        },
+        {
+          "caller": "maxpool_build",
+          "callee": "act_get_dec_bit",
+          "lineNumber": 115
+        },
+        {
+          "caller": "maxpool_build",
+          "callee": "NN_CEILIF",
+          "lineNumber": 120
+        },
+        {
+          "caller": "maxpool_build",
+          "callee": "NN_CEILIF",
+          "lineNumber": 121
+        },
+        {
+          "caller": "maxpool_build",
+          "callee": "NN_CEILIF",
+          "lineNumber": 126
+        },
+        {
+          "caller": "maxpool_build",
+          "callee": "NN_CEILIF",
+          "lineNumber": 127
+        },
+        {
+          "caller": "maxpool_run",
+          "callee": "local_maxpool_q7_CHW",
+          "lineNumber": 152
+        },
+        {
+          "caller": "maxpool_run",
+          "callee": "arm_maxpool_q7_HWC",
+          "lineNumber": 167
+        },
+        {
+          "caller": "maxpool_run",
+          "callee": "local_maxpool_q7_HWC",
+          "lineNumber": 180
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_output.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 56,
+      "nonEmptyLines": 50,
+      "functions": [
+        {
+          "name": "output_run",
+          "startLine": 51,
+          "endLine": 56,
+          "params": [
+            "layer"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "output_run",
+          "line": 51,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "output_run",
+          "callee": "nnom_memcpy",
+          "lineNumber": 54
+        },
+        {
+          "caller": "output_run",
+          "callee": "tensor_size",
+          "lineNumber": 54
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_reshape.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 77,
+      "nonEmptyLines": 61,
+      "functions": [
+        {
+          "name": "reshape_build",
+          "startLine": 59,
+          "endLine": 71,
+          "params": [
+            "layer"
+          ]
+        },
+        {
+          "name": "reshape_run",
+          "startLine": 73,
+          "endLine": 76,
+          "params": [
+            "layer"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "reshape_build",
+          "line": 59,
+          "isDefault": false
+        },
+        {
+          "name": "reshape_run",
+          "line": 73,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "reshape_build",
+          "callee": "new_tensor",
+          "lineNumber": 67
+        },
+        {
+          "caller": "reshape_build",
+          "callee": "tensor_set_attr",
+          "lineNumber": 68
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_rnn.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 191,
+      "nonEmptyLines": 161,
+      "functions": [
+        {
+          "name": "rnn_free",
+          "startLine": 72,
+          "endLine": 83,
+          "params": [
+            "layer"
+          ]
+        },
+        {
+          "name": "rnn_build",
+          "startLine": 85,
+          "endLine": 133,
+          "params": [
+            "layer"
+          ]
+        },
+        {
+          "name": "rnn_run",
+          "startLine": 135,
+          "endLine": 190,
+          "params": [
+            "layer"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "rnn_free",
+          "line": 72,
+          "isDefault": false
+        },
+        {
+          "name": "rnn_build",
+          "line": 85,
+          "isDefault": false
+        },
+        {
+          "name": "rnn_run",
+          "line": 135,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "rnn_free",
+          "callee": "free",
+          "lineNumber": 77
+        },
+        {
+          "caller": "rnn_free",
+          "callee": "nnom_free",
+          "lineNumber": 80
+        },
+        {
+          "caller": "rnn_build",
+          "callee": "new_tensor",
+          "lineNumber": 98
+        },
+        {
+          "caller": "rnn_build",
+          "callee": "new_tensor",
+          "lineNumber": 106
+        },
+        {
+          "caller": "rnn_build",
+          "callee": "act_get_dec_bit",
+          "lineNumber": 116
+        },
+        {
+          "caller": "rnn_build",
+          "callee": "tensor_get_num_channel",
+          "lineNumber": 119
+        },
+        {
+          "caller": "rnn_build",
+          "callee": "build",
+          "lineNumber": 122
+        },
+        {
+          "caller": "rnn_build",
+          "callee": "nnom_mem",
+          "lineNumber": 126
+        },
+        {
+          "caller": "rnn_run",
+          "callee": "tensor_get_num_channel",
+          "lineNumber": 140
+        },
+        {
+          "caller": "rnn_run",
+          "callee": "nnom_memset",
+          "lineNumber": 148
+        },
+        {
+          "caller": "rnn_run",
+          "callee": "run",
+          "lineNumber": 184
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_simple_cell.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 142,
+      "nonEmptyLines": 115,
+      "functions": [
+        {
+          "name": "simple_cell_free",
+          "startLine": 57,
+          "endLine": 60,
+          "params": [
+            "cell"
+          ]
+        },
+        {
+          "name": "simple_cell_build",
+          "startLine": 63,
+          "endLine": 97,
+          "params": [
+            "cell"
+          ]
+        },
+        {
+          "name": "simple_cell_run",
+          "startLine": 115,
+          "endLine": 140,
+          "params": [
+            "cell"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "simple_cell_free",
+          "line": 57,
+          "isDefault": false
+        },
+        {
+          "name": "simple_cell_build",
+          "line": 63,
+          "isDefault": false
+        },
+        {
+          "name": "simple_cell_run",
+          "line": 115,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "simple_cell_build",
+          "callee": "MIN",
+          "lineNumber": 77
+        },
+        {
+          "caller": "simple_cell_run",
+          "callee": "MIN",
+          "lineNumber": 118
+        },
+        {
+          "caller": "simple_cell_run",
+          "callee": "local_dot_q7_opt",
+          "lineNumber": 121
+        },
+        {
+          "caller": "simple_cell_run",
+          "callee": "local_fully_connected_q7_opt",
+          "lineNumber": 123
+        },
+        {
+          "caller": "simple_cell_run",
+          "callee": "local_add_q7",
+          "lineNumber": 126
+        },
+        {
+          "caller": "simple_cell_run",
+          "callee": "local_tanh_q7",
+          "lineNumber": 130
+        },
+        {
+          "caller": "simple_cell_run",
+          "callee": "local_sigmoid_q7",
+          "lineNumber": 133
+        },
+        {
+          "caller": "simple_cell_run",
+          "callee": "nnom_memcpy",
+          "lineNumber": 137
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_softmax.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 86,
+      "nonEmptyLines": 75,
+      "functions": [
+        {
+          "name": "softmax_build",
+          "startLine": 64,
+          "endLine": 74,
+          "params": [
+            "layer"
+          ]
+        },
+        {
+          "name": "softmax_run",
+          "startLine": 76,
+          "endLine": 86,
+          "params": [
+            "layer"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "softmax_build",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "softmax_run",
+          "line": 76,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "softmax_build",
+          "callee": "new_tensor",
+          "lineNumber": 69
+        },
+        {
+          "caller": "softmax_build",
+          "callee": "tensor_get_num_channel",
+          "lineNumber": 69
+        },
+        {
+          "caller": "softmax_build",
+          "callee": "tensor_cpy_attr",
+          "lineNumber": 70
+        },
+        {
+          "caller": "softmax_run",
+          "callee": "local_softmax_q7",
+          "lineNumber": 83
+        },
+        {
+          "caller": "softmax_run",
+          "callee": "tensor_size",
+          "lineNumber": 83
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_sumpool.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 104,
+      "nonEmptyLines": 89,
+      "functions": [
+        {
+          "name": "sumpool_build",
+          "startLine": 60,
+          "endLine": 69,
+          "params": [
+            "layer"
+          ]
+        },
+        {
+          "name": "sumpool_run",
+          "startLine": 73,
+          "endLine": 104,
+          "params": [
+            "layer"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "sumpool_build",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "sumpool_run",
+          "line": 73,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "sumpool_build",
+          "callee": "maxpool_build",
+          "lineNumber": 63
+        },
+        {
+          "caller": "sumpool_build",
+          "callee": "tensor_size",
+          "lineNumber": 66
+        },
+        {
+          "caller": "sumpool_run",
+          "callee": "local_sumpool_q7_CHW",
+          "lineNumber": 90
+        },
+        {
+          "caller": "sumpool_run",
+          "callee": "local_sumpool_q7_HWC",
+          "lineNumber": 92
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_upsample.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 104,
+      "nonEmptyLines": 88,
+      "functions": [
+        {
+          "name": "upsample_build",
+          "startLine": 64,
+          "endLine": 85,
+          "params": [
+            "layer"
+          ]
+        },
+        {
+          "name": "upsample_run",
+          "startLine": 88,
+          "endLine": 104,
+          "params": [
+            "layer"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "upsample_build",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "upsample_run",
+          "line": 88,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "upsample_build",
+          "callee": "new_tensor",
+          "lineNumber": 73
+        },
+        {
+          "caller": "upsample_build",
+          "callee": "tensor_get_num_channel",
+          "lineNumber": 73
+        },
+        {
+          "caller": "upsample_build",
+          "callee": "tensor_cpy_attr",
+          "lineNumber": 74
+        },
+        {
+          "caller": "upsample_build",
+          "callee": "act_get_dec_bit",
+          "lineNumber": 78
+        },
+        {
+          "caller": "upsample_run",
+          "callee": "local_up_sampling_q7_CHW",
+          "lineNumber": 93
+        },
+        {
+          "caller": "upsample_run",
+          "callee": "local_up_sampling_q7_HWC",
+          "lineNumber": 95
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_zero_padding.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 107,
+      "nonEmptyLines": 89,
+      "functions": [
+        {
+          "name": "zero_padding_build",
+          "startLine": 64,
+          "endLine": 85,
+          "params": [
+            "layer"
+          ]
+        },
+        {
+          "name": "zero_padding_run",
+          "startLine": 87,
+          "endLine": 106,
+          "params": [
+            "layer"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "zero_padding_build",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "zero_padding_run",
+          "line": 87,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "zero_padding_build",
+          "callee": "new_tensor",
+          "lineNumber": 72
+        },
+        {
+          "caller": "zero_padding_build",
+          "callee": "tensor_get_num_channel",
+          "lineNumber": 72
+        },
+        {
+          "caller": "zero_padding_build",
+          "callee": "tensor_cpy_attr",
+          "lineNumber": 74
+        },
+        {
+          "caller": "zero_padding_build",
+          "callee": "act_get_dec_bit",
+          "lineNumber": 78
+        },
+        {
+          "caller": "zero_padding_run",
+          "callee": "local_zero_padding_CHW_q7",
+          "lineNumber": 92
+        },
+        {
+          "caller": "zero_padding_run",
+          "callee": "local_zero_padding_HWC_q7",
+          "lineNumber": 94
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/requirements.txt",
+      "language": "txt",
+      "fileCategory": "docs",
+      "totalLines": 49,
+      "nonEmptyLines": 49,
+      "metrics": {}
+    }
+  ]
+}

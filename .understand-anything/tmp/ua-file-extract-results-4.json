@@ -1,0 +1,943 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 5,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/kws_weights.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 422,
+      "nonEmptyLines": 362,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/main.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 420,
+      "nonEmptyLines": 338,
+      "functions": [
+        {
+          "name": "Error_Handler",
+          "startLine": 71,
+          "endLine": 74,
+          "params": []
+        },
+        {
+          "name": "us_timer_enable",
+          "startLine": 79,
+          "endLine": 89,
+          "params": []
+        },
+        {
+          "name": "us_timer_get",
+          "startLine": 91,
+          "endLine": 94,
+          "params": []
+        },
+        {
+          "name": "DFSDM_Init",
+          "startLine": 100,
+          "endLine": 146,
+          "params": []
+        },
+        {
+          "name": "microphone_init",
+          "startLine": 150,
+          "endLine": 154,
+          "params": []
+        },
+        {
+          "name": "abs_mean",
+          "startLine": 156,
+          "endLine": 167,
+          "params": [
+            "p",
+            "size"
+          ]
+        },
+        {
+          "name": "quantize_data",
+          "startLine": 169,
+          "endLine": 176,
+          "params": [
+            "din",
+            "dout",
+            "size",
+            "int_bit"
+          ]
+        },
+        {
+          "name": "thread_kws_serv",
+          "startLine": 179,
+          "endLine": 242,
+          "params": [
+            "p"
+          ]
+        },
+        {
+          "name": "main",
+          "startLine": 246,
+          "endLine": 303,
+          "params": []
+        },
+        {
+          "name": "HAL_DFSDM_FilterRegConvHalfCpltCallback",
+          "startLine": 306,
+          "endLine": 311,
+          "params": [
+            "hdfsdm_filter"
+          ]
+        },
+        {
+          "name": "HAL_DFSDM_FilterRegConvCpltCallback",
+          "startLine": 313,
+          "endLine": 317,
+          "params": [
+            "hdfsdm_filter"
+          ]
+        },
+        {
+          "name": "HAL_DFSDM_ChannelMspInit",
+          "startLine": 320,
+          "endLine": 352,
+          "params": [
+            "hdfsdm_channel"
+          ]
+        },
+        {
+          "name": "HAL_DFSDM_FilterMspInit",
+          "startLine": 354,
+          "endLine": 374,
+          "params": [
+            "hdfsdm_filter"
+          ]
+        },
+        {
+          "name": "DMA1_Channel4_IRQHandler",
+          "startLine": 376,
+          "endLine": 379,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Error_Handler",
+          "line": 71,
+          "isDefault": false
+        },
+        {
+          "name": "us_timer_enable",
+          "line": 79,
+          "isDefault": false
+        },
+        {
+          "name": "us_timer_get",
+          "line": 91,
+          "isDefault": false
+        },
+        {
+          "name": "microphone_init",
+          "line": 150,
+          "isDefault": false
+        },
+        {
+          "name": "quantize_data",
+          "line": 169,
+          "isDefault": false
+        },
+        {
+          "name": "thread_kws_serv",
+          "line": 179,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 246,
+          "isDefault": false
+        },
+        {
+          "name": "HAL_DFSDM_FilterRegConvHalfCpltCallback",
+          "line": 306,
+          "isDefault": false
+        },
+        {
+          "name": "HAL_DFSDM_FilterRegConvCpltCallback",
+          "line": 313,
+          "isDefault": false
+        },
+        {
+          "name": "HAL_DFSDM_ChannelMspInit",
+          "line": 320,
+          "isDefault": false
+        },
+        {
+          "name": "HAL_DFSDM_FilterMspInit",
+          "line": 354,
+          "isDefault": false
+        },
+        {
+          "name": "DMA1_Channel4_IRQHandler",
+          "line": 376,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Error_Handler",
+          "callee": "printf",
+          "lineNumber": 73
+        },
+        {
+          "caller": "us_timer_enable",
+          "callee": "__TIM2_CLK_ENABLE",
+          "lineNumber": 81
+        },
+        {
+          "caller": "us_timer_enable",
+          "callee": "HAL_RCC_GetSysClockFreq",
+          "lineNumber": 82
+        },
+        {
+          "caller": "us_timer_enable",
+          "callee": "HAL_TIM_Base_Init",
+          "lineNumber": 87
+        },
+        {
+          "caller": "us_timer_enable",
+          "callee": "HAL_TIM_Base_Start",
+          "lineNumber": 88
+        },
+        {
+          "caller": "us_timer_get",
+          "callee": "__HAL_TIM_GET_COUNTER",
+          "lineNumber": 93
+        },
+        {
+          "caller": "DFSDM_Init",
+          "callee": "__HAL_DFSDM_CHANNEL_RESET_HANDLE_STATE",
+          "lineNumber": 103
+        },
+        {
+          "caller": "DFSDM_Init",
+          "callee": "HAL_DFSDM_ChannelInit",
+          "lineNumber": 117
+        },
+        {
+          "caller": "DFSDM_Init",
+          "callee": "Error_Handler",
+          "lineNumber": 119
+        },
+        {
+          "caller": "DFSDM_Init",
+          "callee": "__HAL_DFSDM_FILTER_RESET_HANDLE_STATE",
+          "lineNumber": 123
+        },
+        {
+          "caller": "DFSDM_Init",
+          "callee": "HAL_DFSDM_FilterInit",
+          "lineNumber": 136
+        },
+        {
+          "caller": "DFSDM_Init",
+          "callee": "Error_Handler",
+          "lineNumber": 138
+        },
+        {
+          "caller": "DFSDM_Init",
+          "callee": "HAL_DFSDM_FilterConfigRegChannel",
+          "lineNumber": 142
+        },
+        {
+          "caller": "DFSDM_Init",
+          "callee": "Error_Handler",
+          "lineNumber": 144
+        },
+        {
+          "caller": "microphone_init",
+          "callee": "DFSDM_Init",
+          "lineNumber": 152
+        },
+        {
+          "caller": "microphone_init",
+          "callee": "HAL_DFSDM_FilterRegularStart_DMA",
+          "lineNumber": 153
+        },
+        {
+          "caller": "quantize_data",
+          "callee": "_MAX",
+          "lineNumber": 175
+        },
+        {
+          "caller": "quantize_data",
+          "callee": "_MIN",
+          "lineNumber": 175
+        },
+        {
+          "caller": "thread_kws_serv",
+          "callee": "mfcc_create",
+          "lineNumber": 189
+        },
+        {
+          "caller": "thread_kws_serv",
+          "callee": "rt_event_recv",
+          "lineNumber": 194
+        },
+        {
+          "caller": "thread_kws_serv",
+          "callee": "memcpy",
+          "lineNumber": 204
+        },
+        {
+          "caller": "thread_kws_serv",
+          "callee": "SaturaLH",
+          "lineNumber": 210
+        },
+        {
+          "caller": "thread_kws_serv",
+          "callee": "rt_mutex_take",
+          "lineNumber": 218
+        },
+        {
+          "caller": "thread_kws_serv",
+          "callee": "mfcc_compute",
+          "lineNumber": 221
+        },
+        {
+          "caller": "thread_kws_serv",
+          "callee": "quantize_data",
+          "lineNumber": 224
+        },
+        {
+          "caller": "thread_kws_serv",
+          "callee": "printf",
+          "lineNumber": 230
+        },
+        {
+          "caller": "thread_kws_serv",
+          "callee": "printf",
+          "lineNumber": 231
+        },
+        {
+          "caller": "thread_kws_serv",
+          "callee": "rt_mutex_release",
+          "lineNumber": 240
+        },
+        {
+          "caller": "main",
+          "callee": "us_timer_enable",
+          "lineNumber": 254
+        },
+        {
+          "caller": "main",
+          "callee": "rt_mutex_create",
+          "lineNumber": 257
+        },
+        {
+          "caller": "main",
+          "callee": "rt_event_create",
+          "lineNumber": 258
+        },
+        {
+          "caller": "main",
+          "callee": "nnom_model_create",
+          "lineNumber": 261
+        },
+        {
+          "caller": "main",
+          "callee": "rt_thread_control",
+          "lineNumber": 264
+        },
+        {
+          "caller": "main",
+          "callee": "rt_thread_self",
+          "lineNumber": 264
+        },
+        {
+          "caller": "main",
+          "callee": "rt_thread_startup",
+          "lineNumber": 267
+        },
+        {
+          "caller": "main",
+          "callee": "rt_thread_create",
+          "lineNumber": 267
+        },
+        {
+          "caller": "main",
+          "callee": "microphone_init",
+          "lineNumber": 270
+        },
+        {
+          "caller": "main",
+          "callee": "rt_thread_delay",
+          "lineNumber": 276
+        },
+        {
+          "caller": "main",
+          "callee": "rt_mutex_take",
+          "lineNumber": 279
+        },
+        {
+          "caller": "main",
+          "callee": "memcpy",
+          "lineNumber": 283
+        },
+        {
+          "caller": "main",
+          "callee": "memcpy",
+          "lineNumber": 284
+        },
+        {
+          "caller": "main",
+          "callee": "rt_mutex_release",
+          "lineNumber": 285
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 290
+        },
+        {
+          "caller": "main",
+          "callee": "abs_mean",
+          "lineNumber": 290
+        },
+        {
+          "caller": "main",
+          "callee": "memcpy",
+          "lineNumber": 293
+        },
+        {
+          "caller": "main",
+          "callee": "nnom_predict",
+          "lineNumber": 294
+        },
+        {
+          "caller": "main",
+          "callee": "rt_tick_get",
+          "lineNumber": 299
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 300
+        },
+        {
+          "caller": "HAL_DFSDM_FilterRegConvHalfCpltCallback",
+          "callee": "rt_event_send",
+          "lineNumber": 310
+        },
+        {
+          "caller": "HAL_DFSDM_FilterRegConvCpltCallback",
+          "callee": "rt_event_send",
+          "lineNumber": 316
+        },
+        {
+          "caller": "HAL_DFSDM_ChannelMspInit",
+          "callee": "__HAL_RCC_DFSDM1_CLK_ENABLE",
+          "lineNumber": 327
+        },
+        {
+          "caller": "HAL_DFSDM_ChannelMspInit",
+          "callee": "__HAL_RCC_GPIOE_CLK_ENABLE",
+          "lineNumber": 330
+        },
+        {
+          "caller": "HAL_DFSDM_ChannelMspInit",
+          "callee": "HAL_GPIO_Init",
+          "lineNumber": 336
+        },
+        {
+          "caller": "HAL_DFSDM_ChannelMspInit",
+          "callee": "HAL_GPIO_Init",
+          "lineNumber": 338
+        },
+        {
+          "caller": "HAL_DFSDM_ChannelMspInit",
+          "callee": "HAL_RCCEx_PeriphCLKConfig",
+          "lineNumber": 348
+        },
+        {
+          "caller": "HAL_DFSDM_ChannelMspInit",
+          "callee": "Error_Handler",
+          "lineNumber": 350
+        },
+        {
+          "caller": "HAL_DFSDM_FilterMspInit",
+          "callee": "__HAL_RCC_DMA1_CLK_ENABLE",
+          "lineNumber": 357
+        },
+        {
+          "caller": "HAL_DFSDM_FilterMspInit",
+          "callee": "__HAL_LINKDMA",
+          "lineNumber": 367
+        },
+        {
+          "caller": "HAL_DFSDM_FilterMspInit",
+          "callee": "HAL_DMA_Init",
+          "lineNumber": 368
+        },
+        {
+          "caller": "HAL_DFSDM_FilterMspInit",
+          "callee": "Error_Handler",
+          "lineNumber": 370
+        },
+        {
+          "caller": "HAL_DFSDM_FilterMspInit",
+          "callee": "HAL_NVIC_SetPriority",
+          "lineNumber": 372
+        },
+        {
+          "caller": "HAL_DFSDM_FilterMspInit",
+          "callee": "HAL_NVIC_EnableIRQ",
+          "lineNumber": 373
+        },
+        {
+          "caller": "DMA1_Channel4_IRQHandler",
+          "callee": "HAL_DMA_IRQHandler",
+          "lineNumber": 378
+        },
+        {
+          "caller": "nn_stat",
+          "callee": "model_stat",
+          "lineNumber": 388
+        },
+        {
+          "caller": "nn_stat",
+          "callee": "rt_kprintf",
+          "lineNumber": 389
+        },
+        {
+          "caller": "nn_stat",
+          "callee": "nnom_mem_stat",
+          "lineNumber": 389
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 12,
+        "functionCount": 14,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/main_pc.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 238,
+      "nonEmptyLines": 192,
+      "functions": [
+        {
+          "name": "Error_Handler",
+          "startLine": 72,
+          "endLine": 75,
+          "params": []
+        },
+        {
+          "name": "abs_mean",
+          "startLine": 77,
+          "endLine": 88,
+          "params": [
+            "p",
+            "size"
+          ]
+        },
+        {
+          "name": "quantize_data",
+          "startLine": 90,
+          "endLine": 102,
+          "params": [
+            "din",
+            "dout",
+            "size",
+            "int_bit"
+          ]
+        },
+        {
+          "name": "thread_kws_serv",
+          "startLine": 106,
+          "endLine": 164,
+          "params": []
+        },
+        {
+          "name": "main",
+          "startLine": 168,
+          "endLine": 238,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "Error_Handler",
+          "line": 72,
+          "isDefault": false
+        },
+        {
+          "name": "quantize_data",
+          "line": 90,
+          "isDefault": false
+        },
+        {
+          "name": "thread_kws_serv",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 168,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "Error_Handler",
+          "callee": "printf",
+          "lineNumber": 74
+        },
+        {
+          "caller": "quantize_data",
+          "callee": "round",
+          "lineNumber": 98
+        },
+        {
+          "caller": "quantize_data",
+          "callee": "_MAX",
+          "lineNumber": 98
+        },
+        {
+          "caller": "quantize_data",
+          "callee": "_MIN",
+          "lineNumber": 98
+        },
+        {
+          "caller": "quantize_data",
+          "callee": "round",
+          "lineNumber": 100
+        },
+        {
+          "caller": "thread_kws_serv",
+          "callee": "mfcc_create",
+          "lineNumber": 115
+        },
+        {
+          "caller": "thread_kws_serv",
+          "callee": "memset",
+          "lineNumber": 118
+        },
+        {
+          "caller": "thread_kws_serv",
+          "callee": "memcpy",
+          "lineNumber": 125
+        },
+        {
+          "caller": "thread_kws_serv",
+          "callee": "mfcc_compute",
+          "lineNumber": 143
+        },
+        {
+          "caller": "thread_kws_serv",
+          "callee": "quantize_data",
+          "lineNumber": 147
+        },
+        {
+          "caller": "thread_kws_serv",
+          "callee": "printf",
+          "lineNumber": 153
+        },
+        {
+          "caller": "thread_kws_serv",
+          "callee": "printf",
+          "lineNumber": 154
+        },
+        {
+          "caller": "thread_kws_serv",
+          "callee": "mfcc_delete",
+          "lineNumber": 163
+        },
+        {
+          "caller": "main",
+          "callee": "fopen",
+          "lineNumber": 183
+        },
+        {
+          "caller": "main",
+          "callee": "fopen",
+          "lineNumber": 184
+        },
+        {
+          "caller": "main",
+          "callee": "feof",
+          "lineNumber": 186
+        },
+        {
+          "caller": "main",
+          "callee": "fscanf",
+          "lineNumber": 188
+        },
+        {
+          "caller": "main",
+          "callee": "fclose",
+          "lineNumber": 191
+        },
+        {
+          "caller": "main",
+          "callee": "nnom_model_create",
+          "lineNumber": 196
+        },
+        {
+          "caller": "main",
+          "callee": "fscanf",
+          "lineNumber": 202
+        },
+        {
+          "caller": "main",
+          "callee": "thread_kws_serv",
+          "lineNumber": 206
+        },
+        {
+          "caller": "main",
+          "callee": "memcpy",
+          "lineNumber": 216
+        },
+        {
+          "caller": "main",
+          "callee": "nnom_predict",
+          "lineNumber": 217
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 220
+        },
+        {
+          "caller": "main",
+          "callee": "strcmp",
+          "lineNumber": 221
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 225
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 235
+        },
+        {
+          "caller": "main",
+          "callee": "fclose",
+          "lineNumber": 236
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 4,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/mfcc.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 318,
+      "nonEmptyLines": 273,
+      "functions": [
+        {
+          "name": "mfcc_free",
+          "startLine": 112,
+          "endLine": 114,
+          "params": [
+            "p"
+          ]
+        },
+        {
+          "name": "mfcc_delete",
+          "startLine": 160,
+          "endLine": 179,
+          "params": [
+            "mfcc"
+          ]
+        },
+        {
+          "name": "mfcc_compute",
+          "startLine": 230,
+          "endLine": 317,
+          "params": [
+            "mfcc",
+            "audio_data",
+            "mfcc_out"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "mfcc_delete",
+          "line": 160,
+          "isDefault": false
+        },
+        {
+          "name": "mfcc_compute",
+          "line": 230,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "compute",
+          "callee": "cosf",
+          "lineNumber": 89
+        },
+        {
+          "caller": "compute",
+          "callee": "sinf",
+          "lineNumber": 90
+        },
+        {
+          "caller": "fft",
+          "callee": "rearrange",
+          "lineNumber": 97
+        },
+        {
+          "caller": "fft",
+          "callee": "compute",
+          "lineNumber": 98
+        },
+        {
+          "caller": "mfcc_free",
+          "callee": "free",
+          "lineNumber": 113
+        },
+        {
+          "caller": "mfcc_delete",
+          "callee": "mfcc_free",
+          "lineNumber": 162
+        },
+        {
+          "caller": "mfcc_delete",
+          "callee": "mfcc_free",
+          "lineNumber": 163
+        },
+        {
+          "caller": "mfcc_delete",
+          "callee": "mfcc_free",
+          "lineNumber": 164
+        },
+        {
+          "caller": "mfcc_delete",
+          "callee": "mfcc_free",
+          "lineNumber": 165
+        },
+        {
+          "caller": "mfcc_delete",
+          "callee": "mfcc_free",
+          "lineNumber": 166
+        },
+        {
+          "caller": "mfcc_delete",
+          "callee": "mfcc_free",
+          "lineNumber": 167
+        },
+        {
+          "caller": "mfcc_delete",
+          "callee": "mfcc_free",
+          "lineNumber": 168
+        },
+        {
+          "caller": "mfcc_delete",
+          "callee": "mfcc_free",
+          "lineNumber": 170
+        },
+        {
+          "caller": "mfcc_delete",
+          "callee": "mfcc_free",
+          "lineNumber": 171
+        },
+        {
+          "caller": "mfcc_delete",
+          "callee": "mfcc_free",
+          "lineNumber": 174
+        },
+        {
+          "caller": "mfcc_delete",
+          "callee": "mfcc_free",
+          "lineNumber": 176
+        },
+        {
+          "caller": "mfcc_delete",
+          "callee": "mfcc_free",
+          "lineNumber": 178
+        },
+        {
+          "caller": "mfcc_compute",
+          "callee": "memset",
+          "lineNumber": 243
+        },
+        {
+          "caller": "mfcc_compute",
+          "callee": "arm_rfft_fast_f32",
+          "lineNumber": 252
+        },
+        {
+          "caller": "mfcc_compute",
+          "callee": "memcpy",
+          "lineNumber": 272
+        },
+        {
+          "caller": "mfcc_compute",
+          "callee": "memset",
+          "lineNumber": 273
+        },
+        {
+          "caller": "mfcc_compute",
+          "callee": "fft",
+          "lineNumber": 275
+        },
+        {
+          "caller": "mfcc_compute",
+          "callee": "logf",
+          "lineNumber": 302
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/mfcc.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 84,
+      "nonEmptyLines": 68,
+      "callGraph": [
+        {
+          "caller": "InverseMelScale",
+          "callee": "pow",
+          "lineNumber": 66
+        },
+        {
+          "caller": "MelScale",
+          "callee": "log10",
+          "lineNumber": 70
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

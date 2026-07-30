@@ -1,0 +1,2723 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 5,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/gen_dataset.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 353,
+      "nonEmptyLines": 307,
+      "functions": [
+        {
+          "name": "get_band_filter_coeff",
+          "startLine": 19,
+          "endLine": 34,
+          "params": [
+            "samplerate",
+            "f0",
+            "Q"
+          ]
+        },
+        {
+          "name": "iir_design_first_order",
+          "startLine": 36,
+          "endLine": 58,
+          "params": [
+            "band_frequency",
+            "samplerate",
+            "normalize"
+          ]
+        },
+        {
+          "name": "generate_filter_header",
+          "startLine": 60,
+          "endLine": 69,
+          "params": [
+            "b",
+            "a",
+            "order",
+            "filename"
+          ]
+        },
+        {
+          "name": "iir_design",
+          "startLine": 71,
+          "endLine": 84,
+          "params": [
+            "band_frequency",
+            "samplerate",
+            "order"
+          ]
+        },
+        {
+          "name": "fir_design",
+          "startLine": 86,
+          "endLine": 92,
+          "params": [
+            "band_frequency",
+            "samplerate",
+            "order"
+          ]
+        },
+        {
+          "name": "get_mel_scale",
+          "startLine": 94,
+          "endLine": 101,
+          "params": [
+            "nfilt",
+            "samplerate",
+            "lowfreq",
+            "highfreq"
+          ]
+        },
+        {
+          "name": "bandpass_filter_fir",
+          "startLine": 103,
+          "endLine": 114,
+          "params": [
+            "sig",
+            "b_in",
+            "a_in",
+            "step",
+            "gains"
+          ]
+        },
+        {
+          "name": "bandpass_filter_iir",
+          "startLine": 116,
+          "endLine": 128,
+          "params": [
+            "sig",
+            "b_in",
+            "a_in",
+            "step",
+            "gains"
+          ]
+        },
+        {
+          "name": "plot_frequency_respond",
+          "startLine": 131,
+          "endLine": 139,
+          "params": [
+            "b",
+            "a",
+            "fs"
+          ]
+        },
+        {
+          "name": "noise_suppressed_example",
+          "startLine": 141,
+          "endLine": 205,
+          "params": [
+            "plot"
+          ]
+        },
+        {
+          "name": "generate_data",
+          "startLine": 208,
+          "endLine": 256,
+          "params": [
+            "path",
+            "vad_active_delay",
+            "vad_threshold",
+            "random_volume",
+            "winlen",
+            "winstep",
+            "numcep",
+            "nfilt",
+            "nfft",
+            "lowfreq",
+            "highfreq",
+            "winfunc",
+            "ceplifter",
+            "preemph",
+            "appendEnergy"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "get_band_filter_coeff",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "iir_design_first_order",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "generate_filter_header",
+          "line": 60,
+          "isDefault": false
+        },
+        {
+          "name": "iir_design",
+          "line": 71,
+          "isDefault": false
+        },
+        {
+          "name": "fir_design",
+          "line": 86,
+          "isDefault": false
+        },
+        {
+          "name": "get_mel_scale",
+          "line": 94,
+          "isDefault": false
+        },
+        {
+          "name": "bandpass_filter_fir",
+          "line": 103,
+          "isDefault": false
+        },
+        {
+          "name": "bandpass_filter_iir",
+          "line": 116,
+          "isDefault": false
+        },
+        {
+          "name": "plot_frequency_respond",
+          "line": 131,
+          "isDefault": false
+        },
+        {
+          "name": "noise_suppressed_example",
+          "line": 141,
+          "isDefault": false
+        },
+        {
+          "name": "generate_data",
+          "line": 208,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "get_band_filter_coeff",
+          "callee": "np.sin",
+          "lineNumber": 25
+        },
+        {
+          "caller": "get_band_filter_coeff",
+          "callee": "np.zeros",
+          "lineNumber": 26
+        },
+        {
+          "caller": "get_band_filter_coeff",
+          "callee": "np.zeros",
+          "lineNumber": 27
+        },
+        {
+          "caller": "get_band_filter_coeff",
+          "callee": "np.cos",
+          "lineNumber": 32
+        },
+        {
+          "caller": "iir_design_first_order",
+          "callee": "range",
+          "lineNumber": 39
+        },
+        {
+          "caller": "iir_design_first_order",
+          "callee": "len",
+          "lineNumber": 39
+        },
+        {
+          "caller": "iir_design_first_order",
+          "callee": "get_band_filter_coeff",
+          "lineNumber": 40
+        },
+        {
+          "caller": "iir_design_first_order",
+          "callee": "b.append",
+          "lineNumber": 45
+        },
+        {
+          "caller": "iir_design_first_order",
+          "callee": "a.append",
+          "lineNumber": 46
+        },
+        {
+          "caller": "array2str",
+          "callee": "np.array2string",
+          "lineNumber": 62
+        },
+        {
+          "caller": "array2str",
+          "callee": "np.array(data).flatten",
+          "lineNumber": 62
+        },
+        {
+          "caller": "array2str",
+          "callee": "np.array",
+          "lineNumber": 62
+        },
+        {
+          "caller": "array2str",
+          "callee": "s.replace(\"\\n\", \"\").replace(\"\\r\", \"\").replace(' ', '').replace(',', ', ').replace('[', '{').replace",
+          "lineNumber": 63
+        },
+        {
+          "caller": "array2str",
+          "callee": "s.replace(\"\\n\", \"\").replace(\"\\r\", \"\").replace(' ', '').replace(',', ', ').replace",
+          "lineNumber": 63
+        },
+        {
+          "caller": "array2str",
+          "callee": "s.replace(\"\\n\", \"\").replace(\"\\r\", \"\").replace(' ', '').replace",
+          "lineNumber": 63
+        },
+        {
+          "caller": "array2str",
+          "callee": "s.replace(\"\\n\", \"\").replace(\"\\r\", \"\").replace",
+          "lineNumber": 63
+        },
+        {
+          "caller": "array2str",
+          "callee": "s.replace(\"\\n\", \"\").replace",
+          "lineNumber": 63
+        },
+        {
+          "caller": "array2str",
+          "callee": "s.replace",
+          "lineNumber": 63
+        },
+        {
+          "caller": "generate_filter_header",
+          "callee": "open",
+          "lineNumber": 64
+        },
+        {
+          "caller": "generate_filter_header",
+          "callee": "file.write",
+          "lineNumber": 65
+        },
+        {
+          "caller": "generate_filter_header",
+          "callee": "str",
+          "lineNumber": 65
+        },
+        {
+          "caller": "generate_filter_header",
+          "callee": "len",
+          "lineNumber": 65
+        },
+        {
+          "caller": "generate_filter_header",
+          "callee": "file.write",
+          "lineNumber": 66
+        },
+        {
+          "caller": "generate_filter_header",
+          "callee": "str",
+          "lineNumber": 66
+        },
+        {
+          "caller": "generate_filter_header",
+          "callee": "file.write",
+          "lineNumber": 67
+        },
+        {
+          "caller": "generate_filter_header",
+          "callee": "str",
+          "lineNumber": 67
+        },
+        {
+          "caller": "generate_filter_header",
+          "callee": "file.write",
+          "lineNumber": 68
+        },
+        {
+          "caller": "generate_filter_header",
+          "callee": "array2str",
+          "lineNumber": 68
+        },
+        {
+          "caller": "generate_filter_header",
+          "callee": "file.write",
+          "lineNumber": 69
+        },
+        {
+          "caller": "generate_filter_header",
+          "callee": "array2str",
+          "lineNumber": 69
+        },
+        {
+          "caller": "iir_design",
+          "callee": "range",
+          "lineNumber": 75
+        },
+        {
+          "caller": "iir_design",
+          "callee": "len",
+          "lineNumber": 75
+        },
+        {
+          "caller": "iir_design",
+          "callee": "signal.iirfilter",
+          "lineNumber": 76
+        },
+        {
+          "caller": "iir_design",
+          "callee": "b.append",
+          "lineNumber": 82
+        },
+        {
+          "caller": "iir_design",
+          "callee": "a.append",
+          "lineNumber": 83
+        },
+        {
+          "caller": "fir_design",
+          "callee": "range",
+          "lineNumber": 90
+        },
+        {
+          "caller": "fir_design",
+          "callee": "len",
+          "lineNumber": 90
+        },
+        {
+          "caller": "fir_design",
+          "callee": "b.append",
+          "lineNumber": 91
+        },
+        {
+          "caller": "fir_design",
+          "callee": "signal.firwin",
+          "lineNumber": 91
+        },
+        {
+          "caller": "get_mel_scale",
+          "callee": "hz2mel",
+          "lineNumber": 98
+        },
+        {
+          "caller": "get_mel_scale",
+          "callee": "hz2mel",
+          "lineNumber": 99
+        },
+        {
+          "caller": "get_mel_scale",
+          "callee": "np.linspace",
+          "lineNumber": 100
+        },
+        {
+          "caller": "bandpass_filter_fir",
+          "callee": "np.zeros",
+          "lineNumber": 106
+        },
+        {
+          "caller": "bandpass_filter_fir",
+          "callee": "len",
+          "lineNumber": 106
+        },
+        {
+          "caller": "bandpass_filter_fir",
+          "callee": "np.zeros",
+          "lineNumber": 107
+        },
+        {
+          "caller": "bandpass_filter_fir",
+          "callee": "len",
+          "lineNumber": 107
+        },
+        {
+          "caller": "bandpass_filter_fir",
+          "callee": "range",
+          "lineNumber": 109
+        },
+        {
+          "caller": "bandpass_filter_fir",
+          "callee": "len",
+          "lineNumber": 109
+        },
+        {
+          "caller": "bandpass_filter_fir",
+          "callee": "max",
+          "lineNumber": 110
+        },
+        {
+          "caller": "bandpass_filter_fir",
+          "callee": "signal.lfilter",
+          "lineNumber": 112
+        },
+        {
+          "caller": "bandpass_filter_fir",
+          "callee": "min",
+          "lineNumber": 112
+        },
+        {
+          "caller": "bandpass_filter_fir",
+          "callee": "len",
+          "lineNumber": 112
+        },
+        {
+          "caller": "bandpass_filter_fir",
+          "callee": "min",
+          "lineNumber": 113
+        },
+        {
+          "caller": "bandpass_filter_fir",
+          "callee": "len",
+          "lineNumber": 113
+        },
+        {
+          "caller": "bandpass_filter_iir",
+          "callee": "np.zeros",
+          "lineNumber": 119
+        },
+        {
+          "caller": "bandpass_filter_iir",
+          "callee": "len",
+          "lineNumber": 119
+        },
+        {
+          "caller": "bandpass_filter_iir",
+          "callee": "np.zeros",
+          "lineNumber": 120
+        },
+        {
+          "caller": "bandpass_filter_iir",
+          "callee": "len",
+          "lineNumber": 120
+        },
+        {
+          "caller": "bandpass_filter_iir",
+          "callee": "range",
+          "lineNumber": 122
+        },
+        {
+          "caller": "bandpass_filter_iir",
+          "callee": "len",
+          "lineNumber": 122
+        },
+        {
+          "caller": "bandpass_filter_iir",
+          "callee": "max",
+          "lineNumber": 123
+        },
+        {
+          "caller": "bandpass_filter_iir",
+          "callee": "signal.lfilter",
+          "lineNumber": 126
+        },
+        {
+          "caller": "bandpass_filter_iir",
+          "callee": "min",
+          "lineNumber": 126
+        },
+        {
+          "caller": "bandpass_filter_iir",
+          "callee": "len",
+          "lineNumber": 126
+        },
+        {
+          "caller": "bandpass_filter_iir",
+          "callee": "min",
+          "lineNumber": 127
+        },
+        {
+          "caller": "bandpass_filter_iir",
+          "callee": "len",
+          "lineNumber": 127
+        },
+        {
+          "caller": "plot_frequency_respond",
+          "callee": "len",
+          "lineNumber": 132
+        },
+        {
+          "caller": "plot_frequency_respond",
+          "callee": "len",
+          "lineNumber": 132
+        },
+        {
+          "caller": "plot_frequency_respond",
+          "callee": "np.ones",
+          "lineNumber": 132
+        },
+        {
+          "caller": "plot_frequency_respond",
+          "callee": "len",
+          "lineNumber": 132
+        },
+        {
+          "caller": "plot_frequency_respond",
+          "callee": "range",
+          "lineNumber": 133
+        },
+        {
+          "caller": "plot_frequency_respond",
+          "callee": "len",
+          "lineNumber": 133
+        },
+        {
+          "caller": "plot_frequency_respond",
+          "callee": "signal.freqz",
+          "lineNumber": 134
+        },
+        {
+          "caller": "plot_frequency_respond",
+          "callee": "plt.plot",
+          "lineNumber": 135
+        },
+        {
+          "caller": "plot_frequency_respond",
+          "callee": "np.log10",
+          "lineNumber": 135
+        },
+        {
+          "caller": "plot_frequency_respond",
+          "callee": "np.maximum",
+          "lineNumber": 135
+        },
+        {
+          "caller": "plot_frequency_respond",
+          "callee": "abs",
+          "lineNumber": 135
+        },
+        {
+          "caller": "plot_frequency_respond",
+          "callee": "plt.title",
+          "lineNumber": 136
+        },
+        {
+          "caller": "plot_frequency_respond",
+          "callee": "plt.ylabel",
+          "lineNumber": 137
+        },
+        {
+          "caller": "plot_frequency_respond",
+          "callee": "plt.xlabel",
+          "lineNumber": 138
+        },
+        {
+          "caller": "plot_frequency_respond",
+          "callee": "plt.show",
+          "lineNumber": 139
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "str",
+          "lineNumber": 157
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "str",
+          "lineNumber": 158
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "str",
+          "lineNumber": 158
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "str",
+          "lineNumber": 158
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "wav.read",
+          "lineNumber": 160
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "wav.read",
+          "lineNumber": 161
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "fbank",
+          "lineNumber": 166
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "fbank",
+          "lineNumber": 167
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "np.sqrt",
+          "lineNumber": 169
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "plt.title",
+          "lineNumber": 171
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "plt.plot",
+          "lineNumber": 172
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "plt.show",
+          "lineNumber": 173
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "get_mel_scale",
+          "lineNumber": 176
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "mel2hz",
+          "lineNumber": 177
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "print",
+          "lineNumber": 179
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "print",
+          "lineNumber": 187
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "iir_design",
+          "lineNumber": 188
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "plot_frequency_respond",
+          "lineNumber": 190
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "print",
+          "lineNumber": 191
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "print",
+          "lineNumber": 192
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "int",
+          "lineNumber": 193
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "print",
+          "lineNumber": 194
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "np.zeros",
+          "lineNumber": 195
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "len",
+          "lineNumber": 195
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "range",
+          "lineNumber": 196
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "len",
+          "lineNumber": 196
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "bandpass_filter_iir",
+          "lineNumber": 197
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "b[i].copy",
+          "lineNumber": 197
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "a[i].copy",
+          "lineNumber": 197
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "print",
+          "lineNumber": 198
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "np.clip",
+          "lineNumber": 201
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "wav.write",
+          "lineNumber": 202
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "np.asarray",
+          "lineNumber": 202
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "wav.write",
+          "lineNumber": 203
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "np.asarray",
+          "lineNumber": 203
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "print",
+          "lineNumber": 204
+        },
+        {
+          "caller": "noise_suppressed_example",
+          "callee": "print",
+          "lineNumber": 205
+        },
+        {
+          "caller": "generate_data",
+          "callee": "os.listdir",
+          "lineNumber": 221
+        },
+        {
+          "caller": "generate_data",
+          "callee": "wav.read",
+          "lineNumber": 226
+        },
+        {
+          "caller": "generate_data",
+          "callee": "fbank",
+          "lineNumber": 231
+        },
+        {
+          "caller": "generate_data",
+          "callee": "np.random.uniform",
+          "lineNumber": 237
+        },
+        {
+          "caller": "generate_data",
+          "callee": "mfcc",
+          "lineNumber": 240
+        },
+        {
+          "caller": "generate_data",
+          "callee": "(total_eng > vad_threshold).astype",
+          "lineNumber": 245
+        },
+        {
+          "caller": "generate_data",
+          "callee": "int",
+          "lineNumber": 246
+        },
+        {
+          "caller": "generate_data",
+          "callee": "np.concatenate",
+          "lineNumber": 247
+        },
+        {
+          "caller": "generate_data",
+          "callee": "np.zeros",
+          "lineNumber": 247
+        },
+        {
+          "caller": "generate_data",
+          "callee": "np.ones",
+          "lineNumber": 247
+        },
+        {
+          "caller": "generate_data",
+          "callee": "np.convolve",
+          "lineNumber": 248
+        },
+        {
+          "caller": "generate_data",
+          "callee": "(v > 0).astype",
+          "lineNumber": 249
+        },
+        {
+          "caller": "generate_data",
+          "callee": "total_energy.append",
+          "lineNumber": 251
+        },
+        {
+          "caller": "generate_data",
+          "callee": "band_energy.append",
+          "lineNumber": 252
+        },
+        {
+          "caller": "generate_data",
+          "callee": "vad.append",
+          "lineNumber": 253
+        },
+        {
+          "caller": "generate_data",
+          "callee": "mfcc_data.append",
+          "lineNumber": 254
+        },
+        {
+          "caller": "generate_data",
+          "callee": "mfcc_feat.astype",
+          "lineNumber": 254
+        },
+        {
+          "caller": "generate_data",
+          "callee": "filename_label.append",
+          "lineNumber": 255
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 11,
+        "functionCount": 11,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/main.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 330,
+      "nonEmptyLines": 282,
+      "functions": [
+        {
+          "name": "my_crossentropy",
+          "startLine": 16,
+          "endLine": 17,
+          "params": [
+            "y_true",
+            "y_pred"
+          ]
+        },
+        {
+          "name": "mymask",
+          "startLine": 19,
+          "endLine": 20,
+          "params": [
+            "y_true"
+          ]
+        },
+        {
+          "name": "msse",
+          "startLine": 22,
+          "endLine": 23,
+          "params": [
+            "y_true",
+            "y_pred"
+          ]
+        },
+        {
+          "name": "mycost",
+          "startLine": 25,
+          "endLine": 26,
+          "params": [
+            "y_true",
+            "y_pred"
+          ]
+        },
+        {
+          "name": "my_accuracy",
+          "startLine": 28,
+          "endLine": 29,
+          "params": [
+            "y_true",
+            "y_pred"
+          ]
+        },
+        {
+          "name": "filter_voice",
+          "startLine": 32,
+          "endLine": 45,
+          "params": [
+            "sig",
+            "rate",
+            "gains",
+            "nband",
+            "lowfreq",
+            "highfreq"
+          ]
+        },
+        {
+          "name": "normalize",
+          "startLine": 47,
+          "endLine": 52,
+          "params": [
+            "data",
+            "n",
+            "quantize"
+          ]
+        },
+        {
+          "name": "voice_denoise",
+          "startLine": 54,
+          "endLine": 99,
+          "params": [
+            "sig",
+            "rate",
+            "model",
+            "timestamp_size",
+            "numcep",
+            "plot"
+          ]
+        },
+        {
+          "name": "get_diff_list",
+          "startLine": 102,
+          "endLine": 106,
+          "params": [
+            "data"
+          ]
+        },
+        {
+          "name": "train_simple",
+          "startLine": 119,
+          "endLine": 148,
+          "params": [
+            "x_train",
+            "y_train",
+            "vad_train",
+            "batch_size",
+            "epochs",
+            "model_name"
+          ]
+        },
+        {
+          "name": "train",
+          "startLine": 150,
+          "endLine": 217,
+          "params": [
+            "x_train",
+            "y_train",
+            "vad_train",
+            "batch_size",
+            "epochs",
+            "model_name"
+          ]
+        },
+        {
+          "name": "main",
+          "startLine": 219,
+          "endLine": 293,
+          "params": []
+        }
+      ],
+      "classes": [
+        {
+          "name": "reset_state_after_batch",
+          "startLine": 109,
+          "endLine": 117,
+          "methods": [
+            "on_batch_end"
+          ],
+          "properties": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "my_crossentropy",
+          "line": 16,
+          "isDefault": false
+        },
+        {
+          "name": "mymask",
+          "line": 19,
+          "isDefault": false
+        },
+        {
+          "name": "msse",
+          "line": 22,
+          "isDefault": false
+        },
+        {
+          "name": "mycost",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "my_accuracy",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "filter_voice",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "normalize",
+          "line": 47,
+          "isDefault": false
+        },
+        {
+          "name": "voice_denoise",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "get_diff_list",
+          "line": 102,
+          "isDefault": false
+        },
+        {
+          "name": "reset_state_after_batch",
+          "line": 109,
+          "isDefault": false
+        },
+        {
+          "name": "train_simple",
+          "line": 119,
+          "isDefault": false
+        },
+        {
+          "name": "train",
+          "line": 150,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 219,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "my_crossentropy",
+          "callee": "K.mean",
+          "lineNumber": 17
+        },
+        {
+          "caller": "my_crossentropy",
+          "callee": "K.abs",
+          "lineNumber": 17
+        },
+        {
+          "caller": "my_crossentropy",
+          "callee": "K.binary_crossentropy",
+          "lineNumber": 17
+        },
+        {
+          "caller": "mymask",
+          "callee": "K.minimum",
+          "lineNumber": 20
+        },
+        {
+          "caller": "msse",
+          "callee": "K.mean",
+          "lineNumber": 23
+        },
+        {
+          "caller": "msse",
+          "callee": "mymask",
+          "lineNumber": 23
+        },
+        {
+          "caller": "msse",
+          "callee": "K.square",
+          "lineNumber": 23
+        },
+        {
+          "caller": "msse",
+          "callee": "K.sqrt",
+          "lineNumber": 23
+        },
+        {
+          "caller": "msse",
+          "callee": "K.sqrt",
+          "lineNumber": 23
+        },
+        {
+          "caller": "mycost",
+          "callee": "K.mean",
+          "lineNumber": 26
+        },
+        {
+          "caller": "mycost",
+          "callee": "mymask",
+          "lineNumber": 26
+        },
+        {
+          "caller": "mycost",
+          "callee": "K.square",
+          "lineNumber": 26
+        },
+        {
+          "caller": "mycost",
+          "callee": "K.square",
+          "lineNumber": 26
+        },
+        {
+          "caller": "mycost",
+          "callee": "K.sqrt",
+          "lineNumber": 26
+        },
+        {
+          "caller": "mycost",
+          "callee": "K.sqrt",
+          "lineNumber": 26
+        },
+        {
+          "caller": "mycost",
+          "callee": "K.square",
+          "lineNumber": 26
+        },
+        {
+          "caller": "mycost",
+          "callee": "K.sqrt",
+          "lineNumber": 26
+        },
+        {
+          "caller": "mycost",
+          "callee": "K.sqrt",
+          "lineNumber": 26
+        },
+        {
+          "caller": "mycost",
+          "callee": "K.binary_crossentropy",
+          "lineNumber": 26
+        },
+        {
+          "caller": "my_accuracy",
+          "callee": "K.mean",
+          "lineNumber": 29
+        },
+        {
+          "caller": "my_accuracy",
+          "callee": "K.abs",
+          "lineNumber": 29
+        },
+        {
+          "caller": "my_accuracy",
+          "callee": "K.equal",
+          "lineNumber": 29
+        },
+        {
+          "caller": "my_accuracy",
+          "callee": "K.round",
+          "lineNumber": 29
+        },
+        {
+          "caller": "filter_voice",
+          "callee": "get_mel_scale",
+          "lineNumber": 34
+        },
+        {
+          "caller": "filter_voice",
+          "callee": "mel2hz",
+          "lineNumber": 35
+        },
+        {
+          "caller": "filter_voice",
+          "callee": "print",
+          "lineNumber": 37
+        },
+        {
+          "caller": "filter_voice",
+          "callee": "iir_design",
+          "lineNumber": 38
+        },
+        {
+          "caller": "filter_voice",
+          "callee": "int",
+          "lineNumber": 39
+        },
+        {
+          "caller": "filter_voice",
+          "callee": "np.zeros",
+          "lineNumber": 40
+        },
+        {
+          "caller": "filter_voice",
+          "callee": "len",
+          "lineNumber": 40
+        },
+        {
+          "caller": "filter_voice",
+          "callee": "range",
+          "lineNumber": 41
+        },
+        {
+          "caller": "filter_voice",
+          "callee": "len",
+          "lineNumber": 41
+        },
+        {
+          "caller": "filter_voice",
+          "callee": "bandpass_filter_iir",
+          "lineNumber": 42
+        },
+        {
+          "caller": "filter_voice",
+          "callee": "b[i].copy",
+          "lineNumber": 42
+        },
+        {
+          "caller": "filter_voice",
+          "callee": "a[i].copy",
+          "lineNumber": 42
+        },
+        {
+          "caller": "filter_voice",
+          "callee": "print",
+          "lineNumber": 43
+        },
+        {
+          "caller": "normalize",
+          "callee": "pow",
+          "lineNumber": 48
+        },
+        {
+          "caller": "normalize",
+          "callee": "np.clip",
+          "lineNumber": 49
+        },
+        {
+          "caller": "normalize",
+          "callee": "np.round",
+          "lineNumber": 51
+        },
+        {
+          "caller": "voice_denoise",
+          "callee": "mfcc",
+          "lineNumber": 57
+        },
+        {
+          "caller": "voice_denoise",
+          "callee": "mfcc_feat.astype",
+          "lineNumber": 59
+        },
+        {
+          "caller": "voice_denoise",
+          "callee": "np.diff",
+          "lineNumber": 62
+        },
+        {
+          "caller": "voice_denoise",
+          "callee": "np.concatenate",
+          "lineNumber": 63
+        },
+        {
+          "caller": "voice_denoise",
+          "callee": "np.diff",
+          "lineNumber": 64
+        },
+        {
+          "caller": "voice_denoise",
+          "callee": "np.concatenate",
+          "lineNumber": 65
+        },
+        {
+          "caller": "voice_denoise",
+          "callee": "np.concatenate",
+          "lineNumber": 70
+        },
+        {
+          "caller": "voice_denoise",
+          "callee": "normalize",
+          "lineNumber": 73
+        },
+        {
+          "caller": "voice_denoise",
+          "callee": "np.reshape",
+          "lineNumber": 78
+        },
+        {
+          "caller": "voice_denoise",
+          "callee": "model.predict",
+          "lineNumber": 80
+        },
+        {
+          "caller": "voice_denoise",
+          "callee": "type",
+          "lineNumber": 81
+        },
+        {
+          "caller": "voice_denoise",
+          "callee": "filter_voice",
+          "lineNumber": 89
+        },
+        {
+          "caller": "voice_denoise",
+          "callee": "range",
+          "lineNumber": 91
+        },
+        {
+          "caller": "voice_denoise",
+          "callee": "plt.plot",
+          "lineNumber": 92
+        },
+        {
+          "caller": "voice_denoise",
+          "callee": "str",
+          "lineNumber": 92
+        },
+        {
+          "caller": "voice_denoise",
+          "callee": "plt.plot",
+          "lineNumber": 94
+        },
+        {
+          "caller": "voice_denoise",
+          "callee": "plt.ylabel",
+          "lineNumber": 95
+        },
+        {
+          "caller": "voice_denoise",
+          "callee": "plt.xlabel",
+          "lineNumber": 96
+        },
+        {
+          "caller": "voice_denoise",
+          "callee": "plt.legend",
+          "lineNumber": 97
+        },
+        {
+          "caller": "voice_denoise",
+          "callee": "plt.show",
+          "lineNumber": 98
+        },
+        {
+          "caller": "get_diff_list",
+          "callee": "L.append",
+          "lineNumber": 105
+        },
+        {
+          "caller": "get_diff_list",
+          "callee": "np.concatenate",
+          "lineNumber": 105
+        },
+        {
+          "caller": "get_diff_list",
+          "callee": "np.diff",
+          "lineNumber": 105
+        },
+        {
+          "caller": "get_diff_list",
+          "callee": "np.array",
+          "lineNumber": 106
+        },
+        {
+          "caller": "on_batch_end",
+          "callee": "self.model.reset_states",
+          "lineNumber": 116
+        },
+        {
+          "caller": "train_simple",
+          "callee": "Input",
+          "lineNumber": 129
+        },
+        {
+          "caller": "train_simple",
+          "callee": "GRU",
+          "lineNumber": 131
+        },
+        {
+          "caller": "train_simple",
+          "callee": "GRU",
+          "lineNumber": 132
+        },
+        {
+          "caller": "train_simple",
+          "callee": "GRU",
+          "lineNumber": 133
+        },
+        {
+          "caller": "train_simple",
+          "callee": "Flatten",
+          "lineNumber": 134
+        },
+        {
+          "caller": "train_simple",
+          "callee": "Dense",
+          "lineNumber": 135
+        },
+        {
+          "caller": "train_simple",
+          "callee": "Activation",
+          "lineNumber": 136
+        },
+        {
+          "caller": "train_simple",
+          "callee": "Model",
+          "lineNumber": 138
+        },
+        {
+          "caller": "train_simple",
+          "callee": "model.compile",
+          "lineNumber": 139
+        },
+        {
+          "caller": "train_simple",
+          "callee": "model.summary",
+          "lineNumber": 140
+        },
+        {
+          "caller": "train_simple",
+          "callee": "model.fit",
+          "lineNumber": 141
+        },
+        {
+          "caller": "train_simple",
+          "callee": "reset_state_after_batch",
+          "lineNumber": 143
+        },
+        {
+          "caller": "train_simple",
+          "callee": "save_model",
+          "lineNumber": 145
+        },
+        {
+          "caller": "train_simple",
+          "callee": "tf.keras.backend.clear_session",
+          "lineNumber": 147
+        },
+        {
+          "caller": "train",
+          "callee": "Input",
+          "lineNumber": 157
+        },
+        {
+          "caller": "train",
+          "callee": "GRU",
+          "lineNumber": 163
+        },
+        {
+          "caller": "train",
+          "callee": "Dropout",
+          "lineNumber": 164
+        },
+        {
+          "caller": "train",
+          "callee": "GRU",
+          "lineNumber": 165
+        },
+        {
+          "caller": "train",
+          "callee": "Dropout",
+          "lineNumber": 166
+        },
+        {
+          "caller": "train",
+          "callee": "Flatten",
+          "lineNumber": 167
+        },
+        {
+          "caller": "train",
+          "callee": "Dropout",
+          "lineNumber": 168
+        },
+        {
+          "caller": "train",
+          "callee": "Dense",
+          "lineNumber": 169
+        },
+        {
+          "caller": "train",
+          "callee": "Activation",
+          "lineNumber": 170
+        },
+        {
+          "caller": "train",
+          "callee": "GRU",
+          "lineNumber": 173
+        },
+        {
+          "caller": "train",
+          "callee": "concatenate",
+          "lineNumber": 176
+        },
+        {
+          "caller": "train",
+          "callee": "GRU",
+          "lineNumber": 177
+        },
+        {
+          "caller": "train",
+          "callee": "Dropout",
+          "lineNumber": 178
+        },
+        {
+          "caller": "train",
+          "callee": "concatenate",
+          "lineNumber": 181
+        },
+        {
+          "caller": "train",
+          "callee": "GRU",
+          "lineNumber": 182
+        },
+        {
+          "caller": "train",
+          "callee": "Dropout",
+          "lineNumber": 183
+        },
+        {
+          "caller": "train",
+          "callee": "Flatten",
+          "lineNumber": 184
+        },
+        {
+          "caller": "train",
+          "callee": "Dense",
+          "lineNumber": 185
+        },
+        {
+          "caller": "train",
+          "callee": "Activation",
+          "lineNumber": 186
+        },
+        {
+          "caller": "train",
+          "callee": "Model",
+          "lineNumber": 204
+        },
+        {
+          "caller": "train",
+          "callee": "model.compile",
+          "lineNumber": 206
+        },
+        {
+          "caller": "train",
+          "callee": "model.summary",
+          "lineNumber": 207
+        },
+        {
+          "caller": "train",
+          "callee": "model.fit",
+          "lineNumber": 209
+        },
+        {
+          "caller": "train",
+          "callee": "reset_state_after_batch",
+          "lineNumber": 211
+        },
+        {
+          "caller": "train",
+          "callee": "save_model",
+          "lineNumber": 214
+        },
+        {
+          "caller": "train",
+          "callee": "tf.keras.backend.clear_session",
+          "lineNumber": 216
+        },
+        {
+          "caller": "main",
+          "callee": "np.load",
+          "lineNumber": 222
+        },
+        {
+          "caller": "main",
+          "callee": "Exception",
+          "lineNumber": 224
+        },
+        {
+          "caller": "main",
+          "callee": "get_diff_list",
+          "lineNumber": 233
+        },
+        {
+          "caller": "main",
+          "callee": "get_diff_list",
+          "lineNumber": 234
+        },
+        {
+          "caller": "main",
+          "callee": "get_diff_list",
+          "lineNumber": 235
+        },
+        {
+          "caller": "main",
+          "callee": "get_diff_list",
+          "lineNumber": 236
+        },
+        {
+          "caller": "main",
+          "callee": "np.concatenate",
+          "lineNumber": 239
+        },
+        {
+          "caller": "main",
+          "callee": "np.concatenate",
+          "lineNumber": 240
+        },
+        {
+          "caller": "main",
+          "callee": "np.concatenate",
+          "lineNumber": 241
+        },
+        {
+          "caller": "main",
+          "callee": "np.concatenate",
+          "lineNumber": 242
+        },
+        {
+          "caller": "main",
+          "callee": "np.concatenate",
+          "lineNumber": 243
+        },
+        {
+          "caller": "main",
+          "callee": "np.concatenate",
+          "lineNumber": 244
+        },
+        {
+          "caller": "main",
+          "callee": "np.concatenate",
+          "lineNumber": 245
+        },
+        {
+          "caller": "main",
+          "callee": "np.concatenate",
+          "lineNumber": 246
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 249
+        },
+        {
+          "caller": "main",
+          "callee": "noisy_mfcc.max",
+          "lineNumber": 249
+        },
+        {
+          "caller": "main",
+          "callee": "noisy_mfcc.min",
+          "lineNumber": 249
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 250
+        },
+        {
+          "caller": "main",
+          "callee": "noisy_mfcc_diff.max",
+          "lineNumber": 250
+        },
+        {
+          "caller": "main",
+          "callee": "noisy_mfcc_diff.min",
+          "lineNumber": 250
+        },
+        {
+          "caller": "main",
+          "callee": "len",
+          "lineNumber": 254
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 255
+        },
+        {
+          "caller": "main",
+          "callee": "np.copy",
+          "lineNumber": 258
+        },
+        {
+          "caller": "main",
+          "callee": "np.copy",
+          "lineNumber": 259
+        },
+        {
+          "caller": "main",
+          "callee": "np.copy",
+          "lineNumber": 260
+        },
+        {
+          "caller": "main",
+          "callee": "np.concatenate",
+          "lineNumber": 263
+        },
+        {
+          "caller": "main",
+          "callee": "normalize",
+          "lineNumber": 266
+        },
+        {
+          "caller": "main",
+          "callee": "np.copy",
+          "lineNumber": 271
+        },
+        {
+          "caller": "main",
+          "callee": "np.reshape",
+          "lineNumber": 272
+        },
+        {
+          "caller": "main",
+          "callee": "np.copy",
+          "lineNumber": 273
+        },
+        {
+          "caller": "main",
+          "callee": "np.reshape",
+          "lineNumber": 274
+        },
+        {
+          "caller": "main",
+          "callee": "np.copy(vad[:num_sequence * timestamp_size]).astype",
+          "lineNumber": 275
+        },
+        {
+          "caller": "main",
+          "callee": "np.copy",
+          "lineNumber": 275
+        },
+        {
+          "caller": "main",
+          "callee": "np.reshape",
+          "lineNumber": 276
+        },
+        {
+          "caller": "main",
+          "callee": "train",
+          "lineNumber": 279
+        },
+        {
+          "caller": "main",
+          "callee": "load_model",
+          "lineNumber": 283
+        },
+        {
+          "caller": "main",
+          "callee": "wav.read",
+          "lineNumber": 287
+        },
+        {
+          "caller": "main",
+          "callee": "voice_denoise",
+          "lineNumber": 288
+        },
+        {
+          "caller": "main",
+          "callee": "wav.write",
+          "lineNumber": 289
+        },
+        {
+          "caller": "main",
+          "callee": "np.asarray",
+          "lineNumber": 289
+        },
+        {
+          "caller": "main",
+          "callee": "generate_model",
+          "lineNumber": 292
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 13,
+        "functionCount": 12,
+        "classCount": 1
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/python_speech_features/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/python_speech_features/base.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 209,
+      "nonEmptyLines": 183,
+      "functions": [
+        {
+          "name": "calculate_nfft",
+          "startLine": 8,
+          "endLine": 23,
+          "params": [
+            "samplerate",
+            "winlen"
+          ]
+        },
+        {
+          "name": "mfcc",
+          "startLine": 25,
+          "endLine": 51,
+          "params": [
+            "signal",
+            "samplerate",
+            "winlen",
+            "winstep",
+            "numcep",
+            "nfilt",
+            "nfft",
+            "lowfreq",
+            "highfreq",
+            "preemph",
+            "ceplifter",
+            "appendEnergy",
+            "winfunc"
+          ]
+        },
+        {
+          "name": "fbank",
+          "startLine": 53,
+          "endLine": 81,
+          "params": [
+            "signal",
+            "samplerate",
+            "winlen",
+            "winstep",
+            "nfilt",
+            "nfft",
+            "lowfreq",
+            "highfreq",
+            "preemph",
+            "winfunc"
+          ]
+        },
+        {
+          "name": "logfbank",
+          "startLine": 83,
+          "endLine": 101,
+          "params": [
+            "signal",
+            "samplerate",
+            "winlen",
+            "winstep",
+            "nfilt",
+            "nfft",
+            "lowfreq",
+            "highfreq",
+            "preemph",
+            "winfunc"
+          ]
+        },
+        {
+          "name": "ssc",
+          "startLine": 103,
+          "endLine": 130,
+          "params": [
+            "signal",
+            "samplerate",
+            "winlen",
+            "winstep",
+            "nfilt",
+            "nfft",
+            "lowfreq",
+            "highfreq",
+            "preemph",
+            "winfunc"
+          ]
+        },
+        {
+          "name": "hz2mel",
+          "startLine": 132,
+          "endLine": 138,
+          "params": [
+            "hz"
+          ]
+        },
+        {
+          "name": "mel2hz",
+          "startLine": 140,
+          "endLine": 146,
+          "params": [
+            "mel"
+          ]
+        },
+        {
+          "name": "get_filterbanks",
+          "startLine": 148,
+          "endLine": 176,
+          "params": [
+            "nfilt",
+            "nfft",
+            "samplerate",
+            "lowfreq",
+            "highfreq"
+          ]
+        },
+        {
+          "name": "lifter",
+          "startLine": 178,
+          "endLine": 192,
+          "params": [
+            "cepstra",
+            "L"
+          ]
+        },
+        {
+          "name": "delta",
+          "startLine": 194,
+          "endLine": 209,
+          "params": [
+            "feat",
+            "N"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "calculate_nfft",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "mfcc",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "fbank",
+          "line": 53,
+          "isDefault": false
+        },
+        {
+          "name": "logfbank",
+          "line": 83,
+          "isDefault": false
+        },
+        {
+          "name": "ssc",
+          "line": 103,
+          "isDefault": false
+        },
+        {
+          "name": "hz2mel",
+          "line": 132,
+          "isDefault": false
+        },
+        {
+          "name": "mel2hz",
+          "line": 140,
+          "isDefault": false
+        },
+        {
+          "name": "get_filterbanks",
+          "line": 148,
+          "isDefault": false
+        },
+        {
+          "name": "lifter",
+          "line": 178,
+          "isDefault": false
+        },
+        {
+          "name": "delta",
+          "line": 194,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "mfcc",
+          "callee": "numpy.ones",
+          "lineNumber": 27
+        },
+        {
+          "caller": "mfcc",
+          "callee": "calculate_nfft",
+          "lineNumber": 45
+        },
+        {
+          "caller": "mfcc",
+          "callee": "fbank",
+          "lineNumber": 46
+        },
+        {
+          "caller": "mfcc",
+          "callee": "numpy.log",
+          "lineNumber": 47
+        },
+        {
+          "caller": "mfcc",
+          "callee": "dct",
+          "lineNumber": 48
+        },
+        {
+          "caller": "mfcc",
+          "callee": "lifter",
+          "lineNumber": 49
+        },
+        {
+          "caller": "mfcc",
+          "callee": "numpy.log",
+          "lineNumber": 50
+        },
+        {
+          "caller": "fbank",
+          "callee": "numpy.ones",
+          "lineNumber": 55
+        },
+        {
+          "caller": "fbank",
+          "callee": "sigproc.preemphasis",
+          "lineNumber": 72
+        },
+        {
+          "caller": "fbank",
+          "callee": "sigproc.framesig",
+          "lineNumber": 73
+        },
+        {
+          "caller": "fbank",
+          "callee": "sigproc.powspec",
+          "lineNumber": 74
+        },
+        {
+          "caller": "fbank",
+          "callee": "numpy.sum",
+          "lineNumber": 75
+        },
+        {
+          "caller": "fbank",
+          "callee": "numpy.where",
+          "lineNumber": 76
+        },
+        {
+          "caller": "fbank",
+          "callee": "numpy.finfo",
+          "lineNumber": 76
+        },
+        {
+          "caller": "fbank",
+          "callee": "get_filterbanks",
+          "lineNumber": 78
+        },
+        {
+          "caller": "fbank",
+          "callee": "numpy.dot",
+          "lineNumber": 79
+        },
+        {
+          "caller": "fbank",
+          "callee": "numpy.where",
+          "lineNumber": 80
+        },
+        {
+          "caller": "fbank",
+          "callee": "numpy.finfo",
+          "lineNumber": 80
+        },
+        {
+          "caller": "logfbank",
+          "callee": "numpy.ones",
+          "lineNumber": 85
+        },
+        {
+          "caller": "logfbank",
+          "callee": "fbank",
+          "lineNumber": 100
+        },
+        {
+          "caller": "logfbank",
+          "callee": "numpy.log",
+          "lineNumber": 101
+        },
+        {
+          "caller": "ssc",
+          "callee": "numpy.ones",
+          "lineNumber": 105
+        },
+        {
+          "caller": "ssc",
+          "callee": "sigproc.preemphasis",
+          "lineNumber": 121
+        },
+        {
+          "caller": "ssc",
+          "callee": "sigproc.framesig",
+          "lineNumber": 122
+        },
+        {
+          "caller": "ssc",
+          "callee": "sigproc.powspec",
+          "lineNumber": 123
+        },
+        {
+          "caller": "ssc",
+          "callee": "numpy.where",
+          "lineNumber": 124
+        },
+        {
+          "caller": "ssc",
+          "callee": "numpy.finfo",
+          "lineNumber": 124
+        },
+        {
+          "caller": "ssc",
+          "callee": "get_filterbanks",
+          "lineNumber": 126
+        },
+        {
+          "caller": "ssc",
+          "callee": "numpy.dot",
+          "lineNumber": 127
+        },
+        {
+          "caller": "ssc",
+          "callee": "numpy.tile",
+          "lineNumber": 128
+        },
+        {
+          "caller": "ssc",
+          "callee": "numpy.linspace",
+          "lineNumber": 128
+        },
+        {
+          "caller": "ssc",
+          "callee": "numpy.size",
+          "lineNumber": 128
+        },
+        {
+          "caller": "ssc",
+          "callee": "numpy.size",
+          "lineNumber": 128
+        },
+        {
+          "caller": "ssc",
+          "callee": "numpy.dot",
+          "lineNumber": 130
+        },
+        {
+          "caller": "hz2mel",
+          "callee": "numpy.log10",
+          "lineNumber": 138
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "hz2mel",
+          "lineNumber": 163
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "hz2mel",
+          "lineNumber": 164
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "numpy.linspace",
+          "lineNumber": 165
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "numpy.floor",
+          "lineNumber": 168
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "mel2hz",
+          "lineNumber": 168
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "numpy.zeros",
+          "lineNumber": 170
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "range",
+          "lineNumber": 171
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "range",
+          "lineNumber": 172
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "int",
+          "lineNumber": 172
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "int",
+          "lineNumber": 172
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "range",
+          "lineNumber": 174
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "int",
+          "lineNumber": 174
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "int",
+          "lineNumber": 174
+        },
+        {
+          "caller": "lifter",
+          "callee": "numpy.shape",
+          "lineNumber": 186
+        },
+        {
+          "caller": "lifter",
+          "callee": "numpy.arange",
+          "lineNumber": 187
+        },
+        {
+          "caller": "lifter",
+          "callee": "numpy.sin",
+          "lineNumber": 188
+        },
+        {
+          "caller": "delta",
+          "callee": "ValueError",
+          "lineNumber": 202
+        },
+        {
+          "caller": "delta",
+          "callee": "len",
+          "lineNumber": 203
+        },
+        {
+          "caller": "delta",
+          "callee": "sum",
+          "lineNumber": 204
+        },
+        {
+          "caller": "delta",
+          "callee": "range",
+          "lineNumber": 204
+        },
+        {
+          "caller": "delta",
+          "callee": "numpy.empty_like",
+          "lineNumber": 205
+        },
+        {
+          "caller": "delta",
+          "callee": "numpy.pad",
+          "lineNumber": 206
+        },
+        {
+          "caller": "delta",
+          "callee": "range",
+          "lineNumber": 207
+        },
+        {
+          "caller": "delta",
+          "callee": "numpy.dot",
+          "lineNumber": 208
+        },
+        {
+          "caller": "delta",
+          "callee": "numpy.arange",
+          "lineNumber": 208
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 10,
+        "functionCount": 10,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/python_speech_features/sigproc.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 141,
+      "nonEmptyLines": 110,
+      "functions": [
+        {
+          "name": "round_half_up",
+          "startLine": 10,
+          "endLine": 11,
+          "params": [
+            "number"
+          ]
+        },
+        {
+          "name": "rolling_window",
+          "startLine": 14,
+          "endLine": 18,
+          "params": [
+            "a",
+            "window",
+            "step"
+          ]
+        },
+        {
+          "name": "framesig",
+          "startLine": 21,
+          "endLine": 53,
+          "params": [
+            "sig",
+            "frame_len",
+            "frame_step",
+            "winfunc",
+            "stride_trick"
+          ]
+        },
+        {
+          "name": "deframesig",
+          "startLine": 56,
+          "endLine": 88,
+          "params": [
+            "frames",
+            "siglen",
+            "frame_len",
+            "frame_step",
+            "winfunc"
+          ]
+        },
+        {
+          "name": "magspec",
+          "startLine": 91,
+          "endLine": 103,
+          "params": [
+            "frames",
+            "NFFT"
+          ]
+        },
+        {
+          "name": "powspec",
+          "startLine": 106,
+          "endLine": 114,
+          "params": [
+            "frames",
+            "NFFT"
+          ]
+        },
+        {
+          "name": "logpowspec",
+          "startLine": 117,
+          "endLine": 131,
+          "params": [
+            "frames",
+            "NFFT",
+            "norm"
+          ]
+        },
+        {
+          "name": "preemphasis",
+          "startLine": 134,
+          "endLine": 141,
+          "params": [
+            "signal",
+            "coeff"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "round_half_up",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "rolling_window",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "framesig",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "deframesig",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "magspec",
+          "line": 91,
+          "isDefault": false
+        },
+        {
+          "name": "powspec",
+          "line": 106,
+          "isDefault": false
+        },
+        {
+          "name": "logpowspec",
+          "line": 117,
+          "isDefault": false
+        },
+        {
+          "name": "preemphasis",
+          "line": 134,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "round_half_up",
+          "callee": "int",
+          "lineNumber": 11
+        },
+        {
+          "caller": "round_half_up",
+          "callee": "decimal.Decimal(number).quantize",
+          "lineNumber": 11
+        },
+        {
+          "caller": "round_half_up",
+          "callee": "decimal.Decimal",
+          "lineNumber": 11
+        },
+        {
+          "caller": "round_half_up",
+          "callee": "decimal.Decimal",
+          "lineNumber": 11
+        },
+        {
+          "caller": "rolling_window",
+          "callee": "numpy.lib.stride_tricks.as_strided",
+          "lineNumber": 18
+        },
+        {
+          "caller": "framesig",
+          "callee": "numpy.ones",
+          "lineNumber": 21
+        },
+        {
+          "caller": "framesig",
+          "callee": "len",
+          "lineNumber": 31
+        },
+        {
+          "caller": "framesig",
+          "callee": "int",
+          "lineNumber": 32
+        },
+        {
+          "caller": "framesig",
+          "callee": "round_half_up",
+          "lineNumber": 32
+        },
+        {
+          "caller": "framesig",
+          "callee": "int",
+          "lineNumber": 33
+        },
+        {
+          "caller": "framesig",
+          "callee": "round_half_up",
+          "lineNumber": 33
+        },
+        {
+          "caller": "framesig",
+          "callee": "int",
+          "lineNumber": 37
+        },
+        {
+          "caller": "framesig",
+          "callee": "math.ceil",
+          "lineNumber": 37
+        },
+        {
+          "caller": "framesig",
+          "callee": "int",
+          "lineNumber": 39
+        },
+        {
+          "caller": "framesig",
+          "callee": "numpy.zeros",
+          "lineNumber": 41
+        },
+        {
+          "caller": "framesig",
+          "callee": "numpy.concatenate",
+          "lineNumber": 42
+        },
+        {
+          "caller": "framesig",
+          "callee": "winfunc",
+          "lineNumber": 44
+        },
+        {
+          "caller": "framesig",
+          "callee": "rolling_window",
+          "lineNumber": 45
+        },
+        {
+          "caller": "framesig",
+          "callee": "numpy.tile",
+          "lineNumber": 47
+        },
+        {
+          "caller": "framesig",
+          "callee": "numpy.arange",
+          "lineNumber": 47
+        },
+        {
+          "caller": "framesig",
+          "callee": "numpy.tile",
+          "lineNumber": 47
+        },
+        {
+          "caller": "framesig",
+          "callee": "numpy.arange",
+          "lineNumber": 48
+        },
+        {
+          "caller": "framesig",
+          "callee": "numpy.array",
+          "lineNumber": 49
+        },
+        {
+          "caller": "framesig",
+          "callee": "numpy.tile",
+          "lineNumber": 51
+        },
+        {
+          "caller": "framesig",
+          "callee": "winfunc",
+          "lineNumber": 51
+        },
+        {
+          "caller": "deframesig",
+          "callee": "numpy.ones",
+          "lineNumber": 56
+        },
+        {
+          "caller": "deframesig",
+          "callee": "round_half_up",
+          "lineNumber": 66
+        },
+        {
+          "caller": "deframesig",
+          "callee": "round_half_up",
+          "lineNumber": 67
+        },
+        {
+          "caller": "deframesig",
+          "callee": "numpy.shape",
+          "lineNumber": 68
+        },
+        {
+          "caller": "deframesig",
+          "callee": "numpy.shape",
+          "lineNumber": 69
+        },
+        {
+          "caller": "deframesig",
+          "callee": "numpy.tile",
+          "lineNumber": 71
+        },
+        {
+          "caller": "deframesig",
+          "callee": "numpy.arange",
+          "lineNumber": 71
+        },
+        {
+          "caller": "deframesig",
+          "callee": "numpy.tile",
+          "lineNumber": 71
+        },
+        {
+          "caller": "deframesig",
+          "callee": "numpy.arange",
+          "lineNumber": 72
+        },
+        {
+          "caller": "deframesig",
+          "callee": "numpy.array",
+          "lineNumber": 73
+        },
+        {
+          "caller": "deframesig",
+          "callee": "numpy.zeros",
+          "lineNumber": 78
+        },
+        {
+          "caller": "deframesig",
+          "callee": "numpy.zeros",
+          "lineNumber": 79
+        },
+        {
+          "caller": "deframesig",
+          "callee": "winfunc",
+          "lineNumber": 80
+        },
+        {
+          "caller": "deframesig",
+          "callee": "range",
+          "lineNumber": 82
+        },
+        {
+          "caller": "magspec",
+          "callee": "numpy.shape",
+          "lineNumber": 98
+        },
+        {
+          "caller": "magspec",
+          "callee": "logging.warn",
+          "lineNumber": 99
+        },
+        {
+          "caller": "magspec",
+          "callee": "numpy.shape",
+          "lineNumber": 101
+        },
+        {
+          "caller": "magspec",
+          "callee": "numpy.fft.rfft",
+          "lineNumber": 102
+        },
+        {
+          "caller": "magspec",
+          "callee": "numpy.absolute",
+          "lineNumber": 103
+        },
+        {
+          "caller": "powspec",
+          "callee": "numpy.square",
+          "lineNumber": 113
+        },
+        {
+          "caller": "powspec",
+          "callee": "magspec",
+          "lineNumber": 113
+        },
+        {
+          "caller": "logpowspec",
+          "callee": "powspec",
+          "lineNumber": 125
+        },
+        {
+          "caller": "logpowspec",
+          "callee": "numpy.log10",
+          "lineNumber": 127
+        },
+        {
+          "caller": "logpowspec",
+          "callee": "numpy.max",
+          "lineNumber": 129
+        },
+        {
+          "caller": "preemphasis",
+          "callee": "numpy.append",
+          "lineNumber": 141
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 8,
+        "functionCount": 8,
+        "classCount": 0
+      }
+    }
+  ]
+}

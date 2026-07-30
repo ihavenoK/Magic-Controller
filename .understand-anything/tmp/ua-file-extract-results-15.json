@@ -1,0 +1,1859 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "CNN/nnom-master/examples/mnist-cnn/mcu/main_cnn.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 62,
+      "nonEmptyLines": 54,
+      "functions": [
+        {
+          "name": "layer_callback",
+          "startLine": 23,
+          "endLine": 44,
+          "params": [
+            "m",
+            "layer"
+          ]
+        },
+        {
+          "name": "main",
+          "startLine": 46,
+          "endLine": 62,
+          "params": [
+            "argc",
+            "argv"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "layer_callback",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 46,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "layer_callback",
+          "callee": "snprintf",
+          "lineNumber": 30
+        },
+        {
+          "caller": "layer_callback",
+          "callee": "fopen",
+          "lineNumber": 33
+        },
+        {
+          "caller": "layer_callback",
+          "callee": "fwrite",
+          "lineNumber": 36
+        },
+        {
+          "caller": "layer_callback",
+          "callee": "shape_size",
+          "lineNumber": 36
+        },
+        {
+          "caller": "layer_callback",
+          "callee": "fclose",
+          "lineNumber": 37
+        },
+        {
+          "caller": "layer_callback",
+          "callee": "printf",
+          "lineNumber": 41
+        },
+        {
+          "caller": "main",
+          "callee": "nnom_model_create",
+          "lineNumber": 51
+        },
+        {
+          "caller": "main",
+          "callee": "model_set_callback",
+          "lineNumber": 52
+        },
+        {
+          "caller": "main",
+          "callee": "load",
+          "lineNumber": 54
+        },
+        {
+          "caller": "main",
+          "callee": "memcpy",
+          "lineNumber": 56
+        },
+        {
+          "caller": "main",
+          "callee": "model_run",
+          "lineNumber": 57
+        },
+        {
+          "caller": "main",
+          "callee": "model_delete",
+          "lineNumber": 59
+        },
+        {
+          "caller": "main",
+          "callee": "free",
+          "lineNumber": 60
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-cnn/mcu/weights_cnn.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 0,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-cnn/mnist-cnn.ipynb",
+      "language": "ipynb",
+      "fileCategory": "code",
+      "totalLines": 604,
+      "nonEmptyLines": 604,
+      "metrics": {}
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-cnn/README.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 7,
+      "nonEmptyLines": 4,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-cnn/SConstruct",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 40,
+      "nonEmptyLines": 28,
+      "metrics": {}
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-densenet/main.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 76,
+      "nonEmptyLines": 64,
+      "functions": [
+        {
+          "name": "layer_callback",
+          "startLine": 36,
+          "endLine": 57,
+          "params": [
+            "m",
+            "layer"
+          ]
+        },
+        {
+          "name": "main",
+          "startLine": 59,
+          "endLine": 76,
+          "params": [
+            "argc",
+            "argv"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "layer_callback",
+          "line": 36,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 59,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "layer_callback",
+          "callee": "snprintf",
+          "lineNumber": 43
+        },
+        {
+          "caller": "layer_callback",
+          "callee": "fopen",
+          "lineNumber": 46
+        },
+        {
+          "caller": "layer_callback",
+          "callee": "fwrite",
+          "lineNumber": 49
+        },
+        {
+          "caller": "layer_callback",
+          "callee": "tensor_size",
+          "lineNumber": 49
+        },
+        {
+          "caller": "layer_callback",
+          "callee": "fclose",
+          "lineNumber": 50
+        },
+        {
+          "caller": "layer_callback",
+          "callee": "printf",
+          "lineNumber": 54
+        },
+        {
+          "caller": "main",
+          "callee": "nnom_model_create",
+          "lineNumber": 64
+        },
+        {
+          "caller": "main",
+          "callee": "model_set_callback",
+          "lineNumber": 65
+        },
+        {
+          "caller": "main",
+          "callee": "load",
+          "lineNumber": 67
+        },
+        {
+          "caller": "main",
+          "callee": "memcpy",
+          "lineNumber": 69
+        },
+        {
+          "caller": "main",
+          "callee": "model_run",
+          "lineNumber": 70
+        },
+        {
+          "caller": "main",
+          "callee": "model_delete",
+          "lineNumber": 72
+        },
+        {
+          "caller": "main",
+          "callee": "free",
+          "lineNumber": 73
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-densenet/mnist_densenet.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 142,
+      "nonEmptyLines": 109,
+      "functions": [
+        {
+          "name": "dense_block",
+          "startLine": 28,
+          "endLine": 49,
+          "params": [
+            "x",
+            "k"
+          ]
+        },
+        {
+          "name": "train",
+          "startLine": 51,
+          "endLine": 98,
+          "params": [
+            "x_train",
+            "y_train",
+            "x_test",
+            "y_test",
+            "batch_size",
+            "epochs"
+          ]
+        },
+        {
+          "name": "main",
+          "startLine": 100,
+          "endLine": 139,
+          "params": [
+            "weights"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "dense_block",
+          "line": 28,
+          "isDefault": false
+        },
+        {
+          "name": "train",
+          "line": 51,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 100,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "dense_block",
+          "callee": "Conv2D",
+          "lineNumber": 29
+        },
+        {
+          "caller": "dense_block",
+          "callee": "BatchNormalization",
+          "lineNumber": 30
+        },
+        {
+          "caller": "dense_block",
+          "callee": "ReLU",
+          "lineNumber": 31
+        },
+        {
+          "caller": "dense_block",
+          "callee": "concatenate",
+          "lineNumber": 33
+        },
+        {
+          "caller": "dense_block",
+          "callee": "Conv2D",
+          "lineNumber": 34
+        },
+        {
+          "caller": "dense_block",
+          "callee": "BatchNormalization",
+          "lineNumber": 35
+        },
+        {
+          "caller": "dense_block",
+          "callee": "ReLU",
+          "lineNumber": 36
+        },
+        {
+          "caller": "dense_block",
+          "callee": "concatenate",
+          "lineNumber": 38
+        },
+        {
+          "caller": "dense_block",
+          "callee": "Conv2D",
+          "lineNumber": 39
+        },
+        {
+          "caller": "dense_block",
+          "callee": "BatchNormalization",
+          "lineNumber": 40
+        },
+        {
+          "caller": "dense_block",
+          "callee": "ReLU",
+          "lineNumber": 41
+        },
+        {
+          "caller": "dense_block",
+          "callee": "concatenate",
+          "lineNumber": 43
+        },
+        {
+          "caller": "dense_block",
+          "callee": "Conv2D",
+          "lineNumber": 44
+        },
+        {
+          "caller": "dense_block",
+          "callee": "BatchNormalization",
+          "lineNumber": 45
+        },
+        {
+          "caller": "dense_block",
+          "callee": "ReLU",
+          "lineNumber": 46
+        },
+        {
+          "caller": "dense_block",
+          "callee": "concatenate",
+          "lineNumber": 48
+        },
+        {
+          "caller": "train",
+          "callee": "Input",
+          "lineNumber": 53
+        },
+        {
+          "caller": "train",
+          "callee": "Conv2D",
+          "lineNumber": 54
+        },
+        {
+          "caller": "train",
+          "callee": "BatchNormalization",
+          "lineNumber": 55
+        },
+        {
+          "caller": "train",
+          "callee": "ReLU",
+          "lineNumber": 56
+        },
+        {
+          "caller": "train",
+          "callee": "MaxPool2D",
+          "lineNumber": 57
+        },
+        {
+          "caller": "train",
+          "callee": "dense_block",
+          "lineNumber": 60
+        },
+        {
+          "caller": "train",
+          "callee": "Conv2D",
+          "lineNumber": 63
+        },
+        {
+          "caller": "train",
+          "callee": "BatchNormalization",
+          "lineNumber": 64
+        },
+        {
+          "caller": "train",
+          "callee": "ReLU",
+          "lineNumber": 65
+        },
+        {
+          "caller": "train",
+          "callee": "MaxPool2D",
+          "lineNumber": 66
+        },
+        {
+          "caller": "train",
+          "callee": "dense_block",
+          "lineNumber": 69
+        },
+        {
+          "caller": "train",
+          "callee": "Conv2D",
+          "lineNumber": 71
+        },
+        {
+          "caller": "train",
+          "callee": "Dropout",
+          "lineNumber": 72
+        },
+        {
+          "caller": "train",
+          "callee": "Flatten",
+          "lineNumber": 73
+        },
+        {
+          "caller": "train",
+          "callee": "Dense",
+          "lineNumber": 74
+        },
+        {
+          "caller": "train",
+          "callee": "Softmax",
+          "lineNumber": 76
+        },
+        {
+          "caller": "train",
+          "callee": "Model",
+          "lineNumber": 78
+        },
+        {
+          "caller": "train",
+          "callee": "model.compile",
+          "lineNumber": 80
+        },
+        {
+          "caller": "train",
+          "callee": "model.summary",
+          "lineNumber": 84
+        },
+        {
+          "caller": "train",
+          "callee": "model.fit",
+          "lineNumber": 87
+        },
+        {
+          "caller": "train",
+          "callee": "save_model",
+          "lineNumber": 95
+        },
+        {
+          "caller": "train",
+          "callee": "tf.keras.backend.clear_session",
+          "lineNumber": 97
+        },
+        {
+          "caller": "main",
+          "callee": "mnist.load_data",
+          "lineNumber": 108
+        },
+        {
+          "caller": "main",
+          "callee": "x_train.reshape",
+          "lineNumber": 110
+        },
+        {
+          "caller": "main",
+          "callee": "x_test.reshape",
+          "lineNumber": 111
+        },
+        {
+          "caller": "main",
+          "callee": "tf.keras.cifar10.load_data",
+          "lineNumber": 113
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 115
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 116
+        },
+        {
+          "caller": "main",
+          "callee": "tf.keras.utils.to_categorical",
+          "lineNumber": 119
+        },
+        {
+          "caller": "main",
+          "callee": "tf.keras.utils.to_categorical",
+          "lineNumber": 120
+        },
+        {
+          "caller": "main",
+          "callee": "x_test.astype",
+          "lineNumber": 123
+        },
+        {
+          "caller": "main",
+          "callee": "x_train.astype",
+          "lineNumber": 124
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 125
+        },
+        {
+          "caller": "main",
+          "callee": "x_test.min",
+          "lineNumber": 125
+        },
+        {
+          "caller": "main",
+          "callee": "x_test.max",
+          "lineNumber": 125
+        },
+        {
+          "caller": "main",
+          "callee": "train",
+          "lineNumber": 128
+        },
+        {
+          "caller": "main",
+          "callee": "load_model",
+          "lineNumber": 131
+        },
+        {
+          "caller": "main",
+          "callee": "evaluate_model",
+          "lineNumber": 134
+        },
+        {
+          "caller": "main",
+          "callee": "generate_model",
+          "lineNumber": 137
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-densenet/mnist-densenet.ipynb",
+      "language": "ipynb",
+      "fileCategory": "code",
+      "totalLines": 773,
+      "nonEmptyLines": 773,
+      "metrics": {}
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-densenet/README.MD",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 91,
+      "nonEmptyLines": 64,
+      "sections": [
+        {
+          "heading": "MNIST DenseNet Example",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "DenseNet",
+          "level": 2,
+          "line": 5
+        },
+        {
+          "heading": "Build it manually",
+          "level": 2,
+          "line": 22
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 3
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-densenet/SConstruct",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 39,
+      "nonEmptyLines": 28,
+      "metrics": {}
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-densenet/weights.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 936,
+      "nonEmptyLines": 805,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-simple/image.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 36,
+      "nonEmptyLines": 23,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-simple/mnist_simple.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 163,
+      "nonEmptyLines": 111,
+      "functions": [
+        {
+          "name": "image_to_cfile",
+          "startLine": 25,
+          "endLine": 46,
+          "params": [
+            "data",
+            "label",
+            "num_of_image",
+            "file"
+          ]
+        },
+        {
+          "name": "train",
+          "startLine": 49,
+          "endLine": 90,
+          "params": [
+            "x_train",
+            "y_train",
+            "x_test",
+            "y_test",
+            "batch_size",
+            "epochs"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "image_to_cfile",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "train",
+          "line": 49,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "image_to_cfile",
+          "callee": "open",
+          "lineNumber": 26
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "range",
+          "lineNumber": 27
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "np.random.randint",
+          "lineNumber": 28
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "f.write",
+          "lineNumber": 29
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "np.round(data[selected]).flatten().tofile",
+          "lineNumber": 30
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "np.round(data[selected]).flatten",
+          "lineNumber": 30
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "np.round",
+          "lineNumber": 30
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "f.write",
+          "lineNumber": 31
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "f.write",
+          "lineNumber": 32
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "f.write",
+          "lineNumber": 33
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "f.write",
+          "lineNumber": 34
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "f.write",
+          "lineNumber": 36
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "data[0].flatten",
+          "lineNumber": 36
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "f.write",
+          "lineNumber": 37
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "range",
+          "lineNumber": 38
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "f.write",
+          "lineNumber": 39
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "f.write",
+          "lineNumber": 40
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "f.write",
+          "lineNumber": 42
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "f.write",
+          "lineNumber": 43
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "range",
+          "lineNumber": 44
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "f.write",
+          "lineNumber": 45
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "f.write",
+          "lineNumber": 46
+        },
+        {
+          "caller": "train",
+          "callee": "Input",
+          "lineNumber": 50
+        },
+        {
+          "caller": "train",
+          "callee": "Conv2D",
+          "lineNumber": 51
+        },
+        {
+          "caller": "train",
+          "callee": "ReLU",
+          "lineNumber": 52
+        },
+        {
+          "caller": "train",
+          "callee": "MaxPool2D",
+          "lineNumber": 53
+        },
+        {
+          "caller": "train",
+          "callee": "Conv2D",
+          "lineNumber": 55
+        },
+        {
+          "caller": "train",
+          "callee": "ReLU",
+          "lineNumber": 56
+        },
+        {
+          "caller": "train",
+          "callee": "MaxPool2D",
+          "lineNumber": 57
+        },
+        {
+          "caller": "train",
+          "callee": "Conv2D",
+          "lineNumber": 59
+        },
+        {
+          "caller": "train",
+          "callee": "ReLU",
+          "lineNumber": 60
+        },
+        {
+          "caller": "train",
+          "callee": "Dropout",
+          "lineNumber": 61
+        },
+        {
+          "caller": "train",
+          "callee": "MaxPool2D",
+          "lineNumber": 62
+        },
+        {
+          "caller": "train",
+          "callee": "Flatten",
+          "lineNumber": 64
+        },
+        {
+          "caller": "train",
+          "callee": "Dense",
+          "lineNumber": 65
+        },
+        {
+          "caller": "train",
+          "callee": "Dropout",
+          "lineNumber": 66
+        },
+        {
+          "caller": "train",
+          "callee": "ReLU",
+          "lineNumber": 68
+        },
+        {
+          "caller": "train",
+          "callee": "Dense",
+          "lineNumber": 69
+        },
+        {
+          "caller": "train",
+          "callee": "Softmax",
+          "lineNumber": 70
+        },
+        {
+          "caller": "train",
+          "callee": "Model",
+          "lineNumber": 72
+        },
+        {
+          "caller": "train",
+          "callee": "model.compile",
+          "lineNumber": 74
+        },
+        {
+          "caller": "train",
+          "callee": "model.summary",
+          "lineNumber": 77
+        },
+        {
+          "caller": "train",
+          "callee": "model.fit",
+          "lineNumber": 79
+        },
+        {
+          "caller": "train",
+          "callee": "save_model",
+          "lineNumber": 87
+        },
+        {
+          "caller": "train",
+          "callee": "tf.keras.backend.clear_session",
+          "lineNumber": 89
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-simple/README.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 5,
+      "nonEmptyLines": 2,
+      "sections": [
+        {
+          "heading": "MNIST-Simple",
+          "level": 1,
+          "line": 1
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 1
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-simple/weights.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 420,
+      "nonEmptyLines": 359,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/octave-conv/image.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 36,
+      "nonEmptyLines": 23,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/octave-conv/main.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 223,
+      "nonEmptyLines": 170,
+      "functions": [
+        {
+          "name": "us_timer_enable",
+          "startLine": 31,
+          "endLine": 41,
+          "params": []
+        },
+        {
+          "name": "us_timer_get",
+          "startLine": 43,
+          "endLine": 46,
+          "params": []
+        },
+        {
+          "name": "main",
+          "startLine": 50,
+          "endLine": 62,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "us_timer_enable",
+          "line": 31,
+          "isDefault": false
+        },
+        {
+          "name": "us_timer_get",
+          "line": 43,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 50,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "us_timer_enable",
+          "callee": "__TIM2_CLK_ENABLE",
+          "lineNumber": 33
+        },
+        {
+          "caller": "us_timer_enable",
+          "callee": "HAL_TIM_Base_Init",
+          "lineNumber": 39
+        },
+        {
+          "caller": "us_timer_enable",
+          "callee": "HAL_TIM_Base_Start",
+          "lineNumber": 40
+        },
+        {
+          "caller": "us_timer_get",
+          "callee": "__HAL_TIM_GET_COUNTER",
+          "lineNumber": 45
+        },
+        {
+          "caller": "main",
+          "callee": "rt_thread_delay",
+          "lineNumber": 52
+        },
+        {
+          "caller": "main",
+          "callee": "us_timer_enable",
+          "lineNumber": 55
+        },
+        {
+          "caller": "main",
+          "callee": "nnom_model_create",
+          "lineNumber": 57
+        },
+        {
+          "caller": "main",
+          "callee": "model_run",
+          "lineNumber": 60
+        },
+        {
+          "caller": "nn_stat",
+          "callee": "model_stat",
+          "lineNumber": 70
+        },
+        {
+          "caller": "nn_stat",
+          "callee": "rt_kprintf",
+          "lineNumber": 71
+        },
+        {
+          "caller": "nn_stat",
+          "callee": "nnom_mem_stat",
+          "lineNumber": 71
+        },
+        {
+          "caller": "ymodem_on_begin",
+          "callee": "rt_strlen",
+          "lineNumber": 103
+        },
+        {
+          "caller": "ymodem_on_begin",
+          "callee": "atol",
+          "lineNumber": 104
+        },
+        {
+          "caller": "ymodem_on_begin",
+          "callee": "memset",
+          "lineNumber": 112
+        },
+        {
+          "caller": "ymodem_on_data",
+          "callee": "rt_ringbuffer_put",
+          "lineNumber": 123
+        },
+        {
+          "caller": "ymodem_on_data",
+          "callee": "rt_ringbuffer_data_len",
+          "lineNumber": 128
+        },
+        {
+          "caller": "ymodem_on_data",
+          "callee": "rt_ringbuffer_get",
+          "lineNumber": 131
+        },
+        {
+          "caller": "ymodem_on_data",
+          "callee": "rt_ringbuffer_data_len",
+          "lineNumber": 136
+        },
+        {
+          "caller": "ymodem_on_data",
+          "callee": "rt_ringbuffer_get",
+          "lineNumber": 142
+        },
+        {
+          "caller": "ymodem_on_data",
+          "callee": "prediction_run",
+          "lineNumber": 145
+        },
+        {
+          "caller": "predict",
+          "callee": "rt_kprintf",
+          "lineNumber": 162
+        },
+        {
+          "caller": "predict",
+          "callee": "us_timer_enable",
+          "lineNumber": 165
+        },
+        {
+          "caller": "predict",
+          "callee": "rt_ringbuffer_create",
+          "lineNumber": 167
+        },
+        {
+          "caller": "predict",
+          "callee": "prediction_delete",
+          "lineNumber": 171
+        },
+        {
+          "caller": "predict",
+          "callee": "prediction_create",
+          "lineNumber": 173
+        },
+        {
+          "caller": "predict",
+          "callee": "rym_recv_on_device",
+          "lineNumber": 177
+        },
+        {
+          "caller": "predict",
+          "callee": "rt_console_get_device",
+          "lineNumber": 177
+        },
+        {
+          "caller": "predict",
+          "callee": "rt_thread_delay",
+          "lineNumber": 180
+        },
+        {
+          "caller": "predict",
+          "callee": "rt_kprintf",
+          "lineNumber": 181
+        },
+        {
+          "caller": "predict",
+          "callee": "rt_thread_delay",
+          "lineNumber": 185
+        },
+        {
+          "caller": "predict",
+          "callee": "rt_kprintf",
+          "lineNumber": 186
+        },
+        {
+          "caller": "predict",
+          "callee": "prediction_end",
+          "lineNumber": 189
+        },
+        {
+          "caller": "predict",
+          "callee": "prediction_summary",
+          "lineNumber": 191
+        },
+        {
+          "caller": "predict",
+          "callee": "rt_ringbuffer_destroy",
+          "lineNumber": 194
+        },
+        {
+          "caller": "matrix",
+          "callee": "prediction_matrix",
+          "lineNumber": 205
+        },
+        {
+          "caller": "reboot",
+          "callee": "printf",
+          "lineNumber": 212
+        },
+        {
+          "caller": "reboot",
+          "callee": "rt_thread_delay",
+          "lineNumber": 213
+        },
+        {
+          "caller": "reboot",
+          "callee": "NVIC_SystemReset",
+          "lineNumber": 214
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/octave-conv/mnist_octaveconv.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 201,
+      "nonEmptyLines": 137,
+      "functions": [
+        {
+          "name": "image_to_cfile",
+          "startLine": 25,
+          "endLine": 47,
+          "params": [
+            "data",
+            "label",
+            "num_of_image",
+            "file"
+          ]
+        },
+        {
+          "name": "octave_conv2d",
+          "startLine": 50,
+          "endLine": 75,
+          "params": [
+            "xh",
+            "xl",
+            "ch"
+          ]
+        },
+        {
+          "name": "train",
+          "startLine": 77,
+          "endLine": 128,
+          "params": [
+            "x_train",
+            "y_train",
+            "x_test",
+            "y_test",
+            "batch_size",
+            "epochs"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "image_to_cfile",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "octave_conv2d",
+          "line": 50,
+          "isDefault": false
+        },
+        {
+          "name": "train",
+          "line": 77,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "image_to_cfile",
+          "callee": "open",
+          "lineNumber": 27
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "range",
+          "lineNumber": 28
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "np.random.randint",
+          "lineNumber": 29
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "f.write",
+          "lineNumber": 30
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "np.round(data[selected]).flatten().tofile",
+          "lineNumber": 31
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "np.round(data[selected]).flatten",
+          "lineNumber": 31
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "np.round",
+          "lineNumber": 31
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "f.write",
+          "lineNumber": 32
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "f.write",
+          "lineNumber": 33
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "f.write",
+          "lineNumber": 34
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "f.write",
+          "lineNumber": 35
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "f.write",
+          "lineNumber": 37
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "data[0].flatten",
+          "lineNumber": 37
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "f.write",
+          "lineNumber": 38
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "range",
+          "lineNumber": 39
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "f.write",
+          "lineNumber": 40
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "f.write",
+          "lineNumber": 41
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "f.write",
+          "lineNumber": 43
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "f.write",
+          "lineNumber": 44
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "range",
+          "lineNumber": 45
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "f.write",
+          "lineNumber": 46
+        },
+        {
+          "caller": "image_to_cfile",
+          "callee": "f.write",
+          "lineNumber": 47
+        },
+        {
+          "caller": "octave_conv2d",
+          "callee": "Conv2D",
+          "lineNumber": 56
+        },
+        {
+          "caller": "octave_conv2d",
+          "callee": "Conv2D",
+          "lineNumber": 59
+        },
+        {
+          "caller": "octave_conv2d",
+          "callee": "Conv2D",
+          "lineNumber": 62
+        },
+        {
+          "caller": "octave_conv2d",
+          "callee": "UpSampling2D",
+          "lineNumber": 63
+        },
+        {
+          "caller": "octave_conv2d",
+          "callee": "Conv2D",
+          "lineNumber": 66
+        },
+        {
+          "caller": "octave_conv2d",
+          "callee": "MaxPool2D",
+          "lineNumber": 67
+        },
+        {
+          "caller": "octave_conv2d",
+          "callee": "add",
+          "lineNumber": 72
+        },
+        {
+          "caller": "octave_conv2d",
+          "callee": "add",
+          "lineNumber": 73
+        },
+        {
+          "caller": "train",
+          "callee": "Input",
+          "lineNumber": 79
+        },
+        {
+          "caller": "train",
+          "callee": "Conv2D",
+          "lineNumber": 80
+        },
+        {
+          "caller": "train",
+          "callee": "ReLU",
+          "lineNumber": 81
+        },
+        {
+          "caller": "train",
+          "callee": "MaxPool2D",
+          "lineNumber": 82
+        },
+        {
+          "caller": "train",
+          "callee": "octave_conv2d",
+          "lineNumber": 85
+        },
+        {
+          "caller": "train",
+          "callee": "MaxPool2D",
+          "lineNumber": 88
+        },
+        {
+          "caller": "train",
+          "callee": "MaxPool2D",
+          "lineNumber": 89
+        },
+        {
+          "caller": "train",
+          "callee": "octave_conv2d",
+          "lineNumber": 92
+        },
+        {
+          "caller": "train",
+          "callee": "MaxPool2D",
+          "lineNumber": 95
+        },
+        {
+          "caller": "train",
+          "callee": "concatenate",
+          "lineNumber": 97
+        },
+        {
+          "caller": "train",
+          "callee": "Conv2D",
+          "lineNumber": 100
+        },
+        {
+          "caller": "train",
+          "callee": "Flatten",
+          "lineNumber": 102
+        },
+        {
+          "caller": "train",
+          "callee": "Dense",
+          "lineNumber": 103
+        },
+        {
+          "caller": "train",
+          "callee": "Dropout",
+          "lineNumber": 104
+        },
+        {
+          "caller": "train",
+          "callee": "ReLU",
+          "lineNumber": 106
+        },
+        {
+          "caller": "train",
+          "callee": "Dense",
+          "lineNumber": 107
+        },
+        {
+          "caller": "train",
+          "callee": "Softmax",
+          "lineNumber": 108
+        },
+        {
+          "caller": "train",
+          "callee": "Model",
+          "lineNumber": 110
+        },
+        {
+          "caller": "train",
+          "callee": "model.compile",
+          "lineNumber": 112
+        },
+        {
+          "caller": "train",
+          "callee": "model.summary",
+          "lineNumber": 116
+        },
+        {
+          "caller": "train",
+          "callee": "model.fit",
+          "lineNumber": 117
+        },
+        {
+          "caller": "train",
+          "callee": "save_model",
+          "lineNumber": 125
+        },
+        {
+          "caller": "train",
+          "callee": "tf.keras.backend.clear_session",
+          "lineNumber": 127
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/octave-conv/README.MD",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 54,
+      "nonEmptyLines": 36,
+      "sections": [
+        {
+          "heading": "Octave Convolution example",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Octave Convolution",
+          "level": 2,
+          "line": 7
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 2
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/octave-conv/weights.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 940,
+      "nonEmptyLines": 806,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/README.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 41,
+      "nonEmptyLines": 26,
+      "sections": [
+        {
+          "heading": "What we have",
+          "level": 2,
+          "line": 2
+        },
+        {
+          "heading": "Recommendations",
+          "level": 2,
+          "line": 23
+        },
+        {
+          "heading": "Environment",
+          "level": 2,
+          "line": 34
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 3
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/README_CN.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 300,
+      "nonEmptyLines": 208,
+      "sections": [
+        {
+          "heading": "单麦克风实时神经网络（RNN）降噪Demo - 单片机",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "一些背景知识",
+          "level": 1,
+          "line": 23
+        },
+        {
+          "heading": "如何用神经网络进行语音降噪？",
+          "level": 2,
+          "line": 25
+        },
+        {
+          "heading": "运行步骤",
+          "level": 1,
+          "line": 43
+        },
+        {
+          "heading": "1.下载语音数据集",
+          "level": 2,
+          "line": 45
+        },
+        {
+          "heading": "2. 生成训练数据集",
+          "level": 2,
+          "line": 70
+        },
+        {
+          "heading": "3. 训练模型",
+          "level": 2,
+          "line": 82
+        },
+        {
+          "heading": "4. RNN 在 NNoM 上部署",
+          "level": 2,
+          "line": 92
+        },
+        {
+          "heading": "以下是一大波细节讲解",
+          "level": 1,
+          "line": 118
+        },
+        {
+          "heading": "关于训练数据",
+          "level": 2,
+          "line": 122
+        },
+        {
+          "heading": "关于 Gains 和 VAD",
+          "level": 2,
+          "line": 136
+        },
+        {
+          "heading": "关于均衡器",
+          "level": 2,
+          "line": 145
+        },
+        {
+          "heading": "关于RNN模型的结构",
+          "level": 2,
+          "line": 157
+        },
+        {
+          "heading": "MCU 例子",
+          "level": 2,
+          "line": 174
+        },
+        {
+          "heading": "MCU 上的性能测试",
+          "level": 2,
+          "line": 188
+        },
+        {
+          "heading": "模型编译log",
+          "level": 2,
+          "line": 238
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 16
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/README.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 290,
+      "nonEmptyLines": 187,
+      "sections": [
+        {
+          "heading": "Speech Noise Suppression Example",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "A few key points before you start",
+          "level": 1,
+          "line": 22
+        },
+        {
+          "heading": "How does noise suppression works with Neural Network?",
+          "level": 2,
+          "line": 24
+        },
+        {
+          "heading": "Step by step Guide",
+          "level": 1,
+          "line": 37
+        },
+        {
+          "heading": "1. Get the Noisy Speech",
+          "level": 2,
+          "line": 39
+        },
+        {
+          "heading": "2. Generate the dataset",
+          "level": 2,
+          "line": 59
+        },
+        {
+          "heading": "3. Training",
+          "level": 2,
+          "line": 70
+        },
+        {
+          "heading": "4. Inference using NNoM",
+          "level": 2,
+          "line": 80
+        },
+        {
+          "heading": "Further details",
+          "level": 1,
+          "line": 109
+        },
+        {
+          "heading": "Training data",
+          "level": 2,
+          "line": 113
+        },
+        {
+          "heading": "Gains and Voice Activity Detection",
+          "level": 2,
+          "line": 125
+        },
+        {
+          "heading": "Equalizer",
+          "level": 2,
+          "line": 131
+        },
+        {
+          "heading": "Model structure",
+          "level": 2,
+          "line": 140
+        },
+        {
+          "heading": "MCU examples",
+          "level": 2,
+          "line": 153
+        },
+        {
+          "heading": "Performance",
+          "level": 2,
+          "line": 167
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/rnndenoise",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 2303,
+      "nonEmptyLines": 2221,
+      "metrics": {}
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/SConstruct",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 45,
+      "nonEmptyLines": 33,
+      "metrics": {}
+    }
+  ]
+}

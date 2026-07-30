@@ -1,0 +1,182 @@
+{
+  "projectRoot": "D:/32/cyberrypotter",
+  "batchFiles": [
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_reshape.h",
+      "language": "c",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_rnn.h",
+      "language": "c",
+      "sizeLines": 85,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_simple_cell.h",
+      "language": "c",
+      "sizeLines": 86,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_softmax.h",
+      "language": "c",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_sumpool.h",
+      "language": "c",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_upsample.h",
+      "language": "c",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_zero_padding.h",
+      "language": "c",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/nnom_layers.h",
+      "language": "c",
+      "sizeLines": 194,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/nnom_local.h",
+      "language": "c",
+      "sizeLines": 974,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/nnom_tensor.h",
+      "language": "c",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/nnom_utils.h",
+      "language": "c",
+      "sizeLines": 91,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/nnom.h",
+      "language": "c",
+      "sizeLines": 415,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/port/nnom_port.h",
+      "language": "c",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/backends/nnom_local_q15.c",
+      "language": "c",
+      "sizeLines": 1602,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/backends/nnom_local.c",
+      "language": "c",
+      "sizeLines": 1689,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/core/nnom_layers.c",
+      "language": "c",
+      "sizeLines": 83,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/core/nnom_tensor.c",
+      "language": "c",
+      "sizeLines": 245,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/core/nnom_utils.c",
+      "language": "c",
+      "sizeLines": 417,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/core/nnom.c",
+      "language": "c",
+      "sizeLines": 1110,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_activation.c",
+      "language": "c",
+      "sizeLines": 387,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_avgpool.c",
+      "language": "c",
+      "sizeLines": 167,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_baselayer.c",
+      "language": "c",
+      "sizeLines": 90,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_concat.c",
+      "language": "c",
+      "sizeLines": 223,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_conv2d_trans.c",
+      "language": "c",
+      "sizeLines": 131,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_conv2d.c",
+      "language": "c",
+      "sizeLines": 434,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "CNN/nnom_lib/inc/layers/nnom_reshape.h": [],
+    "CNN/nnom_lib/inc/layers/nnom_rnn.h": [],
+    "CNN/nnom_lib/inc/layers/nnom_simple_cell.h": [],
+    "CNN/nnom_lib/inc/layers/nnom_softmax.h": [],
+    "CNN/nnom_lib/inc/layers/nnom_sumpool.h": [],
+    "CNN/nnom_lib/inc/layers/nnom_upsample.h": [],
+    "CNN/nnom_lib/inc/layers/nnom_zero_padding.h": [],
+    "CNN/nnom_lib/inc/nnom_layers.h": [],
+    "CNN/nnom_lib/inc/nnom_local.h": [],
+    "CNN/nnom_lib/inc/nnom_tensor.h": [],
+    "CNN/nnom_lib/inc/nnom_utils.h": [],
+    "CNN/nnom_lib/inc/nnom.h": [],
+    "CNN/nnom_lib/port/nnom_port.h": [],
+    "CNN/nnom_lib/src/backends/nnom_local_q15.c": [],
+    "CNN/nnom_lib/src/backends/nnom_local.c": [],
+    "CNN/nnom_lib/src/core/nnom_layers.c": [],
+    "CNN/nnom_lib/src/core/nnom_tensor.c": [],
+    "CNN/nnom_lib/src/core/nnom_utils.c": [],
+    "CNN/nnom_lib/src/core/nnom.c": [],
+    "CNN/nnom_lib/src/layers/nnom_activation.c": [],
+    "CNN/nnom_lib/src/layers/nnom_avgpool.c": [],
+    "CNN/nnom_lib/src/layers/nnom_baselayer.c": [],
+    "CNN/nnom_lib/src/layers/nnom_concat.c": [],
+    "CNN/nnom_lib/src/layers/nnom_conv2d_trans.c": [],
+    "CNN/nnom_lib/src/layers/nnom_conv2d.c": []
+  }
+}

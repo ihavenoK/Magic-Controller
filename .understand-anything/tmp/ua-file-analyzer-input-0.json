@@ -1,0 +1,67 @@
+{
+  "projectRoot": "D:/32/cyberrypotter",
+  "batchFiles": [
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/denoise_weights.h",
+      "language": "c",
+      "sizeLines": 630,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/equalizer_coeff.h",
+      "language": "c",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/main.c",
+      "language": "c",
+      "sizeLines": 293,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/main_arm.c",
+      "language": "c",
+      "sizeLines": 438,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/mfcc.c",
+      "language": "c",
+      "sizeLines": 356,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/mfcc.h",
+      "language": "c",
+      "sizeLines": 84,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/wav.h",
+      "language": "c",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "CNN/nnom-master/examples/rnn-denoise/denoise_weights.h": [],
+    "CNN/nnom-master/examples/rnn-denoise/equalizer_coeff.h": [],
+    "CNN/nnom-master/examples/rnn-denoise/main.c": [
+      "CNN/nnom-master/examples/rnn-denoise/denoise_weights.h",
+      "CNN/nnom-master/examples/rnn-denoise/equalizer_coeff.h",
+      "CNN/nnom-master/examples/rnn-denoise/mfcc.h",
+      "CNN/nnom-master/examples/rnn-denoise/wav.h"
+    ],
+    "CNN/nnom-master/examples/rnn-denoise/main_arm.c": [
+      "CNN/nnom-master/examples/rnn-denoise/denoise_weights.h",
+      "CNN/nnom-master/examples/rnn-denoise/equalizer_coeff.h",
+      "CNN/nnom-master/examples/rnn-denoise/mfcc.h"
+    ],
+    "CNN/nnom-master/examples/rnn-denoise/mfcc.c": [
+      "CNN/nnom-master/examples/rnn-denoise/mfcc.h"
+    ],
+    "CNN/nnom-master/examples/rnn-denoise/mfcc.h": [],
+    "CNN/nnom-master/examples/rnn-denoise/wav.h": []
+  }
+}

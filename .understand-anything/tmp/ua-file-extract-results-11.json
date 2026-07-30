@@ -1,0 +1,114 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 132,
+      "nonEmptyLines": 75,
+      "sections": [
+        {
+          "heading": "关于项目",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "9月7日更新：",
+          "level": 4,
+          "line": 3
+        },
+        {
+          "heading": "8月2日更新：",
+          "level": 4,
+          "line": 8
+        },
+        {
+          "heading": "这个项目是什么",
+          "level": 3,
+          "line": 16
+        },
+        {
+          "heading": "项目视频教程：[Bilibili](https://www.bilibili.com/video/BV13E421w7PY/)",
+          "level": 5,
+          "line": 35
+        },
+        {
+          "heading": "关于完整魔杖",
+          "level": 3,
+          "line": 46
+        },
+        {
+          "heading": "硬件需求",
+          "level": 1,
+          "line": 51
+        },
+        {
+          "heading": "如果想先尝试我已经训练好的模型，按照上方的原理图连接好你的单片机，打开keil进行烧录你就可以开始使用这个项目了",
+          "level": 5,
+          "line": 59
+        },
+        {
+          "heading": "关于法术",
+          "level": 1,
+          "line": 63
+        },
+        {
+          "heading": "环境配置",
+          "level": 1,
+          "line": 67
+        },
+        {
+          "heading": "Python环境：",
+          "level": 4,
+          "line": 69
+        },
+        {
+          "heading": "需要使用的库的下载链接：(如果你无法使用keil正常安装以下包，可以从链接中下载安装）请选择下方指定的版本下载并安装",
+          "level": 4,
+          "line": 97
+        },
+        {
+          "heading": "可能存在的问题",
+          "level": 4,
+          "line": 107
+        },
+        {
+          "heading": "如何训练",
+          "level": 1,
+          "line": 120
+        },
+        {
+          "heading": "如何继续开发",
+          "level": 1,
+          "line": 130
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 15
+      }
+    },
+    {
+      "path": "keilkill.bat",
+      "language": "batch",
+      "fileCategory": "script",
+      "totalLines": 27,
+      "nonEmptyLines": 26,
+      "metrics": {}
+    },
+    {
+      "path": "run_agy.bat",
+      "language": "batch",
+      "fileCategory": "script",
+      "totalLines": 2,
+      "nonEmptyLines": 2,
+      "metrics": {}
+    }
+  ]
+}

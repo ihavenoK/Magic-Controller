@@ -1,0 +1,623 @@
+{
+  "nodes": [
+    {
+      "id": "pipeline:CNN/nnom-master/.github/workflows/tests.yaml",
+      "type": "pipeline",
+      "name": "tests.yaml",
+      "filePath": "CNN/nnom-master/.github/workflows/tests.yaml",
+      "summary": "GitHub Actions 工作流，用于触发 NNoM 项目的代码自动化测试。",
+      "tags": ["ci-cd", "github-actions", "workflow", "automation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:CNN/nnom-master/examples/auto_test/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "CNN/nnom-master/examples/auto_test/README.md",
+      "summary": "介绍如何在 PC 上运行 NNoM 自动测试的指南，涵盖环境搭建、运行方法和日志解析。",
+      "tags": ["documentation", "testing-guide", "getting-started"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:CNN/nnom-master/examples/auto_test/SConstruct",
+      "type": "file",
+      "name": "SConstruct",
+      "filePath": "CNN/nnom-master/examples/auto_test/SConstruct",
+      "summary": "SCons 构建脚本，用于编译 PC 环境下的 NNoM 自动测试程序。",
+      "tags": ["build-system", "scons", "compilation"],
+      "complexity": "simple",
+      "languageNotes": "基于 Python 的 SCons 构建工具脚本。"
+    },
+    {
+      "id": "file:CNN/nnom-master/examples/auto_test/main.c",
+      "type": "file",
+      "name": "main.c",
+      "filePath": "CNN/nnom-master/examples/auto_test/main.c",
+      "summary": "PC 端 NNoM 自动化测试的 C 语言主体程序，负责加载测试数据并运行模型预测。",
+      "tags": ["entry-point", "testing", "evaluation"],
+      "complexity": "moderate",
+      "languageNotes": "标准 C 语言程序，使用动态分配内存和结构回调机制。"
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/auto_test/main.c:callback",
+      "type": "function",
+      "name": "callback",
+      "summary": "在推理每个层结束时触发的回调函数，用于记录调试日志或打印输出。",
+      "tags": ["callback", "debug-logging"]
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/auto_test/main.c:main",
+      "type": "function",
+      "name": "main",
+      "summary": "测试程序入口，加载经过量化的测试权重，依次加载数据并计算结果精度。",
+      "tags": ["entry-point", "model-execution"]
+    },
+    {
+      "id": "file:CNN/nnom-master/examples/auto_test/main.py",
+      "type": "file",
+      "name": "main.py",
+      "filePath": "CNN/nnom-master/examples/auto_test/main.py",
+      "summary": "自动化测试的 Python 脚本，使用 Keras 训练测试模型并生成 C 头文件及二进制测试数据。",
+      "tags": ["testing", "model-generation", "training", "keras"],
+      "complexity": "moderate",
+      "languageNotes": "利用 TensorFlow/Keras 进行神经网络建模与训练，通过 nnom 脚本进行量化部署。"
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/auto_test/main.py:build_model",
+      "type": "function",
+      "name": "build_model",
+      "summary": "定义一个包含多种层的复合 CNN 模型用于自动测试验证。",
+      "tags": ["model-definition", "cnn"]
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/auto_test/main.py:train",
+      "type": "function",
+      "name": "train",
+      "summary": "在 MNIST 数据集上训练自动测试模型并将模型序列化保存。",
+      "tags": ["training", "keras"]
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/auto_test/main.py:main",
+      "type": "function",
+      "name": "main",
+      "summary": "主函数，执行完整的自动训练、导出 C 代码及在 PC 上本地验证精度的全流程。",
+      "tags": ["workflow", "entry-point"]
+    },
+    {
+      "id": "document:CNN/nnom-master/examples/keyword_spotting/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "CNN/nnom-master/examples/keyword_spotting/README.md",
+      "summary": "关键词检测（KWS）示例指南，介绍模型结构、在 MCU 上的移植方法和性能指标。",
+      "tags": ["documentation", "keyword-spotting", "audio-processing"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:CNN/nnom_lib/src/layers/nnom_cropping.c",
+      "type": "file",
+      "name": "nnom_cropping.c",
+      "filePath": "CNN/nnom_lib/src/layers/nnom_cropping.c",
+      "summary": "实现神经网络裁剪层（Cropping Layer）的构建与数据前向传播计算。",
+      "tags": ["neural-network", "cropping-layer", "layer-implementation"],
+      "complexity": "moderate",
+      "languageNotes": "实现特定硬件优化（如 HWC 和 CHW 数据格式排列的裁剪逻辑）。"
+    },
+    {
+      "id": "function:CNN/nnom_lib/src/layers/nnom_cropping.c:cropping_build",
+      "type": "function",
+      "name": "cropping_build",
+      "summary": "计算裁剪后张量输出的维度属性并配置裁剪层的输出张量。",
+      "tags": ["build", "tensor-configuration"]
+    },
+    {
+      "id": "function:CNN/nnom_lib/src/layers/nnom_cropping.c:cropping_run",
+      "type": "function",
+      "name": "cropping_run",
+      "summary": "执行裁剪层的前向传播计算，支持 CHW 和 HWC 两种内存排列格式。",
+      "tags": ["forward", "tensor-manipulation"]
+    },
+    {
+      "id": "file:CNN/nnom_lib/src/layers/nnom_dense.c",
+      "type": "file",
+      "name": "nnom_dense.c",
+      "filePath": "CNN/nnom_lib/src/layers/nnom_dense.c",
+      "summary": "神经网络全连接层（Dense Layer）的构建、内存释放和计算接口。",
+      "tags": ["neural-network", "fully-connected", "layer-implementation"],
+      "complexity": "moderate",
+      "languageNotes": "C 语言编写，包含张量属性的初始化与生命周期管理。"
+    },
+    {
+      "id": "function:CNN/nnom_lib/src/layers/nnom_dense.c:dense_build",
+      "type": "function",
+      "name": "dense_build",
+      "summary": "构建并配置全连接（Dense）层所必需的权重张量、偏置张量和输出张量。",
+      "tags": ["build", "fully-connected"]
+    },
+    {
+      "id": "function:CNN/nnom_lib/src/layers/nnom_dense.c:dense_free",
+      "type": "function",
+      "name": "dense_free",
+      "summary": "释放全连接层创建的所有权重和偏置张量，防止内存泄漏。",
+      "tags": ["memory-management", "free"]
+    },
+    {
+      "id": "file:CNN/nnom_lib/src/layers/nnom_dw_conv2d.c",
+      "type": "file",
+      "name": "nnom_dw_conv2d.c",
+      "filePath": "CNN/nnom_lib/src/layers/nnom_dw_conv2d.c",
+      "summary": "实现深度可分离卷积层（Depthwise Convolution 2D）的前向计算与构建。",
+      "tags": ["neural-network", "depthwise-convolution", "layer-implementation"],
+      "complexity": "moderate",
+      "languageNotes": "支持 ARM CMSIS-NN 库的优化计算以及本地降级实现的本地前向传播。"
+    },
+    {
+      "id": "function:CNN/nnom_lib/src/layers/nnom_dw_conv2d.c:dw_conv2d_build",
+      "type": "function",
+      "name": "dw_conv2d_build",
+      "summary": "计算并初始化二维深度可分离卷积层的前向传播维度属性。",
+      "tags": ["build", "depthwise-convolution"]
+    },
+    {
+      "id": "function:CNN/nnom_lib/src/layers/nnom_dw_conv2d.c:dw_conv2d_run",
+      "type": "function",
+      "name": "dw_conv2d_run",
+      "summary": "执行深度可分离卷积层的前向传播，在有硬件加速时使用 ARM 库，否则使用本地替代方法。",
+      "tags": ["forward", "convolution-computation"]
+    },
+    {
+      "id": "file:CNN/nnom_lib/src/layers/nnom_flatten.c",
+      "type": "file",
+      "name": "nnom_flatten.c",
+      "filePath": "CNN/nnom_lib/src/layers/nnom_flatten.c",
+      "summary": "实现展平层（Flatten Layer）的构建，将多维张量展平为一维张量。",
+      "tags": ["neural-network", "flatten-layer", "layer-implementation"],
+      "complexity": "simple",
+      "languageNotes": "主要执行通道维度的重新排列（CHW 到 HWC）。"
+    },
+    {
+      "id": "function:CNN/nnom_lib/src/layers/nnom_flatten.c:flatten_build",
+      "type": "function",
+      "name": "flatten_build",
+      "summary": "配置展平层输出，将多维张量变换为一维扁平张量。",
+      "tags": ["build", "dimension-reduction"]
+    },
+    {
+      "id": "function:CNN/nnom_lib/src/layers/nnom_flatten.c:flatten_run",
+      "type": "function",
+      "name": "flatten_run",
+      "summary": "根据内存格式布局进行展平前向计算，进行维度重排列（如 CHW 转 HWC）。",
+      "tags": ["forward", "dimension-reduction"]
+    },
+    {
+      "id": "file:CNN/nnom_lib/src/layers/nnom_global_pool.c",
+      "type": "file",
+      "name": "nnom_global_pool.c",
+      "filePath": "CNN/nnom_lib/src/layers/nnom_global_pool.c",
+      "summary": "全局池化层（Global Pooling Layer）的构建逻辑，计算张量空间维度的全局均值或最大值。",
+      "tags": ["neural-network", "global-pooling", "layer-implementation"],
+      "complexity": "moderate",
+      "languageNotes": "动态调整张量形状并重塑通道维度。"
+    },
+    {
+      "id": "function:CNN/nnom_lib/src/layers/nnom_global_pool.c:global_pool_build",
+      "type": "function",
+      "name": "global_pool_build",
+      "summary": "构建全局池化层，将空间尺寸（高、宽）直接池化为 1x1 并重塑通道维度属性。",
+      "tags": ["build", "pooling-configuration"]
+    },
+    {
+      "id": "file:CNN/nnom_lib/src/layers/nnom_gru_cell.c",
+      "type": "file",
+      "name": "nnom_gru_cell.c",
+      "filePath": "CNN/nnom_lib/src/layers/nnom_gru_cell.c",
+      "summary": "GRU 循环单元（Gate Recurrent Unit Cell）的逻辑计算，包括重置门和更新门的计算。",
+      "tags": ["neural-network", "gru-cell", "recurrent-layer"],
+      "complexity": "complex",
+      "languageNotes": "涉及大量固定定点数（Q7/Q15）转换、Sigmoid 以及 Tanh 激活函数的本地近似计算。"
+    },
+    {
+      "id": "function:CNN/nnom_lib/src/layers/nnom_gru_cell.c:gru_cell_free",
+      "type": "function",
+      "name": "gru_cell_free",
+      "summary": "释放 GRU Cell 内部动态分配的临时运行缓存资源。",
+      "tags": ["memory-management", "free"]
+    },
+    {
+      "id": "function:CNN/nnom_lib/src/layers/nnom_gru_cell.c:gru_cell_build",
+      "type": "function",
+      "name": "gru_cell_build",
+      "summary": "构建 GRU Cell 并配置运行状态的临时缓冲区长度。",
+      "tags": ["build", "cell-configuration"]
+    },
+    {
+      "id": "function:CNN/nnom_lib/src/layers/nnom_gru_cell.c:gru_cell_run",
+      "type": "function",
+      "name": "gru_cell_run",
+      "summary": "执行 GRU 单步状态计算，使用 Q7/Q15 混合定点乘加法及激活函数逼近。",
+      "tags": ["forward", "recurrent-computation"]
+    },
+    {
+      "id": "file:CNN/nnom_lib/src/layers/nnom_input.c",
+      "type": "file",
+      "name": "nnom_input.c",
+      "filePath": "CNN/nnom_lib/src/layers/nnom_input.c",
+      "summary": "模型输入层（Input Layer）的初始化与数据预处理，支持格式转换。",
+      "tags": ["neural-network", "input-layer", "layer-implementation"],
+      "complexity": "moderate",
+      "languageNotes": "处理输入数据的内存拷贝，提供 HWC 到 CHW 排列的格式转换功能。"
+    },
+    {
+      "id": "function:CNN/nnom_lib/src/layers/nnom_input.c:input_build",
+      "type": "function",
+      "name": "input_build",
+      "summary": "初始化模型输入层，配置输入张量的形状与数据类型属性。",
+      "tags": ["build", "input-setup"]
+    },
+    {
+      "id": "function:CNN/nnom_lib/src/layers/nnom_input.c:input_run",
+      "type": "function",
+      "name": "input_run",
+      "summary": "载入输入数据，在必要时将输入从 HWC 重新打包为 CHW 格式进行处理。",
+      "tags": ["forward", "data-loading"]
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:CNN/nnom-master/examples/auto_test/main.c",
+      "target": "function:CNN/nnom-master/examples/auto_test/main.c:callback",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/auto_test/main.c",
+      "target": "function:CNN/nnom-master/examples/auto_test/main.c:callback",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/auto_test/main.c",
+      "target": "function:CNN/nnom-master/examples/auto_test/main.c:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/auto_test/main.c",
+      "target": "function:CNN/nnom-master/examples/auto_test/main.c:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/auto_test/main.py",
+      "target": "function:CNN/nnom-master/examples/auto_test/main.py:build_model",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/auto_test/main.py",
+      "target": "function:CNN/nnom-master/examples/auto_test/main.py:build_model",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/auto_test/main.py",
+      "target": "function:CNN/nnom-master/examples/auto_test/main.py:train",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/auto_test/main.py",
+      "target": "function:CNN/nnom-master/examples/auto_test/main.py:train",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/auto_test/main.py",
+      "target": "function:CNN/nnom-master/examples/auto_test/main.py:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/auto_test/main.py",
+      "target": "function:CNN/nnom-master/examples/auto_test/main.py:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:CNN/nnom-master/examples/auto_test/main.py:main",
+      "target": "function:CNN/nnom-master/examples/auto_test/main.py:build_model",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:CNN/nnom-master/examples/auto_test/main.py:main",
+      "target": "function:CNN/nnom-master/examples/auto_test/main.py:train",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "document:CNN/nnom-master/examples/auto_test/README.md",
+      "target": "file:CNN/nnom-master/examples/auto_test/main.py",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CNN/nnom-master/examples/auto_test/README.md",
+      "target": "file:CNN/nnom-master/examples/auto_test/main.c",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CNN/nnom-master/examples/auto_test/README.md",
+      "target": "file:CNN/nnom-master/examples/auto_test/SConstruct",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "pipeline:CNN/nnom-master/.github/workflows/tests.yaml",
+      "target": "file:CNN/nnom-master/examples/auto_test/main.py",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_cropping.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_cropping.c:cropping_build",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_cropping.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_cropping.c:cropping_build",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_cropping.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_cropping.c:cropping_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_cropping.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_cropping.c:cropping_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_cropping.c",
+      "target": "file:CNN/nnom-master/examples/auto_test/main.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_dense.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_dense.c:dense_build",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_dense.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_dense.c:dense_build",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_dense.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_dense.c:dense_free",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_dense.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_dense.c:dense_free",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_dense.c",
+      "target": "file:CNN/nnom-master/examples/auto_test/main.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_dw_conv2d.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_dw_conv2d.c:dw_conv2d_build",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_dw_conv2d.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_dw_conv2d.c:dw_conv2d_build",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_dw_conv2d.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_dw_conv2d.c:dw_conv2d_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_dw_conv2d.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_dw_conv2d.c:dw_conv2d_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_dw_conv2d.c",
+      "target": "file:CNN/nnom-master/examples/auto_test/main.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_flatten.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_flatten.c:flatten_build",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_flatten.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_flatten.c:flatten_build",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_flatten.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_flatten.c:flatten_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_flatten.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_flatten.c:flatten_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_flatten.c",
+      "target": "file:CNN/nnom-master/examples/auto_test/main.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_global_pool.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_global_pool.c:global_pool_build",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_global_pool.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_global_pool.c:global_pool_build",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_global_pool.c",
+      "target": "file:CNN/nnom-master/examples/auto_test/main.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_gru_cell.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_gru_cell.c:gru_cell_free",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_gru_cell.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_gru_cell.c:gru_cell_free",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_gru_cell.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_gru_cell.c:gru_cell_build",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_gru_cell.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_gru_cell.c:gru_cell_build",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_gru_cell.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_gru_cell.c:gru_cell_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_gru_cell.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_gru_cell.c:gru_cell_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_gru_cell.c",
+      "target": "file:CNN/nnom-master/examples/auto_test/main.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_input.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_input.c:input_build",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_input.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_input.c:input_build",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_input.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_input.c:input_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_input.c",
+      "target": "function:CNN/nnom_lib/src/layers/nnom_input.c:input_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom_lib/src/layers/nnom_input.c",
+      "target": "file:CNN/nnom-master/examples/auto_test/main.py",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

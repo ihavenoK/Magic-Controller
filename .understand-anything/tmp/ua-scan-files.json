@@ -1,0 +1,1665 @@
+{
+  "scriptCompleted": true,
+  "files": [
+    {
+      "path": ".understand-anything/.understandignore",
+      "language": "unknown",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".understand-anything/config.json",
+      "language": "json",
+      "sizeLines": 3,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".understand-anything/tmp/ua-scan-files.json",
+      "language": "json",
+      "sizeLines": 11018,
+      "fileCategory": "config"
+    },
+    {
+      "path": "CNN/.layer_q_list",
+      "language": "unknown",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/CNNTestSerialRaw.py",
+      "language": "python",
+      "sizeLines": 127,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/CNNTrainRaw.py",
+      "language": "python",
+      "sizeLines": 152,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/model.h5",
+      "language": "h5",
+      "sizeLines": 111,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_activation.h",
+      "language": "c",
+      "sizeLines": 96,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_avgpool.h",
+      "language": "c",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_baselayer.h",
+      "language": "c",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_concat.h",
+      "language": "c",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_conv2d_trans.h",
+      "language": "c",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_conv2d.h",
+      "language": "c",
+      "sizeLines": 83,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_cropping.h",
+      "language": "c",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_dense.h",
+      "language": "c",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_dw_conv2d.h",
+      "language": "c",
+      "sizeLines": 44,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_flatten.h",
+      "language": "c",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_global_pool.h",
+      "language": "c",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_gru_cell.h",
+      "language": "c",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_input.h",
+      "language": "c",
+      "sizeLines": 57,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_lambda.h",
+      "language": "c",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_lstm_cell.h",
+      "language": "c",
+      "sizeLines": 64,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_matrix.h",
+      "language": "c",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_maxpool.h",
+      "language": "c",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_output.h",
+      "language": "c",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_reshape.h",
+      "language": "c",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_rnn.h",
+      "language": "c",
+      "sizeLines": 85,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_simple_cell.h",
+      "language": "c",
+      "sizeLines": 86,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_softmax.h",
+      "language": "c",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_sumpool.h",
+      "language": "c",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_upsample.h",
+      "language": "c",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_zero_padding.h",
+      "language": "c",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/nnom_layers.h",
+      "language": "c",
+      "sizeLines": 194,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/nnom_local.h",
+      "language": "c",
+      "sizeLines": 974,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/nnom_tensor.h",
+      "language": "c",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/nnom_utils.h",
+      "language": "c",
+      "sizeLines": 91,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/inc/nnom.h",
+      "language": "c",
+      "sizeLines": 415,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/port/nnom_port.h",
+      "language": "c",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/backends/nnom_local_q15.c",
+      "language": "c",
+      "sizeLines": 1602,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/backends/nnom_local.c",
+      "language": "c",
+      "sizeLines": 1689,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/core/nnom_layers.c",
+      "language": "c",
+      "sizeLines": 83,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/core/nnom_tensor.c",
+      "language": "c",
+      "sizeLines": 245,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/core/nnom_utils.c",
+      "language": "c",
+      "sizeLines": 417,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/core/nnom.c",
+      "language": "c",
+      "sizeLines": 1110,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_activation.c",
+      "language": "c",
+      "sizeLines": 387,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_avgpool.c",
+      "language": "c",
+      "sizeLines": 167,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_baselayer.c",
+      "language": "c",
+      "sizeLines": 90,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_concat.c",
+      "language": "c",
+      "sizeLines": 223,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_conv2d_trans.c",
+      "language": "c",
+      "sizeLines": 131,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_conv2d.c",
+      "language": "c",
+      "sizeLines": 434,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_cropping.c",
+      "language": "c",
+      "sizeLines": 88,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_dense.c",
+      "language": "c",
+      "sizeLines": 219,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_dw_conv2d.c",
+      "language": "c",
+      "sizeLines": 140,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_flatten.c",
+      "language": "c",
+      "sizeLines": 84,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_global_pool.c",
+      "language": "c",
+      "sizeLines": 145,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_gru_cell.c",
+      "language": "c",
+      "sizeLines": 338,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_input.c",
+      "language": "c",
+      "sizeLines": 145,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_lambda.c",
+      "language": "c",
+      "sizeLines": 81,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_lstm_cell.c",
+      "language": "c",
+      "sizeLines": 334,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_matrix.c",
+      "language": "c",
+      "sizeLines": 239,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_maxpool.c",
+      "language": "c",
+      "sizeLines": 191,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_output.c",
+      "language": "c",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_reshape.c",
+      "language": "c",
+      "sizeLines": 77,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_rnn.c",
+      "language": "c",
+      "sizeLines": 191,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_simple_cell.c",
+      "language": "c",
+      "sizeLines": 142,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_softmax.c",
+      "language": "c",
+      "sizeLines": 86,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_sumpool.c",
+      "language": "c",
+      "sizeLines": 104,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_upsample.c",
+      "language": "c",
+      "sizeLines": 104,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom_lib/src/layers/nnom_zero_padding.c",
+      "language": "c",
+      "sizeLines": 107,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/.github/workflows/tests.yaml",
+      "language": "yaml",
+      "sizeLines": 36,
+      "fileCategory": "config"
+    },
+    {
+      "path": "CNN/nnom-master/docs/A_Temporary_Guide_to_NNoM.md",
+      "language": "markdown",
+      "sizeLines": 405,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/api_activations.md",
+      "language": "markdown",
+      "sizeLines": 258,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/api_construction.md",
+      "language": "markdown",
+      "sizeLines": 224,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/api_evaluation.md",
+      "language": "markdown",
+      "sizeLines": 472,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/api_layers.md",
+      "language": "markdown",
+      "sizeLines": 311,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/api_merge.md",
+      "language": "markdown",
+      "sizeLines": 151,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/api_model.md",
+      "language": "markdown",
+      "sizeLines": 399,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/api_nnom_utils.md",
+      "language": "markdown",
+      "sizeLines": 233,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/api_nnom.md",
+      "language": "markdown",
+      "sizeLines": 197,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/api_pooling.md",
+      "language": "markdown",
+      "sizeLines": 136,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/api_properties.md",
+      "language": "markdown",
+      "sizeLines": 246,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/api_tensor.md",
+      "language": "markdown",
+      "sizeLines": 177,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/example_mnist_simple_cn.md",
+      "language": "markdown",
+      "sizeLines": 224,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/guide_5_min_to_nnom.md",
+      "language": "markdown",
+      "sizeLines": 151,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/guide_development.md",
+      "language": "markdown",
+      "sizeLines": 361,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/index.md",
+      "language": "markdown",
+      "sizeLines": 193,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/legacy_README.md",
+      "language": "markdown",
+      "sizeLines": 236,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/Porting_and_Optimisation_Guide.md",
+      "language": "markdown",
+      "sizeLines": 161,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/rt-thread_guide.md",
+      "language": "markdown",
+      "sizeLines": 135,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/examples/auto_test/main.c",
+      "language": "c",
+      "sizeLines": 116,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/auto_test/main.py",
+      "language": "python",
+      "sizeLines": 160,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/auto_test/README.md",
+      "language": "markdown",
+      "sizeLines": 245,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/examples/auto_test/SConstruct",
+      "language": "unknown",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/kws_weights.h",
+      "language": "c",
+      "sizeLines": 422,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/kws-rnn.py",
+      "language": "python",
+      "sizeLines": 194,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/kws.py",
+      "language": "python",
+      "sizeLines": 210,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/main_pc.c",
+      "language": "c",
+      "sizeLines": 238,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/main.c",
+      "language": "c",
+      "sizeLines": 420,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/mfcc.c",
+      "language": "c",
+      "sizeLines": 318,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/mfcc.h",
+      "language": "c",
+      "sizeLines": 84,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/mfcc.py",
+      "language": "python",
+      "sizeLines": 143,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/python_speech_features/__init__.py",
+      "language": "python",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py",
+      "language": "python",
+      "sizeLines": 213,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py",
+      "language": "python",
+      "sizeLines": 142,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/README.md",
+      "language": "markdown",
+      "sizeLines": 196,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-cnn/mcu/main_cnn.c",
+      "language": "c",
+      "sizeLines": 62,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-cnn/mcu/weights_cnn.h",
+      "language": "c",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-cnn/mnist-cnn.ipynb",
+      "language": "ipynb",
+      "sizeLines": 604,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-cnn/README.md",
+      "language": "markdown",
+      "sizeLines": 6,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-cnn/SConstruct",
+      "language": "unknown",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-densenet/main.c",
+      "language": "c",
+      "sizeLines": 76,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-densenet/mnist_densenet.py",
+      "language": "python",
+      "sizeLines": 142,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-densenet/mnist-densenet.ipynb",
+      "language": "ipynb",
+      "sizeLines": 773,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-densenet/README.MD",
+      "language": "markdown",
+      "sizeLines": 91,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-densenet/SConstruct",
+      "language": "unknown",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-densenet/weights.h",
+      "language": "c",
+      "sizeLines": 936,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-simple/image.h",
+      "language": "c",
+      "sizeLines": 36,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-simple/mcu/image.h",
+      "language": "c",
+      "sizeLines": 36,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-simple/mcu/main.c",
+      "language": "c",
+      "sizeLines": 93,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-simple/mcu/weights.h",
+      "language": "c",
+      "sizeLines": 157,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-simple/mnist_simple.py",
+      "language": "python",
+      "sizeLines": 163,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-simple/README.md",
+      "language": "markdown",
+      "sizeLines": 5,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/examples/mnist-simple/weights.h",
+      "language": "c",
+      "sizeLines": 420,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/octave-conv/image.h",
+      "language": "c",
+      "sizeLines": 36,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/octave-conv/main.c",
+      "language": "c",
+      "sizeLines": 223,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/octave-conv/mnist_octaveconv.py",
+      "language": "python",
+      "sizeLines": 201,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/octave-conv/README.MD",
+      "language": "markdown",
+      "sizeLines": 54,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/examples/octave-conv/weights.h",
+      "language": "c",
+      "sizeLines": 940,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/README.md",
+      "language": "markdown",
+      "sizeLines": 41,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/denoise_weights.h",
+      "language": "c",
+      "sizeLines": 630,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/equalizer_coeff.h",
+      "language": "c",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/gen_dataset.py",
+      "language": "python",
+      "sizeLines": 352,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/main_arm.c",
+      "language": "c",
+      "sizeLines": 438,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/main.c",
+      "language": "c",
+      "sizeLines": 293,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/main.py",
+      "language": "python",
+      "sizeLines": 330,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/mfcc.c",
+      "language": "c",
+      "sizeLines": 356,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/mfcc.h",
+      "language": "c",
+      "sizeLines": 84,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/python_speech_features/__init__.py",
+      "language": "python",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/python_speech_features/base.py",
+      "language": "python",
+      "sizeLines": 209,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/python_speech_features/sigproc.py",
+      "language": "python",
+      "sizeLines": 141,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/README_CN.md",
+      "language": "markdown",
+      "sizeLines": 300,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/README.md",
+      "language": "markdown",
+      "sizeLines": 290,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/rnndenoise",
+      "language": "unknown",
+      "sizeLines": 2302,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/SConstruct",
+      "language": "unknown",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/wav.h",
+      "language": "c",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/weights.h",
+      "language": "c",
+      "sizeLines": 630,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/uci-har-rnn/data/download_dataset.py",
+      "language": "python",
+      "sizeLines": 30,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/uci-har-rnn/main.c",
+      "language": "c",
+      "sizeLines": 91,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/uci-har-rnn/README.MD",
+      "language": "markdown",
+      "sizeLines": 33,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/examples/uci-har-rnn/SConstruct",
+      "language": "unknown",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py",
+      "language": "python",
+      "sizeLines": 252,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/uci-inception/data/download_dataset.py",
+      "language": "python",
+      "sizeLines": 30,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/uci-inception/main.c",
+      "language": "c",
+      "sizeLines": 242,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/uci-inception/README.MD",
+      "language": "markdown",
+      "sizeLines": 48,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/examples/uci-inception/uci_test.py",
+      "language": "python",
+      "sizeLines": 244,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/uci-inception/uci_weights.h",
+      "language": "c",
+      "sizeLines": 404,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_activation.h",
+      "language": "c",
+      "sizeLines": 96,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_avgpool.h",
+      "language": "c",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_baselayer.h",
+      "language": "c",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_concat.h",
+      "language": "c",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_conv2d_trans.h",
+      "language": "c",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_conv2d.h",
+      "language": "c",
+      "sizeLines": 83,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_cropping.h",
+      "language": "c",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_dense.h",
+      "language": "c",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_dw_conv2d.h",
+      "language": "c",
+      "sizeLines": 44,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_flatten.h",
+      "language": "c",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_global_pool.h",
+      "language": "c",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_gru_cell.h",
+      "language": "c",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_input.h",
+      "language": "c",
+      "sizeLines": 57,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_lambda.h",
+      "language": "c",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_lstm_cell.h",
+      "language": "c",
+      "sizeLines": 64,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_matrix.h",
+      "language": "c",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_maxpool.h",
+      "language": "c",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_output.h",
+      "language": "c",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_reshape.h",
+      "language": "c",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_rnn.h",
+      "language": "c",
+      "sizeLines": 85,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_simple_cell.h",
+      "language": "c",
+      "sizeLines": 86,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_softmax.h",
+      "language": "c",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_sumpool.h",
+      "language": "c",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_upsample.h",
+      "language": "c",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_zero_padding.h",
+      "language": "c",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/nnom_layers.h",
+      "language": "c",
+      "sizeLines": 194,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/nnom_local.h",
+      "language": "c",
+      "sizeLines": 974,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/nnom_tensor.h",
+      "language": "c",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/nnom_utils.h",
+      "language": "c",
+      "sizeLines": 91,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/inc/nnom.h",
+      "language": "c",
+      "sizeLines": 415,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/mkdocs.yml",
+      "language": "yaml",
+      "sizeLines": 35,
+      "fileCategory": "config"
+    },
+    {
+      "path": "CNN/nnom-master/port/nnom_port.h",
+      "language": "c",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/pyproject.toml",
+      "language": "toml",
+      "sizeLines": 36,
+      "fileCategory": "config"
+    },
+    {
+      "path": "CNN/nnom-master/README.md",
+      "language": "markdown",
+      "sizeLines": 261,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/scripts/__init__.py",
+      "language": "python",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/scripts/fully_connected_opt_weight_generation.py",
+      "language": "python",
+      "sizeLines": 153,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/scripts/gen_config.py",
+      "language": "python",
+      "sizeLines": 561,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/scripts/nnom_utils.py",
+      "language": "python",
+      "sizeLines": 845,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/scripts/nnom.py",
+      "language": "python",
+      "sizeLines": 1204,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/scripts/README.MD",
+      "language": "markdown",
+      "sizeLines": 4,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/src/backends/nnom_local_q15.c",
+      "language": "c",
+      "sizeLines": 1602,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/backends/nnom_local.c",
+      "language": "c",
+      "sizeLines": 1689,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/core/nnom_layers.c",
+      "language": "c",
+      "sizeLines": 83,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/core/nnom_tensor.c",
+      "language": "c",
+      "sizeLines": 245,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/core/nnom_utils.c",
+      "language": "c",
+      "sizeLines": 417,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/core/nnom.c",
+      "language": "c",
+      "sizeLines": 1110,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_activation.c",
+      "language": "c",
+      "sizeLines": 387,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_avgpool.c",
+      "language": "c",
+      "sizeLines": 167,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_baselayer.c",
+      "language": "c",
+      "sizeLines": 90,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_concat.c",
+      "language": "c",
+      "sizeLines": 223,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_conv2d_trans.c",
+      "language": "c",
+      "sizeLines": 131,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_conv2d.c",
+      "language": "c",
+      "sizeLines": 434,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_cropping.c",
+      "language": "c",
+      "sizeLines": 88,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_dense.c",
+      "language": "c",
+      "sizeLines": 219,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_dw_conv2d.c",
+      "language": "c",
+      "sizeLines": 140,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_flatten.c",
+      "language": "c",
+      "sizeLines": 84,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_global_pool.c",
+      "language": "c",
+      "sizeLines": 145,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_gru_cell.c",
+      "language": "c",
+      "sizeLines": 338,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_input.c",
+      "language": "c",
+      "sizeLines": 145,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_lambda.c",
+      "language": "c",
+      "sizeLines": 81,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_lstm_cell.c",
+      "language": "c",
+      "sizeLines": 334,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_matrix.c",
+      "language": "c",
+      "sizeLines": 239,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_maxpool.c",
+      "language": "c",
+      "sizeLines": 191,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_output.c",
+      "language": "c",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_reshape.c",
+      "language": "c",
+      "sizeLines": 77,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_rnn.c",
+      "language": "c",
+      "sizeLines": 191,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_simple_cell.c",
+      "language": "c",
+      "sizeLines": 142,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_softmax.c",
+      "language": "c",
+      "sizeLines": 86,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_sumpool.c",
+      "language": "c",
+      "sizeLines": 104,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_upsample.c",
+      "language": "c",
+      "sizeLines": 104,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/src/layers/nnom_zero_padding.c",
+      "language": "c",
+      "sizeLines": 107,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/requirements.txt",
+      "language": "txt",
+      "sizeLines": 48,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/Serial_Read.py",
+      "language": "python",
+      "sizeLines": 149,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/weights.h",
+      "language": "c",
+      "sizeLines": 274,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CyberryPotter.uvguix.13087",
+      "language": "13087",
+      "sizeLines": 1887,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CyberryPotter.uvoptx",
+      "language": "uvoptx",
+      "sizeLines": 1247,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CyberryPotter.uvprojx",
+      "language": "uvprojx",
+      "sizeLines": 1085,
+      "fileCategory": "code"
+    },
+    {
+      "path": "DebugConfig/Target_1_STM32F103C8_1.0.0.dbgconf",
+      "language": "dbgconf",
+      "sizeLines": 36,
+      "fileCategory": "code"
+    },
+    {
+      "path": "EventRecorderStub.scvd",
+      "language": "scvd",
+      "sizeLines": 9,
+      "fileCategory": "code"
+    },
+    {
+      "path": "keilkill.bat",
+      "language": "batch",
+      "sizeLines": 27,
+      "fileCategory": "script"
+    },
+    {
+      "path": "main.c",
+      "language": "c",
+      "sizeLines": 183,
+      "fileCategory": "code"
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "sizeLines": 132,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "RTE/_Target_1/RTE_Components.h",
+      "language": "c",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "RTE/Device/STM32F103C8/RTE_Device.h",
+      "language": "c",
+      "sizeLines": 1828,
+      "fileCategory": "code"
+    },
+    {
+      "path": "RTE/Device/STM32F103C8/RTE_Device.h.base@1.1.2",
+      "language": "2",
+      "sizeLines": 1828,
+      "fileCategory": "code"
+    },
+    {
+      "path": "RTE/Device/STM32F103C8/startup_stm32f10x_md.s",
+      "language": "s",
+      "sizeLines": 308,
+      "fileCategory": "code"
+    },
+    {
+      "path": "RTE/Device/STM32F103C8/startup_stm32f10x_md.s.base@1.0.1",
+      "language": "1",
+      "sizeLines": 308,
+      "fileCategory": "code"
+    },
+    {
+      "path": "RTE/Device/STM32F103C8/STM32F101_102_103_105_107.dbgconf",
+      "language": "dbgconf",
+      "sizeLines": 36,
+      "fileCategory": "code"
+    },
+    {
+      "path": "RTE/Device/STM32F103C8/STM32F101_102_103_105_107.dbgconf.base@1.0.0",
+      "language": "0",
+      "sizeLines": 36,
+      "fileCategory": "code"
+    },
+    {
+      "path": "RTE/Device/STM32F103C8/stm32f10x_conf.h",
+      "language": "c",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "RTE/Device/STM32F103C8/stm32f10x_conf.h.base@3.6.0",
+      "language": "0",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "RTE/Device/STM32F103C8/system_stm32f10x.c",
+      "language": "c",
+      "sizeLines": 1092,
+      "fileCategory": "code"
+    },
+    {
+      "path": "RTE/Device/STM32F103C8/system_stm32f10x.c.base@1.0.1",
+      "language": "1",
+      "sizeLines": 1092,
+      "fileCategory": "code"
+    },
+    {
+      "path": "run_agy.bat",
+      "language": "batch",
+      "sizeLines": 2,
+      "fileCategory": "script"
+    },
+    {
+      "path": "STM32_Hardware/eMPL/dmpKey.h",
+      "language": "c",
+      "sizeLines": 494,
+      "fileCategory": "code"
+    },
+    {
+      "path": "STM32_Hardware/eMPL/dmpmap.h",
+      "language": "c",
+      "sizeLines": 264,
+      "fileCategory": "code"
+    },
+    {
+      "path": "STM32_Hardware/eMPL/inv_mpu_dmp_motion_driver.c",
+      "language": "c",
+      "sizeLines": 1381,
+      "fileCategory": "code"
+    },
+    {
+      "path": "STM32_Hardware/eMPL/inv_mpu_dmp_motion_driver.h",
+      "language": "c",
+      "sizeLines": 97,
+      "fileCategory": "code"
+    },
+    {
+      "path": "STM32_Hardware/eMPL/inv_mpu.c",
+      "language": "c",
+      "sizeLines": 3297,
+      "fileCategory": "code"
+    },
+    {
+      "path": "STM32_Hardware/eMPL/inv_mpu.h",
+      "language": "c",
+      "sizeLines": 135,
+      "fileCategory": "code"
+    },
+    {
+      "path": "STM32_Hardware/hardware.c",
+      "language": "c",
+      "sizeLines": 143,
+      "fileCategory": "code"
+    },
+    {
+      "path": "STM32_Hardware/hardware.h",
+      "language": "c",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "STM32_Hardware/IIC.c",
+      "language": "c",
+      "sizeLines": 228,
+      "fileCategory": "code"
+    },
+    {
+      "path": "STM32_Hardware/IIC.h",
+      "language": "c",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "STM32_Hardware/MPU6050_Reg.h",
+      "language": "c",
+      "sizeLines": 358,
+      "fileCategory": "code"
+    },
+    {
+      "path": "STM32_Hardware/MPU6050.c",
+      "language": "c",
+      "sizeLines": 116,
+      "fileCategory": "code"
+    },
+    {
+      "path": "STM32_Hardware/MPU6050.h",
+      "language": "c",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "User/config.h",
+      "language": "c",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "User/CyberryPotter_status.h",
+      "language": "c",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "User/CyberryPotter.c",
+      "language": "c",
+      "sizeLines": 164,
+      "fileCategory": "code"
+    },
+    {
+      "path": "User/CyberryPotter.h",
+      "language": "c",
+      "sizeLines": 64,
+      "fileCategory": "code"
+    },
+    {
+      "path": "User/Delay.c",
+      "language": "c",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "User/Delay.h",
+      "language": "c",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    },
+    {
+      "path": "User/IMU.c",
+      "language": "c",
+      "sizeLines": 91,
+      "fileCategory": "code"
+    },
+    {
+      "path": "User/IMU.h",
+      "language": "c",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    }
+  ],
+  "totalFiles": 271,
+  "filteredByIgnore": 1560,
+  "estimatedComplexity": "large",
+  "stats": {
+    "filesScanned": 271,
+    "byCategory": {
+      "code": 230,
+      "config": 5,
+      "docs": 34,
+      "script": 2
+    },
+    "byLanguage": {
+      "0": 2,
+      "1": 2,
+      "2": 1,
+      "13087": 1,
+      "unknown": 8,
+      "json": 2,
+      "python": 27,
+      "h5": 1,
+      "c": 180,
+      "yaml": 2,
+      "markdown": 33,
+      "ipynb": 2,
+      "toml": 1,
+      "txt": 1,
+      "uvoptx": 1,
+      "uvprojx": 1,
+      "dbgconf": 2,
+      "scvd": 1,
+      "batch": 2,
+      "s": 1
+    }
+  }
+}

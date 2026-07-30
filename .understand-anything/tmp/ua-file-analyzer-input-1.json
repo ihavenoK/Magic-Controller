@@ -1,0 +1,60 @@
+{
+  "projectRoot": "D:/32/cyberrypotter",
+  "batchFiles": [
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/kws-rnn.py",
+      "language": "python",
+      "sizeLines": 194,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/kws.py",
+      "language": "python",
+      "sizeLines": 210,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/mfcc.py",
+      "language": "python",
+      "sizeLines": 143,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/python_speech_features/__init__.py",
+      "language": "python",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py",
+      "language": "python",
+      "sizeLines": 213,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py",
+      "language": "python",
+      "sizeLines": 142,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "CNN/nnom-master/examples/keyword_spotting/kws-rnn.py": [
+      "CNN/nnom-master/examples/keyword_spotting/mfcc.py"
+    ],
+    "CNN/nnom-master/examples/keyword_spotting/kws.py": [
+      "CNN/nnom-master/examples/keyword_spotting/mfcc.py"
+    ],
+    "CNN/nnom-master/examples/keyword_spotting/mfcc.py": [
+      "CNN/nnom-master/examples/keyword_spotting/python_speech_features/__init__.py"
+    ],
+    "CNN/nnom-master/examples/keyword_spotting/python_speech_features/__init__.py": [
+      "CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py"
+    ],
+    "CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py": [
+      "CNN/nnom-master/examples/keyword_spotting/python_speech_features/__init__.py",
+      "CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py"
+    ],
+    "CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py": []
+  }
+}

@@ -1,0 +1,327 @@
+{
+  "nodes": [
+    {
+      "id": "file:User/CyberryPotter.c",
+      "type": "file",
+      "name": "CyberryPotter.c",
+      "filePath": "User/CyberryPotter.c",
+      "summary": "Cyberry Potter 魔法棒系统的核心控制实现文件，包含系统初始化、系统状态更新以及按键和时钟中断处理逻辑。",
+      "tags": ["system-control", "interrupt-handler", "state-machine", "stm32", "firmware"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:User/CyberryPotter.c:System_Init",
+      "type": "function",
+      "name": "System_Init",
+      "filePath": "User/CyberryPotter.c",
+      "summary": "初始化魔法棒系统，调用硬件初始化函数并重置按键、串口、IMU及LED状态。",
+      "tags": ["initialization", "hardware", "state-reset"]
+    },
+    {
+      "id": "function:User/CyberryPotter.c:Cyberry_Potter_System_Status_Update",
+      "type": "function",
+      "name": "Cyberry_Potter_System_Status_Update",
+      "filePath": "User/CyberryPotter.c",
+      "summary": "根据系统当前状态更新魔法棒运行模式，并在模式切换时通过串口打印模式信息和触发LED闪烁。",
+      "tags": ["state-machine", "status-update", "mode-switch"]
+    },
+    {
+      "id": "function:User/CyberryPotter.c:EXTI9_5_IRQHandler",
+      "type": "function",
+      "name": "EXTI9_5_IRQHandler",
+      "filePath": "User/CyberryPotter.c",
+      "summary": "外部中断9-5中断服务函数，处理来自IMU的数据就绪中断，读取IMU数据并检查采样是否完成。",
+      "tags": ["interrupt-handler", "imu-sampling", "data-acquisition"]
+    },
+    {
+      "id": "function:User/CyberryPotter.c:EXTI0_IRQHandler",
+      "type": "function",
+      "name": "EXTI0_IRQHandler",
+      "filePath": "User/CyberryPotter.c",
+      "summary": "外部中断0中断服务函数，处理按键触发中断，在按键空闲状态下启用定时器检测按键状态。",
+      "tags": ["interrupt-handler", "button-input", "debounce"]
+    },
+    {
+      "id": "function:User/CyberryPotter.c:TIM4_IRQHandler",
+      "type": "function",
+      "name": "TIM4_IRQHandler",
+      "filePath": "User/CyberryPotter.c",
+      "summary": "定时器4中断服务函数，用于定时轮询按键的电平状态以识别短按、长按、超长按等交互行为。",
+      "tags": ["interrupt-handler", "button-debounce", "timing-logic"]
+    },
+    {
+      "id": "function:User/CyberryPotter.c:LED_Blink",
+      "type": "function",
+      "name": "LED_Blink",
+      "filePath": "User/CyberryPotter.c",
+      "summary": "根据系统当前的LED状态执行不同频率 of LED闪烁逻辑，以向用户提供模式反馈。",
+      "tags": ["peripheral-control", "led-indicator", "delay"]
+    },
+    {
+      "id": "file:User/CyberryPotter.h",
+      "type": "file",
+      "name": "CyberryPotter.h",
+      "filePath": "User/CyberryPotter.h",
+      "summary": "Cyberry Potter 魔法棒核心控制模块的头文件，定义系统模式、按键状态、IMU状态等结构体类型以及核心控制函数的原型声明。",
+      "tags": ["header-file", "system-definitions", "data-structures", "api-declarations"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:User/CyberryPotter_status.h",
+      "type": "file",
+      "name": "CyberryPotter_status.h",
+      "filePath": "User/CyberryPotter_status.h",
+      "summary": "魔法棒系统的状态机数据结构声明头文件，定义系统电平、信号类型、LED及传感器状态枚举与全局系统状态结构体类型。",
+      "tags": ["header-file", "system-status", "state-definitions", "data-structures"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:User/IMU.c",
+      "type": "file",
+      "name": "IMU.c",
+      "filePath": "User/IMU.c",
+      "summary": "惯性测量单元（IMU）传感器的驱动逻辑实现文件，负责从 MPU6050 采集加速度和角速度数据，并提供数据打印及采样启动功能。",
+      "tags": ["imu-sensor", "mpu6050", "i2c-driver", "data-acquisition"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:User/IMU.c:IMU_Sample_Start",
+      "type": "function",
+      "name": "IMU_Sample_Start",
+      "filePath": "User/IMU.c",
+      "summary": "启动IMU数据采样流程，重置按键状态，并开启IMU硬件采样中断。",
+      "tags": ["control-flow", "imu-sampling", "interrupt-enable"]
+    },
+    {
+      "id": "function:User/IMU.c:IMU_Get_Data",
+      "type": "function",
+      "name": "IMU_Get_Data",
+      "filePath": "User/IMU.c",
+      "summary": "通过I2C接口读取MPU6050加速度和陀螺仪的原始数据，并应用量程转换常数将其转化为实际物理量。",
+      "tags": ["i2c-communication", "sensor-reading", "data-conversion"]
+    },
+    {
+      "id": "file:User/IMU.h",
+      "type": "file",
+      "name": "IMU.h",
+      "filePath": "User/IMU.h",
+      "summary": "惯性测量单元（IMU）驱动的头文件，声明了IMU数据打印、采样开始以及数据获取等接口函数原型。",
+      "tags": ["header-file", "sensor-interface", "api-declarations"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:User/config.h",
+      "type": "file",
+      "name": "config.h",
+      "filePath": "User/config.h",
+      "summary": "魔法棒系统的编译时配置文件，定义 system 频率、波特率、按键消抖阈值、IMU物理常数以及CNN判定阈值等参数。",
+      "tags": ["configuration", "system-parameters", "hardware-constants", "macro-defines"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:User/CyberryPotter.c",
+      "target": "function:User/CyberryPotter.c:System_Init",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:User/CyberryPotter.c",
+      "target": "function:User/CyberryPotter.c:Cyberry_Potter_System_Status_Update",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:User/CyberryPotter.c",
+      "target": "function:User/CyberryPotter.c:EXTI9_5_IRQHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:User/CyberryPotter.c",
+      "target": "function:User/CyberryPotter.c:EXTI0_IRQHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:User/CyberryPotter.c",
+      "target": "function:User/CyberryPotter.c:TIM4_IRQHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:User/CyberryPotter.c",
+      "target": "function:User/CyberryPotter.c:LED_Blink",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:User/IMU.c",
+      "target": "function:User/IMU.c:IMU_Sample_Start",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:User/IMU.c",
+      "target": "function:User/IMU.c:IMU_Get_Data",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:User/CyberryPotter.c",
+      "target": "function:User/CyberryPotter.c:System_Init",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:User/CyberryPotter.c",
+      "target": "function:User/CyberryPotter.c:Cyberry_Potter_System_Status_Update",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:User/CyberryPotter.c",
+      "target": "function:User/CyberryPotter.c:EXTI9_5_IRQHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:User/CyberryPotter.c",
+      "target": "function:User/CyberryPotter.c:EXTI0_IRQHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:User/CyberryPotter.c",
+      "target": "function:User/CyberryPotter.c:TIM4_IRQHandler",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:User/CyberryPotter.c",
+      "target": "function:User/CyberryPotter.c:LED_Blink",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:User/IMU.c",
+      "target": "function:User/IMU.c:IMU_Sample_Start",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:User/IMU.c",
+      "target": "function:User/IMU.c:IMU_Get_Data",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:User/CyberryPotter.c",
+      "target": "file:User/CyberryPotter.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:User/CyberryPotter.h",
+      "target": "file:User/config.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:User/CyberryPotter_status.h",
+      "target": "file:User/config.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:User/IMU.c",
+      "target": "file:User/config.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:User/IMU.c",
+      "target": "file:User/CyberryPotter.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:User/IMU.h",
+      "target": "file:User/config.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:User/CyberryPotter.c:Cyberry_Potter_System_Status_Update",
+      "target": "function:User/CyberryPotter.c:LED_Blink",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:User/CyberryPotter.c:TIM4_IRQHandler",
+      "target": "function:User/CyberryPotter.c:Cyberry_Potter_System_Status_Update",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:User/CyberryPotter.c:EXTI9_5_IRQHandler",
+      "target": "function:User/IMU.c:IMU_Get_Data",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:User/config.h",
+      "target": "file:User/CyberryPotter.h",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:User/config.h",
+      "target": "file:User/CyberryPotter_status.h",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:User/config.h",
+      "target": "file:User/IMU.c",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:User/config.h",
+      "target": "file:User/IMU.h",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

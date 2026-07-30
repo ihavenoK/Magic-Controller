@@ -1,0 +1,604 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 4,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "STM32_Hardware/IIC.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 228,
+      "nonEmptyLines": 207,
+      "functions": [
+        {
+          "name": "IIC_Init",
+          "startLine": 30,
+          "endLine": 43,
+          "params": []
+        },
+        {
+          "name": "IIC_W_SDA",
+          "startLine": 50,
+          "endLine": 54,
+          "params": [
+            "BitVal"
+          ]
+        },
+        {
+          "name": "IIC_W_SCL",
+          "startLine": 61,
+          "endLine": 65,
+          "params": [
+            "BitVal"
+          ]
+        },
+        {
+          "name": "IIC_R_SDA",
+          "startLine": 72,
+          "endLine": 78,
+          "params": []
+        },
+        {
+          "name": "IIC_Start",
+          "startLine": 85,
+          "endLine": 91,
+          "params": []
+        },
+        {
+          "name": "IIC_Stop",
+          "startLine": 98,
+          "endLine": 103,
+          "params": []
+        },
+        {
+          "name": "IIC_Send_Byte",
+          "startLine": 110,
+          "endLine": 119,
+          "params": [
+            "SendData"
+          ]
+        },
+        {
+          "name": "IIC_Receive_Byte",
+          "startLine": 126,
+          "endLine": 140,
+          "params": []
+        },
+        {
+          "name": "IIC_Send_Ack",
+          "startLine": 147,
+          "endLine": 152,
+          "params": [
+            "Ack"
+          ]
+        },
+        {
+          "name": "IIC_Receive_Ack",
+          "startLine": 159,
+          "endLine": 167,
+          "params": []
+        },
+        {
+          "name": "IIC_write",
+          "startLine": 177,
+          "endLine": 192,
+          "params": [
+            "slave_addr",
+            "reg_addr",
+            "length",
+            "data"
+          ]
+        },
+        {
+          "name": "IIC_read",
+          "startLine": 202,
+          "endLine": 228,
+          "params": [
+            "slave_addr",
+            "reg_addr",
+            "length",
+            "data"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "IIC_Init",
+          "line": 30,
+          "isDefault": false
+        },
+        {
+          "name": "IIC_Send_Byte",
+          "line": 110,
+          "isDefault": false
+        },
+        {
+          "name": "IIC_Receive_Byte",
+          "line": 126,
+          "isDefault": false
+        },
+        {
+          "name": "IIC_write",
+          "line": 177,
+          "isDefault": false
+        },
+        {
+          "name": "IIC_read",
+          "line": 202,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "IIC_Init",
+          "callee": "RCC_APB2PeriphClockCmd",
+          "lineNumber": 32
+        },
+        {
+          "caller": "IIC_Init",
+          "callee": "GPIO_Init",
+          "lineNumber": 39
+        },
+        {
+          "caller": "IIC_Init",
+          "callee": "IIC_SDA",
+          "lineNumber": 41
+        },
+        {
+          "caller": "IIC_Init",
+          "callee": "IIC_SCL",
+          "lineNumber": 42
+        },
+        {
+          "caller": "IIC_W_SDA",
+          "callee": "IIC_SDA",
+          "lineNumber": 52
+        },
+        {
+          "caller": "IIC_W_SDA",
+          "callee": "IIC_Delay",
+          "lineNumber": 53
+        },
+        {
+          "caller": "IIC_W_SCL",
+          "callee": "IIC_SCL",
+          "lineNumber": 63
+        },
+        {
+          "caller": "IIC_W_SCL",
+          "callee": "IIC_Delay",
+          "lineNumber": 64
+        },
+        {
+          "caller": "IIC_R_SDA",
+          "callee": "IIC_READ_SCL_PIN",
+          "lineNumber": 76
+        },
+        {
+          "caller": "IIC_Start",
+          "callee": "IIC_W_SDA",
+          "lineNumber": 87
+        },
+        {
+          "caller": "IIC_Start",
+          "callee": "IIC_W_SCL",
+          "lineNumber": 88
+        },
+        {
+          "caller": "IIC_Start",
+          "callee": "IIC_W_SDA",
+          "lineNumber": 89
+        },
+        {
+          "caller": "IIC_Start",
+          "callee": "IIC_W_SCL",
+          "lineNumber": 90
+        },
+        {
+          "caller": "IIC_Stop",
+          "callee": "IIC_W_SDA",
+          "lineNumber": 100
+        },
+        {
+          "caller": "IIC_Stop",
+          "callee": "IIC_W_SCL",
+          "lineNumber": 101
+        },
+        {
+          "caller": "IIC_Stop",
+          "callee": "IIC_W_SDA",
+          "lineNumber": 102
+        },
+        {
+          "caller": "IIC_Send_Byte",
+          "callee": "IIC_W_SDA",
+          "lineNumber": 114
+        },
+        {
+          "caller": "IIC_Send_Byte",
+          "callee": "IIC_W_SCL",
+          "lineNumber": 115
+        },
+        {
+          "caller": "IIC_Send_Byte",
+          "callee": "IIC_W_SCL",
+          "lineNumber": 116
+        },
+        {
+          "caller": "IIC_Receive_Byte",
+          "callee": "IIC_W_SDA",
+          "lineNumber": 131
+        },
+        {
+          "caller": "IIC_Receive_Byte",
+          "callee": "IIC_W_SCL",
+          "lineNumber": 133
+        },
+        {
+          "caller": "IIC_Receive_Byte",
+          "callee": "IIC_R_SDA",
+          "lineNumber": 134
+        },
+        {
+          "caller": "IIC_Receive_Byte",
+          "callee": "IIC_W_SCL",
+          "lineNumber": 137
+        },
+        {
+          "caller": "IIC_Send_Ack",
+          "callee": "IIC_W_SDA",
+          "lineNumber": 149
+        },
+        {
+          "caller": "IIC_Send_Ack",
+          "callee": "IIC_W_SCL",
+          "lineNumber": 150
+        },
+        {
+          "caller": "IIC_Send_Ack",
+          "callee": "IIC_W_SCL",
+          "lineNumber": 151
+        },
+        {
+          "caller": "IIC_Receive_Ack",
+          "callee": "IIC_W_SDA",
+          "lineNumber": 162
+        },
+        {
+          "caller": "IIC_Receive_Ack",
+          "callee": "IIC_W_SCL",
+          "lineNumber": 163
+        },
+        {
+          "caller": "IIC_Receive_Ack",
+          "callee": "IIC_R_SDA",
+          "lineNumber": 164
+        },
+        {
+          "caller": "IIC_Receive_Ack",
+          "callee": "IIC_W_SCL",
+          "lineNumber": 165
+        },
+        {
+          "caller": "IIC_write",
+          "callee": "IIC_Start",
+          "lineNumber": 180
+        },
+        {
+          "caller": "IIC_write",
+          "callee": "IIC_Send_Byte",
+          "lineNumber": 181
+        },
+        {
+          "caller": "IIC_write",
+          "callee": "IIC_Receive_Ack",
+          "lineNumber": 182
+        },
+        {
+          "caller": "IIC_write",
+          "callee": "IIC_Send_Byte",
+          "lineNumber": 183
+        },
+        {
+          "caller": "IIC_write",
+          "callee": "IIC_Receive_Ack",
+          "lineNumber": 184
+        },
+        {
+          "caller": "IIC_write",
+          "callee": "IIC_Send_Byte",
+          "lineNumber": 187
+        },
+        {
+          "caller": "IIC_write",
+          "callee": "IIC_Receive_Ack",
+          "lineNumber": 188
+        },
+        {
+          "caller": "IIC_write",
+          "callee": "IIC_Stop",
+          "lineNumber": 190
+        },
+        {
+          "caller": "IIC_read",
+          "callee": "IIC_Start",
+          "lineNumber": 204
+        },
+        {
+          "caller": "IIC_read",
+          "callee": "IIC_Send_Byte",
+          "lineNumber": 205
+        },
+        {
+          "caller": "IIC_read",
+          "callee": "IIC_Receive_Ack",
+          "lineNumber": 206
+        },
+        {
+          "caller": "IIC_read",
+          "callee": "IIC_Send_Byte",
+          "lineNumber": 207
+        },
+        {
+          "caller": "IIC_read",
+          "callee": "IIC_Receive_Ack",
+          "lineNumber": 208
+        },
+        {
+          "caller": "IIC_read",
+          "callee": "IIC_Start",
+          "lineNumber": 210
+        },
+        {
+          "caller": "IIC_read",
+          "callee": "IIC_Send_Byte",
+          "lineNumber": 211
+        },
+        {
+          "caller": "IIC_read",
+          "callee": "IIC_Receive_Ack",
+          "lineNumber": 212
+        },
+        {
+          "caller": "IIC_read",
+          "callee": "IIC_Receive_Byte",
+          "lineNumber": 215
+        },
+        {
+          "caller": "IIC_read",
+          "callee": "IIC_Send_Ack",
+          "lineNumber": 216
+        },
+        {
+          "caller": "IIC_read",
+          "callee": "IIC_Receive_Byte",
+          "lineNumber": 219
+        },
+        {
+          "caller": "IIC_read",
+          "callee": "IIC_Send_Ack",
+          "lineNumber": 220
+        },
+        {
+          "caller": "IIC_read",
+          "callee": "IIC_Stop",
+          "lineNumber": 226
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 5,
+        "functionCount": 12,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "STM32_Hardware/IIC.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 22,
+      "nonEmptyLines": 18,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "STM32_Hardware/MPU6050.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 116,
+      "nonEmptyLines": 105,
+      "functions": [
+        {
+          "name": "run_self_test",
+          "startLine": 13,
+          "endLine": 37,
+          "params": []
+        },
+        {
+          "name": "inv_row_2_scale",
+          "startLine": 39,
+          "endLine": 58,
+          "params": [
+            "row"
+          ]
+        },
+        {
+          "name": "inv_orientation_matrix_to_scalar",
+          "startLine": 60,
+          "endLine": 69,
+          "params": [
+            "mtx"
+          ]
+        },
+        {
+          "name": "MPU6050_Init",
+          "startLine": 71,
+          "endLine": 114,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "MPU6050_Init",
+          "line": 71,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "run_self_test",
+          "callee": "mpu_run_self_test",
+          "lineNumber": 18
+        },
+        {
+          "caller": "run_self_test",
+          "callee": "mpu_get_gyro_sens",
+          "lineNumber": 25
+        },
+        {
+          "caller": "run_self_test",
+          "callee": "dmp_set_gyro_bias",
+          "lineNumber": 29
+        },
+        {
+          "caller": "run_self_test",
+          "callee": "mpu_get_accel_sens",
+          "lineNumber": 30
+        },
+        {
+          "caller": "run_self_test",
+          "callee": "dmp_set_accel_bias",
+          "lineNumber": 34
+        },
+        {
+          "caller": "inv_orientation_matrix_to_scalar",
+          "callee": "inv_row_2_scale",
+          "lineNumber": 63
+        },
+        {
+          "caller": "inv_orientation_matrix_to_scalar",
+          "callee": "inv_row_2_scale",
+          "lineNumber": 64
+        },
+        {
+          "caller": "inv_orientation_matrix_to_scalar",
+          "callee": "inv_row_2_scale",
+          "lineNumber": 65
+        },
+        {
+          "caller": "MPU6050_Init",
+          "callee": "IIC_Init",
+          "lineNumber": 73
+        },
+        {
+          "caller": "MPU6050_Init",
+          "callee": "IIC_read",
+          "lineNumber": 77
+        },
+        {
+          "caller": "MPU6050_Init",
+          "callee": "NVIC_SystemReset",
+          "lineNumber": 78
+        },
+        {
+          "caller": "MPU6050_Init",
+          "callee": "mpu_init",
+          "lineNumber": 79
+        },
+        {
+          "caller": "MPU6050_Init",
+          "callee": "mpu_set_sensors",
+          "lineNumber": 80
+        },
+        {
+          "caller": "MPU6050_Init",
+          "callee": "mpu_configure_fifo",
+          "lineNumber": 83
+        },
+        {
+          "caller": "MPU6050_Init",
+          "callee": "mpu_set_sample_rate",
+          "lineNumber": 86
+        },
+        {
+          "caller": "MPU6050_Init",
+          "callee": "dmp_load_motion_driver_firmware",
+          "lineNumber": 89
+        },
+        {
+          "caller": "MPU6050_Init",
+          "callee": "dmp_set_orientation",
+          "lineNumber": 92
+        },
+        {
+          "caller": "MPU6050_Init",
+          "callee": "inv_orientation_matrix_to_scalar",
+          "lineNumber": 92
+        },
+        {
+          "caller": "MPU6050_Init",
+          "callee": "dmp_enable_feature",
+          "lineNumber": 95
+        },
+        {
+          "caller": "MPU6050_Init",
+          "callee": "dmp_set_fifo_rate",
+          "lineNumber": 100
+        },
+        {
+          "caller": "MPU6050_Init",
+          "callee": "run_self_test",
+          "lineNumber": 103
+        },
+        {
+          "caller": "MPU6050_Init",
+          "callee": "mpu_set_dmp_state",
+          "lineNumber": 104
+        },
+        {
+          "caller": "MPU6050_Init",
+          "callee": "dmp_set_gyro_bias",
+          "lineNumber": 107
+        },
+        {
+          "caller": "MPU6050_Init",
+          "callee": "mpu_set_accel_fsr",
+          "lineNumber": 110
+        },
+        {
+          "caller": "MPU6050_Init",
+          "callee": "mpu_set_gyro_fsr",
+          "lineNumber": 111
+        },
+        {
+          "caller": "MPU6050_Init",
+          "callee": "printf",
+          "lineNumber": 112
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "STM32_Hardware/MPU6050_Reg.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 358,
+      "nonEmptyLines": 318,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

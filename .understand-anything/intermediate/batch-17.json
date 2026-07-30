@@ -1,0 +1,662 @@
+{
+  "nodes": [
+    {
+      "id": "file:CNN/nnom-master/examples/rnn-denoise/weights.h",
+      "type": "file",
+      "name": "weights.h",
+      "filePath": "CNN/nnom-master/examples/rnn-denoise/weights.h",
+      "summary": "降噪循环神经网络（RNN）模型的权重与偏置参数头文件。",
+      "tags": ["数据模型", "类型定义", "辅助工具"],
+      "complexity": "complex",
+      "languageNotes": "C语言的静态常量数组，用于嵌入式环境下的权重存储。"
+    },
+    {
+      "id": "file:CNN/nnom-master/examples/uci-har-rnn/data/download_dataset.py",
+      "type": "file",
+      "name": "download_dataset.py",
+      "filePath": "CNN/nnom-master/examples/uci-har-rnn/data/download_dataset.py",
+      "summary": "用于下载并解压 UCI HAR（人类活动识别）数据集的 Python 脚本。",
+      "tags": ["辅助工具", "数据管道"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:CNN/nnom-master/examples/uci-har-rnn/main.c",
+      "type": "file",
+      "name": "main.c",
+      "filePath": "CNN/nnom-master/examples/uci-har-rnn/main.c",
+      "summary": "基于 UCI HAR 数据集的 RNN 示例程序主入口，执行数据加载、模型预测和统计汇总。",
+      "tags": ["入口点", "测试", "辅助工具"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/uci-har-rnn/main.c:main",
+      "type": "function",
+      "name": "main",
+      "summary": "uci-har-rnn 示例的入口函数，加载测试数据，创建并运行预测模型，输出性能统计。",
+      "tags": ["入口点"]
+    },
+    {
+      "id": "document:CNN/nnom-master/examples/uci-har-rnn/README.MD",
+      "type": "document",
+      "name": "README.MD",
+      "filePath": "CNN/nnom-master/examples/uci-har-rnn/README.MD",
+      "summary": "详细说明如何在 UCI HAR 数据集上训练和运行 RNN 模型的指南文档。",
+      "tags": ["文档"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:CNN/nnom-master/examples/uci-har-rnn/SConstruct",
+      "type": "file",
+      "name": "SConstruct",
+      "filePath": "CNN/nnom-master/examples/uci-har-rnn/SConstruct",
+      "summary": "SCons 构建脚本，用于配置和编译 uci-har-rnn 示例项目。",
+      "tags": ["构建系统", "配置"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py",
+      "type": "file",
+      "name": "uci_rnn.py",
+      "filePath": "CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py",
+      "summary": "用于 UCI HAR 数据集的 Python 脚本，包含数据预处理、LSTM/GRU 模型训练及导出至 C 头文件的功能。",
+      "tags": ["入口点", "数据管道", "辅助工具"],
+      "complexity": "complex",
+      "languageNotes": "Python深度学习脚本，展示了如何使用Keras的Conv1D、LSTM和GRU混合层训练并导出模型。"
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:load_X",
+      "type": "function",
+      "name": "load_X",
+      "summary": "从指定信号路径加载 UCI HAR 数据集的特征数据并转换为 NumPy 数组。",
+      "tags": ["数据管道"]
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:load_y",
+      "type": "function",
+      "name": "load_y",
+      "summary": "加载 UCI HAR 数据集的动作分类标签。",
+      "tags": ["数据管道"]
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:one_hot",
+      "type": "function",
+      "name": "one_hot",
+      "summary": "对动作分类标签进行 One-Hot 编码。",
+      "tags": ["辅助工具"]
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:plot_raw",
+      "type": "function",
+      "name": "plot_raw",
+      "summary": "绘制动作识别的原始传感器信号图以便于可视化。",
+      "tags": ["辅助工具"]
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:normalize",
+      "type": "function",
+      "name": "normalize",
+      "summary": "对输入传感器信号数据进行最大绝对值归一化处理。",
+      "tags": ["辅助工具"]
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:train",
+      "type": "function",
+      "name": "train",
+      "summary": "构建含有 Conv1D、LSTM 和 GRU 层的混合模型，并在 UCI HAR 数据集上进行训练和保存。",
+      "tags": ["辅助工具", "数据管道"]
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:main",
+      "type": "function",
+      "name": "main",
+      "summary": "数据加载、模型训练、验证 and 生成 C 语言权重与测试数据的全流程主执行函数。",
+      "tags": ["入口点", "辅助工具"]
+    },
+    {
+      "id": "file:CNN/nnom-master/examples/uci-inception/data/download_dataset.py",
+      "type": "file",
+      "name": "download_dataset.py",
+      "filePath": "CNN/nnom-master/examples/uci-inception/data/download_dataset.py",
+      "summary": "用于下载并解压 UCI HAR（人类活动识别）数据集的 Python 脚本。",
+      "tags": ["辅助工具", "数据管道"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:CNN/nnom-master/examples/uci-inception/main.c",
+      "type": "file",
+      "name": "main.c",
+      "filePath": "CNN/nnom-master/examples/uci-inception/main.c",
+      "summary": "基于 RT-Thread 系统的 Inception 模型推理示例主程序，支持 Ymodem 数据接收及推理性能统计。",
+      "tags": ["入口点", "测试", "辅助工具"],
+      "complexity": "complex",
+      "languageNotes": "结合了RT-Thread实时操作系统API以及硬件定时器来进行微秒级推理时间测量。"
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/uci-inception/main.c:us_timer_enable",
+      "type": "function",
+      "name": "us_timer_enable",
+      "summary": "初始化并使能用于微秒级推理时间测量的高精度硬件定时器 TIM2。",
+      "tags": ["辅助工具"]
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/uci-inception/main.c:us_timer_get",
+      "type": "function",
+      "name": "us_timer_get",
+      "summary": "读取微秒定时器的当前硬件计数器值。",
+      "tags": ["辅助工具"]
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/uci-inception/main.c:main",
+      "type": "function",
+      "name": "main",
+      "summary": "系统线程主入口，配置定时器并启动基于 Inception 的动作识别预测。",
+      "tags": ["入口点"]
+    },
+    {
+      "id": "document:CNN/nnom-master/examples/uci-inception/README.MD",
+      "type": "document",
+      "name": "README.MD",
+      "filePath": "CNN/nnom-master/examples/uci-inception/README.MD",
+      "summary": "关于 uci-inception 示例程序的训练与在 RT-Thread 目标板上部署运行的详细指南。",
+      "tags": ["文档"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:CNN/nnom-master/examples/uci-inception/uci_test.py",
+      "type": "file",
+      "name": "uci_test.py",
+      "filePath": "CNN/nnom-master/examples/uci-inception/uci_test.py",
+      "summary": "在 UCI HAR 数据集上训练一维 Inception 模型并将其导出至 C 头文件以便部署的 Python 脚本。",
+      "tags": ["入口点", "数据管道", "辅助工具"],
+      "complexity": "complex",
+      "languageNotes": "使用TensorFlow实现一维Inception网络，包含多分支并发的卷积操作。"
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/uci-inception/uci_test.py:load_X",
+      "type": "function",
+      "name": "load_X",
+      "summary": "加载 UCI HAR 数据集的特征信号。",
+      "tags": ["数据管道"]
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/uci-inception/uci_test.py:load_y",
+      "type": "function",
+      "name": "load_y",
+      "summary": "加载 UCI HAR 数据集的分类标签。",
+      "tags": ["数据管道"]
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/uci-inception/uci_test.py:one_hot",
+      "type": "function",
+      "name": "one_hot",
+      "summary": "对动作分类标签进行 One-Hot 编码。",
+      "tags": ["辅助工具"]
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/uci-inception/uci_test.py:plot_raw",
+      "type": "function",
+      "name": "plot_raw",
+      "summary": "绘制动作识别的原始传感器信号图以便于可视化。",
+      "tags": ["辅助工具"]
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/uci-inception/uci_test.py:normalize",
+      "type": "function",
+      "name": "normalize",
+      "summary": "对输入传感器信号数据进行最大绝对值归一化处理。",
+      "tags": ["辅助工具"]
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/uci-inception/uci_test.py:train",
+      "type": "function",
+      "name": "train",
+      "summary": "构建含有多分支 Conv1D Inception 结构的模型，在数据集上进行训练、量化并保存。",
+      "tags": ["辅助工具", "数据管道"]
+    },
+    {
+      "id": "file:CNN/nnom-master/examples/uci-inception/uci_weights.h",
+      "type": "file",
+      "name": "uci_weights.h",
+      "filePath": "CNN/nnom-master/examples/uci-inception/uci_weights.h",
+      "summary": "Inception 神经网络模型的量化权重和偏置参数头文件。",
+      "tags": ["数据模型", "类型定义", "辅助工具"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:CNN/nnom-master/inc/layers/nnom_activation.h",
+      "type": "file",
+      "name": "nnom_activation.h",
+      "filePath": "CNN/nnom-master/inc/layers/nnom_activation.h",
+      "summary": "神经网络激活层（ReLU, Leaky ReLU, Sigmoid, Tanh 等）的公共接口 and 层创建函数声明。",
+      "tags": ["类型定义", "辅助工具"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:CNN/nnom-master/inc/layers/nnom_avgpool.h",
+      "type": "file",
+      "name": "nnom_avgpool.h",
+      "filePath": "CNN/nnom-master/inc/layers/nnom_avgpool.h",
+      "summary": "平均池化层 (Average Pooling) 的创建及配置接口定义。",
+      "tags": ["类型定义", "辅助工具"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:CNN/nnom-master/inc/layers/nnom_baselayer.h",
+      "type": "file",
+      "name": "nnom_baselayer.h",
+      "filePath": "CNN/nnom-master/inc/layers/nnom_baselayer.h",
+      "summary": "定义了 NNOm 神经网络所有基础层的通用数据结构和核心操作接口。",
+      "tags": ["类型定义", "辅助工具"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:CNN/nnom-master/inc/layers/nnom_concat.h",
+      "type": "file",
+      "name": "nnom_concat.h",
+      "filePath": "CNN/nnom-master/inc/layers/nnom_concat.h",
+      "summary": "拼接层 (Concatenate Layer) 的核心数据结构和用于连接多个层输出的构建接口。",
+      "tags": ["类型定义", "辅助工具"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:CNN/nnom-master/inc/layers/nnom_conv2d_trans.h",
+      "type": "file",
+      "name": "nnom_conv2d_trans.h",
+      "filePath": "CNN/nnom-master/inc/layers/nnom_conv2d_trans.h",
+      "summary": "转置二维卷积层 (Transposed Convolution 2D) 的核心结构体与创建接口声明。",
+      "tags": ["类型定义", "辅助工具"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:CNN/nnom-master/inc/layers/nnom_conv2d.h",
+      "type": "file",
+      "name": "nnom_conv2d.h",
+      "filePath": "CNN/nnom-master/inc/layers/nnom_conv2d.h",
+      "summary": "标准二维卷积层 (Convolution 2D) 的数据结构体设计和层构建声明。",
+      "tags": ["类型定义", "辅助工具"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:CNN/nnom-master/inc/layers/nnom_cropping.h",
+      "type": "file",
+      "name": "nnom_cropping.h",
+      "filePath": "CNN/nnom-master/inc/layers/nnom_cropping.h",
+      "summary": "二维裁剪层 (Cropping Layer) 的构建接口，用于对特征图边缘执行缩减。",
+      "tags": ["类型定义", "辅助工具"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:CNN/nnom-master/inc/layers/nnom_dense.h",
+      "type": "file",
+      "name": "nnom_dense.h",
+      "filePath": "CNN/nnom-master/inc/layers/nnom_dense.h",
+      "summary": "全连接层 (Dense / Fully Connected Layer) 的核心属性定义与创建函数接口。",
+      "tags": ["类型定义", "辅助工具"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:CNN/nnom-master/inc/layers/nnom_dw_conv2d.h",
+      "type": "file",
+      "name": "nnom_dw_conv2d.h",
+      "filePath": "CNN/nnom-master/inc/layers/nnom_dw_conv2d.h",
+      "summary": "深度可分离二维卷积层 (Depthwise Separable Convolution 2D) 的接口和创建函数。",
+      "tags": ["类型定义", "辅助工具"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:CNN/nnom-master/inc/layers/nnom_flatten.h",
+      "type": "file",
+      "name": "nnom_flatten.h",
+      "filePath": "CNN/nnom-master/inc/layers/nnom_flatten.h",
+      "summary": "展平层 (Flatten Layer) 的接口，将高维张量降维展平为一维特征向量。",
+      "tags": ["类型定义", "辅助工具"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:CNN/nnom-master/inc/layers/nnom_global_pool.h",
+      "type": "file",
+      "name": "nnom_global_pool.h",
+      "filePath": "CNN/nnom-master/inc/layers/nnom_global_pool.h",
+      "summary": "全局池化层 (Global Pooling) 的接口声明，支持全局平均和全局最大池化。",
+      "tags": ["类型定义", "辅助工具"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:CNN/nnom-master/inc/layers/nnom_gru_cell.h",
+      "type": "file",
+      "name": "nnom_gru_cell.h",
+      "filePath": "CNN/nnom-master/inc/layers/nnom_gru_cell.h",
+      "summary": "门控循环单元层 (GRU Cell) 的数据结构与状态维护接口声明。",
+      "tags": ["类型定义", "辅助工具"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:CNN/nnom-master/inc/layers/nnom_input.h",
+      "type": "file",
+      "name": "nnom_input.h",
+      "filePath": "CNN/nnom-master/inc/layers/nnom_input.h",
+      "summary": "输入层 (Input Layer) 接口定义，负责将外部输入数据绑定为模型张量。",
+      "tags": ["类型定义", "辅助工具"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:CNN/nnom-master/inc/layers/nnom_lambda.h",
+      "type": "file",
+      "name": "nnom_lambda.h",
+      "filePath": "CNN/nnom-master/inc/layers/nnom_lambda.h",
+      "summary": "Lambda 自定义计算层 (Lambda Layer) 的结构定义，支持用户指定的操作变换。",
+      "tags": ["类型定义", "辅助工具"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:CNN/nnom-master/examples/uci-har-rnn/main.c",
+      "target": "function:CNN/nnom-master/examples/uci-har-rnn/main.c:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py",
+      "target": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:load_X",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py",
+      "target": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:load_y",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py",
+      "target": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:one_hot",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py",
+      "target": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:plot_raw",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py",
+      "target": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:normalize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py",
+      "target": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:train",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py",
+      "target": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-inception/main.c",
+      "target": "function:CNN/nnom-master/examples/uci-inception/main.c:us_timer_enable",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-inception/main.c",
+      "target": "function:CNN/nnom-master/examples/uci-inception/main.c:us_timer_get",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-inception/main.c",
+      "target": "function:CNN/nnom-master/examples/uci-inception/main.c:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-inception/uci_test.py",
+      "target": "function:CNN/nnom-master/examples/uci-inception/uci_test.py:load_X",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-inception/uci_test.py",
+      "target": "function:CNN/nnom-master/examples/uci-inception/uci_test.py:load_y",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-inception/uci_test.py",
+      "target": "function:CNN/nnom-master/examples/uci-inception/uci_test.py:one_hot",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-inception/uci_test.py",
+      "target": "function:CNN/nnom-master/examples/uci-inception/uci_test.py:plot_raw",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-inception/uci_test.py",
+      "target": "function:CNN/nnom-master/examples/uci-inception/uci_test.py:normalize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-inception/uci_test.py",
+      "target": "function:CNN/nnom-master/examples/uci-inception/uci_test.py:train",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-har-rnn/main.c",
+      "target": "function:CNN/nnom-master/examples/uci-har-rnn/main.c:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py",
+      "target": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:load_X",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py",
+      "target": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:load_y",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py",
+      "target": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:one_hot",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py",
+      "target": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:plot_raw",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py",
+      "target": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:normalize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py",
+      "target": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:train",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py",
+      "target": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-inception/main.c",
+      "target": "function:CNN/nnom-master/examples/uci-inception/main.c:us_timer_enable",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-inception/main.c",
+      "target": "function:CNN/nnom-master/examples/uci-inception/main.c:us_timer_get",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-inception/main.c",
+      "target": "function:CNN/nnom-master/examples/uci-inception/main.c:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-inception/uci_test.py",
+      "target": "function:CNN/nnom-master/examples/uci-inception/uci_test.py:load_X",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-inception/uci_test.py",
+      "target": "function:CNN/nnom-master/examples/uci-inception/uci_test.py:load_y",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-inception/uci_test.py",
+      "target": "function:CNN/nnom-master/examples/uci-inception/uci_test.py:one_hot",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-inception/uci_test.py",
+      "target": "function:CNN/nnom-master/examples/uci-inception/uci_test.py:plot_raw",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-inception/uci_test.py",
+      "target": "function:CNN/nnom-master/examples/uci-inception/uci_test.py:normalize",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-inception/uci_test.py",
+      "target": "function:CNN/nnom-master/examples/uci-inception/uci_test.py:train",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-har-rnn/main.c",
+      "target": "file:CNN/nnom-master/examples/uci-har-rnn/uci_weights.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-inception/main.c",
+      "target": "file:CNN/nnom-master/examples/uci-inception/uci_weights.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:main",
+      "target": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:load_X",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:main",
+      "target": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:load_y",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:main",
+      "target": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:one_hot",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:main",
+      "target": "function:CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py:normalize",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:CNN/nnom-master/examples/uci-inception/main.c:main",
+      "target": "function:CNN/nnom-master/examples/uci-inception/main.c:us_timer_enable",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "document:CNN/nnom-master/examples/uci-har-rnn/README.MD",
+      "target": "file:CNN/nnom-master/examples/uci-har-rnn/main.c",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CNN/nnom-master/examples/uci-inception/README.MD",
+      "target": "file:CNN/nnom-master/examples/uci-inception/main.c",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/uci-har-rnn/SConstruct",
+      "target": "file:CNN/nnom-master/examples/uci-har-rnn/main.c",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

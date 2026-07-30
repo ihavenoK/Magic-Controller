@@ -1,0 +1,719 @@
+{
+  "nodes": [
+    {
+      "id": "file:CNN/nnom-master/src/layers/nnom_lstm_cell.c",
+      "type": "file",
+      "name": "nnom_lstm_cell.c",
+      "filePath": "CNN/nnom-master/src/layers/nnom_lstm_cell.c",
+      "summary": "实现长短期记忆（LSTM）单元，支持遗忘门、输入门、输出门等的定点乘加计算，作为RNN的核心子层。",
+      "tags": ["神经网络", "网络层", "循环单元", "c语言-源码"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:CNN/nnom-master/src/layers/nnom_lstm_cell.c:lstm_cell_free",
+      "type": "function",
+      "name": "lstm_cell_free",
+      "filePath": "CNN/nnom-master/src/layers/nnom_lstm_cell.c",
+      "summary": "释放LSTM单元的资源，注销内部张量。",
+      "tags": ["内存管理", "资源释放"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:CNN/nnom-master/src/layers/nnom_lstm_cell.c:lstm_cell_q7_q15_build",
+      "type": "function",
+      "name": "lstm_cell_q7_q15_build",
+      "filePath": "CNN/nnom-master/src/layers/nnom_lstm_cell.c",
+      "summary": "构建Q7-Q15混合精度的LSTM计算单元，初始化隐藏状态与细胞状态。",
+      "tags": ["单元构建", "混合精度"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:CNN/nnom-master/src/layers/nnom_lstm_cell.c:lstm_cell_q7_q15_run",
+      "type": "function",
+      "name": "lstm_cell_q7_q15_run",
+      "filePath": "CNN/nnom-master/src/layers/nnom_lstm_cell.c",
+      "summary": "执行一步LSTM单元前向累加计算，输出并更新门状态和值。",
+      "tags": ["单步计算", "循环前向"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:CNN/nnom-master/src/layers/nnom_matrix.c",
+      "type": "file",
+      "name": "nnom_matrix.c",
+      "filePath": "CNN/nnom-master/src/layers/nnom_matrix.c",
+      "summary": "实现基本的矩阵计算层，包括矩阵元素级的加法（Add）、减法（Sub）和乘法（Mult）运算。",
+      "tags": ["神经网络", "网络层", "矩阵运算", "c语言-源码"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:CNN/nnom-master/src/layers/nnom_matrix.c:matrix_build",
+      "type": "function",
+      "name": "matrix_build",
+      "filePath": "CNN/nnom-master/src/layers/nnom_matrix.c",
+      "summary": "校验两个输入矩阵形状的一致性，构建输出矩阵张量。",
+      "tags": ["层构建", "张量校验"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:CNN/nnom-master/src/layers/nnom_matrix.c:add_run",
+      "type": "function",
+      "name": "add_run",
+      "filePath": "CNN/nnom-master/src/layers/nnom_matrix.c",
+      "summary": "计算两个输入矩阵按元素相加的输出矩阵，支持ARM库加速。",
+      "tags": ["矩阵加法", "前向运行"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:CNN/nnom-master/src/layers/nnom_matrix.c:sub_run",
+      "type": "function",
+      "name": "sub_run",
+      "filePath": "CNN/nnom-master/src/layers/nnom_matrix.c",
+      "summary": "计算两个输入矩阵按元素相减的输出矩阵。",
+      "tags": ["矩阵减法", "前向运行"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:CNN/nnom-master/src/layers/nnom_matrix.c:mult_run",
+      "type": "function",
+      "name": "mult_run",
+      "filePath": "CNN/nnom-master/src/layers/nnom_matrix.c",
+      "summary": "计算两个输入矩阵按元素相乘（Hadamard乘积）的输出矩阵。",
+      "tags": ["矩阵乘法", "前向运行"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:CNN/nnom-master/src/layers/nnom_maxpool.c",
+      "type": "file",
+      "name": "nnom_maxpool.c",
+      "filePath": "CNN/nnom-master/src/layers/nnom_maxpool.c",
+      "summary": "实现最大值池化（Max Pooling）层，在给定的池化窗口内选取最大值作为输出，常用于降维。",
+      "tags": ["神经网络", "网络层", "最大池化", "c语言-源码"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:CNN/nnom-master/src/layers/nnom_maxpool.c:maxpool_build",
+      "type": "function",
+      "name": "maxpool_build",
+      "filePath": "CNN/nnom-master/src/layers/nnom_maxpool.c",
+      "summary": "配置最大池化层的空间参数（窗口、步长、填充等）并创建输出张量。",
+      "tags": ["层构建", "形状配置"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:CNN/nnom-master/src/layers/nnom_maxpool.c:maxpool_run",
+      "type": "function",
+      "name": "maxpool_run",
+      "filePath": "CNN/nnom-master/src/layers/nnom_maxpool.c",
+      "summary": "前向遍历并挑选区域最大值，分发至本地定点最大池化或ARM指令优化版本。",
+      "tags": ["前向计算", "池化计算"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:CNN/nnom-master/src/layers/nnom_output.c",
+      "type": "file",
+      "name": "nnom_output.c",
+      "filePath": "CNN/nnom-master/src/layers/nnom_output.c",
+      "summary": "实现网络模型的输出（Output）层，从图的终端节点收集数据并复制到调用方的目的缓冲区。",
+      "tags": ["神经网络", "网络层", "数据出口", "c语言-源码"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:CNN/nnom-master/src/layers/nnom_output.c:output_run",
+      "type": "function",
+      "name": "output_run",
+      "filePath": "CNN/nnom-master/src/layers/nnom_output.c",
+      "summary": "将图计算最后阶段的结果张量数据复制至宿主程序。",
+      "tags": ["数据读出", "前向运行"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:CNN/nnom-master/src/layers/nnom_reshape.c",
+      "type": "file",
+      "name": "nnom_reshape.c",
+      "filePath": "CNN/nnom-master/src/layers/nnom_reshape.c",
+      "summary": "实现重塑（Reshape）层，在不改变数据本身大小和值的情况下，改变张量的逻辑维度形状。",
+      "tags": ["神经网络", "网络层", "维度重塑", "c语言-源码"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:CNN/nnom-master/src/layers/nnom_reshape.c:reshape_build",
+      "type": "function",
+      "name": "reshape_build",
+      "filePath": "CNN/nnom-master/src/layers/nnom_reshape.c",
+      "summary": "指定新的输出维度属性并关联共享相同的物理张量数据。",
+      "tags": ["层构建", "维度变换"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:CNN/nnom-master/src/layers/nnom_reshape.c:reshape_run",
+      "type": "function",
+      "name": "reshape_run",
+      "filePath": "CNN/nnom-master/src/layers/nnom_reshape.c",
+      "summary": "空实现，重塑层在运行时无实际数据移动。",
+      "tags": ["前向运行", "零成本"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:CNN/nnom-master/src/layers/nnom_rnn.c",
+      "type": "file",
+      "name": "nnom_rnn.c",
+      "filePath": "CNN/nnom-master/src/layers/nnom_rnn.c",
+      "summary": "实现循环神经网络（RNN）层，管理时间序列在单元级（如Simple Cell, LSTM, GRU）的流转和状态重置。",
+      "tags": ["神经网络", "网络层", "循环层", "c语言-源码"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:CNN/nnom-master/src/layers/nnom_rnn.c:rnn_free",
+      "type": "function",
+      "name": "rnn_free",
+      "filePath": "CNN/nnom-master/src/layers/nnom_rnn.c",
+      "summary": "释放RNN容器层以及内嵌计算单元的私有内存。",
+      "tags": ["内存管理", "销毁层"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:CNN/nnom-master/src/layers/nnom_rnn.c:rnn_build",
+      "type": "function",
+      "name": "rnn_build",
+      "filePath": "CNN/nnom-master/src/layers/nnom_rnn.c",
+      "summary": "构建包含循环单元的RNN网络结构并初始化时序步长相关的状态空间。",
+      "tags": ["层构建", "状态初始化"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:CNN/nnom-master/src/layers/nnom_rnn.c:rnn_run",
+      "type": "function",
+      "name": "rnn_run",
+      "filePath": "CNN/nnom-master/src/layers/nnom_rnn.c",
+      "summary": "按时序步长迭代循环前向逻辑，逐帧调用绑定的隐藏单元执行计算。",
+      "tags": ["前向计算", "时序迭代"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:CNN/nnom-master/src/layers/nnom_simple_cell.c",
+      "type": "file",
+      "name": "nnom_simple_cell.c",
+      "filePath": "CNN/nnom-master/src/layers/nnom_simple_cell.c",
+      "summary": "实现最简RNN隐藏层计算单元（Simple Cell），通过单纯矩阵乘法和加偏置并配合非线性激活实现时序推算。",
+      "tags": ["神经网络", "网络层", "循环单元", "c语言-源码"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:CNN/nnom-master/src/layers/nnom_simple_cell.c:simple_cell_free",
+      "type": "function",
+      "name": "simple_cell_free",
+      "filePath": "CNN/nnom-master/src/layers/nnom_simple_cell.c",
+      "summary": "释放Simple Cell关联的私有缓存与描述符。",
+      "tags": ["内存管理", "资源释放"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:CNN/nnom-master/src/layers/nnom_simple_cell.c:simple_cell_build",
+      "type": "function",
+      "name": "simple_cell_build",
+      "filePath": "CNN/nnom-master/src/layers/nnom_simple_cell.c",
+      "summary": "构建Simple Cell计算骨架，完成权重与偏置张量的校验。",
+      "tags": ["单元构建", "维度核验"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:CNN/nnom-master/src/layers/nnom_simple_cell.c:simple_cell_run",
+      "type": "function",
+      "name": "simple_cell_run",
+      "filePath": "CNN/nnom-master/src/layers/nnom_simple_cell.c",
+      "summary": "执行单步基础循环神经单元的输入项与前一状态相乘相加并经过非线性激活。",
+      "tags": ["单步计算", "前向前传"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:CNN/nnom-master/src/layers/nnom_softmax.c",
+      "type": "file",
+      "name": "nnom_softmax.c",
+      "filePath": "CNN/nnom-master/src/layers/nnom_softmax.c",
+      "summary": "实现Softmax分类指数层，用于对输出概率进行归一化，常作为多分类任务的最后一层。",
+      "tags": ["神经网络", "网络层", "归一化层", "c语言-源码"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:CNN/nnom-master/src/layers/nnom_softmax.c:softmax_build",
+      "type": "function",
+      "name": "softmax_build",
+      "filePath": "CNN/nnom-master/src/layers/nnom_softmax.c",
+      "summary": "构建Softmax层，直接复用输入张量的维度属性来构造输出张量。",
+      "tags": ["层构建", "张量重用"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:CNN/nnom-master/src/layers/nnom_softmax.c:softmax_run",
+      "type": "function",
+      "name": "softmax_run",
+      "filePath": "CNN/nnom-master/src/layers/nnom_softmax.c",
+      "summary": "利用定点逼近算法计算输入数值的指数归一化前向结果。",
+      "tags": ["前向计算", "定点指数"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:CNN/nnom-master/src/layers/nnom_sumpool.c",
+      "type": "file",
+      "name": "nnom_sumpool.c",
+      "filePath": "CNN/nnom-master/src/layers/nnom_sumpool.c",
+      "summary": "实现求和池化（Sum Pooling）层，计算局部区域所有值的总和作为当前窗口的特征提取值。",
+      "tags": ["神经网络", "网络层", "求和池化", "c语言-源码"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:CNN/nnom-master/src/layers/nnom_sumpool.c:sumpool_build",
+      "type": "function",
+      "name": "sumpool_build",
+      "filePath": "CNN/nnom-master/src/layers/nnom_sumpool.c",
+      "summary": "构建求和池化层，底层共享最大池化的空间尺寸核实逻辑。",
+      "tags": ["层构建", "尺寸校验"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:CNN/nnom-master/src/layers/nnom_sumpool.c:sumpool_run",
+      "type": "function",
+      "name": "sumpool_run",
+      "filePath": "CNN/nnom-master/src/layers/nnom_sumpool.c",
+      "summary": "在指定邻域内执行定点数的区域求和前向传播。",
+      "tags": ["前向计算", "区域求和"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:CNN/nnom-master/src/layers/nnom_upsample.c",
+      "type": "file",
+      "name": "nnom_upsample.c",
+      "filePath": "CNN/nnom-master/src/layers/nnom_upsample.c",
+      "summary": "实现上采样（Upsampling 2D）层，通过在相邻元素位置填充复制数值实现特征图的空间比例放大。",
+      "tags": ["神经网络", "网络层", "上采样", "c语言-源码"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:CNN/nnom-master/src/layers/nnom_upsample.c:upsample_build",
+      "type": "function",
+      "name": "upsample_build",
+      "filePath": "CNN/nnom-master/src/layers/nnom_upsample.c",
+      "summary": "根据指定的放大倍数计算输出张量的尺寸大小。",
+      "tags": ["层构建", "尺寸扩张"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:CNN/nnom-master/src/layers/nnom_upsample.c:upsample_run",
+      "type": "function",
+      "name": "upsample_run",
+      "filePath": "CNN/nnom-master/src/layers/nnom_upsample.c",
+      "summary": "按放大比率将输入像素横向和纵向复制映射至输出的特定单元。",
+      "tags": ["前向计算", "像素复制"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:CNN/nnom-master/src/layers/nnom_zero_padding.c",
+      "type": "file",
+      "name": "nnom_zero_padding.c",
+      "filePath": "CNN/nnom-master/src/layers/nnom_zero_padding.c",
+      "summary": "实现零填充（Zero Padding 2D）层，用于在特征图的四周填充特定厚度的零，以保证卷积尺寸一致。",
+      "tags": ["神经网络", "网络层", "零填充", "c语言-源码"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:CNN/nnom-master/src/layers/nnom_zero_padding.c:zero_padding_build",
+      "type": "function",
+      "name": "zero_padding_build",
+      "filePath": "CNN/nnom-master/src/layers/nnom_zero_padding.c",
+      "summary": "确定在四个方向上填充的宽度并核算填充后的新边界张量大小。",
+      "tags": ["层构建", "边界核算"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:CNN/nnom-master/src/layers/nnom_zero_padding.c:zero_padding_run",
+      "type": "function",
+      "name": "zero_padding_run",
+      "filePath": "CNN/nnom-master/src/layers/nnom_zero_padding.c",
+      "summary": "将输入张量搬移到内部偏移区，并在其余补丁边界部分全部置零。",
+      "tags": ["前向计算", "数据补零"],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:CNN/requirements.txt",
+      "type": "document",
+      "name": "requirements.txt",
+      "filePath": "CNN/requirements.txt",
+      "summary": "包含CNN组件开发和验证过程中所必须的Python第三方依赖包清单。",
+      "tags": ["依赖配置", "python包", "环境配置"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_lstm_cell.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_lstm_cell.c:lstm_cell_free",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_lstm_cell.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_lstm_cell.c:lstm_cell_free",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_lstm_cell.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_lstm_cell.c:lstm_cell_q7_q15_build",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_lstm_cell.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_lstm_cell.c:lstm_cell_q7_q15_build",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_lstm_cell.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_lstm_cell.c:lstm_cell_q7_q15_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_lstm_cell.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_lstm_cell.c:lstm_cell_q7_q15_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_matrix.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_matrix.c:matrix_build",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_matrix.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_matrix.c:matrix_build",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_matrix.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_matrix.c:add_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_matrix.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_matrix.c:add_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_matrix.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_matrix.c:sub_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_matrix.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_matrix.c:sub_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_matrix.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_matrix.c:mult_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_matrix.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_matrix.c:mult_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_maxpool.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_maxpool.c:maxpool_build",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_maxpool.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_maxpool.c:maxpool_build",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_maxpool.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_maxpool.c:maxpool_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_maxpool.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_maxpool.c:maxpool_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_output.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_output.c:output_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_output.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_output.c:output_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_reshape.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_reshape.c:reshape_build",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_reshape.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_reshape.c:reshape_build",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_reshape.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_reshape.c:reshape_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_reshape.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_reshape.c:reshape_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_rnn.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_rnn.c:rnn_free",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_rnn.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_rnn.c:rnn_free",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_rnn.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_rnn.c:rnn_build",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_rnn.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_rnn.c:rnn_build",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_rnn.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_rnn.c:rnn_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_rnn.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_rnn.c:rnn_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_simple_cell.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_simple_cell.c:simple_cell_free",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_simple_cell.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_simple_cell.c:simple_cell_free",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_simple_cell.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_simple_cell.c:simple_cell_build",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_simple_cell.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_simple_cell.c:simple_cell_build",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_simple_cell.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_simple_cell.c:simple_cell_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_simple_cell.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_simple_cell.c:simple_cell_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_softmax.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_softmax.c:softmax_build",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_softmax.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_softmax.c:softmax_build",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_softmax.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_softmax.c:softmax_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_softmax.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_softmax.c:softmax_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_sumpool.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_sumpool.c:sumpool_build",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_sumpool.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_sumpool.c:sumpool_build",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_sumpool.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_sumpool.c:sumpool_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_sumpool.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_sumpool.c:sumpool_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:CNN/nnom-master/src/layers/nnom_sumpool.c:sumpool_build",
+      "target": "function:CNN/nnom-master/src/layers/nnom_maxpool.c:maxpool_build",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_upsample.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_upsample.c:upsample_build",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_upsample.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_upsample.c:upsample_build",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_upsample.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_upsample.c:upsample_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_upsample.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_upsample.c:upsample_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_zero_padding.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_zero_padding.c:zero_padding_build",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_zero_padding.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_zero_padding.c:zero_padding_build",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_zero_padding.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_zero_padding.c:zero_padding_run",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/src/layers/nnom_zero_padding.c",
+      "target": "function:CNN/nnom-master/src/layers/nnom_zero_padding.c:zero_padding_run",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

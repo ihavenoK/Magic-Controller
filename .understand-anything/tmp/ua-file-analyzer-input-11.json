@@ -1,0 +1,28 @@
+{
+  "projectRoot": "D:/32/cyberrypotter",
+  "batchFiles": [
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "sizeLines": 132,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "keilkill.bat",
+      "language": "batch",
+      "sizeLines": 27,
+      "fileCategory": "script"
+    },
+    {
+      "path": "run_agy.bat",
+      "language": "batch",
+      "sizeLines": 2,
+      "fileCategory": "script"
+    }
+  ],
+  "batchImportData": {
+    "README.md": [],
+    "keilkill.bat": [],
+    "run_agy.bat": []
+  }
+}

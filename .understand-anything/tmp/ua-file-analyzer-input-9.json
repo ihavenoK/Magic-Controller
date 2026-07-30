@@ -1,0 +1,28 @@
+{
+  "projectRoot": "D:/32/cyberrypotter",
+  "batchFiles": [
+    {
+      "path": "CNN/nnom-master/README.md",
+      "language": "markdown",
+      "sizeLines": 261,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/mkdocs.yml",
+      "language": "yaml",
+      "sizeLines": 35,
+      "fileCategory": "config"
+    },
+    {
+      "path": "CNN/nnom-master/pyproject.toml",
+      "language": "toml",
+      "sizeLines": 36,
+      "fileCategory": "config"
+    }
+  ],
+  "batchImportData": {
+    "CNN/nnom-master/README.md": [],
+    "CNN/nnom-master/mkdocs.yml": [],
+    "CNN/nnom-master/pyproject.toml": []
+  }
+}

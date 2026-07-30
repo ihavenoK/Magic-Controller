@@ -1,0 +1,177 @@
+{
+  "projectRoot": "D:/32/cyberrypotter",
+  "batchFiles": [
+    {
+      "path": "CNN/Serial_Read.py",
+      "language": "python",
+      "sizeLines": 149,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/weights.h",
+      "language": "c",
+      "sizeLines": 274,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CyberryPotter.uvguix.13087",
+      "language": "13087",
+      "sizeLines": 1887,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CyberryPotter.uvoptx",
+      "language": "uvoptx",
+      "sizeLines": 1247,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CyberryPotter.uvprojx",
+      "language": "uvprojx",
+      "sizeLines": 1085,
+      "fileCategory": "code"
+    },
+    {
+      "path": "DebugConfig/Target_1_STM32F103C8_1.0.0.dbgconf",
+      "language": "dbgconf",
+      "sizeLines": 36,
+      "fileCategory": "code"
+    },
+    {
+      "path": "EventRecorderStub.scvd",
+      "language": "scvd",
+      "sizeLines": 9,
+      "fileCategory": "code"
+    },
+    {
+      "path": "main.c",
+      "language": "c",
+      "sizeLines": 183,
+      "fileCategory": "code"
+    },
+    {
+      "path": "RTE/_Target_1/RTE_Components.h",
+      "language": "c",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "RTE/Device/STM32F103C8/RTE_Device.h",
+      "language": "c",
+      "sizeLines": 1828,
+      "fileCategory": "code"
+    },
+    {
+      "path": "RTE/Device/STM32F103C8/RTE_Device.h.base@1.1.2",
+      "language": "2",
+      "sizeLines": 1828,
+      "fileCategory": "code"
+    },
+    {
+      "path": "RTE/Device/STM32F103C8/startup_stm32f10x_md.s",
+      "language": "s",
+      "sizeLines": 308,
+      "fileCategory": "code"
+    },
+    {
+      "path": "RTE/Device/STM32F103C8/startup_stm32f10x_md.s.base@1.0.1",
+      "language": "1",
+      "sizeLines": 308,
+      "fileCategory": "code"
+    },
+    {
+      "path": "RTE/Device/STM32F103C8/STM32F101_102_103_105_107.dbgconf",
+      "language": "dbgconf",
+      "sizeLines": 36,
+      "fileCategory": "code"
+    },
+    {
+      "path": "RTE/Device/STM32F103C8/STM32F101_102_103_105_107.dbgconf.base@1.0.0",
+      "language": "0",
+      "sizeLines": 36,
+      "fileCategory": "code"
+    },
+    {
+      "path": "RTE/Device/STM32F103C8/stm32f10x_conf.h",
+      "language": "c",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "RTE/Device/STM32F103C8/stm32f10x_conf.h.base@3.6.0",
+      "language": "0",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "RTE/Device/STM32F103C8/system_stm32f10x.c",
+      "language": "c",
+      "sizeLines": 1092,
+      "fileCategory": "code"
+    },
+    {
+      "path": "RTE/Device/STM32F103C8/system_stm32f10x.c.base@1.0.1",
+      "language": "1",
+      "sizeLines": 1092,
+      "fileCategory": "code"
+    },
+    {
+      "path": "STM32_Hardware/hardware.c",
+      "language": "c",
+      "sizeLines": 143,
+      "fileCategory": "code"
+    },
+    {
+      "path": "STM32_Hardware/hardware.h",
+      "language": "c",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "STM32_Hardware/MPU6050.h",
+      "language": "c",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "User/Delay.c",
+      "language": "c",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "User/Delay.h",
+      "language": "c",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "CNN/Serial_Read.py": [],
+    "CNN/weights.h": [],
+    "CyberryPotter.uvguix.13087": [],
+    "CyberryPotter.uvoptx": [],
+    "CyberryPotter.uvprojx": [],
+    "DebugConfig/Target_1_STM32F103C8_1.0.0.dbgconf": [],
+    "EventRecorderStub.scvd": [],
+    "main.c": [],
+    "RTE/_Target_1/RTE_Components.h": [],
+    "RTE/Device/STM32F103C8/RTE_Device.h": [],
+    "RTE/Device/STM32F103C8/RTE_Device.h.base@1.1.2": [],
+    "RTE/Device/STM32F103C8/startup_stm32f10x_md.s": [],
+    "RTE/Device/STM32F103C8/startup_stm32f10x_md.s.base@1.0.1": [],
+    "RTE/Device/STM32F103C8/STM32F101_102_103_105_107.dbgconf": [],
+    "RTE/Device/STM32F103C8/STM32F101_102_103_105_107.dbgconf.base@1.0.0": [],
+    "RTE/Device/STM32F103C8/stm32f10x_conf.h": [],
+    "RTE/Device/STM32F103C8/stm32f10x_conf.h.base@3.6.0": [],
+    "RTE/Device/STM32F103C8/system_stm32f10x.c": [],
+    "RTE/Device/STM32F103C8/system_stm32f10x.c.base@1.0.1": [],
+    "STM32_Hardware/hardware.c": [
+      "STM32_Hardware/hardware.h"
+    ],
+    "STM32_Hardware/hardware.h": [],
+    "STM32_Hardware/MPU6050.h": [],
+    "User/Delay.c": [],
+    "User/Delay.h": []
+  }
+}

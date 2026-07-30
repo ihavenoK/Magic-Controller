@@ -1,0 +1,72 @@
+# ============================================================
+# .antigravityignore
+# 自动忽略大文件、编译垃圾和依赖目录
+# ============================================================
+
+# ---- 依赖目录 ----
+node_modules/
+
+# ---- Python 缓存 ----
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# ---- 通用编译产物 ----
+*.obj
+*.bin
+*.out
+*.a
+*.lib
+*.exp
+*.so
+*.dll
+
+# ---- Keil MDK 编译残留 ----
+Objects/
+Listings/
+RTE/
+DebugConfig/
+*.o
+*.d
+*.crf
+*.dep
+*.axf
+*.hex
+*.elf
+*.iex
+*.lst
+*.map
+*.htm
+*.build_log.htm
+*.uvguix.*
+*.uvoptx
+JLinkLog.txt
+JLinkSettings.ini
+*.scvd
+
+# ---- CNN 模型中间产物 ----
+CNN/.layer_q_list
+CNN/model.h5
+CNN/nnom-master/examples/rnn-denoise/rnndenoise
+CNN/nnom-master/examples/*/weights.h
+CNN/nnom-master/examples/*/*weights.h
+
+# ---- 工具分析残留 ----
+.understand-anything/
+.agents/
+
+# ---- 训练数据 (传感器采集原始数据 ～14MB) ----
+CNN/TraningData_7_23/
+CNN/TraningData_8_2/
+
+# ---- 个人工具脚本 ----
+run_agy.bat
+
+# ---- 大图 (源图已在，编译产物不需重复) ----
+Board.jpg
+Schematic.jpg
+CNN/SpellsCard/
+CNN/nnom-master/docs/figures/
+CNN/nnom-master/examples/*/docs/
+CNN/nnom-master/examples/*/figures/

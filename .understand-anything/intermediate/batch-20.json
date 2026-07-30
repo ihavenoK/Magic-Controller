@@ -1,0 +1,881 @@
+{
+  "nodes": [
+    {
+      "id": "file:CNN/Serial_Read.py",
+      "type": "file",
+      "name": "Serial_Read.py",
+      "filePath": "CNN/Serial_Read.py",
+      "summary": "通过串口通信获取 IMU 传感器的数据，并支持动作分配与数据记录，常用于机器学习模型训练的数据收集。",
+      "tags": ["串口通信", "数据采集", "机器学习", "脚本工具"],
+      "complexity": "moderate",
+      "languageNotes": "使用 Python 的 serial 库与硬件进行串口数据交互，配合正则表达式提取特定的 IMU 特征数据并存盘。"
+    },
+    {
+      "id": "file:CNN/weights.h",
+      "type": "file",
+      "name": "weights.h",
+      "filePath": "CNN/weights.h",
+      "summary": "包含神经网络（CNN）分类器的权重和偏置数据，是轻量级神经网络推理库在单片机上运行时的核心参数库。",
+      "tags": ["神经网络", "模型参数", "嵌入式机器学习", "数据文件"],
+      "complexity": "complex",
+      "languageNotes": "通过 C 语言静态数组形式在编译期将训练好的 CNN 权重嵌入到单片机的 Flash 中。"
+    },
+    {
+      "id": "file:CyberryPotter.uvguix.13087",
+      "type": "file",
+      "name": "CyberryPotter.uvguix.13087",
+      "filePath": "CyberryPotter.uvguix.13087",
+      "summary": "Keil uVision 5 开发环境的用户界面配置及视窗布局文件，保存了开发者最后的调试状态和编辑器窗口设置。",
+      "tags": ["集成开发环境", "开发工具配置", "工作区设置"],
+      "complexity": "complex",
+      "languageNotes": "Keil 自动生成的 XML 格式配置文件，记录窗口层次结构和调试会话的特定布局。"
+    },
+    {
+      "id": "file:CyberryPotter.uvoptx",
+      "type": "file",
+      "name": "CyberryPotter.uvoptx",
+      "filePath": "CyberryPotter.uvoptx",
+      "summary": "Keil uVision 工程选项配置文件，保存了工程的目标选项、调试器选项以及事件跟踪相关的全局配置。",
+      "tags": ["项目配置", "构建配置", "调试器设置"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:CyberryPotter.uvprojx",
+      "type": "file",
+      "name": "CyberryPotter.uvprojx",
+      "filePath": "CyberryPotter.uvprojx",
+      "summary": "Keil uVision 主工程文件，定义了项目的硬件目标、文件组、源文件列表以及编译器/链接器参数。",
+      "tags": ["主工程文件", "构建配置", "文件组织"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:DebugConfig/Target_1_STM32F103C8_1.0.0.dbgconf",
+      "type": "file",
+      "name": "Target_1_STM32F103C8_1.0.0.dbgconf",
+      "filePath": "DebugConfig/Target_1_STM32F103C8_1.0.0.dbgconf",
+      "summary": "针对 STM32F103C8 的 Keil 调试器配置文件，用于在进行调试会话时设置调试端口与跟踪模式。",
+      "tags": ["调试配置", "芯片参数", "外设调试"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:EventRecorderStub.scvd",
+      "type": "file",
+      "name": "EventRecorderStub.scvd",
+      "filePath": "EventRecorderStub.scvd",
+      "summary": "用于调试环境的事件记录器占位存根组件，提供软件调试时的事件查看和时间分析配置。",
+      "tags": ["调试工具", "事件记录", "存根配置"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:main.c",
+      "type": "file",
+      "name": "main.c",
+      "filePath": "main.c",
+      "summary": "项目主程序源文件，实现微控制器初始化，周期性采集 IMU 姿态传感器数据并通过片上 CNN 模型进行推断，控制指示灯显示。",
+      "tags": ["主程序入口", "推理控制", "状态机", "嵌入式控制"],
+      "complexity": "moderate",
+      "languageNotes": "利用 nnom 库在 Cortex-M 微控制器上部署静态 CNN 模型进行前向推断。"
+    },
+    {
+      "id": "file:RTE/_Target_1/RTE_Components.h",
+      "type": "file",
+      "name": "RTE_Components.h",
+      "filePath": "RTE/_Target_1/RTE_Components.h",
+      "summary": "Keil RTE 实时运行环境的组件声明文件，根据用户在 IDE 中的勾选自动映射组件的头文件包含。",
+      "tags": ["运行时环境", "自动生成", "头文件映射"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:RTE/Device/STM32F103C8/RTE_Device.h",
+      "type": "file",
+      "name": "RTE_Device.h",
+      "filePath": "RTE/Device/STM32F103C8/RTE_Device.h",
+      "summary": "针对 STM32F103C8 器件的运行时外设接口配置头文件，主要定义了串口、I2C 等接口的 DMA 通道和物理引脚。",
+      "tags": ["外设引脚配置", "硬件初始化宏", "底层外设"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:RTE/Device/STM32F103C8/RTE_Device.h.base@1.1.2",
+      "type": "file",
+      "name": "RTE_Device.h.base@1.1.2",
+      "filePath": "RTE/Device/STM32F103C8/RTE_Device.h.base@1.1.2",
+      "summary": "RTE_Device.h 原始基准配置的备份模板文件。",
+      "tags": ["基准文件", "固件备份", "只读参考"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:RTE/Device/STM32F103C8/startup_stm32f10x_md.s",
+      "type": "file",
+      "name": "startup_stm32f10x_md.s",
+      "filePath": "RTE/Device/STM32F103C8/startup_stm32f10x_md.s",
+      "summary": "STM32F103 中等容量器件的汇编启动文件，负责初始化堆栈、清除 BSS、装载 DATA 段并跳转至 main 函数。",
+      "tags": ["汇编启动", "向量表声明", "硬件自检"],
+      "complexity": "complex",
+      "languageNotes": "基于 ARM Cortex-M3 汇编的启动代码，包含复位和各种中断向量的 ISR 绑定。"
+    },
+    {
+      "id": "file:RTE/Device/STM32F103C8/startup_stm32f10x_md.s.base@1.0.1",
+      "type": "file",
+      "name": "startup_stm32f10x_md.s.base@1.0.1",
+      "filePath": "RTE/Device/STM32F103C8/startup_stm32f10x_md.s.base@1.0.1",
+      "summary": "启动汇编代码 startup_stm32f10x_md.s 的基准版本备份。",
+      "tags": ["基准文件", "固件备份", "汇编代码"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:RTE/Device/STM32F103C8/STM32F101_102_103_105_107.dbgconf",
+      "type": "file",
+      "name": "STM32F101_102_103_105_107.dbgconf",
+      "filePath": "RTE/Device/STM32F103C8/STM32F101_102_103_105_107.dbgconf",
+      "summary": "微控制器全局调试配置文件，提供了针对不同调试器和跟踪硬件的统一芯片配置指令。",
+      "tags": ["调试配置", "芯片参数", "开发调试"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:RTE/Device/STM32F103C8/STM32F101_102_103_105_107.dbgconf.base@1.0.0",
+      "type": "file",
+      "name": "STM32F101_102_103_105_107.dbgconf.base@1.0.0",
+      "filePath": "RTE/Device/STM32F103C8/STM32F101_102_103_105_107.dbgconf.base@1.0.0",
+      "summary": "微控制器全局调试配置文件的基准版本备份。",
+      "tags": ["基准文件", "调试配置", "备份模板"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:RTE/Device/STM32F103C8/stm32f10x_conf.h",
+      "type": "file",
+      "name": "stm32f10x_conf.h",
+      "filePath": "RTE/Device/STM32F103C8/stm32f10x_conf.h",
+      "summary": "STM32F10x 固件库外设宏配置头文件，用于使能或裁剪项目中所需的外设驱动头文件目录。",
+      "tags": ["固件库剪裁", "全局宏定义", "外设模块使能"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:RTE/Device/STM32F103C8/stm32f10x_conf.h.base@3.6.0",
+      "type": "file",
+      "name": "stm32f10x_conf.h.base@3.6.0",
+      "filePath": "RTE/Device/STM32F103C8/stm32f10x_conf.h.base@3.6.0",
+      "summary": "标准固件库外设宏配置文件 stm32f10x_conf.h 的基准版本备份。",
+      "tags": ["基准文件", "外设宏配置", "只读参考"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:RTE/Device/STM32F103C8/system_stm32f10x.c",
+      "type": "file",
+      "name": "system_stm32f10x.c",
+      "filePath": "RTE/Device/STM32F103C8/system_stm32f10x.c",
+      "summary": "底层的系统配置与时钟初始化实现文件，主要通过 HSE 时钟源将系统时钟主频拉升至 72MHz。",
+      "tags": ["系统初始化", "时钟树配置", "片上总线"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:RTE/Device/STM32F103C8/system_stm32f10x.c.base@1.0.1",
+      "type": "file",
+      "name": "system_stm32f10x.c.base@1.0.1",
+      "filePath": "RTE/Device/STM32F103C8/system_stm32f10x.c.base@1.0.1",
+      "summary": "底层系统时钟配置文件的原始基准版本备份。",
+      "tags": ["基准文件", "时钟配置", "系统初始化"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:STM32_Hardware/hardware.c",
+      "type": "file",
+      "name": "hardware.c",
+      "filePath": "STM32_Hardware/hardware.c",
+      "summary": "硬件驱动的具体实现，包含了定时器（TIM）、中断（NVIC/EXTI）、串口（USART）和 MPU6050 陀螺仪的底层配置与启动控制。",
+      "tags": ["硬件驱动", "外设初始化", "陀螺仪集成"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:STM32_Hardware/hardware.h",
+      "type": "file",
+      "name": "hardware.h",
+      "filePath": "STM32_Hardware/hardware.h",
+      "summary": "硬件初始化函数以及中断暂停/恢复接口声明的头文件。",
+      "tags": ["硬件驱动", "接口定义", "头文件声明"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:STM32_Hardware/MPU6050.h",
+      "type": "file",
+      "name": "MPU6050.h",
+      "filePath": "STM32_Hardware/MPU6050.h",
+      "summary": "MPU6050 六轴惯性传感器外设驱动的核心接口定义与数据读取接口声明头文件。",
+      "tags": ["传感器接口", "陀螺仪驱动", "接口定义"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:User/Delay.c",
+      "type": "file",
+      "name": "Delay.c",
+      "filePath": "User/Delay.c",
+      "summary": "基于微控制器系统滴答定时器（SysTick）的高精度延时函数实现，支持微秒、毫秒与秒级别。",
+      "tags": ["基础外设", "精准延时", "系统滴答"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:User/Delay.h",
+      "type": "file",
+      "name": "Delay.h",
+      "filePath": "User/Delay.h",
+      "summary": "微秒、毫秒和秒级别延时功能函数的对外接口声明头文件。",
+      "tags": ["基础外设", "对外声明", "延时工具"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:CNN/Serial_Read.py:show_all_com",
+      "type": "function",
+      "name": "show_all_com",
+      "filePath": "CNN/Serial_Read.py",
+      "summary": "获取并输出系统当前可用的所有串口设备列表。",
+      "tags": ["串口列表", "系统环境"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:CNN/Serial_Read.py:Serial_init",
+      "type": "function",
+      "name": "Serial_init",
+      "filePath": "CNN/Serial_Read.py",
+      "summary": "引导用户选择串口号和波特率并完成串口连接的初始化。",
+      "tags": ["串口初始化", "用户输入"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:CNN/Serial_Read.py:Check_Title",
+      "type": "function",
+      "name": "Check_Title",
+      "filePath": "CNN/Serial_Read.py",
+      "summary": "校验接收到的数据行首尾字符，以确认当前数据包的合法性。",
+      "tags": ["数据验证", "帧校验"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:CNN/Serial_Read.py:Motion_Assign",
+      "type": "function",
+      "name": "Motion_Assign",
+      "filePath": "CNN/Serial_Read.py",
+      "summary": "允许用户在脚本开始时交互式分配当前正在采集的运动类别编号。",
+      "tags": ["运动分配", "交互输入"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:CNN/Serial_Read.py:find_max_number_in_filenames",
+      "type": "function",
+      "name": "find_max_number_in_filenames",
+      "filePath": "CNN/Serial_Read.py",
+      "summary": "扫描存储文件夹内特定动作前缀的数据文件，寻找最大的序列编号以防止文件名覆盖。",
+      "tags": ["文件名扫描", "自增逻辑"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:CNN/Serial_Read.py:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "CNN/Serial_Read.py",
+      "summary": "数据采集程序主循环，维持串口读取、数据验证和文件写入的生命周期。",
+      "tags": ["主逻辑", "持久化"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:main.c:model_feed_data",
+      "type": "function",
+      "name": "model_feed_data",
+      "filePath": "main.c",
+      "summary": "对获取到的三轴加速度和角速度的浮点数进行四舍五入缩放，填充到模型指定的输入缓冲区。",
+      "tags": ["数据归一化", "模型输入"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:main.c:model_get_output",
+      "type": "function",
+      "name": "model_get_output",
+      "filePath": "main.c",
+      "summary": "计算模型前向推理的最高概率分类，并打印出每一种运动模式的置信度。",
+      "tags": ["模型输出", "结果排序"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:main.c:Model_LED",
+      "type": "function",
+      "name": "Model_LED",
+      "filePath": "main.c",
+      "summary": "根据神经网络输出的动作类别（0-7），点亮对应的硬件外设 LED 灯提供物理视觉反馈。",
+      "tags": ["视觉反馈", "GPIO控制"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:main.c:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "main.c",
+      "summary": "C 语言环境入口，完成系统初始化，启动 IMU 传感器采样并在循环中完成模型加载与识别。",
+      "tags": ["程序主入口", "死循环", "主调度"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:RTE/Device/STM32F103C8/system_stm32f10x.c:SystemInit",
+      "type": "function",
+      "name": "SystemInit",
+      "filePath": "RTE/Device/STM32F103C8/system_stm32f10x.c",
+      "summary": "清空微控制器的核心时钟及中断配置寄存器，为加载预设系统时钟做预备准备。",
+      "tags": ["寄存器复位", "极底层初始化"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:RTE/Device/STM32F103C8/system_stm32f10x.c:SystemCoreClockUpdate",
+      "type": "function",
+      "name": "SystemCoreClockUpdate",
+      "filePath": "RTE/Device/STM32F103C8/system_stm32f10x.c",
+      "summary": "读取当前 PLL 寄存器的分频因子，更新微控制器全局工作主频全局变量以供延时函数校准。",
+      "tags": ["主频计算", "动态变量更新"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:RTE/Device/STM32F103C8/system_stm32f10x.c:SetSysClock",
+      "type": "function",
+      "name": "SetSysClock",
+      "filePath": "RTE/Device/STM32F103C8/system_stm32f10x.c",
+      "summary": "用于触发外部高速晶振时钟锁相环（PLL）配置以达到 72MHz 的目标工作频率。",
+      "tags": ["倍频配置", "锁相环设置"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:STM32_Hardware/hardware.c:Hardware_Init",
+      "type": "function",
+      "name": "Hardware_Init",
+      "filePath": "STM32_Hardware/hardware.c",
+      "summary": "统一初始化单片机的 GPIO 接口、时钟树、串口、板载 MPU6050 以及计时中断参数。",
+      "tags": ["片内外设初始化", "配置接口"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:STM32_Hardware/hardware.c:EXTI_Stop",
+      "type": "function",
+      "name": "EXTI_Stop",
+      "filePath": "STM32_Hardware/hardware.c",
+      "summary": "暂时失能单片机所使用的指定引脚的外部中断接收。",
+      "tags": ["中断控制", "屏蔽接收"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:STM32_Hardware/hardware.c:EXTI_Restore",
+      "type": "function",
+      "name": "EXTI_Restore",
+      "filePath": "STM32_Hardware/hardware.c",
+      "summary": "重新使能外部事件引脚的中断映射，使处理器恢复处理外界的中断信号。",
+      "tags": ["中断恢复", "系统级保护"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:User/Delay.c:Delay_us",
+      "type": "function",
+      "name": "Delay_us",
+      "filePath": "User/Delay.c",
+      "summary": "精确阻断 CPU 微秒级别的执行计数器循环。",
+      "tags": ["微秒延时", "低级耗时"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:User/Delay.c:Delay_ms",
+      "type": "function",
+      "name": "Delay_ms",
+      "filePath": "User/Delay.c",
+      "summary": "实现毫秒级阻塞延迟处理，在很多传感器数据读取和状态恢复流程中使用。",
+      "tags": ["毫秒延时", "传感器间隔"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:User/Delay.c:Delay_s",
+      "type": "function",
+      "name": "Delay_s",
+      "filePath": "User/Delay.c",
+      "summary": "阻断处理器执行若干秒级时间段 of 延时封装。",
+      "tags": ["秒级延时", "高阻阻塞"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:STM32_Hardware/hardware.c",
+      "target": "file:STM32_Hardware/hardware.h",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:CNN/Serial_Read.py",
+      "target": "function:CNN/Serial_Read.py:show_all_com",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/Serial_Read.py",
+      "target": "function:CNN/Serial_Read.py:show_all_com",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/Serial_Read.py",
+      "target": "function:CNN/Serial_Read.py:Serial_init",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/Serial_Read.py",
+      "target": "function:CNN/Serial_Read.py:Serial_init",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/Serial_Read.py",
+      "target": "function:CNN/Serial_Read.py:Check_Title",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/Serial_Read.py",
+      "target": "function:CNN/Serial_Read.py:Check_Title",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/Serial_Read.py",
+      "target": "function:CNN/Serial_Read.py:Motion_Assign",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/Serial_Read.py",
+      "target": "function:CNN/Serial_Read.py:Motion_Assign",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/Serial_Read.py",
+      "target": "function:CNN/Serial_Read.py:find_max_number_in_filenames",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/Serial_Read.py",
+      "target": "function:CNN/Serial_Read.py:find_max_number_in_filenames",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/Serial_Read.py",
+      "target": "function:CNN/Serial_Read.py:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/Serial_Read.py",
+      "target": "function:CNN/Serial_Read.py:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:main.c",
+      "target": "function:main.c:model_feed_data",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:main.c",
+      "target": "function:main.c:model_feed_data",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:main.c",
+      "target": "function:main.c:model_get_output",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:main.c",
+      "target": "function:main.c:model_get_output",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:main.c",
+      "target": "function:main.c:Model_LED",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:main.c",
+      "target": "function:main.c:Model_LED",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:main.c",
+      "target": "function:main.c:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:main.c",
+      "target": "function:main.c:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:RTE/Device/STM32F103C8/system_stm32f10x.c",
+      "target": "function:RTE/Device/STM32F103C8/system_stm32f10x.c:SystemInit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:RTE/Device/STM32F103C8/system_stm32f10x.c",
+      "target": "function:RTE/Device/STM32F103C8/system_stm32f10x.c:SystemInit",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:RTE/Device/STM32F103C8/system_stm32f10x.c",
+      "target": "function:RTE/Device/STM32F103C8/system_stm32f10x.c:SystemCoreClockUpdate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:RTE/Device/STM32F103C8/system_stm32f10x.c",
+      "target": "function:RTE/Device/STM32F103C8/system_stm32f10x.c:SystemCoreClockUpdate",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:RTE/Device/STM32F103C8/system_stm32f10x.c",
+      "target": "function:RTE/Device/STM32F103C8/system_stm32f10x.c:SetSysClock",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:STM32_Hardware/hardware.c",
+      "target": "function:STM32_Hardware/hardware.c:Hardware_Init",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:STM32_Hardware/hardware.c",
+      "target": "function:STM32_Hardware/hardware.c:Hardware_Init",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:STM32_Hardware/hardware.c",
+      "target": "function:STM32_Hardware/hardware.c:EXTI_Stop",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:STM32_Hardware/hardware.c",
+      "target": "function:STM32_Hardware/hardware.c:EXTI_Stop",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:STM32_Hardware/hardware.c",
+      "target": "function:STM32_Hardware/hardware.c:EXTI_Restore",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:STM32_Hardware/hardware.c",
+      "target": "function:STM32_Hardware/hardware.c:EXTI_Restore",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:User/Delay.c",
+      "target": "function:User/Delay.c:Delay_us",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:User/Delay.c",
+      "target": "function:User/Delay.c:Delay_us",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:User/Delay.c",
+      "target": "function:User/Delay.c:Delay_ms",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:User/Delay.c",
+      "target": "function:User/Delay.c:Delay_ms",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:User/Delay.c",
+      "target": "function:User/Delay.c:Delay_s",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:User/Delay.c",
+      "target": "function:User/Delay.c:Delay_s",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:main.c:main",
+      "target": "function:main.c:model_feed_data",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:main.c:main",
+      "target": "function:main.c:model_get_output",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:main.c:main",
+      "target": "function:main.c:Model_LED",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:main.c:main",
+      "target": "function:User/Delay.c:Delay_ms",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:main.c:main",
+      "target": "function:STM32_Hardware/hardware.c:EXTI_Restore",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:User/Delay.c:Delay_ms",
+      "target": "function:User/Delay.c:Delay_us",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:User/Delay.c:Delay_s",
+      "target": "function:User/Delay.c:Delay_ms",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:CNN/Serial_Read.py:main",
+      "target": "function:CNN/Serial_Read.py:Serial_init",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:CNN/Serial_Read.py:main",
+      "target": "function:CNN/Serial_Read.py:Motion_Assign",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:CNN/Serial_Read.py:main",
+      "target": "function:CNN/Serial_Read.py:find_max_number_in_filenames",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:CNN/Serial_Read.py:main",
+      "target": "function:CNN/Serial_Read.py:Check_Title",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:CNN/Serial_Read.py:Serial_init",
+      "target": "function:CNN/Serial_Read.py:show_all_com",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:RTE/Device/STM32F103C8/system_stm32f10x.c:SystemInit",
+      "target": "function:RTE/Device/STM32F103C8/system_stm32f10x.c:SetSysClock",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:main.c",
+      "target": "file:User/Delay.h",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:main.c",
+      "target": "file:STM32_Hardware/hardware.h",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:main.c",
+      "target": "file:CNN/weights.h",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:STM32_Hardware/hardware.c",
+      "target": "file:STM32_Hardware/MPU6050.h",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:User/Delay.c",
+      "target": "file:User/Delay.h",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:STM32_Hardware/hardware.c",
+      "target": "file:STM32_Hardware/hardware.h",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:CyberryPotter.uvprojx",
+      "target": "file:main.c",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:CyberryPotter.uvprojx",
+      "target": "file:RTE/Device/STM32F103C8/system_stm32f10x.c",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:CyberryPotter.uvprojx",
+      "target": "file:RTE/Device/STM32F103C8/startup_stm32f10x_md.s",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:DebugConfig/Target_1_STM32F103C8_1.0.0.dbgconf",
+      "target": "file:main.c",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:RTE/Device/STM32F103C8/STM32F101_102_103_105_107.dbgconf",
+      "target": "file:main.c",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:RTE/Device/STM32F103C8/stm32f10x_conf.h",
+      "target": "file:main.c",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:RTE/Device/STM32F103C8/RTE_Device.h",
+      "target": "file:STM32_Hardware/hardware.c",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:RTE/Device/STM32F103C8/RTE_Device.h.base@1.1.2",
+      "target": "file:RTE/Device/STM32F103C8/RTE_Device.h",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:RTE/Device/STM32F103C8/startup_stm32f10x_md.s.base@1.0.1",
+      "target": "file:RTE/Device/STM32F103C8/startup_stm32f10x_md.s",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:RTE/Device/STM32F103C8/STM32F101_102_103_105_107.dbgconf.base@1.0.0",
+      "target": "file:RTE/Device/STM32F103C8/STM32F101_102_103_105_107.dbgconf",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:RTE/Device/STM32F103C8/stm32f10x_conf.h.base@3.6.0",
+      "target": "file:RTE/Device/STM32F103C8/stm32f10x_conf.h",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:RTE/Device/STM32F103C8/system_stm32f10x.c.base@1.0.1",
+      "target": "file:RTE/Device/STM32F103C8/system_stm32f10x.c",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "projectRoot": "D:/32/cyberrypotter",
+  "batchFiles": [
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/kws_weights.h",
+      "language": "c",
+      "sizeLines": 422,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/main.c",
+      "language": "c",
+      "sizeLines": 420,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/main_pc.c",
+      "language": "c",
+      "sizeLines": 238,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/mfcc.c",
+      "language": "c",
+      "sizeLines": 318,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/mfcc.h",
+      "language": "c",
+      "sizeLines": 84,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "CNN/nnom-master/examples/keyword_spotting/kws_weights.h": [],
+    "CNN/nnom-master/examples/keyword_spotting/main.c": [
+      "CNN/nnom-master/examples/keyword_spotting/kws_weights.h",
+      "CNN/nnom-master/examples/keyword_spotting/mfcc.h"
+    ],
+    "CNN/nnom-master/examples/keyword_spotting/main_pc.c": [
+      "CNN/nnom-master/examples/keyword_spotting/kws_weights.h",
+      "CNN/nnom-master/examples/keyword_spotting/mfcc.h"
+    ],
+    "CNN/nnom-master/examples/keyword_spotting/mfcc.c": [
+      "CNN/nnom-master/examples/keyword_spotting/mfcc.h"
+    ],
+    "CNN/nnom-master/examples/keyword_spotting/mfcc.h": []
+  }
+}

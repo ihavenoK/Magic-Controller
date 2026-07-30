@@ -1,0 +1,324 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 6,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "User/CyberryPotter.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 164,
+      "nonEmptyLines": 150,
+      "functions": [
+        {
+          "name": "System_Init",
+          "startLine": 9,
+          "endLine": 19,
+          "params": []
+        },
+        {
+          "name": "Cyberry_Potter_System_Status_Update",
+          "startLine": 21,
+          "endLine": 46,
+          "params": []
+        },
+        {
+          "name": "EXTI9_5_IRQHandler",
+          "startLine": 49,
+          "endLine": 61,
+          "params": []
+        },
+        {
+          "name": "EXTI0_IRQHandler",
+          "startLine": 64,
+          "endLine": 74,
+          "params": []
+        },
+        {
+          "name": "TIM4_IRQHandler",
+          "startLine": 77,
+          "endLine": 128,
+          "params": []
+        },
+        {
+          "name": "LED_Blink",
+          "startLine": 131,
+          "endLine": 164,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "System_Init",
+          "line": 9,
+          "isDefault": false
+        },
+        {
+          "name": "Cyberry_Potter_System_Status_Update",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "EXTI9_5_IRQHandler",
+          "line": 49,
+          "isDefault": false
+        },
+        {
+          "name": "EXTI0_IRQHandler",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "TIM4_IRQHandler",
+          "line": 77,
+          "isDefault": false
+        },
+        {
+          "name": "LED_Blink",
+          "line": 131,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "System_Init",
+          "callee": "Hardware_Init",
+          "lineNumber": 11
+        },
+        {
+          "caller": "Cyberry_Potter_System_Status_Update",
+          "callee": "printf",
+          "lineNumber": 28
+        },
+        {
+          "caller": "Cyberry_Potter_System_Status_Update",
+          "callee": "printf",
+          "lineNumber": 33
+        },
+        {
+          "caller": "Cyberry_Potter_System_Status_Update",
+          "callee": "printf",
+          "lineNumber": 38
+        },
+        {
+          "caller": "Cyberry_Potter_System_Status_Update",
+          "callee": "LED_Blink",
+          "lineNumber": 41
+        },
+        {
+          "caller": "EXTI9_5_IRQHandler",
+          "callee": "EXTI_GetITStatus",
+          "lineNumber": 51
+        },
+        {
+          "caller": "EXTI9_5_IRQHandler",
+          "callee": "IMU_Get_Data",
+          "lineNumber": 52
+        },
+        {
+          "caller": "EXTI9_5_IRQHandler",
+          "callee": "IMU_STOP",
+          "lineNumber": 57
+        },
+        {
+          "caller": "EXTI9_5_IRQHandler",
+          "callee": "EXTI_ClearITPendingBit",
+          "lineNumber": 59
+        },
+        {
+          "caller": "EXTI0_IRQHandler",
+          "callee": "EXTI_GetITStatus",
+          "lineNumber": 66
+        },
+        {
+          "caller": "EXTI0_IRQHandler",
+          "callee": "EXTI_ClearITPendingBit",
+          "lineNumber": 72
+        },
+        {
+          "caller": "TIM4_IRQHandler",
+          "callee": "TIM_GetITStatus",
+          "lineNumber": 80
+        },
+        {
+          "caller": "TIM4_IRQHandler",
+          "callee": "GPIO_ReadInputDataBit",
+          "lineNumber": 82
+        },
+        {
+          "caller": "TIM4_IRQHandler",
+          "callee": "Cyberry_Potter_System_Status_Update",
+          "lineNumber": 91
+        },
+        {
+          "caller": "TIM4_IRQHandler",
+          "callee": "TIM_ClearITPendingBit",
+          "lineNumber": 126
+        },
+        {
+          "caller": "LED_Blink",
+          "callee": "Delay_ms",
+          "lineNumber": 137
+        },
+        {
+          "caller": "LED_Blink",
+          "callee": "Delay_ms",
+          "lineNumber": 139
+        },
+        {
+          "caller": "LED_Blink",
+          "callee": "Delay_ms",
+          "lineNumber": 146
+        },
+        {
+          "caller": "LED_Blink",
+          "callee": "Delay_ms",
+          "lineNumber": 148
+        },
+        {
+          "caller": "LED_Blink",
+          "callee": "Delay_ms",
+          "lineNumber": 157
+        },
+        {
+          "caller": "LED_Blink",
+          "callee": "Delay_ms",
+          "lineNumber": 159
+        },
+        {
+          "caller": "LED_Blink",
+          "callee": "Delay_ms",
+          "lineNumber": 161
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "User/CyberryPotter.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 64,
+      "nonEmptyLines": 53,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "User/CyberryPotter_status.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 66,
+      "nonEmptyLines": 55,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "User/IMU.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 91,
+      "nonEmptyLines": 75,
+      "functions": [
+        {
+          "name": "IMU_Sample_Start",
+          "startLine": 43,
+          "endLine": 50,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "IMU_Sample_Start",
+          "line": 43,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "IMU_Data_Print",
+          "callee": "printf",
+          "lineNumber": 34
+        },
+        {
+          "caller": "IMU_Data_Print",
+          "callee": "printf",
+          "lineNumber": 36
+        },
+        {
+          "caller": "IMU_Sample_Start",
+          "callee": "EXTI_Stop",
+          "lineNumber": 45
+        },
+        {
+          "caller": "IMU_Sample_Start",
+          "callee": "IMU_START",
+          "lineNumber": 48
+        },
+        {
+          "caller": "IMU_Get_Data",
+          "callee": "IIC_read",
+          "lineNumber": 57
+        },
+        {
+          "caller": "IMU_Get_Data",
+          "callee": "IIC_read",
+          "lineNumber": 66
+        },
+        {
+          "caller": "IMU_Get_Data",
+          "callee": "IIC_read",
+          "lineNumber": 83
+        },
+        {
+          "caller": "IMU_Get_Data",
+          "callee": "printf",
+          "lineNumber": 88
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "User/IMU.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 16,
+      "nonEmptyLines": 12,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "User/config.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 66,
+      "nonEmptyLines": 52,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

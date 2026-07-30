@@ -1,0 +1,2406 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 6,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/kws-rnn.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 195,
+      "nonEmptyLines": 160,
+      "functions": [
+        {
+          "name": "mfcc_plot",
+          "startLine": 25,
+          "endLine": 33,
+          "params": [
+            "x",
+            "label"
+          ]
+        },
+        {
+          "name": "label_to_category",
+          "startLine": 35,
+          "endLine": 42,
+          "params": [
+            "label",
+            "selected"
+          ]
+        },
+        {
+          "name": "train",
+          "startLine": 44,
+          "endLine": 72,
+          "params": [
+            "x_train",
+            "y_train",
+            "x_test",
+            "y_test",
+            "type",
+            "batch_size",
+            "epochs"
+          ]
+        },
+        {
+          "name": "main",
+          "startLine": 74,
+          "endLine": 191,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "mfcc_plot",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "label_to_category",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "train",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 74,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "mfcc_plot",
+          "callee": "np.swapaxes",
+          "lineNumber": 26
+        },
+        {
+          "caller": "mfcc_plot",
+          "callee": "plt.subplots",
+          "lineNumber": 27
+        },
+        {
+          "caller": "mfcc_plot",
+          "callee": "ax.imshow",
+          "lineNumber": 28
+        },
+        {
+          "caller": "mfcc_plot",
+          "callee": "ax.set_title",
+          "lineNumber": 30
+        },
+        {
+          "caller": "mfcc_plot",
+          "callee": "ax.set_title",
+          "lineNumber": 32
+        },
+        {
+          "caller": "mfcc_plot",
+          "callee": "plt.show",
+          "lineNumber": 33
+        },
+        {
+          "caller": "label_to_category",
+          "callee": "category.append",
+          "lineNumber": 39
+        },
+        {
+          "caller": "label_to_category",
+          "callee": "selected.index",
+          "lineNumber": 39
+        },
+        {
+          "caller": "label_to_category",
+          "callee": "category.append",
+          "lineNumber": 41
+        },
+        {
+          "caller": "label_to_category",
+          "callee": "len",
+          "lineNumber": 41
+        },
+        {
+          "caller": "label_to_category",
+          "callee": "np.array",
+          "lineNumber": 42
+        },
+        {
+          "caller": "train",
+          "callee": "Input",
+          "lineNumber": 45
+        },
+        {
+          "caller": "train",
+          "callee": "Conv1D",
+          "lineNumber": 46
+        },
+        {
+          "caller": "train",
+          "callee": "LSTM",
+          "lineNumber": 47
+        },
+        {
+          "caller": "train",
+          "callee": "LSTM",
+          "lineNumber": 48
+        },
+        {
+          "caller": "train",
+          "callee": "Flatten",
+          "lineNumber": 49
+        },
+        {
+          "caller": "train",
+          "callee": "Dense",
+          "lineNumber": 50
+        },
+        {
+          "caller": "train",
+          "callee": "Dropout",
+          "lineNumber": 51
+        },
+        {
+          "caller": "train",
+          "callee": "Dense",
+          "lineNumber": 52
+        },
+        {
+          "caller": "train",
+          "callee": "Softmax",
+          "lineNumber": 53
+        },
+        {
+          "caller": "train",
+          "callee": "Model",
+          "lineNumber": 55
+        },
+        {
+          "caller": "train",
+          "callee": "model.compile",
+          "lineNumber": 57
+        },
+        {
+          "caller": "train",
+          "callee": "model.summary",
+          "lineNumber": 61
+        },
+        {
+          "caller": "train",
+          "callee": "model.fit",
+          "lineNumber": 62
+        },
+        {
+          "caller": "train",
+          "callee": "save_model",
+          "lineNumber": 69
+        },
+        {
+          "caller": "train",
+          "callee": "tf.keras.backend.clear_session",
+          "lineNumber": 71
+        },
+        {
+          "caller": "main",
+          "callee": "tf.config.experimental.list_physical_devices",
+          "lineNumber": 76
+        },
+        {
+          "caller": "main",
+          "callee": "tf.config.experimental.set_memory_growth",
+          "lineNumber": 78
+        },
+        {
+          "caller": "main",
+          "callee": "np.load",
+          "lineNumber": 82
+        },
+        {
+          "caller": "main",
+          "callee": "np.load",
+          "lineNumber": 83
+        },
+        {
+          "caller": "main",
+          "callee": "np.load",
+          "lineNumber": 84
+        },
+        {
+          "caller": "main",
+          "callee": "np.load",
+          "lineNumber": 85
+        },
+        {
+          "caller": "main",
+          "callee": "np.load",
+          "lineNumber": 86
+        },
+        {
+          "caller": "main",
+          "callee": "np.load",
+          "lineNumber": 87
+        },
+        {
+          "caller": "main",
+          "callee": "merge_mfcc_file",
+          "lineNumber": 89
+        },
+        {
+          "caller": "main",
+          "callee": "np.save",
+          "lineNumber": 90
+        },
+        {
+          "caller": "main",
+          "callee": "np.save",
+          "lineNumber": 91
+        },
+        {
+          "caller": "main",
+          "callee": "np.save",
+          "lineNumber": 92
+        },
+        {
+          "caller": "main",
+          "callee": "np.save",
+          "lineNumber": 93
+        },
+        {
+          "caller": "main",
+          "callee": "np.save",
+          "lineNumber": 94
+        },
+        {
+          "caller": "main",
+          "callee": "np.save",
+          "lineNumber": 95
+        },
+        {
+          "caller": "main",
+          "callee": "len",
+          "lineNumber": 107
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 115
+        },
+        {
+          "caller": "main",
+          "callee": "x_train.max",
+          "lineNumber": 115
+        },
+        {
+          "caller": "main",
+          "callee": "x_train.min",
+          "lineNumber": 115
+        },
+        {
+          "caller": "main",
+          "callee": "pow",
+          "lineNumber": 119
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 120
+        },
+        {
+          "caller": "main",
+          "callee": "np.vstack",
+          "lineNumber": 126
+        },
+        {
+          "caller": "main",
+          "callee": "np.hstack",
+          "lineNumber": 127
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 128
+        },
+        {
+          "caller": "main",
+          "callee": "np.clip",
+          "lineNumber": 131
+        },
+        {
+          "caller": "main",
+          "callee": "np.clip",
+          "lineNumber": 132
+        },
+        {
+          "caller": "main",
+          "callee": "np.clip",
+          "lineNumber": 133
+        },
+        {
+          "caller": "main",
+          "callee": "(x_train * 128).round",
+          "lineNumber": 136
+        },
+        {
+          "caller": "main",
+          "callee": "(x_test * 128).round",
+          "lineNumber": 137
+        },
+        {
+          "caller": "main",
+          "callee": "(x_val * 128).round",
+          "lineNumber": 138
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 140
+        },
+        {
+          "caller": "main",
+          "callee": "x_train.max",
+          "lineNumber": 140
+        },
+        {
+          "caller": "main",
+          "callee": "x_train.min",
+          "lineNumber": 140
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 141
+        },
+        {
+          "caller": "main",
+          "callee": "abs(x_test).mean",
+          "lineNumber": 141
+        },
+        {
+          "caller": "main",
+          "callee": "abs",
+          "lineNumber": 141
+        },
+        {
+          "caller": "main",
+          "callee": "mfcc_plot",
+          "lineNumber": 147
+        },
+        {
+          "caller": "main",
+          "callee": "x_train[which].reshape",
+          "lineNumber": 147
+        },
+        {
+          "caller": "main",
+          "callee": "label_to_category",
+          "lineNumber": 151
+        },
+        {
+          "caller": "main",
+          "callee": "label_to_category",
+          "lineNumber": 152
+        },
+        {
+          "caller": "main",
+          "callee": "label_to_category",
+          "lineNumber": 153
+        },
+        {
+          "caller": "main",
+          "callee": "tf.keras.utils.to_categorical",
+          "lineNumber": 156
+        },
+        {
+          "caller": "main",
+          "callee": "tf.keras.utils.to_categorical",
+          "lineNumber": 157
+        },
+        {
+          "caller": "main",
+          "callee": "tf.keras.utils.to_categorical",
+          "lineNumber": 158
+        },
+        {
+          "caller": "main",
+          "callee": "np.random.permutation",
+          "lineNumber": 161
+        },
+        {
+          "caller": "main",
+          "callee": "np.random.permutation",
+          "lineNumber": 164
+        },
+        {
+          "caller": "main",
+          "callee": "generate_test_bin",
+          "lineNumber": 169
+        },
+        {
+          "caller": "main",
+          "callee": "generate_test_bin",
+          "lineNumber": 170
+        },
+        {
+          "caller": "main",
+          "callee": "train",
+          "lineNumber": 173
+        },
+        {
+          "caller": "main",
+          "callee": "load_model",
+          "lineNumber": 176
+        },
+        {
+          "caller": "main",
+          "callee": "evaluate_model",
+          "lineNumber": 178
+        },
+        {
+          "caller": "main",
+          "callee": "generate_model",
+          "lineNumber": 180
+        },
+        {
+          "caller": "main",
+          "callee": "plt.plot",
+          "lineNumber": 185
+        },
+        {
+          "caller": "main",
+          "callee": "range",
+          "lineNumber": 185
+        },
+        {
+          "caller": "main",
+          "callee": "plt.plot",
+          "lineNumber": 186
+        },
+        {
+          "caller": "main",
+          "callee": "range",
+          "lineNumber": 186
+        },
+        {
+          "caller": "main",
+          "callee": "plt.title",
+          "lineNumber": 187
+        },
+        {
+          "caller": "main",
+          "callee": "plt.xlabel",
+          "lineNumber": 188
+        },
+        {
+          "caller": "main",
+          "callee": "plt.ylabel",
+          "lineNumber": 189
+        },
+        {
+          "caller": "main",
+          "callee": "plt.legend",
+          "lineNumber": 190
+        },
+        {
+          "caller": "main",
+          "callee": "plt.show",
+          "lineNumber": 191
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/kws.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 211,
+      "nonEmptyLines": 171,
+      "functions": [
+        {
+          "name": "mfcc_plot",
+          "startLine": 25,
+          "endLine": 33,
+          "params": [
+            "x",
+            "label"
+          ]
+        },
+        {
+          "name": "label_to_category",
+          "startLine": 35,
+          "endLine": 42,
+          "params": [
+            "label",
+            "selected"
+          ]
+        },
+        {
+          "name": "train",
+          "startLine": 44,
+          "endLine": 90,
+          "params": [
+            "x_train",
+            "y_train",
+            "x_test",
+            "y_test",
+            "type",
+            "batch_size",
+            "epochs"
+          ]
+        },
+        {
+          "name": "main",
+          "startLine": 92,
+          "endLine": 207,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "mfcc_plot",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "label_to_category",
+          "line": 35,
+          "isDefault": false
+        },
+        {
+          "name": "train",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 92,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "mfcc_plot",
+          "callee": "np.swapaxes",
+          "lineNumber": 26
+        },
+        {
+          "caller": "mfcc_plot",
+          "callee": "plt.subplots",
+          "lineNumber": 27
+        },
+        {
+          "caller": "mfcc_plot",
+          "callee": "ax.imshow",
+          "lineNumber": 28
+        },
+        {
+          "caller": "mfcc_plot",
+          "callee": "ax.set_title",
+          "lineNumber": 30
+        },
+        {
+          "caller": "mfcc_plot",
+          "callee": "ax.set_title",
+          "lineNumber": 32
+        },
+        {
+          "caller": "mfcc_plot",
+          "callee": "plt.show",
+          "lineNumber": 33
+        },
+        {
+          "caller": "label_to_category",
+          "callee": "category.append",
+          "lineNumber": 39
+        },
+        {
+          "caller": "label_to_category",
+          "callee": "selected.index",
+          "lineNumber": 39
+        },
+        {
+          "caller": "label_to_category",
+          "callee": "category.append",
+          "lineNumber": 41
+        },
+        {
+          "caller": "label_to_category",
+          "callee": "len",
+          "lineNumber": 41
+        },
+        {
+          "caller": "label_to_category",
+          "callee": "np.array",
+          "lineNumber": 42
+        },
+        {
+          "caller": "train",
+          "callee": "Input",
+          "lineNumber": 45
+        },
+        {
+          "caller": "train",
+          "callee": "Conv2D",
+          "lineNumber": 46
+        },
+        {
+          "caller": "train",
+          "callee": "BatchNormalization",
+          "lineNumber": 47
+        },
+        {
+          "caller": "train",
+          "callee": "ReLU",
+          "lineNumber": 48
+        },
+        {
+          "caller": "train",
+          "callee": "MaxPool2D",
+          "lineNumber": 49
+        },
+        {
+          "caller": "train",
+          "callee": "Conv2D",
+          "lineNumber": 51
+        },
+        {
+          "caller": "train",
+          "callee": "BatchNormalization",
+          "lineNumber": 52
+        },
+        {
+          "caller": "train",
+          "callee": "ReLU",
+          "lineNumber": 53
+        },
+        {
+          "caller": "train",
+          "callee": "MaxPool2D",
+          "lineNumber": 54
+        },
+        {
+          "caller": "train",
+          "callee": "Conv2D",
+          "lineNumber": 56
+        },
+        {
+          "caller": "train",
+          "callee": "BatchNormalization",
+          "lineNumber": 57
+        },
+        {
+          "caller": "train",
+          "callee": "ReLU",
+          "lineNumber": 58
+        },
+        {
+          "caller": "train",
+          "callee": "Dropout",
+          "lineNumber": 60
+        },
+        {
+          "caller": "train",
+          "callee": "Conv2D",
+          "lineNumber": 62
+        },
+        {
+          "caller": "train",
+          "callee": "BatchNormalization",
+          "lineNumber": 63
+        },
+        {
+          "caller": "train",
+          "callee": "ReLU",
+          "lineNumber": 64
+        },
+        {
+          "caller": "train",
+          "callee": "Dropout",
+          "lineNumber": 65
+        },
+        {
+          "caller": "train",
+          "callee": "Flatten",
+          "lineNumber": 67
+        },
+        {
+          "caller": "train",
+          "callee": "Dense",
+          "lineNumber": 68
+        },
+        {
+          "caller": "train",
+          "callee": "Softmax",
+          "lineNumber": 70
+        },
+        {
+          "caller": "train",
+          "callee": "Model",
+          "lineNumber": 72
+        },
+        {
+          "caller": "train",
+          "callee": "model.compile",
+          "lineNumber": 74
+        },
+        {
+          "caller": "train",
+          "callee": "model.summary",
+          "lineNumber": 78
+        },
+        {
+          "caller": "train",
+          "callee": "model.fit",
+          "lineNumber": 79
+        },
+        {
+          "caller": "train",
+          "callee": "save_model",
+          "lineNumber": 87
+        },
+        {
+          "caller": "train",
+          "callee": "tf.keras.backend.clear_session",
+          "lineNumber": 89
+        },
+        {
+          "caller": "main",
+          "callee": "tf.config.experimental.list_physical_devices",
+          "lineNumber": 94
+        },
+        {
+          "caller": "main",
+          "callee": "tf.config.experimental.set_memory_growth",
+          "lineNumber": 96
+        },
+        {
+          "caller": "main",
+          "callee": "np.load",
+          "lineNumber": 100
+        },
+        {
+          "caller": "main",
+          "callee": "np.load",
+          "lineNumber": 101
+        },
+        {
+          "caller": "main",
+          "callee": "np.load",
+          "lineNumber": 102
+        },
+        {
+          "caller": "main",
+          "callee": "np.load",
+          "lineNumber": 103
+        },
+        {
+          "caller": "main",
+          "callee": "np.load",
+          "lineNumber": 104
+        },
+        {
+          "caller": "main",
+          "callee": "np.load",
+          "lineNumber": 105
+        },
+        {
+          "caller": "main",
+          "callee": "merge_mfcc_file",
+          "lineNumber": 107
+        },
+        {
+          "caller": "main",
+          "callee": "np.save",
+          "lineNumber": 108
+        },
+        {
+          "caller": "main",
+          "callee": "np.save",
+          "lineNumber": 109
+        },
+        {
+          "caller": "main",
+          "callee": "np.save",
+          "lineNumber": 110
+        },
+        {
+          "caller": "main",
+          "callee": "np.save",
+          "lineNumber": 111
+        },
+        {
+          "caller": "main",
+          "callee": "np.save",
+          "lineNumber": 112
+        },
+        {
+          "caller": "main",
+          "callee": "np.save",
+          "lineNumber": 113
+        },
+        {
+          "caller": "main",
+          "callee": "len",
+          "lineNumber": 126
+        },
+        {
+          "caller": "main",
+          "callee": "x_train.reshape",
+          "lineNumber": 134
+        },
+        {
+          "caller": "main",
+          "callee": "x_test.reshape",
+          "lineNumber": 135
+        },
+        {
+          "caller": "main",
+          "callee": "x_val.reshape",
+          "lineNumber": 136
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 137
+        },
+        {
+          "caller": "main",
+          "callee": "x_train.max",
+          "lineNumber": 137
+        },
+        {
+          "caller": "main",
+          "callee": "x_train.min",
+          "lineNumber": 137
+        },
+        {
+          "caller": "main",
+          "callee": "np.vstack",
+          "lineNumber": 140
+        },
+        {
+          "caller": "main",
+          "callee": "np.hstack",
+          "lineNumber": 141
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 142
+        },
+        {
+          "caller": "normalize",
+          "callee": "pow",
+          "lineNumber": 145
+        },
+        {
+          "caller": "normalize",
+          "callee": "np.clip",
+          "lineNumber": 146
+        },
+        {
+          "caller": "normalize",
+          "callee": "np.round",
+          "lineNumber": 148
+        },
+        {
+          "caller": "main",
+          "callee": "normalize",
+          "lineNumber": 152
+        },
+        {
+          "caller": "main",
+          "callee": "normalize",
+          "lineNumber": 153
+        },
+        {
+          "caller": "main",
+          "callee": "normalize",
+          "lineNumber": 154
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 156
+        },
+        {
+          "caller": "main",
+          "callee": "x_train.max",
+          "lineNumber": 156
+        },
+        {
+          "caller": "main",
+          "callee": "x_train.min",
+          "lineNumber": 156
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 157
+        },
+        {
+          "caller": "main",
+          "callee": "abs(x_test).mean",
+          "lineNumber": 157
+        },
+        {
+          "caller": "main",
+          "callee": "abs",
+          "lineNumber": 157
+        },
+        {
+          "caller": "main",
+          "callee": "mfcc_plot",
+          "lineNumber": 163
+        },
+        {
+          "caller": "main",
+          "callee": "x_train[which].reshape",
+          "lineNumber": 163
+        },
+        {
+          "caller": "main",
+          "callee": "label_to_category",
+          "lineNumber": 167
+        },
+        {
+          "caller": "main",
+          "callee": "label_to_category",
+          "lineNumber": 168
+        },
+        {
+          "caller": "main",
+          "callee": "label_to_category",
+          "lineNumber": 169
+        },
+        {
+          "caller": "main",
+          "callee": "tf.keras.utils.to_categorical",
+          "lineNumber": 172
+        },
+        {
+          "caller": "main",
+          "callee": "tf.keras.utils.to_categorical",
+          "lineNumber": 173
+        },
+        {
+          "caller": "main",
+          "callee": "tf.keras.utils.to_categorical",
+          "lineNumber": 174
+        },
+        {
+          "caller": "main",
+          "callee": "np.random.permutation",
+          "lineNumber": 177
+        },
+        {
+          "caller": "main",
+          "callee": "np.random.permutation",
+          "lineNumber": 180
+        },
+        {
+          "caller": "main",
+          "callee": "generate_test_bin",
+          "lineNumber": 185
+        },
+        {
+          "caller": "main",
+          "callee": "generate_test_bin",
+          "lineNumber": 186
+        },
+        {
+          "caller": "main",
+          "callee": "train",
+          "lineNumber": 189
+        },
+        {
+          "caller": "main",
+          "callee": "load_model",
+          "lineNumber": 192
+        },
+        {
+          "caller": "main",
+          "callee": "evaluate_model",
+          "lineNumber": 194
+        },
+        {
+          "caller": "main",
+          "callee": "generate_model",
+          "lineNumber": 196
+        },
+        {
+          "caller": "main",
+          "callee": "plt.plot",
+          "lineNumber": 201
+        },
+        {
+          "caller": "main",
+          "callee": "range",
+          "lineNumber": 201
+        },
+        {
+          "caller": "main",
+          "callee": "plt.plot",
+          "lineNumber": 202
+        },
+        {
+          "caller": "main",
+          "callee": "range",
+          "lineNumber": 202
+        },
+        {
+          "caller": "main",
+          "callee": "plt.title",
+          "lineNumber": 203
+        },
+        {
+          "caller": "main",
+          "callee": "plt.xlabel",
+          "lineNumber": 204
+        },
+        {
+          "caller": "main",
+          "callee": "plt.ylabel",
+          "lineNumber": 205
+        },
+        {
+          "caller": "main",
+          "callee": "plt.legend",
+          "lineNumber": 206
+        },
+        {
+          "caller": "main",
+          "callee": "plt.show",
+          "lineNumber": 207
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 4,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/mfcc.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 143,
+      "nonEmptyLines": 118,
+      "functions": [
+        {
+          "name": "load_noise",
+          "startLine": 11,
+          "endLine": 21,
+          "params": [
+            "path"
+          ]
+        },
+        {
+          "name": "generate_mfcc",
+          "startLine": 23,
+          "endLine": 41,
+          "params": [
+            "sig",
+            "rate",
+            "sig_len",
+            "noise",
+            "noise_weight",
+            "winlen",
+            "winstep",
+            "numcep",
+            "nfilt",
+            "nfft",
+            "lowfreq",
+            "highfreq",
+            "winfunc",
+            "ceplifter",
+            "preemph"
+          ]
+        },
+        {
+          "name": "merge_mfcc_file",
+          "startLine": 43,
+          "endLine": 121,
+          "params": [
+            "input_path",
+            "mix_noise",
+            "sig_len",
+            "winlen",
+            "winstep",
+            "numcep",
+            "nfilt",
+            "nfft",
+            "lowfreq",
+            "highfreq",
+            "winfunc",
+            "ceplifter",
+            "preemph"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "load_noise",
+          "line": 11,
+          "isDefault": false
+        },
+        {
+          "name": "generate_mfcc",
+          "line": 23,
+          "isDefault": false
+        },
+        {
+          "name": "merge_mfcc_file",
+          "line": 43,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "load_noise",
+          "callee": "os.listdir",
+          "lineNumber": 13
+        },
+        {
+          "caller": "load_noise",
+          "callee": "os.path.join",
+          "lineNumber": 18
+        },
+        {
+          "caller": "load_noise",
+          "callee": "wav.read",
+          "lineNumber": 19
+        },
+        {
+          "caller": "load_noise",
+          "callee": "noise.append",
+          "lineNumber": 20
+        },
+        {
+          "caller": "generate_mfcc",
+          "callee": "len",
+          "lineNumber": 24
+        },
+        {
+          "caller": "generate_mfcc",
+          "callee": "len",
+          "lineNumber": 25
+        },
+        {
+          "caller": "generate_mfcc",
+          "callee": "np.pad",
+          "lineNumber": 26
+        },
+        {
+          "caller": "generate_mfcc",
+          "callee": "len",
+          "lineNumber": 26
+        },
+        {
+          "caller": "generate_mfcc",
+          "callee": "len",
+          "lineNumber": 27
+        },
+        {
+          "caller": "generate_mfcc",
+          "callee": "sig.astype",
+          "lineNumber": 30
+        },
+        {
+          "caller": "generate_mfcc",
+          "callee": "random.randint",
+          "lineNumber": 32
+        },
+        {
+          "caller": "generate_mfcc",
+          "callee": "len",
+          "lineNumber": 32
+        },
+        {
+          "caller": "generate_mfcc",
+          "callee": "random.randint",
+          "lineNumber": 33
+        },
+        {
+          "caller": "generate_mfcc",
+          "callee": "len",
+          "lineNumber": 33
+        },
+        {
+          "caller": "generate_mfcc",
+          "callee": "noise.astype",
+          "lineNumber": 35
+        },
+        {
+          "caller": "generate_mfcc",
+          "callee": "mfcc",
+          "lineNumber": 38
+        },
+        {
+          "caller": "generate_mfcc",
+          "callee": "mfcc_feat.astype",
+          "lineNumber": 40
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "load_noise",
+          "lineNumber": 53
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "open",
+          "lineNumber": 57
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "f.read",
+          "lineNumber": 58
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "open",
+          "lineNumber": 59
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "f.read",
+          "lineNumber": 60
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "os.listdir",
+          "lineNumber": 61
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "os.path.join",
+          "lineNumber": 63
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "os.path.isdir",
+          "lineNumber": 65
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "fi_d.split",
+          "lineNumber": 66
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "print",
+          "lineNumber": 67
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "os.listdir",
+          "lineNumber": 71
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "os.path.join",
+          "lineNumber": 75
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "wav.read",
+          "lineNumber": 76
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "range",
+          "lineNumber": 77
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "len",
+          "lineNumber": 77
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "generate_mfcc",
+          "lineNumber": 79
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "np.array",
+          "lineNumber": 82
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "train_data.append",
+          "lineNumber": 83
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "train_lable.append",
+          "lineNumber": 84
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "os.listdir",
+          "lineNumber": 88
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "os.path.join",
+          "lineNumber": 91
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "wav.read",
+          "lineNumber": 92
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "generate_mfcc",
+          "lineNumber": 97
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "np.array",
+          "lineNumber": 98
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "test_data.append",
+          "lineNumber": 100
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "test_label.append",
+          "lineNumber": 101
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "generate_mfcc",
+          "lineNumber": 104
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "np.array",
+          "lineNumber": 105
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "validate_data.append",
+          "lineNumber": 106
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "validate_label.append",
+          "lineNumber": 107
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "generate_mfcc",
+          "lineNumber": 109
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "np.array",
+          "lineNumber": 110
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "train_data.append",
+          "lineNumber": 111
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "train_lable.append",
+          "lineNumber": 112
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "np.array",
+          "lineNumber": 117
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "np.array",
+          "lineNumber": 118
+        },
+        {
+          "caller": "merge_mfcc_file",
+          "callee": "np.array",
+          "lineNumber": 119
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/python_speech_features/__init__.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 213,
+      "nonEmptyLines": 184,
+      "functions": [
+        {
+          "name": "calculate_nfft",
+          "startLine": 8,
+          "endLine": 23,
+          "params": [
+            "samplerate",
+            "winlen"
+          ]
+        },
+        {
+          "name": "mfcc",
+          "startLine": 25,
+          "endLine": 54,
+          "params": [
+            "signal",
+            "samplerate",
+            "winlen",
+            "winstep",
+            "numcep",
+            "nfilt",
+            "nfft",
+            "lowfreq",
+            "highfreq",
+            "preemph",
+            "ceplifter",
+            "appendEnergy",
+            "winfunc"
+          ]
+        },
+        {
+          "name": "fbank",
+          "startLine": 56,
+          "endLine": 85,
+          "params": [
+            "signal",
+            "samplerate",
+            "winlen",
+            "winstep",
+            "nfilt",
+            "nfft",
+            "lowfreq",
+            "highfreq",
+            "preemph",
+            "winfunc"
+          ]
+        },
+        {
+          "name": "logfbank",
+          "startLine": 87,
+          "endLine": 105,
+          "params": [
+            "signal",
+            "samplerate",
+            "winlen",
+            "winstep",
+            "nfilt",
+            "nfft",
+            "lowfreq",
+            "highfreq",
+            "preemph",
+            "winfunc"
+          ]
+        },
+        {
+          "name": "ssc",
+          "startLine": 107,
+          "endLine": 134,
+          "params": [
+            "signal",
+            "samplerate",
+            "winlen",
+            "winstep",
+            "nfilt",
+            "nfft",
+            "lowfreq",
+            "highfreq",
+            "preemph",
+            "winfunc"
+          ]
+        },
+        {
+          "name": "hz2mel",
+          "startLine": 136,
+          "endLine": 142,
+          "params": [
+            "hz"
+          ]
+        },
+        {
+          "name": "mel2hz",
+          "startLine": 144,
+          "endLine": 150,
+          "params": [
+            "mel"
+          ]
+        },
+        {
+          "name": "get_filterbanks",
+          "startLine": 152,
+          "endLine": 180,
+          "params": [
+            "nfilt",
+            "nfft",
+            "samplerate",
+            "lowfreq",
+            "highfreq"
+          ]
+        },
+        {
+          "name": "lifter",
+          "startLine": 182,
+          "endLine": 196,
+          "params": [
+            "cepstra",
+            "L"
+          ]
+        },
+        {
+          "name": "delta",
+          "startLine": 198,
+          "endLine": 213,
+          "params": [
+            "feat",
+            "N"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "calculate_nfft",
+          "line": 8,
+          "isDefault": false
+        },
+        {
+          "name": "mfcc",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "fbank",
+          "line": 56,
+          "isDefault": false
+        },
+        {
+          "name": "logfbank",
+          "line": 87,
+          "isDefault": false
+        },
+        {
+          "name": "ssc",
+          "line": 107,
+          "isDefault": false
+        },
+        {
+          "name": "hz2mel",
+          "line": 136,
+          "isDefault": false
+        },
+        {
+          "name": "mel2hz",
+          "line": 144,
+          "isDefault": false
+        },
+        {
+          "name": "get_filterbanks",
+          "line": 152,
+          "isDefault": false
+        },
+        {
+          "name": "lifter",
+          "line": 182,
+          "isDefault": false
+        },
+        {
+          "name": "delta",
+          "line": 198,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "mfcc",
+          "callee": "numpy.ones",
+          "lineNumber": 27
+        },
+        {
+          "caller": "mfcc",
+          "callee": "calculate_nfft",
+          "lineNumber": 45
+        },
+        {
+          "caller": "mfcc",
+          "callee": "fbank",
+          "lineNumber": 46
+        },
+        {
+          "caller": "mfcc",
+          "callee": "numpy.log",
+          "lineNumber": 49
+        },
+        {
+          "caller": "mfcc",
+          "callee": "dct",
+          "lineNumber": 50
+        },
+        {
+          "caller": "mfcc",
+          "callee": "lifter",
+          "lineNumber": 51
+        },
+        {
+          "caller": "mfcc",
+          "callee": "numpy.log",
+          "lineNumber": 52
+        },
+        {
+          "caller": "fbank",
+          "callee": "numpy.ones",
+          "lineNumber": 58
+        },
+        {
+          "caller": "fbank",
+          "callee": "sigproc.preemphasis",
+          "lineNumber": 75
+        },
+        {
+          "caller": "fbank",
+          "callee": "sigproc.framesig",
+          "lineNumber": 76
+        },
+        {
+          "caller": "fbank",
+          "callee": "sigproc.powspec",
+          "lineNumber": 77
+        },
+        {
+          "caller": "fbank",
+          "callee": "numpy.sum",
+          "lineNumber": 80
+        },
+        {
+          "caller": "fbank",
+          "callee": "numpy.where",
+          "lineNumber": 81
+        },
+        {
+          "caller": "fbank",
+          "callee": "numpy.finfo",
+          "lineNumber": 81
+        },
+        {
+          "caller": "fbank",
+          "callee": "get_filterbanks",
+          "lineNumber": 82
+        },
+        {
+          "caller": "fbank",
+          "callee": "numpy.dot",
+          "lineNumber": 83
+        },
+        {
+          "caller": "fbank",
+          "callee": "numpy.where",
+          "lineNumber": 84
+        },
+        {
+          "caller": "fbank",
+          "callee": "numpy.finfo",
+          "lineNumber": 84
+        },
+        {
+          "caller": "logfbank",
+          "callee": "numpy.ones",
+          "lineNumber": 89
+        },
+        {
+          "caller": "logfbank",
+          "callee": "fbank",
+          "lineNumber": 104
+        },
+        {
+          "caller": "logfbank",
+          "callee": "numpy.log",
+          "lineNumber": 105
+        },
+        {
+          "caller": "ssc",
+          "callee": "numpy.ones",
+          "lineNumber": 109
+        },
+        {
+          "caller": "ssc",
+          "callee": "sigproc.preemphasis",
+          "lineNumber": 125
+        },
+        {
+          "caller": "ssc",
+          "callee": "sigproc.framesig",
+          "lineNumber": 126
+        },
+        {
+          "caller": "ssc",
+          "callee": "sigproc.powspec",
+          "lineNumber": 127
+        },
+        {
+          "caller": "ssc",
+          "callee": "numpy.where",
+          "lineNumber": 128
+        },
+        {
+          "caller": "ssc",
+          "callee": "numpy.finfo",
+          "lineNumber": 128
+        },
+        {
+          "caller": "ssc",
+          "callee": "get_filterbanks",
+          "lineNumber": 130
+        },
+        {
+          "caller": "ssc",
+          "callee": "numpy.dot",
+          "lineNumber": 131
+        },
+        {
+          "caller": "ssc",
+          "callee": "numpy.tile",
+          "lineNumber": 132
+        },
+        {
+          "caller": "ssc",
+          "callee": "numpy.linspace",
+          "lineNumber": 132
+        },
+        {
+          "caller": "ssc",
+          "callee": "numpy.size",
+          "lineNumber": 132
+        },
+        {
+          "caller": "ssc",
+          "callee": "numpy.size",
+          "lineNumber": 132
+        },
+        {
+          "caller": "ssc",
+          "callee": "numpy.dot",
+          "lineNumber": 134
+        },
+        {
+          "caller": "hz2mel",
+          "callee": "numpy.log10(1+hz/700.).astype",
+          "lineNumber": 142
+        },
+        {
+          "caller": "hz2mel",
+          "callee": "numpy.log10",
+          "lineNumber": 142
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "hz2mel",
+          "lineNumber": 167
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "hz2mel",
+          "lineNumber": 168
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "numpy.linspace(lowmel,highmel,nfilt+2).astype",
+          "lineNumber": 169
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "numpy.linspace",
+          "lineNumber": 169
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "numpy.floor((nfft+1)*mel2hz(melpoints)/samplerate).astype",
+          "lineNumber": 172
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "numpy.floor",
+          "lineNumber": 172
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "mel2hz",
+          "lineNumber": 172
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "numpy.zeros([nfilt,nfft//2+1]).astype",
+          "lineNumber": 174
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "numpy.zeros",
+          "lineNumber": 174
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "range",
+          "lineNumber": 175
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "range",
+          "lineNumber": 176
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "int",
+          "lineNumber": 176
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "int",
+          "lineNumber": 176
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "range",
+          "lineNumber": 178
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "int",
+          "lineNumber": 178
+        },
+        {
+          "caller": "get_filterbanks",
+          "callee": "int",
+          "lineNumber": 178
+        },
+        {
+          "caller": "lifter",
+          "callee": "numpy.shape",
+          "lineNumber": 190
+        },
+        {
+          "caller": "lifter",
+          "callee": "numpy.arange",
+          "lineNumber": 191
+        },
+        {
+          "caller": "lifter",
+          "callee": "numpy.sin",
+          "lineNumber": 192
+        },
+        {
+          "caller": "delta",
+          "callee": "ValueError",
+          "lineNumber": 206
+        },
+        {
+          "caller": "delta",
+          "callee": "len",
+          "lineNumber": 207
+        },
+        {
+          "caller": "delta",
+          "callee": "sum",
+          "lineNumber": 208
+        },
+        {
+          "caller": "delta",
+          "callee": "range",
+          "lineNumber": 208
+        },
+        {
+          "caller": "delta",
+          "callee": "numpy.empty_like",
+          "lineNumber": 209
+        },
+        {
+          "caller": "delta",
+          "callee": "numpy.pad",
+          "lineNumber": 210
+        },
+        {
+          "caller": "delta",
+          "callee": "range",
+          "lineNumber": 211
+        },
+        {
+          "caller": "delta",
+          "callee": "numpy.dot",
+          "lineNumber": 212
+        },
+        {
+          "caller": "delta",
+          "callee": "numpy.arange",
+          "lineNumber": 212
+        }
+      ],
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 10,
+        "functionCount": 10,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 142,
+      "nonEmptyLines": 112,
+      "functions": [
+        {
+          "name": "round_half_up",
+          "startLine": 10,
+          "endLine": 11,
+          "params": [
+            "number"
+          ]
+        },
+        {
+          "name": "rolling_window",
+          "startLine": 14,
+          "endLine": 18,
+          "params": [
+            "a",
+            "window",
+            "step"
+          ]
+        },
+        {
+          "name": "framesig",
+          "startLine": 21,
+          "endLine": 55,
+          "params": [
+            "sig",
+            "frame_len",
+            "frame_step",
+            "winfunc",
+            "stride_trick"
+          ]
+        },
+        {
+          "name": "deframesig",
+          "startLine": 58,
+          "endLine": 90,
+          "params": [
+            "frames",
+            "siglen",
+            "frame_len",
+            "frame_step",
+            "winfunc"
+          ]
+        },
+        {
+          "name": "magspec",
+          "startLine": 93,
+          "endLine": 105,
+          "params": [
+            "frames",
+            "NFFT"
+          ]
+        },
+        {
+          "name": "powspec",
+          "startLine": 108,
+          "endLine": 115,
+          "params": [
+            "frames",
+            "NFFT"
+          ]
+        },
+        {
+          "name": "logpowspec",
+          "startLine": 118,
+          "endLine": 132,
+          "params": [
+            "frames",
+            "NFFT",
+            "norm"
+          ]
+        },
+        {
+          "name": "preemphasis",
+          "startLine": 135,
+          "endLine": 142,
+          "params": [
+            "signal",
+            "coeff"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "round_half_up",
+          "line": 10,
+          "isDefault": false
+        },
+        {
+          "name": "rolling_window",
+          "line": 14,
+          "isDefault": false
+        },
+        {
+          "name": "framesig",
+          "line": 21,
+          "isDefault": false
+        },
+        {
+          "name": "deframesig",
+          "line": 58,
+          "isDefault": false
+        },
+        {
+          "name": "magspec",
+          "line": 93,
+          "isDefault": false
+        },
+        {
+          "name": "powspec",
+          "line": 108,
+          "isDefault": false
+        },
+        {
+          "name": "logpowspec",
+          "line": 118,
+          "isDefault": false
+        },
+        {
+          "name": "preemphasis",
+          "line": 135,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "round_half_up",
+          "callee": "int",
+          "lineNumber": 11
+        },
+        {
+          "caller": "round_half_up",
+          "callee": "decimal.Decimal(number).quantize",
+          "lineNumber": 11
+        },
+        {
+          "caller": "round_half_up",
+          "callee": "decimal.Decimal",
+          "lineNumber": 11
+        },
+        {
+          "caller": "round_half_up",
+          "callee": "decimal.Decimal",
+          "lineNumber": 11
+        },
+        {
+          "caller": "rolling_window",
+          "callee": "numpy.lib.stride_tricks.as_strided",
+          "lineNumber": 18
+        },
+        {
+          "caller": "framesig",
+          "callee": "numpy.ones",
+          "lineNumber": 21
+        },
+        {
+          "caller": "framesig",
+          "callee": "len",
+          "lineNumber": 31
+        },
+        {
+          "caller": "framesig",
+          "callee": "int",
+          "lineNumber": 32
+        },
+        {
+          "caller": "framesig",
+          "callee": "round_half_up",
+          "lineNumber": 32
+        },
+        {
+          "caller": "framesig",
+          "callee": "int",
+          "lineNumber": 33
+        },
+        {
+          "caller": "framesig",
+          "callee": "round_half_up",
+          "lineNumber": 33
+        },
+        {
+          "caller": "framesig",
+          "callee": "int",
+          "lineNumber": 37
+        },
+        {
+          "caller": "framesig",
+          "callee": "math.ceil",
+          "lineNumber": 37
+        },
+        {
+          "caller": "framesig",
+          "callee": "int",
+          "lineNumber": 39
+        },
+        {
+          "caller": "framesig",
+          "callee": "numpy.zeros((padlen - slen,)).astype",
+          "lineNumber": 41
+        },
+        {
+          "caller": "framesig",
+          "callee": "numpy.zeros",
+          "lineNumber": 41
+        },
+        {
+          "caller": "framesig",
+          "callee": "numpy.concatenate",
+          "lineNumber": 42
+        },
+        {
+          "caller": "framesig",
+          "callee": "winfunc(frame_len).astype",
+          "lineNumber": 44
+        },
+        {
+          "caller": "framesig",
+          "callee": "winfunc",
+          "lineNumber": 44
+        },
+        {
+          "caller": "framesig",
+          "callee": "range",
+          "lineNumber": 45
+        },
+        {
+          "caller": "framesig",
+          "callee": "numpy.cos",
+          "lineNumber": 46
+        },
+        {
+          "caller": "framesig",
+          "callee": "win.astype",
+          "lineNumber": 47
+        },
+        {
+          "caller": "framesig",
+          "callee": "rolling_window",
+          "lineNumber": 48
+        },
+        {
+          "caller": "framesig",
+          "callee": "numpy.tile",
+          "lineNumber": 50
+        },
+        {
+          "caller": "framesig",
+          "callee": "numpy.arange",
+          "lineNumber": 50
+        },
+        {
+          "caller": "framesig",
+          "callee": "numpy.tile",
+          "lineNumber": 50
+        },
+        {
+          "caller": "framesig",
+          "callee": "numpy.arange",
+          "lineNumber": 51
+        },
+        {
+          "caller": "framesig",
+          "callee": "numpy.array",
+          "lineNumber": 52
+        },
+        {
+          "caller": "framesig",
+          "callee": "numpy.tile",
+          "lineNumber": 54
+        },
+        {
+          "caller": "framesig",
+          "callee": "winfunc",
+          "lineNumber": 54
+        },
+        {
+          "caller": "deframesig",
+          "callee": "numpy.ones",
+          "lineNumber": 58
+        },
+        {
+          "caller": "deframesig",
+          "callee": "round_half_up",
+          "lineNumber": 68
+        },
+        {
+          "caller": "deframesig",
+          "callee": "round_half_up",
+          "lineNumber": 69
+        },
+        {
+          "caller": "deframesig",
+          "callee": "numpy.shape",
+          "lineNumber": 70
+        },
+        {
+          "caller": "deframesig",
+          "callee": "numpy.shape",
+          "lineNumber": 71
+        },
+        {
+          "caller": "deframesig",
+          "callee": "numpy.tile",
+          "lineNumber": 73
+        },
+        {
+          "caller": "deframesig",
+          "callee": "numpy.arange",
+          "lineNumber": 73
+        },
+        {
+          "caller": "deframesig",
+          "callee": "numpy.tile",
+          "lineNumber": 73
+        },
+        {
+          "caller": "deframesig",
+          "callee": "numpy.arange",
+          "lineNumber": 74
+        },
+        {
+          "caller": "deframesig",
+          "callee": "numpy.array",
+          "lineNumber": 75
+        },
+        {
+          "caller": "deframesig",
+          "callee": "numpy.zeros",
+          "lineNumber": 80
+        },
+        {
+          "caller": "deframesig",
+          "callee": "numpy.zeros",
+          "lineNumber": 81
+        },
+        {
+          "caller": "deframesig",
+          "callee": "winfunc",
+          "lineNumber": 82
+        },
+        {
+          "caller": "deframesig",
+          "callee": "range",
+          "lineNumber": 84
+        },
+        {
+          "caller": "magspec",
+          "callee": "numpy.shape",
+          "lineNumber": 100
+        },
+        {
+          "caller": "magspec",
+          "callee": "logging.warn",
+          "lineNumber": 101
+        },
+        {
+          "caller": "magspec",
+          "callee": "numpy.shape",
+          "lineNumber": 103
+        },
+        {
+          "caller": "magspec",
+          "callee": "numpy.fft.rfft",
+          "lineNumber": 104
+        },
+        {
+          "caller": "magspec",
+          "callee": "numpy.absolute(complex_spec).astype",
+          "lineNumber": 105
+        },
+        {
+          "caller": "magspec",
+          "callee": "numpy.absolute",
+          "lineNumber": 105
+        },
+        {
+          "caller": "powspec",
+          "callee": "numpy.square(magspec(frames, NFFT)).astype",
+          "lineNumber": 115
+        },
+        {
+          "caller": "powspec",
+          "callee": "numpy.square",
+          "lineNumber": 115
+        },
+        {
+          "caller": "powspec",
+          "callee": "magspec",
+          "lineNumber": 115
+        },
+        {
+          "caller": "logpowspec",
+          "callee": "powspec",
+          "lineNumber": 126
+        },
+        {
+          "caller": "logpowspec",
+          "callee": "numpy.log10(ps).astype",
+          "lineNumber": 128
+        },
+        {
+          "caller": "logpowspec",
+          "callee": "numpy.log10",
+          "lineNumber": 128
+        },
+        {
+          "caller": "logpowspec",
+          "callee": "numpy.max",
+          "lineNumber": 130
+        },
+        {
+          "caller": "preemphasis",
+          "callee": "numpy.append(signal[0], signal[1:] - coeff * signal[:-1]).astype",
+          "lineNumber": 142
+        },
+        {
+          "caller": "preemphasis",
+          "callee": "numpy.append",
+          "lineNumber": 142
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 8,
+        "functionCount": 8,
+        "classCount": 0
+      }
+    }
+  ]
+}

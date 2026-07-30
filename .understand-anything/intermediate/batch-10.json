@@ -1,0 +1,230 @@
+{
+  "nodes": [
+    {
+      "id": "document:CNN/nnom-master/README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "CNN/nnom-master/README.md",
+      "summary": "NNoM (MCU神经网络库)的主文档，介绍了其高亮特性、架构图、多款支持的层API与激活函数、性能对比和详细的安装及使用指南。",
+      "tags": [
+        "documentation",
+        "entry-point",
+        "neural-network",
+        "microcontroller",
+        "api-documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:CNN/nnom-master/mkdocs.yml",
+      "type": "config",
+      "name": "mkdocs.yml",
+      "filePath": "CNN/nnom-master/mkdocs.yml",
+      "summary": "MkDocs 静态文档站点配置文件，定义了文档的导航目录、可用的API文档分类、开发指南以及 ReadTheDocs 主题设置。",
+      "tags": [
+        "configuration",
+        "documentation-config",
+        "mkdocs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:CNN/nnom-master/pyproject.toml",
+      "type": "config",
+      "name": "pyproject.toml",
+      "filePath": "CNN/nnom-master/pyproject.toml",
+      "summary": "Python打包构建配置文件，指定 hatchling 作为构建后端，定义了 nnom 包打包源路径、第三方库依赖关系（Keras/scikit-learn等）及项目元数据。",
+      "tags": [
+        "configuration",
+        "build-system",
+        "python-config",
+        "dependency-management"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "config:CNN/nnom-master/pyproject.toml",
+      "target": "document:CNN/nnom-master/README.md",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:CNN/nnom-master/mkdocs.yml",
+      "target": "document:CNN/nnom-master/docs/index.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:CNN/nnom-master/mkdocs.yml",
+      "target": "document:CNN/nnom-master/docs/guide_5_min_to_nnom.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:CNN/nnom-master/mkdocs.yml",
+      "target": "document:CNN/nnom-master/docs/guide_development.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:CNN/nnom-master/mkdocs.yml",
+      "target": "document:CNN/nnom-master/docs/Porting_and_Optimisation_Guide.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:CNN/nnom-master/mkdocs.yml",
+      "target": "document:CNN/nnom-master/docs/api_nnom_utils.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:CNN/nnom-master/mkdocs.yml",
+      "target": "document:CNN/nnom-master/docs/api_nnom.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:CNN/nnom-master/mkdocs.yml",
+      "target": "document:CNN/nnom-master/docs/api_model.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:CNN/nnom-master/mkdocs.yml",
+      "target": "document:CNN/nnom-master/docs/api_construction.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:CNN/nnom-master/mkdocs.yml",
+      "target": "document:CNN/nnom-master/docs/api_properties.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:CNN/nnom-master/mkdocs.yml",
+      "target": "document:CNN/nnom-master/docs/api_tensor.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:CNN/nnom-master/mkdocs.yml",
+      "target": "document:CNN/nnom-master/docs/api_layers.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:CNN/nnom-master/mkdocs.yml",
+      "target": "document:CNN/nnom-master/docs/api_pooling.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:CNN/nnom-master/mkdocs.yml",
+      "target": "document:CNN/nnom-master/docs/api_activations.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:CNN/nnom-master/mkdocs.yml",
+      "target": "document:CNN/nnom-master/docs/api_merge.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:CNN/nnom-master/mkdocs.yml",
+      "target": "document:CNN/nnom-master/docs/api_evaluation.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:CNN/nnom-master/mkdocs.yml",
+      "target": "document:CNN/nnom-master/docs/A_Temporary_Guide_to_NNoM.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:CNN/nnom-master/mkdocs.yml",
+      "target": "document:CNN/nnom-master/docs/legacy_README.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:CNN/nnom-master/mkdocs.yml",
+      "target": "document:CNN/nnom-master/docs/rt-thread_guide.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:CNN/nnom-master/mkdocs.yml",
+      "target": "document:CNN/nnom-master/docs/example_mnist_simple_cn.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CNN/nnom-master/README.md",
+      "target": "document:CNN/nnom-master/docs/guide_5_min_to_nnom.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CNN/nnom-master/README.md",
+      "target": "document:CNN/nnom-master/docs/A_Temporary_Guide_to_NNoM.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CNN/nnom-master/README.md",
+      "target": "document:CNN/nnom-master/docs/Porting_and_Optimisation_Guide.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CNN/nnom-master/README.md",
+      "target": "document:CNN/nnom-master/docs/guide_development.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CNN/nnom-master/README.md",
+      "target": "document:CNN/nnom-master/docs/example_mnist_simple_cn.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:CNN/nnom-master/README.md",
+      "target": "document:CNN/nnom-master/docs/rt-thread_guide.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

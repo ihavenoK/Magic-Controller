@@ -1,0 +1,874 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": ".understand-anything/.understandignore",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 18,
+      "nonEmptyLines": 15,
+      "metrics": {}
+    },
+    {
+      "path": ".understand-anything/config.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 3,
+      "nonEmptyLines": 3,
+      "sections": [
+        {
+          "heading": "outputLanguage",
+          "level": 1,
+          "line": 2
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 1
+      }
+    },
+    {
+      "path": ".understand-anything/tmp/ua-scan-files.json",
+      "language": "json",
+      "fileCategory": "config",
+      "totalLines": 1665,
+      "nonEmptyLines": 1665,
+      "sections": [
+        {
+          "heading": "scriptCompleted",
+          "level": 1,
+          "line": 2
+        },
+        {
+          "heading": "files",
+          "level": 1,
+          "line": 3
+        },
+        {
+          "heading": "totalFiles",
+          "level": 1,
+          "line": 1631
+        },
+        {
+          "heading": "filteredByIgnore",
+          "level": 1,
+          "line": 1632
+        },
+        {
+          "heading": "estimatedComplexity",
+          "level": 1,
+          "line": 1633
+        },
+        {
+          "heading": "stats",
+          "level": 1,
+          "line": 1634
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 6
+      }
+    },
+    {
+      "path": "CNN/.layer_q_list",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 1,
+      "nonEmptyLines": 1,
+      "metrics": {}
+    },
+    {
+      "path": "CNN/CNNTestSerialRaw.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 127,
+      "nonEmptyLines": 106,
+      "functions": [
+        {
+          "name": "show_all_com",
+          "startLine": 17,
+          "endLine": 28,
+          "params": []
+        },
+        {
+          "name": "Serial_init",
+          "startLine": 32,
+          "endLine": 50,
+          "params": []
+        },
+        {
+          "name": "Check_Title",
+          "startLine": 54,
+          "endLine": 64,
+          "params": [
+            "Received_String"
+          ]
+        },
+        {
+          "name": "IMU_String",
+          "startLine": 68,
+          "endLine": 69,
+          "params": [
+            "Received_String"
+          ]
+        },
+        {
+          "name": "Str2Array",
+          "startLine": 71,
+          "endLine": 82,
+          "params": [
+            "str"
+          ]
+        },
+        {
+          "name": "predict_motion",
+          "startLine": 89,
+          "endLine": 108,
+          "params": [
+            "inputs_array"
+          ]
+        },
+        {
+          "name": "main",
+          "startLine": 111,
+          "endLine": 125,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "show_all_com",
+          "line": 17,
+          "isDefault": false
+        },
+        {
+          "name": "Serial_init",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "Check_Title",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "IMU_String",
+          "line": 68,
+          "isDefault": false
+        },
+        {
+          "name": "Str2Array",
+          "line": 71,
+          "isDefault": false
+        },
+        {
+          "name": "predict_motion",
+          "line": 89,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 111,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "show_all_com",
+          "callee": "len",
+          "lineNumber": 20
+        },
+        {
+          "caller": "show_all_com",
+          "callee": "print",
+          "lineNumber": 21
+        },
+        {
+          "caller": "show_all_com",
+          "callee": "print",
+          "lineNumber": 25
+        },
+        {
+          "caller": "show_all_com",
+          "callee": "list",
+          "lineNumber": 25
+        },
+        {
+          "caller": "show_all_com",
+          "callee": "list",
+          "lineNumber": 25
+        },
+        {
+          "caller": "show_all_com",
+          "callee": "port_list_name.append",
+          "lineNumber": 26
+        },
+        {
+          "caller": "Serial_init",
+          "callee": "show_all_com",
+          "lineNumber": 33
+        },
+        {
+          "caller": "Serial_init",
+          "callee": "len",
+          "lineNumber": 34
+        },
+        {
+          "caller": "Serial_init",
+          "callee": "int",
+          "lineNumber": 35
+        },
+        {
+          "caller": "Serial_init",
+          "callee": "input",
+          "lineNumber": 35
+        },
+        {
+          "caller": "Serial_init",
+          "callee": "print",
+          "lineNumber": 40
+        },
+        {
+          "caller": "Serial_init",
+          "callee": "int",
+          "lineNumber": 41
+        },
+        {
+          "caller": "Serial_init",
+          "callee": "input",
+          "lineNumber": 41
+        },
+        {
+          "caller": "Serial_init",
+          "callee": "print",
+          "lineNumber": 43
+        },
+        {
+          "caller": "Serial_init",
+          "callee": "serial.Serial",
+          "lineNumber": 45
+        },
+        {
+          "caller": "IMU_String",
+          "callee": "len",
+          "lineNumber": 69
+        },
+        {
+          "caller": "Str2Array",
+          "callee": "str.split",
+          "lineNumber": 73
+        },
+        {
+          "caller": "Str2Array",
+          "callee": "list",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Str2Array",
+          "callee": "map",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Str2Array",
+          "callee": "line.split",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Str2Array",
+          "callee": "line.split",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Str2Array",
+          "callee": "line.split",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Str2Array",
+          "callee": "line.strip",
+          "lineNumber": 76
+        },
+        {
+          "caller": "Str2Array",
+          "callee": "np.array",
+          "lineNumber": 79
+        },
+        {
+          "caller": "Str2Array",
+          "callee": "np.array",
+          "lineNumber": 80
+        },
+        {
+          "caller": "predict_motion",
+          "callee": "tf.convert_to_tensor",
+          "lineNumber": 91
+        },
+        {
+          "caller": "predict_motion",
+          "callee": "tf.expand_dims",
+          "lineNumber": 92
+        },
+        {
+          "caller": "predict_motion",
+          "callee": "model",
+          "lineNumber": 95
+        },
+        {
+          "caller": "predict_motion",
+          "callee": "print",
+          "lineNumber": 96
+        },
+        {
+          "caller": "predict_motion",
+          "callee": "range",
+          "lineNumber": 99
+        },
+        {
+          "caller": "predict_motion",
+          "callee": "print",
+          "lineNumber": 104
+        },
+        {
+          "caller": "main",
+          "callee": "Serial_init",
+          "lineNumber": 112
+        },
+        {
+          "caller": "main",
+          "callee": "int",
+          "lineNumber": 115
+        },
+        {
+          "caller": "main",
+          "callee": "input",
+          "lineNumber": 115
+        },
+        {
+          "caller": "main",
+          "callee": "serial_using.readall().decode",
+          "lineNumber": 117
+        },
+        {
+          "caller": "main",
+          "callee": "serial_using.readall",
+          "lineNumber": 117
+        },
+        {
+          "caller": "main",
+          "callee": "len",
+          "lineNumber": 118
+        },
+        {
+          "caller": "main",
+          "callee": "Check_Title",
+          "lineNumber": 118
+        },
+        {
+          "caller": "main",
+          "callee": "IMU_String",
+          "lineNumber": 119
+        },
+        {
+          "caller": "main",
+          "callee": "Str2Array",
+          "lineNumber": 120
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 122
+        },
+        {
+          "caller": "main",
+          "callee": "predict_motion",
+          "lineNumber": 122
+        },
+        {
+          "caller": "main",
+          "callee": "input",
+          "lineNumber": 124
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 125
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/CNNTrainRaw.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 153,
+      "nonEmptyLines": 125,
+      "functions": [
+        {
+          "name": "train",
+          "startLine": 34,
+          "endLine": 80,
+          "params": [
+            "x_train",
+            "y_train",
+            "x_test",
+            "y_test",
+            "input_shape",
+            "num_classes",
+            "batch_size",
+            "epochs"
+          ]
+        },
+        {
+          "name": "load_dataset",
+          "startLine": 83,
+          "endLine": 106,
+          "params": [
+            "root_dir",
+            "max_rows"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "train",
+          "line": 34,
+          "isDefault": false
+        },
+        {
+          "name": "load_dataset",
+          "line": 83,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "train",
+          "callee": "len",
+          "lineNumber": 34
+        },
+        {
+          "caller": "train",
+          "callee": "layers.Input",
+          "lineNumber": 35
+        },
+        {
+          "caller": "train",
+          "callee": "layers.Conv1D",
+          "lineNumber": 37
+        },
+        {
+          "caller": "train",
+          "callee": "layers.ReLU",
+          "lineNumber": 38
+        },
+        {
+          "caller": "train",
+          "callee": "layers.Conv1D",
+          "lineNumber": 39
+        },
+        {
+          "caller": "train",
+          "callee": "layers.ReLU",
+          "lineNumber": 40
+        },
+        {
+          "caller": "train",
+          "callee": "layers.MaxPooling1D",
+          "lineNumber": 42
+        },
+        {
+          "caller": "train",
+          "callee": "layers.Flatten",
+          "lineNumber": 44
+        },
+        {
+          "caller": "train",
+          "callee": "layers.Dense",
+          "lineNumber": 47
+        },
+        {
+          "caller": "train",
+          "callee": "layers.Dropout",
+          "lineNumber": 48
+        },
+        {
+          "caller": "train",
+          "callee": "layers.Softmax",
+          "lineNumber": 49
+        },
+        {
+          "caller": "train",
+          "callee": "models.Model",
+          "lineNumber": 51
+        },
+        {
+          "caller": "train",
+          "callee": "model.compile",
+          "lineNumber": 54
+        },
+        {
+          "caller": "train",
+          "callee": "optimizers.Adam",
+          "lineNumber": 54
+        },
+        {
+          "caller": "train",
+          "callee": "losses.CategoricalCrossentropy",
+          "lineNumber": 55
+        },
+        {
+          "caller": "train",
+          "callee": "model.summary",
+          "lineNumber": 58
+        },
+        {
+          "caller": "train",
+          "callee": "callbacks.EarlyStopping",
+          "lineNumber": 61
+        },
+        {
+          "caller": "train",
+          "callee": "callbacks.ModelCheckpoint",
+          "lineNumber": 62
+        },
+        {
+          "caller": "train",
+          "callee": "model.fit",
+          "lineNumber": 65
+        },
+        {
+          "caller": "train",
+          "callee": "tf.keras.backend.clear_session",
+          "lineNumber": 78
+        },
+        {
+          "caller": "load_dataset",
+          "callee": "os.listdir",
+          "lineNumber": 86
+        },
+        {
+          "caller": "load_dataset",
+          "callee": "filename.endswith",
+          "lineNumber": 87
+        },
+        {
+          "caller": "load_dataset",
+          "callee": "re.match",
+          "lineNumber": 88
+        },
+        {
+          "caller": "load_dataset",
+          "callee": "match.group",
+          "lineNumber": 90
+        },
+        {
+          "caller": "load_dataset",
+          "callee": "match.group",
+          "lineNumber": 91
+        },
+        {
+          "caller": "load_dataset",
+          "callee": "int",
+          "lineNumber": 92
+        },
+        {
+          "caller": "load_dataset",
+          "callee": "os.path.join",
+          "lineNumber": 95
+        },
+        {
+          "caller": "load_dataset",
+          "callee": "np.loadtxt",
+          "lineNumber": 97
+        },
+        {
+          "caller": "load_dataset",
+          "callee": "file_list.append",
+          "lineNumber": 98
+        },
+        {
+          "caller": "load_dataset",
+          "callee": "labels.append",
+          "lineNumber": 99
+        },
+        {
+          "caller": "load_dataset",
+          "callee": "print",
+          "lineNumber": 101
+        },
+        {
+          "caller": "load_dataset",
+          "callee": "print",
+          "lineNumber": 103
+        },
+        {
+          "caller": "load_dataset",
+          "callee": "print",
+          "lineNumber": 105
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 2,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/model.h5",
+      "language": "h5",
+      "fileCategory": "code",
+      "totalLines": 112,
+      "nonEmptyLines": 112,
+      "metrics": {}
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_activation.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 96,
+      "nonEmptyLines": 77,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_avgpool.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 36,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_baselayer.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 43,
+      "nonEmptyLines": 34,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_concat.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 55,
+      "nonEmptyLines": 44,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_conv2d_trans.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 52,
+      "nonEmptyLines": 40,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_conv2d.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 83,
+      "nonEmptyLines": 69,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_cropping.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 48,
+      "nonEmptyLines": 37,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_dense.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 63,
+      "nonEmptyLines": 53,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_dw_conv2d.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 44,
+      "nonEmptyLines": 35,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_flatten.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 46,
+      "nonEmptyLines": 37,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_global_pool.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 54,
+      "nonEmptyLines": 42,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_gru_cell.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 60,
+      "nonEmptyLines": 47,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_input.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 57,
+      "nonEmptyLines": 46,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_lambda.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 54,
+      "nonEmptyLines": 43,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_lstm_cell.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 64,
+      "nonEmptyLines": 51,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_matrix.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 63,
+      "nonEmptyLines": 52,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_maxpool.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 63,
+      "nonEmptyLines": 53,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom_lib/inc/layers/nnom_output.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 43,
+      "nonEmptyLines": 34,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

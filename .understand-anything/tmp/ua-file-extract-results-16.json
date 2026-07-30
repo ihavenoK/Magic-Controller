@@ -1,0 +1,1838 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 25,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "CNN/nnom-master/examples/rnn-denoise/weights.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 630,
+      "nonEmptyLines": 530,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/uci-har-rnn/data/download_dataset.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 30,
+      "nonEmptyLines": 25,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/uci-har-rnn/main.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 91,
+      "nonEmptyLines": 78,
+      "functions": [
+        {
+          "name": "main",
+          "startLine": 35,
+          "endLine": 91,
+          "params": [
+            "argc",
+            "argv"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "main",
+          "line": 35,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "main",
+          "callee": "load",
+          "lineNumber": 45
+        },
+        {
+          "caller": "main",
+          "callee": "fopen",
+          "lineNumber": 46
+        },
+        {
+          "caller": "main",
+          "callee": "fprintf",
+          "lineNumber": 47
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 48
+        },
+        {
+          "caller": "main",
+          "callee": "nnom_model_create",
+          "lineNumber": 50
+        },
+        {
+          "caller": "main",
+          "callee": "prediction_create",
+          "lineNumber": 51
+        },
+        {
+          "caller": "main",
+          "callee": "memcpy",
+          "lineNumber": 58
+        },
+        {
+          "caller": "main",
+          "callee": "memcpy",
+          "lineNumber": 65
+        },
+        {
+          "caller": "main",
+          "callee": "prediction_run",
+          "lineNumber": 69
+        },
+        {
+          "caller": "main",
+          "callee": "fprintf",
+          "lineNumber": 72
+        },
+        {
+          "caller": "main",
+          "callee": "printf",
+          "lineNumber": 74
+        },
+        {
+          "caller": "main",
+          "callee": "fclose",
+          "lineNumber": 78
+        },
+        {
+          "caller": "main",
+          "callee": "prediction_end",
+          "lineNumber": 81
+        },
+        {
+          "caller": "main",
+          "callee": "prediction_summary",
+          "lineNumber": 82
+        },
+        {
+          "caller": "main",
+          "callee": "prediction_delete",
+          "lineNumber": 83
+        },
+        {
+          "caller": "main",
+          "callee": "model_stat",
+          "lineNumber": 86
+        },
+        {
+          "caller": "main",
+          "callee": "model_delete",
+          "lineNumber": 87
+        },
+        {
+          "caller": "main",
+          "callee": "free",
+          "lineNumber": 89
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 1,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/uci-har-rnn/README.MD",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 33,
+      "nonEmptyLines": 21,
+      "sections": [
+        {
+          "heading": "RNN networks on UCI HAR dataset",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Preparation",
+          "level": 1,
+          "line": 23
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 2
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/uci-har-rnn/SConstruct",
+      "language": "unknown",
+      "fileCategory": "code",
+      "totalLines": 39,
+      "nonEmptyLines": 30,
+      "metrics": {}
+    },
+    {
+      "path": "CNN/nnom-master/examples/uci-har-rnn/uci_rnn.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 253,
+      "nonEmptyLines": 201,
+      "functions": [
+        {
+          "name": "load_X",
+          "startLine": 25,
+          "endLine": 38,
+          "params": [
+            "X_signals_paths"
+          ]
+        },
+        {
+          "name": "load_y",
+          "startLine": 40,
+          "endLine": 52,
+          "params": [
+            "y_path"
+          ]
+        },
+        {
+          "name": "one_hot",
+          "startLine": 54,
+          "endLine": 61,
+          "params": [
+            "y_",
+            "n_classes"
+          ]
+        },
+        {
+          "name": "plot_raw",
+          "startLine": 64,
+          "endLine": 71,
+          "params": [
+            "data"
+          ]
+        },
+        {
+          "name": "normalize",
+          "startLine": 73,
+          "endLine": 77,
+          "params": [
+            "data"
+          ]
+        },
+        {
+          "name": "train",
+          "startLine": 79,
+          "endLine": 133,
+          "params": [
+            "x_train",
+            "y_train",
+            "x_test",
+            "y_test",
+            "batch_size",
+            "epochs"
+          ]
+        },
+        {
+          "name": "main",
+          "startLine": 135,
+          "endLine": 250,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "load_X",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "load_y",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "one_hot",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "plot_raw",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "normalize",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "train",
+          "line": 79,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 135,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "load_X",
+          "callee": "open",
+          "lineNumber": 29
+        },
+        {
+          "caller": "load_X",
+          "callee": "X_signals.append",
+          "lineNumber": 31
+        },
+        {
+          "caller": "load_X",
+          "callee": "np.array",
+          "lineNumber": 32
+        },
+        {
+          "caller": "load_X",
+          "callee": "row.replace('  ', ' ').strip().split",
+          "lineNumber": 33
+        },
+        {
+          "caller": "load_X",
+          "callee": "row.replace('  ', ' ').strip",
+          "lineNumber": 33
+        },
+        {
+          "caller": "load_X",
+          "callee": "row.replace",
+          "lineNumber": 33
+        },
+        {
+          "caller": "load_X",
+          "callee": "file.close",
+          "lineNumber": 36
+        },
+        {
+          "caller": "load_X",
+          "callee": "np.transpose",
+          "lineNumber": 38
+        },
+        {
+          "caller": "load_X",
+          "callee": "np.array",
+          "lineNumber": 38
+        },
+        {
+          "caller": "load_y",
+          "callee": "open",
+          "lineNumber": 41
+        },
+        {
+          "caller": "load_y",
+          "callee": "np.array",
+          "lineNumber": 43
+        },
+        {
+          "caller": "load_y",
+          "callee": "row.replace('  ', ' ').strip().split",
+          "lineNumber": 45
+        },
+        {
+          "caller": "load_y",
+          "callee": "row.replace('  ', ' ').strip",
+          "lineNumber": 45
+        },
+        {
+          "caller": "load_y",
+          "callee": "row.replace",
+          "lineNumber": 45
+        },
+        {
+          "caller": "load_y",
+          "callee": "file.close",
+          "lineNumber": 49
+        },
+        {
+          "caller": "one_hot",
+          "callee": "y_.reshape",
+          "lineNumber": 60
+        },
+        {
+          "caller": "one_hot",
+          "callee": "len",
+          "lineNumber": 60
+        },
+        {
+          "caller": "one_hot",
+          "callee": "np.eye",
+          "lineNumber": 61
+        },
+        {
+          "caller": "one_hot",
+          "callee": "np.array",
+          "lineNumber": 61
+        },
+        {
+          "caller": "plot_raw",
+          "callee": "range",
+          "lineNumber": 65
+        },
+        {
+          "caller": "plot_raw",
+          "callee": "int",
+          "lineNumber": 65
+        },
+        {
+          "caller": "plot_raw",
+          "callee": "int",
+          "lineNumber": 67
+        },
+        {
+          "caller": "plot_raw",
+          "callee": "print",
+          "lineNumber": 68
+        },
+        {
+          "caller": "plot_raw",
+          "callee": "plt.plot",
+          "lineNumber": 69
+        },
+        {
+          "caller": "plot_raw",
+          "callee": "plt.title",
+          "lineNumber": 70
+        },
+        {
+          "caller": "plot_raw",
+          "callee": "plt.show",
+          "lineNumber": 71
+        },
+        {
+          "caller": "normalize",
+          "callee": "max",
+          "lineNumber": 74
+        },
+        {
+          "caller": "normalize",
+          "callee": "abs",
+          "lineNumber": 74
+        },
+        {
+          "caller": "normalize",
+          "callee": "np.max",
+          "lineNumber": 74
+        },
+        {
+          "caller": "normalize",
+          "callee": "abs",
+          "lineNumber": 74
+        },
+        {
+          "caller": "normalize",
+          "callee": "np.min",
+          "lineNumber": 74
+        },
+        {
+          "caller": "normalize",
+          "callee": "max",
+          "lineNumber": 75
+        },
+        {
+          "caller": "normalize",
+          "callee": "abs",
+          "lineNumber": 75
+        },
+        {
+          "caller": "normalize",
+          "callee": "np.max",
+          "lineNumber": 75
+        },
+        {
+          "caller": "normalize",
+          "callee": "abs",
+          "lineNumber": 75
+        },
+        {
+          "caller": "normalize",
+          "callee": "np.min",
+          "lineNumber": 75
+        },
+        {
+          "caller": "normalize",
+          "callee": "max",
+          "lineNumber": 76
+        },
+        {
+          "caller": "normalize",
+          "callee": "abs",
+          "lineNumber": 76
+        },
+        {
+          "caller": "normalize",
+          "callee": "np.max",
+          "lineNumber": 76
+        },
+        {
+          "caller": "normalize",
+          "callee": "abs",
+          "lineNumber": 76
+        },
+        {
+          "caller": "normalize",
+          "callee": "np.min",
+          "lineNumber": 76
+        },
+        {
+          "caller": "train",
+          "callee": "Input",
+          "lineNumber": 80
+        },
+        {
+          "caller": "train",
+          "callee": "Conv1D",
+          "lineNumber": 81
+        },
+        {
+          "caller": "train",
+          "callee": "BatchNormalization",
+          "lineNumber": 82
+        },
+        {
+          "caller": "train",
+          "callee": "LSTM",
+          "lineNumber": 104
+        },
+        {
+          "caller": "train",
+          "callee": "GRU",
+          "lineNumber": 105
+        },
+        {
+          "caller": "train",
+          "callee": "GRU",
+          "lineNumber": 106
+        },
+        {
+          "caller": "train",
+          "callee": "concatenate",
+          "lineNumber": 107
+        },
+        {
+          "caller": "train",
+          "callee": "GRU",
+          "lineNumber": 109
+        },
+        {
+          "caller": "train",
+          "callee": "GRU",
+          "lineNumber": 110
+        },
+        {
+          "caller": "train",
+          "callee": "Flatten",
+          "lineNumber": 112
+        },
+        {
+          "caller": "train",
+          "callee": "Dense",
+          "lineNumber": 113
+        },
+        {
+          "caller": "train",
+          "callee": "ReLU",
+          "lineNumber": 114
+        },
+        {
+          "caller": "train",
+          "callee": "Dropout",
+          "lineNumber": 115
+        },
+        {
+          "caller": "train",
+          "callee": "Dense",
+          "lineNumber": 116
+        },
+        {
+          "caller": "train",
+          "callee": "Softmax",
+          "lineNumber": 117
+        },
+        {
+          "caller": "train",
+          "callee": "Model",
+          "lineNumber": 119
+        },
+        {
+          "caller": "train",
+          "callee": "model.compile",
+          "lineNumber": 121
+        },
+        {
+          "caller": "train",
+          "callee": "model.summary",
+          "lineNumber": 124
+        },
+        {
+          "caller": "train",
+          "callee": "model.fit",
+          "lineNumber": 126
+        },
+        {
+          "caller": "train",
+          "callee": "save_model",
+          "lineNumber": 130
+        },
+        {
+          "caller": "train",
+          "callee": "tf.keras.backend.clear_session",
+          "lineNumber": 132
+        },
+        {
+          "caller": "main",
+          "callee": "os.path.exists",
+          "lineNumber": 139
+        },
+        {
+          "caller": "main",
+          "callee": "Exception",
+          "lineNumber": 140
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 171
+        },
+        {
+          "caller": "main",
+          "callee": "load_X",
+          "lineNumber": 181
+        },
+        {
+          "caller": "main",
+          "callee": "load_X",
+          "lineNumber": 182
+        },
+        {
+          "caller": "main",
+          "callee": "load_y",
+          "lineNumber": 187
+        },
+        {
+          "caller": "main",
+          "callee": "load_y",
+          "lineNumber": 188
+        },
+        {
+          "caller": "main",
+          "callee": "one_hot",
+          "lineNumber": 191
+        },
+        {
+          "caller": "main",
+          "callee": "one_hot",
+          "lineNumber": 192
+        },
+        {
+          "caller": "main",
+          "callee": "normalize",
+          "lineNumber": 195
+        },
+        {
+          "caller": "main",
+          "callee": "normalize",
+          "lineNumber": 196
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 199
+        },
+        {
+          "caller": "main",
+          "callee": "np.max",
+          "lineNumber": 199
+        },
+        {
+          "caller": "main",
+          "callee": "np.min",
+          "lineNumber": 199
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 200
+        },
+        {
+          "caller": "main",
+          "callee": "np.max",
+          "lineNumber": 200
+        },
+        {
+          "caller": "main",
+          "callee": "np.min",
+          "lineNumber": 200
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 201
+        },
+        {
+          "caller": "main",
+          "callee": "np.max",
+          "lineNumber": 201
+        },
+        {
+          "caller": "main",
+          "callee": "np.min",
+          "lineNumber": 201
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 202
+        },
+        {
+          "caller": "main",
+          "callee": "np.max",
+          "lineNumber": 202
+        },
+        {
+          "caller": "main",
+          "callee": "np.min",
+          "lineNumber": 202
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 203
+        },
+        {
+          "caller": "main",
+          "callee": "np.max",
+          "lineNumber": 203
+        },
+        {
+          "caller": "main",
+          "callee": "np.min",
+          "lineNumber": 203
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 204
+        },
+        {
+          "caller": "main",
+          "callee": "np.max",
+          "lineNumber": 204
+        },
+        {
+          "caller": "main",
+          "callee": "np.min",
+          "lineNumber": 204
+        },
+        {
+          "caller": "main",
+          "callee": "np.clip",
+          "lineNumber": 212
+        },
+        {
+          "caller": "main",
+          "callee": "np.clip",
+          "lineNumber": 213
+        },
+        {
+          "caller": "main",
+          "callee": "generate_test_bin",
+          "lineNumber": 214
+        },
+        {
+          "caller": "main",
+          "callee": "generate_test_bin",
+          "lineNumber": 215
+        },
+        {
+          "caller": "main",
+          "callee": "load_model",
+          "lineNumber": 221
+        },
+        {
+          "caller": "main",
+          "callee": "evaluate_model",
+          "lineNumber": 224
+        },
+        {
+          "caller": "main",
+          "callee": "generate_model",
+          "lineNumber": 227
+        },
+        {
+          "caller": "main",
+          "callee": "os.system",
+          "lineNumber": 232
+        },
+        {
+          "caller": "main",
+          "callee": "os.system",
+          "lineNumber": 236
+        },
+        {
+          "caller": "main",
+          "callee": "np.genfromtxt",
+          "lineNumber": 239
+        },
+        {
+          "caller": "main",
+          "callee": "y_test_original[:len(y_test)].flatten",
+          "lineNumber": 241
+        },
+        {
+          "caller": "main",
+          "callee": "len",
+          "lineNumber": 241
+        },
+        {
+          "caller": "main",
+          "callee": "np.sum(result == label).astype",
+          "lineNumber": 242
+        },
+        {
+          "caller": "main",
+          "callee": "np.sum",
+          "lineNumber": 242
+        },
+        {
+          "caller": "main",
+          "callee": "len",
+          "lineNumber": 242
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 244
+        },
+        {
+          "caller": "main",
+          "callee": "print",
+          "lineNumber": 245
+        },
+        {
+          "caller": "main",
+          "callee": "Exception",
+          "lineNumber": 248
+        },
+        {
+          "caller": "main",
+          "callee": "Exception",
+          "lineNumber": 250
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 7,
+        "functionCount": 7,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/uci-inception/data/download_dataset.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 30,
+      "nonEmptyLines": 25,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/uci-inception/main.c",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 242,
+      "nonEmptyLines": 189,
+      "functions": [
+        {
+          "name": "us_timer_enable",
+          "startLine": 32,
+          "endLine": 42,
+          "params": []
+        },
+        {
+          "name": "us_timer_get",
+          "startLine": 44,
+          "endLine": 47,
+          "params": []
+        },
+        {
+          "name": "main",
+          "startLine": 49,
+          "endLine": 60,
+          "params": []
+        }
+      ],
+      "exports": [
+        {
+          "name": "us_timer_enable",
+          "line": 32,
+          "isDefault": false
+        },
+        {
+          "name": "us_timer_get",
+          "line": 44,
+          "isDefault": false
+        },
+        {
+          "name": "main",
+          "line": 49,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "us_timer_enable",
+          "callee": "__TIM2_CLK_ENABLE",
+          "lineNumber": 34
+        },
+        {
+          "caller": "us_timer_enable",
+          "callee": "HAL_RCC_GetSysClockFreq",
+          "lineNumber": 35
+        },
+        {
+          "caller": "us_timer_enable",
+          "callee": "HAL_TIM_Base_Init",
+          "lineNumber": 40
+        },
+        {
+          "caller": "us_timer_enable",
+          "callee": "HAL_TIM_Base_Start",
+          "lineNumber": 41
+        },
+        {
+          "caller": "us_timer_get",
+          "callee": "__HAL_TIM_GET_COUNTER",
+          "lineNumber": 46
+        },
+        {
+          "caller": "main",
+          "callee": "rt_thread_delay",
+          "lineNumber": 51
+        },
+        {
+          "caller": "main",
+          "callee": "us_timer_enable",
+          "lineNumber": 54
+        },
+        {
+          "caller": "main",
+          "callee": "nnom_model_create",
+          "lineNumber": 56
+        },
+        {
+          "caller": "main",
+          "callee": "model_run",
+          "lineNumber": 59
+        },
+        {
+          "caller": "nn_stat",
+          "callee": "model_stat",
+          "lineNumber": 68
+        },
+        {
+          "caller": "nn_stat",
+          "callee": "rt_kprintf",
+          "lineNumber": 69
+        },
+        {
+          "caller": "nn_stat",
+          "callee": "nnom_mem_stat",
+          "lineNumber": 69
+        },
+        {
+          "caller": "ymodem_on_begin",
+          "callee": "rt_strlen",
+          "lineNumber": 101
+        },
+        {
+          "caller": "ymodem_on_begin",
+          "callee": "atol",
+          "lineNumber": 102
+        },
+        {
+          "caller": "ymodem_on_begin",
+          "callee": "memset",
+          "lineNumber": 110
+        },
+        {
+          "caller": "ymodem_on_data",
+          "callee": "rt_ringbuffer_put",
+          "lineNumber": 121
+        },
+        {
+          "caller": "ymodem_on_data",
+          "callee": "rt_ringbuffer_data_len",
+          "lineNumber": 126
+        },
+        {
+          "caller": "ymodem_on_data",
+          "callee": "rt_ringbuffer_get",
+          "lineNumber": 129
+        },
+        {
+          "caller": "ymodem_on_data",
+          "callee": "rt_ringbuffer_data_len",
+          "lineNumber": 134
+        },
+        {
+          "caller": "ymodem_on_data",
+          "callee": "rt_ringbuffer_get",
+          "lineNumber": 140
+        },
+        {
+          "caller": "ymodem_on_data",
+          "callee": "prediction_run",
+          "lineNumber": 143
+        },
+        {
+          "caller": "predict",
+          "callee": "rt_kprintf",
+          "lineNumber": 160
+        },
+        {
+          "caller": "predict",
+          "callee": "us_timer_enable",
+          "lineNumber": 163
+        },
+        {
+          "caller": "predict",
+          "callee": "rt_ringbuffer_create",
+          "lineNumber": 165
+        },
+        {
+          "caller": "predict",
+          "callee": "prediction_delete",
+          "lineNumber": 169
+        },
+        {
+          "caller": "predict",
+          "callee": "prediction_create",
+          "lineNumber": 171
+        },
+        {
+          "caller": "predict",
+          "callee": "rym_recv_on_device",
+          "lineNumber": 175
+        },
+        {
+          "caller": "predict",
+          "callee": "rt_console_get_device",
+          "lineNumber": 175
+        },
+        {
+          "caller": "predict",
+          "callee": "rt_thread_delay",
+          "lineNumber": 178
+        },
+        {
+          "caller": "predict",
+          "callee": "rt_kprintf",
+          "lineNumber": 179
+        },
+        {
+          "caller": "predict",
+          "callee": "rt_thread_delay",
+          "lineNumber": 183
+        },
+        {
+          "caller": "predict",
+          "callee": "rt_kprintf",
+          "lineNumber": 184
+        },
+        {
+          "caller": "predict",
+          "callee": "prediction_end",
+          "lineNumber": 187
+        },
+        {
+          "caller": "predict",
+          "callee": "prediction_summary",
+          "lineNumber": 189
+        },
+        {
+          "caller": "predict",
+          "callee": "rt_ringbuffer_destroy",
+          "lineNumber": 192
+        },
+        {
+          "caller": "matrix",
+          "callee": "prediction_matrix",
+          "lineNumber": 203
+        },
+        {
+          "caller": "reboot",
+          "callee": "printf",
+          "lineNumber": 210
+        },
+        {
+          "caller": "reboot",
+          "callee": "rt_thread_delay",
+          "lineNumber": 211
+        },
+        {
+          "caller": "reboot",
+          "callee": "NVIC_SystemReset",
+          "lineNumber": 212
+        },
+        {
+          "caller": "create_model",
+          "callee": "printf",
+          "lineNumber": 221
+        },
+        {
+          "caller": "create_model",
+          "callee": "main",
+          "lineNumber": 222
+        },
+        {
+          "caller": "delete_model",
+          "callee": "model_delete",
+          "lineNumber": 231
+        },
+        {
+          "caller": "delete_model",
+          "callee": "printf",
+          "lineNumber": 232
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 3,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/uci-inception/README.MD",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 48,
+      "nonEmptyLines": 34,
+      "sections": [
+        {
+          "heading": "uci-inception example",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Preparation",
+          "level": 1,
+          "line": 30
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 2
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/uci-inception/uci_test.py",
+      "language": "python",
+      "fileCategory": "code",
+      "totalLines": 244,
+      "nonEmptyLines": 194,
+      "functions": [
+        {
+          "name": "load_X",
+          "startLine": 25,
+          "endLine": 38,
+          "params": [
+            "X_signals_paths"
+          ]
+        },
+        {
+          "name": "load_y",
+          "startLine": 40,
+          "endLine": 52,
+          "params": [
+            "y_path"
+          ]
+        },
+        {
+          "name": "one_hot",
+          "startLine": 54,
+          "endLine": 61,
+          "params": [
+            "y_",
+            "n_classes"
+          ]
+        },
+        {
+          "name": "plot_raw",
+          "startLine": 64,
+          "endLine": 71,
+          "params": [
+            "data"
+          ]
+        },
+        {
+          "name": "normalize",
+          "startLine": 73,
+          "endLine": 77,
+          "params": [
+            "data"
+          ]
+        },
+        {
+          "name": "train",
+          "startLine": 81,
+          "endLine": 139,
+          "params": [
+            "x_train",
+            "y_train",
+            "x_test",
+            "y_test",
+            "batch_size",
+            "epochs"
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "name": "load_X",
+          "line": 25,
+          "isDefault": false
+        },
+        {
+          "name": "load_y",
+          "line": 40,
+          "isDefault": false
+        },
+        {
+          "name": "one_hot",
+          "line": 54,
+          "isDefault": false
+        },
+        {
+          "name": "plot_raw",
+          "line": 64,
+          "isDefault": false
+        },
+        {
+          "name": "normalize",
+          "line": 73,
+          "isDefault": false
+        },
+        {
+          "name": "train",
+          "line": 81,
+          "isDefault": false
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "load_X",
+          "callee": "open",
+          "lineNumber": 29
+        },
+        {
+          "caller": "load_X",
+          "callee": "X_signals.append",
+          "lineNumber": 31
+        },
+        {
+          "caller": "load_X",
+          "callee": "np.array",
+          "lineNumber": 32
+        },
+        {
+          "caller": "load_X",
+          "callee": "row.replace('  ', ' ').strip().split",
+          "lineNumber": 33
+        },
+        {
+          "caller": "load_X",
+          "callee": "row.replace('  ', ' ').strip",
+          "lineNumber": 33
+        },
+        {
+          "caller": "load_X",
+          "callee": "row.replace",
+          "lineNumber": 33
+        },
+        {
+          "caller": "load_X",
+          "callee": "file.close",
+          "lineNumber": 36
+        },
+        {
+          "caller": "load_X",
+          "callee": "np.transpose",
+          "lineNumber": 38
+        },
+        {
+          "caller": "load_X",
+          "callee": "np.array",
+          "lineNumber": 38
+        },
+        {
+          "caller": "load_y",
+          "callee": "open",
+          "lineNumber": 41
+        },
+        {
+          "caller": "load_y",
+          "callee": "np.array",
+          "lineNumber": 43
+        },
+        {
+          "caller": "load_y",
+          "callee": "row.replace('  ', ' ').strip().split",
+          "lineNumber": 45
+        },
+        {
+          "caller": "load_y",
+          "callee": "row.replace('  ', ' ').strip",
+          "lineNumber": 45
+        },
+        {
+          "caller": "load_y",
+          "callee": "row.replace",
+          "lineNumber": 45
+        },
+        {
+          "caller": "load_y",
+          "callee": "file.close",
+          "lineNumber": 49
+        },
+        {
+          "caller": "one_hot",
+          "callee": "y_.reshape",
+          "lineNumber": 60
+        },
+        {
+          "caller": "one_hot",
+          "callee": "len",
+          "lineNumber": 60
+        },
+        {
+          "caller": "one_hot",
+          "callee": "np.eye",
+          "lineNumber": 61
+        },
+        {
+          "caller": "one_hot",
+          "callee": "np.array",
+          "lineNumber": 61
+        },
+        {
+          "caller": "plot_raw",
+          "callee": "range",
+          "lineNumber": 65
+        },
+        {
+          "caller": "plot_raw",
+          "callee": "int",
+          "lineNumber": 65
+        },
+        {
+          "caller": "plot_raw",
+          "callee": "int",
+          "lineNumber": 67
+        },
+        {
+          "caller": "plot_raw",
+          "callee": "print",
+          "lineNumber": 68
+        },
+        {
+          "caller": "plot_raw",
+          "callee": "plt.plot",
+          "lineNumber": 69
+        },
+        {
+          "caller": "plot_raw",
+          "callee": "plt.title",
+          "lineNumber": 70
+        },
+        {
+          "caller": "plot_raw",
+          "callee": "plt.show",
+          "lineNumber": 71
+        },
+        {
+          "caller": "normalize",
+          "callee": "max",
+          "lineNumber": 74
+        },
+        {
+          "caller": "normalize",
+          "callee": "abs",
+          "lineNumber": 74
+        },
+        {
+          "caller": "normalize",
+          "callee": "np.max",
+          "lineNumber": 74
+        },
+        {
+          "caller": "normalize",
+          "callee": "abs",
+          "lineNumber": 74
+        },
+        {
+          "caller": "normalize",
+          "callee": "np.min",
+          "lineNumber": 74
+        },
+        {
+          "caller": "normalize",
+          "callee": "max",
+          "lineNumber": 75
+        },
+        {
+          "caller": "normalize",
+          "callee": "abs",
+          "lineNumber": 75
+        },
+        {
+          "caller": "normalize",
+          "callee": "np.max",
+          "lineNumber": 75
+        },
+        {
+          "caller": "normalize",
+          "callee": "abs",
+          "lineNumber": 75
+        },
+        {
+          "caller": "normalize",
+          "callee": "np.min",
+          "lineNumber": 75
+        },
+        {
+          "caller": "normalize",
+          "callee": "max",
+          "lineNumber": 76
+        },
+        {
+          "caller": "normalize",
+          "callee": "abs",
+          "lineNumber": 76
+        },
+        {
+          "caller": "normalize",
+          "callee": "np.max",
+          "lineNumber": 76
+        },
+        {
+          "caller": "normalize",
+          "callee": "abs",
+          "lineNumber": 76
+        },
+        {
+          "caller": "normalize",
+          "callee": "np.min",
+          "lineNumber": 76
+        },
+        {
+          "caller": "train",
+          "callee": "Input",
+          "lineNumber": 82
+        },
+        {
+          "caller": "train",
+          "callee": "Conv1D",
+          "lineNumber": 83
+        },
+        {
+          "caller": "train",
+          "callee": "BatchNormalization",
+          "lineNumber": 84
+        },
+        {
+          "caller": "train",
+          "callee": "Dropout",
+          "lineNumber": 85
+        },
+        {
+          "caller": "train",
+          "callee": "ReLU",
+          "lineNumber": 86
+        },
+        {
+          "caller": "train",
+          "callee": "MaxPool1D",
+          "lineNumber": 87
+        },
+        {
+          "caller": "train",
+          "callee": "Conv1D",
+          "lineNumber": 90
+        },
+        {
+          "caller": "train",
+          "callee": "BatchNormalization",
+          "lineNumber": 91
+        },
+        {
+          "caller": "train",
+          "callee": "Dropout",
+          "lineNumber": 92
+        },
+        {
+          "caller": "train",
+          "callee": "ReLU",
+          "lineNumber": 93
+        },
+        {
+          "caller": "train",
+          "callee": "MaxPool1D",
+          "lineNumber": 94
+        },
+        {
+          "caller": "train",
+          "callee": "Conv1D",
+          "lineNumber": 97
+        },
+        {
+          "caller": "train",
+          "callee": "BatchNormalization",
+          "lineNumber": 98
+        },
+        {
+          "caller": "train",
+          "callee": "Dropout",
+          "lineNumber": 99
+        },
+        {
+          "caller": "train",
+          "callee": "ReLU",
+          "lineNumber": 100
+        },
+        {
+          "caller": "train",
+          "callee": "MaxPool1D",
+          "lineNumber": 101
+        },
+        {
+          "caller": "train",
+          "callee": "MaxPool1D",
+          "lineNumber": 104
+        },
+        {
+          "caller": "train",
+          "callee": "Dropout",
+          "lineNumber": 105
+        },
+        {
+          "caller": "train",
+          "callee": "concatenate",
+          "lineNumber": 108
+        },
+        {
+          "caller": "train",
+          "callee": "Conv1D",
+          "lineNumber": 111
+        },
+        {
+          "caller": "train",
+          "callee": "BatchNormalization",
+          "lineNumber": 112
+        },
+        {
+          "caller": "train",
+          "callee": "ReLU",
+          "lineNumber": 113
+        },
+        {
+          "caller": "train",
+          "callee": "Dropout",
+          "lineNumber": 115
+        },
+        {
+          "caller": "train",
+          "callee": "Flatten",
+          "lineNumber": 118
+        },
+        {
+          "caller": "train",
+          "callee": "Dense",
+          "lineNumber": 119
+        },
+        {
+          "caller": "train",
+          "callee": "Dropout",
+          "lineNumber": 120
+        },
+        {
+          "caller": "train",
+          "callee": "ReLU",
+          "lineNumber": 121
+        },
+        {
+          "caller": "train",
+          "callee": "Dense",
+          "lineNumber": 122
+        },
+        {
+          "caller": "train",
+          "callee": "Softmax",
+          "lineNumber": 123
+        },
+        {
+          "caller": "train",
+          "callee": "Model",
+          "lineNumber": 125
+        },
+        {
+          "caller": "train",
+          "callee": "model.compile",
+          "lineNumber": 127
+        },
+        {
+          "caller": "train",
+          "callee": "model.summary",
+          "lineNumber": 130
+        },
+        {
+          "caller": "train",
+          "callee": "model.fit",
+          "lineNumber": 132
+        },
+        {
+          "caller": "train",
+          "callee": "save_model",
+          "lineNumber": 136
+        },
+        {
+          "caller": "train",
+          "callee": "tf.keras.backend.clear_session",
+          "lineNumber": 138
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 6,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/examples/uci-inception/uci_weights.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 404,
+      "nonEmptyLines": 345,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_activation.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 96,
+      "nonEmptyLines": 77,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_avgpool.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 47,
+      "nonEmptyLines": 36,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_baselayer.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 43,
+      "nonEmptyLines": 34,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_concat.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 55,
+      "nonEmptyLines": 44,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_conv2d_trans.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 52,
+      "nonEmptyLines": 40,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_conv2d.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 83,
+      "nonEmptyLines": 69,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_cropping.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 48,
+      "nonEmptyLines": 37,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_dense.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 63,
+      "nonEmptyLines": 53,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_dw_conv2d.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 44,
+      "nonEmptyLines": 35,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_flatten.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 46,
+      "nonEmptyLines": 37,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_global_pool.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 54,
+      "nonEmptyLines": 42,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_gru_cell.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 60,
+      "nonEmptyLines": 47,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_input.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 57,
+      "nonEmptyLines": 46,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "CNN/nnom-master/inc/layers/nnom_lambda.h",
+      "language": "c",
+      "fileCategory": "code",
+      "totalLines": 54,
+      "nonEmptyLines": 43,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

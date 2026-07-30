@@ -1,0 +1,449 @@
+{
+  "nodes": [
+    {
+      "id": "file:CNN/nnom-master/examples/keyword_spotting/kws-rnn.py",
+      "type": "file",
+      "name": "kws-rnn.py",
+      "filePath": "CNN/nnom-master/examples/keyword_spotting/kws-rnn.py",
+      "summary": "基于RNN（循环神经网络）的关键词识别（Keyword Spotting）训练与测试脚本，使用神经网络对提取的MFCC语音特征进行分类。",
+      "tags": ["entry-point", "neural-network", "keyword-spotting", "training-script"],
+      "complexity": "complex",
+      "languageNotes": "使用 TensorFlow Keras 构建 RNN/LSTM 模型，并进行数据预处理和模型导出。"
+    },
+    {
+      "id": "file:CNN/nnom-master/examples/keyword_spotting/kws.py",
+      "type": "file",
+      "name": "kws.py",
+      "filePath": "CNN/nnom-master/examples/keyword_spotting/kws.py",
+      "summary": "基于CNN（卷积神经网络）的关键词识别训练与测试脚本，利用二维卷积对MFCC时频图特征进行分类与识别。",
+      "tags": ["entry-point", "neural-network", "keyword-spotting", "training-script"],
+      "complexity": "complex",
+      "languageNotes": "利用二维卷积（Conv2D）对MFCC音频特征图进行分类，并通过 TensorFlow/Keras 训练及 NNoM 进行代码生成。"
+    },
+    {
+      "id": "file:CNN/nnom-master/examples/keyword_spotting/mfcc.py",
+      "type": "file",
+      "name": "mfcc.py",
+      "filePath": "CNN/nnom-master/examples/keyword_spotting/mfcc.py",
+      "summary": "关键词识别系统的音频特征处理模块，负责噪声混合、语音文件读取、MFCC 特征计算以及生成训练/测试数据集的 Numpy 数组。",
+      "tags": ["utility", "audio-processing", "feature-extraction", "mfcc"],
+      "complexity": "moderate",
+      "languageNotes": "使用 python_speech_features 库提取音频 MFCC 特征，并整合噪声数据以实现数据增强。"
+    },
+    {
+      "id": "file:CNN/nnom-master/examples/keyword_spotting/python_speech_features/__init__.py",
+      "type": "file",
+      "name": "__init__.py",
+      "filePath": "CNN/nnom-master/examples/keyword_spotting/python_speech_features/__init__.py",
+      "summary": "python_speech_features 语音特征提取包的初始化入口，用于导出包内的基准语音特征提取函数。",
+      "tags": ["entry-point", "barrel", "barrel-file"],
+      "complexity": "simple",
+      "languageNotes": "Python 语音特征包的入口文件，负责子模块的导出。"
+    },
+    {
+      "id": "file:CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py",
+      "type": "file",
+      "name": "base.py",
+      "filePath": "CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py",
+      "summary": "语音特征提取的核心算法库，实现了包括 MFCC（梅尔频率倒谱系数）、滤波器组（Filterbank）以及 SSC（谱亚带质心）等特征提取功能。",
+      "tags": ["utility", "audio-processing", "feature-extraction", "mathematical-model"],
+      "complexity": "complex",
+      "languageNotes": "纯 Python/Numpy 实现的经典梅尔滤波器组及倒谱系数计算，支持可定制的窗函数和预加重系数。"
+    },
+    {
+      "id": "file:CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py",
+      "type": "file",
+      "name": "sigproc.py",
+      "filePath": "CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py",
+      "summary": "基础数字信号处理工具模块，提供音频分帧（Framing）、合帧（Deframing）、计算幅度谱、功率谱以及信号预加重等底层操作。",
+      "tags": ["utility", "audio-processing", "signal-processing", "mathematical-model"],
+      "complexity": "complex",
+      "languageNotes": "使用 NumPy 的 stride_tricks 实现了内存共享的高效滚窗分帧算法。"
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/keyword_spotting/kws-rnn.py:train",
+      "type": "function",
+      "name": "train",
+      "filePath": "CNN/nnom-master/examples/keyword_spotting/kws-rnn.py",
+      "summary": "构建并训练基于 LSTM 结构的循环神经网络模型，支持模型编译、拟合以及保存为 h5 格式文件。",
+      "tags": ["neural-network", "model-training", "lstm"]
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/keyword_spotting/kws-rnn.py:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "CNN/nnom-master/examples/keyword_spotting/kws-rnn.py",
+      "summary": "主执行函数，负责加载 MFCC 特征数据集，进行数据归一化和格式化，并调用训练或评估流程，最后通过 NNoM 工具生成 C 语言模型代码。",
+      "tags": ["entry-point", "data-preprocessing", "model-generation"]
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/keyword_spotting/kws.py:train",
+      "type": "function",
+      "name": "train",
+      "filePath": "CNN/nnom-master/examples/keyword_spotting/kws.py",
+      "summary": "构建包含多层卷积和批归一化（Batch Normalization）的二维 CNN 网络，并使用 Adam 优化器在音频特征图上进行模型训练与保存。",
+      "tags": ["neural-network", "cnn", "model-training"]
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/keyword_spotting/kws.py:main",
+      "type": "function",
+      "name": "main",
+      "filePath": "CNN/nnom-master/examples/keyword_spotting/kws.py",
+      "summary": "主引导函数，加载数据集，将 MFCC 数据重塑为二维图像格式，执行数据归一化并触发 CNN 模型的构建、训练、量化和 C 语言头文件生成。",
+      "tags": ["entry-point", "data-preprocessing", "model-generation"]
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/keyword_spotting/mfcc.py:generate_mfcc",
+      "type": "function",
+      "name": "generate_mfcc",
+      "filePath": "CNN/nnom-master/examples/keyword_spotting/mfcc.py",
+      "summary": "读取一段音频信号，可选择性地叠加背景噪声，然后使用 MFCC 算法提取音频的时频特征。",
+      "tags": ["audio-processing", "feature-extraction", "data-augmentation"]
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/keyword_spotting/mfcc.py:merge_mfcc_file",
+      "type": "function",
+      "name": "merge_mfcc_file",
+      "filePath": "CNN/nnom-master/examples/keyword_spotting/mfcc.py",
+      "summary": "遍历音频数据集文件夹，批量提取各个词条音频的 MFCC 特征，并将结果组合保存为统一的训练、验证与测试用 Numpy 格式数据集文件。",
+      "tags": ["data-preprocessing", "batch-processing", "dataset-generation"]
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py:mfcc",
+      "type": "function",
+      "name": "mfcc",
+      "filePath": "CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py",
+      "summary": "计算音频信号的梅尔频率倒谱系数（MFCC），依次执行预加重、分帧、加窗、快速傅里叶变换、梅尔滤波器组过滤、取对数以及离散余弦变换（DCT）和升提升（Liftering）操作。",
+      "tags": ["audio-processing", "feature-extraction", "mfcc"]
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py:fbank",
+      "type": "function",
+      "name": "fbank",
+      "filePath": "CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py",
+      "summary": "计算音频信号的梅尔滤波器组能量（Filterbank Energy），返回每帧在梅尔滤波器组下的能量分布。",
+      "tags": ["audio-processing", "feature-extraction", "filterbank"]
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py:get_filterbanks",
+      "type": "function",
+      "name": "get_filterbanks",
+      "filePath": "CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py",
+      "summary": "根据梅尔刻度范围，创建指定数量的三角形梅尔滤波器组，并返回用于矩阵相乘的权重矩阵。",
+      "tags": ["audio-processing", "filterbank", "mathematical-model"]
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py:framesig",
+      "type": "function",
+      "name": "framesig",
+      "filePath": "CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py",
+      "summary": "将一维连续音频信号分割为一系列重叠的帧，并支持对各帧应用指定的窗函数。",
+      "tags": ["signal-processing", "framing", "windowing"]
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py:powspec",
+      "type": "function",
+      "name": "powspec",
+      "filePath": "CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py",
+      "summary": "计算给定的帧矩阵的功率谱，通常在计算滤波器组和倒谱系数前使用。",
+      "tags": ["signal-processing", "power-spectrum"]
+    },
+    {
+      "id": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py:preemphasis",
+      "type": "function",
+      "name": "preemphasis",
+      "filePath": "CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py",
+      "summary": "对输入的一维信号应用高通滤波器进行预加重，以提升高频部分的能量。",
+      "tags": ["signal-processing", "filtering", "pre-emphasis"]
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/kws-rnn.py",
+      "target": "file:CNN/nnom-master/examples/keyword_spotting/mfcc.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/kws.py",
+      "target": "file:CNN/nnom-master/examples/keyword_spotting/mfcc.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/mfcc.py",
+      "target": "file:CNN/nnom-master/examples/keyword_spotting/python_speech_features/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/python_speech_features/__init__.py",
+      "target": "file:CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py",
+      "target": "file:CNN/nnom-master/examples/keyword_spotting/python_speech_features/__init__.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py",
+      "target": "file:CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/kws-rnn.py",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/kws-rnn.py:train",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/kws-rnn.py",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/kws-rnn.py:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/kws.py",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/kws.py:train",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/kws.py",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/kws.py:main",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/mfcc.py",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/mfcc.py:generate_mfcc",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/mfcc.py",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/mfcc.py:merge_mfcc_file",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py:mfcc",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py:fbank",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py:get_filterbanks",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py:framesig",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py:powspec",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py:preemphasis",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/kws-rnn.py",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/kws-rnn.py:train",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/kws-rnn.py",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/kws-rnn.py:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/kws.py",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/kws.py:train",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/kws.py",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/kws.py:main",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/mfcc.py",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/mfcc.py:generate_mfcc",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/mfcc.py",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/mfcc.py:merge_mfcc_file",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py:mfcc",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py:fbank",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py:get_filterbanks",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py:framesig",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py:powspec",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py:preemphasis",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:CNN/nnom-master/examples/keyword_spotting/kws-rnn.py:main",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/mfcc.py:merge_mfcc_file",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:CNN/nnom-master/examples/keyword_spotting/kws-rnn.py:main",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/kws-rnn.py:train",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:CNN/nnom-master/examples/keyword_spotting/kws.py:main",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/mfcc.py:merge_mfcc_file",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:CNN/nnom-master/examples/keyword_spotting/kws.py:main",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/kws.py:train",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:CNN/nnom-master/examples/keyword_spotting/mfcc.py:merge_mfcc_file",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/mfcc.py:generate_mfcc",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:CNN/nnom-master/examples/keyword_spotting/mfcc.py:generate_mfcc",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py:mfcc",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py:mfcc",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py:fbank",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py:fbank",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py:preemphasis",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py:fbank",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py:framesig",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py:fbank",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/sigproc.py:powspec",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py:fbank",
+      "target": "function:CNN/nnom-master/examples/keyword_spotting/python_speech_features/base.py:get_filterbanks",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

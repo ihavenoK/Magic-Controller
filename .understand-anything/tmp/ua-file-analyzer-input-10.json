@@ -1,0 +1,140 @@
+{
+  "projectRoot": "D:/32/cyberrypotter",
+  "batchFiles": [
+    {
+      "path": "CNN/nnom-master/docs/A_Temporary_Guide_to_NNoM.md",
+      "language": "markdown",
+      "sizeLines": 405,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/Porting_and_Optimisation_Guide.md",
+      "language": "markdown",
+      "sizeLines": 161,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/api_activations.md",
+      "language": "markdown",
+      "sizeLines": 258,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/api_construction.md",
+      "language": "markdown",
+      "sizeLines": 224,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/api_evaluation.md",
+      "language": "markdown",
+      "sizeLines": 472,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/api_layers.md",
+      "language": "markdown",
+      "sizeLines": 311,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/api_merge.md",
+      "language": "markdown",
+      "sizeLines": 151,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/api_model.md",
+      "language": "markdown",
+      "sizeLines": 399,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/api_nnom.md",
+      "language": "markdown",
+      "sizeLines": 197,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/api_nnom_utils.md",
+      "language": "markdown",
+      "sizeLines": 233,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/api_pooling.md",
+      "language": "markdown",
+      "sizeLines": 136,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/api_properties.md",
+      "language": "markdown",
+      "sizeLines": 246,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/api_tensor.md",
+      "language": "markdown",
+      "sizeLines": 177,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/example_mnist_simple_cn.md",
+      "language": "markdown",
+      "sizeLines": 224,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/guide_5_min_to_nnom.md",
+      "language": "markdown",
+      "sizeLines": 151,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/guide_development.md",
+      "language": "markdown",
+      "sizeLines": 361,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/index.md",
+      "language": "markdown",
+      "sizeLines": 193,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/legacy_README.md",
+      "language": "markdown",
+      "sizeLines": 236,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CNN/nnom-master/docs/rt-thread_guide.md",
+      "language": "markdown",
+      "sizeLines": 135,
+      "fileCategory": "docs"
+    }
+  ],
+  "batchImportData": {
+    "CNN/nnom-master/docs/A_Temporary_Guide_to_NNoM.md": [],
+    "CNN/nnom-master/docs/Porting_and_Optimisation_Guide.md": [],
+    "CNN/nnom-master/docs/api_activations.md": [],
+    "CNN/nnom-master/docs/api_construction.md": [],
+    "CNN/nnom-master/docs/api_evaluation.md": [],
+    "CNN/nnom-master/docs/api_layers.md": [],
+    "CNN/nnom-master/docs/api_merge.md": [],
+    "CNN/nnom-master/docs/api_model.md": [],
+    "CNN/nnom-master/docs/api_nnom.md": [],
+    "CNN/nnom-master/docs/api_nnom_utils.md": [],
+    "CNN/nnom-master/docs/api_pooling.md": [],
+    "CNN/nnom-master/docs/api_properties.md": [],
+    "CNN/nnom-master/docs/api_tensor.md": [],
+    "CNN/nnom-master/docs/example_mnist_simple_cn.md": [],
+    "CNN/nnom-master/docs/guide_5_min_to_nnom.md": [],
+    "CNN/nnom-master/docs/guide_development.md": [],
+    "CNN/nnom-master/docs/index.md": [],
+    "CNN/nnom-master/docs/legacy_README.md": [],
+    "CNN/nnom-master/docs/rt-thread_guide.md": []
+  }
+}
