@@ -1,0 +1,9 @@
+# 本地编辑器 / 工具缓存与配置
+.vscode/
+.workbuddy/
+.understand-anything/
+.agents/
+*.log
+
+# 编译产物
+Objects/
